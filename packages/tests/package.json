@@ -1,0 +1,50 @@
+{
+  "name": "@codemod-utils/tests",
+  "version": "0.0.0",
+  "description": "Utilities for tests",
+  "keywords": [
+    "codemod",
+    "ember-codemod"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ijlee2/codemod-utils.git"
+  },
+  "license": "MIT",
+  "author": "Isaac J. Lee",
+  "type": "module",
+  "main": "src/index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "files": [
+    "src/"
+  ],
+  "scripts": {
+    "lint": "eslint . --cache",
+    "lint:fix": "eslint . --fix",
+    "test": "echo '@codemod-utils/tests does not have tests.'"
+  },
+  "dependencies": {
+    "@sondr3/minitest": "^0.1.1",
+    "fixturify": "^3.0.0",
+    "glob": "^10.2.4"
+  },
+  "devDependencies": {
+    "@shared-configs/eslint-config": "workspace:*",
+    "@shared-configs/prettier": "workspace:*",
+    "eslint": "^8.40.0",
+    "prettier": "^2.8.8"
+  },
+  "peerDependencies": {
+    "@sondr3/minitest": "^0.1.1"
+  },
+  "peerDependenciesMeta": {
+    "@sondr3/minitest": {
+      "optional": false
+    }
+  },
+  "engines": {
+    "node": "16.* || >= 18"
+  }
+}
