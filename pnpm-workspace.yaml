@@ -1,4 +1,5 @@
 packages:
   - configs/**
   - packages/files
+  - packages/package-json
   - packages/tests
