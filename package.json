@@ -1,0 +1,19 @@
+{
+  "name": "workspace-root",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Workspace root for @codemod-utils",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ijlee2/codemod-utils.git"
+  },
+  "scripts": {
+    "lint": "pnpm --filter '*' lint",
+    "lint:fix": "pnpm --filter '*' lint:fix",
+    "test": "pnpm --filter '*' test"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "16.* || >= 18"
+  }
+}
