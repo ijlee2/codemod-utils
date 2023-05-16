@@ -1,3 +1,4 @@
 packages:
   - configs/**
+  - packages/files
   - packages/tests
