@@ -3,16 +3,9 @@ import { assert, loadFixture, test } from '@codemod-utils/tests';
 import { readPackageJson } from '../../../src/index.js';
 import { codemodOptions } from '../../shared-test-setups/index.js';
 
-test('package-json | read-package-json > error handling (package name is not valid)', function () {
+test('json | read-json > error handling (package.json is not a valid JSON)', function () {
   const inputProject = {
-    'package.json': JSON.stringify(
-      {
-        name: '@ijlee2/',
-        version: '0.0.0',
-      },
-      null,
-      2,
-    ),
+    'package.json': '{\n  "name": }',
   };
 
   loadFixture(inputProject, codemodOptions);
@@ -24,7 +17,7 @@ test('package-json | read-package-json > error handling (package name is not val
     (error) => {
       assert.strictEqual(
         error.message,
-        'ERROR: package.json is missing or is not valid. (Package name is missing.)\n',
+        'ERROR: package.json is missing or is not valid. (Unexpected token } in JSON at position 12)\n',
       );
 
       return true;

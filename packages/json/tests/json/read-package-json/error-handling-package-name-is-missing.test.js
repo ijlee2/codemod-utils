@@ -3,7 +3,7 @@ import { assert, loadFixture, test } from '@codemod-utils/tests';
 import { readPackageJson } from '../../../src/index.js';
 import { codemodOptions } from '../../shared-test-setups/index.js';
 
-test('package-json | read-package-json > error handling (package name is missing)', function () {
+test('json | read-json > error handling (package name is missing)', function () {
   const inputProject = {
     'package.json': '{}',
   };
