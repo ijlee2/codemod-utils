@@ -64,6 +64,24 @@ Here are some guidelines to help you and everyone else.
 </details>
 
 
+<details>
+
+<summary>Publish packages (for admins)</summary>
+
+1. Create a pull request, in which you update the `CHANGELOG`'s and package versions.
+
+1. [Create a tag](https://github.com/ijlee2/codemod-utils/releases/new) such as `1.0.0` (the name satisfies the regular expression `^\d+\.\d+\.\d+`).
+
+1. Publish the packages.
+
+    ```sh
+    # From the workspace root
+    pnpm publish -r
+    ```
+
+</details>
+
+
 ## How can I help?
 
 If you haven't before, I encourage you to watch [Sean Massa's mini-talk](https://www.youtube.com/watch?v=CcSKlsc_AhQ) on what it means to be a contributor. To sum up the talk, you can be a contributor in many ways. I want you to discover a path that meets your goals well!
