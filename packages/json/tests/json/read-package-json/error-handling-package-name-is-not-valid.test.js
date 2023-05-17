@@ -3,11 +3,12 @@ import { assert, loadFixture, test } from '@codemod-utils/tests';
 import { readPackageJson } from '../../../src/index.js';
 import { codemodOptions } from '../../shared-test-setups/index.js';
 
-test('package-json | read-package-json > error handling (package version is missing)', function () {
+test('json | read-json > error handling (package name is not valid)', function () {
   const inputProject = {
     'package.json': JSON.stringify(
       {
-        name: 'ember-container-query',
+        name: '@ijlee2/',
+        version: '0.0.0',
       },
       null,
       2,
@@ -23,7 +24,7 @@ test('package-json | read-package-json > error handling (package version is miss
     (error) => {
       assert.strictEqual(
         error.message,
-        'ERROR: package.json is missing or is not valid. (Package version is missing.)\n',
+        'ERROR: package.json is missing or is not valid. (Package name is missing.)\n',
       );
 
       return true;

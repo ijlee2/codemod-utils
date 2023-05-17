@@ -2,5 +2,5 @@ packages:
   - configs/**
   - packages/blueprints
   - packages/files
-  - packages/package-json
+  - packages/json
   - packages/tests

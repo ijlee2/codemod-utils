@@ -14,7 +14,7 @@ _Utilities for writing codemods_
 
 - [`@codemod-utils/blueprints`](/packages/blueprints/README.md)
 - [`@codemod-utils/files`](/packages/files/README.md)
-- [`@codemod-utils/package-json`](/packages/package-json/README.md)
+- [`@codemod-utils/json`](/packages/json/README.md)
 - [`@codemod-utils/tests`](/packages/tests/README.md)
 
 

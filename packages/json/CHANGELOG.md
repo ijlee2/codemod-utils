@@ -1,4 +1,4 @@
-# Changelog for @codemod-utils/package-json
+# Changelog for @codemod-utils/json
 
 ## 0.1.0 (2023-05-17)
 
