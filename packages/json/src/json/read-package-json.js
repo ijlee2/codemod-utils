@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-function validate({ name, version }) {
+function validatePackageJson({ name, version }) {
   if (!name) {
     throw new SyntaxError('Package name is missing.');
   }
@@ -27,7 +27,7 @@ export function readPackageJson(codemodOptions) {
     const file = readFileSync(join(projectRoot, 'package.json'), 'utf8');
     const packageJson = JSON.parse(file);
 
-    validate(packageJson);
+    validatePackageJson(packageJson);
 
     return packageJson;
   } catch (e) {
