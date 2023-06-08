@@ -6,3 +6,4 @@ export * from './files/map-file-paths.js';
 export * from './files/move-files.js';
 export * from './files/remove-directory-if-empty.js';
 export * from './files/remove-files.js';
+export * from './files/rename-directory.js';

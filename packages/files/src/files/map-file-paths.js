@@ -1,16 +1,4 @@
-import { join } from 'node:path';
-
-export function renameDirectory(oldFilePath, { from, to }) {
-  if (from === '') {
-    return join(to, oldFilePath);
-  }
-
-  if (!oldFilePath.startsWith(`${from}/`)) {
-    return oldFilePath;
-  }
-
-  return join(to, oldFilePath.replace(`${from}/`, ''));
-}
+import { renameDirectory } from './rename-directory.js';
 
 export function mapFilePaths(filePaths, { from, to }) {
   return new Map(
