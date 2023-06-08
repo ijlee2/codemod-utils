@@ -72,7 +72,7 @@ Currently, `ember-template-recast` and `recast` lack documentation and tutorials
 
 I recommend using [AST Explorer](https://astexplorer.net/) to test a small piece of code and familiarize with the API. The error messages from TypeScript, which you can find in your browser's console, can sometimes help. [AST Workshop](https://github.com/mainmatter/ast-workshop) provides a good starting point for Handlebars.
 
-If you intend to publish your codemod, I highly recommend using [`@codemod-utils/tests`](../tests) (test fixture files) to document what the codemod can and cannot do.
+If you intend to publish your codemod, I recommend using [`@codemod-utils/tests`](../tests) (create and test file fixtures) to check the output and prevent regressions.
 
 
 ### AST Explorer for Handlebars
