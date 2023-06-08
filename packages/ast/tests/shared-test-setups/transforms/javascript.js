@@ -1,9 +1,9 @@
 import { ASTJavaScript as AST } from '../../../src/index.js';
 
-export function transformJavaScript(oldFile) {
+export function transformJavaScript(file) {
   const traverse = AST.traverse();
 
-  const ast = traverse(oldFile, {
+  const ast = traverse(file, {
     visitClassDeclaration(path) {
       const { body } = path.node.body;
 
@@ -14,27 +14,19 @@ export function transformJavaScript(oldFile) {
         ),
       ];
 
-      if (body.length > 0) {
-        nodesToAdd.push(AST.builders.noop());
-      }
-
       body.unshift(...nodesToAdd);
 
       return false;
     },
   });
 
-  const newFile = AST.print(ast);
-
-  return newFile;
+  return AST.print(ast);
 }
 
-export function traverseJavaScript(oldFile) {
+export function traverseJavaScript(file) {
   const traverse = AST.traverse();
 
-  const ast = traverse(oldFile);
+  const ast = traverse(file);
 
-  const newFile = AST.print(ast);
-
-  return newFile;
+  return AST.print(ast);
 }

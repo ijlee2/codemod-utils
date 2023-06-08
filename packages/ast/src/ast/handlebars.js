@@ -1,14 +1,16 @@
 import { builders, print, transform } from 'ember-template-recast';
 
-function traverse(file, visitMethods = {}) {
-  const { ast } = transform({
-    plugin() {
-      return visitMethods;
-    },
-    template: file,
-  });
+function traverse() {
+  return function (file, visitMethods = {}) {
+    const { ast } = transform({
+      plugin() {
+        return visitMethods;
+      },
+      template: file,
+    });
 
-  return ast;
+    return ast;
+  };
 }
 
 const tools = {

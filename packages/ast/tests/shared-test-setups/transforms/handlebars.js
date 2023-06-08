@@ -1,7 +1,9 @@
 import { ASTHandlebars as AST } from '../../../src/index.js';
 
-export function transformHandlebars(oldFile) {
-  const ast = AST.traverse(oldFile, {
+export function transformHandlebars(file) {
+  const traverse = AST.traverse();
+
+  const ast = traverse(file, {
     AttrNode(node) {
       if (node.name !== 'local-class') {
         return;
@@ -9,21 +11,21 @@ export function transformHandlebars(oldFile) {
 
       node.name = 'class';
 
+      const attributeValue = node.value.chars.trim();
+
       node.value = AST.builders.mustache(
-        AST.builders.path('this.styles.container'),
+        AST.builders.path(`this.styles.${attributeValue}`),
       );
     },
   });
 
-  const newFile = AST.print(ast);
-
-  return newFile;
+  return AST.print(ast);
 }
 
-export function traverseHandlebars(oldFile) {
-  const ast = AST.traverse(oldFile);
+export function traverseHandlebars(file) {
+  const traverse = AST.traverse();
 
-  const newFile = AST.print(ast);
+  const ast = traverse(file);
 
-  return newFile;
+  return AST.print(ast);
 }
