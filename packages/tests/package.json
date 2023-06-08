@@ -28,12 +28,12 @@
   "dependencies": {
     "@sondr3/minitest": "^0.1.1",
     "fixturify": "^3.0.0",
-    "glob": "^10.2.4"
+    "glob": "^10.2.7"
   },
   "devDependencies": {
     "@shared-configs/eslint-config": "workspace:*",
     "@shared-configs/prettier": "workspace:*",
-    "eslint": "^8.40.0",
+    "eslint": "^8.42.0",
     "prettier": "^2.8.8"
   },
   "peerDependencies": {

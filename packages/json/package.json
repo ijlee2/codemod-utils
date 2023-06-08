@@ -30,7 +30,7 @@
     "@shared-configs/eslint-config": "workspace:*",
     "@shared-configs/prettier": "workspace:*",
     "@sondr3/minitest": "^0.1.1",
-    "eslint": "^8.40.0",
+    "eslint": "^8.42.0",
     "prettier": "^2.8.8"
   },
   "engines": {
