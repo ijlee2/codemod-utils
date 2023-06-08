@@ -7,12 +7,21 @@
     "type": "git",
     "url": "git@github.com:ijlee2/codemod-utils.git"
   },
+  "license": "MIT",
+  "author": "Isaac J. Lee",
+  "type": "module",
   "scripts": {
+    "changeset": "changeset add",
     "lint": "pnpm --filter '*' lint",
     "lint:fix": "pnpm --filter '*' lint:fix",
+    "publish:changelogs": "changeset version",
+    "publish:packages": "changeset publish",
     "test": "pnpm --filter '*' test"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@changesets/cli": "^2.26.1",
+    "@changesets/get-github-info": "^0.5.2"
+  },
   "engines": {
     "node": "16.* || >= 18"
   }
