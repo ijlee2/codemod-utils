@@ -12,6 +12,7 @@ _Utilities for writing codemods_
 
 ### Package overview
 
+- [`@codemod-utils/ast`](/packages/ast/README.md)
 - [`@codemod-utils/blueprints`](/packages/blueprints/README.md)
 - [`@codemod-utils/files`](/packages/files/README.md)
 - [`@codemod-utils/json`](/packages/json/README.md)

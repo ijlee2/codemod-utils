@@ -1,5 +1,6 @@
 packages:
   - configs/**
+  - packages/ast
   - packages/blueprints
   - packages/files
   - packages/json
