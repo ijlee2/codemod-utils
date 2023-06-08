@@ -1,7 +1,9 @@
 import { ASTHandlebars as AST } from '../../../src/index.js';
 
 export function transformHandlebars(oldFile) {
-  const ast = AST.traverse(oldFile, {
+  const traverse = AST.traverse();
+
+  const ast = traverse(oldFile, {
     AttrNode(node) {
       if (node.name !== 'local-class') {
         return;
@@ -21,7 +23,9 @@ export function transformHandlebars(oldFile) {
 }
 
 export function traverseHandlebars(oldFile) {
-  const ast = AST.traverse(oldFile);
+  const traverse = AST.traverse();
+
+  const ast = traverse(oldFile);
 
   const newFile = AST.print(ast);
 
