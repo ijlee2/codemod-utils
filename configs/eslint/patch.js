@@ -4,10 +4,10 @@
  * ```js
  * 'use strict';
  *
- * require('config-for-frontend/patch');
+ * require('@shared-configs/eslint-config/patch');
  *
  * module.exports = {
- *   extends: ['config-for-frontend'],
+ *   extends: ['@shared-configs/eslint-config/node-javascript'],
  * };
  * ```
  *
