@@ -35,8 +35,5 @@
   },
   "engines": {
     "node": "16.* || >= 18"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
