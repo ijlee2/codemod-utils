@@ -1,0 +1,44 @@
+{
+  "name": "@codemod-utils/ast",
+  "version": "0.0.0",
+  "description": "Utilities for handling abstract syntax tree",
+  "keywords": [
+    "codemod",
+    "ember-codemod"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ijlee2/codemod-utils.git"
+  },
+  "license": "MIT",
+  "author": "Isaac J. Lee",
+  "type": "module",
+  "main": "src/index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "files": [
+    "src/"
+  ],
+  "scripts": {
+    "lint": "eslint . --cache",
+    "lint:fix": "eslint . --fix",
+    "test": "mt tests --quiet"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.22.4",
+    "ember-template-recast": "^6.1.4",
+    "recast": "^0.23.2"
+  },
+  "devDependencies": {
+    "@codemod-utils/tests": "workspace:*",
+    "@shared-configs/eslint-config": "workspace:*",
+    "@shared-configs/prettier": "workspace:*",
+    "@sondr3/minitest": "^0.1.1",
+    "eslint": "^8.42.0",
+    "prettier": "^2.8.8"
+  },
+  "engines": {
+    "node": "16.* || >= 18"
+  }
+}
