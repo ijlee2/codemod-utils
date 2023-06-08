@@ -68,7 +68,14 @@ Here are some guidelines to help you and everyone else.
 
 <summary>Publish packages (for admins)</summary>
 
-1. Create a pull request, in which you update the `CHANGELOG`'s and package versions.
+1. Generate a [personal access token](https://github.com/settings/tokens/) in GitHub, with default values for scopes (none selected).
+
+1. Create a pull request, in which you remove the changesets and update the `CHANGELOG`'s.
+
+    ```sh
+    # From the workspace root
+    GITHUB_TOKEN=<YOUR_PERSONAL_ACCESS_TOKEN> pnpm publish:changelogs
+    ```
 
 1. [Create a tag](https://github.com/ijlee2/codemod-utils/releases/new) such as `1.0.0` (the name satisfies the regular expression `^\d+\.\d+\.\d+`).
 
@@ -76,7 +83,7 @@ Here are some guidelines to help you and everyone else.
 
     ```sh
     # From the workspace root
-    pnpm publish -r
+    pnpm publish:packages
     ```
 
 </details>
