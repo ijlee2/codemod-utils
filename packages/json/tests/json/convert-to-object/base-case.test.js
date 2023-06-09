@@ -23,5 +23,5 @@ test('json | convert-to-object > base case', function () {
     'ember-test-selectors': '^6.0.0',
   };
 
-  assert.deepEqual(convertToObject(devDependencies), expectedValue);
+  assert.deepStrictEqual(convertToObject(devDependencies), expectedValue);
 });

@@ -7,5 +7,5 @@ test('json | convert-to-object > error handling (input is undefined)', function 
 
   const expectedValue = {};
 
-  assert.deepEqual(convertToObject(devDependencies), expectedValue);
+  assert.deepStrictEqual(convertToObject(devDependencies), expectedValue);
 });
