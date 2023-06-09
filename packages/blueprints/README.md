@@ -152,6 +152,8 @@ Step 2. Pass data to the file.
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+import { processTemplate } from '@codemod-utils/blueprints';
+
 // Read file
 const blueprintFilePath = '__addonLocation__/rollup.config.mjs';
 
