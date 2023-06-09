@@ -7,5 +7,5 @@ test('json | convert-to-map > error handling (input is undefined)', function () 
 
   const expectedValue = new Map();
 
-  assert.deepEqual(convertToMap(devDependencies), expectedValue);
+  assert.deepStrictEqual(convertToMap(devDependencies), expectedValue);
 });

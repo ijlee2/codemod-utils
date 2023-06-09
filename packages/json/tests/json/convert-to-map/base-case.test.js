@@ -23,5 +23,5 @@ test('json | convert-to-map > base case', function () {
     ['ember-test-selectors', '^6.0.0'],
   ]);
 
-  assert.deepEqual(convertToMap(devDependencies), expectedValue);
+  assert.deepStrictEqual(convertToMap(devDependencies), expectedValue);
 });

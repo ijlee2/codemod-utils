@@ -30,7 +30,7 @@ test('json | read-json > edge case (scoped package)', function () {
 
   const packageJson = readPackageJson(codemodOptions);
 
-  assert.deepEqual(packageJson, {
+  assert.deepStrictEqual(packageJson, {
     name: '@ijlee2/ember-container-query',
     version: '3.2.0',
     dependencies: {
