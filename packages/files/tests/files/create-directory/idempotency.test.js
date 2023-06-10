@@ -18,9 +18,9 @@ test('files | create-directory > idempotency', function () {
 
   loadFixture(inputProject, codemodOptions);
 
-  const path = `${codemodOptions.projectRoot}/addon/components/ember-container-query.ts`;
+  const filePath = `${codemodOptions.projectRoot}/addon/components/ember-container-query.ts`;
 
-  createDirectory(path);
+  createDirectory(filePath);
 
   assertFixture(outputProject, codemodOptions);
 });
