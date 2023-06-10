@@ -1,9 +1,9 @@
 import { assertFixture, loadFixture, test } from '@codemod-utils/tests';
 
-import { moveFiles } from '../../../src/index.js';
+import { removeFiles } from '../../../src/index.js';
 import { codemodOptions, options } from '../../shared-test-setups/index.js';
 
-test('files | move-files > base case', function () {
+test('files | remove-files > edge case (filePaths is empty)', function () {
   const inputProject = {
     addon: {
       components: {
@@ -20,12 +20,10 @@ test('files | move-files > base case', function () {
   };
 
   const outputProject = {
-    'ember-container-query': {
-      src: {
-        components: {
-          'container-query.hbs': 'some code for container-query.hbs',
-          'container-query.ts': 'some code for container-query.ts',
-        },
+    addon: {
+      components: {
+        'container-query.hbs': 'some code for container-query.hbs',
+        'container-query.ts': 'some code for container-query.ts',
       },
     },
 
@@ -38,16 +36,9 @@ test('files | move-files > base case', function () {
 
   loadFixture(inputProject, codemodOptions);
 
-  const filePaths = [
-    'addon/components/container-query.hbs',
-    'addon/components/container-query.ts',
-  ];
+  const filePaths = [];
 
-  moveFiles(filePaths, {
-    from: 'addon',
-    projectRoot: options.projectRoot,
-    to: 'ember-container-query/src',
-  });
+  removeFiles(filePaths, options);
 
   assertFixture(outputProject, codemodOptions);
 });

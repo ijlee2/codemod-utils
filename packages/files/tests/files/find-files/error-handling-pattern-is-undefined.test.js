@@ -1,7 +1,7 @@
 import { assert, loadFixture, test } from '@codemod-utils/tests';
 
 import { findFiles } from '../../../src/index.js';
-import { codemodOptions } from '../../shared-test-setups/index.js';
+import { codemodOptions, options } from '../../shared-test-setups/index.js';
 
 test('files | find-files > error handling (pattern is undefined)', function () {
   const inputProject = {
@@ -37,7 +37,7 @@ test('files | find-files > error handling (pattern is undefined)', function () {
   assert.throws(
     () => {
       findFiles(undefined, {
-        cwd: codemodOptions.projectRoot,
+        projectRoot: options.projectRoot,
       });
     },
     (error) => {

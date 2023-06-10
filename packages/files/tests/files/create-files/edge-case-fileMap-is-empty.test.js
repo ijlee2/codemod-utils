@@ -3,7 +3,7 @@ import { assertFixture, loadFixture, test } from '@codemod-utils/tests';
 import { createFiles } from '../../../src/index.js';
 import { codemodOptions, options } from '../../shared-test-setups/index.js';
 
-test('files | create-files > edge case (mapping is empty)', function () {
+test('files | create-files > edge case (fileMap is empty)', function () {
   const inputProject = {};
 
   const outputProject = {};

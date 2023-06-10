@@ -1,11 +1,11 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { renameDirectory } from '../../../src/index.js';
+import { renamePathByDirectory } from '../../../src/index.js';
 
-test('files | rename-directory > base case', function () {
+test('files | rename-path-by-directory > base case', function () {
   const oldFilePath = 'addon/some-folder/some-file.ts';
 
-  const newFilePath = renameDirectory(oldFilePath, {
+  const newFilePath = renamePathByDirectory(oldFilePath, {
     from: 'addon',
     to: 'new-location/src',
   });

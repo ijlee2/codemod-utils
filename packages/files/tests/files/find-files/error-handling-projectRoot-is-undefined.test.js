@@ -1,9 +1,9 @@
 import { assert, loadFixture, test } from '@codemod-utils/tests';
 
 import { findFiles } from '../../../src/index.js';
-import { codemodOptions, options } from '../../shared-test-setups/index.js';
+import { codemodOptions } from '../../shared-test-setups/index.js';
 
-test('files | find-files > ignore list', function () {
+test('files | find-files > error handling (projectRoot is undefined)', function () {
   const inputProject = {
     tests: {
       dummy: {
@@ -34,13 +34,19 @@ test('files | find-files > ignore list', function () {
 
   loadFixture(inputProject, codemodOptions);
 
-  const filePaths = findFiles('tests/**/*.{js,ts}', {
-    ignoreList: ['tests/dummy/**/*'],
-    projectRoot: options.projectRoot,
-  });
+  assert.throws(
+    () => {
+      findFiles('tests/dummy/**/*.{js,ts}', {
+        projectRoot: undefined,
+      });
+    },
+    (error) => {
+      assert.strictEqual(
+        error.message,
+        'ERROR: The project root is undefined.\n',
+      );
 
-  assert.deepStrictEqual(filePaths, [
-    'tests/integration/components/container-query-test.ts',
-    'tests/test-helper.ts',
-  ]);
+      return true;
+    },
+  );
 });

@@ -1,18 +1,18 @@
 import { globSync } from 'glob';
 
-export function findFiles(pattern, { cwd, ignoreList = [] }) {
+export function findFiles(pattern, options) {
+  const { ignoreList = [], projectRoot } = options;
+
   if (!pattern) {
     throw new RangeError('ERROR: The glob pattern is undefined.\n');
   }
 
-  if (!cwd) {
-    throw new RangeError(
-      'ERROR: The current working directory is undefined.\n',
-    );
+  if (!projectRoot) {
+    throw new RangeError('ERROR: The project root is undefined.\n');
   }
 
   const filePaths = globSync(pattern, {
-    cwd,
+    cwd: projectRoot,
     dot: true,
     ignore: ignoreList,
     nodir: true,

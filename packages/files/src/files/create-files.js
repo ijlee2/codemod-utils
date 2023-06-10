@@ -7,9 +7,9 @@ export function createFiles(fileMap, options) {
   const { projectRoot } = options;
 
   fileMap.forEach((file, filePath) => {
-    const path = join(projectRoot, filePath);
+    const destination = join(projectRoot, filePath);
 
-    createDirectory(path);
-    writeFileSync(path, file, 'utf8');
+    createDirectory(destination);
+    writeFileSync(destination, file, 'utf8');
   });
 }
