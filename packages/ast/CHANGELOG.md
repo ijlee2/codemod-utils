@@ -1,5 +1,12 @@
 # Changelog for @codemod-utils/ast
 
+## 0.1.1
+
+### Patch Changes
+
+- [#8](https://github.com/ijlee2/codemod-utils/pull/8) Documented @codemod-utils/ast and standardized APIs ([@ijlee2](https://github.com/ijlee2))
+- [#9](https://github.com/ijlee2/codemod-utils/pull/9) Updated README ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.1.0
 
 ### Minor Changes
