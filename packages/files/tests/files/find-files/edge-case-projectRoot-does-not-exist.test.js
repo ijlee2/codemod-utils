@@ -3,7 +3,7 @@ import { assert, loadFixture, test } from '@codemod-utils/tests';
 import { findFiles } from '../../../src/index.js';
 import { codemodOptions } from '../../shared-test-setups/index.js';
 
-test('files | find-files > error handling (current working directory is undefined)', function () {
+test('files | find-files > edge case (projectRoot does not exist)', function () {
   const inputProject = {
     tests: {
       dummy: {
@@ -34,19 +34,9 @@ test('files | find-files > error handling (current working directory is undefine
 
   loadFixture(inputProject, codemodOptions);
 
-  assert.throws(
-    () => {
-      findFiles('tests/dummy/**/*.{js,ts}', {
-        cwd: undefined,
-      });
-    },
-    (error) => {
-      assert.strictEqual(
-        error.message,
-        'ERROR: The current working directory is undefined.\n',
-      );
+  const filePaths = findFiles('tests/dummy/**/*.{js,ts}', {
+    projectRoot: 'foo',
+  });
 
-      return true;
-    },
-  );
+  assert.deepStrictEqual(filePaths, []);
 });

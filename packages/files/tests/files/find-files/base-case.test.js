@@ -1,7 +1,7 @@
 import { assert, loadFixture, test } from '@codemod-utils/tests';
 
 import { findFiles } from '../../../src/index.js';
-import { codemodOptions } from '../../shared-test-setups/index.js';
+import { codemodOptions, options } from '../../shared-test-setups/index.js';
 
 test('files | find-files > base case', function () {
   const inputProject = {
@@ -35,7 +35,7 @@ test('files | find-files > base case', function () {
   loadFixture(inputProject, codemodOptions);
 
   const filePaths = findFiles('tests/dummy/**/*.{js,ts}', {
-    cwd: codemodOptions.projectRoot,
+    projectRoot: options.projectRoot,
   });
 
   assert.deepStrictEqual(filePaths, [
