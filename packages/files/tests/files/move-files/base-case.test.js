@@ -38,15 +38,19 @@ test('files | move-files > base case', function () {
 
   loadFixture(inputProject, codemodOptions);
 
-  const filePaths = [
-    'addon/components/container-query.hbs',
-    'addon/components/container-query.ts',
-  ];
+  const filePathMap = new Map([
+    [
+      'addon/components/container-query.hbs',
+      'ember-container-query/src/components/container-query.hbs',
+    ],
+    [
+      'addon/components/container-query.ts',
+      'ember-container-query/src/components/container-query.ts',
+    ],
+  ]);
 
-  moveFiles(filePaths, {
-    from: 'addon',
+  moveFiles(filePathMap, {
     projectRoot: options.projectRoot,
-    to: 'ember-container-query/src',
   });
 
   assertFixture(outputProject, codemodOptions);

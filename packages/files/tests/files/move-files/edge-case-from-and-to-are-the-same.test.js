@@ -36,15 +36,19 @@ test('files | move-files > edge case (from and to are the same)', function () {
 
   loadFixture(inputProject, codemodOptions);
 
-  const filePaths = [
-    'addon/components/container-query.hbs',
-    'addon/components/container-query.ts',
-  ];
+  const filePathMap = new Map([
+    [
+      'addon/components/container-query.hbs',
+      'addon/components/container-query.hbs',
+    ],
+    [
+      'addon/components/container-query.ts',
+      'addon/components/container-query.ts',
+    ],
+  ]);
 
-  moveFiles(filePaths, {
-    from: 'addon',
+  moveFiles(filePathMap, {
     projectRoot: options.projectRoot,
-    to: 'addon',
   });
 
   assertFixture(outputProject, codemodOptions);

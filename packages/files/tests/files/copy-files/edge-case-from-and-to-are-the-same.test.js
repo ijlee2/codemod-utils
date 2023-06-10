@@ -18,12 +18,13 @@ test('files | copy-files > edge case (from and to are the same)', function () {
 
   loadFixture(inputProject, codemodOptions);
 
-  const filePaths = ['.eslintrc.js', 'package.json'];
+  const filePathMap = new Map([
+    ['.eslintrc.js', '.eslintrc.js'],
+    ['package.json', 'package.json'],
+  ]);
 
-  copyFiles(filePaths, {
-    from: '',
+  copyFiles(filePathMap, {
     projectRoot: options.projectRoot,
-    to: '',
   });
 
   assertFixture(outputProject, codemodOptions);

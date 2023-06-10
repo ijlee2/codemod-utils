@@ -23,12 +23,13 @@ test('files | copy-files > base case', function () {
 
   loadFixture(inputProject, codemodOptions);
 
-  const filePaths = ['.eslintrc.js', 'package.json'];
+  const filePathMap = new Map([
+    ['.eslintrc.js', 'ember-container-query/.eslintrc.js'],
+    ['package.json', 'ember-container-query/package.json'],
+  ]);
 
-  copyFiles(filePaths, {
-    from: '',
+  copyFiles(filePathMap, {
     projectRoot: options.projectRoot,
-    to: 'ember-container-query',
   });
 
   assertFixture(outputProject, codemodOptions);

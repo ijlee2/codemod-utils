@@ -23,12 +23,10 @@ test('files | move-files > edge case (from and to are sibling directories)', fun
 
   loadFixture(inputProject, codemodOptions);
 
-  const filePaths = ['app/styles/app.css'];
+  const filePathMap = new Map([['app/styles/app.css', 'app/assets/app.css']]);
 
-  moveFiles(filePaths, {
-    from: 'app/styles',
+  moveFiles(filePathMap, {
     projectRoot: options.projectRoot,
-    to: 'app/assets',
   });
 
   assertFixture(outputProject, codemodOptions);
