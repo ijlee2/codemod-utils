@@ -3,10 +3,8 @@ import { assert, loadFixture, test } from '@codemod-utils/tests';
 import { readPackageJson } from '../../../src/index.js';
 import { codemodOptions, options } from '../../shared-test-setups/index.js';
 
-test('json | read-package-json > error handling (package.json is not a valid JSON)', function () {
-  const inputProject = {
-    'package.json': '{\n  "name": }',
-  };
+test('json | read-package-json > error handling (package.json is missing)', function () {
+  const inputProject = {};
 
   loadFixture(inputProject, codemodOptions);
 
@@ -17,10 +15,7 @@ test('json | read-package-json > error handling (package.json is not a valid JSO
       });
     },
     (error) => {
-      assert.strictEqual(
-        error.message,
-        'ERROR: package.json is not valid. (Unexpected token } in JSON at position 12)\n',
-      );
+      assert.strictEqual(error.message, 'ERROR: package.json is missing.\n');
 
       return true;
     },
