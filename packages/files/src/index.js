@@ -5,5 +5,5 @@ export * from './files/find-files.js';
 export * from './files/move-files.js';
 export * from './files/remove-directory-if-empty.js';
 export * from './files/remove-files.js';
-export * from './files/rename-directory.js';
 export * from './files/rename-file.js';
+export * from './files/rename-path-by-directory.js';
