@@ -3,7 +3,7 @@ import { assertFixture, loadFixture, test } from '@codemod-utils/tests';
 import { moveFiles } from '../../../src/index.js';
 import { codemodOptions, options } from '../../shared-test-setups/index.js';
 
-test('files | move-files > edge case (mapping is empty)', function () {
+test('files | move-files > edge case (filePaths is empty)', function () {
   const inputProject = {
     addon: {
       components: {
@@ -36,9 +36,13 @@ test('files | move-files > edge case (mapping is empty)', function () {
 
   loadFixture(inputProject, codemodOptions);
 
-  const filePathMap = new Map();
+  const filePaths = [];
 
-  moveFiles(filePathMap, options);
+  moveFiles(filePaths, {
+    from: 'addon',
+    projectRoot: options.projectRoot,
+    to: 'ember-container-query/src',
+  });
 
   assertFixture(outputProject, codemodOptions);
 });

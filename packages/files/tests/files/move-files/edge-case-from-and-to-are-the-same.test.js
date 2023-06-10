@@ -3,7 +3,7 @@ import { assertFixture, loadFixture, test } from '@codemod-utils/tests';
 import { moveFiles } from '../../../src/index.js';
 import { codemodOptions, options } from '../../shared-test-setups/index.js';
 
-test('files | move-files > base case', function () {
+test('files | move-files > edge case (from and to are the same)', function () {
   const inputProject = {
     addon: {
       components: {
@@ -20,12 +20,10 @@ test('files | move-files > base case', function () {
   };
 
   const outputProject = {
-    'ember-container-query': {
-      src: {
-        components: {
-          'container-query.hbs': 'some code for container-query.hbs',
-          'container-query.ts': 'some code for container-query.ts',
-        },
+    addon: {
+      components: {
+        'container-query.hbs': 'some code for container-query.hbs',
+        'container-query.ts': 'some code for container-query.ts',
       },
     },
 
@@ -46,7 +44,7 @@ test('files | move-files > base case', function () {
   moveFiles(filePaths, {
     from: 'addon',
     projectRoot: options.projectRoot,
-    to: 'ember-container-query/src',
+    to: 'addon',
   });
 
   assertFixture(outputProject, codemodOptions);

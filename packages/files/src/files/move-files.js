@@ -3,16 +3,19 @@ import { join } from 'node:path';
 
 import { createDirectory } from './create-directory.js';
 import { removeDirectoryIfEmpty } from './remove-directory-if-empty.js';
+import { renameDirectory } from './rename-directory.js';
 
-export function moveFiles(filePathMap, options) {
-  const { projectRoot } = options;
+export function moveFiles(filePaths, options) {
+  const { from, projectRoot, to } = options;
 
-  filePathMap.forEach((newFilePath, oldFilePath) => {
-    const oldPath = join(projectRoot, oldFilePath);
-    const newPath = join(projectRoot, newFilePath);
+  filePaths.forEach((oldFilePath) => {
+    const newFilePath = renameDirectory(oldFilePath, { from, to });
 
-    createDirectory(newPath);
-    renameSync(oldPath, newPath);
-    removeDirectoryIfEmpty(oldFilePath, options);
+    const source = join(projectRoot, oldFilePath);
+    const destination = join(projectRoot, newFilePath);
+
+    createDirectory(destination);
+    renameSync(source, destination);
+    removeDirectoryIfEmpty(oldFilePath, { projectRoot });
   });
 }
