@@ -1,13 +1,13 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { renameFile } from '../../../src/index.js';
+import { renamePathByFile } from '../../../src/index.js';
 
-test('files | rename-file > error handling (no directory match)', function () {
+test('files | rename-path-by-file > error handling (no directory match)', function () {
   const oldFilePath = 'app/components/navigation-menu/component.js';
 
   assert.throws(
     () => {
-      renameFile(oldFilePath, {
+      renamePathByFile(oldFilePath, {
         find: {
           directory: 'addon/components',
           file: 'component',

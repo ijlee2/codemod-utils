@@ -1,13 +1,13 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { renameFile } from '../../../src/index.js';
+import { renamePathByFile } from '../../../src/index.js';
 
-test('files | rename-file > error handling (no file match)', function () {
+test('files | rename-path-by-file > error handling (no file match)', function () {
   const oldFilePath = 'addon/components/navigation-menu/template.hbs';
 
   assert.throws(
     () => {
-      renameFile(oldFilePath, {
+      renamePathByFile(oldFilePath, {
         find: {
           directory: 'addon/components',
           file: 'component',
