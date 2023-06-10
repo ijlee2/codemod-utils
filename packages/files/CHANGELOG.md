@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/files
 
+## 0.3.1
+
+### Patch Changes
+
+- [#14](https://github.com/ijlee2/codemod-utils/pull/14) Reverted API (copyFiles, moveFiles) ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.3.0
 
 ### Minor Changes
