@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/files
 
+## 0.3.0
+
+### Minor Changes
+
+- [#12](https://github.com/ijlee2/codemod-utils/pull/12) Updated API to be easier to use and maintain ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.2.0
 
 ### Minor Changes
