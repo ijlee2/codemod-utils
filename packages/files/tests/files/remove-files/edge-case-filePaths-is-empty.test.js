@@ -3,7 +3,7 @@ import { assertFixture, loadFixture, test } from '@codemod-utils/tests';
 import { removeFiles } from '../../../src/index.js';
 import { codemodOptions, options } from '../../shared-test-setups/index.js';
 
-test('files | remove-files > edge case (mapping is empty)', function () {
+test('files | remove-files > edge case (filePaths is empty)', function () {
   const inputProject = {
     addon: {
       components: {

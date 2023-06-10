@@ -7,9 +7,9 @@ export function removeFiles(filePaths, options) {
   const { projectRoot } = options;
 
   filePaths.forEach((filePath) => {
-    const path = join(projectRoot, filePath);
+    const source = join(projectRoot, filePath);
 
-    rmSync(path);
+    rmSync(source);
     removeDirectoryIfEmpty(filePath, options);
   });
 }
