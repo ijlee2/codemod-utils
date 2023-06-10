@@ -2,15 +2,18 @@ import { copyFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { createDirectory } from './create-directory.js';
+import { renameDirectory } from './rename-directory.js';
 
-export function copyFiles(filePathMap, options) {
-  const { projectRoot } = options;
+export function copyFiles(filePaths, options) {
+  const { from, projectRoot, to } = options;
 
-  filePathMap.forEach((newFilePath, oldFilePath) => {
-    const oldPath = join(projectRoot, oldFilePath);
-    const newPath = join(projectRoot, newFilePath);
+  filePaths.forEach((oldFilePath) => {
+    const newFilePath = renameDirectory(oldFilePath, { from, to });
 
-    createDirectory(newPath);
-    copyFileSync(oldPath, newPath);
+    const source = join(projectRoot, oldFilePath);
+    const destination = join(projectRoot, newFilePath);
+
+    createDirectory(destination);
+    copyFileSync(source, destination);
   });
 }
