@@ -74,9 +74,9 @@ function updateDependencies(packageJson) {
 </details>
 
 
-### readPackageJson
+### readPackageJson, validatePackageJson
 
-Reads `package.json` in the user's project. If the file is valid, `readPackageJson` returns the parsed JSON.
+Reads `package.json` and returns the parsed JSON.
 
 <details>
 
@@ -85,34 +85,36 @@ Reads `package.json` in the user's project. If the file is valid, `readPackageJs
 ```js
 import { readPackageJson } from '@codemod-utils/json';
 
-function analyzePackageJson(codemodOptions) {
-  const {
-    dependencies,
-    devDependencies,
-    'ember-addon': emberAddon,
-    name,
-    version,
-  } = readPackageJson(codemodOptions);
-
-  const projectDependencies = new Map([
-    ...Object.entries(dependencies ?? {}),
-    ...Object.entries(devDependencies ?? {}),
-  ]);
-
-  // Return information that the codemod needs
-  return {
-    dependencies: projectDependencies,
-    hasGlint: projectDependencies.has('@glint/core'),
-    hasTypeScript: projectDependencies.has('typescript'),
-    isV1Addon: Boolean(emberAddon),
-    name,
-    version,
-  };
-}
-
-analyzePackageJson({
-  projectRoot: // ...
+const { dependencies, devDependencies } = readPackageJson({
+  projectRoot: '__projectRoot__',
 });
+
+const projectDependencies = new Map([
+  ...Object.entries(dependencies ?? {}),
+  ...Object.entries(devDependencies ?? {}),
+]);
+
+const hasTypeScript = projectDependencies.has('typescript');
+```
+
+</details>
+
+`readPackageJson` checks that `package.json` exists and is a valid JSON. Call `validatePackageJson` if you need to know that the `name` and `version` fields exist.
+
+<details>
+
+<summary>Example</summary>
+
+```js
+import { readPackageJson, validatePackageJson } from '@codemod-utils/json';
+
+const packageJson = readPackageJson({
+  projectRoot: '__projectRoot__',
+});
+
+validatePackageJson(packageJson);
+
+const { name, version } = packageJson;
 ```
 
 </details>
