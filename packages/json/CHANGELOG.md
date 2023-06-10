@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/json
 
+## 0.2.0
+
+### Minor Changes
+
+- [#16](https://github.com/ijlee2/codemod-utils/pull/16) Separated validation concerns ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.1.2
 
 ### Patch Changes
