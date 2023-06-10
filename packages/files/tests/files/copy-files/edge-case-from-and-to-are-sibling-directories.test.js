@@ -26,12 +26,10 @@ test('files | copy-files > edge case (from and to are sibling directories)', fun
 
   loadFixture(inputProject, codemodOptions);
 
-  const filePaths = ['app/styles/app.css'];
+  const filePathMap = new Map([['app/styles/app.css', 'app/assets/app.css']]);
 
-  copyFiles(filePaths, {
-    from: 'app/styles',
+  copyFiles(filePathMap, {
     projectRoot: options.projectRoot,
-    to: 'app/assets',
   });
 
   assertFixture(outputProject, codemodOptions);

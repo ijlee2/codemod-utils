@@ -3,7 +3,7 @@ import { assertFixture, loadFixture, test } from '@codemod-utils/tests';
 import { copyFiles } from '../../../src/index.js';
 import { codemodOptions, options } from '../../shared-test-setups/index.js';
 
-test('files | copy-files > edge case (filePaths is empty)', function () {
+test('files | copy-files > edge case (filePathMap is empty)', function () {
   const inputProject = {
     '.editorconfig': 'some code for .editorconfig',
     '.eslintrc.js': 'some code for .eslintrc.js',
@@ -18,12 +18,10 @@ test('files | copy-files > edge case (filePaths is empty)', function () {
 
   loadFixture(inputProject, codemodOptions);
 
-  const filePaths = [];
+  const filePathMap = new Map();
 
-  copyFiles(filePaths, {
-    from: '',
+  copyFiles(filePathMap, {
     projectRoot: options.projectRoot,
-    to: 'ember-container-query',
   });
 
   assertFixture(outputProject, codemodOptions);

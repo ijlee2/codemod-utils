@@ -26,14 +26,17 @@ Copy files from one directory to another.
 In [`ember-codemod-v1-to-v2`](https://github.com/ijlee2/ember-codemod-v1-to-v2/), we want to copy some files from the project root to the addon package.
 
 ```js
-import { copyFiles } from '@codemod-utils/files';
+import { copyFiles, mapFilePaths } from '@codemod-utils/files';
 
-const filePaths = ['LICENSE.md', 'README.md'];
+const filePaths = [/* ... */];
 
-copyFiles(filePaths, {
+const filePathMap = mapFilePaths(filePaths, {
   from: '',
-  projectRoot: '__projectRoot__',
   to: '__addonLocation__',
+});
+
+copyFiles(filePathMap, {
+  projectRoot: '__projectRoot__',
 });
 ```
 
@@ -129,6 +132,11 @@ const filePaths = findFiles(unionize(files), {
 </details>
 
 
+### mapFilePaths
+
+Create a mapping of file paths, which can be passed to [`createFiles`](#createfiles) or [`moveFiles`](#movefiles). 
+
+
 ### moveFiles
 
 Move files from one directory to another.
@@ -140,19 +148,17 @@ Move files from one directory to another.
 In [`ember-codemod-v1-to-v2`](https://github.com/ijlee2/ember-codemod-v1-to-v2/), we want to move some files from the project root to the test-app package.
 
 ```js
-import { copyFiles } from '@codemod-utils/files';
+import { mapFilePaths, moveFiles } from '@codemod-utils/files';
 
-const files = [
-  '.ember-cli',
-  '.watchmanconfig',
-  'ember-cli-build.js',
-  'testem.js',
-];
+const filePaths = [/* ... */];
 
-copyFiles(filePaths, {
+const filePathMap = mapFilePaths(filePaths, {
   from: '',
-  projectRoot: '__projectRoot__',
   to: '__testAppLocation__',
+});
+
+moveFiles(filePathMap, {
+  projectRoot: '__projectRoot__',
 });
 ```
 
