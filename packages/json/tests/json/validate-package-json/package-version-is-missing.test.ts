@@ -12,7 +12,7 @@ test('json | validate-package-json > package version is missing', function () {
     () => {
       validatePackageJson(packageJson);
     },
-    (error) => {
+    (error: Error) => {
       assert.strictEqual(
         error.message,
         'ERROR: package.json is not valid. (Package version is missing.)\n',

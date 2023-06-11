@@ -1,4 +1,6 @@
-export function validatePackageJson(packageJson) {
+import type { PackageJson } from 'type-fest';
+
+export function validatePackageJson(packageJson: PackageJson): void {
   const { name, version } = packageJson;
 
   if (!name) {
@@ -8,7 +10,7 @@ export function validatePackageJson(packageJson) {
   }
 
   if (name.includes('/')) {
-    // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
     const [_scope, packageName] = name.split('/');
 
     if (!packageName) {

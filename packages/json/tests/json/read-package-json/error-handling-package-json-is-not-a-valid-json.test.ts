@@ -3,9 +3,9 @@ import { assert, loadFixture, test } from '@codemod-utils/tests';
 import { readPackageJson } from '../../../src/index.js';
 import { codemodOptions, options } from '../../shared-test-setups/index.js';
 
-test('json | read-package-json > error handling (package.json is an empty file)', function () {
+test('json | read-package-json > error handling (package.json is not a valid JSON)', function () {
   const inputProject = {
-    'package.json': '',
+    'package.json': '{\n  "name": }',
   };
 
   loadFixture(inputProject, codemodOptions);
@@ -16,10 +16,10 @@ test('json | read-package-json > error handling (package.json is an empty file)'
         projectRoot: options.projectRoot,
       });
     },
-    (error) => {
+    (error: Error) => {
       assert.strictEqual(
         error.message,
-        'ERROR: package.json is not valid. (Unexpected end of JSON input)\n',
+        'ERROR: package.json is not valid. (Unexpected token } in JSON at position 12)\n',
       );
 
       return true;

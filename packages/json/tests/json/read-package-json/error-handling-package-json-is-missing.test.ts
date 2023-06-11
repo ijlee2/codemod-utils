@@ -14,7 +14,7 @@ test('json | read-package-json > error handling (package.json is missing)', func
         projectRoot: options.projectRoot,
       });
     },
-    (error) => {
+    (error: Error) => {
       assert.strictEqual(error.message, 'ERROR: package.json is missing.\n');
 
       return true;

@@ -45,6 +45,9 @@
     "pretest": "build",
     "test": "mt tests --quiet"
   },
+  "dependencies": {
+    "type-fest": "^3.11.1"
+  },
   "devDependencies": {
     "@codemod-utils/tests": "workspace:*",
     "@shared-configs/eslint-config": "workspace:*",
