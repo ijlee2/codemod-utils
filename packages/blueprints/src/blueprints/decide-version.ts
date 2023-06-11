@@ -1,4 +1,14 @@
-export function decideVersion(packageName, { dependencies, latestVersions }) {
+type PackageName = string;
+type PackageVersion = string;
+
+type Options = {
+  dependencies: Map<PackageName, PackageVersion>;
+  latestVersions: Map<PackageName, PackageVersion>;
+};
+
+export function decideVersion(packageName: PackageName, options: Options): PackageVersion {
+  const { dependencies, latestVersions } = options;
+
   const installedVersion = dependencies.get(packageName);
 
   if (installedVersion) {
