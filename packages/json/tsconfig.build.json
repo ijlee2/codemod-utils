@@ -1,7 +1,7 @@
 {
   "extends": "@shared-configs/typescript/node16",
   "compilerOptions": {
-    "outDir": "dist-for-testing"
+    "outDir": "dist"
   },
-  "include": ["src", "tests"]
+  "include": ["src"]
 }
