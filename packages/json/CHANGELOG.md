@@ -1,5 +1,15 @@
 # Changelog for @codemod-utils/json
 
+## 0.3.0
+
+### Minor Changes
+
+- [#20](https://github.com/ijlee2/codemod-utils/pull/20) Introduced TypeScript ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#21](https://github.com/ijlee2/codemod-utils/pull/21) Introduced TypeScript ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.2.0
 
 ### Minor Changes

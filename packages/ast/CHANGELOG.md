@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ast
 
+## 0.2.0
+
+### Minor Changes
+
+- [#25](https://github.com/ijlee2/codemod-utils/pull/25) Introduced TypeScript ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.1.1
 
 ### Patch Changes
