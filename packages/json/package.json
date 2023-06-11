@@ -36,14 +36,13 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc --build",
+    "build": "tsc --project tsconfig.build.json",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
-    "pretest": "build",
-    "test": "mt tests --quiet"
+    "test": "tsc --build && mt dist-for-testing --quiet"
   },
   "dependencies": {
     "type-fest": "^3.11.1"
