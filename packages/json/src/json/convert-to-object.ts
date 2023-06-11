@@ -1,5 +1,4 @@
-import type { JsonObject } from 'type-fest';
-
+import type { JsonObject } from '../types/index.js';
 import type { convertToMap } from './convert-to-map.js';
 
 type JsonMap = ReturnType<typeof convertToMap>;

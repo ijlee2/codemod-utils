@@ -1,12 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import type { PackageJson } from 'type-fest';
-
-type Options = {
-  [key: string]: unknown;
-  projectRoot: string;
-};
+import type { Options, PackageJson } from '../types/index.js';
 
 export function readPackageJson(options: Options): PackageJson {
   const { projectRoot } = options;
