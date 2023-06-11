@@ -1,5 +1,15 @@
 # Changelog for @codemod-utils/files
 
+## 0.4.0
+
+### Minor Changes
+
+- [#21](https://github.com/ijlee2/codemod-utils/pull/21) Introduced TypeScript ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#25](https://github.com/ijlee2/codemod-utils/pull/25) Introduced TypeScript ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.3.1
 
 ### Patch Changes
