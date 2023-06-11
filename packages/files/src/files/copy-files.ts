@@ -1,9 +1,10 @@
 import { copyFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+import type { FilePathMap, Options } from '../types/index.js';
 import { createDirectory } from './create-directory.js';
 
-export function copyFiles(filePathMap, options) {
+export function copyFiles(filePathMap: FilePathMap, options: Options): void {
   const { projectRoot } = options;
 
   filePathMap.forEach((newFilePath, oldFilePath) => {

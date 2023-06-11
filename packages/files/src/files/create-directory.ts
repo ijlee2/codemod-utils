@@ -1,7 +1,9 @@
 import { existsSync, mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 
-export function createDirectory(filePath) {
+import type { FilePath } from '../types/index.js';
+
+export function createDirectory(filePath: FilePath): void {
   const directory = dirname(filePath);
 
   if (existsSync(directory)) {

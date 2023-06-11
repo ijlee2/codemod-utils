@@ -13,19 +13,36 @@
   "license": "MIT",
   "author": "Isaac J. Lee",
   "type": "module",
-  "main": "src/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    }
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "dist/*"
+      ]
+    }
+  },
   "directories": {
     "test": "tests"
   },
   "files": [
-    "src/"
+    "dist"
   ],
   "scripts": {
+    "build": "tsc --project tsconfig.build.json",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
-    "test": "mt tests --quiet"
+    "lint:types": "tsc --noEmit",
+    "test": "tsc --build && mt dist-for-testing --quiet"
   },
   "dependencies": {
     "glob": "^10.2.7"
@@ -34,10 +51,13 @@
     "@codemod-utils/tests": "workspace:*",
     "@shared-configs/eslint-config": "workspace:*",
     "@shared-configs/prettier": "workspace:*",
+    "@shared-configs/typescript": "workspace:*",
     "@sondr3/minitest": "^0.1.1",
+    "@types/node": "^16.11.7",
     "concurrently": "^8.2.0",
     "eslint": "^8.42.0",
-    "prettier": "^2.8.8"
+    "prettier": "^2.8.8",
+    "typescript": "^5.1.3"
   },
   "engines": {
     "node": "16.* || >= 18"

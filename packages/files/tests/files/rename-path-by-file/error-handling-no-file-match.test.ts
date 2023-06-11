@@ -2,8 +2,8 @@ import { assert, test } from '@codemod-utils/tests';
 
 import { renamePathByFile } from '../../../src/index.js';
 
-test('files | rename-path-by-file > error handling (no directory match)', function () {
-  const oldFilePath = 'app/components/navigation-menu/component.js';
+test('files | rename-path-by-file > error handling (no file match)', function () {
+  const oldFilePath = 'addon/components/navigation-menu/template.hbs';
 
   assert.throws(
     () => {
@@ -17,10 +17,10 @@ test('files | rename-path-by-file > error handling (no directory match)', functi
         },
       });
     },
-    (error) => {
+    (error: Error) => {
       assert.strictEqual(
         error.message,
-        "ERROR: The provided path `app/components/navigation-menu/component.js` doesn't match the directory pattern `addon/components`.\n",
+        "ERROR: The provided path `addon/components/navigation-menu/template.hbs` doesn't match the file pattern `component`.\n",
       );
 
       return true;

@@ -36,11 +36,12 @@ test('files | find-files > error handling (pattern is undefined)', function () {
 
   assert.throws(
     () => {
+      // @ts-expect-error: Want to check the error message
       findFiles(undefined, {
         projectRoot: options.projectRoot,
       });
     },
-    (error) => {
+    (error: Error) => {
       assert.strictEqual(
         error.message,
         'ERROR: The glob pattern is undefined.\n',

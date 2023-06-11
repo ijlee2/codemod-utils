@@ -1,10 +1,11 @@
 import { renameSync } from 'node:fs';
 import { join } from 'node:path';
 
+import type { FilePathMap, Options } from '../types/index.js';
 import { createDirectory } from './create-directory.js';
 import { removeDirectoryIfEmpty } from './remove-directory-if-empty.js';
 
-export function moveFiles(filePathMap, options) {
+export function moveFiles(filePathMap: FilePathMap, options: Options): void {
   const { projectRoot } = options;
 
   filePathMap.forEach((newFilePath, oldFilePath) => {

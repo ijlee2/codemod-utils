@@ -1,4 +1,4 @@
-import type { PackageJson } from 'type-fest';
+import type { PackageJson } from '../types/index.js';
 
 export function validatePackageJson(packageJson: PackageJson): void {
   const { name, version } = packageJson;

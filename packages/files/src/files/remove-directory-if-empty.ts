@@ -1,7 +1,9 @@
 import { readdirSync, rmSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
-export function removeDirectoryIfEmpty(filePath, options) {
+import type { FilePath, Options } from '../types/index.js';
+
+export function removeDirectoryIfEmpty(filePath: FilePath, options: Options): void {
   const { projectRoot } = options;
 
   const directories = dirname(filePath).split('/');
