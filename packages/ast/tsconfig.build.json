@@ -1,7 +1,0 @@
-{
-  "extends": "@shared-configs/typescript/node16",
-  "compilerOptions": {
-    "outDir": "dist"
-  },
-  "include": ["src"]
-}
