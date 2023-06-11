@@ -7,7 +7,10 @@ type Options = {
   to: string;
 };
 
-export function renamePathByDirectory(filePath: FilePath, options: Options): FilePath {
+export function renamePathByDirectory(
+  filePath: FilePath,
+  options: Options,
+): FilePath {
   const { from, to } = options;
 
   if (from === '') {
