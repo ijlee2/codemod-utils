@@ -1,6 +1,6 @@
 import { ASTJavaScript as AST } from '../../../src/index.js';
 
-export function transformJavaScript(file) {
+export function transformJavaScript(file: string) {
   const traverse = AST.traverse();
 
   const ast = traverse(file, {
@@ -23,7 +23,7 @@ export function transformJavaScript(file) {
   return AST.print(ast);
 }
 
-export function traverseJavaScript(file) {
+export function traverseJavaScript(file: string) {
   const traverse = AST.traverse();
 
   const ast = traverse(file);
