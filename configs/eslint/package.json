@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@shared-configs/prettier": "workspace:*",
-    "concurrently": "^8.1.0",
+    "concurrently": "^8.2.0",
     "eslint": "^8.42.0",
     "prettier": "^2.8.8"
   },

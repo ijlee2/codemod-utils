@@ -21,8 +21,10 @@
     "src/"
   ],
   "scripts": {
-    "lint": "eslint . --cache",
-    "lint:fix": "eslint . --fix",
+    "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
+    "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
     "test": "mt tests --quiet"
   },
   "dependencies": {
@@ -35,6 +37,7 @@
     "@shared-configs/eslint-config": "workspace:*",
     "@shared-configs/prettier": "workspace:*",
     "@sondr3/minitest": "^0.1.1",
+    "concurrently": "^8.2.0",
     "eslint": "^8.42.0",
     "prettier": "^2.8.8"
   },
