@@ -1,0 +1,39 @@
+{
+  "name": "@shared-configs/typescript",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Configuration for typescript",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ijlee2/codemod-utils.git"
+  },
+  "author": "Isaac J. Lee",
+  "main": "node16/tsconfig.json",
+  "scripts": {
+    "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
+    "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
+    "lint:js": "prettier --check \"**/*.js\"",
+    "lint:js:fix": "prettier --write \"**/*.js\""
+  },
+  "dependencies": {
+    "@tsconfig/esm": "^1.0.3",
+    "@tsconfig/node16": "^1.0.4",
+    "@tsconfig/strictest": "^2.0.1"
+  },
+  "devDependencies": {
+    "@shared-configs/prettier": "workspace:*",
+    "concurrently": "^8.1.0",
+    "prettier": "^2.8.8"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": false
+    }
+  },
+  "engines": {
+    "node": "16.* || >= 18"
+  }
+}
