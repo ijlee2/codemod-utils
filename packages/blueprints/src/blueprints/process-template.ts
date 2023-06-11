@@ -1,6 +1,6 @@
 import template from 'lodash.template';
 
-export function processTemplate(file, data) {
+export function processTemplate(file: string, data?: object): string {
   const settings = {
     escape: /<%-([\s\S]+?)%>/g,
     evaluate: /<%([\s\S]+?)%>/g,

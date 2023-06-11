@@ -15,7 +15,7 @@ test('blueprints | decide-version > error handling (latest version is undefined)
         latestVersions,
       });
     },
-    (error) => {
+    (error: Error) => {
       assert.strictEqual(
         error.message,
         'ERROR: The latest version of `type-css-modules` is unknown.\n',
