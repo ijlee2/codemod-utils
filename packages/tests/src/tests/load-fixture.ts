@@ -1,16 +1,11 @@
 import { existsSync, rmSync } from 'node:fs';
 
-import fixturify, { type DirJSON } from 'fixturify';
+import fixturify from 'fixturify';
 
-type CodemodOptions = {
-  projectRoot: string;
-};
+import type { DirJSON, Options } from '../types/index.js';
 
-export function loadFixture(
-  inputProject: DirJSON,
-  codemodOptions: CodemodOptions,
-): void {
-  const { projectRoot } = codemodOptions;
+export function loadFixture(inputProject: DirJSON, options: Options): void {
+  const { projectRoot } = options;
 
   if (existsSync(projectRoot)) {
     rmSync(projectRoot, { recursive: true });
