@@ -1,19 +1,13 @@
-import { parse as babelParser, type ParserOptions } from '@babel/parser';
-import {
-  type Options as formattingOptions,
-  parse,
-  print,
-  types,
-  visit,
-} from 'recast';
+import { parse as babelParser } from '@babel/parser';
+import { parse, print, types, visit } from 'recast';
 
 /* https://github.com/benjamn/recast/blob/v1.7.0/lib/options.ts */
-const formattingOptions: formattingOptions = {
+const formattingOptions = {
   quote: 'single',
 };
 
 /* https://github.com/facebook/jscodeshift/blob/v0.15.0/parser/babel5Compat.js */
-const jsOptions: ParserOptions = {
+const jsOptions = {
   sourceType: 'module',
   allowHashBang: true,
   ecmaVersion: Infinity,
@@ -27,8 +21,6 @@ const jsOptions: ParserOptions = {
     'asyncGenerators',
     'classProperties',
     'doExpressions',
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore Type '"exportExtensions"' is not assignable to type 'PluginConfig'.
     'exportExtensions',
     'functionBind',
     'functionSent',
@@ -41,7 +33,7 @@ const jsOptions: ParserOptions = {
 };
 
 /* https://github.com/facebook/jscodeshift/blob/v0.15.0/parser/tsOptions.js */
-const tsOptions: ParserOptions = {
+const tsOptions = {
   sourceType: 'module',
   allowImportExportEverywhere: true,
   allowReturnOutsideFunction: true,
@@ -57,8 +49,6 @@ const tsOptions: ParserOptions = {
     'doExpressions',
     'dynamicImport',
     'exportDefaultFrom',
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore Type '"exportExtensions"' is not assignable to type 'PluginConfig'.
     'exportExtensions',
     'exportNamespaceFrom',
     'functionBind',
@@ -75,30 +65,21 @@ const tsOptions: ParserOptions = {
   ],
 };
 
-function getParseOptions(isTypeScript?: boolean) {
+function getParseOptions(isTypeScript) {
   const options = isTypeScript ? tsOptions : jsOptions;
 
   return {
     parser: {
-      parse(file: string) {
+      parse(file) {
         return babelParser(file, options);
       },
     },
   };
 }
 
-function _print(ast: types.ASTNode): string {
-  const { code } = print(ast, formattingOptions);
-
-  return code;
-}
-
-function _traverse(isTypeScript?: boolean) {
-  return function (
-    file: string,
-    visitMethods: types.Visitor = {},
-  ): types.ASTNode {
-    const ast = parse(file, getParseOptions(isTypeScript)) as types.ASTNode;
+function traverse(isTypeScript) {
+  return function (file, visitMethods) {
+    const ast = parse(file, getParseOptions(isTypeScript));
 
     visit(ast, visitMethods);
 
@@ -106,16 +87,14 @@ function _traverse(isTypeScript?: boolean) {
   };
 }
 
-type Tools = {
-  builders: typeof types.builders;
-  print: typeof _print;
-  traverse: typeof _traverse;
-};
-
-const tools: Tools = {
+const tools = {
   builders: types.builders,
-  print: _print,
-  traverse: _traverse,
+  print(ast) {
+    const { code } = print(ast, formattingOptions);
+
+    return code;
+  },
+  traverse,
 };
 
 export default tools;
