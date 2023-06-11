@@ -36,7 +36,7 @@ test('files | remove-files > edge case (filePaths is empty)', function () {
 
   loadFixture(inputProject, codemodOptions);
 
-  const filePaths = [];
+  const filePaths: string[] = [];
 
   removeFiles(filePaths, options);
 

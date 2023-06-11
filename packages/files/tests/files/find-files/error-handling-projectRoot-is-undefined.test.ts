@@ -37,10 +37,11 @@ test('files | find-files > error handling (projectRoot is undefined)', function 
   assert.throws(
     () => {
       findFiles('tests/dummy/**/*.{js,ts}', {
+        // @ts-expect-error: Want to check the error message
         projectRoot: undefined,
       });
     },
-    (error) => {
+    (error: Error) => {
       assert.strictEqual(
         error.message,
         'ERROR: The project root is undefined.\n',

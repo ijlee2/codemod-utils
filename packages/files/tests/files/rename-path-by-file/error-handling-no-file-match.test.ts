@@ -17,7 +17,7 @@ test('files | rename-path-by-file > error handling (no file match)', function ()
         },
       });
     },
-    (error) => {
+    (error: Error) => {
       assert.strictEqual(
         error.message,
         "ERROR: The provided path `addon/components/navigation-menu/template.hbs` doesn't match the file pattern `component`.\n",

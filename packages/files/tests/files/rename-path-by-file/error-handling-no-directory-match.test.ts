@@ -17,7 +17,7 @@ test('files | rename-path-by-file > error handling (no directory match)', functi
         },
       });
     },
-    (error) => {
+    (error: Error) => {
       assert.strictEqual(
         error.message,
         "ERROR: The provided path `app/components/navigation-menu/component.js` doesn't match the directory pattern `addon/components`.\n",

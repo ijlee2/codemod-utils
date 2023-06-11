@@ -1,6 +1,11 @@
 import { globSync } from 'glob';
 
-export function findFiles(pattern, options) {
+import type { FilePath, Options } from '../types/index.js';
+
+export function findFiles(
+  pattern: string | string[],
+  options: Options & { ignoreList?: string[] },
+): FilePath[] {
   const { ignoreList = [], projectRoot } = options;
 
   if (!pattern) {
@@ -21,7 +26,7 @@ export function findFiles(pattern, options) {
   return filePaths.sort();
 }
 
-export function unionize(files) {
+export function unionize(files: string[]): string {
   if (files.length <= 1) {
     return files.join(',');
   }
