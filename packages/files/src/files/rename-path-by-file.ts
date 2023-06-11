@@ -8,17 +8,19 @@ type Options = {
     file: string;
   };
   replace: (key: string) => string;
-}
+};
 
 type ParsedPath = {
   dir: string;
   ext: string;
   name: string;
-}
+};
 
 function parsePath(filePath: FilePath): ParsedPath {
+  // eslint-disable-next-line prefer-const
   let { dir, ext, name } = parse(filePath);
 
+  // eslint-disable-next-line no-constant-condition
   while (true) {
     const { ext: extPrefix, name: fileName } = parse(name);
 
@@ -33,7 +35,10 @@ function parsePath(filePath: FilePath): ParsedPath {
   return { dir, ext, name };
 }
 
-export function renamePathByFile(filePath: FilePath, options: Options): FilePath {
+export function renamePathByFile(
+  filePath: FilePath,
+  options: Options,
+): FilePath {
   const { find, replace } = options;
   const { dir, ext, name } = parsePath(filePath);
 
