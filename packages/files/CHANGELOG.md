@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/files
 
+## 0.4.1
+
+### Patch Changes
+
+- [#27](https://github.com/ijlee2/codemod-utils/pull/27) Reexported types and rebuilt dist ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.4.0
 
 ### Minor Changes
