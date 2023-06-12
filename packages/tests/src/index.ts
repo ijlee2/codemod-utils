@@ -7,3 +7,4 @@ export { assert, test };
 export * from './tests/assert-fixture.js';
 export * from './tests/convert-fixture-to-json.js';
 export * from './tests/load-fixture.js';
+export * from './types/index.js';
