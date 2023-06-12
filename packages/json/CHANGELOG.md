@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/json
 
+## 0.3.1
+
+### Patch Changes
+
+- [#29](https://github.com/ijlee2/codemod-utils/pull/29) Loosened type constraints and reexported types ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.3.0
 
 ### Minor Changes
