@@ -1,7 +1,5 @@
-import type { Entries, JsonObject } from '../types/index.js';
-
-export function convertToMap(object: JsonObject = {}) {
-  const entries = Object.entries(object) as Entries<typeof object>;
+export function convertToMap(object = {}) {
+  const entries = Object.entries(object);
 
   return new Map(entries);
 }
