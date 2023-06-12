@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/tests
 
+## 0.2.2
+
+### Patch Changes
+
+- [#30](https://github.com/ijlee2/codemod-utils/pull/30) Reexported types ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.2.1
 
 ### Patch Changes
