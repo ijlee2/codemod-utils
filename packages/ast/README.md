@@ -75,13 +75,6 @@ I recommend using [AST Explorer](https://astexplorer.net/) to test a small piece
 If you intend to publish your codemod, I recommend using [`@codemod-utils/tests`](../tests) (create and test file fixtures) to check the output and prevent regressions.
 
 
-## How to type your code
-
-Currently, `@codemod-utils/ast` avoids re-exporting all types from `ember-template-recast` and `recast`. This is to prevent your code from being catastrophically affected by a change in their API.
-
-When you write a function that depends on their implementation, type what you don't own as `unknown`, then use `@ts-ignore` or `@ts-expect-error` as needed. Write tests to document the inputs and outputs of your codemod so that, when there is an API change, you can refactor code with ease and confidence.
-
-
 ### AST Explorer for Handlebars
 
 Select the following options to create a 4-tab window:
@@ -224,6 +217,13 @@ export default function transformer(code, { recast, parsers }) {
 <img width="1440" alt="" src="https://github.com/ijlee2/codemod-utils/assets/16869656/74c6edd1-52b4-4ae4-ae61-0fd9407faf18">
 
 </details>
+
+
+## How to type your code
+
+Currently, `@codemod-utils/ast` avoids re-exporting all types from `ember-template-recast` and `recast`. This is to prevent your code from being catastrophically affected by a change in their API.
+
+When you write a function that depends on their implementation, type what you don't own as `unknown`, then use `@ts-ignore` or `@ts-expect-error` as needed. Write tests to document the inputs and outputs of your codemod so that, when there is an API change, you can refactor code with ease and confidence.
 
 
 ## Compatibility
