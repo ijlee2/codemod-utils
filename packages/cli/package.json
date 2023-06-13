@@ -1,0 +1,55 @@
+{
+  "name": "@codemod-utils/cli",
+  "version": "0.0.0",
+  "description": "CLI for @codemod-utils",
+  "keywords": [
+    "codemod",
+    "ember-codemod"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ijlee2/codemod-utils.git"
+  },
+  "license": "MIT",
+  "author": "Isaac J. Lee",
+  "type": "module",
+  "main": "dist/src/index.js",
+  "bin": "dist/bin/cli.js",
+  "directories": {
+    "test": "tests"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "./build.sh --production",
+    "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
+    "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:types": "tsc --noEmit",
+    "test": "./build.sh --test && mt dist-for-testing --quiet"
+  },
+  "dependencies": {
+    "@codemod-utils/blueprints": "workspace:*",
+    "@codemod-utils/files": "workspace:*",
+    "@codemod-utils/json": "workspace:*",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@codemod-utils/tests": "workspace:*",
+    "@shared-configs/eslint-config-node": "workspace:*",
+    "@shared-configs/prettier": "workspace:*",
+    "@shared-configs/typescript": "workspace:*",
+    "@sondr3/minitest": "^0.1.1",
+    "@types/node": "^16.11.7",
+    "@types/yargs": "^17.0.24",
+    "concurrently": "^8.2.0",
+    "eslint": "^8.44.0",
+    "prettier": "^2.8.8",
+    "typescript": "^5.1.6"
+  },
+  "engines": {
+    "node": "16.* || >= 18"
+  }
+}
