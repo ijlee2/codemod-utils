@@ -5,7 +5,6 @@
     "@tsconfig/esm/tsconfig"
   ],
   "compilerOptions": {
-    "declaration": true,
     "moduleResolution": "NodeNext"
   }
 }
