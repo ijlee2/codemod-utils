@@ -1,0 +1,98 @@
+<% if (options.codemod.hasTypeScript) { %>{
+  "name": "<%= options.codemod.name %>",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Small description for <%= options.codemod.name %> goes here",
+  "keywords": [
+    "codemod",
+    "ember-codemod",
+    "emberjs"
+  ],
+  "repository": "",
+  "license": "MIT",
+  "author": "",
+  "type": "module",
+  "main": "dist/src/index.js",
+  "bin": "dist/bin/<%= options.codemod.name %>.js",
+  "directories": {
+    "test": "tests"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "./build.sh --production",
+    "changelog": "lerna-changelog",
+    "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
+    "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:types": "tsc --noEmit",
+    "prepare": "pnpm build",
+    "test": "./build.sh --test && mt dist-for-testing --quiet"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": "16.* || >= 18"
+  },
+  "changelog": {
+    "labels": {
+      "breaking": "Breaking Change",
+      "bug": "Bug Fix",
+      "enhance: code": "Enhancement",
+      "enhance: dependency": "Internal",
+      "enhance: documentation": "Documentation"
+    }
+  },
+  "pnpm": {
+    "overrides": {
+      "eslint-plugin-import@2.27.5>tsconfig-paths": "^4.2.0"
+    }
+  }
+}<% } else { %>{
+  "name": "<%= options.codemod.name %>",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Small description for <%= options.codemod.name %> goes here",
+  "keywords": [
+    "codemod",
+    "ember-codemod",
+    "emberjs"
+  ],
+  "repository": "",
+  "license": "MIT",
+  "author": "",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": "bin/<%= options.codemod.name %>.js",
+  "directories": {
+    "test": "tests"
+  },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "scripts": {
+    "changelog": "lerna-changelog",
+    "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
+    "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "test": "mt --quiet"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": "16.* || >= 18"
+  },
+  "changelog": {
+    "labels": {
+      "breaking": "Breaking Change",
+      "bug": "Bug Fix",
+      "enhance: code": "Enhancement",
+      "enhance: dependency": "Internal",
+      "enhance: documentation": "Documentation"
+    }
+  }
+}<% } %>

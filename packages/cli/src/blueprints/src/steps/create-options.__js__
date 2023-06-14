@@ -1,0 +1,15 @@
+<% if (options.codemod.hasTypeScript) { %>import type { CodemodOptions, Options } from '../types/index.js';
+
+export function createOptions(codemodOptions: CodemodOptions): Options {
+  const { projectRoot } = codemodOptions;
+
+  return {
+    projectRoot,
+  };
+}<% } else { %>export function createOptions(codemodOptions) {
+  const { projectRoot } = codemodOptions;
+
+  return {
+    projectRoot,
+  };
+}<% } %>
