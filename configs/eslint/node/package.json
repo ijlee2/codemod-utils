@@ -1,14 +1,14 @@
 {
-  "name": "@shared-configs/eslint-config",
+  "name": "@shared-configs/eslint-config-node",
   "version": "0.0.0",
   "private": true,
-  "description": "Configuration for eslint",
+  "description": "Configuration for eslint (Node)",
   "repository": {
     "type": "git",
     "url": "git@github.com:ijlee2/codemod-utils.git"
   },
   "author": "Isaac J. Lee",
-  "main": ".eslintrc.js",
+  "main": "typescript/index.js",
   "scripts": {
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
