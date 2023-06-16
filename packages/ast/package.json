@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "@codemod-utils/tests": "workspace:*",
-    "@shared-configs/eslint-config": "workspace:*",
+    "@shared-configs/eslint-config-node": "workspace:*",
     "@shared-configs/prettier": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
     "@sondr3/minitest": "^0.1.1",
