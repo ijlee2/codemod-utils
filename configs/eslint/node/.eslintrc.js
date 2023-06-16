@@ -3,5 +3,5 @@
 require('./patch');
 
 module.exports = {
-  extends: ['./node-javascript'],
+  extends: ['./javascript'],
 };
