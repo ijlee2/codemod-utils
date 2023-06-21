@@ -176,7 +176,7 @@ Often, it is easy to miscalculate data and misplace the newline character `\n` .
 
 ## Compatibility
 
-* Node.js v16 or above
+- Node.js v16 or above
 
 
 ## Contributing

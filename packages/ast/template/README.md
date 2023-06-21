@@ -123,7 +123,7 @@ Most importantly, write tests to document the inputs and outputs of your codemod
 
 ## Compatibility
 
-* Node.js v16 or above
+- Node.js v16 or above
 
 
 ## Contributing
