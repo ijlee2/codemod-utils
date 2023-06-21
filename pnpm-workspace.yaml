@@ -1,6 +1,7 @@
 packages:
   - configs/**
-  - packages/ast
+  - packages/ast/javascript
+  - packages/ast/template
   - packages/blueprints
   - packages/files
   - packages/json

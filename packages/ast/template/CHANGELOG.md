@@ -1,4 +1,4 @@
-# Changelog for @codemod-utils/ast
+# Changelog for @codemod-utils/ast-template
 
 ## 0.2.0
 

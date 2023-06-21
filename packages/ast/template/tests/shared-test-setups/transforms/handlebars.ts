@@ -1,4 +1,4 @@
-import { ASTHandlebars as AST } from '../../../src/index.js';
+import { AST } from '../../../src/index.js';
 
 export function transformHandlebars(file: string) {
   const traverse = AST.traverse();
