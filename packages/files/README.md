@@ -165,6 +165,31 @@ moveFiles(filePathMap, {
 </details>
 
 
+### parseFilePath
+
+Parse a file path, just like you can with `parse` from `node:path`. `parseFilePath` can handle file extensions with more than one `.` (e.g. `.d.ts`, `.css.d.ts`).
+
+<details>
+
+<summary>Example</summary>
+
+```js
+import { parseFilePath } from '@codemod-utils/files';
+
+const filePath = 'src/components/navigation-menu.d.ts';
+const { base, dir, ext, name } = parseFilePath(filePath);
+
+/*
+  base = 'navigation-menu.d.ts'
+  dir = 'src/components'
+  ext = '.d.ts'
+  name = 'navigation-menu'
+*/
+```
+
+</details>
+
+
 ### removeDirectoryIfEmpty
 
 Ensure that, after deleting a file, the directories in the file path are removed if empty.
