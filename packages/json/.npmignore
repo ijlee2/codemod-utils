@@ -16,4 +16,5 @@
 /.pnpm-debug.log
 /.prettierignore
 /.prettierrc.cjs
+/build.sh
 /tests/

@@ -36,13 +36,13 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc --project tsconfig.build.json",
+    "build": "./build.sh --production",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
-    "test": "tsc --build && echo '@codemod-utils/tests does not have tests.'"
+    "test": "./build.sh --test && echo '@codemod-utils/tests does not have tests.'"
   },
   "dependencies": {
     "@sondr3/minitest": "^0.1.1",
@@ -55,7 +55,7 @@
     "@shared-configs/typescript": "workspace:*",
     "@types/node": "^16.11.7",
     "concurrently": "^8.2.0",
-    "eslint": "^8.42.0",
+    "eslint": "^8.43.0",
     "prettier": "^2.8.8",
     "typescript": "^5.1.3"
   },

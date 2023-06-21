@@ -45,7 +45,7 @@
     "test": "./build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {
-    "@babel/parser": "^7.22.4",
+    "@babel/parser": "^7.22.5",
     "recast": "^0.23.2"
   },
   "devDependencies": {
@@ -55,7 +55,7 @@
     "@shared-configs/typescript": "workspace:*",
     "@sondr3/minitest": "^0.1.1",
     "concurrently": "^8.2.0",
-    "eslint": "^8.42.0",
+    "eslint": "^8.43.0",
     "prettier": "^2.8.8",
     "typescript": "^5.1.3"
   },
