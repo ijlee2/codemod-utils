@@ -1,6 +1,5 @@
-import { parse } from 'node:path';
-
 import type { FilePath } from '../types/index.js';
+import { parseFilePath } from './parse-file-path.js';
 
 type Options = {
   find: {
@@ -10,37 +9,12 @@ type Options = {
   replace: (key: string) => string;
 };
 
-type ParsedPath = {
-  dir: string;
-  ext: string;
-  name: string;
-};
-
-function parsePath(filePath: FilePath): ParsedPath {
-  // eslint-disable-next-line prefer-const
-  let { dir, ext, name } = parse(filePath);
-
-  // eslint-disable-next-line no-constant-condition
-  while (true) {
-    const { ext: extPrefix, name: fileName } = parse(name);
-
-    if (extPrefix === '') {
-      break;
-    }
-
-    ext = `${extPrefix}${ext}`;
-    name = fileName;
-  }
-
-  return { dir, ext, name };
-}
-
 export function renamePathByFile(
   filePath: FilePath,
   options: Options,
 ): FilePath {
+  const { dir, ext, name } = parseFilePath(filePath);
   const { find, replace } = options;
-  const { dir, ext, name } = parsePath(filePath);
 
   if (!dir.startsWith(find.directory)) {
     throw new RangeError(
