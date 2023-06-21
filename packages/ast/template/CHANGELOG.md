@@ -1,5 +1,15 @@
 # Changelog for @codemod-utils/ast-template
 
+## 0.3.0
+
+### Minor Changes
+
+- [#36](https://github.com/ijlee2/codemod-utils/pull/36) Split @codemod-utils/ast into @codemod-utils/ast-javascript and @codemod-utils/ast-template ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#37](https://github.com/ijlee2/codemod-utils/pull/37) Updated dependencies. Standardized the build and test scripts. ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.2.0
 
 ### Minor Changes

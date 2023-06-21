@@ -1,5 +1,15 @@
 # Changelog for @codemod-utils/files
 
+## 0.5.0
+
+### Minor Changes
+
+- [#38](https://github.com/ijlee2/codemod-utils/pull/38) Exported parseFilePath ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#37](https://github.com/ijlee2/codemod-utils/pull/37) Updated dependencies. Standardized the build and test scripts. ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.4.1
 
 ### Patch Changes
