@@ -11,4 +11,18 @@ type Options = {
   projectRoot: string;
 };
 
-export type { FileContent, FileMap, FilePath, FilePathMap, Options };
+type ParsedPath = {
+  base: string;
+  dir: string;
+  ext: string;
+  name: string;
+};
+
+export type {
+  FileContent,
+  FileMap,
+  FilePath,
+  FilePathMap,
+  Options,
+  ParsedPath,
+};
