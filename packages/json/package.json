@@ -45,7 +45,7 @@
     "test": "tsc --build && mt dist-for-testing --quiet"
   },
   "dependencies": {
-    "type-fest": "^3.11.1"
+    "type-fest": "^3.12.0"
   },
   "devDependencies": {
     "@codemod-utils/tests": "workspace:*",
@@ -55,7 +55,7 @@
     "@sondr3/minitest": "^0.1.1",
     "@types/node": "^16.11.7",
     "concurrently": "^8.2.0",
-    "eslint": "^8.42.0",
+    "eslint": "^8.43.0",
     "prettier": "^2.8.8",
     "typescript": "^5.1.3"
   },
