@@ -1,0 +1,63 @@
+{
+  "name": "@codemod-utils/ember-cli-string",
+  "version": "0.0.0",
+  "description": "Utilities for string, as used by Ember CLI",
+  "keywords": [
+    "codemod",
+    "ember-codemod"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ijlee2/codemod-utils.git"
+  },
+  "license": "MIT",
+  "author": "Isaac J. Lee",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    }
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "dist/*"
+      ]
+    }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "./build.sh --production",
+    "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
+    "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:types": "tsc --noEmit",
+    "test": "./build.sh --test && mt dist-for-testing --quiet"
+  },
+  "devDependencies": {
+    "@codemod-utils/tests": "workspace:*",
+    "@shared-configs/eslint-config-node": "workspace:*",
+    "@shared-configs/prettier": "workspace:*",
+    "@shared-configs/typescript": "workspace:*",
+    "@sondr3/minitest": "^0.1.1",
+    "@types/lodash.template": "^4.5.1",
+    "@types/node": "^16.11.7",
+    "concurrently": "^8.2.0",
+    "eslint": "^8.43.0",
+    "prettier": "^2.8.8",
+    "typescript": "^5.1.3"
+  },
+  "engines": {
+    "node": "16.* || >= 18"
+  }
+}
