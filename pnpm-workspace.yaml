@@ -3,6 +3,7 @@ packages:
   - packages/ast/javascript
   - packages/ast/template
   - packages/blueprints
+  - packages/ember-cli-string
   - packages/files
   - packages/json
   - packages/tests
