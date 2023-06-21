@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/json
 
+## 0.3.2
+
+### Patch Changes
+
+- [#37](https://github.com/ijlee2/codemod-utils/pull/37) Updated dependencies. Standardized the build and test scripts. ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.3.1
 
 ### Patch Changes

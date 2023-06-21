@@ -106,7 +106,7 @@ To create the input and output directories easily, you can copy an existing proj
 
 ## Compatibility
 
-* Node.js v16 or above
+- Node.js v16 or above
 
 
 ## Contributing
