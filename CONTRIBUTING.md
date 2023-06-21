@@ -66,18 +66,45 @@ Here are some guidelines to help you and everyone else.
 
 <details>
 
+<summary>Add changeset to pull request</code></summary>
+
+1. To record how a pull request affects packages, you will want to add a changeset.
+
+    The changeset provides a summary of the code change. It also describes how package versions should be updated (major, minor, or patch) as a result of the code change.
+
+    ```sh
+    # From the workspace root
+    pnpm changeset
+    ```
+
+</details>
+
+
+<details>
+
 <summary>Publish packages (for admins)</summary>
 
 1. Generate a [personal access token](https://github.com/settings/tokens/) in GitHub, with default values for scopes (none selected).
 
-1. Create a pull request, in which you remove the changesets and update the `CHANGELOG`'s.
+1. Run the `publish:changelogs` script. This removes changesets, updates the package versions, and updates the `CHANGELOG`'s.
 
     ```sh
     # From the workspace root
     GITHUB_TOKEN=<YOUR_PERSONAL_ACCESS_TOKEN> pnpm publish:changelogs
     ```
 
-1. [Create a tag](https://github.com/ijlee2/codemod-utils/releases/new) such as `1.0.0` (the name satisfies the regular expression `^\d+\.\d+\.\d+`).
+1. The workspace root's version (e.g. `0.1.3`) is more of an identifier than a (semantic) version. We will use it to name the tag that will be published.
+
+    In the root `package.json`, update the version following the "highest-version" formula:
+
+    ```
+    workspace root version = max(
+      max(all package versions),
+      workspace root version + 0.0.1,
+    );
+    ```
+
+1. [Create a tag](https://github.com/ijlee2/codemod-utils/releases/new) and provide release notes. The tag name should match the workspace root's version.
 
 1. Publish the packages.
 
