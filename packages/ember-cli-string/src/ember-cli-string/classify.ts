@@ -2,8 +2,8 @@
 /* https://github.com/emberjs/ember.js/blob/v4.12.1/blueprints/component/index.js#L255-L256 */
 import { camelize } from './camelize.js';
 
-export function classifyOriginal(value: string): string {
-  const tokens = value.split('.');
+export function classify(value: string): string {
+  const tokens = value.replace(/\//g, '-').split('.');
 
   const tokensTransformed = tokens.map((token) => {
     const camelized = camelize(token);
@@ -12,8 +12,4 @@ export function classifyOriginal(value: string): string {
   });
 
   return tokensTransformed.join('.');
-}
-
-export function classify(value: string): string {
-  return classifyOriginal(value.replace(/\//g, '-'));
 }
