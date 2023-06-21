@@ -97,30 +97,61 @@ importers:
         specifier: ^2.8.8
         version: 2.8.8
 
-  packages/ast:
+  packages/ast/javascript:
     dependencies:
       '@babel/parser':
         specifier: ^7.22.4
         version: 7.22.4
-      ember-template-recast:
-        specifier: ^6.1.4
-        version: 6.1.4
       recast:
         specifier: ^0.23.2
         version: 0.23.2
     devDependencies:
       '@codemod-utils/tests':
         specifier: workspace:*
-        version: link:../tests
+        version: link:../../tests
       '@shared-configs/eslint-config-node':
         specifier: workspace:*
-        version: link:../../configs/eslint/node
+        version: link:../../../configs/eslint/node
       '@shared-configs/prettier':
         specifier: workspace:*
-        version: link:../../configs/prettier
+        version: link:../../../configs/prettier
       '@shared-configs/typescript':
         specifier: workspace:*
-        version: link:../../configs/typescript
+        version: link:../../../configs/typescript
+      '@sondr3/minitest':
+        specifier: ^0.1.1
+        version: 0.1.1
+      concurrently:
+        specifier: ^8.2.0
+        version: 8.2.0
+      eslint:
+        specifier: ^8.42.0
+        version: 8.42.0
+      prettier:
+        specifier: ^2.8.8
+        version: 2.8.8
+      typescript:
+        specifier: ^5.1.3
+        version: 5.1.3
+
+  packages/ast/template:
+    dependencies:
+      ember-template-recast:
+        specifier: ^6.1.4
+        version: 6.1.4
+    devDependencies:
+      '@codemod-utils/tests':
+        specifier: workspace:*
+        version: link:../../tests
+      '@shared-configs/eslint-config-node':
+        specifier: workspace:*
+        version: link:../../../configs/eslint/node
+      '@shared-configs/prettier':
+        specifier: workspace:*
+        version: link:../../../configs/prettier
+      '@shared-configs/typescript':
+        specifier: workspace:*
+        version: link:../../../configs/typescript
       '@sondr3/minitest':
         specifier: ^0.1.1
         version: 0.1.1
@@ -465,7 +496,7 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      '@babel/types': 7.22.4
+      '@babel/types': 7.22.5
     dev: false
 
   /@babel/parser@7.22.5:
@@ -508,15 +539,6 @@ packages:
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /@babel/types@7.22.4:
-    resolution: {integrity: sha512-Tx9x3UBHTTsMSW85WB2kphxYQVvrZ/t1FxD88IpSgIjiUJlCm9z+xWIDwyo1vffTwSqteqyznB8ZE9vYYk16zA==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-string-parser': 7.22.5
-      '@babel/helper-validator-identifier': 7.22.5
-      to-fast-properties: 2.0.0
     dev: false
 
   /@babel/types@7.22.5:

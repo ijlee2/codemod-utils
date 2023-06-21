@@ -1,4 +1,4 @@
-import { ASTJavaScript as AST } from '../../../src/index.js';
+import { AST } from '../../../src/index.js';
 
 export function transformJavaScript(file: string) {
   const traverse = AST.traverse();
