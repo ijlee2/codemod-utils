@@ -19,12 +19,12 @@
     "@babel/core": "^7.22.5",
     "@babel/eslint-parser": "7.22.5",
     "@rushstack/eslint-patch": "^1.3.2",
-    "@typescript-eslint/eslint-plugin": "^5.60.0",
-    "@typescript-eslint/parser": "^5.60.0",
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/parser": "^5.61.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-n": "^16.0.0",
+    "eslint-plugin-n": "^16.0.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-typescript-sort-keys": "^2.3.0"
@@ -32,7 +32,7 @@
   "devDependencies": {
     "@shared-configs/prettier": "workspace:*",
     "concurrently": "^8.2.0",
-    "eslint": "^8.43.0",
+    "eslint": "^8.44.0",
     "prettier": "^2.8.8"
   },
   "peerDependencies": {
