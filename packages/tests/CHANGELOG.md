@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/tests
 
+## 0.2.4
+
+### Patch Changes
+
+- [#41](https://github.com/ijlee2/codemod-utils/pull/41) Updated glob to v10.3.1 ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.2.3
 
 ### Patch Changes
