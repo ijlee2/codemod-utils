@@ -12,7 +12,7 @@ _Codemod to [PROVIDE A SHORT DESCRIPTION.]_
 <details>
 <summary>Optional: Specify the project root</summary>
 
-Pass `--root` to run the codemod on a project somewhere else (i.e. not in the current directory).
+Pass `--root` to run the codemod somewhere else (i.e. not in the current directory).
 
 ```sh
 npx ember-codemod-args-to-signature --root=<path/to/your/project>

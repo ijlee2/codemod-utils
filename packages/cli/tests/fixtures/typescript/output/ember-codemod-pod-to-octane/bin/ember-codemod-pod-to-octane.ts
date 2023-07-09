@@ -14,7 +14,7 @@ process.title = 'ember-codemod-pod-to-octane';
 // Set codemod options
 const argv = yargs(hideBin(process.argv))
   .option('root', {
-    describe: 'Location of your Ember project',
+    describe: 'Where to run the codemod',
     type: 'string',
   })
   .parseSync();
