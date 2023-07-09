@@ -17,7 +17,7 @@ _Codemod to [PROVIDE A SHORT DESCRIPTION.]_
 Pass `--root` to run the codemod somewhere else (i.e. not in the current directory).
 
 ```sh
-npx ember-codemod-args-to-signature --root=<path/to/your/project>
+npx ember-codemod-args-to-signature --root <path/to/your/project>
 ```
 
 </details>
@@ -36,7 +36,7 @@ cd <path/to/cloned/repo>
 pnpm build
 
 # Run codemod
-./dist/bin/ember-codemod-args-to-signature.js --root=<path/to/your/project>
+./dist/bin/ember-codemod-args-to-signature.js --root <path/to/your/project>
 ```
 
 

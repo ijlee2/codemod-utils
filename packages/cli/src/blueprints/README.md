@@ -17,7 +17,7 @@ _Codemod to [PROVIDE A SHORT DESCRIPTION.]_
 Pass `--root` to run the codemod somewhere else (i.e. not in the current directory).
 
 ```sh
-npx <%= options.codemod.name %> --root=<path/to/your/project>
+npx <%= options.codemod.name %> --root <path/to/your/project>
 ```
 
 </details>
@@ -36,12 +36,12 @@ cd <path/to/cloned/repo>
 pnpm build
 
 # Run codemod
-./dist/bin/<%= options.codemod.name %>.js --root=<path/to/your/project>
+./dist/bin/<%= options.codemod.name %>.js --root <path/to/your/project>
 ```<% } else { %>```sh
 cd <path/to/cloned/repo>
 
 # Run codemod
-./bin/<%= options.codemod.name %>.js --root=<path/to/your/project>
+./bin/<%= options.codemod.name %>.js --root <path/to/your/project>
 ```<% } %>
 
 
