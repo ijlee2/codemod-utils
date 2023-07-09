@@ -47,7 +47,7 @@
   "dependencies": {
     "@sondr3/minitest": "^0.1.1",
     "fixturify": "^3.0.0",
-    "glob": "^10.3.1"
+    "glob": "^10.3.3"
   },
   "devDependencies": {
     "@shared-configs/eslint-config-node": "workspace:*",
