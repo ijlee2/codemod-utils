@@ -16,7 +16,7 @@ function getFilesToSkip(options: Options): string[] {
     files.add('src/blueprints/.gitkeep');
     files.add('src/utils/blueprints/blueprints-root.__js__');
     files.add('src/utils/blueprints.__js__');
-    files.add('tests/utils/blueprints/blueprints-root.test.__js__');
+    files.add('__tests__/utils/blueprints/blueprints-root.test.__js__');
   }
 
   if (!codemod.hasTypeScript) {
@@ -37,6 +37,7 @@ function resolveBlueprintFilePath(
 
   return blueprintFilePath
     .replace('__github__/', '.github/')
+    .replace('__tests__/', 'tests/')
     .replace('__codemod-name__', codemod.name)
     .replace('__gitignore__', '.gitignore')
     .replace('.__js__', codemod.hasTypeScript ? '.ts' : '.js');
