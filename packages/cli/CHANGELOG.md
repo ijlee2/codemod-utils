@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/cli
 
+## 0.1.2
+
+### Patch Changes
+
+- [#46](https://github.com/ijlee2/codemod-utils/pull/46) Removed unnecessary file path resolutions. Added tests. ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.1.1
 
 ### Patch Changes
