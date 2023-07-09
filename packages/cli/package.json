@@ -1,7 +1,7 @@
 {
   "name": "@codemod-utils/cli",
   "version": "0.0.0",
-  "description": "CLI for @codemod-utils",
+  "description": "CLI to create a codemod",
   "keywords": [
     "codemod",
     "ember-codemod"
