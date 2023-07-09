@@ -16,11 +16,11 @@ function getFilesToSkip(options: Options): string[] {
     files.add('src/blueprints/.gitkeep');
     files.add('src/utils/blueprints/blueprints-root.__js__');
     files.add('src/utils/blueprints.__js__');
-    files.add('tests/utils/blueprints/blueprints-root.test.__js__');
+    files.add('__tests__/utils/blueprints/blueprints-root.test.__js__');
   }
 
   if (!codemod.hasTypeScript) {
-    files.add('build.sh');
+    files.add('__build.sh__');
     files.add('src/types/index.ts');
     files.add('tsconfig.build.json');
     files.add('tsconfig.json');
@@ -36,8 +36,18 @@ function resolveBlueprintFilePath(
   const { codemod } = options;
 
   return blueprintFilePath
+    .replace('__github__/', '.github/')
+    .replace('__tests__/', 'tests/')
     .replace('__codemod-name__', codemod.name)
+    .replace('__eslintignore__', '.eslintignore')
+    .replace('__eslintrc.cjs__', '.eslintrc.cjs')
     .replace('__gitignore__', '.gitignore')
+    .replace('__npmignore__', '.npmignore')
+    .replace('__prettierrc.cjs__', '.prettierrc.cjs')
+    .replace('__build.sh__', 'build.sh')
+    .replace('__codemod-test-fixture.sh__', 'codemod-test-fixture.sh')
+    .replace('__codemod-test-fixtures.sh__', 'codemod-test-fixtures.sh')
+    .replace('__CONTRIBUTING.md__', 'CONTRIBUTING.md')
     .replace('.__js__', codemod.hasTypeScript ? '.ts' : '.js');
 }
 
