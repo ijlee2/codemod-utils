@@ -12,6 +12,13 @@ function getFilesToSkip(options: Options): string[] {
 
   const files = new Set<string>();
 
+  if (!codemod.addons.has('blueprints')) {
+    files.add('src/blueprints/.gitkeep');
+    files.add('src/utils/blueprints/blueprints-root.__js__');
+    files.add('src/utils/blueprints.__js__');
+    files.add('tests/utils/blueprints/blueprints-root.test.__js__');
+  }
+
   if (!codemod.hasTypeScript) {
     files.add('build.sh');
     files.add('src/types/index.ts');
