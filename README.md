@@ -7,7 +7,11 @@ _Utilities for writing codemods_
 
 ## What is it?
 
-`@codemod-utils` provides a set of **tools and conventions** to help you write codemods.
+`@codemod-utils` provides a set of **tools and conventions** to help you write codemods. Use `@codemod-utils/cli` to get started.
+
+```sh
+npx @codemod-utils/cli --name <your-codemod-name>
+```
 
 
 ### Package overview
@@ -15,6 +19,7 @@ _Utilities for writing codemods_
 - [`@codemod-utils/ast-javascript`](/packages/ast/javascript/README.md)
 - [`@codemod-utils/ast-template`](/packages/ast/template/README.md)
 - [`@codemod-utils/blueprints`](/packages/blueprints/README.md)
+- [`@codemod-utils/cli`](/packages/cli/README.md)
 - [`@codemod-utils/ember-cli-string`](/packages/ember-cli-string/README.md)
 - [`@codemod-utils/files`](/packages/files/README.md)
 - [`@codemod-utils/json`](/packages/json/README.md)
