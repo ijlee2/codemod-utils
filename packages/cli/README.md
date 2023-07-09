@@ -2,33 +2,39 @@
 
 # @codemod-utils/cli
 
-_CLI to create a codemod_
+_CLI to create a codemod project_
 
 
 ## Usage
 
-Use `npx` to run `@codemod-utils/cli` and provide the codemod's name. (Alternatively, you can globally install `@codemod-utils/cli`.)
+Step 1. Use `npx` to run `@codemod-utils/cli`. Alternatively, you can globally install the package.
 
 ```sh
 npx @codemod-utils/cli --name <your-codemod-name> <additional arguments>
 ```
 
-This will create a folder named `<your-codemod-name>`. Change to this directory, then run the following scripts:
+This will create a folder named `<your-codemod-name>`.
+
+Step 2. Change to the codemod directory, then run these scripts in sequence:
 
 ```sh
 # Install dependencies
 pnpm install
+```
 
-# Push to a (new) GitHub repository
+```sh
+# Commit changes
 git init
 git add .
 git commit -m "Initial commit"
-git branch -M main
-git remote add origin git@github.com:<your-github-handle>/<your-repo-name>.git
-git push -u origin main
 ```
 
-Before pushing to the repository, consider updating `README.md` (e.g. link to the CI status badge).
+```sh
+# Push changes (to a new repo)
+git remote add origin git@github.com:<your-github-handle>/<your-repo-name>.git
+git branch -M main
+git push -u origin main
+```
 
 
 ### Arguments
@@ -41,15 +47,15 @@ npx @codemod-utils/cli --name ember-codemod-v1-to-v2
 
 
 <details>
-<summary>Optional: Add <code>@codemod-utils</code> packages</summary>
+<summary>Optional: Add more utilities</summary>
 
-By default, `@codemod-utils/cli` only installs [`@codemod-utils/files`](../files/README.md) and [`@codemod-utils/tests`](../tests/README.md). To add more utilities, pass `--addon` and the list of package names.
+By default, `@codemod-utils/cli` only installs [`@codemod-utils/files`](../files/README.md) and [`@codemod-utils/tests`](../tests/README.md). If you need more, pass `--addon` and list the package names.
 
 ```sh
 npx @codemod-utils/cli --addon blueprints json
 ```
 
-The available package names are:
+The options are:
 
 - [`ast-javascript`](../ast/javascript/README.md)
 - [`ast-template`](../ast/template/README.md)
@@ -66,7 +72,7 @@ The available package names are:
 Pass `--root` to run the codemod somewhere else (i.e. not in the current directory).
 
 ```sh
-npx @codemod-utils/cli --root=<path/to/your/project>
+npx @codemod-utils/cli --root <path/to/your/project>
 ```
 
 </details>
