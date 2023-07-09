@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/files
 
+## 0.5.2
+
+### Patch Changes
+
+- [#43](https://github.com/ijlee2/codemod-utils/pull/43) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.5.1
 
 ### Patch Changes
