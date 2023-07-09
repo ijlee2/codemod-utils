@@ -45,7 +45,7 @@
     "test": "./build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {
-    "glob": "^10.3.1"
+    "glob": "^10.3.3"
   },
   "devDependencies": {
     "@codemod-utils/tests": "workspace:*",
