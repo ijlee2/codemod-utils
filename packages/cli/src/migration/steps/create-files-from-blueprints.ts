@@ -36,7 +36,6 @@ function resolveBlueprintFilePath(
   const { codemod } = options;
 
   return blueprintFilePath
-    .replace('__github__/', '.github/')
     .replace('__tests__/', 'tests/')
     .replace('__codemod-name__', codemod.name)
     .replace('__eslintignore__', '.eslintignore')
