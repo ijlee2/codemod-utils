@@ -1,0 +1,63 @@
+{
+  "name": "ember-codemod-pod-to-octane",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Small description for ember-codemod-pod-to-octane goes here",
+  "keywords": [
+    "codemod",
+    "ember-codemod",
+    "emberjs"
+  ],
+  "repository": "",
+  "license": "MIT",
+  "author": "",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": "bin/ember-codemod-pod-to-octane.js",
+  "directories": {
+    "test": "tests"
+  },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "scripts": {
+    "changelog": "lerna-changelog",
+    "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
+    "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "test": "mt --quiet"
+  },
+  "dependencies": {
+    "@codemod-utils/files": "^0.5.1",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.8",
+    "@babel/eslint-parser": "^7.22.7",
+    "@codemod-utils/tests": "^0.2.4",
+    "@sondr3/minitest": "0.1.1",
+    "concurrently": "^8.2.0",
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^16.0.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "lerna-changelog": "^2.2.0",
+    "prettier": "^2.8.8"
+  },
+  "engines": {
+    "node": "16.* || >= 18"
+  },
+  "changelog": {
+    "labels": {
+      "breaking": "Breaking Change",
+      "bug": "Bug Fix",
+      "enhance: code": "Enhancement",
+      "enhance: dependency": "Internal",
+      "enhance: documentation": "Documentation"
+    }
+  }
+}
