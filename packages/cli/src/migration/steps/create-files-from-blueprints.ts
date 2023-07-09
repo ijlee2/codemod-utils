@@ -20,7 +20,7 @@ function getFilesToSkip(options: Options): string[] {
   }
 
   if (!codemod.hasTypeScript) {
-    files.add('__build.sh__');
+    files.add('build.sh');
     files.add('src/types/index.ts');
     files.add('tsconfig.build.json');
     files.add('tsconfig.json');
@@ -37,15 +37,8 @@ function resolveBlueprintFilePath(
 
   return blueprintFilePath
     .replace('__codemod-name__', codemod.name)
-    .replace('__eslintignore__', '.eslintignore')
-    .replace('__eslintrc.cjs__', '.eslintrc.cjs')
     .replace('__gitignore__', '.gitignore')
     .replace('__npmignore__', '.npmignore')
-    .replace('__prettierrc.cjs__', '.prettierrc.cjs')
-    .replace('__build.sh__', 'build.sh')
-    .replace('__codemod-test-fixture.sh__', 'codemod-test-fixture.sh')
-    .replace('__codemod-test-fixtures.sh__', 'codemod-test-fixtures.sh')
-    .replace('__CONTRIBUTING.md__', 'CONTRIBUTING.md')
     .replace('.__js__', codemod.hasTypeScript ? '.ts' : '.js');
 }
 
