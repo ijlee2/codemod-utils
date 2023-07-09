@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/cli
 
+## 0.1.1
+
+### Patch Changes
+
+- [#45](https://github.com/ijlee2/codemod-utils/pull/45) Ensured that blueprints files are installed ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.1.0
 
 ### Minor Changes
