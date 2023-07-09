@@ -24,9 +24,11 @@ git init
 git add .
 git commit -m "Initial commit"
 git branch -M main
-git remote add origin git@github.com:<your-GitHub-handle>/<your-repo-name>.git
+git remote add origin git@github.com:<your-github-handle>/<your-repo-name>.git
 git push -u origin main
 ```
+
+Before pushing to the repository, consider updating `README.md` (e.g. link to the CI status badge).
 
 
 ### Arguments

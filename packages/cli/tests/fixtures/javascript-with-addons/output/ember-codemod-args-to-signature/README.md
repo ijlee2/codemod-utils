@@ -1,3 +1,5 @@
+[![This project uses GitHub Actions for continuous integration.](https://github.com/<your-github-handle>/<your-repo-name>/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-github-handle>/<your-repo-name>/actions/workflows/ci.yml)
+
 # ember-codemod-args-to-signature
 
 _Codemod to [PROVIDE A SHORT DESCRIPTION.]_
