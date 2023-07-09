@@ -36,6 +36,7 @@ function resolveBlueprintFilePath(
   const { codemod } = options;
 
   return blueprintFilePath
+    .replace('__github__/', '.github/')
     .replace('__codemod-name__', codemod.name)
     .replace('__gitignore__', '.gitignore')
     .replace('.__js__', codemod.hasTypeScript ? '.ts' : '.js');
