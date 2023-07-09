@@ -42,7 +42,7 @@ function resolveBlueprintFilePath(
     .replace('.__js__', codemod.hasTypeScript ? '.ts' : '.js');
 }
 
-function updateFilePermissions(options: Options) {
+function setExecutePermissions(options: Options) {
   const { codemod, projectRoot } = options;
 
   const files = new Set([
@@ -95,5 +95,5 @@ export function createFilesFromBlueprints(options: Options): void {
   );
 
   createFiles(fileMap, options);
-  updateFilePermissions(options);
+  setExecutePermissions(options);
 }
