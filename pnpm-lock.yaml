@@ -121,6 +121,9 @@ importers:
       '@sondr3/minitest':
         specifier: ^0.1.1
         version: 0.1.1
+      '@types/node':
+        specifier: ^16.11.7
+        version: 16.11.7
       concurrently:
         specifier: ^8.2.0
         version: 8.2.0
@@ -155,6 +158,9 @@ importers:
       '@sondr3/minitest':
         specifier: ^0.1.1
         version: 0.1.1
+      '@types/node':
+        specifier: ^16.11.7
+        version: 16.11.7
       concurrently:
         specifier: ^8.2.0
         version: 8.2.0
