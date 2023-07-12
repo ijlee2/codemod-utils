@@ -14,9 +14,8 @@ export function readPackageJson(options: Options): PackageJson {
 
   try {
     const file = readFileSync(filePath, 'utf8');
-    const packageJson: PackageJson = JSON.parse(file);
 
-    return packageJson;
+    return JSON.parse(file) as PackageJson;
   } catch (error: unknown) {
     if (error instanceof Error) {
       throw new SyntaxError(

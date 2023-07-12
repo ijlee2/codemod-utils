@@ -28,6 +28,7 @@ function updateDependencies(packageJson: PackageJson, options: Options): void {
     dependencies.set(packageName, version);
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   packageJson['dependencies'] = convertToObject(dependencies);
 }
 
@@ -77,6 +78,7 @@ function updateDevDependencies(
   // Pin @sondr3/minitest to v0.1.1 (to support Node 16)
   devDependencies.set('@sondr3/minitest', '0.1.1');
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   packageJson['devDependencies'] = convertToObject(devDependencies);
 }
 

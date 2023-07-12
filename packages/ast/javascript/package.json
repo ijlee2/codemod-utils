@@ -54,9 +54,10 @@
     "@shared-configs/prettier": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
     "@sondr3/minitest": "^0.1.1",
+    "@types/node": "^16.11.7",
     "concurrently": "^8.2.0",
     "eslint": "^8.44.0",
-    "prettier": "^2.8.8",
+    "prettier": "^3.0.0",
     "typescript": "^5.1.6"
   },
   "engines": {
