@@ -30,13 +30,13 @@
     "test": "mt --quiet"
   },
   "dependencies": {
-    "@codemod-utils/files": "^0.5.1",
+    "@codemod-utils/files": "^0.5.2",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.22.8",
     "@babel/eslint-parser": "^7.22.7",
-    "@codemod-utils/tests": "^0.2.4",
+    "@codemod-utils/tests": "^0.2.5",
     "@sondr3/minitest": "0.1.1",
     "concurrently": "^8.2.0",
     "eslint": "^8.44.0",
