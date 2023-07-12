@@ -30,28 +30,28 @@
     "test": "mt --quiet"
   },
   "dependencies": {
-    "@codemod-utils/ast-javascript": "^0.3.0",
-    "@codemod-utils/ast-template": "^0.3.0",
+    "@codemod-utils/ast-javascript": "^0.3.2",
+    "@codemod-utils/ast-template": "^0.3.1",
     "@codemod-utils/blueprints": "^0.2.1",
-    "@codemod-utils/ember-cli-string": "^0.1.0",
-    "@codemod-utils/files": "^0.5.1",
-    "@codemod-utils/json": "^0.3.2",
+    "@codemod-utils/ember-cli-string": "^0.1.1",
+    "@codemod-utils/files": "^0.5.2",
+    "@codemod-utils/json": "^0.3.4",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.22.8",
     "@babel/eslint-parser": "^7.22.7",
-    "@codemod-utils/tests": "^0.2.4",
+    "@codemod-utils/tests": "^0.2.5",
     "@sondr3/minitest": "0.1.1",
     "concurrently": "^8.2.0",
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^16.0.1",
-    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "lerna-changelog": "^2.2.0",
-    "prettier": "^2.8.8"
+    "prettier": "^3.0.0"
   },
   "engines": {
     "node": "16.* || >= 18"
