@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ast-javascript
 
+## 0.3.2
+
+### Patch Changes
+
+- [#47](https://github.com/ijlee2/codemod-utils/pull/47) Updated recast to v0.23.3 ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.3.1
 
 ### Patch Changes
