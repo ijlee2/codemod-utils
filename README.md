@@ -7,7 +7,7 @@ _Utilities for writing codemods_
 
 ## What is it?
 
-`@codemod-utils` provides a set of **tools and conventions** to help you write codemods. Use `@codemod-utils/cli` to get started.
+`@codemod-utils` provides a set of **tools and conventions** to help you write codemods. Use [`@codemod-utils/cli`](/packages/cli/README.md) to get started.
 
 ```sh
 npx @codemod-utils/cli --name <your-codemod-name>
@@ -26,8 +26,9 @@ npx @codemod-utils/cli --name <your-codemod-name>
 - [`@codemod-utils/tests`](/packages/tests/README.md)
 
 
-## Codemods that use it
+## Codemods written with @codemod-utils
 
+- `blueprint-for-v2-addon` (internal)
 - [`ember-codemod-args-to-signature`](https://github.com/ijlee2/ember-codemod-args-to-signature)
 - [`ember-codemod-pod-to-octane`](https://github.com/ijlee2/ember-codemod-pod-to-octane)
 - [`ember-codemod-remove-ember-css-modules`](https://github.com/ijlee2/embroider-css-modules/tree/main/packages/ember-codemod-remove-ember-css-modules)
