@@ -103,8 +103,8 @@ importers:
         specifier: ^7.22.7
         version: 7.22.7
       recast:
-        specifier: ^0.23.2
-        version: 0.23.2
+        specifier: ^0.23.3
+        version: 0.23.3
     devDependencies:
       '@codemod-utils/tests':
         specifier: workspace:*
@@ -3549,8 +3549,8 @@ packages:
       util-deprecate: 1.0.2
     dev: false
 
-  /recast@0.23.2:
-    resolution: {integrity: sha512-Qv6cPfVZyMOtPszK6PgW70pUgm7gPlFitAPf0Q69rlOA0zLw2XdDcNmPbVGYicFGT9O8I7TZ/0ryJD+6COvIPw==}
+  /recast@0.23.3:
+    resolution: {integrity: sha512-HbCVFh2ANP6a09nzD4lx7XthsxMOJWKX5pIcUwtLrmeEIl3I0DwjCoVXDE0Aobk+7k/mS3H50FK4iuYArpcT6Q==}
     engines: {node: '>= 4'}
     dependencies:
       assert: 2.0.0

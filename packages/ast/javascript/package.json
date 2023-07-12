@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@babel/parser": "^7.22.7",
-    "recast": "^0.23.2"
+    "recast": "^0.23.3"
   },
   "devDependencies": {
     "@codemod-utils/tests": "workspace:*",
