@@ -1,6 +1,6 @@
 import { assertFixture, loadFixture, test } from '@codemod-utils/tests';
 
-import { copyFiles } from '../../../src/index.js';
+import { copyFiles, type FilePath } from '../../../src/index.js';
 import { codemodOptions, options } from '../../shared-test-setups/index.js';
 
 test('files | copy-files > edge case (filePathMap is empty)', function () {
@@ -18,7 +18,7 @@ test('files | copy-files > edge case (filePathMap is empty)', function () {
 
   loadFixture(inputProject, codemodOptions);
 
-  const filePathMap = new Map();
+  const filePathMap = new Map<FilePath, FilePath>();
 
   copyFiles(filePathMap, {
     projectRoot: options.projectRoot,

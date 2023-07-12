@@ -13,7 +13,7 @@ export function transformHandlebars(file: string) {
 
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore: Property 'chars' does not exist on type 'TextNode | MustacheStatement | ConcatStatement'.
-      const attributeValue = node.value.chars.trim();
+      const attributeValue = (node.value.chars as string).trim();
 
       node.value = AST.builders.mustache(
         AST.builders.path(`this.styles.${attributeValue}`),

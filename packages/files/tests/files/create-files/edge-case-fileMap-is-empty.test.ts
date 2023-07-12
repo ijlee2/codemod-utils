@@ -1,6 +1,10 @@
 import { assertFixture, loadFixture, test } from '@codemod-utils/tests';
 
-import { createFiles } from '../../../src/index.js';
+import {
+  createFiles,
+  type FileContent,
+  type FilePath,
+} from '../../../src/index.js';
 import { codemodOptions, options } from '../../shared-test-setups/index.js';
 
 test('files | create-files > edge case (fileMap is empty)', function () {
@@ -10,7 +14,7 @@ test('files | create-files > edge case (fileMap is empty)', function () {
 
   loadFixture(inputProject, codemodOptions);
 
-  const fileMap = new Map();
+  const fileMap = new Map<FilePath, FileContent>();
 
   createFiles(fileMap, options);
 
