@@ -1,5 +1,15 @@
 # Changelog for @codemod-utils/cli
 
+## 0.2.0
+
+### Minor Changes
+
+- [#49](https://github.com/ijlee2/codemod-utils/pull/49) Updated blueprints to support @typescript-eslint@v6 and prettier@v3 ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#48](https://github.com/ijlee2/codemod-utils/pull/48) Updated @typescript-eslint and prettier ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.1.2
 
 ### Patch Changes

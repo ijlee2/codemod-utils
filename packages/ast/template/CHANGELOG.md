@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ast-template
 
+## 0.3.1
+
+### Patch Changes
+
+- [#48](https://github.com/ijlee2/codemod-utils/pull/48) Updated @typescript-eslint and prettier ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.3.0
 
 ### Minor Changes

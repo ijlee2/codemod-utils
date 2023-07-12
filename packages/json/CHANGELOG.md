@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/json
 
+## 0.3.4
+
+### Patch Changes
+
+- [#48](https://github.com/ijlee2/codemod-utils/pull/48) Updated @typescript-eslint and prettier ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.3.3
 
 ### Patch Changes
