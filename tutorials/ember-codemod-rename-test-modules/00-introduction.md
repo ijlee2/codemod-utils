@@ -1,8 +1,6 @@
 # Introduction
 
-Thanks for trying out `@codemod-utils`!
-
-In this tutorial, we will create a codemod called `ember-codemod-rename-tests` (to be precise, rename test modules).
+Thanks for trying out `@codemod-utils`! In this tutorial, we will create a codemod called `ember-codemod-rename-test-modules`.
 
 ```ts
 /* Before: Module names are inconsistent (thanks to copy-paste) */
@@ -23,5 +21,7 @@ The codemod is practical (i.e. you can now type `ember test --filter ui/form` to
 
 1. [Create a project](./01-create-a-project.md)
 1. [Understand the folder structure](./02-understand-the-folder-structure.md)
+1. [Sketch out the solution](./03-sketch-out-the-solution.md)
+1. [Create the first step](./04-create-the-first-step.md)
 1. ...
 1. Maintain the project

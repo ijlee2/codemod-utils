@@ -28,7 +28,7 @@ npx @codemod-utils/cli --name <your-codemod-name>
 
 ## Tutorials
 
-- [`ember-codemod-rename-tests`](./tutorials/ember-codemod-rename-tests/00-introduction.md)
+- [`ember-codemod-rename-test-modules`](./tutorials/ember-codemod-rename-test-modules/00-introduction.md)
 
 
 ## Codemods written with @codemod-utils
