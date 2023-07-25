@@ -12,12 +12,12 @@ Goals:
 
 ## Folder structure
 
-Let's take a look how `ember-codemod-rename-tests` is structured as a tree. For simplicity, the tree only shows what's important for the tutorial.
+Let's take a look how `ember-codemod-rename-test-modules` is structured as a tree. For simplicity, the tree only shows what's important for the tutorial.
 
 ```sh
-ember-codemod-rename-tests
+ember-codemod-rename-test-modules
 ├── bin
-│   └── ember-codemod-rename-tests.ts
+│   └── ember-codemod-rename-test-modules.ts
 ├── src
 │   ├── (blueprints)
 │   ├── steps
@@ -45,13 +45,13 @@ The `bin` folder has an **executable file**. This file allows your users ("end-d
 pnpm build
 
 # Run codemod
-./dist/bin/ember-codemod-rename-tests.js --root <path/to/your/project>
+./dist/bin/ember-codemod-rename-test-modules.js --root <path/to/your/project>
 ```
 
 It also means, you can test the codemod on a project on your local machine.
 
 ```sh
-./dist/bin/ember-codemod-rename-tests.js --root ../../work-projects/client
+./dist/bin/ember-codemod-rename-test-modules.js --root ../../work-projects/client
 ```
 
 
@@ -234,9 +234,9 @@ Note, the conventions for folder names may change in the future, so that we can 
 
 To run the codemod (written in TypeScript), it must be compiled to JavaScript first.
 
-Running the `build` script (re-)creates the `dist` folder. The files in this folder are what is shipped to the end-developers.
+Running the `build` script (re)creates the `dist` folder. The files in this folder are what is shipped to the end-developers.
 
-Running the `test` script (re-)creates the `dist-for-testing` folder. The files in this folder are what is tested. The fixture files are created in the `tmp` folder.
+Running the `test` script (re)creates the `dist-for-testing` folder. The files in this folder are what is tested. The fixture files are created in the `tmp` folder.
 
 
 ### codemod-test-fixtures.sh
