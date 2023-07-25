@@ -103,7 +103,7 @@ export function runCodemod(codemodOptions: CodemodOptions): void {
 
 <div align="center">
   <div>
-    Next: TBA
+    Next: <a href="./04-create-the-first-step.md">Create the first step</a>
   </div>
   <div>
     Previous: <a href="./02-understand-the-folder-structure.md">Understand the folder structure</a>
