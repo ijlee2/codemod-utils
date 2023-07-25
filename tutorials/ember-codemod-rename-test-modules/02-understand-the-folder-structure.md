@@ -261,7 +261,7 @@ Note, the fixture files for that step and the subsequent steps (i.e. fixture fil
 
 <div align="center">
   <div>
-    Next: TBA
+    Next: <a href="./03-sketch-out-the-solution.md">Sketch out the solution</a>
   </div>
   <div>
     Previous: <a href="./01-create-a-project.md">Create a project</a>
