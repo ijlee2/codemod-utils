@@ -8,7 +8,7 @@ Goals:
 
 - Understand the trade-offs of a codemod
 - Cover the usual 80%
-- Funnel cases for efficiency
+- Take a funnel approach
 
 
 ## Trade-offs
@@ -28,7 +28,7 @@ Nonetheless, the ability to help others just might be the deciding factor for yo
 
 Let's assume that writing a codemod is the right approach. Next, we need to have a basic idea of how we'll solve the problem.
 
-Making test modules names consistent requires us to:
+Making test module names consistent requires us to:
 
 - Update acceptance tests (files in `tests/acceptance` folder)
 - Update integration tests (`tests/integration`)
@@ -60,7 +60,7 @@ As we will see later, other edge cases like,
 can be addressed "naturally," thanks to the packages from `@codemod-utils`.
 
 
-### Funnel cases for efficiency
+### Simplify development
 
 With the right sequence of steps, we can make the codemod more maintainable and extensible. For the initial development, I recommend that you follow a "funnel" approach:
 
@@ -103,7 +103,7 @@ export function runCodemod(codemodOptions: CodemodOptions): void {
 
 <div align="center">
   <div>
-    Next: <a href="./04-create-the-first-step.md">Create the first step</a>
+    Next: <a href="./04-create-the-first-step-part-1.md">Create the first step (Part 1)</a>
   </div>
   <div>
     Previous: <a href="./02-understand-the-folder-structure.md">Understand the folder structure</a>
