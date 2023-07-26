@@ -1,4 +1,4 @@
-# Create the first step (Part 1)
+# Step 1: Acceptance tests (Part 1)
 
 So far, we used the CLI to [scaffold a project](./01-create-a-project.md) and came up with [3 steps to make test module names consistent](./03-sketch-out-the-solution.md):
 
@@ -71,13 +71,11 @@ For this tutorial, you can cherry-pick [the 3rd commit from my solution repo](ht
 ```sh
 git remote add solution git@github.com:ijlee2/ember-codemod-rename-test-modules.git
 git fetch solution
-
-# Cherry-pick the 3rd commit (chore: Added a fixture project)
 git cherry-pick 5a354a4
 git remote remove solution
 ```
 
-Have a look at the files in `tests/fixtures/sample-project/input` ("input project"). You will find that the test module names are wildly inconsistent. The files in `tests/fixtures/sample-project/output` ("output project") are the same as those from the input project (for now).
+Have a look at the files in `tests/fixtures/sample-project/input` ("input project"). You will find that the test module names are wildly inconsistent. The files in `tests/fixtures/sample-project/output` ("output project") are, for now, the same as those from the input project.
 
 Since our codemod is a no-op and the input and output are the same, we expect the `test` script to pass. Indeed, this is the case.
 
@@ -181,12 +179,13 @@ Note how I logged `filePaths` to check what `findFiles()` returns. You can run t
 
 <details>
 
-<summary>Expected output</code></summary>
+<summary>Expected output</summary>
 
 Note, the array appears twice, because an acceptance test runs the codemod twice to assert idempotency.
 
 ```sh
 ❯ pnpm test
+
 [
   'tests/acceptance/form-test.ts',
   'tests/acceptance/index-test.ts',
@@ -301,7 +300,7 @@ export function renameAcceptanceTests(options: Options): void {
 
 <div align="center">
   <div>
-    Next: <a href="./05-create-the-first-step-part-1.md">Create the first step (Part 2)</a>
+    Next: <a href="./05-step-1-acceptance-tests-part-2.md">Step 1: Acceptance tests (Part 2)</a>
   </div>
   <div>
     Previous: <a href="./03-sketch-out-the-solution.md">Sketch out the solution</a>
