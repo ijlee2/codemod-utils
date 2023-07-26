@@ -1,6 +1,6 @@
-# Step 1: Acceptance tests (Part 2)
+# Step 1: Update acceptance tests (Part 2)
 
-By the end of [the last chapter](./04-step-1-acceptance-tests-part-1.md), we extracted a function called `renameModule()`. It received an input file (a file that may or may not be a valid acceptance test) and returned it unchanged.
+By the end of [the last chapter](./04-step-1-update-acceptance-tests-part-1.md), we extracted a function called `renameModule()`. It received an input file (a file that may or may not be a valid acceptance test) and returned it unchanged.
 
 ```ts
 function renameModule(file: string): string {
@@ -136,7 +136,7 @@ Our next goal is to specify how to update the tree (how to rename the test modul
 const ast = traverse(file, {
   // ...
 });
-````
+```
 
 Currently, `ember-template-recast` and `recast` lack documentation and tutorials. This is unfortunate, given the large amount of **builders** and **visit methods** that they provide to help you transform code.
 
@@ -729,9 +729,9 @@ The `test` script should now pass.
 
 <div align="center">
   <div>
-    Next: <a href="./06-step-2-integration-tests.md">Step 2: Integration tests</a>
+    Next: <a href="./06-step-2-update-integration-tests.md">Step 2: Update integration tests</a>
   </div>
   <div>
-    Previous: <a href="./04-step-1-acceptance-tests-part-1.md">Step 1: Acceptance tests (Part 1)</a>
+    Previous: <a href="./04-step-1-update-acceptance-tests-part-1.md">Step 1: Update acceptance tests (Part 1)</a>
   </div>
 </div>
