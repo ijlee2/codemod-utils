@@ -38,7 +38,7 @@ ember-codemod-rename-test-modules
 
 ### bin
 
-The `bin` folder has an **executable file**. This file allows your users ("end-developers") to run the codemod either with `npx`, or locally after they modify the clone of your repo.
+The `bin` folder has an **executable file**. This file allows end-developers to run the codemod either with `npx`, or locally after they modify the clone of your repo.
 
 ```sh
 # Compile TypeScript
