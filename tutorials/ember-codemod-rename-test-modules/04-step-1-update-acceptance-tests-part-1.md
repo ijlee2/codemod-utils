@@ -1,4 +1,4 @@
-# Step 1: Acceptance tests (Part 1)
+# Step 1: Update acceptance tests (Part 1)
 
 So far, we used the CLI to [scaffold a project](./01-create-a-project.md) and came up with [3 steps to make test module names consistent](./03-sketch-out-the-solution.md):
 
@@ -87,9 +87,13 @@ We'll create a step called `rename-acceptance-tests`. By the end of this chapter
 Don't forget to practice running `lint`, `lint:fix`, and `test`.
 
 
-### Scaffold the step
+### Export an empty function
 
-In the `src/steps` folder, create a file called `rename-acceptance-tests.ts`. The file exports a function that is named `renameAcceptanceTests` (camelized) and receives `options` as an argument.
+In the `src/steps` folder, create a file called `rename-acceptance-tests.ts`.
+
+1. The file exports an empty function named `renameAcceptanceTests()` (camelized).
+1. The function receives 1 argument, `options`.
+1. The type for `options` is defined in `'../types/index.js`.
 
 <details>
 
@@ -133,7 +137,6 @@ export function runCodemod(codemodOptions: CodemodOptions): void {
 -   // ...
 +   renameAcceptanceTests(options);
 }
-
 ```
 
 </details>
@@ -210,7 +213,7 @@ See if you can do a for-loop over `filePaths`. For each file path:
 
 1. Use `join()` to form the absolute file path.
 1. Use `readFileSync()` to read the file content.
-1. Use `writeFileSync()` to write the content back to the file (a no-op).
+1. Use `writeFileSync()` to write the content back to the file (an **identity function**, which is a no-op).
 
 The `test` script should continue to pass.
 
@@ -300,7 +303,7 @@ export function renameAcceptanceTests(options: Options): void {
 
 <div align="center">
   <div>
-    Next: <a href="./05-step-1-acceptance-tests-part-2.md">Step 1: Acceptance tests (Part 2)</a>
+    Next: <a href="./05-step-1-update-acceptance-tests-part-2.md">Step 1: Update acceptance tests (Part 2)</a>
   </div>
   <div>
     Previous: <a href="./03-sketch-out-the-solution.md">Sketch out the solution</a>

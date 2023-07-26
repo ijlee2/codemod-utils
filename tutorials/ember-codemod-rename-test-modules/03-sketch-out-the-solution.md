@@ -103,7 +103,7 @@ export function runCodemod(codemodOptions: CodemodOptions): void {
 
 <div align="center">
   <div>
-    Next: <a href="./04-step-1-acceptance-tests-part-1.md">Step 1: Acceptance tests (Part 1)</a>
+    Next: <a href="./04-step-1-update-acceptance-tests-part-1.md">Step 1: Update acceptance tests (Part 1)</a>
   </div>
   <div>
     Previous: <a href="./02-understand-the-folder-structure.md">Understand the folder structure</a>
