@@ -25,5 +25,6 @@ The codemod is practical (i.e. end-developers can now use `--filter` to run a gr
 1. [Understand the folder structure](./02-understand-the-folder-structure.md)
 1. [Sketch out the solution](./03-sketch-out-the-solution.md)
 1. [Create the first step (Part 1)](./04-create-the-first-step-part-1.md)
+1. [Create the first step (Part 2)](./05-create-the-first-step-part-2.md)
 1. ...
 1. Maintain the project

@@ -301,7 +301,7 @@ export function renameAcceptanceTests(options: Options): void {
 
 <div align="center">
   <div>
-    Next: TBA
+    Next: <a href="./05-create-the-first-step-part-1.md">Create the first step (Part 2)</a>
   </div>
   <div>
     Previous: <a href="./03-sketch-out-the-solution.md">Sketch out the solution</a>
