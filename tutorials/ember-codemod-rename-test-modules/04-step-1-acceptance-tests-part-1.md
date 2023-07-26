@@ -1,4 +1,4 @@
-# Create the first step (Part 1)
+# Step 1: Acceptance tests (Part 1)
 
 So far, we used the CLI to [scaffold a project](./01-create-a-project.md) and came up with [3 steps to make test module names consistent](./03-sketch-out-the-solution.md):
 
@@ -300,7 +300,7 @@ export function renameAcceptanceTests(options: Options): void {
 
 <div align="center">
   <div>
-    Next: <a href="./05-create-the-first-step-part-1.md">Create the first step (Part 2)</a>
+    Next: <a href="./05-step-1-acceptance-tests-part-2.md">Step 1: Acceptance tests (Part 2)</a>
   </div>
   <div>
     Previous: <a href="./03-sketch-out-the-solution.md">Sketch out the solution</a>

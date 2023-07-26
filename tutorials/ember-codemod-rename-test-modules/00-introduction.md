@@ -24,7 +24,9 @@ The codemod is practical (i.e. end-developers can now use `--filter` to run a gr
 1. [Create a project](./01-create-a-project.md)
 1. [Understand the folder structure](./02-understand-the-folder-structure.md)
 1. [Sketch out the solution](./03-sketch-out-the-solution.md)
-1. [Create the first step (Part 1)](./04-create-the-first-step-part-1.md)
-1. [Create the first step (Part 2)](./05-create-the-first-step-part-2.md)
+1. [Step 1: Acceptance tests (Part 1)](./04-step-1-acceptance-tests-part-1.md)
+1. [Step 1: Acceptance tests (Part 2)](./05-step-1-acceptance-tests-part-2.md)
+1. [Step 2: Integration tests](./06-step-2-integration-tests.md)
+1. [Step 3: Unit tests](./07-step-3-unit-tests.md)
 1. ...
 1. Maintain the project

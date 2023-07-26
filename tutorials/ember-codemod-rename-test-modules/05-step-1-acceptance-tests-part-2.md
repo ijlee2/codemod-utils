@@ -1,6 +1,6 @@
-# Create the first step (Part 2)
+# Step 1: Acceptance tests (Part 2)
 
-By the end of [the last chapter](./04-create-the-first-step-part-1.md), we extracted a function called `renameModule()`. It received an input file (a file that may or may not be a valid acceptance test) and returned it unchanged.
+By the end of [the last chapter](./04-step-1-acceptance-tests-part-1.md), we extracted a function called `renameModule()`. It received an input file (a file that may or may not be a valid acceptance test) and returned it unchanged.
 
 ```ts
 function renameModule(file: string): string {
@@ -729,9 +729,9 @@ The `test` script should now pass.
 
 <div align="center">
   <div>
-    Next: TBA
+    Next: <a href="./06-step-2-integration-tests.md">Step 2: Integration tests</a>
   </div>
   <div>
-    Previous: <a href="./04-create-the-first-step-part-1.md">Create the first step (Part 1)</a>
+    Previous: <a href="./04-step-1-acceptance-tests-part-1.md">Step 1: Acceptance tests (Part 1)</a>
   </div>
 </div>
