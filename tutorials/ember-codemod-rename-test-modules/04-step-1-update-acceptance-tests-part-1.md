@@ -1,6 +1,6 @@
 # Step 1: Update acceptance tests (Part 1)
 
-So far, we used the CLI to [scaffold a project](./01-create-a-project.md) and came up with [3 steps to make test module names consistent](./03-sketch-out-the-solution.md):
+So far, we used the [CLI to scaffold a project](./01-create-a-project.md) and wrote down [3 steps to rename test modules](./03-sketch-out-the-solution.md):
 
 - Update acceptance tests
 - Update integration tests
@@ -64,9 +64,9 @@ The `lint` script fails with 1 error (`options` in `src/index.ts` is unused), bu
 
 ## Add a fixture project
 
-At the early stage of development, I recommend creating a fixture project for acceptance testing. Ideally, the fixture comes from a real-life project (copy-paste) or is modeled after it.
+In the early stage of development, I recommend creating a fixture project for acceptance testing. Ideally, the fixture comes from a real-life project (copy-paste) or is modeled after it.
 
-For this tutorial, you can cherry-pick [the 3rd commit from my solution repo](https://github.com/ijlee2/ember-codemod-rename-test-modules/commits/main):
+For this tutorial, please cherry-pick [the 3rd commit from my solution repo](https://github.com/ijlee2/ember-codemod-rename-test-modules/commits/main). (If the hash has changed, find the commit with the description `chore: Added a fixture project`.)
 
 ```sh
 git remote add solution git@github.com:ijlee2/ember-codemod-rename-test-modules.git
@@ -75,14 +75,39 @@ git cherry-pick 5a354a4
 git remote remove solution
 ```
 
-Have a look at the files in `tests/fixtures/sample-project/input` ("input project"). You will find that the test module names are wildly inconsistent. The files in `tests/fixtures/sample-project/output` ("output project") are, for now, the same as those from the input project.
+Have a look at the files in `tests/fixtures/sample-project/input` ("input project"). You will see that the test module names are quite inconsistent. The files in `tests/fixtures/sample-project/output` ("output project") are the same as those in the input project.
 
-Since our codemod is a no-op and the input and output are the same, we expect the `test` script to pass. Indeed, this is the case.
+Since our codemod is currently a no-op and the input and output are the same, we expect the `test` script to pass. Indeed, this is the case.
+
+<details>
+
+You can ignore the error message, which came from compiling TypeScript.
+
+<summary>Expected output</summary>
+
+```sh
+❯ pnpm test
+
+src/index.ts:5:9 - error TS6133: 'options' is declared but its value is never read.
+
+5   const options = createOptions(codemodOptions);
+          ~~~~~~~
+
+Found 1 error in src/index.ts:5
+
+SUCCESS: Built dist-for-testing.
+
+running 2 tests
+..
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 filtered out; finished in 188ms
+```
+
+</details>
 
 
 ## Take small steps
 
-We'll create a step called `rename-acceptance-tests`. By the end of this chapter, we'll be able to read files from an input project, then write back (without altering the file content) to create the output project.
+We'll now create a step called `rename-acceptance-tests`. By the end of this chapter, we'll be able to read files from an input project, then write back (without altering the file content) to create the output project.
 
 Don't forget to practice running `lint`, `lint:fix`, and `test`.
 
@@ -93,7 +118,7 @@ In the `src/steps` folder, create a file called `rename-acceptance-tests.ts`.
 
 1. The file exports an empty function named `renameAcceptanceTests()` (camelized).
 1. The function receives 1 argument, `options`.
-1. The type for `options` is defined in `'../types/index.js`.
+1. The type definition for `options` can be found in `../types/index.js`.
 
 <details>
 
@@ -144,16 +169,14 @@ export function runCodemod(codemodOptions: CodemodOptions): void {
 
 ### Find files
 
-Next, we find the right files for the `rename-acceptance-tests` step.
-
-`@codemod-utils/files` provides a method called `findFiles()`. We just need to fill out 2 search criteria:
+Next, we find files that are of interest to the `rename-acceptance-tests` step. `@codemod-utils/files` provides a method called `findFiles()`. We need to fill out 2 search criteria:
 
 - A **glob pattern** (how to find files)
 - The location of the end-developer's project (where to find files)
 
-Thanks to Ember's conventions, we know that acceptance tests live in the folder `tests/acceptance`, the file names end in `-test`, and the file extensions are either `.js` or `.ts`. The glob pattern that describes what we know is `tests/acceptance/**/*-test.{js,ts}`.
+Thanks to Ember's conventions, we know that acceptance tests live in the folder `tests/acceptance`, the file names end in `-test`, and the file extensions are either `.js` or `.ts`. The glob pattern that captures our knowledge is `tests/acceptance/**/*-test.{js,ts}`.
 
-The project's location comes from `options.projectRoot`. I strongly recommend destructuring `options`, then passing exactly what is needed to `findFiles()`.
+The project's location comes from `options.projectRoot`. I recommend destructuring `options`, then passing a new object with exactly what is needed to `findFiles()`.
 
 <details>
 
@@ -178,7 +201,7 @@ export function renameAcceptanceTests(options: Options): void {
 
 </details>
 
-Note how I logged `filePaths` to check what `findFiles()` returns. You can run the `test` script to see the output.
+Note, `renameAcceptanceTests()` logs `filePaths` in the console. You can run the `test` script to check its value.
 
 <details>
 
@@ -205,17 +228,15 @@ You can also check that `lint` is passing.
 
 ### Read and write files
 
-Now that we know which files exist in the end-consumer's project, we can read them and update their content.
+Now that we know which files exist in the end-developer's project, we can read and update their content. To do so, we can use methods from Node.js: [`join()`](https://nodejs.org/docs/latest-v16.x/api/path.html#pathjoinpaths), [`readFileSync()`](https://nodejs.org/docs/latest-v16.x/api/fs.html#fsreadfilesyncpath-options), and [`writeFileSync()`](https://nodejs.org/docs/latest-v16.x/api/fs.html#fswritefilesyncfile-data-options).
 
-Note, Node.js provides [`readFileSync()`](https://nodejs.org/docs/latest-v16.x/api/fs.html#fsreadfilesyncpath-options) and [`writeFileSync()`](https://nodejs.org/docs/latest-v16.x/api/fs.html#fswritefilesyncfile-data-options). We can also use its [`join()`](https://nodejs.org/docs/latest-v16.x/api/path.html#pathjoinpaths) method to form the absolute file path.
-
-See if you can do a for-loop over `filePaths`. For each file path:
+See if you can do a for-loop over `filePaths`. For each file path,
 
 1. Use `join()` to form the absolute file path.
-1. Use `readFileSync()` to read the file content.
-1. Use `writeFileSync()` to write the content back to the file (an **identity function**, which is a no-op).
+1. Use `readFileSync()` to read the file content (with encoding of `'utf8'`).
+1. Use `writeFileSync()` to write the content back to the file (with encoding of `'utf8'`).
 
-The `test` script should continue to pass.
+In short, `renameAcceptanceTests()` is now an **identity function** (a type of no-op). The `test` script should continue to pass, since we haven't really changed the test files.
 
 <details>
 
@@ -259,9 +280,9 @@ The line,
 const newFile = oldFile;
 ```
 
-may encourage our future self to add some complex code inside the for-loop.
+doesn't make our (future) intent clear. It may also encourage us to add some complex code inside the for-loop.
 
-To avoid nesting code and to better indicate what this line is actually about, let's extract a function called `renameModule`. It receives the file content as input, and returns it as output (a no-op).
+To avoid nesting code and to clearly indicate what this line is about, let's extract a function called `renameModule()`. It receives the file content as input and returns it back.
 
 <details>
 

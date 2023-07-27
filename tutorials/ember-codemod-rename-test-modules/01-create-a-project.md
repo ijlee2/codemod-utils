@@ -1,8 +1,8 @@
 # Create a project
 
-We can use `@codemod-utils/cli` (a command-line interface) to create a Node project. It comes with lint, test, CI (continuous integration), and documentation out of the box.
+We will use [`@codemod-utils/cli`](../../packages/cli/README.md) (a command-line interface) to create a Node project. The project comes with lint, test, CI (continuous integration), and documentation out of the box.
 
-By default, the CLI adds `@codemod-utils/files` and `@codemod-utils/tests` (these packages are "core"), because every codemod will need them. For `ember-codemod-rename-test-modules`, we need to parse and update JS and TS files, so we will instruct the CLI to add `@codemod-utils/ast-javascript` (an "addon").
+The CLI automatically adds [`@codemod-utils/files`](../../packages/files/README.md) and [`@codemod-utils/tests`](../../packages/tests/README.md) (these packages are "core"), because every codemod will need them. For `ember-codemod-rename-test-modules`, we will need to parse and update JavaScript and TypeScript files, so we will instruct the CLI to also add [`@codemod-utils/ast-javascript`](../../packages/ast/javascript/README.md) (an "addon").
 
 Goals:
 
@@ -53,16 +53,18 @@ pnpm lint:fix
 pnpm test
 ```
 
-Try running these scripts now. They should pass out of the box. (The scripts for local development are documented in `CONTRIBUTING.md`.)
+Try running these scripts now. They should pass out of the box.
+
+(The scripts for local development are documented in your project's `CONTRIBUTING.md`.)
 
 
 ## Update configurations
 
-The CLI added a few placeholders. At some point (before the initial commit or, at the latest, before publishing the codemod), you will want to manually update these files:
+The CLI added a few placeholders. At some point—before the initial commit or, at the latest, before publishing your codemod—you will want to manually update these files:
 
 - `LICENSE.md` - copyright information
 - `package.json` - `author`, `description`, `repository` (remove `private` to publish the codemod)
-- `README.md` - link to the CI status badge, description, codemod arguments
+- `README.md` - link to the CI status badge, codemod description and usage
 
 
 <div align="center">

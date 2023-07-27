@@ -1,6 +1,6 @@
 # Step 2: Update integration tests
 
-Now that we have a way to update acceptance tests, we can expect to update integration tests in a similar manner. But how much code that we copy-paste will "just work"? Should we extract utility functions to avoid code duplication?
+Now that we have a way to update acceptance tests, we expect that we can update integration tests in a similar manner. But how much code that we copy-paste will "just work"? Should we extract utility functions to avoid code duplication?
 
 It's hard to answer these questions, because we're still learning how to write codemods. Furthermore, integration tests have 3 subcases (components, helpers, and modifiers) instead of one.
 
@@ -24,8 +24,8 @@ In [Chapter 4](04-step-1-update-acceptance-tests-part-1.md#take-small-steps), we
 
 1. Export an empty function.
 1. Find files.
-1. Read and write files.
-1. Extract an identity function named `renameModule()`.
+1. Read and write files (identity function).
+1. Extract the function `renameModule()`.
 
 See if you can similarly scaffold `rename-integration-tests`. Feel free to look back at the chapter.
 
@@ -105,7 +105,7 @@ Don't forget to check that `lint` and `test` pass.
 
 ### Transform code
 
-In [Chapter 5](./05-step-1-update-acceptance-tests-part-2.md), we used AST Explorer, then moved the implementation to our codemod. We ended up with two functions, `getModuleName()` and `renameModule()`.
+In [Chapter 5](./05-step-1-update-acceptance-tests-part-2.md), we used AST Explorer to try out ideas, then moved the implementation to our codemod. We ended up with two functions, `getModuleName()` and `renameModule()`.
 
 <details>
 
@@ -169,13 +169,13 @@ function renameModule(file: string, data: Data): string {
 
 </details>
 
-Try copy-pasting the starter code to `rename-integration-tests`, then update the references to acceptance tests.
+Try copy-pasting the starter code to `rename-integration-tests`, then remove references to acceptance tests.
 
 <details>
 
 <summary>Solution: <code>src/steps/rename-integration-tests.ts</code></summary>
 
-I highlighted how `getModuleName()` and `renameModule()` are different between `rename-acceptance-tests` and `rename-integration-tests`.
+I highlighted only how `getModuleName()` and `renameModule()` differ between `rename-acceptance-tests` and `rename-integration-tests`.
 
 ```diff
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
@@ -268,7 +268,7 @@ export function renameIntegrationTests(options: Options): void {
 
 </details>
 
-Afterwards, run `test` to check the names of test modules.
+Let's run `test` to check the names of test modules.
 
 <details>
 
@@ -286,32 +286,32 @@ AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
 {
   '.gitkeep': '',
 ...
-          "import { module, test } from 'qunit';\n" +
-          '\n' +
-+           "module('Integration | components/navigation-menu', function (hooks) {\n" +
--           "module('Integration | Component | <NavigationMenu>', function (hooks) {\n" +
-          '  setupRenderingTest(hooks);\n' +
-          '\n' +
+        "import { module, test } from 'qunit';\n" +
+        '\n' +
++         "module('Integration | components/navigation-menu', function (hooks) {\n" +
+-         "module('Integration | Component | <NavigationMenu>', function (hooks) {\n" +
+        '  setupRenderingTest(hooks);\n' +
+        '\n' +
 ...
-              "import { module, test } from 'qunit';\n" +
-              '\n' +
-+               "module('Integration | components/products/product/card', function (hooks) {\n" +
--               "module('<Products::Product::Card>', function (hooks) {\n" +
-              '  setupRenderingTest(hooks);\n' +
-              '  setupIntl(hooks);\n' +
+        "import { module, test } from 'qunit';\n" +
+        '\n' +
++         "module('Integration | components/products/product/card', function (hooks) {\n" +
+-         "module('<Products::Product::Card>', function (hooks) {\n" +
+        '  setupRenderingTest(hooks);\n' +
+        '  setupIntl(hooks);\n' +
 ...
-              "import sinon from 'sinon';\n" +
-              '\n' +
-+               "module('Integration | components/products/product/details', function (hooks) {\n" +
--               "module('Integration | Component | products | product | details', function (hooks) {\n" +
-              '  setupRenderingTest(hooks);\n' +
-              '  setupIntl(hooks);\n' +
+        "import sinon from 'sinon';\n" +
+        '\n' +
++         "module('Integration | components/products/product/details', function (hooks) {\n" +
+-         "module('Integration | Component | products | product | details', function (hooks) {\n" +
+        '  setupRenderingTest(hooks);\n' +
+        '  setupIntl(hooks);\n' +
 ...
 ```
 
 </details>
 
-From the output (marked with `+`), we see that the codemod did update test module names, but the names are incorrect (they are not what Ember CLI would generate).
+From the "actual" lines (marked with `+`), we see that the codemod did update test module names, but the names are incorrect (they are not what Ember CLI would generate).
 
 ```ts
 /* Actual: Module names don't include the entity type */
@@ -327,14 +327,14 @@ module('Integration | Component | products/product/card', function (hooks) {});
 module('Integration | Component | products/product/details', function (hooks) {});
 ```
 
-We conclude that `getModuleName()`, which worked for acceptance tests, failed to work for integration tests. This illustrates why we want to avoid premature abstractions (e.g. by extracting utility functions early).
+We can conclude that `getModuleName()`, which worked for acceptance tests, failed to for integration tests. This illustrates why we want to avoid premature abstractions (e.g. by extracting utility functions early).
 
-The good news is, `getModuleName()` did get us quite far with implementing `rename-integration-tests`. We just need to figure out how to update the function.
+The good news is, `getModuleName()` got us quite far with implementing `rename-integration-tests`. We just need to figure out how to update the function.
 
 
 ## Correct overshoots
 
-We say that an [iterative method](https://en.wikipedia.org/wiki/Iterative_method) has "overshot," if an iteration (another word for step) let us reach close to the solution, but a bit too far. An overshoot occurred when we blindly copy-pasted `getModuleName()` from `rename-acceptance-tests`.
+We say that an [iterative method](https://en.wikipedia.org/wiki/Iterative_method) has "overshot," if an iteration (another word for step) helped us reach somewhere close to the solution, but made us go a bit too far. An overshoot occurred when we copy-pasted `getModuleName()` from `rename-acceptance-tests`.
 
 ```ts
 function getModuleName(filePath: string): string {
@@ -350,7 +350,22 @@ function getModuleName(filePath: string): string {
 }
 ```
 
-Let's correct the overshoot by returning the entity type (represented by a string such as `'Component'`, `'Helper'`, and `'Modifier'`) along with the entity name (e.g. `'navigation-menu'`, `'products/product/card'`).
+Let's correct the overshoot by adding the entity type (here, we represent it as a string such as `'Component'`, `'Helper'`, or `'Modifier'`) before the entity name (e.g. `'navigation-menu'`, `'products/product/card'`).
+
+```ts
+function getModuleName(filePath: string): string {
+  let { dir, name } = parseFilePath(filePath);
+
+  dir = dir.replace(/^tests\/integration(\/)?/, '');
+  name = name.replace(/-test$/, '');
+
+  const entityType = /* ... */;
+  const entityName = /* ... */;
+
+  // a.k.a. friendlyTestDescription
+  return ['Integration', entityType, entityName].join(' | ');
+}
+```
 
 
 ### Go with simple
@@ -363,7 +378,7 @@ You might see how we can derive the entity's type and name from `dir`.
 + function parseEntity(dir: string) {
 +   // ...
 + }
-
++ 
 function getModuleName(filePath: string): string {
   let { dir, name } = parseFilePath(filePath);
 
@@ -403,11 +418,77 @@ function parseEntity(dir: string): {
 }
 ```
 
-What's important is that I have hard-coded the mapping between folders and entity types, _despite_ knowing that Ember CLI pluralizes the entity type to name the folder. I didn't create a regular expression or install a package that has `singularize()` and `capitalize()`.
+Note that I hard-coded the mapping between folders and entity types, _despite_ knowing that Ember CLI pluralizes the entity type to name the folder. I didn't try to create a regular expression or install a package that has `singularize()` and `capitalize()`.
 
-The lesson is, by taking the simplest approach, we can quickly implement a step. Later, after implementing all steps and writing more tests, we can revisit the steps and come up with better approaches.
+The lesson is, take the simplest approach to quickly implement a step. Later, after finishing writing the codemod and writing more tests, we can revisit the steps and come up with better approaches.
 
-Run `test` once more to check the names of test modules. This time, we should see the correct names.
+<details>
+
+<summary>Solution: <code>src/steps/rename-integration-tests.ts</code></summary>
+
+The implementations for `renameModule()` and `renameIntegrationTests()` remain unchanged and have been hidden for simplicity.
+
+```diff
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import { readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+import { AST } from '@codemod-utils/ast-javascript';
+import { findFiles, parseFilePath } from '@codemod-utils/files';
+
+import type { Options } from '../types/index.js';
+
+type Data = {
+  isTypeScript: boolean;
+  moduleName: string;
+};
+
++ const folderToEntityType = new Map([
++   ['components', 'Component'],
++   ['helpers', 'Helper'],
++   ['modifiers', 'Modifier'],
++ ]);
++ 
++ function parseEntity(dir: string): {
++   entityType: string | undefined;
++   remainingPath: string;
++ } {
++   const [folder, ...remainingPaths] = dir.split('/');
++   const entityType = folderToEntityType.get(folder!);
++ 
++   return {
++     entityType,
++     remainingPath: remainingPaths.join('/'),
++   };
++ }
++ 
+function getModuleName(filePath: string): string {
+  let { dir, name } = parseFilePath(filePath);
+
+  dir = dir.replace(/^tests\/integration(\/)?/, '');
+  name = name.replace(/-test$/, '');
+
+-   const entityName = join(dir, name);
++   const { entityType, remainingPath } = parseEntity(dir);
++   const entityName = join(remainingPath, name);
+
+  // a.k.a. friendlyTestDescription
+-   return ['Integration', entityName].join(' | ');
++   return ['Integration', entityType, entityName].join(' | ');
+}
+
+function renameModule(file: string, data: Data): string {
+  // ...
+}
+
+export function renameIntegrationTests(options: Options): void {
+  // ...
+}
+```
+
+</details>
+
+Run `test` once more to check the names of test modules. This time, we should see the names that Ember CLI gives when we generate an integration test.
 
 <details>
 
@@ -425,32 +506,32 @@ AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
 {
   '.gitkeep': '',
 ...
-          "import { module, test } from 'qunit';\n" +
-          '\n' +
-+           "module('Integration | Component | navigation-menu', function (hooks) {\n" +
--           "module('Integration | Component | <NavigationMenu>', function (hooks) {\n" +
-          '  setupRenderingTest(hooks);\n' +
-          '\n' +
+        "import { module, test } from 'qunit';\n" +
+        '\n' +
++         "module('Integration | Component | navigation-menu', function (hooks) {\n" +
+-         "module('Integration | Component | <NavigationMenu>', function (hooks) {\n" +
+        '  setupRenderingTest(hooks);\n' +
+        '\n' +
 ...
-              "import { module, test } from 'qunit';\n" +
-              '\n' +
-+               "module('Integration | Component | products/product/card', function (hooks) {\n" +
--               "module('<Products::Product::Card>', function (hooks) {\n" +
-              '  setupRenderingTest(hooks);\n' +
-              '  setupIntl(hooks);\n' +
+        "import { module, test } from 'qunit';\n" +
+        '\n' +
++         "module('Integration | Component | products/product/card', function (hooks) {\n" +
+-         "module('<Products::Product::Card>', function (hooks) {\n" +
+        '  setupRenderingTest(hooks);\n' +
+        '  setupIntl(hooks);\n' +
 ...
-              "import sinon from 'sinon';\n" +
-              '\n' +
-+               "module('Integration | Component | products/product/details', function (hooks) {\n" +
--               "module('Integration | Component | products | product | details', function (hooks) {\n" +
-              '  setupRenderingTest(hooks);\n' +
-              '  setupIntl(hooks);\n' +
+        "import sinon from 'sinon';\n" +
+        '\n' +
++         "module('Integration | Component | products/product/details', function (hooks) {\n" +
+-         "module('Integration | Component | products | product | details', function (hooks) {\n" +
+        '  setupRenderingTest(hooks);\n' +
+        '  setupIntl(hooks);\n' +
 ...
 ```
 
 </details>
 
-Now that we're satisfied, we can run `codemod-test-fixtures.sh` to update the fixture files.
+Now that we're satisfied, we can run `codemod-test-fixtures.sh` to update the output fixture files.
 
 (You might have noticed that I surreptitiously ignored what would happen when `entityType` is `undefined`. We will address this edge case in a later chapter.)
 

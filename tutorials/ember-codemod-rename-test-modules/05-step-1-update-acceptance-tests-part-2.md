@@ -1,6 +1,6 @@
 # Step 1: Update acceptance tests (Part 2)
 
-By the end of [the last chapter](./04-step-1-update-acceptance-tests-part-1.md), we extracted a function called `renameModule()`. It received an input file (a file that may or may not be a valid acceptance test) and returned it unchanged.
+At [the end of the last chapter](./04-step-1-update-acceptance-tests-part-1.md#extract-function), we extracted a function called `renameModule()`. It received an input file (a file that may or may not be a valid acceptance test) and returned it unchanged.
 
 ```ts
 function renameModule(file: string): string {
@@ -13,14 +13,14 @@ In this chapter, we'll instruct this function to update the file (if it is valid
 Goals:
 
 - Use AST explorer as a playground
-- Use `@codemod-utils/ast-javascript` to read and update JS/TS files
-- Make early exits to simplify logic
+- Use `@codemod-utils/ast-javascript` to read and update files
+- Make early exits
 - Auto-fix fixtures
 
 
 ## Hello, AST!
 
-Libraries such as [`recast`](https://github.com/benjamn/recast) and [`ember-template-recast`](https://github.com/ember-template-lint/ember-template-recast) help us convert JS/TS and HBS files to an **AST (abstract syntax tree)**. `@codemod-utils` wraps these libraries to provide you an interface that is standardized:
+Libraries like [`recast`](https://github.com/benjamn/recast) and [`ember-template-recast`](https://github.com/ember-template-lint/ember-template-recast) help us convert JS/TS and HBS files to an **AST (abstract syntax tree)**. `@codemod-utils` wraps these libraries to provide you an interface that is standardized:
 
 - `AST.traverse` (traverse the tree)
 - `AST.builders` (build a new tree)
@@ -66,11 +66,11 @@ function updateFile(file: string): string {
 
 </details>
 
-Based on the how-to above, try updating `renameModule()`. It is to remain a no-op, but should now use `AST.traverse` and `AST.print`, in order to read the file and return it unchanged. How will you indicate whether a file is in JavaScript or TypeScript?
+Based on the how-to's above, try updating `renameModule()`. It is to remain an identity function, but to now use `AST.traverse` and `AST.print`, in order to read the file and return it unchanged. How will you indicate whether a file is in JavaScript or TypeScript?
 
 <details>
 
-We pass a 2nd argument called `data`. It is an object that contains any additional information that we need to read and update the file.
+We pass another argument called `data` to `renameModule()`. It is an object that contains any additional information that we need to read and update the file.
 
 <summary>Solution: <code>src/steps/rename-acceptance-tests.ts</code></summary>
 
@@ -125,12 +125,12 @@ export function renameAcceptanceTests(options: Options): void {
 
 </details>
 
-Since the output of `renameModule()` hasn't changed, we can expect the `test` script to continue to pass.
+Since `renameModule()` is an identity, the `test` script should continue to pass.
 
 
 ## AST Explorer
 
-Our next goal is to specify how to update the tree (how to rename the test module).
+Next, we want to specify how to update the tree (how to rename the test module).
 
 ```ts
 const ast = traverse(file, {
@@ -157,7 +157,7 @@ Then, copy-paste the following code:
 
 <summary>Input file (top-left corner)</summary>
 
-A simplified file that covers the base and edge cases and ignores things that are unimportant.
+A simplified file that covers the base and edge cases, while ignoring the things that are unimportant.
 
 ```ts
 import { module, test } from 'qunit';
@@ -201,19 +201,27 @@ export default function transformer(code, { recast, parsers }) {
 
 ### Visit methods
 
-When you check the console, you will see that `ast.program.body` (the input file) is an array with 2 elements (called **nodes**, in the context of a tree). The nodes correspond to the `import` statement on line 1 and the `module()` function on line 3.
+From the console, we see that `ast.program.body` (the input file) is an array with 2 elements (called **nodes**, in the context of a tree). The nodes correspond to the `import` statement on line 1 and the `module()` function on line 3.
 
 <img width="1440" alt="" src="https://github.com/ijlee2/codemod-utils/assets/16869656/0e028238-3f7b-4b53-911d-c2717345d682">
 
-Since we are interested in updating `module()`, we expand the 2nd array element to find things that could help us. We see that there are 3 node `type`'s associated with `module()`:
+Since we are interested in updating `module()`, we expand the 2nd element to find things that can help us. We see that there are 3 node `type`'s associated with `module()`:
 
 - `ExpressionStatement`
 - `CallExpression`
 - `Identifier`
 
-Now it's a game of Goldilocks: We have to pick one that provides just enough information so that we can update the test module name. This happens to be `CallExpression` so we will use the visit method named `visitCallExpression()`.
+It's a game of Goldilocks: We have to pick one that provides us enough information to rename the test module, but not too much that reading and updating the information becomes difficult. The one that's just right is `CallExpression`. From the `type`'s name, we can guess the visit method's name to be `visitCallExpression()`.
 
-To understand how to call `visitCallExpression()`, use `console.log()` to determine its input and the error message in the console to determine its output.
+```ts
+recast.visit(ast, {
+  visitCallExpression(node) {
+    // ...
+  },
+});
+```
+
+To better understand this visit method, use `console.log()` to check the value of `node.value`. The error message in the console tells us what `visitCallExpression()` should return.
 
 <details>
 
@@ -241,33 +249,22 @@ export default function transformer(code, { recast, parsers }) {
 
 </details>
 
-From the console log, we see that `visitCallExpression()` visited only 1 node, even though the `test()` and `module()` functions, located inside the parent `module()`, are also of the type `CallExpression`. This, in our case, is a happy accident, but may be a bug in some other case. You can use `this.traverse()` to recursively visit all `CallExpression` nodes.
+From the console log, we see that `visitCallExpression()` visited only 1 node. This is surprising, because the `test()` and `module()` functions, located inside the parent `module()`, are also of the type `CallExpression`. This works in our favor, but may be a bug in some other case. To visit all `CallExpression` nodes, you can write `this.traverse(node)` to make a recursion.
 
 <details>
 
-<summary>Solution: Transform function (a temporary change)</summary>
+<summary>Example</summary>
 
-Don't forget to revert the change, since we don't need `this.traverse()`.
+```ts
+recast.visit(ast, {
+  visitCallExpression(node) {
+    this.traverse(node);
 
-```diff
-export default function transformer(code, { recast, parsers }) {
-  const ast = recast.parse(code, { parser: parsers.typescript });
-  const b = recast.types.builders;
+    // ...
 
-  recast.visit(ast, {
-    visitCallExpression(node) {
-+      this.traverse(node);
-+
-      console.log('-- CallExpression --');
--       console.log(node.value);
-+       console.log(node.value.callee.name);
-
-      return false;
-    },
-  });
-
-  return recast.print(ast).code;
-}
+    return false;
+  },
+});
 ```
 
 <img width="1440" alt="" src="https://github.com/ijlee2/codemod-utils/assets/16869656/d6be07b3-8537-493c-9e68-a0c600d85f38">
@@ -277,9 +274,9 @@ export default function transformer(code, { recast, parsers }) {
 
 ### Make early exits
 
-Early exits are key to traversing a tree in a way that is maintainable and extensible. Without early exits, TypeScript will likely throw an error when you access a nested property of `node` (the error is, you made too many assumptions).
+Early exits are key to traversing a tree in a way that is maintainable and extensible. Without early exits, TypeScript will likely throw an error when you access a nested property of `node` (because you made too many assumptions).
 
-Recall the console logs from earlier:
+Recall the logs in the console from earlier:
 
 <details>
 
@@ -291,7 +288,7 @@ Recall the console logs from earlier:
 
 </details>
 
-Use the things (highlighted in orange, i.e. `node.value.callee` and `node.value.arguments`) to make early exits. If you made early exits correctly, the line `console.log(node.value);` will continue to log the node that corresponds to the parent `module()`.
+Use what are highlighted in orange (`node.value.callee` and `node.value.arguments`) to make early exits. If done correctly, you will continue to see the node for the parent `module()` in the console. As soon as `module()` is renamed or has incorrect arguments, the node will disappear from the console.
 
 <details>
 
@@ -339,14 +336,14 @@ export default function transformer(code, { recast, parsers }) {
 
 </details>
 
-Thanks to early exits, a file that is not valid will remain unchanged.
+Thanks to early exits, files that aren't valid test files won't be changed.
 
 
 ### Build a new tree
 
-Now that we've isolated the valid case, we can use the builders `b.stringLiteral()` to replace a part of the existing tree.
+Now that we've isolated the valid case, we can use the builder `b.stringLiteral()` to replace a part of the tree.
 
-Again, try using the error message in the console to find out how to update the tree. (This is not easy!) In the output file at the bottom-right corner, you should see the test module name change.
+Again, try using the error message in the console to find out how to update the tree. (This is not easy!) If done correctly, the output file at the bottom-right corner will show a new name for the test module.
 
 <details>
 
@@ -395,13 +392,13 @@ export default function transformer(code, { recast, parsers }) {
 
 </details>
 
-To be precise about types, we can use a `switch` statement and refactor code.
+To be precise with types, we can use a `switch` statement and refactor code.
 
 <details>
 
 <summary>Solution: Transform function</summary>
 
-```ts
+```diff
 export default function transformer(code, { recast, parsers }) {
   const ast = recast.parse(code, { parser: parsers.typescript });
   const b = recast.types.builders;
@@ -421,19 +418,27 @@ export default function transformer(code, { recast, parsers }) {
         return false;
       }
 
-      switch (node.value.arguments[0].type) {
-        case 'Literal': {
-          node.value.arguments[0] = b.literal(moduleName);
-
-          break;
-        }
-
-        case 'StringLiteral': {
-          node.value.arguments[0] = b.stringLiteral(moduleName);
-
-          break;
-        }
-      }
+-       if (
+-         node.value.arguments[0].type !== 'Literal' &&
+-         node.value.arguments[0].type !== 'StringLiteral'
+-       ) {
+-         return false;
+-       }
+- 
+-       node.value.arguments[0] = b.stringLiteral(moduleName);
++       switch (node.value.arguments[0].type) {
++         case 'Literal': {
++           node.value.arguments[0] = b.literal(moduleName);
++ 
++           break;
++         }
++ 
++         case 'StringLiteral': {
++           node.value.arguments[0] = b.stringLiteral(moduleName);
++ 
++           break;
++         }
++       }
 
       return false;
     },
@@ -448,13 +453,13 @@ export default function transformer(code, { recast, parsers }) {
 
 ## Time to get real
 
-Once you arrive at an implementation in AST Explorer, moving the code to your project is trivial. Replace `b.` with `AST.builders.`, then cut-paste the visit methods object. (How should we pass `moduleName`?)
+Once you arrive at an implementation in AST Explorer, moving the code to the codemod is trivial. Copy-paste the object with the visit methods, then replace `b.` with `AST.builders.`. (How should we pass `moduleName`?)
 
 <details>
 
 <summary>Solution: <code>src/steps/rename-acceptance-tests.ts</code></summary>
 
-Disabling `@typescript-eslint/no-unsafe-member-access` is not really a part of the change (this seems to be required in `@typescript-eslint@v6`). Pretend that it's not there. 😓
+Disabling `@typescript-eslint/no-unsafe-member-access` isn't really a part of the change. (This may be required in `@typescript-eslint@v6`?) Pretend that it's not there. 🙈
 
 ```diff
 + /* eslint-disable @typescript-eslint/no-unsafe-member-access */
@@ -534,11 +539,15 @@ export function renameAcceptanceTests(options: Options): void {
 
 </details>
 
-We expect the `test` script to fail and the reason for failure to be, because the test module name has been changed to `New module` for all valid files in `tests/acceptance`. Indeed, this is the case.
+We expect the `test` script to fail, since all test modules in the `tests/acceptance` folder should be renamed to `New module`. Indeed, this is the case.
 
 <details>
 
 <summary>Expected output</summary>
+
+The lines that start with `+` ("actual") help us understand what we might get, had we run the codemod on some project.
+
+The lines that start with `-` ("expected") are what we should get, according to the _current_ output fixture project. Keep in mind that, until we finish writing the codemod, the expected lines may be incorrect.
 
 ```sh
 ❯ pnpm test
@@ -573,33 +582,17 @@ AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
         '  setupApplicationTest(hooks);\n' +
         '  setupCustomAssertionsForProducts(hooks);\n' +
 ...
-        "import { module, test } from 'qunit';\n" +
-        '\n' +
-+         "module('New module', function (hooks) {\n" +
--         "module('products page', function (hooks) {\n" +
-        '  setupApplicationTest(hooks);\n' +
-        '  setupCustomAssertionsForProducts(hooks);\n' +
-...
-          "import { module, test } from 'qunit';\n" +
-          '\n' +
-+           "module('New module', function (hooks) {\n" +
--           "module('Acceptance | products | product', function (hooks) {\n" +
-          '  setupApplicationTest(hooks);\n' +
-...
-    }
-  }
-}
 ```
 
 </details>
 
-Currently, `data.moduleName` is hard-coded. We can derive the test module name from the file path—the "inverse function" of what Ember CLI does. `@codemod-utils/files` provides `parseFilePath()` to help us parse the path.
+Currently, `data.moduleName` is hard-coded. We can derive the test module name from the file path. It's almost like the **inverse function** of what Ember CLI does. `@codemod-utils/files` provides `parseFilePath()` to help us parse the path.
 
 <details>
 
 <summary>Solution: <code>src/steps/rename-acceptance-tests.ts</code></summary>
 
-The implementation of `renameModule()` (it remains the same) has been hidden for simplicity.
+The implementation for `renameModule()` remains unchanged and has been hidden for simplicity.
 
 ```diff
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
@@ -665,7 +658,7 @@ Run the `test` script again to check the test module names.
 
 <summary>Expected output</summary>
 
-Success! 🥳
+Success! 🥳 The "actual" lines are what Ember CLI writes when we generate an acceptance test.
 
 ```sh
 ❯ pnpm test
@@ -700,15 +693,6 @@ AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
         '  setupApplicationTest(hooks);\n' +
         '  setupCustomAssertionsForProducts(hooks);\n' +
 ...
-          "import { module, test } from 'qunit';\n" +
-          '\n' +
-+           "module('Acceptance | products/product', function (hooks) {\n" +
--           "module('Acceptance | products | product', function (hooks) {\n" +
-          '  setupApplicationTest(hooks);\n' +
-...
-    }
-  }
-}
 ```
 
 </details>
@@ -716,15 +700,13 @@ AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
 
 ### Fix fixtures
 
-As mentioned in [Chapter 2](./02-understand-the-folder-structure.md#codemod-test-fixturessh), the acceptance tests will likely fail after you create or update a step. Luckily, there is a shell script that will automatically update fixture files and get the acceptance tests to pass.
+As mentioned in [Chapter 2](./02-understand-the-folder-structure.md#codemod-test-fixturessh), acceptance tests will likely fail when you create or update a step. Run the shell script to update the output fixture files and get the acceptance tests to pass.
 
 ```sh
 ./codemod-test-fixtures.sh
 ```
 
-The `test` script should now pass.
-
-(That was a long chapter with lots of new information. Before moving to the next one, consider taking the day off!)
+That was a big chapter with lots of new information. Before moving to the next one, consider taking the day off!
 
 
 <div align="center">
