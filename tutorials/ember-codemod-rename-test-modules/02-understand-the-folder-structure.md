@@ -114,11 +114,11 @@ The following list, which explains the `src` folder in detail, has many items. B
 
     </details>
 
-- A step is encouraged to have smaller sub-steps (sub-steps are also functions), if it improves the project's maintainability (fewer lines of code per file) and extensibility (group logically related steps). However, do try to avoid premature abstractions.
+- A step is encouraged to have smaller substeps (substeps are also functions), if it improves the project's maintainability (fewer lines of code per file) and extensibility (group logically related steps). However, do try to avoid premature abstractions.
 
-    A sub-step lives in `src/steps/<step-name>/<sub-step-name>.ts`. It may be re-exported in `src/steps/<step-name>/index.ts`.
+    A substep lives in `src/steps/<step-name>/<substep-name>.ts`. It may be re-exported in `src/steps/<step-name>/index.ts`.
 
-    You will find an example of breaking a step into smaller steps towards the end of this tutorial.
+    You will find an example of breaking a step into smaller steps in [Chapter 8](./08-refactor-code-part-1.md).
 
 - This tutorial doesn't cover **blueprints**, files that you can use like a "stamp" to create or update certain files in a project. Blueprints must live in the `src/blueprints` folder. The CLI will create this folder (along with a few other files) for you.
 
@@ -126,7 +126,7 @@ The following list, which explains the `src` folder in detail, has many items. B
 
     Utilities must live in the `src/utils` folder. Similarly to in an Ember project, you have some freedom in how you organize files inside this folder.
 
-    You will find examples of utilities towards the end of this tutorial.
+    You will find examples of utilities in [Chapter 8](./08-refactor-code-part-1.md).
 
 
 ### tests
@@ -190,7 +190,9 @@ Again, there are some conventions:
 
     For `tests/steps`, the folder structure should match that of `src/steps`. The same goes for `tests/utils`.
 
-- Writing tests for sub-steps is _discouraged_. Instead, write tests for the parent step (integration) or for the related utilities (unit). By doing so, we can easily change sub-steps (often, an implementation detail) in the future.
+    You will write integration and unit tests in [Chapter 9](./09-refactor-code-part-2.md).
+
+- Writing tests for substeps is _discouraged_. Instead, write tests for the parent step (integration) or for the related utilities (unit). By doing so, we can easily change substeps (often, an implementation detail) in the future.
 
 - Fixture files must live in the `tests/fixtures` folder.
 

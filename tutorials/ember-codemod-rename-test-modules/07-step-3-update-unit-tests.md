@@ -188,7 +188,7 @@ Before proceeding further, run the shell script to update the output fixture fil
 
 <div align="center">
   <div>
-    Next: TBA
+    Next: <a href="./08-refactor-code-part-1.md">Refactor code (Part 1)</a>
   </div>
   <div>
     Previous: <a href="./06-step-2-update-integration-tests.md">Step 2: Update integration tests</a>
