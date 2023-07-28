@@ -66,12 +66,12 @@ The `lint` script fails with 1 error (`options` in `src/index.ts` is unused), bu
 
 In the early stage of development, I recommend creating a fixture project for acceptance testing. Ideally, the fixture comes from a real-life project (copy-paste) or is modeled after it.
 
-For this tutorial, please cherry-pick [the 3rd commit from my solution repo](https://github.com/ijlee2/ember-codemod-rename-test-modules/commits/main). (If the hash has changed, find the commit with the description `chore: Added a fixture project`.)
+For this tutorial, please cherry-pick the 3rd commit from [my solution repo](https://github.com/ijlee2/ember-codemod-rename-test-modules/commits/main). (If the hash has changed, find the commit with the description `chore: Added a fixture project`.)
 
 ```sh
 git remote add solution git@github.com:ijlee2/ember-codemod-rename-test-modules.git
 git fetch solution
-git cherry-pick 5a354a4
+git cherry-pick 92a8126
 git remote remove solution
 ```
 

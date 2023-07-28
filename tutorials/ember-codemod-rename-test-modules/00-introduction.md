@@ -28,5 +28,6 @@ The codemod is practical (i.e. end-developers can now use `--filter` to run a gr
 1. [Step 1: Update acceptance tests (Part 2)](./05-step-1-update-acceptance-tests-part-2.md)
 1. [Step 2: Update integration tests](./06-step-2-update-integration-tests.md)
 1. [Step 3: Update unit tests](./07-step-3-update-unit-tests.md)
-1. ...
-1. Maintain the project
+1. [Refactor code (Part 1)](./08-refactor-code-part-1.md)
+1. [Refactor code (Part 2)](./09-refactor-code-part-2.md)
+1. [Conclusion](./10-conclusion.md)
