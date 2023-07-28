@@ -31,7 +31,7 @@ The `javascript` and `typescript` projects will cover different entity types, bu
 ```sh
 git remote add solution git@github.com:ijlee2/ember-codemod-rename-test-modules.git
 git fetch solution
-git cherry-pick 9e1c417
+git cherry-pick 88b4995
 git remote remove solution
 ```
 

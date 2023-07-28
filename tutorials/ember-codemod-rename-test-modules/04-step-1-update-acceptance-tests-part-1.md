@@ -71,7 +71,7 @@ For this tutorial, please cherry-pick the 3rd commit from [my solution repo](htt
 ```sh
 git remote add solution git@github.com:ijlee2/ember-codemod-rename-test-modules.git
 git fetch solution
-git cherry-pick 5a354a4
+git cherry-pick 92a8126
 git remote remove solution
 ```
 
