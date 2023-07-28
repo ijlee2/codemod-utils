@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/json
 
+## 0.4.0
+
+### Minor Changes
+
+- [#60](https://github.com/ijlee2/codemod-utils/pull/60) Updated type-fest to v4.0.0 ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.3.4
 
 ### Patch Changes
