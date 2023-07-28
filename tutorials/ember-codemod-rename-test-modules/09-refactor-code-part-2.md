@@ -473,7 +473,7 @@ Note that `dir` and `folderToEntityType`, the test setup for `parseEntity()`, sh
 
 <div align="center">
   <div>
-    Next: TBA
+    Next: <a href="./10-conclusion.md">Conclusion</a>
   </div>
   <div>
     Previous: <a href="./08-refactor-code-part-1.md">Refactor code (Part 1)</a>

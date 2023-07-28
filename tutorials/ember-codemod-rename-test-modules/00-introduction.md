@@ -30,3 +30,4 @@ The codemod is practical (i.e. end-developers can now use `--filter` to run a gr
 1. [Step 3: Update unit tests](./07-step-3-update-unit-tests.md)
 1. [Refactor code (Part 1)](./08-refactor-code-part-1.md)
 1. [Refactor code (Part 2)](./09-refactor-code-part-2.md)
+1. [Conclusion](./10-conclusion.md)
