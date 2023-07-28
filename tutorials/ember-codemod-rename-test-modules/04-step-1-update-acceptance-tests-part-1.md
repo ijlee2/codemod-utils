@@ -124,12 +124,12 @@ In the `src/steps` folder, create a file called `rename-acceptance-tests.ts`.
 
 <summary>Solution: <code>src/steps/rename-acceptance-tests.ts</code></summary>
 
-```diff
-+ import type { Options } from '../types/index.js';
-+ 
-+ export function renameAcceptanceTests(options: Options): void {
-+   // ...
-+ }
+```ts
+import type { Options } from '../types/index.js';
+
+export function renameAcceptanceTests(options: Options): void {
+  // ...
+}
 ```
 
 </details>
@@ -207,7 +207,7 @@ Note, `renameAcceptanceTests()` logs `filePaths` in the console. You can run the
 
 <summary>Expected output</summary>
 
-Note, the array appears twice, because an acceptance test runs the codemod twice to assert idempotency.
+Note, the array appears twice, because an acceptance test runs the codemod twice to assert idempotence.
 
 ```sh
 ❯ pnpm test
@@ -245,7 +245,7 @@ In short, `renameAcceptanceTests()` is now an **identity function** (a type of n
 ```diff
 + import { readFileSync, writeFileSync } from 'node:fs';
 + import { join } from 'node:path';
-
++ 
 import { findFiles } from '@codemod-utils/files';
 
 import type { Options } from '../types/index.js';
@@ -299,7 +299,7 @@ import type { Options } from '../types/index.js';
 + function renameModule(file: string): string {
 +   return file;
 + }
-
++ 
 export function renameAcceptanceTests(options: Options): void {
   const { projectRoot } = options;
 

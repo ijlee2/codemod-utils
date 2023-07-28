@@ -11,7 +11,7 @@ Goals:
 
 ## Write integration tests
 
-Recall from [Chapter 2](02-understand-the-folder-structure.md#tests) that tests for the steps live in the `tests/steps` folder. These tests are analogous to the integration tests that we write for components, helpers, and modifiers in Ember. The folder structure for `tests/steps` should match that for `src/steps`.
+Recall from [Chapter 2](02-understand-the-folder-structure.md#tests) that tests for the steps live in the `tests/steps` folder. These tests are analogous to the integration tests that we write for components in Ember. The folder structure for `tests/steps` should match that for `src/steps`.
 
 For steps like `rename-tests`, where files are read and updated, we can take one of two approaches:
 
@@ -26,7 +26,7 @@ To test `rename-tests`, we will create 3 projects:
 - `javascript` (base cases with JavaScript files)
 - `typescript` (base cases with TypeScript files)
 
-The `javascript` and `typescript` projects will cover different entity types, but they won't cover _all_ because we already have a good acceptance test and will later write unit tests. To create the projects, please cherry-pick the commit `chore: Added fixtures (rename-tests)` from [my solution repo](https://github.com/ijlee2/ember-codemod-rename-test-modules/commits/main).
+The `javascript` and `typescript` projects will cover different entity types, but they won't cover _all_ because we already have a good acceptance test and will write unit tests. To create the 3 projects, please cherry-pick the commit `chore: Added fixtures (rename-tests)` from [my solution repo](https://github.com/ijlee2/ember-codemod-rename-test-modules/commits/main).
 
 ```sh
 git remote add solution git@github.com:ijlee2/ember-codemod-rename-test-modules.git
@@ -228,6 +228,10 @@ A few remarks:
     assert.strictEqual(newFile, `module('New name', function (hooks) {});\n`);
     ```
 
+- The `assert` object that `@codemod-utils/tests` provides comes from Node.js.
+
+    Make strong assertions whenever possible, using methods such as [`assert.deepStrictEqual()`](https://nodejs.org/docs/latest-v16.x/api/assert.html#assertdeepstrictequalactual-expected-message), [`assert.strictEqual()`](https://nodejs.org/docs/latest-v16.x/api/assert.html#assertstrictequalactual-expected-message), and [`assert.throws()`](https://nodejs.org/docs/latest-v16.x/api/assert.html#assertthrowsfn-error-message). Weak assertions like [`assert.match()`](https://nodejs.org/docs/latest-v16.x/api/assert.html#assertmatchstring-regexp-message) and [`assert.ok()`](https://nodejs.org/docs/latest-v16.x/api/assert.html#assertokvalue-message), which create a "room for interpretation" and can make tests pass when they shouldn't (false negatives), should be avoided.
+
 - Although the implementation for `renameModule()` is complex (we had to parse and update abstract syntax trees), the test for it is simple, because `renameModule()` provided a good interface. 
 
 - The input and output files were simple enough that we could write their content in one line without sacrificing readability. Should they have many lines, create an array of strings and use the `join()` method instead. This way, you can simulate what one would see in an actual file.
@@ -253,7 +257,7 @@ A few remarks:
     );
     ```
 
-See if you can write 5 more tests:
+Use the starter code to write 5 more tests:
 
 - A base case for a TypeScript file
 - An edge case, where the file is empty
@@ -402,7 +406,7 @@ test('utils | rename-tests | rename-module > edge case (nested modules)', functi
 
 ### parseEntity()
 
-See if you can write unit tests for `parseEntity()`. Since the function returns an object, a data structure that is "complex," you will want to use `assert.deepStrictEqual()` to make an assertion.
+Now, see if you can write unit tests for `parseEntity()`. The function returns an object, a data structure that is "complex," so you will want to use `assert.deepStrictEqual()` to make an assertion.
 
 - A base case where the entity type is known
 - An edge case where the entity type is unknown
@@ -468,7 +472,7 @@ test('utils | rename-tests | parse-entity > edge case (entity type is unknown)',
 
 </details>
 
-Note that `dir` and `folderToEntityType`, the test setup for `parseEntity()`, show "realistic" values to help with documentation. In general, avoid values like `'foo'`, `'bar'`, and `1`, which can't clearly indicate to all contributors what the function needs.
+Note that `dir` and `folderToEntityType`, the test setup for `parseEntity()`, show "realistic" values to help with documentation. Avoid values like `'foo'`, `'bar'`, and `1`, which don't clearly communicate to all contributors what the function needs.
 
 
 <div align="center">

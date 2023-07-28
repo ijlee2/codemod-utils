@@ -19,7 +19,7 @@ When you write a codemod, you pay the costs upfront. You have to first create an
 
 Here’s the crux: When your project has many variations in code because it hasn’t been maintained, updating it by hand will be faster. A codemod will run into edge cases that may or may not occur in other projects, and every edge case that you handle is extra code that you have to maintain.
 
-Nonetheless, the ability to help others just might be the deciding factor for you. As a rule of thumb, consider writing a codemod if you can cover the usual 80%.
+Nonetheless, the ability to help others just might be the deciding factor for you. As a rule of thumb, consider writing a codemod if you can cover [the usual 80%](https://en.wikipedia.org/wiki/Pareto_principle).
 
 (Note, a **base case** is a scenario where something usual and expected happens. On the contrary, an **edge case** is where something rare or unexpected happens.)
 
@@ -38,7 +38,7 @@ So that's 3 steps to take and maybe 3 base cases to consider.
 
 Actually, the problem is more complex, because the `tests/integration` folder can include tests for a component, helper, or modifier (3 entity types), whereas the `tests/unit` folder can include tests for an adapter, controller, initializer, instance initializer, mixin, model, route, serializer, service, and utility (10 entity types).
 
-What if the end-developer's project follows the pod layout or has named their test files incorrectly? For example, instead of the usual `tests/integration/ui/page-test.ts`, the test module for the `<Ui::Page>` component lives in `tests/integration/page-test.ts` or `tests/integration/ui-page-test.ts`.
+What if the end-developer's project follows the pod layout or named their test files incorrectly? For example, instead of the usual `tests/integration/components/ui/page-test.ts`, the test module for the `<Ui::Page>` component lives in `tests/integration/components/page-test.ts` or `tests/integration/components/ui-page-test.ts`.
 
 Where, O where, do we start?
 
@@ -47,7 +47,7 @@ Where, O where, do we start?
 
 We can simplify the problem by "composing" codemods and ignoring one-off cases.
 
-For example, we ask the end-developer to run [`ember-codemod-pod-to-octane`](https://github.com/ijlee2/ember-codemod-pod-to-octane) first. It's a prerequisite for running our codemod. This way, we know that the files in their `tests` folder follow the Octane layout, and don't have to write fixture files to cover the pod case.
+For example, we ask the end-developer to run [`ember-codemod-pod-to-octane`](https://github.com/ijlee2/ember-codemod-pod-to-octane) first. It's a prerequisite for running our codemod. This way, we know that the files in their `tests` folder follow the Octane layout, and don't have to write extra code, tests, and fixtures to cover the pod case. (Ember Octane supports "flat" and "nested" component structures. Both happen to create test files in the same way, so there's luckily only 1 folder structure to consider.)
 
 Furthermore, incorrect file names should be a rare event. Rather than parsing the file to determine the correct location (extra code and maintenance for us), we ask the end-developer to either (1) fix the file name as another prerequisite, or (2) let them clone our repo to handle this edge case themselves. It could also be that, the way we will rename test modules can handle incorrect file names by making an approximate solution ("good enough"). At any rate, the codemod shouldn't cause runtime errors due to incorrect file names.
 

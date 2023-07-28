@@ -118,7 +118,7 @@ The following list, which explains the `src` folder in detail, has many items. B
 
     A substep lives in `src/steps/<step-name>/<substep-name>.ts`. It may be re-exported in `src/steps/<step-name>/index.ts`.
 
-    You will find an example of breaking a step into smaller steps in [Chapter 8](./08-refactor-code-part-1.md).
+    You will find an example of breaking a step into smaller steps in [Chapter 8](./08-refactor-code-part-1.md#split-a-step-into-substeps).
 
 - This tutorial doesn't cover **blueprints**, files that you can use like a "stamp" to create or update certain files in a project. Blueprints must live in the `src/blueprints` folder. The CLI will create this folder (along with a few other files) for you.
 
@@ -126,7 +126,7 @@ The following list, which explains the `src` folder in detail, has many items. B
 
     Utilities must live in the `src/utils` folder. Similarly to in an Ember project, you have some freedom in how you organize files inside this folder.
 
-    You will find examples of utilities in [Chapter 8](./08-refactor-code-part-1.md).
+    You will find examples of utilities in [Chapter 8](./08-refactor-code-part-1.md#extract-utilities).
 
 
 ### tests
@@ -137,13 +137,13 @@ Again, there are some conventions:
 
 - Test files must have the file extension `*.test.ts`.
 
-    Each file should have only 1 test, and each test only 1 assertion. (An exception is checking **idempotency** with 2 assertions in one test.) The goal is to write tests that are simple.
+    Each file should have only 1 test, and each test only 1 assertion. (An exception is checking **idempotence** with 2 assertions in one test.) The goal is to write tests that are simple.
 
     <details>
 
     <summary>Example: <code>tests/index/sample-project.test.ts</code></summary>
 
-    This test, which runs the codemod like end-developers would, asserts idempotency. If a codemod is idempotent, then files that have been updated already will remain the same when the codemod is run again.
+    This test, which runs the codemod like end-developers would, asserts idempotence (also called idempotency). If a codemod is idempotent, then files that have been updated already will remain the same when the codemod is run again.
 
     ```ts
     import { runCodemod } from '../../src/index.js';
@@ -168,7 +168,7 @@ Again, there are some conventions:
 
     <summary>Example: <code>tests/steps/add-end-of-line/base-case.test.ts</code></summary>
 
-    `loadFixture()` and `assertFixture()` helps us test the codemod against actual files. We can make a **strong** (a terminology from math) assertion that the `add-end-of-line` step works as intended.
+    `loadFixture()` and `assertFixture()` help us test the codemod against real files, which has two benefits. One, we can make a **strong** (a terminology from math) assertion that the `add-end-of-line` step works as intended. Two, we can read files easily because our code editor can highlight the syntax.
 
     ```ts
     import { addEndOfLine } from '../../../src/steps/index.js';
@@ -184,9 +184,9 @@ Again, there are some conventions:
 
     </details>
 
-    You have some freedom in how you name tests. There is no analogue of the `module()` function from QUnit so you might, for example, use the characters `|` and `>` to document how a group of tests is related.
+    You have some freedom in how you name tests. There is no analogue of the `module()` function from QUnit, so you might use, for example, the characters `|` and `>` to document how a group of tests is related.
 
-- Similarly to in an Ember project, we write tests at the "acceptance," "integration," and "unit" levels. Broadly speaking, the tests in `tests/index`, `tests/steps`, and `tests/utils` correspond to these levels, respectively.
+- Similarly to in an Ember project, we write tests at the "acceptance," "integration," and "unit" levels. Broadly speaking, the tests in `tests/index`, `tests/steps`, and `tests/utils` match these levels, respectively.
 
     For `tests/steps`, the folder structure should match that of `src/steps`. The same goes for `tests/utils`.
 
@@ -239,7 +239,7 @@ Again, there are some conventions:
 
     </details>
 
-Note, the conventions for folder names may change in the future, so that we can ease onboarding for people who have a background in Ember. The ideas (e.g. writing tests at different levels, using fixture files to test the codemod thoroughly) will remain the same.
+Note, the conventions for folder names in `tests` may change in the future, so that we can ease onboarding for people who have a background in Ember. The ideas (e.g. writing tests at different levels, using fixture files to test the codemod thoroughly) will remain the same.
 
 
 ### dist, dist-for-testing, tmp
@@ -253,9 +253,10 @@ Running the `test` script (re)creates the `dist-for-testing` folder. The files i
 
 ### codemod-test-fixtures.sh
 
-Acceptance tests will likely fail after you create or update a step. This shell script updates the fixture files for each output project so that the acceptance tests will pass.
+Acceptance tests will likely fail after you create or update a step. The shell script updates the fixture files for each output project so that the acceptance tests will pass.
 
 ```sh
+# From the root
 ./codemod-test-fixtures.sh
 ```
 

@@ -19,6 +19,8 @@ If the approach that we took for `rename-integration-tests` is right, then we sh
 
 I highlighted only the differences between `rename-integration-tests` and `rename-unit-tests`.
 
+Note that, because `'instance-initializers'` and `'utils'` need to be mapped to the words `'Instance Initializer'` and `'Utility'`, installing a package that has `singularize()` and `capitalize()` wouldn't be enough. Again, avoid premature abstractions.
+
 ```diff
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -181,9 +183,9 @@ export function runCodemod(codemodOptions: CodemodOptions): void {
 
 </details>
 
-I think it is. Of course, I've shown you the ideal case where everything fits well together. When it's time to write your own codemod, don't be afraid to experiment with the steps and find the clearest path to the solution.
+I think it is. Of course, I've shown you the ideal case where everything fits together well. When it's time to write your own codemod, don't be afraid to experiment with the steps and find the clearest path to the solution.
 
-Before proceeding further, run the shell script to update the output fixture files once more.
+Before proceeding further, run the shell script to update the output fixture files for the last time.
 
 
 <div align="center">

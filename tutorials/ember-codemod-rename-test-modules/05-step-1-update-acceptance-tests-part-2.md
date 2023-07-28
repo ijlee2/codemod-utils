@@ -233,6 +233,7 @@ export default function transformer(code, { recast, parsers }) {
   const b = recast.types.builders;
 
   recast.visit(ast, {
+-     // ...
 +     visitCallExpression(node) {
 +       console.log('-- CallExpression --');
 +       console.log(node.value);
@@ -294,7 +295,7 @@ Use what are highlighted in orange (`node.value.callee` and `node.value.argument
 
 <summary>Solution: Transform function</summary>
 
-An extra check `node.value.arguments[0].type !== 'Literal'` is needed for JS files. Apparently, the `type` is `Literal` for JS and `StringLiteral` for TS? 😓
+An extra check `node.value.arguments[0].type !== 'Literal'` is needed for JavaScript files. Apparently, the `type` is `Literal` for JS and `StringLiteral` for TS? 😓
 
 ```diff
 export default function transformer(code, { recast, parsers }) {
@@ -341,7 +342,7 @@ Thanks to early exits, files that aren't valid test files won't be changed.
 
 ### Build a new tree
 
-Now that we've isolated the valid case, we can use the builder `b.stringLiteral()` to replace a part of the tree.
+Now that we've isolated the valid case, we can use `b.stringLiteral()` (a builder) to replace a part of the tree, i.e. to rename the test module.
 
 Again, try using the error message in the console to find out how to update the tree. (This is not easy!) If done correctly, the output file at the bottom-right corner will show a new name for the test module.
 
@@ -355,7 +356,7 @@ export default function transformer(code, { recast, parsers }) {
   const b = recast.types.builders;
 
 +   const moduleName = 'New name';
-
++ 
   recast.visit(ast, {
     visitCallExpression(node) {
       if (
@@ -392,7 +393,7 @@ export default function transformer(code, { recast, parsers }) {
 
 </details>
 
-To be precise with types, we can use a `switch` statement and refactor code.
+To be precise about types, we can use a `switch` statement and refactor code.
 
 <details>
 
@@ -621,7 +622,7 @@ type Data = {
 +   // a.k.a. friendlyTestDescription
 +   return ['Acceptance', entityName].join(' | ');
 + }
-
++ 
 function renameModule(file: string, data: Data): string {
   // ...
 }

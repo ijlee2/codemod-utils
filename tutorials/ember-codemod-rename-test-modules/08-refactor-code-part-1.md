@@ -24,7 +24,7 @@ export function runCodemod(codemodOptions: CodemodOptions): void {
 }
 ```
 
-We could leave the steps as is, or group them since they are related (all have to do with renaming tests). To illustrate an example of a step with substeps, we'll choose the latter approach.
+We could leave the steps as is, or group them since they are related (all have to do with renaming tests). To illustrate an example of a step with substeps, we'll take the latter approach.
 
 See if you can
 
@@ -360,7 +360,7 @@ export * from './rename-module.js';
 
 <details>
 
-Note, `parseEntity()` has an additional argument (`folderToEntityType`).
+Note, `parseEntity()` has an additional argument called `folderToEntityType`.
 
 <summary>Solution: <code>src/utils/rename-tests/parse-entity.ts</code></summary>
 
@@ -475,7 +475,7 @@ export function renameUnitTests(options: Options): void {
 
 At the moment, we can't (and shouldn't) extract `getModuleName()` as a utility, because the implementation differs among the substeps. Namely, `rename-acceptance-tests` doesn't have the notion of `entityType`.
 
-You might also remember the fine print from Chapter 6. When `entityType` is `undefined` (i.e. the entity type is something that our codemod doesn't support), `getModuleName()` will return a funny-looking string like `'Integration |  | foo/bar'`.
+You might also remember the fine print from Chapter 6. When `entityType` is `undefined` (i.e. our codemod doesn't recognize the entity type), `getModuleName()` will return a funny-looking string like `'Unit |  | foo/bar'`.
 
 We can address both problems by standardizing the `getModuleName()` function. In some sense, we are standardizing its **interface**; in particular, the output of the function.
 
@@ -485,7 +485,9 @@ We can address both problems by standardizing the `getModuleName()` function. In
     return ['Acceptance', entityType, entityName].join(' | ');
     ```
 
-- Update `getModuleName()` in all 3 substeps so that it handles the edge case of `entityType` being `undefined`. (Hint: Make an early exit in `parseEntity()`.)
+- Update `getModuleName()` in all 3 substeps so that it handles the edge case of `entityType` being `undefined`. Hint: Make an early exit in `parseEntity()`.
+
+    One possible implementation is, if `getModuleName()` receives the file path of `'tests/unit/resources/remote-data-test.ts'`, it returns the module name of `'Unit | resources/remote-data'` (instead of `'Unit | | remote-data'`) as an approximate solution.
 
 <details>
 

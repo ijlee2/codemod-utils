@@ -374,28 +374,18 @@ The code for `getModuleName()` shows a variable called `dir`. This variable hold
 
 You might see how we can derive the entity's type and name from `dir`.
 
-```diff
-+ function parseEntity(dir: string) {
-+   // ...
-+ }
-+ 
-function getModuleName(filePath: string): string {
-  let { dir, name } = parseFilePath(filePath);
+```ts
+import { join } from 'node:path';
 
-  dir = dir.replace(/^tests\/integration(\/)?/, '');
-  name = name.replace(/-test$/, '');
-
--   const entityName = join(dir, name);
-+   const { entityType, remainingPath } = parseEntity(dir);
-+   const entityName = join(remainingPath, name);
-
-  // a.k.a. friendlyTestDescription
--   return ['Integration', entityName].join(' | ');
-+   return ['Integration', entityType, entityName].join(' | ');
+function parseEntity(dir: string) {
+  // ...
 }
+
+const { entityType, remainingPath } = parseEntity(dir);
+const entityName = join(remainingPath, name);
 ```
 
-Let me first show you the solution for `parseEntity()`, then explain the reason for the particular approach.
+Let me first show you the solution for `parseEntity()`, then explain the particular approach.
 
 ```ts
 const folderToEntityType = new Map([
@@ -418,9 +408,9 @@ function parseEntity(dir: string): {
 }
 ```
 
-Note that I hard-coded the mapping between folders and entity types, _despite_ knowing that Ember CLI pluralizes the entity type to name the folder. I didn't try to create a regular expression or install a package that has `singularize()` and `capitalize()`.
+I hard-coded the mapping between folders and entity types, _despite_ knowing that Ember CLI pluralizes the entity type to name the folder. I didn't try to create a regular expression or install a package that has `singularize()` and `capitalize()`.
 
-The lesson is, take the simplest approach to quickly implement a step. Later, after finishing writing the codemod and writing more tests, we can revisit the steps and come up with better approaches.
+In short, I took the simplest approach to quickly implement a step. Later, after finishing writing the codemod and writing more tests, we can revisit the steps and come up with better approaches.
 
 <details>
 
@@ -531,9 +521,9 @@ AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
 
 </details>
 
-Now that we're satisfied, we can run `codemod-test-fixtures.sh` to update the output fixture files.
+Now that we're satisfied, we can run `./codemod-test-fixtures.sh` to update the output fixture files.
 
-(You might have noticed that I surreptitiously ignored what would happen when `entityType` is `undefined`. We will address this edge case in a later chapter.)
+(You might have noticed that I surreptitiously ignored what would happen when `entityType` is `undefined`. We will address this edge case in [Chapter 8](./08-refactor-code-part-1.md#standardize-functions).
 
 
 <div align="center">
