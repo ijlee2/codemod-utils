@@ -12,6 +12,7 @@ _Codemod to [PROVIDE A SHORT DESCRIPTION.]_
 [PROVIDE REQUIRED AND OPTIONAL ARGUMENTS.]
 
 <details>
+
 <summary>Optional: Specify the project root</summary>
 
 Pass `--root` to run the codemod somewhere else (i.e. not in the current directory).
