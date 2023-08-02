@@ -47,6 +47,7 @@ npx @codemod-utils/cli --name ember-codemod-v1-to-v2
 
 
 <details>
+
 <summary>Optional: Add more utilities</summary>
 
 By default, `@codemod-utils/cli` only installs [`@codemod-utils/files`](../files/README.md) and [`@codemod-utils/tests`](../tests/README.md). If you need more, pass `--addon` and list the package names.
@@ -67,6 +68,7 @@ The options are:
 
 
 <details>
+
 <summary>Optional: Specify the project root</summary>
 
 Pass `--root` to run the codemod somewhere else (i.e. not in the current directory).
@@ -79,6 +81,7 @@ npx @codemod-utils/cli --root <path/to/your/project>
 
 
 <details>
+
 <summary>Optional: Create a JavaScript project</summary>
 
 By default, `@codemod-utils/cli` creates a TypeScript project to help you maintain and extend the codemod. To create a JavaScript project, set `--typescript` to `false`.

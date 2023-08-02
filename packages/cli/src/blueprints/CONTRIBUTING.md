@@ -8,6 +8,7 @@ Here are some guidelines to help you and everyone else.
 ## Local development
 
 <details>
+
 <summary>Install dependencies</summary>
 
 1. Fork and clone this repo.
@@ -32,6 +33,7 @@ Here are some guidelines to help you and everyone else.
 
 
 <details>
+
 <summary>Lint files</summary>
 
 1. When you write code, please check that it meets the linting rules.
@@ -50,6 +52,7 @@ Here are some guidelines to help you and everyone else.
 
 
 <details>
+
 <summary>Run tests</summary>
 
 1. When you write code, please check that all tests continue to pass.
