@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/cli
 
+## 0.2.3
+
+### Patch Changes
+
+- [#63](https://github.com/ijlee2/codemod-utils/pull/63) Updated blueprints for @codemod-utils/cli ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.2.2
 
 ### Patch Changes
