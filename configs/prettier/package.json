@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.0",
-    "prettier": "^3.0.0"
+    "prettier": "^3.0.1"
   },
   "peerDependencies": {
     "prettier": "^3.0.0"
