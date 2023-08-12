@@ -45,7 +45,6 @@
     "test": "./build.sh --test && echo '@codemod-utils/tests does not have tests.'"
   },
   "dependencies": {
-    "@sondr3/minitest": "^0.1.1",
     "fixturify": "^3.0.0",
     "glob": "^10.3.3"
   },
