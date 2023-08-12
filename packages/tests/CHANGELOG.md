@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/tests
 
+## 0.3.0
+
+### Minor Changes
+
+- [#65](https://github.com/ijlee2/codemod-utils/pull/65) Changed @sondr3/minitest to be a peer dependency ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.2.5
 
 ### Patch Changes
