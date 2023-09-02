@@ -57,7 +57,6 @@ function updateDevDependencies(
 
   if (codemod.hasTypeScript) {
     packagesToInstall.delete('@babel/eslint-parser');
-    packagesToInstall.add('@tsconfig/esm');
     packagesToInstall.add('@tsconfig/node16');
     packagesToInstall.add('@tsconfig/strictest');
     packagesToInstall.add('@types/node');
