@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/json
 
+## 0.4.2
+
+### Patch Changes
+
+- [#69](https://github.com/ijlee2/codemod-utils/pull/69) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.4.1
 
 ### Patch Changes
