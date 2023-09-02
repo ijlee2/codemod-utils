@@ -11,7 +11,6 @@ const latestVersions = new Map([
   ['@codemod-utils/json', '0.4.2'],
   ['@codemod-utils/tests', '0.3.1'],
   ['@sondr3/minitest', '0.1.1'],
-  ['@tsconfig/esm', '1.0.4'],
   ['@tsconfig/node16', '16.1.1'],
   ['@tsconfig/strictest', '2.0.2'],
   ['@types/node', '16.18.47'],
