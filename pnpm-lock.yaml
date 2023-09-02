@@ -78,9 +78,6 @@ importers:
 
   configs/typescript:
     dependencies:
-      '@tsconfig/esm':
-        specifier: ^1.0.4
-        version: 1.0.4
       '@tsconfig/node16':
         specifier: ^16.1.1
         version: 16.1.1
@@ -1076,10 +1073,6 @@ packages:
     resolution: {integrity: sha512-by2AfOKdj2YrPYiZbgNLkAqNZaes4rCwj+ogRK9Gt8jY2DpDVCbtImLyp7TDMQZUzOBXClfZpWaPZsLMb9VDSw==}
     engines: {node: '>=16'}
     hasBin: true
-
-  /@tsconfig/esm@1.0.4:
-    resolution: {integrity: sha512-bix9CWljCxyD06nGQRDYdmTw0wevvEDyrLKjbDocGV31JQYbfqqgMV1yFeJ9aDgorKQ9yDLrak8poiggsB5Liw==}
-    dev: false
 
   /@tsconfig/node16@16.1.1:
     resolution: {integrity: sha512-+pio93ejHN4nINX4pXqfnR/fPLRtJBaT4ORaa5RH0Oc1zoYmo2B2koG+M328CQhHKn1Wj6FcOxCDFXAot9NhvA==}
