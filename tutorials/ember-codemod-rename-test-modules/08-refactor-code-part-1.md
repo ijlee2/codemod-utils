@@ -173,7 +173,6 @@ export * from './rename-module.js';
 <summary>Solution: <code>src/utils/rename-tests/rename-module.ts</code></summary>
 
 ```ts
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { AST } from '@codemod-utils/ast-javascript';
 
 type Data = {
@@ -226,7 +225,6 @@ export function renameModule(file: string, data: Data): string {
 <summary>Solution: <code>src/steps/rename-tests/rename-acceptance-tests.ts</code></summary>
 
 ```diff
-- /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -261,7 +259,6 @@ export function renameAcceptanceTests(options: Options): void {
 <summary>Solution: <code>src/steps/rename-tests/rename-integration-tests.ts</code></summary>
 
 ```diff
-- /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -304,7 +301,6 @@ export function renameIntegrationTests(options: Options): void {
 <summary>Solution: <code>src/steps/rename-tests/rename-unit-tests.ts</code></summary>
 
 ```diff
-- /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 

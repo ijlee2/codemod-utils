@@ -178,7 +178,6 @@ Try copy-pasting the starter code to `rename-integration-tests`, then remove ref
 I highlighted only how `getModuleName()` and `renameModule()` differ between `rename-acceptance-tests` and `rename-integration-tests`.
 
 ```diff
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -419,7 +418,6 @@ In short, I took the simplest approach to quickly implement a step. Later, after
 The implementations for `renameModule()` and `renameIntegrationTests()` remain unchanged and have been hidden for simplicity.
 
 ```diff
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 

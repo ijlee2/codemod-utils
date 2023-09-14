@@ -22,7 +22,6 @@ I highlighted only the differences between `rename-integration-tests` and `renam
 Note that, because `'instance-initializers'` and `'utils'` need to be mapped to the words `'Instance Initializer'` and `'Utility'`, installing a package that has `singularize()` and `capitalize()` wouldn't be enough. Again, avoid premature abstractions.
 
 ```diff
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
