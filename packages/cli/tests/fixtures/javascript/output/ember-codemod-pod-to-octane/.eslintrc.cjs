@@ -23,7 +23,7 @@ module.exports = {
   overrides: [
     // JavaScript files
     {
-      files: ['**/*.js'],
+      files: ['**/*.{cjs,js}'],
       rules: {
         'import/no-duplicates': 'error',
       },

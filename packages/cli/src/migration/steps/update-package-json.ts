@@ -44,6 +44,7 @@ function updateDevDependencies(
     '@babel/core',
     '@babel/eslint-parser',
     '@codemod-utils/tests',
+    '@sondr3/minitest',
     'concurrently',
     'eslint',
     'eslint-config-prettier',
@@ -57,7 +58,7 @@ function updateDevDependencies(
 
   if (codemod.hasTypeScript) {
     packagesToInstall.delete('@babel/eslint-parser');
-    packagesToInstall.add('@tsconfig/node16');
+    packagesToInstall.add('@tsconfig/node18');
     packagesToInstall.add('@tsconfig/strictest');
     packagesToInstall.add('@types/node');
     packagesToInstall.add('@types/yargs');
@@ -73,9 +74,6 @@ function updateDevDependencies(
 
     devDependencies.set(packageName, version);
   });
-
-  // Pin @sondr3/minitest to v0.1.1 (to support Node 16)
-  devDependencies.set('@sondr3/minitest', '0.1.1');
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   packageJson['devDependencies'] = convertToObject(devDependencies);
