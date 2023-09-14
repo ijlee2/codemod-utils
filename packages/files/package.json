@@ -52,14 +52,14 @@
     "@shared-configs/eslint-config-node": "workspace:*",
     "@shared-configs/prettier": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
-    "@sondr3/minitest": "^0.1.1",
-    "@types/node": "^16.18.47",
+    "@sondr3/minitest": "^0.1.2",
+    "@types/node": "^18.17.15",
     "concurrently": "^8.2.1",
-    "eslint": "^8.48.0",
+    "eslint": "^8.49.0",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   },
   "engines": {
-    "node": "16.* || >= 18"
+    "node": "18.* || >= 20"
   }
 }

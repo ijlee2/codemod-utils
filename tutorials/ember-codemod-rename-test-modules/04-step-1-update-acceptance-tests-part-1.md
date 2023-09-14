@@ -66,7 +66,7 @@ The `lint` script fails with 1 error (`options` in `src/index.ts` is unused), bu
 
 In the early stage of development, I recommend creating a fixture project for acceptance testing. Ideally, the fixture comes from a real-life project (copy-paste) or is modeled after it.
 
-For this tutorial, please cherry-pick the 3rd commit from [my solution repo](https://github.com/ijlee2/ember-codemod-rename-test-modules/commits/main). (If the hash has changed, find the commit with the description `chore: Added a fixture project`.)
+For this tutorial, please cherry-pick the commit `chore: Added a fixture project` from [my solution repo](https://github.com/ijlee2/ember-codemod-rename-test-modules/commits/main).
 
 ```sh
 git remote add solution git@github.com:ijlee2/ember-codemod-rename-test-modules.git
@@ -228,7 +228,7 @@ You can also check that `lint` is passing.
 
 ### Read and write files
 
-Now that we know which files exist in the end-developer's project, we can read and update their content. To do so, we can use methods from Node.js: [`join()`](https://nodejs.org/docs/latest-v16.x/api/path.html#pathjoinpaths), [`readFileSync()`](https://nodejs.org/docs/latest-v16.x/api/fs.html#fsreadfilesyncpath-options), and [`writeFileSync()`](https://nodejs.org/docs/latest-v16.x/api/fs.html#fswritefilesyncfile-data-options).
+Now that we know which files exist in the end-developer's project, we can read and update their content. To do so, we can use methods from Node.js: [`join()`](https://nodejs.org/docs/latest-v18.x/api/path.html#pathjoinpaths), [`readFileSync()`](https://nodejs.org/docs/latest-v18.x/api/fs.html#fsreadfilesyncpath-options), and [`writeFileSync()`](https://nodejs.org/docs/latest-v18.x/api/fs.html#fswritefilesyncfile-data-options).
 
 See if you can do a for-loop over `filePaths`. For each file path,
 

@@ -30,26 +30,26 @@
     "test": "mt tests --quiet"
   },
   "dependencies": {
-    "@codemod-utils/files": "^0.5.3",
+    "@codemod-utils/files": "^1.0.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.11",
-    "@babel/eslint-parser": "^7.22.11",
-    "@codemod-utils/tests": "^0.3.1",
-    "@sondr3/minitest": "0.1.1",
+    "@babel/core": "^7.22.17",
+    "@babel/eslint-parser": "^7.22.15",
+    "@codemod-utils/tests": "^1.0.0",
+    "@sondr3/minitest": "^0.1.2",
     "concurrently": "^8.2.1",
-    "eslint": "^8.48.0",
+    "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.28.1",
-    "eslint-plugin-n": "^16.0.2",
+    "eslint-plugin-n": "^16.1.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "lerna-changelog": "^2.2.0",
     "prettier": "^3.0.3"
   },
   "engines": {
-    "node": "16.* || >= 18"
+    "node": "18.* || >= 20"
   },
   "changelog": {
     "labels": {
