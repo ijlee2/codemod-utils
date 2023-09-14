@@ -460,10 +460,7 @@ Once you arrive at an implementation in AST Explorer, moving the code to the cod
 
 <summary>Solution: <code>src/steps/rename-acceptance-tests.ts</code></summary>
 
-Disabling `@typescript-eslint/no-unsafe-member-access` isn't really a part of the change. (This may be required in `@typescript-eslint@v6`?) Pretend that it's not there. 🙈
-
 ```diff
-+ /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -596,7 +593,6 @@ Currently, `data.moduleName` is hard-coded. We can derive the test module name f
 The implementation for `renameModule()` remains unchanged and has been hidden for simplicity.
 
 ```diff
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
