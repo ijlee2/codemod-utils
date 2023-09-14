@@ -7,12 +7,12 @@ import {
   visit,
 } from 'recast';
 
-/* https://github.com/benjamn/recast/blob/v1.7.0/lib/options.ts */
+/* https://github.com/benjamn/recast/blob/v0.23.4/lib/options.ts#L7 */
 const formattingOptions: formattingOptions = {
   quote: 'single',
 };
 
-/* https://github.com/facebook/jscodeshift/blob/v0.15.0/parser/babel5Compat.js */
+/* https://github.com/facebook/jscodeshift/blob/v0.15.0/parser/babel5Compat.js#L15 */
 const jsOptions: ParserOptions = {
   sourceType: 'module',
   allowHashBang: true,
@@ -40,7 +40,7 @@ const jsOptions: ParserOptions = {
   ],
 };
 
-/* https://github.com/facebook/jscodeshift/blob/v0.15.0/parser/tsOptions.js */
+/* https://github.com/facebook/jscodeshift/blob/v0.15.0/parser/tsOptions.js#L14 */
 const tsOptions: ParserOptions = {
   sourceType: 'module',
   allowImportExportEverywhere: true,

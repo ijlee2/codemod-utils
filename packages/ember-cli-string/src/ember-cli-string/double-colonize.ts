@@ -1,4 +1,4 @@
-/* https://github.com/emberjs/ember.js/blob/v4.12.1/blueprints/component-test/index.js#L13-L16 */
+/* https://github.com/emberjs/ember.js/blob/v5.2.0/blueprints/component-test/index.js#L13-L16 */
 import { classify } from './classify.js';
 
 export function doubleColonize(value: string): string {
