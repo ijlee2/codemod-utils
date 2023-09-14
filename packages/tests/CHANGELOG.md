@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/tests
 
+## 1.0.0
+
+### Major Changes
+
+- [#71](https://github.com/ijlee2/codemod-utils/pull/71) Dropped Node 16 support and marked stable ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.3.1
 
 ### Patch Changes

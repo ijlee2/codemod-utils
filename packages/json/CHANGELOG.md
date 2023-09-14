@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/json
 
+## 1.0.0
+
+### Major Changes
+
+- [#71](https://github.com/ijlee2/codemod-utils/pull/71) Dropped Node 16 support and marked stable ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.4.2
 
 ### Patch Changes
