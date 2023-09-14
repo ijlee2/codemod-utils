@@ -95,7 +95,7 @@ npx @codemod-utils/cli --typescript false
 
 ## Compatibility
 
-- Node.js v16 or above
+- Node.js v18 or above
 
 
 ## Contributing

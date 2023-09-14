@@ -58,7 +58,7 @@ doubleColonize('ui/button');
 
 ## Compatibility
 
-- Node.js v16 or above
+- Node.js v18 or above
 
 
 ## Contributing
