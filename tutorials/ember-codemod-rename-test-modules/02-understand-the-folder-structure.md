@@ -12,7 +12,7 @@ Goals:
 
 ## Folder structure
 
-Let's take a look how `ember-codemod-rename-test-modules` is structured as a tree. For simplicity, the tree only shows what's important for the tutorial.
+Let's take a look at how `ember-codemod-rename-test-modules` is structured as a tree. For simplicity, the tree only shows what's important for the tutorial.
 
 ```sh
 ember-codemod-rename-test-modules
