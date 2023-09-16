@@ -128,7 +128,7 @@ Most importantly, write tests to document the inputs and outputs of your codemod
 
 ## Contributing
 
-See the [Contributing](../../CONTRIBUTING.md) guide for details.
+See the [Contributing](../../../CONTRIBUTING.md) guide for details.
 
 
 ## License
