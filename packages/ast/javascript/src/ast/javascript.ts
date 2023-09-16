@@ -36,7 +36,7 @@ const jsOptions: ParserOptions = {
     'dynamicImport',
     'nullishCoalescingOperator',
     'optionalChaining',
-    ['decorators', { decoratorsBeforeExport: false }],
+    ['decorators', { decoratorsBeforeExport: true }],
   ],
 };
 
