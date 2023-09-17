@@ -1,4 +1,4 @@
-# Sketch out the solution
+# Create static files
 
 Our codemod will support **workspaces**. For us, this means, a project that includes 1 addon and 1 test app, or many addons and equally many test apps.
 
@@ -6,22 +6,20 @@ Our codemod will support **workspaces**. For us, this means, a project that incl
 workspace-root
 ├── packages
 │   ├── addon-1
-│   ├── addon-2
 │   ├── ...
 │   └── addon-n
 └── tests
     ├── test-app-for-addon-1
-    ├── test-app-for-addon-2
     ├── ...
     └── test-app-for-addon-n
 ```
 
 We learned in [the previous chapter](./01-create-a-project.md) that,
 
-- The `blueprints` folder contains files that our users will have.
+- The `blueprints` folder contains blueprint files, which we use to create files that our end-developers (users) will have.
 - The `blueprintsRoot` variable represents where the blueprint files will be saved on their machine.
 
-Let's look at how we can read and write these files to their project.
+Let's look at how we can create files from `blueprints`.
 
 Goals:
 
@@ -31,7 +29,7 @@ Goals:
 
 ## Add blueprint files
 
-Let's start out simple by creating 1 file for the addon and 1 file for the test app. Both files are **static**; there's nothing **dynamic** (e.g. string interpolations, conditional statements, for-loops) that would complicate our first step.
+We'll start by creating 1 file for the addon and 1 file for the test app. Both files are **static** (the file content never changes). In other words, there's nothing **dynamic** (e.g. string interpolations, conditional statements, for-loops) that would complicate our first step.
 
 Copy-paste the following starter code:
 
@@ -70,7 +68,6 @@ Then, scaffold a step called `create-files-from-blueprints`. Use `findFiles()` f
 > ❯ pnpm test
 > 
 > [
->   '.gitkeep',
 >   '__addonLocation__/package.json',
 >   '__testAppLocation__/package.json'
 > ]
@@ -135,7 +132,7 @@ export function runCodemod(codemodOptions: CodemodOptions): void {
 
 Unlike in [the main tutorial](../ember-codemod-rename-test-modules/04-step-1-update-acceptance-tests-part-1.md#read-and-write-files), we won't use `writeFileSync()` from Node.js to create files. The reason is, the folders where files will be created (i.e. folders named `__addonLocation__` and `__testAppLocation__`) don't exist on the user's machine. We'd need to write extra code to handle this edge case.
 
-Luckily, `@codemod-utils/files` provides [`createFiles()`](../../packages/files/README.md#createfiles). It creates multiple files at once and creates folders as needed. We just need to provide this function a `Map`, which maps a blueprint's file path to its file content.
+Luckily, `@codemod-utils/files` provides [`createFiles()`](../../packages/files/README.md#createfiles). It can create multiple files at once and create folders as needed. We just need to provide this function a `Map`, which maps a blueprint's file path to its file content.
 
 <details>
 
@@ -172,7 +169,7 @@ export function createFilesFromBlueprints(options: Options): void {
 
 </details>
 
-Run `./codemod-test-fixtures.sh`. From the `sample-project`'s `output` folder, we see that we're a few steps closer to creating the addon and the test app. ✨
+Run `./codemod-test-fixtures.sh` to see the effect of `create-files-from-blueprints`. From the `sample-project`'s `output` folder, we see that we're already a few steps closer to creating the addon and the test app. ✨
 
 ```sh
 workspace-root
@@ -185,7 +182,7 @@ workspace-root
 
 <div align="center">
   <div>
-    Next: <a href="./03-define-codemod-options.md">Define codemod options</a>
+    Next: <a href="./03-define-options.md">Define options</a>
   </div>
   <div>
     Previous: <a href="./01-create-a-project.md">Create a project</a>
