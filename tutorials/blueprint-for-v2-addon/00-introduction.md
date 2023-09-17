@@ -13,15 +13,15 @@ We will partially implement `blueprint-for-v2-addon`, a codemod that helps [CLAR
 - Generating files is simpler and faster.
 
 ```sh
-# Average time for @embroider/addon-blueprint
-❯ time EMBER_CLI_PNPM=true ember addon "@clark-ui/button" --addon-location "ui/button" --blueprint "@embroider/addon-blueprint" --pnpm --skip-npm --typescript
+# Average for @embroider/addon-blueprint
+❯ time EMBER_CLI_PNPM=true ember addon "@my-orgs-ui/button" --addon-location "ui/button" --blueprint "@embroider/addon-blueprint" --pnpm --skip-npm --typescript
 
 1.87s user 1.18s system 126% cpu 2.409 total
 ```
 
 ```sh
-# Average time for blueprint-for-v2-addon
-❯ time pnpm generate-addon --addon-name "@clark-ui/button" --addon-location "ui/button"
+# Average for blueprint-for-v2-addon
+❯ time pnpm generate-addon --addon-name "@my-orgs-ui/button" --addon-location "ui/button"
 
 1.86s user 0.23s system 133% cpu 1.565 total
 ```
@@ -30,3 +30,5 @@ We will partially implement `blueprint-for-v2-addon`, a codemod that helps [CLAR
 ## Table of contents
 
 1. [Create a project](./01-create-a-project.md)
+1. [Sketch out the solution](./02-sketch-out-the-solution.md)
+1. [Define codemod options](./03-define-codemod-options.md)

@@ -21,20 +21,20 @@ cd blueprint-for-v2-addon
 pnpm install
 ```
 
+> [!NOTE]
+> Just like in [the main tutorial](../ember-codemod-rename-test-modules/04-step-1-update-acceptance-tests-part-1.md#remove-the-sample-step), you can remove the sample step, `add-end-of-line`.
+
 
 ## Folder structure
 
-Let's take a look at how `blueprint-for-v2-addon` is structured as a tree. For simplicity, the tree only shows what's important for the tutorial.
+Let's take a look at how `blueprint-for-v2-addon` is structured as a tree. For simplicity, the tree only shows what's new, compared to that from [the main tutorial](ember-codemod-rename-test-modules/02-understand-the-folder-structure.md#folder-structure).
 
 ```sh
 blueprint-for-v2-addon
 └── src
     ├── blueprints
-    ├── steps
-    ├── types
-    ├── utils
-    │   └── blueprints.ts
-    └── index.ts
+    └── utils
+        └── blueprints.ts
 ```
 
 We see that the CLI has scaffolded `src/blueprints` and `src/utils`.
@@ -42,7 +42,7 @@ We see that the CLI has scaffolded `src/blueprints` and `src/utils`.
 
 ### blueprints
 
-The `blueprints` directory contains files that we want end-developers (our users) to have.
+The `blueprints` folder contains files that we want end-developers (our users) to have.
 
 For the most part, the folder structure and file names will match what end-developers will see in their project. At runtime, it is possible to change the file path (e.g. rename `__gitignore__` to `.gitignore`) or exclude the file (e.g. `tsconfig.json` for JavaScript projects).
 
@@ -56,7 +56,7 @@ In short, we can write and test our codemod as usual, without worrying about whe
 
 <div align="center">
   <div>
-    Next:
+    Next: <a href="./02-sketch-out-the-solution.md">Sketch out the solution</a>
   </div>
   <div>
     Previous: <a href="./00-introduction.md">Introduction</a>
