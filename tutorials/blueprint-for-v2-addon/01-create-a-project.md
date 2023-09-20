@@ -1,6 +1,6 @@
 # Create a project
 
-Recall that `@codemod-utils/cli` automatically adds `@codemod-utils/files` and `@codemod-utils/tests`. We will instruct the CLI to also add [`@codemod-utils/blueprints`](../../packages/blueprints/README.md), so that we can write blueprints to create files.
+Recall that `@codemod-utils/cli` automatically adds `@codemod-utils/files` and `@codemod-utils/tests`. We will instruct the CLI to also add [`@codemod-utils/blueprints`](../../packages/blueprints/README.md), so that we can use blueprints to create files.
 
 Goals:
 
@@ -22,7 +22,7 @@ pnpm install
 ```
 
 > [!NOTE]
-> Just like in [the main tutorial](../ember-codemod-rename-test-modules/04-step-1-update-acceptance-tests-part-1.md#remove-the-sample-step), you can remove the sample step, `add-end-of-line`.
+> Just like in [the main tutorial](../ember-codemod-rename-test-modules/04-step-1-update-acceptance-tests-part-1.md#remove-the-sample-step), remove the sample step, `add-end-of-line`.
 
 
 ## Folder structure
@@ -33,6 +33,7 @@ Let's take a look at how `blueprint-for-v2-addon` is structured as a tree. For s
 blueprint-for-v2-addon
 └── src
     ├── blueprints
+    │   └── .gitkeep
     └── utils
         └── blueprints.ts
 ```
@@ -42,7 +43,10 @@ We see that the CLI has scaffolded `src/blueprints` and `src/utils`.
 
 ### blueprints
 
-The `blueprints` folder contains files that we want end-developers (our users) to have.
+The `blueprints` folder contains blueprint files, which we use to create files that our end-developers (users) will have.
+
+> [!NOTE]
+> `.gitkeep` is a placeholder file, one that our users don't need. Remove it.
 
 For the most part, the folder structure and file names will match what end-developers will see in their project. At runtime, it is possible to change the file path (e.g. rename `__gitignore__` to `.gitignore`) or exclude the file (e.g. `tsconfig.json` for JavaScript projects).
 
@@ -56,7 +60,7 @@ In short, we can write and test our codemod as usual, without worrying about whe
 
 <div align="center">
   <div>
-    Next: <a href="./02-sketch-out-the-solution.md">Sketch out the solution</a>
+    Next: <a href="./02-create-static-files.md">Create static files</a>
   </div>
   <div>
     Previous: <a href="./00-introduction.md">Introduction</a>
