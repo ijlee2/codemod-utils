@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ast-javascript
 
+## 1.1.0
+
+### Minor Changes
+
+- [#74](https://github.com/ijlee2/codemod-utils/pull/74) Set decoratorsBeforeExport to true, to match the default configuration for Ember projects ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.0
 
 ### Major Changes
