@@ -2,14 +2,12 @@ import { join } from 'node:path';
 
 import type { FilePath } from '../types/index.js';
 
-type Options = {
-  from: string;
-  to: string;
-};
-
 export function renamePathByDirectory(
   filePath: FilePath,
-  options: Options,
+  options: {
+    from: string;
+    to: string;
+  },
 ): FilePath {
   const { from, to } = options;
 

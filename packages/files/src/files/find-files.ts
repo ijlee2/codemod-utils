@@ -4,7 +4,7 @@ import type { FilePath, Options } from '../types/index.js';
 
 export function findFiles(
   pattern: string | string[],
-  options: Options & { ignoreList?: string[] },
+  options: Options & { ignoreList?: string[]; projectRoot: string },
 ): FilePath[] {
   const { ignoreList = [], projectRoot } = options;
 

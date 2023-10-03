@@ -1,17 +1,15 @@
 import type { FilePath } from '../types/index.js';
 import { parseFilePath } from './parse-file-path.js';
 
-type Options = {
-  find: {
-    directory: string;
-    file: string;
-  };
-  replace: (key: string) => string;
-};
-
 export function renamePathByFile(
   filePath: FilePath,
-  options: Options,
+  options: {
+    find: {
+      directory: string;
+      file: string;
+    };
+    replace: (key: string) => string;
+  },
 ): FilePath {
   const { dir, ext, name } = parseFilePath(filePath);
   const { find, replace } = options;

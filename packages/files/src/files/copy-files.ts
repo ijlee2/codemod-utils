@@ -4,7 +4,12 @@ import { join } from 'node:path';
 import type { FilePathMap, Options } from '../types/index.js';
 import { createDirectory } from './create-directory.js';
 
-export function copyFiles(filePathMap: FilePathMap, options: Options): void {
+export function copyFiles(
+  filePathMap: FilePathMap,
+  options: Options & {
+    projectRoot: string;
+  },
+): void {
   const { projectRoot } = options;
 
   filePathMap.forEach((newFilePath, oldFilePath) => {

@@ -1,12 +1,13 @@
 import type { FilePath } from '../types/index.js';
 import { renamePathByDirectory } from './rename-path-by-directory.js';
 
-type Options = {
-  from: string;
-  to: string;
-};
-
-export function mapFilePaths(filePaths: FilePath[], options: Options) {
+export function mapFilePaths(
+  filePaths: FilePath[],
+  options: {
+    from: string;
+    to: string;
+  },
+) {
   const { from, to } = options;
 
   return new Map(

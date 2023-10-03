@@ -5,7 +5,12 @@ import type { FilePathMap, Options } from '../types/index.js';
 import { createDirectory } from './create-directory.js';
 import { removeDirectoryIfEmpty } from './remove-directory-if-empty.js';
 
-export function moveFiles(filePathMap: FilePathMap, options: Options): void {
+export function moveFiles(
+  filePathMap: FilePathMap,
+  options: Options & {
+    projectRoot: string;
+  },
+): void {
   const { projectRoot } = options;
 
   filePathMap.forEach((newFilePath, oldFilePath) => {

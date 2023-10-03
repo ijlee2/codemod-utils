@@ -5,7 +5,9 @@ import type { FilePath, Options } from '../types/index.js';
 
 export function removeDirectoryIfEmpty(
   filePath: FilePath,
-  options: Options,
+  options: Options & {
+    projectRoot: string;
+  },
 ): void {
   const { projectRoot } = options;
 
