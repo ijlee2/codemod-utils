@@ -5,6 +5,35 @@ import type { FilePathMap, Options } from '../types/index.js';
 import { createDirectory } from './create-directory.js';
 import { removeDirectoryIfEmpty } from './remove-directory-if-empty.js';
 
+/**
+ * Moves files from one directory (source) to another (destination).
+ * Creates the destination directory if it doesn't exist. Removes
+ * the source directory if it is empty.
+ *
+ * @param filePathMap
+ *
+ * A mapping from source to destination.
+ *
+ * @param options
+ *
+ * An object with `projectRoot`.
+ *
+ * @example
+ *
+ * Move `LICENSE.md` and `README.md` from the project root to a
+ * folder named `ember-container-query`.
+ *
+ * ```ts
+ * const filePathMap = new Map([
+ *   ['LICENSE.md', 'ember-container-query/LICENSE.md'],
+ *   ['README.md', 'ember-container-query/README.md'],
+ * ]);
+ *
+ * moveFiles(filePathMap, {
+ *   projectRoot,
+ * });
+ * ```
+ */
 export function moveFiles(
   filePathMap: FilePathMap,
   options: Options & {

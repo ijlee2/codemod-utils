@@ -3,6 +3,32 @@ import { dirname, join } from 'node:path';
 
 import type { FilePath, Options } from '../types/index.js';
 
+/**
+ * Removes the directories specified in the file path, if they are
+ * empty.
+ *
+ * ⚠️ Likely, you won't need this method but `removeFiles()` instead.
+ *
+ * @param filePath
+ *
+ * A file path.
+ *
+ * @param options
+ *
+ * An object with `projectRoot`.
+ *
+ * @example
+ *
+ * Remove the folder `ember-container-query` if it is empty.
+ *
+ * ```ts
+ * const filePath = 'ember-container-query/LICENSE.md';
+ *
+ * removeDirectoryIfEmpty(filePath, {
+ *   projectRoot,
+ * });
+ * ```
+ */
 export function removeDirectoryIfEmpty(
   filePath: FilePath,
   options: Options & {
