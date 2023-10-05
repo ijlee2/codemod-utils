@@ -30,16 +30,16 @@
     "test": "mt tests --quiet"
   },
   "dependencies": {
-    "@codemod-utils/files": "^1.0.0",
+    "@codemod-utils/files": "^1.1.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.17",
+    "@babel/core": "^7.23.0",
     "@babel/eslint-parser": "^7.22.15",
-    "@codemod-utils/tests": "^1.0.0",
+    "@codemod-utils/tests": "^1.0.1",
     "@sondr3/minitest": "^0.1.2",
     "concurrently": "^8.2.1",
-    "eslint": "^8.49.0",
+    "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-n": "^16.1.0",
