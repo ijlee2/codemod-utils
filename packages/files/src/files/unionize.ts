@@ -3,6 +3,10 @@
  * ("file A or file B or ..."). The glob pattern is to be
  * passed to `findFiles()`.
  *
+ * @deprecated
+ *
+ * Pass an array of glob patterns to `findFiles()` instead.
+ *
  * @param files
  *
  * An array of file paths.
