@@ -7,7 +7,7 @@ test('files | rename-path-by-directory > edge case (no match)', function () {
 
   const newFilePath = renamePathByDirectory(oldFilePath, {
     from: 'addon',
-    to: 'new-location/src',
+    to: 'ember-container-query/src',
   });
 
   assert.strictEqual(newFilePath, 'addon');
