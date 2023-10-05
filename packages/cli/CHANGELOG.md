@@ -1,5 +1,12 @@
 # Changelog for @codemod-utils/cli
 
+## 1.0.1
+
+### Patch Changes
+
+- [#79](https://github.com/ijlee2/codemod-utils/pull/79) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+- [#77](https://github.com/ijlee2/codemod-utils/pull/77) Added JSDoc to @codemod-utils/files ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.0
 
 ### Major Changes

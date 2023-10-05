@@ -1,5 +1,15 @@
 # Changelog for @codemod-utils/files
 
+## 1.1.0
+
+### Minor Changes
+
+- [#77](https://github.com/ijlee2/codemod-utils/pull/77) Added JSDoc to @codemod-utils/files ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#78](https://github.com/ijlee2/codemod-utils/pull/78) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.0
 
 ### Major Changes
