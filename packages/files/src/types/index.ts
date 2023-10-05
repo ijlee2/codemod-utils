@@ -6,10 +6,7 @@ type FilePath = string;
 
 type FilePathMap = Map<FilePath, FilePath>;
 
-type Options = {
-  [key: string]: unknown;
-  projectRoot: string;
-};
+type Options = Record<string, unknown>;
 
 type ParsedPath = {
   base: string;

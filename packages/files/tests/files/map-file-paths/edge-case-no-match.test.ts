@@ -7,7 +7,7 @@ test('files | map-file-paths > edge case (no match)', function () {
 
   const filePathMap = mapFilePaths(filePaths, {
     from: 'addon',
-    to: 'new-location/src',
+    to: 'ember-container-query/src',
   });
 
   assert.deepStrictEqual(

@@ -1,9 +1,9 @@
 import { assert, loadFixture, test } from '@codemod-utils/tests';
 
 import { findFiles } from '../../../src/index.js';
-import { codemodOptions } from '../../shared-test-setups/index.js';
+import { codemodOptions, options } from '../../shared-test-setups/index.js';
 
-test('files | find-files > edge case (projectRoot does not exist)', function () {
+test('files | find-files > multiple patterns', function () {
   const inputProject = {
     tests: {
       dummy: {
@@ -34,9 +34,15 @@ test('files | find-files > edge case (projectRoot does not exist)', function () 
 
   loadFixture(inputProject, codemodOptions);
 
-  const filePaths = findFiles('tests/dummy/**/*.{js,ts}', {
-    projectRoot: 'path/to/somewhere/else',
+  const filePaths = findFiles(['**/*.json', '**/index.*'], {
+    projectRoot: options.projectRoot,
   });
 
-  assert.deepStrictEqual(filePaths, []);
+  assert.deepStrictEqual(filePaths, [
+    'index.js',
+    'package.json',
+    'tests/dummy/app/index.html',
+    'tests/dummy/config/optional-features.json',
+    'tests/index.html',
+  ]);
 });

@@ -1,17 +1,50 @@
 import type { FilePath } from '../types/index.js';
 import { parseFilePath } from './parse-file-path.js';
 
-type Options = {
-  find: {
-    directory: string;
-    file: string;
-  };
-  replace: (key: string) => string;
-};
-
+/**
+ * Forms a new file path by altering the path's file name.
+ *
+ * @param filePath
+ *
+ * A file path.
+ *
+ * @param options
+ *
+ * An object with `find` and `replace`.
+ *
+ * @return
+ *
+ * A file path.
+ *
+ * @example
+ *
+ * Prepare to un-pod components.
+ *
+ * ```ts
+ * const oldFilePath = 'app/components/navigation-menu/template.hbs';
+ *
+ * const newFilePath = renamePathByFile(oldFilePath, {
+ *   find: {
+ *     directory: 'app/components',
+ *     file: 'template',
+ *   },
+ *   replace: (key: string) => {
+ *     return `app/components/${key}`;
+ *   },
+ * });
+ *
+ * // newFilePath -> 'app/components/navigation-menu.hbs'
+ * ```
+ */
 export function renamePathByFile(
   filePath: FilePath,
-  options: Options,
+  options: {
+    find: {
+      directory: string;
+      file: string;
+    };
+    replace: (key: string) => string;
+  },
 ): FilePath {
   const { dir, ext, name } = parseFilePath(filePath);
   const { find, replace } = options;
