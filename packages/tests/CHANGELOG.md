@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/tests
 
+## 1.1.0
+
+### Minor Changes
+
+- [#86](https://github.com/ijlee2/codemod-utils/pull/86) Added JSDoc to @codemod-utils/tests ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.1
 
 ### Patch Changes
