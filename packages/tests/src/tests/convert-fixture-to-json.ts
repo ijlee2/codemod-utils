@@ -41,6 +41,36 @@ function createJson(filePaths: string[], cwd: string): DirJSON {
   return json;
 }
 
+/**
+ * Reads the fixture (folders and files) at the specified path.
+ * Returns a JSON representation to enable fixture-driven tests.
+ *
+ * @param projectRoot
+ *
+ * Where the fixture can be found, relative to the `tests/fixtures`
+ * folder in the codemod project.
+ *
+ * @return
+ *
+ * A JSON, which can then be passed to `loadFixture()` or
+ * `assertFixture()`.
+ *
+ * @example
+ *
+ * Assert that the codemod updated the fixture correctly.
+ *
+ * ```ts
+ * const inputProject = convertFixtureToJson('sample-project/input');
+ *
+ * const outputProject = convertFixtureToJson('sample-project/output');
+ *
+ * loadFixture(inputProject, codemodOptions);
+ *
+ * runCodemod(codemodOptions);
+ *
+ * assertFixture(outputProject, codemodOptions);
+ * ```
+ */
 export function convertFixtureToJson(projectRoot: string): DirJSON {
   const cwd = `${process.cwd()}/tests/fixtures/${projectRoot}`;
 
