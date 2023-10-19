@@ -7,36 +7,24 @@ _Utilities for tests_
 
 ## What is it?
 
-`@codemod-utils/tests` wraps the methods from [`node:assert`](https://nodejs.org/api/assert.html) and [`@sondr3/minitest`](https://github.com/sondr3/minitest). It also provides methods to help you test file fixtures.
-
-This means, you can:
-
-- Write tests that execute fast
-- Write tests that are "dependency-free"
-- Thoroughly check the codemod's output
+`@codemod-utils/tests` helps you write fixture-driven tests. The tests execute fast and are "dependency-free."
 
 
 ## API
 
-### test, assert
+### test
 
-Test files end in the extension `.test.js`. Whenever possible, each file has exactly 1 test and no more.
+The `test` method comes from [`@sondr3/minitest`](https://github.com/sondr3/minitest).
 
 ```js
-import { assert, test } from '@codemod-utils/tests';
+import { test } from '@codemod-utils/tests';
 
 test('Some method', function () {
-  /* Arrange, act, assert */
+  // ...
 });
 ```
 
-I find these assertions, which are "strong," to be useful for testing a codemod:
-
-- `assert.deepStrictEqual` - check "complex" data structures (array, object, Map)
-- `assert.strictEqual` - check "simple" data structures (Boolean, number, string)
-- `assert.throws` - check error messages
-
-You can append `.only()` to run a subset of tests.
+You can append `.only()` to run a subset of tests. This may be useful for debugging.
 
 ```js
 test('Some method', function () {
@@ -44,54 +32,72 @@ test('Some method', function () {
 }).only();
 ```
 
+Note, test files must have the extension `.test.ts` or `.test.js`. Check the [main tutorial](../../tutorials/ember-codemod-rename-test-modules/02-understand-the-folder-structure.md#tests) for conventions around tests.
 
-For more information, please check the documentations from [`node:assert`](https://nodejs.org/api/assert.html) and [`@sondr3/minitest`](https://github.com/sondr3/minitest).
+
+### assert
+
+The `assert` object comes from [Node.js](https://nodejs.org/api/assert.html).
+
+```js
+import { assert, test } from '@codemod-utils/tests';
+
+import { createOptions } from '../../../src/steps/index.js';
+import {
+  codemodOptions,
+  options,
+} from '../../helpers/shared-test-setups/sample-project.js';
+
+test('steps | create-options > sample-project', function () {
+  assert.deepStrictEqual(createOptions(codemodOptions), options);
+});
+```
+
+Make strong assertions whenever possible, using methods such as [`assert.deepStrictEqual()`](https://nodejs.org/docs/latest-v18.x/api/assert.html#assertdeepstrictequalactual-expected-message), [`assert.strictEqual()`](https://nodejs.org/docs/latest-v18.x/api/assert.html#assertstrictequalactual-expected-message), and [`assert.throws()`](https://nodejs.org/docs/latest-v18.x/api/assert.html#assertthrowsfn-error-message). Weak assertions like [`assert.match()`](https://nodejs.org/docs/latest-v18.x/api/assert.html#assertmatchstring-regexp-message) and [`assert.ok()`](https://nodejs.org/docs/latest-v18.x/api/assert.html#assertokvalue-message), which create a "room for interpretation" and can make tests pass when they shouldn't (false negatives), should be avoided.
+
+- `assert.deepStrictEqual()` - check "complex" data structures (array, object, Map)
+- `assert.strictEqual()` - check "simple" data structures (Boolean, number, string)
+- `assert.throws()` - check error messages
 
 
 ### convertFixtureToJson, loadFixture, assertFixture
 
-Use these methods to document how files are updated.
+Use these methods to document how the codemod updates folders and files.
 
 <details>
 
 <summary>Example</summary>
 
 ```js
-/* tests/fixtures/ember-container-query-glint/index.js */
+/* tests/fixtures/sample-project/index.ts */
 import { convertFixtureToJson } from '@codemod-utils/tests';
 
-const inputProject = convertFixtureToJson('ember-container-query-glint/input');
-const outputProject = convertFixtureToJson('ember-container-query-glint/output');
+const inputProject = convertFixtureToJson('sample-project/input');
+const outputProject = convertFixtureToJson('sample-project/output');
 
 export { inputProject, outputProject };
 ```
 
 ```js
-/* tests/migration/ember-addon/index/ember-container-query/glint.test.js */
+/* tests/index/sample-project.test.ts */
 import { assertFixture, loadFixture, test } from '@codemod-utils/tests';
 
-import { migrateEmberAddon } from '../../../../../src/migration/ember-addon/index.js';
+import { runCodemod } from '../../src/index.js';
 import {
   inputProject,
   outputProject,
-} from '../../../../fixtures/ember-container-query-glint/index.js';
+} from '../fixtures/sample-project/index.js';
+import { codemodOptions } from '../helpers/shared-test-setups/sample-project.js';
 
-test('migration | ember-addon | index | ember-container-query > glint', function () {
-  const codemodOptions = {
-    addonLocation: undefined,
-    projectRoot: 'tmp/ember-container-query-glint',
-    testAppLocation: undefined,
-    testAppName: undefined,
-  };
-
+test('index > sample-project', function () {
   loadFixture(inputProject, codemodOptions);
 
-  migrateEmberAddon(codemodOptions);
+  runCodemod(codemodOptions);
 
   assertFixture(outputProject, codemodOptions);
 
   // Check idempotence
-  migrateEmberAddon(codemodOptions);
+  runCodemod(codemodOptions);
 
   assertFixture(outputProject, codemodOptions);
 });
@@ -99,9 +105,7 @@ test('migration | ember-addon | index | ember-container-query > glint', function
 
 </details>
 
-Note, `inputProject` and `outputProject` (obtained with `convertFixtureToJson` in the example above) are JSONs that represent the input and output directories. At times, it may be better to hardcode `inputProject` and `outputProject` in the test file, especially when only a few files need to be considered, or when the file content is not important.
-
-To create the input and output directories easily, you can copy an existing project (assuming there is one). Then, run the codemod on the _output_ project.
+In the example above (an "acceptance" test), `inputProject` and `outputProject` were derived from folders and files that actually exist. At times, it may be easier to define `inputProject` and `outputProject` in the test file. This is often the case for "integration" tests, i.e. tests for a single step. Maybe only a few types of files need to be checked, or the file content can be empty because it plays no role in the step.
 
 
 ## Compatibility
