@@ -12,63 +12,54 @@ _Utilities for handling JSON_
 
 ## API
 
-### convertToMap
+### convertToMap, convertToObject
 
-Converts an object to a [Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map). The `Map` data structure helps you add, update, and remove entries.
+`convertToMap()` converts an object to a Map, while `convertToObject()` converts the Map back to an object. Use these two utilities to update JSONs.
+
+> [!NOTE]
+> `convertToObject()` creates an object with keys in alphabetical order.
 
 <details>
 
 <summary>Example</summary>
 
-```js
-import { convertToMap } from '@codemod-utils/json';
+Remove dependencies (if they exist) from `package.json`.
 
-function updateDependencies(packageJson) {
-  const dependencies = convertToMap(packageJson['dependencies']);
+```ts
+const dependencies = convertToMap(packageJson['dependencies']);
 
-  const packagesToDelete = [
-    '@embroider/macros',
-    'ember-auto-import',
-    'ember-cli-babel',
-    'ember-cli-htmlbars',
-  ];
+const packagesToDelete = [
+  '@embroider/macros',
+  'ember-auto-import',
+  'ember-cli-babel',
+  'ember-cli-htmlbars',
+];
 
-  packagesToDelete.forEach((packageName) => {
-    dependencies.delete(packageName);
-  });
-}
+packagesToDelete.forEach((packageName) => {
+  dependencies.delete(packageName);
+});
+
+packageJson['dependencies'] = convertToObject(dependencies);
 ```
 
 </details>
 
-
-### convertToObject
-
-Converts a Map (back) to an object. `convertToObject` helps you update the JSON.
-
 <details>
 
 <summary>Example</summary>
 
-```js
-import { convertToMap, convertToObject } from '@codemod-utils/json';
+Configure `tsconfig.json` in an Ember app.
 
-function updateDependencies(packageJson) {
-  const dependencies = convertToMap(packageJson['dependencies']);
+```ts
+const compilerOptions = convertToMap(tsConfigJson['compilerOptions']);
 
-  const packagesToDelete = [
-    '@embroider/macros',
-    'ember-auto-import',
-    'ember-cli-babel',
-    'ember-cli-htmlbars',
-  ];
+compilerOptions.set('paths', {
+  [`${appName}/tests/*`]: ['tests/*'],
+  [`${appName}/*`]: ['app/*'],
+  '*': ['types/*'],
+});
 
-  packagesToDelete.forEach((packageName) => {
-    dependencies.delete(packageName);
-  });
-
-  packageJson['dependencies'] = convertToObject(dependencies);
-}
+tsConfigJson['compilerOptions'] = convertToObject(compilerOptions);
 ```
 
 </details>
