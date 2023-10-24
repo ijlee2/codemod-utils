@@ -65,19 +65,24 @@ tsConfigJson['compilerOptions'] = convertToObject(compilerOptions);
 </details>
 
 
-### readPackageJson, validatePackageJson
+### readPackageJson
 
 Reads `package.json` and returns the parsed JSON.
+
+> [!NOTE]
+> `readPackageJson()` checks that `package.json` exists and is a valid JSON.
 
 <details>
 
 <summary>Example</summary>
 
-```js
+Check if the project, against which the codemod is run, has `typescript` as a dependency.
+
+```ts
 import { readPackageJson } from '@codemod-utils/json';
 
 const { dependencies, devDependencies } = readPackageJson({
-  projectRoot: '__projectRoot__',
+  projectRoot,
 });
 
 const projectDependencies = new Map([
@@ -90,7 +95,13 @@ const hasTypeScript = projectDependencies.has('typescript');
 
 </details>
 
-`readPackageJson` checks that `package.json` exists and is a valid JSON. Call `validatePackageJson` if you need to know that the `name` and `version` fields exist.
+
+### validatePackageJson
+
+Check if the fields `name` and `version` exist, in the sense that their values are a non-empty string.
+
+> [!NOTE]
+> You may still need the non-null assertion operator `!`, to tell TypeScript that `name` and `version` are not `undefined`.
 
 <details>
 
@@ -100,7 +111,7 @@ const hasTypeScript = projectDependencies.has('typescript');
 import { readPackageJson, validatePackageJson } from '@codemod-utils/json';
 
 const packageJson = readPackageJson({
-  projectRoot: '__projectRoot__',
+  projectRoot,
 });
 
 validatePackageJson(packageJson);

@@ -3,6 +3,35 @@ import { join } from 'node:path';
 
 import type { Options, PackageJson } from '../types/index.js';
 
+/**
+ * Reads `package.json` and returns the parsed JSON.
+ *
+ * @param options
+ *
+ * An object with `projectRoot`.
+ *
+ * @return
+ *
+ * A JSON that represents `package.json`.
+ *
+ * @example
+ *
+ * Check if the project, against which the codemod is run,
+ * has `typescript` as a dependency.
+ *
+ * ```ts
+ * const { dependencies, devDependencies } = readPackageJson({
+ *   projectRoot,
+ * });
+ *
+ * const projectDependencies = new Map([
+ *   ...Object.entries(dependencies ?? {}),
+ *   ...Object.entries(devDependencies ?? {}),
+ * ]);
+ *
+ * const hasTypeScript = projectDependencies.has('typescript');
+ * ```
+ */
 export function readPackageJson(options: Options): PackageJson {
   const { projectRoot } = options;
 
