@@ -28,7 +28,7 @@ You can append `.only()` to run a subset of tests. This may be useful for debugg
 
 ```js
 test('Some method', function () {
- // ...
+  // ...
 }).only();
 ```
 
