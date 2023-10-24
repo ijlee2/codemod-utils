@@ -19,12 +19,12 @@ The methods are built with the **entity name** in mind, a string (possibly with 
 
 ### camelize
 
-Create a string that is camel-cased.
+Returns a string in camel-case.
 
-```js
+```ts
 import { camelize } from '@codemod-utils/ember-cli-string';
 
-camelize('css-class-name');
+const newValue = camelize('css-class-name');
 
 // 'cssClassName'
 ```
@@ -32,12 +32,12 @@ camelize('css-class-name');
 
 ### classify
 
-Create a string that can be used to name a JavaScript `class`.
+Returns a string that can be used to name a JavaScript `class` (a.k.a. Pascal case).
 
-```js
+```ts
 import { classify } from '@codemod-utils/ember-cli-string';
 
-const classifiedName = classify('ui/button');
+const newValue = classify('ui/button');
 
 // 'UiButton'
 ```
@@ -45,12 +45,12 @@ const classifiedName = classify('ui/button');
 
 ### doubleColonize
 
-Create a string that can be used to invoke a component with the angle bracket syntax.
+Returns a string associated with the angle bracket syntax for components.
 
-```js
+```ts
 import { doubleColonize } from '@codemod-utils/ember-cli-string';
 
-doubleColonize('ui/button');
+const newValue = doubleColonize('ui/button');
 
 // 'Ui::Button'
 ```
