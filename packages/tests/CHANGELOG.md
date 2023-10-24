@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/tests
 
+## 1.1.1
+
+### Patch Changes
+
+- [#90](https://github.com/ijlee2/codemod-utils/pull/90) Fixed a typo in README ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.0
 
 ### Minor Changes

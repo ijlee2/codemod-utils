@@ -1,5 +1,15 @@
 # Changelog for @codemod-utils/json
 
+## 1.1.0
+
+### Minor Changes
+
+- [#88](https://github.com/ijlee2/codemod-utils/pull/88) Added JSDoc to @codemod-utils/json ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#89](https://github.com/ijlee2/codemod-utils/pull/89) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.1
 
 ### Patch Changes
