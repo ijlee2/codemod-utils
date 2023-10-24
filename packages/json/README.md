@@ -12,81 +12,77 @@ _Utilities for handling JSON_
 
 ## API
 
-### convertToMap
+### convertToMap, convertToObject
 
-Converts an object to a [Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map). The `Map` data structure helps you add, update, and remove entries.
+`convertToMap()` converts an object to a Map, while `convertToObject()` converts the Map back to an object. Use these two utilities to update JSONs.
 
-<details>
-
-<summary>Example</summary>
-
-```js
-import { convertToMap } from '@codemod-utils/json';
-
-function updateDependencies(packageJson) {
-  const dependencies = convertToMap(packageJson['dependencies']);
-
-  const packagesToDelete = [
-    '@embroider/macros',
-    'ember-auto-import',
-    'ember-cli-babel',
-    'ember-cli-htmlbars',
-  ];
-
-  packagesToDelete.forEach((packageName) => {
-    dependencies.delete(packageName);
-  });
-}
-```
-
-</details>
-
-
-### convertToObject
-
-Converts a Map (back) to an object. `convertToObject` helps you update the JSON.
+> [!NOTE]
+> `convertToObject()` creates an object with keys in alphabetical order.
 
 <details>
 
 <summary>Example</summary>
 
-```js
-import { convertToMap, convertToObject } from '@codemod-utils/json';
+Remove dependencies (if they exist) from `package.json`.
 
-function updateDependencies(packageJson) {
-  const dependencies = convertToMap(packageJson['dependencies']);
+```ts
+const dependencies = convertToMap(packageJson['dependencies']);
 
-  const packagesToDelete = [
-    '@embroider/macros',
-    'ember-auto-import',
-    'ember-cli-babel',
-    'ember-cli-htmlbars',
-  ];
+const packagesToDelete = [
+  '@embroider/macros',
+  'ember-auto-import',
+  'ember-cli-babel',
+  'ember-cli-htmlbars',
+];
 
-  packagesToDelete.forEach((packageName) => {
-    dependencies.delete(packageName);
-  });
+packagesToDelete.forEach((packageName) => {
+  dependencies.delete(packageName);
+});
 
-  packageJson['dependencies'] = convertToObject(dependencies);
-}
+packageJson['dependencies'] = convertToObject(dependencies);
+```
+
+</details>
+
+<details>
+
+<summary>Example</summary>
+
+Configure `tsconfig.json` in an Ember app.
+
+```ts
+const compilerOptions = convertToMap(tsConfigJson['compilerOptions']);
+
+compilerOptions.set('paths', {
+  [`${appName}/tests/*`]: ['tests/*'],
+  [`${appName}/*`]: ['app/*'],
+  '*': ['types/*'],
+});
+
+tsConfigJson['compilerOptions'] = convertToObject(compilerOptions);
 ```
 
 </details>
 
 
-### readPackageJson, validatePackageJson
+### readPackageJson
 
 Reads `package.json` and returns the parsed JSON.
 
+> [!NOTE]
+> `readPackageJson()` checks that `package.json` exists and is a valid JSON.
+
 <details>
 
 <summary>Example</summary>
 
-```js
+Check if the project, against which the codemod is run, has `typescript` as a dependency.
+
+```ts
 import { readPackageJson } from '@codemod-utils/json';
 
 const { dependencies, devDependencies } = readPackageJson({
-  projectRoot: '__projectRoot__',
+  projectRoot,
 });
 
 const projectDependencies = new Map([
@@ -99,7 +95,13 @@ const hasTypeScript = projectDependencies.has('typescript');
 
 </details>
 
-`readPackageJson` checks that `package.json` exists and is a valid JSON. Call `validatePackageJson` if you need to know that the `name` and `version` fields exist.
+
+### validatePackageJson
+
+Check if the fields `name` and `version` exist, in the sense that their values are a non-empty string.
+
+> [!NOTE]
+> You may still need the non-null assertion operator `!`, to tell TypeScript that `name` and `version` are not `undefined`.
 
 <details>
 
@@ -109,7 +111,7 @@ const hasTypeScript = projectDependencies.has('typescript');
 import { readPackageJson, validatePackageJson } from '@codemod-utils/json';
 
 const packageJson = readPackageJson({
-  projectRoot: '__projectRoot__',
+  projectRoot,
 });
 
 validatePackageJson(packageJson);
