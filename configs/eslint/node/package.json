@@ -16,27 +16,27 @@
     "lint:js:fix": "prettier --write \"**/*.js\""
   },
   "dependencies": {
-    "@babel/core": "^7.23.0",
+    "@babel/core": "^7.23.2",
     "@babel/eslint-parser": "7.22.15",
     "@rushstack/eslint-patch": "^1.5.1",
-    "@typescript-eslint/eslint-plugin": "^6.7.4",
-    "@typescript-eslint/parser": "^6.7.4",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-import": "^2.28.1",
-    "eslint-plugin-n": "^16.1.0",
-    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-n": "^16.2.0",
+    "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
-    "eslint-plugin-typescript-sort-keys": "^3.0.0"
+    "eslint-plugin-typescript-sort-keys": "^3.1.0"
   },
   "devDependencies": {
     "@shared-configs/prettier": "workspace:*",
-    "concurrently": "^8.2.1",
-    "eslint": "^8.50.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.52.0",
     "prettier": "^3.0.3"
   },
   "peerDependencies": {
-    "eslint": "^8.49.0",
+    "eslint": "^8.52.0",
     "prettier": "^3.0.3"
   },
   "peerDependenciesMeta": {

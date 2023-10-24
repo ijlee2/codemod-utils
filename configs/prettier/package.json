@@ -16,7 +16,7 @@
     "lint:js:fix": "prettier --write \"**/*.js\""
   },
   "devDependencies": {
-    "concurrently": "^8.2.1",
+    "concurrently": "^8.2.2",
     "prettier": "^3.0.3"
   },
   "peerDependencies": {
