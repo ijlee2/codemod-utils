@@ -123,8 +123,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2
       '@types/node':
-        specifier: ^18.18.6
-        version: 18.18.6
+        specifier: ^18.18.7
+        version: 18.18.7
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -160,8 +160,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2
       '@types/node':
-        specifier: ^18.18.6
-        version: 18.18.6
+        specifier: ^18.18.7
+        version: 18.18.7
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -200,8 +200,8 @@ importers:
         specifier: ^4.5.2
         version: 4.5.2
       '@types/node':
-        specifier: ^18.18.6
-        version: 18.18.6
+        specifier: ^18.18.7
+        version: 18.18.7
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -246,8 +246,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2
       '@types/node':
-        specifier: ^18.18.6
-        version: 18.18.6
+        specifier: ^18.18.7
+        version: 18.18.7
       '@types/yargs':
         specifier: ^17.0.29
         version: 17.0.29
@@ -285,8 +285,8 @@ importers:
         specifier: ^4.5.2
         version: 4.5.2
       '@types/node':
-        specifier: ^18.18.6
-        version: 18.18.6
+        specifier: ^18.18.7
+        version: 18.18.7
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -322,8 +322,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2
       '@types/node':
-        specifier: ^18.18.6
-        version: 18.18.6
+        specifier: ^18.18.7
+        version: 18.18.7
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -340,8 +340,8 @@ importers:
   packages/json:
     dependencies:
       type-fest:
-        specifier: ^4.5.0
-        version: 4.5.0
+        specifier: ^4.6.0
+        version: 4.6.0
     devDependencies:
       '@codemod-utils/tests':
         specifier: workspace:*
@@ -359,8 +359,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2
       '@types/node':
-        specifier: ^18.18.6
-        version: 18.18.6
+        specifier: ^18.18.7
+        version: 18.18.7
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -396,8 +396,8 @@ importers:
         specifier: workspace:*
         version: link:../../configs/typescript
       '@types/node':
-        specifier: ^18.18.6
-        version: 18.18.6
+        specifier: ^18.18.7
+        version: 18.18.7
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -1067,14 +1067,14 @@ packages:
   /@types/fs-extra@9.0.13:
     resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
     dependencies:
-      '@types/node': 18.18.6
+      '@types/node': 18.18.7
     dev: false
 
   /@types/glob@8.1.0:
     resolution: {integrity: sha512-IO+MJPVhoqz+28h1qLAcBEH2+xHMK6MTyHJc7MTnnYb6wsoLR29POVGJ7LycmVXIqyy/4/2ShP5sUwTXuOwb/w==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 18.18.6
+      '@types/node': 18.18.7
     dev: false
 
   /@types/is-ci@3.0.0:
@@ -1117,8 +1117,10 @@ packages:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: true
 
-  /@types/node@18.18.6:
-    resolution: {integrity: sha512-wf3Vz+jCmOQ2HV1YUJuCWdL64adYxumkrxtc+H1VUQlnQI04+5HtH+qZCOE21lBE7gIrt+CwX2Wv8Acrw5Ak6w==}
+  /@types/node@18.18.7:
+    resolution: {integrity: sha512-bw+lEsxis6eqJYW8Ql6+yTqkE6RuFtsQPSe5JxXbqYRFQEER5aJA9a5UH9igqDWm3X4iLHIKOHlnAXLM4mi7uQ==}
+    dependencies:
+      undici-types: 5.26.5
 
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -1128,7 +1130,7 @@ packages:
     resolution: {integrity: sha512-F3OznnSLAUxFrCEu/L5PY8+ny8DtcFRjx7fZZ9bycvXRi3KPTRS9HOitGZwvPg0juRhXFWIeKX58cnX5YqLohQ==}
     dependencies:
       '@types/glob': 8.1.0
-      '@types/node': 18.18.6
+      '@types/node': 18.18.7
     dev: false
 
   /@types/semver@7.5.2:
@@ -4169,8 +4171,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /type-fest@4.5.0:
-    resolution: {integrity: sha512-diLQivFzddJl4ylL3jxSkEc39Tpw7o1QeEHIPxVwryDK2lpB7Nqhzhuo6v5/Ls08Z0yPSAhsyAWlv1/H0ciNmw==}
+  /type-fest@4.6.0:
+    resolution: {integrity: sha512-rLjWJzQFOq4xw7MgJrCZ6T1jIOvvYElXT12r+y0CC6u67hegDHaxcPqb2fZHOGlqxugGQPNB1EnTezjBetkwkw==}
     engines: {node: '>=16'}
     dev: false
 
@@ -4220,6 +4222,9 @@ packages:
       has-bigints: 1.0.2
       has-symbols: 1.0.3
       which-boxed-primitive: 1.0.2
+
+  /undici-types@5.26.5:
+    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
 
   /universalify@0.1.2:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
