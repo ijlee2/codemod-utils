@@ -106,16 +106,34 @@ function _traverse(isTypeScript?: boolean) {
   };
 }
 
-type Tools = {
+type AST = {
   builders: typeof types.builders;
   print: typeof _print;
   traverse: typeof _traverse;
 };
 
-const tools: Tools = {
+/**
+ * Provides methods from `recast` to help you parse and transform
+ * `*.{js,ts}` files.
+ *
+ * @example
+ *
+ * ```ts
+ * function transformCode(file: string, isTypeScript: boolean): string {
+ *   const traverse = AST.traverse(isTypeScript);
+ *
+ *   const ast = traverse(file, {
+ *     // Use AST.builders to transform the tree
+ *   });
+ *
+ *   return AST.print(ast);
+ * }
+ * ```
+ */
+const AST: AST = {
   builders: types.builders,
   print: _print,
   traverse: _traverse,
 };
 
-export default tools;
+export { AST };

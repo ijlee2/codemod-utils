@@ -7,14 +7,12 @@ _Utilities for handling `*.{js,ts}` files as abstract syntax tree_
 
 ## What is it?
 
-`@codemod-utils/ast-javascript` wraps the methods from [`recast`](https://github.com/benjamn/recast/), a library that helps you parse and transform `*.{js,ts}` files.
+`@codemod-utils/ast-javascript` provides methods from [`recast`](https://github.com/benjamn/recast/) to help you parse and transform `*.{js,ts}` files.
 
-The wrappers help you read and write files of different types _in the same way_. This way, you can focus on learning the **builders** and **visit methods**, the building blocks for transforming code (library-dependent).
-
-```js
+```ts
 import { AST } from '@codemod-utils/ast-javascript';
 
-function transformCode(file, isTypeScript) {
+function transformCode(file: string, isTypeScript: boolean): string {
   const traverse = AST.traverse(isTypeScript);
 
   const ast = traverse(file, {
@@ -57,7 +55,7 @@ Copy-paste the visit methods from your file to AST explorer, then rename `AST.bu
 
 <summary>Example</summary>
 
-```js
+```ts
 /* Your file */
 import { AST } from '@codemod-utils/ast-javascript';
 
@@ -85,7 +83,7 @@ export function transformCode(file) {
 }
 ```
 
-```js
+```ts
 /* AST Explorer */
 export default function transformer(code, { recast, parsers }) {
   const ast = recast.parse(code, { parser: parsers.typescript });
