@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ast-template
 
+## 1.1.0
+
+### Minor Changes
+
+- [#94](https://github.com/ijlee2/codemod-utils/pull/94) Added JSDoc to @codemod-utils/ast-template ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.0
 
 ### Major Changes

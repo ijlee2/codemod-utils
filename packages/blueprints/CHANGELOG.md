@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/blueprints
 
+## 1.1.0
+
+### Minor Changes
+
+- [#92](https://github.com/ijlee2/codemod-utils/pull/92) Added JSDoc to @codemod-utils/blueprints ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.0
 
 ### Major Changes

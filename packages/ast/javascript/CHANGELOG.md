@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ast-javascript
 
+## 1.2.0
+
+### Minor Changes
+
+- [#93](https://github.com/ijlee2/codemod-utils/pull/93) Added JSDoc to @codemod-utils/ast-javascript ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.1
 
 ### Patch Changes
