@@ -77,6 +77,22 @@ function updateDevDependencies(
   packageJson['devDependencies'] = convertToObject(devDependencies);
 }
 
+function addPnpmOverrides(packageJson: PackageJson, options: Options): void {
+  const { codemod } = options;
+
+  if (!codemod.hasTypeScript) {
+    return;
+  }
+
+  const version = getVersion('eslint-plugin-import').replace(/^\^/, '');
+
+  packageJson['pnpm'] = {
+    overrides: {
+      [`eslint-plugin-import@${version}>tsconfig-paths`]: '^4.2.0',
+    },
+  };
+}
+
 export function updatePackageJson(options: Options): void {
   const { codemod, projectRoot } = options;
 
@@ -86,6 +102,7 @@ export function updatePackageJson(options: Options): void {
 
   updateDependencies(packageJson, options);
   updateDevDependencies(packageJson, options);
+  addPnpmOverrides(packageJson, options);
 
   const destination = join(projectRoot, codemod.name, 'package.json');
   const file = JSON.stringify(packageJson, null, 2) + '\n';
