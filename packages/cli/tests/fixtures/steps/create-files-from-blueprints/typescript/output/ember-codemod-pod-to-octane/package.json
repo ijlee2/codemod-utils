@@ -44,10 +44,5 @@
       "enhance: dependency": "Internal",
       "enhance: documentation": "Documentation"
     }
-  },
-  "pnpm": {
-    "overrides": {
-      "eslint-plugin-import@2.29.0>tsconfig-paths": "^4.2.0"
-    }
   }
 }
