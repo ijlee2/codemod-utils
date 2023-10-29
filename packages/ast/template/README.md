@@ -7,14 +7,12 @@ _Utilities for handling `*.hbs` files as abstract syntax tree_
 
 ## What is it?
 
-`@codemod-utils/ast-template` wraps the methods from [`ember-template-recast`](https://github.com/ember-template-lint/ember-template-recast), a library that helps you parse and transform `*.hbs` files.
+`@codemod-utils/ast-template` provides methods from [`ember-template-recast`](https://github.com/ember-template-lint/ember-template-recast) to help you parse and transform `*.hbs` files.
 
-The wrappers help you read and write files of different types _in the same way_. This way, you can focus on learning the **builders** and **visit methods**, the building blocks for transforming code (library-dependent).
-
-```js
+```ts
 import { AST } from '@codemod-utils/ast-template';
 
-function transformCode(file) {
+function transformCode(file: string): string {
   const traverse = AST.traverse();
 
   const ast = traverse(file, {
@@ -57,7 +55,7 @@ Copy-paste the visit methods from your file to AST explorer, then rename `AST.bu
 
 <summary>Example</summary>
 
-```js
+```ts
 /* Your file */
 import { AST } from '@codemod-utils/ast-template';
 
@@ -84,7 +82,7 @@ function transformCode(file) {
 }
 ```
 
-```js
+```ts
 /* AST Explorer */
 module.exports = function(env) {
   const b = env.syntax.builders;

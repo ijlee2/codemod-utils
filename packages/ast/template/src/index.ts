@@ -1,1 +1,1 @@
-export { default as AST } from './ast/handlebars.js';
+export * from './ast/handlebars.js';
