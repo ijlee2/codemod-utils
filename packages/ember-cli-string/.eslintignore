@@ -9,5 +9,4 @@
 # misc
 !.*
 .*/
-/src/blueprints/
 /tests/fixtures/
