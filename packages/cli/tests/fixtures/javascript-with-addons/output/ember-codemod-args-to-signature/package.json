@@ -30,12 +30,12 @@
     "test": "mt tests --quiet"
   },
   "dependencies": {
-    "@codemod-utils/ast-javascript": "^1.1.1",
-    "@codemod-utils/ast-template": "^1.0.0",
-    "@codemod-utils/blueprints": "^1.0.0",
+    "@codemod-utils/ast-javascript": "^1.2.0",
+    "@codemod-utils/ast-template": "^1.1.0",
+    "@codemod-utils/blueprints": "^1.1.0",
     "@codemod-utils/ember-cli-string": "^1.1.0",
     "@codemod-utils/files": "^1.1.0",
-    "@codemod-utils/json": "^1.1.0",
+    "@codemod-utils/json": "^1.1.1",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
