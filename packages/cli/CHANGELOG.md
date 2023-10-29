@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/cli
 
+## 1.0.4
+
+### Patch Changes
+
+- [#97](https://github.com/ijlee2/codemod-utils/pull/97) Updated pnpm.overrides to show the correct version for eslint-plugin-import ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.3
 
 ### Patch Changes
