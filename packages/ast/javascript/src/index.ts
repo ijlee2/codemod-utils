@@ -1,1 +1,1 @@
-export { default as AST } from './ast/javascript.js';
+export * from './ast/javascript.js';
