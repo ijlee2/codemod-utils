@@ -51,7 +51,6 @@ function updateDevDependencies(
     'eslint-plugin-n',
     'eslint-plugin-prettier',
     'eslint-plugin-simple-import-sort',
-    'lerna-changelog',
     'prettier',
   ]);
 

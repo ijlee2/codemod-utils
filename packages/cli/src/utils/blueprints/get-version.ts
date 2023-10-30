@@ -26,7 +26,6 @@ const latestVersions = new Map([
   ['eslint-plugin-prettier', '5.0.1'],
   ['eslint-plugin-simple-import-sort', '10.0.0'],
   ['eslint-plugin-typescript-sort-keys', '3.1.0'],
-  ['lerna-changelog', '2.2.0'],
   ['prettier', '3.0.3'],
   ['typescript', '5.2.2'],
   ['yargs', '17.7.2'],

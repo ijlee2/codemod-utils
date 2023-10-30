@@ -22,7 +22,6 @@
   ],
   "scripts": {
     "build": "./build.sh --production",
-    "changelog": "lerna-changelog",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
     "lint:js": "eslint . --cache",
@@ -35,15 +34,6 @@
   "devDependencies": {},
   "engines": {
     "node": "18.* || >= 20"
-  },
-  "changelog": {
-    "labels": {
-      "breaking": "Breaking Change",
-      "bug": "Bug Fix",
-      "enhance: code": "Enhancement",
-      "enhance: dependency": "Internal",
-      "enhance: documentation": "Documentation"
-    }
   }
 }<% } else { %>{
   "name": "<%= options.codemod.name %>",
@@ -69,7 +59,6 @@
     "src"
   ],
   "scripts": {
-    "changelog": "lerna-changelog",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
     "lint:js": "eslint . --cache",
@@ -80,14 +69,5 @@
   "devDependencies": {},
   "engines": {
     "node": "18.* || >= 20"
-  },
-  "changelog": {
-    "labels": {
-      "breaking": "Breaking Change",
-      "bug": "Bug Fix",
-      "enhance: code": "Enhancement",
-      "enhance: dependency": "Internal",
-      "enhance: documentation": "Documentation"
-    }
   }
 }<% } %>
