@@ -290,7 +290,7 @@ workspace-root
 
 <div align="center">
   <div>
-    Next: Conclusion
+    Next: <a href="./05-conclusion.md">Conclusion</a>
   </div>
   <div>
     Previous: <a href="./03-define-options.md">Define options</a>
