@@ -408,7 +408,7 @@ Now that we know the names and locations, we can create the `package.json`'s dyn
 
 <div align="center">
   <div>
-    Next:
+    Next: <a href="./04-create-dynamic-files.md">Create dynamic files</a>
   </div>
   <div>
     Previous: <a href="./02-create-static-files.md">Create static files</a>

@@ -32,3 +32,4 @@ We will partially recreate `blueprint-for-v2-addon`, a codemod that helps [CLARK
 1. [Create a project](./01-create-a-project.md)
 1. [Create static files](./02-create-static-files.md)
 1. [Define options](./03-define-options.md)
+1. [Create dynamic files](./04-create-dynamic-files.md)
