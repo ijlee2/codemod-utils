@@ -79,11 +79,11 @@ runCodemod(codemodOptions);
 From the line `.option('root')`, we see that `@codemod-utils/cli` has defined an option (an **argument**) called `--root`. The argument value, `argv['root']`, is stored in `codemodOptions.projectRoot`.
 
 > [!NOTE]
-> The argument `root` is renamed to `projectRoot`, in order to help our users type a short command. The renamed variable also helps us understand what the word "root" actually means.
+> The argument `root` is renamed to `projectRoot` so that users can type a short command, while the renamed variable makes our code easier to understand.
 >
-> In general, prefer argument names that are descriptive and ideal in length. The same names (in camel case) should be used to name the keys of `codemodOptions`.
+> In general, prefer argument names that are descriptive and ideal in length, then camelize the argument names to name the keys in `codemodOptions`.
 
-Take a look at the documentation for [`.option()`](https://yargs.js.org/docs/#api-reference-optionskey-opt). Then, create 2 more options: `--addon-location` and `--addon-name`. Specify that these options expect a string and are required. (For now, leave `codemodOptions` as is.)
+Study the documentation for [`.option()`](https://yargs.js.org/docs/#api-reference-optionskey-opt), then create 2 more options: `--addon-location` and `--addon-name`. Specify that these options expect a string and are required. For now, you can leave `codemodOptions` as is.
 
 <details>
 
@@ -227,9 +227,9 @@ export { codemodOptions, options };
 
 ## Transform codemod options
 
-While `codemodOptions` stores a user's desired options (`argv`) almost in a 1-1 fashion, `options` allows us to group the options differently, so that the code that we write is easier to read and makes more logical sense.
+`codemodOptions`, defined in the executable file, uses a flat object to store the user's desired options.
 
-The `create-options` step is where we can transform codemod options. By default, `options` is an exact copy of `codemodOptions`.
+On the other hand, `options`, defined in the `create-options` step, may rename and group the options. This helps us write code that is easier to read and makes more logical sense. By default, `options` is an exact copy of `codemodOptions`.
 
 <details>
 
@@ -249,7 +249,10 @@ export function createOptions(codemodOptions: CodemodOptions): Options {
 
 </details>
 
-Let's update `createOptions()` so that `options.packages` uses a nested object to record the names and locations of the addon and test app.
+> [!IMPORTANT]
+> `createOptions()` should return a new object and not modify `codemodOptions`. This helps us avoid test setups from leaking.
+
+Our goal for `options` is to group the name and location, once for the addon and once more for the test app.
 
 ```ts
 import type { CodemodOptions, Options } from '../types/index.js';
@@ -258,17 +261,15 @@ export function createOptions(codemodOptions: CodemodOptions): Options {
   const { addonLocation, addonName, projectRoot } = codemodOptions;
 
   return {
-    packages: {
-      addon: {
-        location: ...,
-        name: ...,
-      },
-      testApp: {
-        location: ...,
-        name: ...,
-      },
+    addon: {
+      location: ...,
+      name: ...,
     },
     projectRoot,
+    testApp: {
+      location: ...,
+      name: ...,
+    },
   };
 }
 ```
@@ -297,17 +298,15 @@ export function createOptions(codemodOptions: CodemodOptions): Options {
 +   const { addonLocation, addonName, projectRoot } = codemodOptions;
  
   return {
-+     packages: {
-+       addon: {
-+         location: join('packages', addonLocation),
-+         name: addonName,
-+       },
-+       testApp: {
-+         location: join('tests', addonLocation),
-+         name: `test-app-for-${dasherize(addonName)}`,
-+       },
++     addon: {
++       location: join('packages', addonLocation),
++       name: addonName,
 +     },
     projectRoot,
++     testApp: {
++       location: join('tests', addonLocation),
++       name: `test-app-for-${dasherize(addonName)}`,
++     },
   };
 }
 ```
@@ -326,17 +325,15 @@ type CodemodOptions = {
 };
 
 type Options = {
-+   packages: {
-+     addon: {
-+       location: string;
-+       name: string;
-+     };
-+     testApp: {
-+       location: string;
-+       name: string;
-+     };
++   addon: {
++     location: string;
++     name: string;
 +   };
   projectRoot: string;
++   testApp: {
++     location: string;
++     name: string;
++   };
 };
 
 export type { CodemodOptions, Options };
@@ -344,10 +341,74 @@ export type { CodemodOptions, Options };
 
 </details>
 
+<details>
+
+<summary>Solution: <code>tests/helpers/shared-test-setups/sample-project.ts</code></summary>
+
+```diff
+import type { CodemodOptions, Options } from '../../../src/types/index.js';
+
+const codemodOptions: CodemodOptions = {
+  addonLocation: 'ui/button',
+  addonName: '@my-ui/button',
+  projectRoot: 'tmp/sample-project',
+};
+
+const options: Options = {
++   addon: {
++     location: 'packages/ui/button',
++     name: '@my-ui/button',
++   },
+  projectRoot: 'tmp/sample-project',
++   testApp: {
++     location: 'tests/ui/button',
++     name: 'test-app-for-my-ui-button',
++   },
+};
+
+export { codemodOptions, options };
+```
+
+</details>
+
+In order for `./codemod-test-fixtures.sh` to update the output fixture files, we pass `--addon-location` and `--addon-name` like our users would.
+
+<details>
+
+<summary>Solution: <code>codemod-test-fixtures.sh</code></summary>
+
+```diff
+#!/usr/bin/env sh
+
+#----------
+#
+#  A. Purpose
+#
+#    Fix all test fixtures after updating the source code.
+#
+#  B. Usage
+#
+#    ./codemod-test-fixtures.sh
+#
+#---------
+
+# Compile TypeScript
+pnpm build
+
+./codemod-test-fixture.sh \
+-   -N "" \
++   -N "--addon-location ui/button --addon-name @my-ui/button" \
+  sample-project
+```
+
+</details>
+
+Now that we know the names and locations, we can create the `package.json`'s dynamically and place them in the right folder.
+
 
 <div align="center">
   <div>
-    Next:
+    Next: <a href="./04-create-dynamic-files.md">Create dynamic files</a>
   </div>
   <div>
     Previous: <a href="./02-create-static-files.md">Create static files</a>

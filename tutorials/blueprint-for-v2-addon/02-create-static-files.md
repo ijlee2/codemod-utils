@@ -29,7 +29,7 @@ Goals:
 
 ## Add blueprint files
 
-We'll start by creating 1 file for the addon and 1 file for the test app. Both files are **static** (the file content never changes). In other words, there's nothing **dynamic** (e.g. string interpolations, conditional statements, for-loops) that would complicate our first step.
+We'll start by creating 1 file for the addon and 1 file for the test app. Both files are **static** (the file content never changes). In other words, there's nothing **dynamic** (e.g. string interpolations, conditional statements, for-loops) that would make the first step complex.
 
 Copy-paste the following starter code:
 
@@ -85,7 +85,6 @@ import { findFiles } from '@codemod-utils/files';
 import type { Options } from '../types/index.js';
 import { blueprintsRoot } from '../utils/blueprints.js';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function createFilesFromBlueprints(options: Options): void {
   const blueprintFilePaths = findFiles('**/*', {
     projectRoot: blueprintsRoot,
@@ -130,19 +129,20 @@ export function runCodemod(codemodOptions: CodemodOptions): void {
 
 ## Read and write blueprint files
 
-Unlike in [the main tutorial](../ember-codemod-rename-test-modules/04-step-1-update-acceptance-tests-part-1.md#read-and-write-files), we won't use `writeFileSync()` from Node.js to create files. The reason is, the folders where files will be created (i.e. folders named `__addonLocation__` and `__testAppLocation__`) don't exist on the user's machine. We'd need to write extra code to handle this edge case.
+Unlike in [the main tutorial](../ember-codemod-rename-test-modules/04-step-1-update-acceptance-tests-part-1.md#read-and-write-files), we won't use `writeFileSync()` from Node.js to create files. The reason is, the folders where files will be created (i.e. folders named `__addonLocation__` and `__testAppLocation__`) don't exist on the user's machine.
 
-Luckily, `@codemod-utils/files` provides [`createFiles()`](../../packages/files/README.md#createfiles). It can create multiple files at once and create folders as needed. We just need to provide this function a `Map`, which maps a blueprint's file path to its file content.
+Luckily, `@codemod-utils/files` provides [`createFiles()`](../../packages/files/README.md#createfiles), which creates missing folders as needed. We just need to provide this function a `Map`, which maps a blueprint's file path to its file content.
 
 <details>
 
 <summary>Solution: <code>src/steps/create-files-from-blueprints.ts</code></summary>
 
-```ts
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
-
-import { createFiles, findFiles } from '@codemod-utils/files';
+```diff
+- import { findFiles } from '@codemod-utils/files';
++ import { readFileSync } from 'node:fs';
++ import { join } from 'node:path';
++
++ import { createFiles, findFiles } from '@codemod-utils/files';
 
 import type { Options } from '../types/index.js';
 import { blueprintsRoot } from '../utils/blueprints.js';
@@ -152,24 +152,25 @@ export function createFilesFromBlueprints(options: Options): void {
     projectRoot: blueprintsRoot,
   });
 
-  const fileMap = new Map(
-    blueprintFilePaths.map((blueprintFilePath) => {
-      const blueprintFile = readFileSync(
-        join(blueprintsRoot, blueprintFilePath),
-        'utf8',
-      );
-
-      return [blueprintFilePath, blueprintFile];
-    }),
-  );
-
-  createFiles(fileMap, options);
+-   console.log(blueprintFilePaths);
++   const fileMap = new Map(
++     blueprintFilePaths.map((blueprintFilePath) => {
++       const blueprintFile = readFileSync(
++         join(blueprintsRoot, blueprintFilePath),
++         'utf8',
++       );
++ 
++       return [blueprintFilePath, blueprintFile];
++     }),
++   );
++ 
++   createFiles(fileMap, options);
 }
 ```
 
 </details>
 
-Run `./codemod-test-fixtures.sh` to see the effect of `create-files-from-blueprints`. From the `sample-project`'s `output` folder, we see that we're already a few steps closer to creating the addon and the test app. ✨
+To see the effect of `create-files-from-blueprints`, run `./codemod-test-fixtures.sh`, then check the `sample-project`'s `output` folder. You will see that we're already a few steps closer to creating the addon and the test app. ✨
 
 ```sh
 workspace-root
