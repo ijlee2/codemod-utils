@@ -22,13 +22,14 @@
   ],
   "scripts": {
     "build": "./build.sh --production",
-    "changelog": "lerna-changelog",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
     "prepare": "pnpm build",
+    "release:changelog": "changeset version",
+    "release:publish": "pnpm build && changeset publish",
     "test": "./build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {
@@ -37,6 +38,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.23.2",
+    "@changesets/cli": "^2.26.2",
+    "@changesets/get-github-info": "^0.5.2",
     "@codemod-utils/tests": "^1.1.1",
     "@sondr3/minitest": "^0.1.2",
     "@tsconfig/node18": "^18.2.2",
@@ -54,21 +57,11 @@
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-typescript-sort-keys": "^3.1.0",
-    "lerna-changelog": "^2.2.0",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   },
   "engines": {
     "node": "18.* || >= 20"
-  },
-  "changelog": {
-    "labels": {
-      "breaking": "Breaking Change",
-      "bug": "Bug Fix",
-      "enhance: code": "Enhancement",
-      "enhance: dependency": "Internal",
-      "enhance: documentation": "Documentation"
-    }
   },
   "pnpm": {
     "overrides": {
