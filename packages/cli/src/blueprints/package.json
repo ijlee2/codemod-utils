@@ -28,6 +28,8 @@
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
     "prepare": "pnpm build",
+    "release:changelog": "changeset version",
+    "release:publish": "pnpm build && changeset publish",
     "test": "./build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {},
@@ -63,6 +65,8 @@
     "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
+    "release:changelog": "changeset version",
+    "release:publish": "changeset publish",
     "test": "mt tests --quiet"
   },
   "dependencies": {},

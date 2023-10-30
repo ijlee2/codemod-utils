@@ -3,6 +3,8 @@ import { decideVersion } from '@codemod-utils/blueprints';
 const latestVersions = new Map([
   ['@babel/core', '7.23.2'],
   ['@babel/eslint-parser', '7.22.15'],
+  ['@changesets/cli', '2.26.2'],
+  ['@changesets/get-github-info', '0.5.2'],
   ['@codemod-utils/ast-javascript', '1.2.0'],
   ['@codemod-utils/ast-template', '1.1.0'],
   ['@codemod-utils/blueprints', '1.1.0'],
