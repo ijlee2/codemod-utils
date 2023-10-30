@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/cli
 
+## 1.1.0
+
+### Minor Changes
+
+- [#100](https://github.com/ijlee2/codemod-utils/pull/100) Replaced lerna-changelog with changesets" ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.4
 
 ### Patch Changes
