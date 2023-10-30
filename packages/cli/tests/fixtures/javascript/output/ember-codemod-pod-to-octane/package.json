@@ -22,11 +22,12 @@
     "src"
   ],
   "scripts": {
-    "changelog": "lerna-changelog",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
+    "release:changelog": "changeset version",
+    "release:publish": "changeset publish",
     "test": "mt tests --quiet"
   },
   "dependencies": {
@@ -36,6 +37,8 @@
   "devDependencies": {
     "@babel/core": "^7.23.2",
     "@babel/eslint-parser": "^7.22.15",
+    "@changesets/cli": "^2.26.2",
+    "@changesets/get-github-info": "^0.5.2",
     "@codemod-utils/tests": "^1.1.1",
     "@sondr3/minitest": "^0.1.2",
     "concurrently": "^8.2.1",
@@ -45,19 +48,9 @@
     "eslint-plugin-n": "^16.2.0",
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
-    "lerna-changelog": "^2.2.0",
     "prettier": "^3.0.3"
   },
   "engines": {
     "node": "18.* || >= 20"
-  },
-  "changelog": {
-    "labels": {
-      "breaking": "Breaking Change",
-      "bug": "Bug Fix",
-      "enhance: code": "Enhancement",
-      "enhance: dependency": "Internal",
-      "enhance: documentation": "Documentation"
-    }
   }
 }

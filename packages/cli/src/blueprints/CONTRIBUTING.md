@@ -14,7 +14,7 @@ Here are some guidelines to help you and everyone else.
 1. Fork and clone this repo.
 
     ```sh
-    git clone git@github.com:<your GitHub handle>/<%= options.codemod.name %>.git
+    git clone git@github.com:<your-github-handle>/<%= options.codemod.name %>.git
     ```
 
 1. Change directory.
@@ -66,24 +66,37 @@ Here are some guidelines to help you and everyone else.
 
 <details>
 
-<summary>Publish packages (for admins)</summary>
+<summary>Add changeset to pull request</code></summary>
 
-1. Generate a [personal access token](https://github.com/settings/tokens/) in GitHub, with default values for scopes (none selected).
+1. To record how a pull request affects packages, you will want to add a changeset.
 
-1. Run the `changelog` script. This generates a text that you can add to `CHANGELOG.md`.
+    The changeset provides a summary of the code change. It also describes how package versions should be updated (major, minor, or patch) as a result of the code change.
 
     ```sh
-    GITHUB_AUTH=<YOUR_PERSONAL_ACCESS_TOKEN> pnpm changelog
+    pnpm changeset
     ```
 
-1. The package follows [semantic versioning](https://semver.org/). Update the version in `package.json` accordingly.
+</details>
 
-1. Create a tag and provide release notes. The tag name should match the package version.
+
+<details>
+
+<summary>Publish package (for admins)</summary>
+
+1. Generate a [personal access token](https://github.com/settings/tokens/) in GitHub, with `repo` and `read:user` scopes enabled.
+
+1. Run the `release:changelog` script. This removes changesets, updates the package version, and updates the `CHANGELOG`.
+
+    ```sh
+    GITHUB_TOKEN=<YOUR_PERSONAL_ACCESS_TOKEN> pnpm release:changelog
+    ```
+
+1. [Create a tag](https://github.com/<your-github-handle>/<%= options.codemod.name %>/releases/new) and provide release notes. The tag name should match the package version.
 
 1. Publish the package.
 
     ```sh
-    pnpm publish
+    pnpm release:package
     ```
 
 </details>

@@ -3,6 +3,8 @@ import { decideVersion } from '@codemod-utils/blueprints';
 const latestVersions = new Map([
   ['@babel/core', '7.23.2'],
   ['@babel/eslint-parser', '7.22.15'],
+  ['@changesets/cli', '2.26.2'],
+  ['@changesets/get-github-info', '0.5.2'],
   ['@codemod-utils/ast-javascript', '1.2.0'],
   ['@codemod-utils/ast-template', '1.1.0'],
   ['@codemod-utils/blueprints', '1.1.0'],
@@ -26,7 +28,6 @@ const latestVersions = new Map([
   ['eslint-plugin-prettier', '5.0.1'],
   ['eslint-plugin-simple-import-sort', '10.0.0'],
   ['eslint-plugin-typescript-sort-keys', '3.1.0'],
-  ['lerna-changelog', '2.2.0'],
   ['prettier', '3.0.3'],
   ['typescript', '5.2.2'],
   ['yargs', '17.7.2'],

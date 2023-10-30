@@ -62,9 +62,11 @@ Try running these scripts now. They should pass out of the box.
 
 The CLI added a few placeholders. At some point—before the initial commit or, at the latest, before publishing your codemod—you will want to manually update these files:
 
+- `.changeset/formatter.cjs` - link to the GitHub repo
+- `CONTRIBUTING.md` - link to the GitHub repo
 - `LICENSE.md` - copyright information
 - `package.json` - `author`, `description`, `repository` (remove `private` to publish the codemod)
-- `README.md` - link to the CI status badge, codemod description and usage
+- `README.md` - link to the GitHub repo, codemod description, codemod options
 
 
 <div align="center">

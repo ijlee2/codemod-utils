@@ -42,6 +42,8 @@ function updateDevDependencies(
   const packagesToInstall = new Set([
     '@babel/core',
     '@babel/eslint-parser',
+    '@changesets/cli',
+    '@changesets/get-github-info',
     '@codemod-utils/tests',
     '@sondr3/minitest',
     'concurrently',
@@ -51,7 +53,6 @@ function updateDevDependencies(
     'eslint-plugin-n',
     'eslint-plugin-prettier',
     'eslint-plugin-simple-import-sort',
-    'lerna-changelog',
     'prettier',
   ]);
 

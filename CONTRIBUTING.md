@@ -13,7 +13,7 @@ Here are some guidelines to help you and everyone else.
 1. Fork and clone this repo.
 
     ```sh
-    git clone git@github.com:<your GitHub handle>/codemod-utils.git
+    git clone git@github.com:<your-github-handle>/codemod-utils.git
     ```
 
 1. Change directory.
@@ -84,13 +84,13 @@ Here are some guidelines to help you and everyone else.
 
 <summary>Publish packages (for admins)</summary>
 
-1. Generate a [personal access token](https://github.com/settings/tokens/) in GitHub, with default values for scopes (none selected).
+1. Generate a [personal access token](https://github.com/settings/tokens/) in GitHub, with `repo` and `read:user` scopes enabled.
 
-1. Run the `publish:changelogs` script. This removes changesets, updates the package versions, and updates the `CHANGELOG`'s.
+1. Run the `release:changelog` script. This removes changesets, updates the package versions, and updates the `CHANGELOG`'s.
 
     ```sh
     # From the workspace root
-    GITHUB_TOKEN=<YOUR_PERSONAL_ACCESS_TOKEN> pnpm publish:changelogs
+    GITHUB_TOKEN=<YOUR_PERSONAL_ACCESS_TOKEN> pnpm release:changelog
     ```
 
 1. The workspace root's version (e.g. `0.1.3`) is more of an identifier than a (semantic) version. We will use it to name the tag that will be published.
@@ -110,7 +110,7 @@ Here are some guidelines to help you and everyone else.
 
     ```sh
     # From the workspace root
-    pnpm publish:packages
+    pnpm release:package
     ```
 
 </details>

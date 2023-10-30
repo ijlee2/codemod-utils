@@ -12,12 +12,11 @@
   "type": "module",
   "scripts": {
     "build": "pnpm --filter './packages/**' build",
-    "changeset": "changeset add",
     "lint": "pnpm --filter '*' lint",
     "lint:fix": "pnpm --filter '*' lint:fix",
     "prepare": "pnpm build",
-    "publish:changelogs": "changeset version",
-    "publish:packages": "changeset publish",
+    "release:changelog": "changeset version",
+    "release:package": "pnpm build && changeset publish",
     "test": "pnpm --filter '*' test"
   },
   "devDependencies": {
