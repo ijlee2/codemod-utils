@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/cli
 
+## 1.1.1
+
+### Patch Changes
+
+- [#101](https://github.com/ijlee2/codemod-utils/pull/101) Fixed a typo in CONTRIBUTING.md ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.0
 
 ### Minor Changes
