@@ -270,7 +270,7 @@ workspace-root
 > [!IMPORTANT]
 > To create `.gitignore` and `.npmignore` via blueprints, the blueprint files must be named differently, e.g. `__gitignore__` and `__npmignore__`. Otherwise, these files will be missing in `src/blueprints` when the codemod is published.
 >
-> Afterwards, you can update `resolveBlueprintFilePath()` to handle `.gitignore` and `.npmignore`.
+> You might already see how to update `resolveBlueprintFilePath()` to handle `.gitignore` and `.npmignore`.
 >
 > ```diff
 > function resolveBlueprintFilePath(
@@ -285,6 +285,16 @@ workspace-root
 > +     .replace('__npmignore__', '.npmignore')
 >     .replace('__testAppLocation__', testApp.location);
 > }
+> ```
+>
+> To double-check, run `pnpm publish --dry-run` and review the files.
+>
+> ```sh
+> npm notice 911B  dist/bin/blueprint-for-v2-addon.js
+> npm notice 145B  dist/src/blueprints/__addonLocation__/__gitignore__
+> npm notice 109B  dist/src/blueprints/__addonLocation__/.eslintignore
+> npm notice 340B  dist/src/blueprints/__addonLocation__/.eslintrc.js
+> ...
 > ```
 
 
