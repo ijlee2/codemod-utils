@@ -1,4 +1,4 @@
-import type { CodemodOptions, Options } from '../../types/index.js';
+import type { CodemodOptions, Options } from '../types/index.js';
 
 export function createOptions(codemodOptions: CodemodOptions): Options {
   const { addons, hasTypeScript, name, projectRoot } = codemodOptions;

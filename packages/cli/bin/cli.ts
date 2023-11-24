@@ -5,7 +5,7 @@
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
-import { createCodemod } from '../src/migration/index.js';
+import { createCodemod } from '../src/index.js';
 import type { CodemodOptions } from '../src/types/index.js';
 
 // Provide a title to the process in `ps`
