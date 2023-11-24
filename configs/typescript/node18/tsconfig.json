@@ -4,6 +4,7 @@
     "@tsconfig/strictest/tsconfig"
   ],
   "compilerOptions": {
-    "moduleResolution": "NodeNext"
+    "moduleResolution": "NodeNext",
+    "verbatimModuleSyntax": true
   }
 }

@@ -37,6 +37,8 @@ module.exports = {
       ],
       rules: {
         '@typescript-eslint/array-type': 'error',
+        '@typescript-eslint/consistent-type-imports': 'error',
+        '@typescript-eslint/no-import-type-side-effects': 'error',
         'import/no-duplicates': 'error',
       },
     },
