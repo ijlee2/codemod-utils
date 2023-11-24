@@ -5,19 +5,19 @@ import {
   test,
 } from '@codemod-utils/tests';
 
-import { updatePackageJson } from '../../../../src/migration/steps/index.js';
+import { updatePackageJson } from '../../../src/steps/index.js';
 import {
   codemodOptions,
   options,
-} from '../../../helpers/shared-test-setups/javascript-with-addons.js';
+} from '../../helpers/shared-test-setups/typescript.js';
 
-test('migration | steps | update-package-json > javascript-with-addons', function () {
+test('migration | steps | update-package-json > typescript', function () {
   const inputProject = convertFixtureToJson(
-    'steps/update-package-json/javascript-with-addons/output',
+    'steps/update-package-json/typescript/output',
   );
 
   const outputProject = convertFixtureToJson(
-    'steps/update-package-json/javascript-with-addons/output',
+    'steps/update-package-json/typescript/output',
   );
 
   loadFixture(inputProject, codemodOptions);

@@ -1,13 +1,13 @@
 import { assertFixture, loadFixture, test } from '@codemod-utils/tests';
 
-import { createCodemod } from '../../../src/migration/index.js';
+import { createCodemod } from '../../src/index.js';
 import {
   inputProject,
   outputProject,
-} from '../../fixtures/javascript/index.js';
-import { codemodOptions } from '../../helpers/shared-test-setups/javascript.js';
+} from '../fixtures/typescript-with-addons/index.js';
+import { codemodOptions } from '../helpers/shared-test-setups/typescript-with-addons.js';
 
-test('migration | index > javascript', function () {
+test('migration | index > typescript with addons', function () {
   loadFixture(inputProject, codemodOptions);
 
   createCodemod(codemodOptions);

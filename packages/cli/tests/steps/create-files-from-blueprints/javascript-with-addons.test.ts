@@ -5,17 +5,17 @@ import {
   test,
 } from '@codemod-utils/tests';
 
-import { createFilesFromBlueprints } from '../../../../src/migration/steps/index.js';
+import { createFilesFromBlueprints } from '../../../src/steps/index.js';
 import {
   codemodOptions,
   options,
-} from '../../../helpers/shared-test-setups/typescript.js';
+} from '../../helpers/shared-test-setups/javascript-with-addons.js';
 
-test('migration | steps | create-files-from-blueprints > typescript', function () {
+test('migration | steps | create-files-from-blueprints > javascript-with-addons', function () {
   const inputProject = {};
 
   const outputProject = convertFixtureToJson(
-    'steps/create-files-from-blueprints/typescript/output',
+    'steps/create-files-from-blueprints/javascript-with-addons/output',
   );
 
   loadFixture(inputProject, codemodOptions);
