@@ -8,8 +8,8 @@ import {
   readPackageJson,
 } from '@codemod-utils/json';
 
-import type { Options } from '../../types/index.js';
-import { getVersion } from '../../utils/blueprints.js';
+import type { Options } from '../types/index.js';
+import { getVersion } from '../utils/blueprints.js';
 
 function updateDependencies(packageJson: PackageJson, options: Options): void {
   const { codemod } = options;
