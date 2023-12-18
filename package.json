@@ -16,7 +16,7 @@
     "lint:fix": "pnpm --filter '*' lint:fix",
     "prepare": "pnpm build",
     "release:changelog": "changeset version",
-    "release:package": "pnpm build && changeset publish",
+    "release:publish": "pnpm build && changeset publish",
     "test": "pnpm --filter '*' test"
   },
   "devDependencies": {

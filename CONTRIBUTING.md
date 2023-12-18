@@ -113,7 +113,7 @@ Here are some guidelines to help you and everyone else.
 
     ```sh
     # From the workspace root
-    pnpm release:package
+    pnpm release:publish
     ```
 
 </details>
