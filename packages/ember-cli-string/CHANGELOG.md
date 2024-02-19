@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ember-cli-string
 
+## 1.1.1
+
+### Patch Changes
+
+- [#107](https://github.com/ijlee2/codemod-utils/pull/107) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.0
 
 ### Minor Changes
