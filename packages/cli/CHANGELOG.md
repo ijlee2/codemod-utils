@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/cli
 
+## 1.1.5
+
+### Patch Changes
+
+- [#109](https://github.com/ijlee2/codemod-utils/pull/109) Updated CI workflow ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.4
 
 ### Patch Changes
