@@ -8,6 +8,5 @@ export * from './files/parse-file-path.js';
 export * from './files/remove-directory-if-empty.js';
 export * from './files/remove-files.js';
 export * from './files/rename-path-by-directory.js';
-export * from './files/rename-path-by-file.js';
 export * from './files/unionize.js';
 export * from './types/index.js';

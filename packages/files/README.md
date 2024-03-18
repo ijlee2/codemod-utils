@@ -308,37 +308,6 @@ const newFilePath = renamePathByDirectory(oldFilePath, {
 </details>
 
 
-### renamePathByFile
-
-Forms a new file path by altering the path's file name.
-
-<details>
-
-<summary>Example</summary>
-
-Prepare to un-pod components.
-
-```ts
-import { findFiles, renamePathByFile } from '@codemod-utils/files';
-
-const oldFilePath = 'app/components/navigation-menu/template.hbs';
-
-const newFilePath = renamePathByFile(oldFilePath, {
-  find: {
-    directory: 'app/components',
-    file: 'template',
-  },
-  replace: (key: string) => {
-    return `app/components/${key}`;
-  },
-});
-
-// newFilePath -> 'app/components/navigation-menu.hbs'
-```
-
-</details>
-
-
 ## Compatibility
 
 - Node.js v18 or above
