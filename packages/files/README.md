@@ -293,7 +293,7 @@ Forms a new file path by altering the path's directory.
 Prepare to move components from `addon` to `ember-container-query/src`.
 
 ```ts
-import { findFiles, renamePathByDirectory } from '@codemod-utils/files';
+import { renamePathByDirectory } from '@codemod-utils/files';
 
 const oldFilePath = 'addon/components/container-query.hbs';
 
@@ -303,37 +303,6 @@ const newFilePath = renamePathByDirectory(oldFilePath, {
 });
 
 // newFilePath -> 'ember-container-query/src/components/container-query.hbs'
-```
-
-</details>
-
-
-### renamePathByFile
-
-Forms a new file path by altering the path's file name.
-
-<details>
-
-<summary>Example</summary>
-
-Prepare to un-pod components.
-
-```ts
-import { findFiles, renamePathByFile } from '@codemod-utils/files';
-
-const oldFilePath = 'app/components/navigation-menu/template.hbs';
-
-const newFilePath = renamePathByFile(oldFilePath, {
-  find: {
-    directory: 'app/components',
-    file: 'template',
-  },
-  replace: (key: string) => {
-    return `app/components/${key}`;
-  },
-});
-
-// newFilePath -> 'app/components/navigation-menu.hbs'
 ```
 
 </details>
