@@ -293,7 +293,7 @@ Forms a new file path by altering the path's directory.
 Prepare to move components from `addon` to `ember-container-query/src`.
 
 ```ts
-import { findFiles, renamePathByDirectory } from '@codemod-utils/files';
+import { renamePathByDirectory } from '@codemod-utils/files';
 
 const oldFilePath = 'addon/components/container-query.hbs';
 
