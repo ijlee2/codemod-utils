@@ -1,5 +1,15 @@
 # Changelog for @codemod-utils/files
 
+## 2.0.0
+
+### Major Changes
+
+- [#110](https://github.com/ijlee2/codemod-utils/pull/110) Removed deprecated utilities from @codemod-utils/files ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#111](https://github.com/ijlee2/codemod-utils/pull/111) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.1
 
 ### Patch Changes
