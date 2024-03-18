@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ast-template
 
+## 1.1.2
+
+### Patch Changes
+
+- [#111](https://github.com/ijlee2/codemod-utils/pull/111) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.1
 
 ### Patch Changes
