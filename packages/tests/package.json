@@ -46,17 +46,17 @@
   },
   "dependencies": {
     "fixturify": "^3.0.0",
-    "glob": "^10.3.10"
+    "glob": "^10.3.12"
   },
   "devDependencies": {
     "@shared-configs/eslint-config-node": "workspace:*",
     "@shared-configs/prettier": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
-    "@types/node": "^18.19.24",
+    "@types/node": "^18.19.31",
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
     "prettier": "^3.2.5",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.5"
   },
   "peerDependencies": {
     "@sondr3/minitest": "^0.1.2"
