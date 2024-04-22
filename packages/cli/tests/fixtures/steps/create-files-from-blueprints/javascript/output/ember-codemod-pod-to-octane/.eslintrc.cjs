@@ -37,5 +37,11 @@ module.exports = {
       },
       extends: ['plugin:n/recommended'],
     },
+    {
+      files: ['bin/**/*.{js,ts}'],
+      rules: {
+        'n/hashbang': 'off',
+      },
+    },
   ],
 };
