@@ -2,7 +2,7 @@ const { getInfo } = require('@changesets/get-github-info');
 
 const repo = '<your-github-handle>/<%= options.codemod.name %>';
 
-async function extractInformation(changeset) {
+async function analyze(changeset) {
   const { links: info } = await getInfo({
     commit: changeset.commit,
     repo,
@@ -19,17 +19,29 @@ async function extractInformation(changeset) {
   };
 }
 
-function getDependencyReleaseLine() {
-  return '';
+async function summarize(changeset) {
+  const { contributor, link, summary } = await analyze(changeset);
+
+  const line = [link, summary, contributor].filter(Boolean).join(' ');
+
+  return `- ${line}`;
+}
+
+async function getDependencyReleaseLine(changesets) {
+  try {
+    const lines = await Promise.all(changesets.map(summarize));
+
+    return lines.join('\n');
+  } catch (error) {
+    console.error(`ERROR: getDependencyReleaseLine (${error.message})`);
+
+    return '';
+  }
 }
 
 async function getReleaseLine(changeset) {
   try {
-    const { contributor, link, summary } = await extractInformation(changeset);
-
-    const line = [link, summary, contributor].filter(Boolean).join(' ');
-
-    return `- ${line}`;
+    return summarize(changeset);
   } catch (error) {
     console.error(`ERROR: getReleaseLine (${error.message})`);
 
