@@ -55,6 +55,12 @@
       },
       extends: ['plugin:n/recommended'],
     },
+    {
+      files: ['bin/**/*.{js,ts}'],
+      rules: {
+        'n/hashbang': 'off',
+      },
+    },
   ],
 };<% } else { %>module.exports = {
   root: true,
@@ -92,6 +98,12 @@
         node: true,
       },
       extends: ['plugin:n/recommended'],
+    },
+    {
+      files: ['bin/**/*.{js,ts}'],
+      rules: {
+        'n/hashbang': 'off',
+      },
     },
   ],
 };<% } %>
