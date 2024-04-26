@@ -45,7 +45,7 @@
     "test": "./build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {
-    "lodash.template": "^4.5.0"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@codemod-utils/tests": "workspace:*",
@@ -53,7 +53,7 @@
     "@shared-configs/prettier": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
     "@sondr3/minitest": "^0.1.2",
-    "@types/lodash.template": "^4.5.3",
+    "@types/lodash": "^4.17.0",
     "@types/node": "^18.19.31",
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
