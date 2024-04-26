@@ -1,4 +1,5 @@
-import template from 'lodash.template';
+// eslint-disable-next-line n/no-missing-import
+import template from 'lodash/template.js';
 
 /**
  * Returns the blueprint file after filling it out with data.
