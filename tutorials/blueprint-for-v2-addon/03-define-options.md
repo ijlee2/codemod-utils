@@ -47,7 +47,6 @@ Open the executable file in the `bin` folder.
 
 ```ts
 #!/usr/bin/env node
-// eslint-disable-next-line n/shebang
 'use strict';
 
 import yargs from 'yargs';
@@ -91,7 +90,6 @@ Study the documentation for [`.option()`](https://yargs.js.org/docs/#api-referen
 
 ```diff
 #!/usr/bin/env node
-// eslint-disable-next-line n/shebang
 'use strict';
 
 import yargs from 'yargs';
@@ -141,7 +139,6 @@ Recall that `argv` has the argument values. Update the executable file so that `
 
 ```diff
 #!/usr/bin/env node
-// eslint-disable-next-line n/shebang
 'use strict';
 
 import yargs from 'yargs';
