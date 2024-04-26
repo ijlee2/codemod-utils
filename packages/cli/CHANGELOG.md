@@ -1,5 +1,12 @@
 # Changelog for @codemod-utils/cli
 
+## 1.2.1
+
+### Patch Changes
+
+- [#118](https://github.com/ijlee2/codemod-utils/pull/118) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+- [#117](https://github.com/ijlee2/codemod-utils/pull/117) Replaced lodash.template with lodash ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.2.0
 
 ### Minor Changes

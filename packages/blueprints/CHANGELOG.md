@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/blueprints
 
+## 1.1.3
+
+### Patch Changes
+
+- [#117](https://github.com/ijlee2/codemod-utils/pull/117) Replaced lodash.template with lodash ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.2
 
 ### Patch Changes
