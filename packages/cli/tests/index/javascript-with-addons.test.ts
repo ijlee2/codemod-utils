@@ -4,6 +4,7 @@ import { createCodemod } from '../../src/index.js';
 import {
   inputProject,
   outputProject,
+  // eslint-disable-next-line n/no-missing-import
 } from '../fixtures/javascript-with-addons/index.js';
 import { codemodOptions } from '../helpers/shared-test-setups/javascript-with-addons.js';
 
