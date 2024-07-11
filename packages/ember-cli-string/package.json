@@ -51,11 +51,11 @@
     "@shared-configs/typescript": "workspace:*",
     "@sondr3/minitest": "^0.1.2",
     "@types/lodash.template": "^4.5.3",
-    "@types/node": "^18.19.34",
+    "@types/node": "^18.19.39",
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
-    "prettier": "^3.3.1",
-    "typescript": "^5.4.5"
+    "prettier": "^3.3.2",
+    "typescript": "^5.5.3"
   },
   "engines": {
     "node": "18.* || >= 20"
