@@ -6,7 +6,7 @@ const latestVersions = new Map([
   ['@changesets/cli', '2.27.5'],
   ['@changesets/get-github-info', '0.6.0'],
   ['@codemod-utils/ast-javascript', '1.2.6'],
-  ['@codemod-utils/ast-template', '1.1.3'],
+  ['@codemod-utils/ast-template', '1.1.2'],
   ['@codemod-utils/blueprints', '1.1.3'],
   ['@codemod-utils/ember-cli-string', '1.1.2'],
   ['@codemod-utils/files', '2.0.2'],
