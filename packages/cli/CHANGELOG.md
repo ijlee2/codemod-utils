@@ -1,5 +1,13 @@
 # Changelog for @codemod-utils/cli
 
+## 1.2.3
+
+### Patch Changes
+
+- [#123](https://github.com/ijlee2/codemod-utils/pull/123) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+- [#122](https://github.com/ijlee2/codemod-utils/pull/122) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+- [#121](https://github.com/ijlee2/codemod-utils/pull/121) Corrected latest version for @codemod-utils/ast-template ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.2.2
 
 ### Patch Changes
