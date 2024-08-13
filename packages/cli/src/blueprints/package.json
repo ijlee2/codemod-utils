@@ -22,8 +22,8 @@
   ],
   "scripts": {
     "build": "./build.sh --production",
-    "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
-    "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
+    "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
+    "lint:fix": "concurrently 'pnpm:lint:*:fix' --names 'fix:'",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
@@ -35,7 +35,8 @@
   "dependencies": {},
   "devDependencies": {},
   "engines": {
-    "node": "18.* || >= 20"
+    "node": "18.* || >= 20",
+    "pnpm": ">= 9"
   }
 }<% } else { %>{
   "name": "<%= options.codemod.name %>",
@@ -61,8 +62,8 @@
     "src"
   ],
   "scripts": {
-    "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
-    "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
+    "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
+    "lint:fix": "concurrently 'pnpm:lint:*:fix' --names 'fix:'",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "release:changelog": "changeset version",
@@ -72,6 +73,7 @@
   "dependencies": {},
   "devDependencies": {},
   "engines": {
-    "node": "18.* || >= 20"
+    "node": "18.* || >= 20",
+    "pnpm": ">= 9"
   }
 }<% } %>
