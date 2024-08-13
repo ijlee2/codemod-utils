@@ -22,8 +22,8 @@
     "src"
   ],
   "scripts": {
-    "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
-    "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
+    "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
+    "lint:fix": "concurrently 'pnpm:lint:*:fix' --names 'fix:'",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "release:changelog": "changeset version",
@@ -31,31 +31,32 @@
     "test": "mt tests --quiet"
   },
   "dependencies": {
-    "@codemod-utils/ast-javascript": "^1.2.7",
-    "@codemod-utils/ast-template": "^1.1.3",
-    "@codemod-utils/blueprints": "^1.1.4",
-    "@codemod-utils/ember-cli-string": "^1.1.3",
-    "@codemod-utils/files": "^2.0.3",
-    "@codemod-utils/json": "^1.1.8",
+    "@codemod-utils/ast-javascript": "^1.2.8",
+    "@codemod-utils/ast-template": "^1.1.4",
+    "@codemod-utils/blueprints": "^1.1.5",
+    "@codemod-utils/ember-cli-string": "^1.1.4",
+    "@codemod-utils/files": "^2.0.4",
+    "@codemod-utils/json": "^1.1.9",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.7",
-    "@babel/eslint-parser": "^7.24.7",
+    "@babel/core": "^7.25.2",
+    "@babel/eslint-parser": "^7.25.1",
     "@changesets/cli": "^2.27.7",
     "@changesets/get-github-info": "^0.6.0",
-    "@codemod-utils/tests": "^1.1.6",
+    "@codemod-utils/tests": "^1.1.7",
     "@sondr3/minitest": "^0.1.2",
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-n": "^17.9.0",
-    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-n": "^17.10.2",
+    "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
-    "prettier": "^3.3.2"
+    "prettier": "^3.3.3"
   },
   "engines": {
-    "node": "18.* || >= 20"
+    "node": "18.* || >= 20",
+    "pnpm": ">= 9"
   }
 }
