@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/tests
 
+## 1.1.7
+
+### Patch Changes
+
+- [#124](https://github.com/ijlee2/codemod-utils/pull/124) Used pnpm@9 to manage dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.6
 
 ### Patch Changes

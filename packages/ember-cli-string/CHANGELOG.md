@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ember-cli-string
 
+## 1.1.4
+
+### Patch Changes
+
+- [#124](https://github.com/ijlee2/codemod-utils/pull/124) Used pnpm@9 to manage dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.3
 
 ### Patch Changes

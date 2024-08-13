@@ -1,5 +1,16 @@
 # Changelog for @codemod-utils/cli
 
+## 1.3.0
+
+### Minor Changes
+
+- [#126](https://github.com/ijlee2/codemod-utils/pull/126) Updated dependencies and supported pnpm@9 ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#125](https://github.com/ijlee2/codemod-utils/pull/125) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+- [#124](https://github.com/ijlee2/codemod-utils/pull/124) Used pnpm@9 to manage dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.2.3
 
 ### Patch Changes
