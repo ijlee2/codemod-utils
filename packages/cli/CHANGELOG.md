@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/cli
 
+## 1.3.1
+
+### Patch Changes
+
+- [#128](https://github.com/ijlee2/codemod-utils/pull/128) Removed engines.pnpm ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.3.0
 
 ### Minor Changes
