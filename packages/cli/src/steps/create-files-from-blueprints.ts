@@ -45,10 +45,7 @@ function resolveBlueprintFilePath(
 function setExecutePermissions(options: Options) {
   const { codemod, projectRoot } = options;
 
-  const files = new Set([
-    'codemod-test-fixture.sh',
-    'codemod-test-fixtures.sh',
-  ]);
+  const files = new Set(['update-test-fixtures.sh']);
 
   if (codemod.hasTypeScript) {
     files.add(`bin/${codemod.name}.ts`);
