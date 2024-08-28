@@ -1,4 +1,4 @@
-/* https://github.com/emberjs/ember.js/blob/v5.3.0/blueprints/component-test/index.js#L13-L16 */
+/* https://github.com/emberjs/ember.js/blob/v5.11.0/blueprints/component-test/index.js#L13-L16 */
 import { classify } from './classify.js';
 
 /**

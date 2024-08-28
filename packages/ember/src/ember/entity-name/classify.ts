@@ -1,6 +1,19 @@
 /* https://github.com/ember-cli/ember-cli-string-utils/blob/v1.1.0/index.js */
-/* https://github.com/emberjs/ember.js/blob/v5.3.0/blueprints/component/index.js#L255-L256 */
-import { camelize } from './camelize.js';
+/* https://github.com/emberjs/ember.js/blob/v5.11.0/blueprints/component/index.js#L256-L257 */
+const STRING_CAMELIZE_REGEXP = /(-|_|\.|\s)+(.)?/g;
+
+function camelize(value: string): string {
+  return value
+    .replace(
+      STRING_CAMELIZE_REGEXP,
+      function (_match, _separator, character: string) {
+        return character ? character.toUpperCase() : '';
+      },
+    )
+    .replace(/^([A-Z])/, function (match) {
+      return match.toLowerCase();
+    });
+}
 
 /**
  * Returns a string that can be used to name a JavaScript `class`
@@ -28,7 +41,7 @@ export function classify(value: string): string {
   const tokensTransformed = tokens.map((token) => {
     const camelized = camelize(token);
 
-    return camelized.charAt(0).toUpperCase() + camelized.substring(1);
+    return `${camelized.charAt(0).toUpperCase()}${camelized.substring(1)}`;
   });
 
   return tokensTransformed.join('.');

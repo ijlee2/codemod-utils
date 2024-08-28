@@ -17,19 +17,6 @@ The methods are built with the **entity name** in mind, a string (possibly with 
 (For example, the `<Ui::Button>` component has the entity name `'ui/button'`. In the Ember source code, you may see variable names like `entityName` or `moduleName`.)
 
 
-### camelize
-
-Returns a string in camel-case.
-
-```ts
-import { camelize } from '@codemod-utils/ember';
-
-const newValue = camelize('css-class-name');
-
-// 'cssClassName'
-```
-
-
 ### classify
 
 Returns a string that can be used to name a JavaScript `class` (a.k.a. Pascal case).
