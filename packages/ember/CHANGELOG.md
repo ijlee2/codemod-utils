@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ember
 
+## 2.0.0
+
+### Major Changes
+
+- [#130](https://github.com/ijlee2/codemod-utils/pull/130) Narrowed usage to entity names, in order to remove dependency on ember-cli-string-utils ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.4
 
 ### Patch Changes

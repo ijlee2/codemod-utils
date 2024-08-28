@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/cli
 
+## 2.0.0
+
+### Major Changes
+
+- [#131](https://github.com/ijlee2/codemod-utils/pull/131) Replaced @codemod-utils/ember-cli-string with @codemod-utils/ember. Made codemod name a positional argument. ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.3.1
 
 ### Patch Changes
