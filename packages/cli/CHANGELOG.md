@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/cli
 
+## 2.0.1
+
+### Patch Changes
+
+- [#132](https://github.com/ijlee2/codemod-utils/pull/132) Updated blueprint for .npmignore ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.0
 
 ### Major Changes

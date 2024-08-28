@@ -1,6 +1,6 @@
 {
   "name": "@codemod-utils/cli",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "CLI to create a codemod project",
   "keywords": [
     "codemod",

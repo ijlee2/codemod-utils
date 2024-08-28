@@ -10,7 +10,7 @@ _Utilities for writing codemods_
 `@codemod-utils` provides a set of **tools and conventions** to help you write codemods. Use [`@codemod-utils/cli`](/packages/cli/README.md) to get started.
 
 ```sh
-npx @codemod-utils/cli --name <your-codemod-name>
+npx @codemod-utils/cli <your-codemod-name>
 ```
 
 

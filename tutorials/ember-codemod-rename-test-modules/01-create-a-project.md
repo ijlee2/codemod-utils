@@ -16,7 +16,7 @@ Change the directory to a place where you like to keep projects. Then, run these
 
 ```sh
 # Create project
-npx @codemod-utils/cli --name ember-codemod-rename-test-modules --addon ast-javascript
+npx @codemod-utils/cli ember-codemod-rename-test-modules --addon ast-javascript
 
 # Install dependencies
 cd ember-codemod-rename-test-modules

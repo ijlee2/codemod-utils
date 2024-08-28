@@ -14,7 +14,7 @@ Change the directory to a place where you like to keep projects. Then, run these
 
 ```sh
 # Create project
-npx @codemod-utils/cli --name blueprint-for-v2-addon --addon blueprints
+npx @codemod-utils/cli blueprint-for-v2-addon --addon blueprints
 
 # Install dependencies
 cd blueprint-for-v2-addon

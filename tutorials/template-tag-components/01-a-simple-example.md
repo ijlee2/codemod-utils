@@ -9,7 +9,7 @@ Change the directory to a place where you like to keep projects. Then, run these
 
 ```sh
 # Create project
-npx @codemod-utils/cli --name remove-test-selectors --addon ast-template
+npx @codemod-utils/cli remove-test-selectors --addon ast-template
 
 # Install dependencies
 cd remove-test-selectors
