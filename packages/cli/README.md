@@ -61,7 +61,7 @@ The options are:
 - [`ast-javascript`](../ast/javascript/README.md)
 - [`ast-template`](../ast/template/README.md)
 - [`blueprints`](../blueprints/README.md)
-- [`ember-cli-string`](../ember-cli-string/README.md)
+- [`ember`](../ember/README.md)
 - [`json`](../json/README.md)
 
 </details>

@@ -28,7 +28,7 @@ rm -r "tests/fixtures/javascript-with-addons/output"
 cp -r "tests/fixtures/javascript-with-addons/input" "tests/fixtures/javascript-with-addons/output"
 
 ./dist/bin/cli.js \
-  --addon ast-javascript ast-template blueprints ember-cli-string json \
+  --addon ast-javascript ast-template blueprints ember json \
   --name ember-codemod-args-to-signature \
   --root "tests/fixtures/javascript-with-addons/output" \
   --typescript false
@@ -44,6 +44,6 @@ rm -r "tests/fixtures/typescript-with-addons/output"
 cp -r "tests/fixtures/typescript-with-addons/input" "tests/fixtures/typescript-with-addons/output"
 
 ./dist/bin/cli.js \
-  --addon ast-javascript ast-template blueprints ember-cli-string json \
+  --addon ast-javascript ast-template blueprints ember json \
   --name ember-codemod-args-to-signature \
   --root "tests/fixtures/typescript-with-addons/output"

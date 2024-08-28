@@ -17,7 +17,7 @@ const argv = yargs(hideBin(process.argv))
       'ast-javascript',
       'ast-template',
       'blueprints',
-      'ember-cli-string',
+      'ember',
       'json',
     ] as const,
     describe: 'Optional @codemod-utils packages to install',
