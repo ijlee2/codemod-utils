@@ -1,30 +1,33 @@
-/* https://github.com/emberjs/ember.js/blob/v5.11.0/blueprints/component-test/index.js#L13-L16 */
-import { pascalize } from './pascalize.js';
+function _pascalize(value: string): string {
+  return value
+    .split('-')
+    .map((token) => {
+      return token.charAt(0).toUpperCase() + token.substring(1).toLowerCase();
+    })
+    .join('');
+}
 
 /**
- * Returns a string associated with the angle bracket syntax
- * for components.
+ * Converts an entity name to double colon (`::`) case. Used for
+ * writing the angle bracket syntax or the signature for a component.
  *
- * @param value
+ * @param entityName
  *
- * A string (an entity name).
+ * The name of an entity (made up of lowercase letters, hyphen,
+ * and forward slash).
  *
  * @return
  *
- * The string with double colon(s) (`::`).
+ * The name in double colon case.
  *
  * @example
  *
  * ```ts
- * const newValue = doubleColonize('ui/button');
+ * const newValue = doubleColonize('ui/form/input');
  *
- * // 'Ui::Button'
+ * // 'Ui::Form::Input'
  * ```
  */
-export function doubleColonize(value: string): string {
-  const tokens = value.split('/');
-
-  const tokensTransformed = tokens.map(pascalize);
-
-  return tokensTransformed.join('::');
+export function doubleColonize(entityName: string): string {
+  return entityName.split('/').map(_pascalize).join('::');
 }

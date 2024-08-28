@@ -17,6 +17,19 @@ The methods are built with the **entity name** in mind, a string (possibly with 
 (For example, the `<Ui::Form::Input>` component has the entity name `'ui/form/input'`. In the Ember source code, you may see variable names like `entityName` or `moduleName`.)
 
 
+### doubleColonize
+
+Converts an entity name to double colon (`::`) case. Used for writing the angle bracket syntax or the signature for a component.
+
+```ts
+import { doubleColonize } from '@codemod-utils/ember';
+
+const newValue = doubleColonize('ui/form/input');
+
+// 'Ui::Form::Input'
+```
+
+
 ### pascalize
 
 Converts an entity name to Pascal case. Used for naming the class that is associated with the entity.
@@ -27,19 +40,6 @@ import { pascalize } from '@codemod-utils/ember';
 const newValue = pascalize('ui/form/input');
 
 // 'UiFormInput'
-```
-
-
-### doubleColonize
-
-Returns a string associated with the angle bracket syntax for components.
-
-```ts
-import { doubleColonize } from '@codemod-utils/ember';
-
-const newValue = doubleColonize('ui/button');
-
-// 'Ui::Button'
 ```
 
 
