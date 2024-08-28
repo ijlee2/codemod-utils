@@ -368,11 +368,11 @@ export { codemodOptions, options };
 
 </details>
 
-In order for `./codemod-test-fixtures.sh` to update the output fixture files, we pass `--addon-location` and `--addon-name` like our users would.
+In order for `./update-test-fixtures.sh` to update the output fixture files, we pass `--addon-location` and `--addon-name` like our users would.
 
 <details>
 
-<summary>Solution: <code>codemod-test-fixtures.sh</code></summary>
+<summary>Solution: <code>update-test-fixtures.sh</code></summary>
 
 ```diff
 #!/usr/bin/env sh
@@ -385,17 +385,21 @@ In order for `./codemod-test-fixtures.sh` to update the output fixture files, we
 #
 #  B. Usage
 #
-#    ./codemod-test-fixtures.sh
+#    ./update-test-fixtures.sh
 #
 #---------
 
 # Compile TypeScript
 pnpm build
 
-./codemod-test-fixture.sh \
--   -N "" \
-+   -N "--addon-location ui/button --addon-name @my-ui/button" \
-  sample-project
+# Update fixtures
+rm -r "tests/fixtures/sample-project/output"
+cp -r "tests/fixtures/sample-project/input" "tests/fixtures/sample-project/output"
+
+./dist/bin/ember-codemod-pod-to-octane.js \
++   --addon-location ui/button \
++   --addon-name @my-ui/button \
+  --root "tests/fixtures/sample-project/output"
 ```
 
 </details>

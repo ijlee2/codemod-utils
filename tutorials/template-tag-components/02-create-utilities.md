@@ -299,7 +299,7 @@ export function removeTestSelectors(options: Options): void {
 
 </details>
 
-Run `./codemod-test-fixtures.sh`. You should see that (1) only the test selectors are removed and (2) formatting is preserved.
+Run `./update-test-fixtures.sh`. You should see that (1) only the test selectors are removed and (2) formatting is preserved.
 
 <details>
 

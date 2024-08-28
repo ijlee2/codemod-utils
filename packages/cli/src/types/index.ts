@@ -2,7 +2,7 @@ type Addon =
   | 'ast-javascript'
   | 'ast-template'
   | 'blueprints'
-  | 'ember-cli-string'
+  | 'ember'
   | 'json';
 
 type CodemodOptions = {

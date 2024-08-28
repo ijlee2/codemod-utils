@@ -8,7 +8,7 @@ const latestVersions = new Map([
   ['@codemod-utils/ast-javascript', '1.2.8'],
   ['@codemod-utils/ast-template', '1.1.4'],
   ['@codemod-utils/blueprints', '1.1.5'],
-  ['@codemod-utils/ember-cli-string', '1.1.4'],
+  ['@codemod-utils/ember', '2.0.0'],
   ['@codemod-utils/files', '2.0.4'],
   ['@codemod-utils/json', '1.1.9'],
   ['@codemod-utils/tests', '1.1.7'],

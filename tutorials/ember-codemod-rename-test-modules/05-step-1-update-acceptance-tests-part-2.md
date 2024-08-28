@@ -697,10 +697,10 @@ AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
 
 ### Fix fixtures
 
-As mentioned in [Chapter 2](./02-understand-the-folder-structure.md#codemod-test-fixturessh), acceptance tests will likely fail when you create or update a step. Run the shell script to update the output fixture files and get the acceptance tests to pass.
+As mentioned in [Chapter 2](./02-understand-the-folder-structure.md#update-test-fixturessh), acceptance tests will likely fail when you create or update a step. Run the shell script to update the output fixture files and get the acceptance tests to pass.
 
 ```sh
-./codemod-test-fixtures.sh
+./update-test-fixtures.sh
 ```
 
 That was a big chapter with lots of new information. Before moving to the next one, consider taking the day off!
