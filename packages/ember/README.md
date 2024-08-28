@@ -12,47 +12,42 @@ _Utilities for Ember_
 
 ## API
 
-The methods are built with the **entity name** in mind, a string (possibly with hyphens and forward slashes) that represents a set of related files in Ember.
-
-(For example, the `<Ui::Button>` component has the entity name `'ui/button'`. In the Ember source code, you may see variable names like `entityName` or `moduleName`.)
-
-
 ### camelize
 
-Returns a string in camel-case.
+Converts an entity name to camel case. Used for naming the function that is associated with the entity.
 
 ```ts
 import { camelize } from '@codemod-utils/ember';
 
-const newValue = camelize('css-class-name');
+const newValue = camelize('ui/form/generate-error-message');
 
-// 'cssClassName'
-```
-
-
-### classify
-
-Returns a string that can be used to name a JavaScript `class` (a.k.a. Pascal case).
-
-```ts
-import { classify } from '@codemod-utils/ember';
-
-const newValue = classify('ui/button');
-
-// 'UiButton'
+// 'uiFormGenerateErrorMessage'
 ```
 
 
 ### doubleColonize
 
-Returns a string associated with the angle bracket syntax for components.
+Converts an entity name to double colon (`::`) case. Used for writing the angle bracket syntax or the signature for a component.
 
 ```ts
 import { doubleColonize } from '@codemod-utils/ember';
 
-const newValue = doubleColonize('ui/button');
+const newValue = doubleColonize('ui/form/input');
 
-// 'Ui::Button'
+// 'Ui::Form::Input'
+```
+
+
+### pascalize
+
+Converts an entity name to Pascal case. Used for naming the class that is associated with the entity.
+
+```ts
+import { pascalize } from '@codemod-utils/ember';
+
+const newValue = pascalize('ui/form/input');
+
+// 'UiFormInput'
 ```
 
 
