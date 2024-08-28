@@ -7,10 +7,10 @@ _CLI to create a codemod project_
 
 ## Usage
 
-Step 1. Use `npx` to run `@codemod-utils/cli`. Alternatively, you can globally install the package.
+Step 1. Use `npx` to run `@codemod-utils/cli`.
 
 ```sh
-npx @codemod-utils/cli --name <your-codemod-name> <additional arguments>
+npx @codemod-utils/cli <your-codemod-name> [options]
 ```
 
 This will create a folder named `<your-codemod-name>`.
@@ -39,10 +39,10 @@ git push -u origin main
 
 ### Arguments
 
-You must pass `--name` to name your codemod.
+You must pass the name of your codemod.
 
 ```sh
-npx @codemod-utils/cli --name ember-codemod-v1-to-v2
+npx @codemod-utils/cli ember-codemod-v1-to-v2
 ```
 
 
