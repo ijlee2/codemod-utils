@@ -1,4 +1,4 @@
-# Changelog for @codemod-utils/ember-cli-string
+# Changelog for @codemod-utils/ember
 
 ## 1.1.4
 

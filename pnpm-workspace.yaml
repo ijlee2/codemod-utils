@@ -4,7 +4,7 @@ packages:
   - packages/ast/template
   - packages/blueprints
   - packages/cli
-  - packages/ember-cli-string
+  - packages/ember
   - packages/files
   - packages/json
   - packages/tests
