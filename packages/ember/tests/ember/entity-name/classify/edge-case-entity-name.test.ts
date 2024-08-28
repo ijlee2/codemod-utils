@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { classify } from '../../../src/index.js';
+import { classify } from '../../../../src/index.js';
 
-test('entity-name | classify > edge case (entity name)', function () {
+test('utils | ember | entity-name | classify > edge case (entity name)', function () {
   assert.strictEqual(classify('tracks'), 'Tracks');
   assert.strictEqual(classify('navigation-menu'), 'NavigationMenu');
   assert.strictEqual(classify('ui/page'), 'UiPage');

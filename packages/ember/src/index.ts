@@ -1,3 +1,3 @@
-export * from './entity-name/camelize.js';
-export * from './entity-name/classify.js';
-export * from './entity-name/double-colonize.js';
+export * from './ember/entity-name/camelize.js';
+export * from './ember/entity-name/classify.js';
+export * from './ember/entity-name/double-colonize.js';

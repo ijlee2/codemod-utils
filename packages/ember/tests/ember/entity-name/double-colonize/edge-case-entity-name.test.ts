@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { doubleColonize } from '../../../src/index.js';
+import { doubleColonize } from '../../../../src/index.js';
 
-test('entity-name | double-colonize > edge case (entity name)', function () {
+test('utils | ember | entity-name | double-colonize > edge case (entity name)', function () {
   assert.strictEqual(doubleColonize('tracks'), 'Tracks');
   assert.strictEqual(doubleColonize('navigation-menu'), 'NavigationMenu');
   assert.strictEqual(doubleColonize('ui/page'), 'Ui::Page');
