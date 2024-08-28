@@ -14,19 +14,19 @@ _Utilities for Ember_
 
 The methods are built with the **entity name** in mind, a string (possibly with hyphens and forward slashes) that represents a set of related files in Ember.
 
-(For example, the `<Ui::Button>` component has the entity name `'ui/button'`. In the Ember source code, you may see variable names like `entityName` or `moduleName`.)
+(For example, the `<Ui::Form::Input>` component has the entity name `'ui/form/input'`. In the Ember source code, you may see variable names like `entityName` or `moduleName`.)
 
 
-### classify
+### pascalize
 
-Returns a string that can be used to name a JavaScript `class` (a.k.a. Pascal case).
+Converts an entity name to Pascal case. Used for naming the class that is associated with the entity.
 
 ```ts
-import { classify } from '@codemod-utils/ember';
+import { pascalize } from '@codemod-utils/ember';
 
-const newValue = classify('ui/button');
+const newValue = pascalize('ui/form/input');
 
-// 'UiButton'
+// 'UiFormInput'
 ```
 
 

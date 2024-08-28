@@ -1,5 +1,5 @@
 /* https://github.com/emberjs/ember.js/blob/v5.11.0/blueprints/component-test/index.js#L13-L16 */
-import { classify } from './classify.js';
+import { pascalize } from './pascalize.js';
 
 /**
  * Returns a string associated with the angle bracket syntax
@@ -24,7 +24,7 @@ import { classify } from './classify.js';
 export function doubleColonize(value: string): string {
   const tokens = value.split('/');
 
-  const tokensTransformed = tokens.map(classify);
+  const tokensTransformed = tokens.map(pascalize);
 
   return tokensTransformed.join('::');
 }

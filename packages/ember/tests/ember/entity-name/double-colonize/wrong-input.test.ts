@@ -13,9 +13,9 @@ test('utils | ember | entity-name | double-colonize > wrong input', function () 
 
   assert.strictEqual(doubleColonize('/ui'), '::Ui');
 
-  assert.strictEqual(doubleColonize('ui.form.input'), 'Ui.Form.Input');
+  assert.strictEqual(doubleColonize('ui.form.input'), 'Ui.form.input');
 
-  assert.strictEqual(doubleColonize('ui_form_input'), 'UiFormInput');
+  assert.strictEqual(doubleColonize('ui_form_input'), 'Ui_form_input');
 
-  assert.strictEqual(doubleColonize('ui form input'), 'UiFormInput');
+  assert.strictEqual(doubleColonize('ui form input'), 'Ui form input');
 });
