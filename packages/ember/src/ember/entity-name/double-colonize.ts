@@ -1,4 +1,4 @@
-function _pascalize(value: string): string {
+function pascalize(value: string): string {
   return value
     .split('-')
     .map((token) => {
@@ -29,5 +29,5 @@ function _pascalize(value: string): string {
  * ```
  */
 export function doubleColonize(entityName: string): string {
-  return entityName.split('/').map(_pascalize).join('::');
+  return entityName.split('/').map(pascalize).join('::');
 }

@@ -1,11 +1,4 @@
-function _pascalize(value: string): string {
-  return value
-    .split('-')
-    .map((token) => {
-      return token.charAt(0).toUpperCase() + token.substring(1).toLowerCase();
-    })
-    .join('');
-}
+import { doubleColonize } from './double-colonize.js';
 
 /**
  * Converts an entity name to Pascal case. Used for naming the
@@ -29,5 +22,7 @@ function _pascalize(value: string): string {
  * ```
  */
 export function pascalize(entityName: string): string {
-  return entityName.split('/').map(_pascalize).join('');
+  const doubleColonizedName = doubleColonize(entityName);
+
+  return doubleColonizedName.replaceAll('::', '');
 }
