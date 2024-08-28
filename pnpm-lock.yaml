@@ -267,7 +267,7 @@ importers:
         specifier: ^5.5.4
         version: 5.5.4
 
-  packages/ember-cli-string:
+  packages/ember:
     devDependencies:
       '@codemod-utils/tests':
         specifier: workspace:*

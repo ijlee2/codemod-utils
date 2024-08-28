@@ -1,13 +1,13 @@
 [![This project uses GitHub Actions for continuous integration.](https://github.com/ijlee2/codemod-utils/actions/workflows/ci.yml/badge.svg)](https://github.com/ijlee2/codemod-utils/actions/workflows/ci.yml)
 
-# @codemod-utils/ember-cli-string
+# @codemod-utils/ember
 
-_Utilities for string, as used by Ember CLI_
+_Utilities for Ember_
 
 
 ## What is it?
 
-`@codemod-utils/ember-cli-string` provides some methods from [`ember-cli-string-utils`](https://github.com/ember-cli/ember-cli-string-utils), ones that are practical for writing Ember codemods. The code have been simplified and support ESM.
+`@codemod-utils/ember` provides methods that can help write codemods for Ember projects.
 
 
 ## API
@@ -22,7 +22,7 @@ The methods are built with the **entity name** in mind, a string (possibly with 
 Returns a string in camel-case.
 
 ```ts
-import { camelize } from '@codemod-utils/ember-cli-string';
+import { camelize } from '@codemod-utils/ember';
 
 const newValue = camelize('css-class-name');
 
@@ -35,7 +35,7 @@ const newValue = camelize('css-class-name');
 Returns a string that can be used to name a JavaScript `class` (a.k.a. Pascal case).
 
 ```ts
-import { classify } from '@codemod-utils/ember-cli-string';
+import { classify } from '@codemod-utils/ember';
 
 const newValue = classify('ui/button');
 
@@ -48,7 +48,7 @@ const newValue = classify('ui/button');
 Returns a string associated with the angle bracket syntax for components.
 
 ```ts
-import { doubleColonize } from '@codemod-utils/ember-cli-string';
+import { doubleColonize } from '@codemod-utils/ember';
 
 const newValue = doubleColonize('ui/button');
 
