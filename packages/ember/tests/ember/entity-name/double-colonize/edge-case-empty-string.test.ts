@@ -2,6 +2,15 @@ import { assert, test } from '@codemod-utils/tests';
 
 import { doubleColonize } from '../../../../src/index.js';
 
-test('utils | ember | entity-name | double-colonize > edge case (empty string)', function () {
-  assert.strictEqual(doubleColonize(''), '');
+test('utils | ember | entity-name | double-colonize > nested', function () {
+  assert.strictEqual(doubleColonize('ui/form'), 'Ui::Form');
+  assert.strictEqual(doubleColonize('ui/form/input'), 'Ui::Form::Input');
+  assert.strictEqual(
+    doubleColonize('ui/form/submit-button'),
+    'Ui::Form::SubmitButton',
+  );
+  assert.strictEqual(
+    doubleColonize('widgets/widget-3/tour-schedule/responsive-image'),
+    'Widgets::Widget3::TourSchedule::ResponsiveImage',
+  );
 });
