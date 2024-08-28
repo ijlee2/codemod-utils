@@ -170,7 +170,7 @@ export function createFilesFromBlueprints(options: Options): void {
 
 </details>
 
-To see the effect of `create-files-from-blueprints`, run `./codemod-test-fixtures.sh`, then check the `sample-project`'s `output` folder. You will see that we're already a few steps closer to creating the addon and the test app. ✨
+To see the effect of `create-files-from-blueprints`, run `./update-test-fixtures.sh`, then check the `sample-project`'s `output` folder. You will see that we're already a few steps closer to creating the addon and the test app. ✨
 
 ```sh
 workspace-root

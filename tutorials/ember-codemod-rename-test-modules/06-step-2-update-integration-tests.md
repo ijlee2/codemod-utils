@@ -519,7 +519,7 @@ AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
 
 </details>
 
-Now that we're satisfied, we can run `./codemod-test-fixtures.sh` to update the output fixture files.
+Now that we're satisfied, we can run `./update-test-fixtures.sh` to update the output fixture files.
 
 (You might have noticed that I surreptitiously ignored what would happen when `entityType` is `undefined`. We will address this edge case in [Chapter 8](./08-refactor-code-part-1.md#standardize-functions).
 

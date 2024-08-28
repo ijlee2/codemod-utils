@@ -30,7 +30,7 @@ ember-codemod-rename-test-modules
 │   ├── index
 │   ├── steps
 │   └── (utils)
-└── codemod-test-fixtures.sh
+└── update-test-fixtures.sh
 
 # Hidden: dist, dist-for-testing, tmp
 ```
@@ -251,13 +251,13 @@ Running the `build` script (re)creates the `dist` folder. The files in this fold
 Running the `test` script (re)creates the `dist-for-testing` folder. The files in this folder are what is tested. The fixture files are copied to the `tmp` folder.
 
 
-### codemod-test-fixtures.sh
+### update-test-fixtures.sh
 
 Acceptance tests will likely fail after you create or update a step. The shell script updates the fixture files for each output project so that the acceptance tests will pass.
 
 ```sh
 # From the root
-./codemod-test-fixtures.sh
+./update-test-fixtures.sh
 ```
 
 The recommended workflow is:
