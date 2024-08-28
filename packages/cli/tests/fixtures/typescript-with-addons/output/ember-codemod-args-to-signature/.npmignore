@@ -18,7 +18,6 @@
 /.prettierignore
 /.prettierrc.cjs
 /build.sh
-/update-test-fixtures.sh
 /CONTRIBUTING.md
-/create-test-fixture.sh
+/update-test-fixtures.sh
 /tests/
