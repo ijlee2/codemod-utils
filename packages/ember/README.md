@@ -12,11 +12,6 @@ _Utilities for Ember_
 
 ## API
 
-The methods are built with the **entity name** in mind, a string (possibly with hyphens and forward slashes) that represents a set of related files in Ember.
-
-(For example, the `<Ui::Form::Input>` component has the entity name `'ui/form/input'`. In the Ember source code, you may see variable names like `entityName` or `moduleName`.)
-
-
 ### camelize
 
 Converts an entity name to camel case. Used for naming the function that is associated with the entity.
