@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/cli
 
+## 2.0.2
+
+### Patch Changes
+
+- [#135](https://github.com/ijlee2/codemod-utils/pull/135) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.1
 
 ### Patch Changes
