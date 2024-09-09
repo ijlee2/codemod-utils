@@ -43,7 +43,7 @@ Open the executable file in the `bin` folder.
 
 <details>
 
-<summary><code>bin/blueprint-for-v2-addon.ts</code></summary>
+<summary><code>bin/blueprints-v2-addon.ts</code></summary>
 
 ```ts
 #!/usr/bin/env node
@@ -56,7 +56,7 @@ import { runCodemod } from '../src/index.js';
 import type { CodemodOptions } from '../src/types/index.js';
 
 // Provide a title to the process in `ps`
-process.title = 'blueprint-for-v2-addon';
+process.title = 'blueprints-v2-addon';
 
 // Set codemod options
 const argv = yargs(hideBin(process.argv))
@@ -86,7 +86,7 @@ Study the documentation for [`.option()`](https://yargs.js.org/docs/#api-referen
 
 <details>
 
-<summary>Solution: <code>bin/blueprint-for-v2-addon.ts</code></summary>
+<summary>Solution: <code>bin/blueprints-v2-addon.ts</code></summary>
 
 ```diff
 #!/usr/bin/env node
@@ -99,7 +99,7 @@ import { runCodemod } from '../src/index.js';
 import type { CodemodOptions } from '../src/types/index.js';
 
 // Provide a title to the process in `ps`
-process.title = 'blueprint-for-v2-addon';
+process.title = 'blueprints-v2-addon';
 
 // Set codemod options
 const argv = yargs(hideBin(process.argv))
@@ -135,7 +135,7 @@ Recall that `argv` has the argument values. Update the executable file so that `
 
 <details>
 
-<summary>Solution: <code>bin/blueprint-for-v2-addon.ts</code></summary>
+<summary>Solution: <code>bin/blueprints-v2-addon.ts</code></summary>
 
 ```diff
 #!/usr/bin/env node
@@ -148,7 +148,7 @@ import { runCodemod } from '../src/index.js';
 import type { CodemodOptions } from '../src/types/index.js';
 
 // Provide a title to the process in `ps`
-process.title = 'blueprint-for-v2-addon';
+process.title = 'blueprints-v2-addon';
 
 // Set codemod options
 const argv = yargs(hideBin(process.argv))

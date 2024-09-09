@@ -29,13 +29,15 @@ npx @codemod-utils/cli <your-codemod-name>
 ## Tutorials
 
 - [Main tutorial](./tutorials/ember-codemod-rename-test-modules/00-introduction.md)
-- [Blueprints](./tutorials/blueprint-for-v2-addon/00-introduction.md)
+- [Blueprints](./tutorials/blueprints-v2-addon/00-introduction.md)
 - [`<template>`-tag components](./tutorials/template-tag-components/00-introduction.md)
 
 
 ## Codemods written with @codemod-utils
 
-- `blueprint-for-v2-addon` (internal)
+- [`analyze-ember-project-dependencies`](https://github.com/ijlee2/embroider-toolbox/tree/main/packages/analyze-ember-project-dependencies)
+- [`blueprints-v2-addon`](https://github.com/ijlee2/embroider-toolbox/tree/main/packages/blueprints-v2-addon)
+- [`create-v2-addon-repo`](https://github.com/ijlee2/embroider-toolbox/tree/main/packages/create-v2-addon-repo)
 - [`ember-codemod-args-to-signature`](https://github.com/ijlee2/ember-codemod-args-to-signature)
 - [`ember-codemod-css-modules`](https://github.com/simplepractice/ember-codemod-css-modules)
 - [`ember-codemod-ember-render-helpers-to-v1`](https://github.com/buschtoens/ember-render-helpers/tree/master/packages/ember-codemod-ember-render-helpers-to-v1)
