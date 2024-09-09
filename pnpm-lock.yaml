@@ -1,7 +1,7 @@
 lockfileVersion: '9.0'
 
 settings:
-  autoInstallPeers: true
+  autoInstallPeers: false
   excludeLinksFromLockfile: false
 
 importers:
@@ -56,9 +56,6 @@ importers:
       eslint-plugin-typescript-sort-keys:
         specifier: ^3.2.0
         version: 3.2.0(@typescript-eslint/parser@8.4.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)
-      typescript:
-        specifier: ^5.5.4
-        version: 5.5.4
     devDependencies:
       '@shared-configs/prettier':
         specifier: workspace:*
@@ -90,9 +87,6 @@ importers:
       '@tsconfig/strictest':
         specifier: ^2.0.5
         version: 2.0.5
-      typescript:
-        specifier: ^5.5.4
-        version: 5.5.4
     devDependencies:
       '@shared-configs/prettier':
         specifier: workspace:*
@@ -382,9 +376,6 @@ importers:
 
   packages/tests:
     dependencies:
-      '@sondr3/minitest':
-        specifier: ^0.1.2
-        version: 0.1.2
       fixturify:
         specifier: ^3.0.0
         version: 3.0.0
@@ -401,6 +392,9 @@ importers:
       '@shared-configs/typescript':
         specifier: workspace:*
         version: link:../../configs/typescript
+      '@sondr3/minitest':
+        specifier: ^0.1.2
+        version: 0.1.2
       '@types/node':
         specifier: ^18.19.50
         version: 18.19.50
