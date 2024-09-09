@@ -52,8 +52,8 @@
     "@shared-configs/eslint-config-node": "workspace:*",
     "@shared-configs/prettier": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
-    "@types/node": "^18.19.44",
-    "concurrently": "^8.2.2",
+    "@types/node": "^18.19.50",
+    "concurrently": "^9.0.0",
     "eslint": "^8.57.0",
     "prettier": "^3.3.3",
     "typescript": "^5.5.4"
