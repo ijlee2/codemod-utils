@@ -6,7 +6,7 @@
 > [!NOTE]
 > This tutorial covers **blueprints**, files that you can use like a "stamp" to create or update certain files in a project. You will also learn how to transform a user's CLI options in the `create-options` step.
 
-We will partially recreate `blueprint-for-v2-addon`, a codemod that helps [CLARK](https://www.clark.io/) write [v2 addons](https://rfcs.emberjs.com/id/0507-embroider-v2-package-format/). It creates an addon and a test app similarly to [`@embroider/addon-blueprint`](https://github.com/embroider-build/addon-blueprint), with some exceptions:
+We will partially recreate [`blueprints-v2-addon`](https://github.com/ijlee2/embroider-toolbox/tree/main/packages/blueprints-v2-addon), a codemod that helps you write [v2 addons](https://rfcs.emberjs.com/id/0507-embroider-v2-package-format/). It creates an addon and a test app similarly to [`@embroider/addon-blueprint`](https://github.com/embroider-build/addon-blueprint), with some exceptions:
 
 - We can customize files, lint configurations, and dependencies, and standardize these deviations.
 - Upstream errors (from `ember-cli` and `@embroider/addon-blueprint`) have a little effect. 
@@ -20,7 +20,7 @@ We will partially recreate `blueprint-for-v2-addon`, a codemod that helps [CLARK
 ```
 
 ```sh
-# Average for blueprint-for-v2-addon
+# Average for blueprints-v2-addon
 ❯ time pnpm generate-addon --addon-name "@my-ui/button" --addon-location "ui/button"
 
 1.86s user 0.23s system 133% cpu 1.565 total

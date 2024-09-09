@@ -14,10 +14,10 @@ Change the directory to a place where you like to keep projects. Then, run these
 
 ```sh
 # Create project
-npx @codemod-utils/cli blueprint-for-v2-addon --addon blueprints
+npx @codemod-utils/cli blueprints-v2-addon --addon blueprints
 
 # Install dependencies
-cd blueprint-for-v2-addon
+cd blueprints-v2-addon
 pnpm install
 ```
 
@@ -27,10 +27,10 @@ pnpm install
 
 ## Folder structure
 
-Let's take a look at how `blueprint-for-v2-addon` is structured as a tree. For simplicity, the tree only shows what's new, compared to that from [the main tutorial](ember-codemod-rename-test-modules/02-understand-the-folder-structure.md#folder-structure).
+Let's take a look at how `blueprints-v2-addon` is structured as a tree. For simplicity, the tree only shows what's new, compared to that from [the main tutorial](ember-codemod-rename-test-modules/02-understand-the-folder-structure.md#folder-structure).
 
 ```sh
-blueprint-for-v2-addon
+blueprints-v2-addon
 └── src
     ├── blueprints
     │   └── .gitkeep

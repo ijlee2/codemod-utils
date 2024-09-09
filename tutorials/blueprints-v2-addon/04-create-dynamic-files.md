@@ -290,7 +290,7 @@ workspace-root
 > To double-check, run `pnpm publish --dry-run` and review the files.
 >
 > ```sh
-> npm notice 911B  dist/bin/blueprint-for-v2-addon.js
+> npm notice 911B  dist/bin/blueprints-v2-addon.js
 > npm notice 145B  dist/src/blueprints/__addonLocation__/__gitignore__
 > npm notice 109B  dist/src/blueprints/__addonLocation__/.eslintignore
 > npm notice 340B  dist/src/blueprints/__addonLocation__/.eslintrc.js
