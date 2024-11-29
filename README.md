@@ -28,7 +28,7 @@ npx @codemod-utils/cli <your-codemod-name>
 
 ## Tutorials
 
-- [Main tutorial](./tutorials/ember-codemod-rename-test-modules/00-introduction.md)
+- [Main tutorial](./tutorials/main-tutorial/00-introduction.md)
 - [Create blueprints](./tutorials/create-blueprints/00-introduction.md)
 - [Update `<template>` tags](./tutorials/update-template-tags/00-introduction.md)
 

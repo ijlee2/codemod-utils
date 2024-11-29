@@ -22,12 +22,12 @@ pnpm install
 ```
 
 > [!NOTE]
-> Just like in [the main tutorial](../ember-codemod-rename-test-modules/04-step-1-update-acceptance-tests-part-1.md#remove-the-sample-step), remove the sample step, `add-end-of-line`.
+> Just like in [the main tutorial](../main-tutorial/04-step-1-update-acceptance-tests-part-1.md#remove-the-sample-step), remove the sample step, `add-end-of-line`.
 
 
 ## Folder structure
 
-Let's take a look at how `blueprints-v2-addon` is structured as a tree. For simplicity, the tree only shows what's new, compared to that from [the main tutorial](ember-codemod-rename-test-modules/02-understand-the-folder-structure.md#folder-structure).
+Let's take a look at how `blueprints-v2-addon` is structured as a tree. For simplicity, the tree only shows what's new, compared to that from [the main tutorial](../main-tutorial/02-understand-the-folder-structure.md#folder-structure).
 
 ```sh
 blueprints-v2-addon

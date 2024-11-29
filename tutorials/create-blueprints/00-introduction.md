@@ -1,7 +1,7 @@
 # Introduction
 
 > [!IMPORTANT]
-> Please complete the [main tutorial](../ember-codemod-rename-test-modules/00-introduction.md) first.
+> Please complete the [main tutorial](../main-tutorial/00-introduction.md) first.
 
 > [!NOTE]
 > This tutorial covers **blueprints**, files that you can use like a "stamp" to create or update certain files in a project. You will also learn how to transform a user's CLI options in the `create-options` step.

@@ -1,7 +1,7 @@
 # Introduction
 
 > [!IMPORTANT]
-> Please complete the [main tutorial](../ember-codemod-rename-test-modules/00-introduction.md) first.
+> Please complete the [main tutorial](../main-tutorial/00-introduction.md) first.
 
 > [!NOTE]
 > This tutorial shows how to use [`content-tag`](https://github.com/embroider-build/content-tag#readme) and [`@codemod-utils/ast-template`](../../packages/ast/template#readme) (i.e. `ember-template-recast`) to read and update `*.{gjs,gts}` files.
