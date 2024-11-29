@@ -62,7 +62,7 @@ export function removeTestSelectors(options: Options): void {
 
 </details>
 
-To test the step, we create a component with multiple `<template>`-tags:
+To test the step, we create a component with multiple `<template>` tags:
 
 <details>
 

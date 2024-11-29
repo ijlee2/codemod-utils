@@ -103,7 +103,7 @@ We can run tests to understand what `parse()` returns.
 
 <summary>Expected output</summary>
 
-The fixture file has 3 `<template>`-tags, so the array `contentTags` has 3 elements. The object keys that matter to us are `contents` and `range`.
+The fixture file has 3 `<template>` tags, so the array `contentTags` has 3 elements. The object keys that matter to us are `contents` and `range`.
 
 ```sh
 ❯ pnpm test
@@ -163,7 +163,7 @@ The fixture file has 3 `<template>`-tags, so the array `contentTags` has 3 eleme
 </details>
 
 > [!NOTE]
-> From `range.start`, we see that `contentTags` is a sorted array. The `<template>`-tag, which appears first in the file, appears first in the array.
+> From `range.start`, we see that `contentTags` is a sorted array. The `<template>` tag, which appears first in the file, appears first in the array.
 
 
 ## Create contents
@@ -232,7 +232,7 @@ export function removeTestSelectors(options: Options): void {
 
 ## Replace contents
 
-Last but not least, we use `replaceContents()` to replace the contents of each `<template>`-tag. Because a file may have multiple tags, we update the tags in the reverse order.
+Last but not least, we use `replaceContents()` to replace the contents of each `<template>` tag. Because a file may have multiple tags, we update the tags in the reverse order.
 
 <details>
 
