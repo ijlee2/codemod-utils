@@ -1,6 +1,6 @@
 # A simple example
 
-To illustrate how to read and update `*.{gts,gts}` files, we'll recreate a feature in [`ember-test-selectors`](https://github.com/mainmatter/ember-test-selectors/blob/v6.0.0/strip-data-test-properties-plugin6.js): Remove all data attributes in the template, if the attribute name starts with `data-test`. Our target project is assumed to be an Ember app.
+To illustrate how to update templates in `*.{gts,gts}` files, we'll recreate a feature in [`ember-test-selectors`](https://github.com/mainmatter/ember-test-selectors/blob/v6.0.0/strip-data-test-properties-plugin6.js): Remove all data attributes in the template, if the attribute name starts with `data-test`. Our target project is assumed to be an Ember app.
 
 
 ## Use the CLI
@@ -62,7 +62,7 @@ export function removeTestSelectors(options: Options): void {
 
 </details>
 
-To test the step, we create a component with multiple `<template>`-tags:
+To test the step, we create a component with multiple `<template>` tags:
 
 <details>
 

@@ -1,13 +1,13 @@
 # Create utilities
 
-In [the previous chapter](./01-a-simple-example.md), we read `*.{gjs,gts}` files. We will take small steps to update these files.
+In [the previous chapter](./01-a-simple-example.md), we read `*.{gjs,gts}` files. Let's take small steps to update these files.
 
 
 ## Parse file
 
-We avoid directly consuming `content-tag` in our steps, but create **wrappers** instead. Wrapping code helps us minimize the impact of a breaking change in `content-tag`.
+Instead of directly consuming `content-tag`, we'll create **wrapper functions**. Wrapping code helps us minimize the impact of a breaking change in `content-tag`.
 
-Until `@codemod-utils` provides an official package, we can create utilities in `src/utils`.
+Since `@codemod-utils` doesn't an official package yet, let's create utilities in `src/utils`.
 
 <details>
 
@@ -37,7 +37,7 @@ export function parse(file: string) {
   return preprocessor.parse(file) as unknown as ContentTag[];
 }
 
-export function replaceContents(
+export function replaceTemplate(
   file: string,
   options: {
     contents: string;
@@ -103,7 +103,7 @@ We can run tests to understand what `parse()` returns.
 
 <summary>Expected output</summary>
 
-The fixture file has 3 `<template>`-tags, so the array `contentTags` has 3 elements. The object keys that matter to us are `contents` and `range`.
+The fixture file has 3 `<template>` tags, so the array `contentTags` has 3 elements. The object keys that matter to us are `contents` and `range`.
 
 ```sh
 ❯ pnpm test
@@ -163,7 +163,7 @@ The fixture file has 3 `<template>`-tags, so the array `contentTags` has 3 eleme
 </details>
 
 > [!NOTE]
-> From `range.start`, we see that `contentTags` is a sorted array. The `<template>`-tag, which appears first in the file, appears first in the array.
+> From `range.start`, we see that `contentTags` is a sorted array. The `<template>` tag, which appears first in the file, appears first in the array.
 
 
 ## Create contents
@@ -230,9 +230,9 @@ export function removeTestSelectors(options: Options): void {
 </details>
 
 
-## Replace contents
+## Replace templates
 
-Last but not least, we use `replaceContents()` to replace the contents of each `<template>`-tag. Because a file may have multiple tags, we update the tags in the reverse order.
+Last but not least, we use `replaceTemplate()` to replace the contents of each `<template>` tag. Because a file may have multiple tags, we update the tags in the reverse order.
 
 <details>
 
@@ -247,7 +247,7 @@ import { createFiles, findFiles } from '@codemod-utils/files';
 
 import { Options } from '../types/index.js';
 - import { parse } from '../utils/ast.js';
-+ import { parse, replaceContents } from '../utils/ast.js';
++ import { parse, replaceTemplate } from '../utils/ast.js';
 
 function removeDataTestAttributes(file: string): string {
   const traverse = AST.traverse();
@@ -283,7 +283,7 @@ export function removeTestSelectors(options: Options): void {
         const contents = removeDataTestAttributes(contentTag.contents);
 
 -         console.log(contents);
-+         file = replaceContents(file, {
++         file = replaceTemplate(file, {
 +           contents,
 +           range: contentTag.range,
 +         });
