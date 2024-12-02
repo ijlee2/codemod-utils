@@ -31,29 +31,29 @@
     "test": "mt tests --quiet"
   },
   "dependencies": {
-    "@codemod-utils/ast-javascript": "^1.2.8",
-    "@codemod-utils/ast-template": "^1.1.4",
-    "@codemod-utils/blueprints": "^1.1.5",
-    "@codemod-utils/ember": "^2.0.0",
-    "@codemod-utils/files": "^2.0.4",
-    "@codemod-utils/json": "^1.1.9",
+    "@codemod-utils/ast-javascript": "^1.2.9",
+    "@codemod-utils/ast-template": "^1.1.5",
+    "@codemod-utils/blueprints": "^1.1.6",
+    "@codemod-utils/ember": "^2.0.1",
+    "@codemod-utils/files": "^2.0.5",
+    "@codemod-utils/json": "^1.1.10",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.25.2",
-    "@babel/eslint-parser": "^7.25.1",
-    "@changesets/cli": "^2.27.8",
+    "@babel/core": "^7.26.0",
+    "@babel/eslint-parser": "^7.25.9",
+    "@changesets/cli": "^2.27.10",
     "@changesets/get-github-info": "^0.6.0",
-    "@codemod-utils/tests": "^1.1.7",
+    "@codemod-utils/tests": "^1.1.8",
     "@sondr3/minitest": "^0.1.2",
-    "concurrently": "^9.0.0",
-    "eslint": "^8.57.0",
+    "concurrently": "^9.1.0",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.30.0",
-    "eslint-plugin-n": "^17.10.2",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^17.14.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
-    "prettier": "^3.3.3"
+    "prettier": "^3.4.1"
   },
   "engines": {
     "node": "18.* || >= 20"
