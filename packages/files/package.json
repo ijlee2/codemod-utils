@@ -1,6 +1,6 @@
 {
   "name": "@codemod-utils/files",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Utilities for handling files",
   "keywords": [
     "codemod",

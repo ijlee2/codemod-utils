@@ -1,5 +1,12 @@
 # Changelog for @codemod-utils/ast-template
 
+## 1.1.5
+
+### Patch Changes
+
+- [#141](https://github.com/ijlee2/codemod-utils/pull/141) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+- [#137](https://github.com/ijlee2/codemod-utils/pull/137) Updated typescript and @typescript-eslint/\* ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.4
 
 ### Patch Changes

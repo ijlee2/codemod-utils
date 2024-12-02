@@ -1,5 +1,13 @@
 # Changelog for @codemod-utils/cli
 
+## 2.0.3
+
+### Patch Changes
+
+- [#142](https://github.com/ijlee2/codemod-utils/pull/142) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+- [#141](https://github.com/ijlee2/codemod-utils/pull/141) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+- [#137](https://github.com/ijlee2/codemod-utils/pull/137) Updated typescript and @typescript-eslint/\* ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.2
 
 ### Patch Changes
