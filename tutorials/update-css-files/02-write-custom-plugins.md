@@ -74,7 +74,7 @@ Currently, native CSS doesn't support using `var()` in media queries. So express
 
 ```css
 /* Before */
-@media media {
+@media desktop {
   /* ... */
 }
 
@@ -427,8 +427,8 @@ Run `.update-test-fixtures.sh` once more. You'll see that `@value` imports and v
   grid-template-rows: auto 1fr;
   height: calc(100% - navigation-menu-height);
   overflow-y: auto;
--   padding: var(--spacing-600) var(--spacing-400);
-+   padding: spacing-600 spacing-400;
+-   padding: spacing-600 spacing-400;
++   padding: var(--spacing-600) var(--spacing-400);
   scrollbar-gutter: stable;
 }
 
