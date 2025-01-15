@@ -37,12 +37,12 @@
   ],
   "scripts": {
     "build": "./build.sh --production",
-    "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
-    "lint:fix": "concurrently 'pnpm:lint:*:fix' --names 'fix:'",
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\"",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
-    "test": "./build.sh --test && echo '@codemod-utils/tests does not have tests.'"
+    "test": "./build.sh --test && echo \"@codemod-utils/tests does not have tests.\""
   },
   "dependencies": {
     "fixturify": "^3.0.0",

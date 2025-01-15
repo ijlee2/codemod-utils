@@ -11,13 +11,13 @@
   "author": "Isaac J. Lee",
   "type": "module",
   "scripts": {
-    "build": "pnpm --filter './packages/**' build",
-    "lint": "pnpm --filter '*' lint",
-    "lint:fix": "pnpm --filter '*' lint:fix",
+    "build": "pnpm --filter \"./packages/**\" build",
+    "lint": "pnpm --filter \"*\" lint",
+    "lint:fix": "pnpm --filter \"*\" lint:fix",
     "prepare": "pnpm build",
     "release:changelog": "changeset version; update-workspace-root-version",
     "release:publish": "pnpm build && changeset publish",
-    "test": "pnpm --filter '*' test"
+    "test": "pnpm --filter \"*\" test"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.11",
