@@ -11,20 +11,20 @@
   "author": "Isaac J. Lee",
   "type": "module",
   "scripts": {
-    "build": "pnpm --filter './packages/**' build",
-    "lint": "pnpm --filter '*' lint",
-    "lint:fix": "pnpm --filter '*' lint:fix",
+    "build": "pnpm --filter \"./packages/**\" build",
+    "lint": "pnpm --filter \"*\" lint",
+    "lint:fix": "pnpm --filter \"*\" lint:fix",
     "prepare": "pnpm build",
     "release:changelog": "changeset version; update-workspace-root-version",
     "release:publish": "pnpm build && changeset publish",
-    "test": "pnpm --filter '*' test"
+    "test": "pnpm --filter \"*\" test"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.10",
+    "@changesets/cli": "^2.27.11",
     "@changesets/get-github-info": "^0.6.0",
     "update-workspace-root-version": "^1.0.1"
   },
-  "packageManager": "pnpm@9.14.4",
+  "packageManager": "pnpm@9.15.4",
   "engines": {
     "node": "18.* || >= 20",
     "pnpm": ">= 9"

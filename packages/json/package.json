@@ -37,15 +37,15 @@
   ],
   "scripts": {
     "build": "./build.sh --production",
-    "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
-    "lint:fix": "concurrently 'pnpm:lint:*:fix' --names 'fix:'",
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\"",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
     "test": "./build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {
-    "type-fest": "^4.29.1"
+    "type-fest": "^4.32.0"
   },
   "devDependencies": {
     "@codemod-utils/tests": "workspace:*",
@@ -54,10 +54,10 @@
     "@shared-configs/typescript": "workspace:*",
     "@sondr3/minitest": "^0.1.2",
     "@types/node": "^18.19.67",
-    "concurrently": "^9.1.0",
+    "concurrently": "^9.1.2",
     "eslint": "^8.57.1",
-    "prettier": "^3.4.1",
-    "typescript": "^5.7.2"
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.3"
   },
   "engines": {
     "node": "18.* || >= 20"
