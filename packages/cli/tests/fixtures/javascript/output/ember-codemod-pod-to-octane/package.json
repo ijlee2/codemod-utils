@@ -22,11 +22,11 @@
     "src"
   ],
   "scripts": {
-    "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
-    "lint:fix": "concurrently 'pnpm:lint:*:fix' --names 'fix:'",
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\"",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
-    "release:changelog": "changeset version",
+    "release:prepare": "changeset version",
     "release:publish": "changeset publish",
     "test": "mt tests --quiet"
   },
@@ -52,5 +52,6 @@
   },
   "engines": {
     "node": "18.* || >= 20"
-  }
+  },
+  "packageManager": "pnpm@9.15.4"
 }

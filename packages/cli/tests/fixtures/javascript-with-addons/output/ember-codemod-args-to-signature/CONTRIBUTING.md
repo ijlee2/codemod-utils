@@ -83,15 +83,28 @@ Here are some guidelines to help you and everyone else.
 
 <summary>Publish package (for admins)</summary>
 
-1. Generate a [personal access token](https://github.com/settings/tokens/) in GitHub, with `repo` and `read:user` scopes enabled.
+1. Generate a [personal access token](https://github.com/settings/tokens/) in GitHub, with `repo` and `read:user` scopes enabled. This token will be used to retrieve pull request information.
 
-1. Run the `release:changelog` script. This removes changesets, updates the package version, and updates the `CHANGELOG`.
+1. Run the `release:prepare` script. This removes changesets, updates package versions, and updates `CHANGELOG`s.
 
     ```sh
-    GITHUB_TOKEN=<YOUR_PERSONAL_ACCESS_TOKEN> pnpm release:changelog
+    # From the workspace root
+    GITHUB_TOKEN=<YOUR_PERSONAL_ACCESS_TOKEN> pnpm release:prepare
     ```
 
-1. [Create a tag](https://github.com/<your-github-handle>/ember-codemod-args-to-signature/releases/new) and provide release notes. The tag name should match the package version.
+    Note, `release:prepare` also updated the workspace root's version (e.g. from `0.1.1` to `0.1.2`). We will use it to name the tag that will be published.
+
+1. Review the file changes. Commit them in a branch, then open a pull request to merge the changes to the `main` branch.
+
+    ```sh
+    # From the workspace root
+    git checkout -b tag-0.1.2
+    git add .
+    git commit -m "Tagged 0.1.2"
+    git push origin tag-0.1.2
+    ```
+
+1. [Create a tag](https://github.com/<your-github-handle>/ember-codemod-args-to-signature/releases/new) and provide release notes. The tag name should match the workspace root's version (e.g. `0.1.2`).
 
 1. Publish the package.
 

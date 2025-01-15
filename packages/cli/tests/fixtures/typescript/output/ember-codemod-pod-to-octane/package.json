@@ -22,13 +22,13 @@
   ],
   "scripts": {
     "build": "./build.sh --production",
-    "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
-    "lint:fix": "concurrently 'pnpm:lint:*:fix' --names 'fix:'",
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\"",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
     "prepare": "pnpm build",
-    "release:changelog": "changeset version",
+    "release:prepare": "changeset version",
     "release:publish": "pnpm build && changeset publish",
     "test": "./build.sh --test && mt dist-for-testing --quiet"
   },
@@ -63,6 +63,7 @@
   "engines": {
     "node": "18.* || >= 20"
   },
+  "packageManager": "pnpm@9.15.4",
   "pnpm": {
     "overrides": {
       "eslint-plugin-import@2.31.0>tsconfig-paths": "^4.2.0"
