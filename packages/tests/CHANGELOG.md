@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/tests
 
+## 1.1.9
+
+### Patch Changes
+
+- [#143](https://github.com/ijlee2/codemod-utils/pull/143) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.8
 
 ### Patch Changes

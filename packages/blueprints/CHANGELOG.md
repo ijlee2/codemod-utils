@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/blueprints
 
+## 1.1.7
+
+### Patch Changes
+
+- [#143](https://github.com/ijlee2/codemod-utils/pull/143) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.6
 
 ### Patch Changes
