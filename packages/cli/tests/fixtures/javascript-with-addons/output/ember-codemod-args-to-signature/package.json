@@ -22,40 +22,41 @@
     "src"
   ],
   "scripts": {
-    "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
-    "lint:fix": "concurrently 'pnpm:lint:*:fix' --names 'fix:'",
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\"",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
-    "release:changelog": "changeset version",
+    "release:prepare": "changeset version",
     "release:publish": "changeset publish",
     "test": "mt tests --quiet"
   },
   "dependencies": {
-    "@codemod-utils/ast-javascript": "^1.2.9",
-    "@codemod-utils/ast-template": "^1.1.5",
-    "@codemod-utils/blueprints": "^1.1.6",
-    "@codemod-utils/ember": "^2.0.1",
-    "@codemod-utils/files": "^2.0.5",
-    "@codemod-utils/json": "^1.1.10",
+    "@codemod-utils/ast-javascript": "^1.2.10",
+    "@codemod-utils/ast-template": "^1.1.6",
+    "@codemod-utils/blueprints": "^1.1.7",
+    "@codemod-utils/ember": "^2.0.2",
+    "@codemod-utils/files": "^2.0.6",
+    "@codemod-utils/json": "^1.1.11",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
-    "@babel/eslint-parser": "^7.25.9",
-    "@changesets/cli": "^2.27.10",
+    "@babel/eslint-parser": "^7.26.5",
+    "@changesets/cli": "^2.27.11",
     "@changesets/get-github-info": "^0.6.0",
-    "@codemod-utils/tests": "^1.1.8",
+    "@codemod-utils/tests": "^1.1.9",
     "@sondr3/minitest": "^0.1.2",
-    "concurrently": "^9.1.0",
+    "concurrently": "^9.1.2",
     "eslint": "^8.57.1",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-n": "^17.14.0",
-    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-n": "^17.15.1",
+    "eslint-plugin-prettier": "^5.2.2",
     "eslint-plugin-simple-import-sort": "^12.1.1",
-    "prettier": "^3.4.1"
+    "prettier": "^3.4.2"
   },
   "engines": {
     "node": "18.* || >= 20"
-  }
+  },
+  "packageManager": "pnpm@9.15.4"
 }
