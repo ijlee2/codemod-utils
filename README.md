@@ -50,6 +50,7 @@ npx @codemod-utils/cli <your-codemod-name>
 - [`ember-codemod-template-tag`](https://github.com/IgnaceMaes/ember-codemod-template-tag)
 - [`ember-codemod-v1-to-v2`](https://github.com/ijlee2/ember-codemod-v1-to-v2)
 - [`type-css-modules`](https://github.com/ijlee2/embroider-css-modules/tree/main/packages/type-css-modules)
+- [`update-workspace-root-version`](https://github.com/ijlee2/update-workspace-root-version)
 
 
 ## License
