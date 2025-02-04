@@ -33,7 +33,7 @@ export function validatePackageJson(packageJson: PackageJson): void {
   }
 
   if (name.includes('/')) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [_scope, packageName] = name.split('/');
 
     if (!packageName) {

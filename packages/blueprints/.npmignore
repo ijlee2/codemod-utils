@@ -7,8 +7,6 @@
 # misc
 /.DS_Store
 /.env*
-/.eslintcache
-/.eslintignore
 /.eslintrc.cjs
 /.git/
 /.github/
@@ -17,4 +15,5 @@
 /.prettierignore
 /.prettierrc.cjs
 /build.sh
+/eslint.config.js
 /tests/

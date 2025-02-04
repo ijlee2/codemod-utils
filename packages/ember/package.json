@@ -51,9 +51,9 @@
     "@shared-configs/typescript": "workspace:*",
     "@sondr3/minitest": "^0.1.2",
     "@types/lodash.template": "^4.5.3",
-    "@types/node": "^18.19.67",
+    "@types/node": "^18.19.75",
     "concurrently": "^9.1.2",
-    "eslint": "^8.57.1",
+    "eslint": "^9.19.0",
     "prettier": "^3.4.2",
     "typescript": "^5.7.3"
   },
