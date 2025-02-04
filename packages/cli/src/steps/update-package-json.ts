@@ -42,9 +42,11 @@ function updateDevDependencies(
   const packagesToInstall = new Set([
     '@babel/core',
     '@babel/eslint-parser',
+    '@babel/plugin-proposal-decorators',
     '@changesets/cli',
     '@changesets/get-github-info',
     '@codemod-utils/tests',
+    '@eslint/js',
     '@sondr3/minitest',
     'concurrently',
     'eslint',
@@ -53,20 +55,20 @@ function updateDevDependencies(
     'eslint-plugin-n',
     'eslint-plugin-prettier',
     'eslint-plugin-simple-import-sort',
+    'globals',
     'prettier',
   ]);
 
   if (codemod.hasTypeScript) {
-    packagesToInstall.delete('@babel/eslint-parser');
     packagesToInstall.add('@tsconfig/node18');
     packagesToInstall.add('@tsconfig/strictest');
+    packagesToInstall.add('@types/eslint__js');
     packagesToInstall.add('@types/node');
     packagesToInstall.add('@types/yargs');
-    packagesToInstall.add('@typescript-eslint/eslint-plugin');
-    packagesToInstall.add('@typescript-eslint/parser');
     packagesToInstall.add('eslint-import-resolver-typescript');
     packagesToInstall.add('eslint-plugin-typescript-sort-keys');
     packagesToInstall.add('typescript');
+    packagesToInstall.add('typescript-eslint');
   }
 
   Array.from(packagesToInstall).forEach((packageName) => {
