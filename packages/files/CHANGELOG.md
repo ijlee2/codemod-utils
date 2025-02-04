@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/files
 
+## 2.0.7
+
+### Patch Changes
+
+- [#145](https://github.com/ijlee2/codemod-utils/pull/145) Updated eslint to v9 ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.6
 
 ### Patch Changes

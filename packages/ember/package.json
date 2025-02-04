@@ -1,6 +1,6 @@
 {
   "name": "@codemod-utils/ember",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Utilities for Ember",
   "keywords": [
     "codemod",

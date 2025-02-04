@@ -1,5 +1,15 @@
 # Changelog for @codemod-utils/cli
 
+## 2.2.0
+
+### Minor Changes
+
+- [#146](https://github.com/ijlee2/codemod-utils/pull/146) Updated blueprints to install eslint@v9 ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#145](https://github.com/ijlee2/codemod-utils/pull/145) Updated eslint to v9 ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.1.0
 
 ### Minor Changes

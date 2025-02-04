@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/blueprints
 
+## 1.1.8
+
+### Patch Changes
+
+- [#145](https://github.com/ijlee2/codemod-utils/pull/145) Updated eslint to v9 ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.7
 
 ### Patch Changes

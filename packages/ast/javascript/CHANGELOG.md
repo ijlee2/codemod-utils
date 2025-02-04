@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ast-javascript
 
+## 1.2.11
+
+### Patch Changes
+
+- [#145](https://github.com/ijlee2/codemod-utils/pull/145) Updated eslint to v9 ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.2.10
 
 ### Patch Changes

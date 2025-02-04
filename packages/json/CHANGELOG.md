@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/json
 
+## 1.1.12
+
+### Patch Changes
+
+- [#145](https://github.com/ijlee2/codemod-utils/pull/145) Updated eslint to v9 ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.11
 
 ### Patch Changes
