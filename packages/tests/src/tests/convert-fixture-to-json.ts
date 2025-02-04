@@ -9,7 +9,6 @@ function updateJson(
   json: DirJSON,
   { cwd, keys }: { cwd: string; keys: string[] },
 ) {
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const key = keys.shift()!;
   const isFile = keys.length === 0;
 
