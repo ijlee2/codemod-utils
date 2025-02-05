@@ -26,6 +26,18 @@ const parserOptionsJs = {
 
 export default [
   {
+    ignores: [
+      'dist/',
+      'dist-for-testing/',
+      'node_modules/',
+      'src/blueprints/',
+      'tests/fixtures/',
+      'tmp/',
+      '!.*',
+      '.*/',
+    ],
+  },
+  {
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
     },
@@ -57,14 +69,12 @@ export default [
     },
   },
 
-  // Node files
+  // Configuration files
   {
     files: ['**/*.cjs'],
     languageOptions: {
       ecmaVersion: 'latest',
-      globals: {
-        ...globals.node,
-      },
+      globals: globals.node,
       sourceType: 'script',
     },
     plugins: {
@@ -75,9 +85,7 @@ export default [
     files: ['**/*.mjs'],
     languageOptions: {
       ecmaVersion: 'latest',
-      globals: {
-        ...globals.node,
-      },
+      globals: globals.node,
       parserOptions: parserOptionsJs,
       sourceType: 'module',
     },
