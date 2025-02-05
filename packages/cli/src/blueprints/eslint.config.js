@@ -45,7 +45,6 @@ export default tseslint.config(
       '.*/',
     ],
   },
-
   {
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
@@ -106,14 +105,12 @@ export default tseslint.config(
     },
   },
 
-  // Node files
+  // Configuration files
   {
     files: ['**/*.cjs'],
     languageOptions: {
       ecmaVersion: 'latest',
-      globals: {
-        ...globals.node,
-      },
+      globals: globals.node,
       sourceType: 'script',
     },
     plugins: {
@@ -124,9 +121,7 @@ export default tseslint.config(
     files: ['**/*.mjs'],
     languageOptions: {
       ecmaVersion: 'latest',
-      globals: {
-        ...globals.node,
-      },
+      globals: globals.node,
       parserOptions: parserOptionsJs,
       sourceType: 'module',
     },
@@ -173,7 +168,6 @@ export default tseslint.config(
       '.*/',
     ],
   },
-
   {
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
@@ -205,14 +199,12 @@ export default tseslint.config(
     },
   },
 
-  // Node files
+  // Configuration files
   {
     files: ['**/*.cjs'],
     languageOptions: {
       ecmaVersion: 'latest',
-      globals: {
-        ...globals.node,
-      },
+      globals: globals.node,
       sourceType: 'script',
     },
     plugins: {
@@ -223,9 +215,7 @@ export default tseslint.config(
     files: ['**/*.mjs'],
     languageOptions: {
       ecmaVersion: 'latest',
-      globals: {
-        ...globals.node,
-      },
+      globals: globals.node,
       parserOptions: parserOptionsJs,
       sourceType: 'module',
     },

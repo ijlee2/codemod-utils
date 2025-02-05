@@ -34,6 +34,18 @@ const parserOptionsTs = {
 
 export default tseslint.config(
   {
+    ignores: [
+      'dist/',
+      'dist-for-testing/',
+      'node_modules/',
+      'src/blueprints/',
+      'tests/fixtures/',
+      'tmp/',
+      '!.*',
+      '.*/',
+    ],
+  },
+  {
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
     },
@@ -94,14 +106,12 @@ export default tseslint.config(
     },
   },
 
-  // Node files
+  // Configuration files
   {
     files: ['**/*.cjs'],
     languageOptions: {
       ecmaVersion: 'latest',
-      globals: {
-        ...globals.node,
-      },
+      globals: globals.node,
       sourceType: 'script',
     },
     plugins: {
@@ -112,9 +122,7 @@ export default tseslint.config(
     files: ['**/*.mjs'],
     languageOptions: {
       ecmaVersion: 'latest',
-      globals: {
-        ...globals.node,
-      },
+      globals: globals.node,
       parserOptions: parserOptionsJs,
       sourceType: 'module',
     },
