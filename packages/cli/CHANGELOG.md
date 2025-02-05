@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/cli
 
+## 2.2.1
+
+### Patch Changes
+
+- [#147](https://github.com/ijlee2/codemod-utils/pull/147) Simplified eslint configuration ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.2.0
 
 ### Minor Changes
