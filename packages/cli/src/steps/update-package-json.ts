@@ -41,7 +41,6 @@ function updateDevDependencies(
   const devDependencies = convertToMap(packageJson['devDependencies']);
 
   const packagesToInstall = new Set([
-    '@babel/core',
     '@changesets/cli',
     '@changesets/get-github-info',
     '@codemod-utils/tests',

@@ -1,7 +1,6 @@
 import { decideVersion } from '@codemod-utils/blueprints';
 
 const latestVersions = new Map([
-  ['@babel/core', '7.26.7'],
   ['@changesets/cli', '2.27.12'],
   ['@changesets/get-github-info', '0.6.0'],
   ['@codemod-utils/ast-javascript', '1.2.12'],
