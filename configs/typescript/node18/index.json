@@ -1,0 +1,6 @@
+{
+  "extends": "@ijlee2-frontend-configs/typescript/node18",
+  "compilerOptions": {
+    "verbatimModuleSyntax": true
+  }
+}

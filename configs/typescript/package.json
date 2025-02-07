@@ -9,7 +9,9 @@
   },
   "author": "Isaac J. Lee",
   "type": "module",
-  "main": "node18/tsconfig.json",
+  "exports": {
+    "./node18": "./node18/index.json"
+  },
   "scripts": {
     "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\"",
@@ -17,8 +19,7 @@
     "lint:js:fix": "prettier . --write"
   },
   "dependencies": {
-    "@tsconfig/node18": "^18.2.4",
-    "@tsconfig/strictest": "^2.0.5"
+    "@ijlee2-frontend-configs/typescript": "^0.2.0"
   },
   "devDependencies": {
     "@shared-configs/prettier": "workspace:*",
