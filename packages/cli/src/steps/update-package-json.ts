@@ -42,34 +42,23 @@ function updateDevDependencies(
 
   const packagesToInstall = new Set([
     '@babel/core',
-    '@babel/eslint-parser',
-    '@babel/plugin-proposal-decorators',
     '@changesets/cli',
     '@changesets/get-github-info',
     '@codemod-utils/tests',
-    '@eslint/js',
+    '@ijlee2-frontend-configs/eslint-config-node',
+    '@ijlee2-frontend-configs/prettier',
     '@sondr3/minitest',
     'concurrently',
     'eslint',
-    'eslint-config-prettier',
-    'eslint-plugin-import',
-    'eslint-plugin-n',
-    'eslint-plugin-prettier',
-    'eslint-plugin-simple-import-sort',
-    'globals',
     'prettier',
   ]);
 
   if (codemod.hasTypeScript) {
     packagesToInstall.add('@tsconfig/node18');
     packagesToInstall.add('@tsconfig/strictest');
-    packagesToInstall.add('@types/eslint__js');
     packagesToInstall.add('@types/node');
     packagesToInstall.add('@types/yargs');
-    packagesToInstall.add('eslint-import-resolver-typescript');
-    packagesToInstall.add('eslint-plugin-typescript-sort-keys');
     packagesToInstall.add('typescript');
-    packagesToInstall.add('typescript-eslint');
   }
 
   Array.from(packagesToInstall).forEach((packageName) => {
@@ -88,22 +77,6 @@ function addPackageManager(packageJson: PackageJson): void {
   packageJson['packageManager'] = `pnpm@${version}`;
 }
 
-function addPnpmOverrides(packageJson: PackageJson, options: Options): void {
-  const { codemod } = options;
-
-  if (!codemod.hasTypeScript) {
-    return;
-  }
-
-  const version = getVersion('eslint-plugin-import').replace(/^\^/, '');
-
-  packageJson['pnpm'] = {
-    overrides: {
-      [`eslint-plugin-import@${version}>tsconfig-paths`]: '^4.2.0',
-    },
-  };
-}
-
 export function updatePackageJson(options: Options): void {
   const { codemod, projectRoot } = options;
 
@@ -114,7 +87,6 @@ export function updatePackageJson(options: Options): void {
   updateDependencies(packageJson, options);
   updateDevDependencies(packageJson, options);
   addPackageManager(packageJson);
-  addPnpmOverrides(packageJson, options);
 
   const destination = join(projectRoot, codemod.name, 'package.json');
   const file = JSON.stringify(packageJson, null, 2) + '\n';
