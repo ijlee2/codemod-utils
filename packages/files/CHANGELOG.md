@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/files
 
+## 2.0.8
+
+### Patch Changes
+
+- [#148](https://github.com/ijlee2/codemod-utils/pull/148) Simplified lint configurations ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.7
 
 ### Patch Changes

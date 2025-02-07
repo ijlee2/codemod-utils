@@ -1,5 +1,15 @@
 # Changelog for @codemod-utils/cli
 
+## 2.3.0
+
+### Minor Changes
+
+- [#149](https://github.com/ijlee2/codemod-utils/pull/149) Consumed @ijlee2-frontend-configs ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#148](https://github.com/ijlee2/codemod-utils/pull/148) Simplified lint configurations ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.2.1
 
 ### Patch Changes

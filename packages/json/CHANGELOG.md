@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/json
 
+## 1.1.13
+
+### Patch Changes
+
+- [#148](https://github.com/ijlee2/codemod-utils/pull/148) Simplified lint configurations ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.12
 
 ### Patch Changes

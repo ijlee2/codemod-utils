@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/tests
 
+## 1.1.11
+
+### Patch Changes
+
+- [#148](https://github.com/ijlee2/codemod-utils/pull/148) Simplified lint configurations ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.10
 
 ### Patch Changes

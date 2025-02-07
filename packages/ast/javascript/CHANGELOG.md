@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ast-javascript
 
+## 1.2.12
+
+### Patch Changes
+
+- [#148](https://github.com/ijlee2/codemod-utils/pull/148) Simplified lint configurations ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.2.11
 
 ### Patch Changes
