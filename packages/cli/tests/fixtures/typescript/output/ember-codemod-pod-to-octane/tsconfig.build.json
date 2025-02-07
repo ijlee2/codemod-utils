@@ -5,7 +5,8 @@
   ],
   "compilerOptions": {
     "declaration": false,
-    "moduleResolution": "NodeNext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "outDir": "dist"
   },
   "include": ["bin", "src"],
