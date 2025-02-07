@@ -19,7 +19,8 @@
     "lint:js:fix": "prettier . --write"
   },
   "dependencies": {
-    "@ijlee2-frontend-configs/typescript": "^0.2.0"
+    "@tsconfig/node18": "^18.2.4",
+    "@tsconfig/strictest": "^2.0.5"
   },
   "devDependencies": {
     "@shared-configs/prettier": "workspace:*",
