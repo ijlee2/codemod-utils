@@ -53,8 +53,7 @@ function updateDevDependencies(
   ]);
 
   if (codemod.hasTypeScript) {
-    packagesToInstall.add('@tsconfig/node18');
-    packagesToInstall.add('@tsconfig/strictest');
+    packagesToInstall.add('@ijlee2-frontend-configs/typescript');
     packagesToInstall.add('@types/node');
     packagesToInstall.add('@types/yargs');
     packagesToInstall.add('typescript');
@@ -76,6 +75,20 @@ function addPackageManager(packageJson: PackageJson): void {
   packageJson['packageManager'] = `pnpm@${version}`;
 }
 
+function addPnpmOverrides(packageJson: PackageJson, options: Options): void {
+  const { codemod } = options;
+
+  if (!codemod.hasTypeScript) {
+    return;
+  }
+
+  packageJson['pnpm'] = {
+    overrides: {
+      'get-tsconfig': '4.7.3',
+    },
+  };
+}
+
 export function updatePackageJson(options: Options): void {
   const { codemod, projectRoot } = options;
 
@@ -86,6 +99,7 @@ export function updatePackageJson(options: Options): void {
   updateDependencies(packageJson, options);
   updateDevDependencies(packageJson, options);
   addPackageManager(packageJson);
+  addPnpmOverrides(packageJson, options);
 
   const destination = join(projectRoot, codemod.name, 'package.json');
   const file = JSON.stringify(packageJson, null, 2) + '\n';

@@ -1,12 +1,7 @@
 {
-  "extends": [
-    "@tsconfig/node18/tsconfig",
-    "@tsconfig/strictest/tsconfig"
-  ],
+  "extends": "@shared-configs/typescript/node18",
   "compilerOptions": {
     "declaration": false,
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
     "outDir": "dist-for-testing"
   },
   "include": ["bin", "src", "tests"],
