@@ -1,1 +1,1 @@
-export { default } from '@ijlee2-frontend-configs/prettier';
+export { default } from './index.mjs';

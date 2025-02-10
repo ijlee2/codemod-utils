@@ -1,3 +1,1 @@
-import eslintConfigNodeJavascript from './javascript/index.js';
-
-export default eslintConfigNodeJavascript;
+export { default } from './javascript/index.js';
