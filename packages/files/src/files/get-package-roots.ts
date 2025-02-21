@@ -4,6 +4,31 @@ import type { Options } from '../types/index.js';
 import { findFiles } from './find-files.js';
 import { parseFilePath } from './parse-file-path.js';
 
+/**
+ * Returns the roots of all packages in a project.
+ *
+ * @param options
+ *
+ * An object with `projectRoot`.
+ *
+ * @example
+ *
+ * Analyze each package by reading `package.json`.
+ *
+ * ```ts
+ * import { readPackageJson } from '@codemod-utils/json';
+ *
+ * const packageRoots = getPackageRoots({
+ *   projectRoot,
+ * });
+ *
+ * packageRoots.forEach((packageRoot) => {
+ *   const packageJson = readPackageJson({ projectRoot: packageRoot });
+ *
+ *   // ...
+ * });
+ * ```
+ */
 export function getPackageRoots(
   options: Options & {
     projectRoot: string;
