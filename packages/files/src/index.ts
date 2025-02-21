@@ -2,6 +2,7 @@ export * from './files/copy-files.js';
 export * from './files/create-directory.js';
 export * from './files/create-files.js';
 export * from './files/find-files.js';
+export * from './files/get-package-roots.js';
 export * from './files/map-file-paths.js';
 export * from './files/move-files.js';
 export * from './files/parse-file-path.js';
