@@ -161,6 +161,33 @@ const filePaths = findFiles([
 </details>
 
 
+### getPackageRoots
+
+Returns the roots of all packages in a project.
+
+<details>
+
+<summary>Example</summary>
+
+Analyze each package by reading `package.json`.
+
+```ts
+import { readPackageJson } from '@codemod-utils/json';
+
+const packageRoots = getPackageRoots({
+  projectRoot,
+});
+
+packageRoots.forEach((packageRoot) => {
+  const packageJson = readPackageJson({ projectRoot: packageRoot });
+
+  // ...
+});
+```
+
+</details>
+
+
 ### mapFilePaths
 
 Creates a mapping of file paths, which can then be passed to [`copyFiles`](#copyfiles) or [`moveFiles`](#movefiles). 
