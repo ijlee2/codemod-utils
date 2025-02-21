@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/files
 
+## 2.1.0
+
+### Minor Changes
+
+- [#152](https://github.com/ijlee2/codemod-utils/pull/152) Extracted getPackageRoots() ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.8
 
 ### Patch Changes
