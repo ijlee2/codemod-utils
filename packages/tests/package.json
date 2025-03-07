@@ -53,11 +53,11 @@
     "@shared-configs/prettier": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
     "@sondr3/minitest": "^0.1.2",
-    "@types/node": "^18.19.75",
+    "@types/node": "^18.19.79",
     "concurrently": "^9.1.2",
-    "eslint": "^9.20.0",
-    "prettier": "^3.5.0",
-    "typescript": "^5.7.3"
+    "eslint": "^9.21.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
   },
   "peerDependencies": {
     "@sondr3/minitest": "^0.1.2"
