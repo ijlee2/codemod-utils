@@ -81,14 +81,13 @@ Here are some guidelines to help you and everyone else.
 
 <details>
 
-<summary>Publish package (for admins)</summary>
+<summary>Publish package</summary>
 
-1. Generate a [personal access token](https://github.com/settings/tokens/) in GitHub, with `repo` and `read:user` scopes enabled. This token will be used to retrieve pull request information.
+1. Generate a [personal access token](https://github.com/settings/tokens/) in GitHub. Enable `repo` and `read:user` scopes if your repo is private. This token will be used to retrieve pull request information.
 
 1. Run the `release:prepare` script. This removes changesets, updates package versions, and updates `CHANGELOG`s.
 
     ```sh
-    # From the workspace root
     GITHUB_TOKEN=<YOUR_PERSONAL_ACCESS_TOKEN> pnpm release:prepare
     ```
 
@@ -97,7 +96,6 @@ Here are some guidelines to help you and everyone else.
 1. Review the file changes. Commit them in a branch, then open a pull request to merge the changes to the `main` branch.
 
     ```sh
-    # From the workspace root
     git checkout -b tag-0.1.2
     git add .
     git commit -m "Tagged 0.1.2"
