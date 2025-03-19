@@ -1,11 +1,8 @@
-import type { PackageJson } from '../types/index.js';
+import type { PackageJson, ValidatedPackageJson } from '../types/index.js';
 
 /**
  * Check if the fields `name` and `version` exist, in the sense that
  * their values are a non-empty string.
- *
- * You may still need the non-null assertion operator `!`, to
- * tell TypeScript that `name` and `version` are not `undefined`.
  *
  * @param packageJson
  *
@@ -23,7 +20,9 @@ import type { PackageJson } from '../types/index.js';
  * const { name, version } = packageJson;
  * ```
  */
-export function validatePackageJson(packageJson: PackageJson): void {
+export function validatePackageJson(
+  packageJson: PackageJson,
+): asserts packageJson is ValidatedPackageJson {
   const { name, version } = packageJson;
 
   if (!name) {

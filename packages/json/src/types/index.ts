@@ -6,3 +6,6 @@ type Options = {
 };
 
 export type { Options, PackageJson, TsConfigJson };
+
+export type ValidatedPackageJson = PackageJson &
+  Required<Pick<PackageJson, 'name' | 'version'>>;
