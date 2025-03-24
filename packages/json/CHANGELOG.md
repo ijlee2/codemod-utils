@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/json
 
+## 1.2.0
+
+### Minor Changes
+
+- [#155](https://github.com/ijlee2/codemod-utils/pull/155) Provide typescript assertions as to the non-null name and version properties of packages with validatePackageJson. ([@SunsetFi](https://github.com/SunsetFi))
+
 ## 1.1.15
 
 ### Patch Changes

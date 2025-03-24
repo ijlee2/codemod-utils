@@ -1,5 +1,12 @@
 # Changelog for @codemod-utils/cli
 
+## 2.3.4
+
+### Patch Changes
+
+- [#157](https://github.com/ijlee2/codemod-utils/pull/157) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+- [#155](https://github.com/ijlee2/codemod-utils/pull/155) Provide typescript assertions as to the non-null name and version properties of packages with validatePackageJson. ([@SunsetFi](https://github.com/SunsetFi))
+
 ## 2.3.3
 
 ### Patch Changes
