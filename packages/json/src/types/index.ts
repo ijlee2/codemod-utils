@@ -5,4 +5,7 @@ type Options = {
   projectRoot: string;
 };
 
-export type { Options, PackageJson, TsConfigJson };
+type ValidatedPackageJson = PackageJson &
+  Required<Pick<PackageJson, 'name' | 'version'>>;
+
+export type { Options, PackageJson, TsConfigJson, ValidatedPackageJson };

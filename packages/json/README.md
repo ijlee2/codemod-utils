@@ -98,10 +98,7 @@ const hasTypeScript = projectDependencies.has('typescript');
 
 ### validatePackageJson
 
-Check if the fields `name` and `version` exist, in the sense that their values are a non-empty string.
-
-> [!NOTE]
-> You may still need the non-null assertion operator `!`, to tell TypeScript that `name` and `version` are not `undefined`.
+(Type-)Checks that the fields `name` and `version` exist, in the sense that their values are a non-empty string.
 
 <details>
 
@@ -110,12 +107,11 @@ Check if the fields `name` and `version` exist, in the sense that their values a
 ```js
 import { readPackageJson, validatePackageJson } from '@codemod-utils/json';
 
-const packageJson = readPackageJson({
-  projectRoot,
-});
+const packageJson = readPackageJson({ projectRoot });
 
 validatePackageJson(packageJson);
 
+// Both guaranteed to be `string` (not `undefined`)
 const { name, version } = packageJson;
 ```
 
