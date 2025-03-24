@@ -1,8 +1,8 @@
 import type { PackageJson, ValidatedPackageJson } from '../types/index.js';
 
 /**
- * Check if the fields `name` and `version` exist, in the sense that
- * their values are a non-empty string.
+ * (Type-)Checks that the fields `name` and `version` exist, in the
+ * sense that their values are a non-empty string.
  *
  * @param packageJson
  *
@@ -11,12 +11,11 @@ import type { PackageJson, ValidatedPackageJson } from '../types/index.js';
  * @example
  *
  * ```ts
- * const packageJson = readPackageJson({
- *   projectRoot,
- * });
+ * const packageJson = readPackageJson({ projectRoot });
  *
  * validatePackageJson(packageJson);
  *
+ * // Both guaranteed to be `string` (not `undefined`)
  * const { name, version } = packageJson;
  * ```
  */
