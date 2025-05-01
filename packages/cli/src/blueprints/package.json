@@ -35,7 +35,7 @@
   "dependencies": {},
   "devDependencies": {},
   "engines": {
-    "node": "18.* || >= 20"
+    "node": "20.* || >= 22"
   }
 }<% } else { %>{
   "name": "<%= options.codemod.name %>",
@@ -72,6 +72,6 @@
   "dependencies": {},
   "devDependencies": {},
   "engines": {
-    "node": "18.* || >= 20"
+    "node": "20.* || >= 22"
   }
 }<% } %>

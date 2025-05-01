@@ -53,7 +53,7 @@ const newValue = pascalize('ui/form/input');
 
 ## Compatibility
 
-- Node.js v18 or above
+- Node.js v20 or above
 
 
 ## Contributing

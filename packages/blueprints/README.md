@@ -180,7 +180,7 @@ Often, it is easy to miscalculate data and misplace the newline character `\n` .
 
 ## Compatibility
 
-- Node.js v18 or above
+- Node.js v20 or above
 
 
 ## Contributing
