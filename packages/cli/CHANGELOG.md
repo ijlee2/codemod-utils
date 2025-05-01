@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/cli
 
+## 2.3.5
+
+### Patch Changes
+
+- [#158](https://github.com/ijlee2/codemod-utils/pull/158) Consumed @tsconfig/\* packages directly ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.3.4
 
 ### Patch Changes
