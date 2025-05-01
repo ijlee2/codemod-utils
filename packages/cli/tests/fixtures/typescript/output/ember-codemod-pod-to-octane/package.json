@@ -37,27 +37,23 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.28.1",
+    "@changesets/cli": "^2.29.2",
     "@changesets/get-github-info": "^0.6.0",
     "@codemod-utils/tests": "^1.1.11",
-    "@ijlee2-frontend-configs/eslint-config-node": "^0.3.0",
-    "@ijlee2-frontend-configs/prettier": "^0.2.3",
-    "@ijlee2-frontend-configs/typescript": "^0.4.0",
+    "@ijlee2-frontend-configs/eslint-config-node": "^0.4.1",
+    "@ijlee2-frontend-configs/prettier": "^0.2.4",
     "@sondr3/minitest": "^0.1.2",
-    "@types/node": "^18.19.82",
+    "@tsconfig/node18": "^18.2.4",
+    "@tsconfig/strictest": "^2.0.5",
+    "@types/node": "^18.19.87",
     "@types/yargs": "^17.0.33",
     "concurrently": "^9.1.2",
-    "eslint": "^9.23.0",
+    "eslint": "^9.25.1",
     "prettier": "^3.5.3",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.3"
   },
   "engines": {
     "node": "18.* || >= 20"
   },
-  "packageManager": "pnpm@9.15.9",
-  "pnpm": {
-    "overrides": {
-      "get-tsconfig": "4.7.3"
-    }
-  }
+  "packageManager": "pnpm@9.15.9"
 }
