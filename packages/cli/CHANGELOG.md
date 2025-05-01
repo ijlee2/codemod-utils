@@ -1,5 +1,15 @@
 # Changelog for @codemod-utils/cli
 
+## 3.0.0
+
+### Major Changes
+
+- [#159](https://github.com/ijlee2/codemod-utils/pull/159) Dropped Node 18 support ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#159](https://github.com/ijlee2/codemod-utils/pull/159) Dropped Node 18 support ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.3.5
 
 ### Patch Changes

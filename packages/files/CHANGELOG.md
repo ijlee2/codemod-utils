@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/files
 
+## 3.0.0
+
+### Major Changes
+
+- [#159](https://github.com/ijlee2/codemod-utils/pull/159) Dropped Node 18 support ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.1.0
 
 ### Minor Changes
