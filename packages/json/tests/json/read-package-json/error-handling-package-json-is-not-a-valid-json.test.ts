@@ -19,7 +19,10 @@ test('json | read-package-json > error handling (package.json is not a valid JSO
     (error: Error) => {
       assert.strictEqual(
         error.message,
-        'ERROR: package.json is not valid. (Unexpected token } in JSON at position 12)\n',
+        [
+          `ERROR: package.json is not valid. (Unexpected token '}', "{\n`,
+          '  "name": }" is not valid JSON)\n',
+        ].join(''),
       );
 
       return true;
