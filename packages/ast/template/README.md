@@ -121,7 +121,7 @@ Most importantly, write tests to document the inputs and outputs of your codemod
 
 ## Compatibility
 
-- Node.js v18 or above
+- Node.js v20 or above
 
 
 ## Contributing
