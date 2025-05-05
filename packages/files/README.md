@@ -102,7 +102,7 @@ Often, you will want a codemod step to apply to select files. `findFiles` provid
 Find all component templates in an Ember app.
 
 ```ts
-import { findfiles } from '@codemod-utils/files';
+import { findFiles } from '@codemod-utils/files';
 
 const filePaths = findFiles('app/components/**/*.hbs', {
   projectRoot,
@@ -120,7 +120,7 @@ You can provide `ignoreList`, an array of file paths or glob patterns, to exclud
 Find all component classes in an Ember app.
 
 ```ts
-import { findfiles } from '@codemod-utils/files';
+import { findFiles } from '@codemod-utils/files';
 
 const filePaths = findFiles('app/components/**/*.{js,ts}', {
   ignoreList: ['**/*.d.ts'],
@@ -137,7 +137,7 @@ To look for multiple types of files, you can pass an array of glob patterns (pat
 <summary>Examples</summary>
 
 ```ts
-import { findfiles } from '@codemod-utils/files';
+import { findFiles } from '@codemod-utils/files';
 
 const filePaths = findFiles([
   'LICENSE.md',
@@ -148,7 +148,7 @@ const filePaths = findFiles([
 ```
 
 ```ts
-import { findfiles } from '@codemod-utils/files';
+import { findFiles } from '@codemod-utils/files';
 
 const filePaths = findFiles([
   'app/components/**/*.hbs',
