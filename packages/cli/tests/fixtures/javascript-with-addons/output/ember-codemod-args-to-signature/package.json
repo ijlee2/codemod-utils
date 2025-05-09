@@ -31,23 +31,23 @@
     "test": "mt tests --quiet"
   },
   "dependencies": {
-    "@codemod-utils/ast-javascript": "^2.0.0",
+    "@codemod-utils/ast-javascript": "^2.0.1",
     "@codemod-utils/ast-template": "^2.0.0",
     "@codemod-utils/blueprints": "^2.0.0",
     "@codemod-utils/ember": "^3.0.0",
     "@codemod-utils/files": "^3.0.0",
-    "@codemod-utils/json": "^2.0.0",
+    "@codemod-utils/json": "^2.0.1",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.29.2",
+    "@changesets/cli": "^2.29.3",
     "@changesets/get-github-info": "^0.6.0",
     "@codemod-utils/tests": "^2.0.0",
     "@ijlee2-frontend-configs/eslint-config-node": "^1.0.0",
     "@ijlee2-frontend-configs/prettier": "^1.0.0",
     "@sondr3/minitest": "^0.1.2",
     "concurrently": "^9.1.2",
-    "eslint": "^9.25.1",
+    "eslint": "^9.26.0",
     "prettier": "^3.5.3"
   },
   "engines": {
