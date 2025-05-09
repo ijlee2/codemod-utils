@@ -47,6 +47,7 @@ npx @codemod-utils/cli <your-codemod-name>
 - [`ember-codemod-remove-ember-css-modules`](https://github.com/ijlee2/embroider-css-modules/tree/main/packages/ember-codemod-remove-ember-css-modules)
 - [`ember-codemod-remove-inject-as-service`](https://github.com/ijlee2/ember-codemod-remove-inject-as-service)
 - [`ember-codemod-rename-test-modules`](https://github.com/ijlee2/ember-codemod-rename-test-modules)
+- [`ember-codemod-sort-invocations`](https://github.com/ijlee2/ember-codemod-sort-invocations)
 - [`ember-codemod-template-tag`](https://github.com/IgnaceMaes/ember-codemod-template-tag)
 - [`ember-codemod-v1-to-v2`](https://github.com/ijlee2/ember-codemod-v1-to-v2)
 - [`type-css-modules`](https://github.com/ijlee2/embroider-css-modules/tree/main/packages/type-css-modules)
