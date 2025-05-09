@@ -16,25 +16,51 @@ Since `@codemod-utils` doesn't an official package yet, let's create utilities i
 ```ts
 import { Preprocessor } from 'content-tag';
 
+const BufferMap = new Map<string, ArrayBuffer>();
+
+function getBuffer(str: string): ArrayBuffer {
+  let buffer = BufferMap.get(str);
+
+  if (!buffer) {
+    buffer = Buffer.from(str);
+    BufferMap.set(str, buffer);
+  }
+
+  return buffer;
+}
+
+function sliceByteRange(
+  str: string,
+  indexStart: number,
+  indexEnd?: number,
+): string {
+  const buffer = getBuffer(str);
+
+  // eslint-disable-next-line @typescript-eslint/no-base-to-string
+  return buffer.slice(indexStart, indexEnd).toString();
+}
+
 type Range = {
-  end: number;
-  start: number;
+  endByte: number;
+  endChar: number;
+  startByte: number;
+  startChar: number;
 };
 
 type ContentTag = {
   contentRange: Range;
   contents: string;
   endRange: Range;
-  range: Range; // range = startRange + contentRange + endRange
+  range: Range;
   startRange: Range;
   tagName: string;
-  type: string;
+  type: 'class-member' | 'expression';
 };
 
-export function parse(file: string) {
+export function parse(file: string): ContentTag[] {
   const preprocessor = new Preprocessor();
 
-  return preprocessor.parse(file) as unknown as ContentTag[];
+  return preprocessor.parse(file);
 }
 
 export function replaceTemplate(
@@ -47,11 +73,11 @@ export function replaceTemplate(
   const { contents, range } = options;
 
   return [
-    file.substring(0, range.start),
+    sliceByteRange(file, 0, range.startByte),
     '<template>',
     contents,
     '</template>',
-    file.substring(range.end),
+    sliceByteRange(file, range.endByte, undefined),
   ].join('');
 }
 ```
@@ -68,7 +94,7 @@ import { join } from 'node:path';
 
 import { createFiles, findFiles } from '@codemod-utils/files';
 
-import { Options } from '../types/index.js';
+import type { Options } from '../types/index.js';
 + import { parse } from '../utils/ast/template-tag.js';
 
 export function removeTestSelectors(options: Options): void {
@@ -121,10 +147,10 @@ The fixture file has 3 `<template>` tags, so the array `contentTags` has 3 eleme
     '      Increment by 1\n' +
     '    </button>\n' +
     '  </div>\n',
-  range: { start: 186, end: 388 },
-  startRange: { start: 186, end: 196 },
-  contentRange: { start: 196, end: 377 },
-  endRange: { start: 377, end: 388 }
+  range: { startByte: 186, endByte: 388, startChar: 186, endChar: 388 },
+  startRange: { startByte: 186, endByte: 196, startChar: 186, endChar: 196 },
+  contentRange: { startByte: 196, endByte: 377, startChar: 196, endChar: 377 },
+  endRange: { startByte: 377, endByte: 388, startChar: 377, endChar: 388 }
 }
 {
   type: 'expression',
@@ -137,10 +163,10 @@ The fixture file has 3 `<template>` tags, so the array `contentTags` has 3 eleme
     '      </p>\n' +
     '    </div>\n' +
     '  ',
-  range: { start: 408, end: 584 },
-  startRange: { start: 408, end: 418 },
-  contentRange: { start: 418, end: 573 },
-  endRange: { start: 573, end: 584 }
+  range: { startByte: 408, endByte: 584, startChar: 408, endChar: 584 },
+  startRange: { startByte: 408, endByte: 418, startChar: 408, endChar: 418 },
+  contentRange: { startByte: 418, endByte: 573, startChar: 418, endChar: 573 },
+  endRange: { startByte: 573, endByte: 584, startChar: 573, endChar: 584 }
 }
 {
   type: 'class-member',
@@ -153,17 +179,17 @@ The fixture file has 3 `<template>` tags, so the array `contentTags` has 3 eleme
     '        <Display @count={{this.count}} data-test-my-count />\n' +
     '      </div>\n' +
     '    ',
-  range: { start: 711, end: 918 },
-  startRange: { start: 711, end: 721 },
-  contentRange: { start: 721, end: 907 },
-  endRange: { start: 907, end: 918 }
+  range: { startByte: 711, endByte: 918, startChar: 711, endChar: 918 },
+  startRange: { startByte: 711, endByte: 721, startChar: 711, endChar: 721 },
+  contentRange: { startByte: 721, endByte: 907, startChar: 721, endChar: 907 },
+  endRange: { startByte: 907, endByte: 918, startChar: 907, endChar: 918 }
 }
 ```
 
 </details>
 
 > [!NOTE]
-> From `range.start`, we see that `contentTags` is a sorted array. The `<template>` tag, which appears first in the file, appears first in the array.
+> Because `range.startByte` is monotonically increasing, we conclude that `contentTags` is a sorted array. The `<template>` tag, which appears first in the file, appears first in the array.
 
 
 ## Create contents
@@ -181,7 +207,7 @@ import { join } from 'node:path';
 + import { AST } from '@codemod-utils/ast-template';
 import { createFiles, findFiles } from '@codemod-utils/files';
 
-import { Options } from '../types/index.js';
+import type { Options } from '../types/index.js';
 import { parse } from '../utils/ast.js';
 
 + function removeDataTestAttributes(file: string): string {
@@ -245,7 +271,7 @@ import { join } from 'node:path';
 import { AST } from '@codemod-utils/ast-template';
 import { createFiles, findFiles } from '@codemod-utils/files';
 
-import { Options } from '../types/index.js';
+import type { Options } from '../types/index.js';
 - import { parse } from '../utils/ast.js';
 + import { parse, replaceTemplate } from '../utils/ast.js';
 

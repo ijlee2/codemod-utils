@@ -36,7 +36,7 @@ import { join } from 'node:path';
 import { createFiles, findFiles } from '@codemod-utils/files';
 import postcss from 'postcss';
 
-import { Options } from '../types/index.js';
+import type { Options } from '../types/index.js';
 import { PostcssRemoveAtValue } from '../utils/css/postcss-plugins.js';
 
 function updateFile(file: string): string {

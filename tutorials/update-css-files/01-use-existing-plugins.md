@@ -46,7 +46,7 @@ import { join } from 'node:path';
 
 import { createFiles, findFiles } from '@codemod-utils/files';
 
-import { Options } from '../types/index.js';
+import type { Options } from '../types/index.js';
 
 export function removeCssNesting(options: Options): void {
   const { projectRoot } = options;
@@ -131,7 +131,7 @@ import { createFiles, findFiles } from '@codemod-utils/files';
 + import postcss from 'postcss';
 + import PostcssNestedPlugin from 'postcss-nested';
 
-import { Options } from '../types/index.js';
+import type { Options } from '../types/index.js';
 
 + function updateFile(file: string): string {
 +   const plugins = [PostcssNestedPlugin()];

@@ -39,7 +39,7 @@ import { join } from 'node:path';
 
 import { createFiles, findFiles } from '@codemod-utils/files';
 
-import { Options } from '../types/index.js';
+import type { Options } from '../types/index.js';
 
 export function removeTestSelectors(options: Options): void {
   const { projectRoot } = options;
