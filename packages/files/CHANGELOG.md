@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/files
 
+## 3.0.1
+
+### Patch Changes
+
+- [#160](https://github.com/ijlee2/codemod-utils/pull/160) Fixed a typo in documentation ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.0.0
 
 ### Major Changes
