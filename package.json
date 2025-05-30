@@ -20,9 +20,9 @@
     "test": "pnpm --filter \"*\" test"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.29.3",
+    "@changesets/cli": "^2.29.4",
     "@changesets/get-github-info": "^0.6.0",
-    "update-workspace-root-version": "^1.0.5"
+    "update-workspace-root-version": "^2.0.0"
   },
   "packageManager": "pnpm@9.15.9",
   "engines": {
