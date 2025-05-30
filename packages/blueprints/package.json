@@ -53,10 +53,10 @@
     "@shared-configs/prettier": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
     "@sondr3/minitest": "^0.1.2",
-    "@types/lodash": "^4.17.16",
-    "@types/node": "^20.17.46",
+    "@types/lodash": "^4.17.17",
+    "@types/node": "^20.17.54",
     "concurrently": "^9.1.2",
-    "eslint": "^9.26.0",
+    "eslint": "^9.27.0",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3"
   },

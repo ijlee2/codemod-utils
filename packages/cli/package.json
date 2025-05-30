@@ -34,7 +34,7 @@
     "@codemod-utils/blueprints": "workspace:*",
     "@codemod-utils/files": "workspace:*",
     "@codemod-utils/json": "workspace:*",
-    "yargs": "^17.7.2"
+    "yargs": "^18.0.0"
   },
   "devDependencies": {
     "@codemod-utils/tests": "workspace:*",
@@ -42,10 +42,10 @@
     "@shared-configs/prettier": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
     "@sondr3/minitest": "^0.1.2",
-    "@types/node": "^20.17.46",
+    "@types/node": "^20.17.54",
     "@types/yargs": "^17.0.33",
     "concurrently": "^9.1.2",
-    "eslint": "^9.26.0",
+    "eslint": "^9.27.0",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3"
   },
