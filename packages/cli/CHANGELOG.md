@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/cli
 
+## 3.1.0
+
+### Minor Changes
+
+- [#169](https://github.com/ijlee2/codemod-utils/pull/169) Separated formatting and linting in blueprints ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.0.2
 
 ### Patch Changes
