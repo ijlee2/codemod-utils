@@ -1,0 +1,8 @@
+# compiled output
+/dist/
+/dist-for-testing/
+/tmp/
+ 
+# misc
+!.*
+.*/
