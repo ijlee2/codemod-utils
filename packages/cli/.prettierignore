@@ -6,3 +6,8 @@
 # misc
 !.*
 .*/
+
+# specific to this package
+/src/blueprints/
+/tests/fixtures/
+README.md
