@@ -1,0 +1,13 @@
+# compiled output
+/dist/
+/dist-for-testing/
+/tmp/
+ 
+# misc
+!.*
+.*/
+
+# specific to this package
+/src/blueprints/
+/tests/fixtures/
+README.md

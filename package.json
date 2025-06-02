@@ -12,8 +12,11 @@
   "type": "module",
   "scripts": {
     "build": "pnpm --filter \"./packages/**\" build",
+    "format": "pnpm --filter \"*\" format",
     "lint": "pnpm --filter \"*\" lint",
     "lint:fix": "pnpm --filter \"*\" lint:fix",
+    "lint:package-json": "pnpm lint:package-json:fix --check",
+    "lint:package-json:fix": "sort-package-json \"**/package.json\" --ignore \"**/{blueprints,dist,dist-for-testing,node_modules,tests,tmp}/**\"",
     "prepare": "pnpm build",
     "release:prepare": "changeset version; update-workspace-root-version",
     "release:publish": "pnpm build && changeset publish",
@@ -22,6 +25,7 @@
   "devDependencies": {
     "@changesets/cli": "^2.29.4",
     "@changesets/get-github-info": "^0.6.0",
+    "sort-package-json": "^3.2.1",
     "update-workspace-root-version": "^2.0.0"
   },
   "packageManager": "pnpm@9.15.9",

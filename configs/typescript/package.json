@@ -13,10 +13,8 @@
     "./node20": "./node20/index.json"
   },
   "scripts": {
-    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
-    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\"",
-    "lint:js": "prettier . --check",
-    "lint:js:fix": "prettier . --write"
+    "lint": "prettier \"**/*.{json,mjs}\" --cache --check",
+    "lint:fix": "prettier \"**/*.{json,mjs}\" --cache --write"
   },
   "dependencies": {
     "@tsconfig/node20": "^20.1.5",
@@ -24,7 +22,6 @@
   },
   "devDependencies": {
     "@shared-configs/prettier": "workspace:*",
-    "concurrently": "^9.1.2",
     "prettier": "^3.5.3"
   },
   "peerDependencies": {
