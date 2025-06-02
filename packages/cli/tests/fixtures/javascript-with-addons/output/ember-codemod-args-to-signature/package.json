@@ -23,7 +23,9 @@
   ],
   "scripts": {
     "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
-    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\"",
+    "format": "prettier . --cache --write",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" && pnpm format",
+    "lint:format": "prettier . --cache --check",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "release:prepare": "changeset version",
@@ -43,11 +45,11 @@
     "@changesets/cli": "^2.29.4",
     "@changesets/get-github-info": "^0.6.0",
     "@codemod-utils/tests": "^2.0.1",
-    "@ijlee2-frontend-configs/eslint-config-node": "^1.2.0",
-    "@ijlee2-frontend-configs/prettier": "^1.0.0",
+    "@ijlee2-frontend-configs/eslint-config-node": "^2.0.0",
+    "@ijlee2-frontend-configs/prettier": "^2.0.0",
     "@sondr3/minitest": "^0.1.2",
     "concurrently": "^9.1.2",
-    "eslint": "^9.27.0",
+    "eslint": "^9.28.0",
     "prettier": "^3.5.3"
   },
   "engines": {
