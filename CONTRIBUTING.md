@@ -32,21 +32,17 @@ Here are some guidelines to help you and everyone else.
 </details>
 
 
-<details>
+<summary>Check and fix errors</summary>
 
-<summary>Lint files</summary>
-
-1. When you write code, please check that it meets the linting rules.
+1. As you write code, please check that it meets formatting and linting rules.
 
     ```sh
-    # From the workspace root
     pnpm lint
     ```
 
-1. You can run `lint:fix` to automatically fix linting errors.
+1. You can run `lint:fix` to fix errors.
 
     ```sh
-    # From the workspace root
     pnpm lint:fix
     ```
 

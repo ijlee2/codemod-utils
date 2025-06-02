@@ -22,8 +22,10 @@
   ],
   "scripts": {
     "build": "./build.sh --production",
+    "format": "prettier . --cache --write",
     "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
-    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\"",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" && pnpm format",
+    "lint:format": "prettier . --cache --check",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
@@ -62,7 +64,10 @@
   ],
   "scripts": {
     "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
-    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\"",
+    "format": "prettier . --cache --write",
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" && pnpm format",
+    "lint:format": "prettier . --cache --check",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "release:prepare": "changeset version",
