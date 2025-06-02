@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/cli
 
+## 3.1.1
+
+### Patch Changes
+
+- [#170](https://github.com/ijlee2/codemod-utils/pull/170) Updated .prettierignore ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.1.0
 
 ### Minor Changes
