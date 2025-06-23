@@ -47,7 +47,7 @@
     "test": "./build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {
-    "glob": "^11.0.2"
+    "glob": "^11.0.3"
   },
   "devDependencies": {
     "@codemod-utils/tests": "workspace:*",
@@ -55,10 +55,10 @@
     "@shared-configs/prettier": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
     "@sondr3/minitest": "^0.1.2",
-    "@types/node": "^20.17.57",
-    "concurrently": "^9.1.2",
-    "eslint": "^9.28.0",
-    "prettier": "^3.5.3",
+    "@types/node": "^20.19.1",
+    "concurrently": "^9.2.0",
+    "eslint": "^9.29.0",
+    "prettier": "^3.6.0",
     "typescript": "^5.8.3"
   },
   "engines": {
