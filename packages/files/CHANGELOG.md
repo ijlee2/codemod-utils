@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/files
 
+## 3.0.3
+
+### Patch Changes
+
+- [#172](https://github.com/ijlee2/codemod-utils/pull/172) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.0.2
 
 ### Patch Changes
