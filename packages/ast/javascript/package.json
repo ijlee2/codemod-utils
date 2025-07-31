@@ -1,6 +1,6 @@
 {
   "name": "@codemod-utils/ast-javascript",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Utilities for handling *.{js,ts} files as abstract syntax tree",
   "keywords": [
     "codemod",

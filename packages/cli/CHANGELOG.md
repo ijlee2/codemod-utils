@@ -1,5 +1,15 @@
 # Changelog for @codemod-utils/cli
 
+## 3.2.0
+
+### Minor Changes
+
+- [#176](https://github.com/ijlee2/codemod-utils/pull/176) Required pnpm@v10 ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#176](https://github.com/ijlee2/codemod-utils/pull/176) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.1.2
 
 ### Patch Changes
