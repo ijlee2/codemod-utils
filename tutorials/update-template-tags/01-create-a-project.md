@@ -1,6 +1,6 @@
-# A simple example
+# Create a project
 
-To illustrate how to update templates in `*.{gts,gts}` files, we'll recreate a feature in [`ember-test-selectors`](https://github.com/mainmatter/ember-test-selectors/blob/v6.0.0/strip-data-test-properties-plugin6.js): Remove all data attributes in the template, if the attribute name starts with `data-test`. Our target project is assumed to be an Ember app.
+For simplicity, we'll assume our target project to be an Ember app. That is, the relevant files live in the `app` folder.
 
 
 ## Use the CLI
@@ -9,14 +9,11 @@ Change the directory to a place where you like to keep projects. Then, run these
 
 ```sh
 # Create project
-npx @codemod-utils/cli remove-test-selectors --addon ast-template
+npx @codemod-utils/cli remove-test-selectors --addon ast-template ast-template-tag
 
 # Install dependencies
 cd remove-test-selectors
 pnpm install
-
-# Install content-tag as a dependency
-pnpm install content-tag
 ```
 
 > [!NOTE]
@@ -25,7 +22,7 @@ pnpm install content-tag
 
 ## Scaffold step
 
-Create a step called `remove-test-selectors`. It is to read `*.{gjs,gts}` files and write back the file content (a no-op).
+Create a step called `remove-test-selectors`. It is to read `*.{gjs,gts,hbs}` files and write back the file content (a no-op).
 
 <details>
 
@@ -41,16 +38,22 @@ import { createFiles, findFiles } from '@codemod-utils/files';
 
 import type { Options } from '../types/index.js';
 
+function removeDataTestAttributes(file: string): string {
+  return file;
+}
+
 export function removeTestSelectors(options: Options): void {
   const { projectRoot } = options;
 
-  const filePaths = findFiles('app/components/**/*.{gjs,gts}', {
+  const filePaths = findFiles('app/**/*.{gjs,gts,hbs}', {
     projectRoot,
   });
 
   const fileMap = new Map(
     filePaths.map((filePath) => {
-      const file = readFileSync(join(projectRoot, filePath), 'utf8');
+      let file = readFileSync(join(projectRoot, filePath), 'utf8');
+
+      file = removeDataTestAttributes(file);
 
       return [filePath, file];
     }),
@@ -62,13 +65,13 @@ export function removeTestSelectors(options: Options): void {
 
 </details>
 
-To test the step, we create a component with multiple `<template>` tags:
+To test the step, we'll create a component with 3 `<template>` tags and render it in the `index` route.
 
 <details>
 
 <summary><code>tests/fixtures/sample-project/input/app/components/my-component.gjs</code></summary>
 
-The indentations are inconsistent on purpose. We want to know if our codemod will preserve formatting.
+The indentations are inconsistent on purpose. We'll check that formatting is preserved.
 
 ```js
 import { on } from '@ember/modifier';
@@ -120,10 +123,22 @@ export default class MyComponent extends Component {
 
 </details>
 
+<details>
+
+<summary><code>tests/fixtures/sample-project/input/app/templates/index.hbs</code></summary>
+
+```hbs
+<div data-test-my-component>
+  <MyComponent />
+</div>
+```
+
+</details>
+
 
 <div align="center">
   <div>
-    Next: <a href="./02-create-utilities.md">Create utilities</a>
+    Next: <a href="./02-tackle-hbs.md">Tackle <code>*.hbs</code></a>
   </div>
   <div>
     Previous: <a href="./00-introduction.md">Introduction</a>
