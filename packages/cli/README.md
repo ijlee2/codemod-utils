@@ -60,6 +60,7 @@ The options are:
 
 - [`ast-javascript`](../ast/javascript/README.md)
 - [`ast-template`](../ast/template/README.md)
+- [`ast-template-tag`](../ast/template-tag/README.md)
 - [`blueprints`](../blueprints/README.md)
 - [`ember`](../ember/README.md)
 - [`json`](../json/README.md)
