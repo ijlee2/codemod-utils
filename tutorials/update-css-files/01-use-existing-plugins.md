@@ -26,9 +26,6 @@ pnpm install
 pnpm install postcss and postcss-nested
 ```
 
-> [!NOTE]
-> Just like in [the main tutorial](../main-tutorial/04-step-1-update-acceptance-tests-part-1.md#remove-the-sample-step), remove the sample step, `add-end-of-line`.
-
 
 ## Scaffold step
 

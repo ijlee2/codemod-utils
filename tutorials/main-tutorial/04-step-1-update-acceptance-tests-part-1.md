@@ -15,53 +15,6 @@ Goals:
 - Read and write files
 
 
-## Remove the sample step
-
-The CLI added a step called `add-end-of-line`, which our codemod doesn't need. Let's find and remove the related code. (This happens to be a refactoring technique, called "remove dead code.")
-
-Files to delete:
-
-- `src/steps/add-end-of-line.ts`
-- `tests/steps/add-end-of-line/base-case.test.ts`
-- `tests/steps/add-end-of-line/edge-case-file-ends-with-newline.test.ts`
-- `tests/steps/add-end-of-line/edge-case-file-is-empty.test.ts`
-
-Files to update:
-
-<details>
-
-<summary>Solution: <code>src/steps/index.ts</code></summary>
-
-```diff
-- export * from './add-end-of-line.js';
-export * from './create-options.js';
-```
-
-</details>
-
-<details>
-
-<summary>Solution: <code>src/index.ts</code></summary>
-
-```diff
-- import { addEndOfLine, createOptions } from './steps/index.js';
-+ import { createOptions } from './steps/index.js';
-import type { CodemodOptions } from './types/index.js';
-
-export function runCodemod(codemodOptions: CodemodOptions): void {
-  const options = createOptions(codemodOptions);
-
--   // TODO: Replace with actual steps
--   addEndOfLine(options);
-+   // ...
-}
-```
-
-</details>
-
-The `lint` script fails with 1 error (`options` in `src/index.ts` is unused), but the `test` script continues to pass.
-
-
 ## Add a fixture project
 
 In the early stage of development, I recommend creating a fixture project for acceptance testing. Ideally, the fixture comes from a real-life project (copy-paste) or is modeled after it.
