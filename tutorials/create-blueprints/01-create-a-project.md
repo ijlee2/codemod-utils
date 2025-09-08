@@ -21,9 +21,6 @@ cd blueprints-v2-addon
 pnpm install
 ```
 
-> [!NOTE]
-> Just like in [the main tutorial](../main-tutorial/04-step-1-update-acceptance-tests-part-1.md#remove-the-sample-step), remove the sample step, `add-end-of-line`.
-
 
 ## Folder structure
 

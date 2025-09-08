@@ -67,14 +67,14 @@ The following list, which explains the `src` folder in detail, has many items. B
 
     <summary>Example: <code>src/index.ts</code></summary>
 
-    The default file shows that our codemod creates some options, then adds the end-of-line character. Because the functions have a descriptive name, we can tell what the codemod does without checking their implementation.
+    By default, the codemod logs the available options.
 
     ```ts
     export function runCodemod(codemodOptions: CodemodOptions): void {
       const options = createOptions(codemodOptions);
 
       // TODO: Replace with actual steps
-      addEndOfLine(options);
+      console.log(options);
     }
     ```
 
@@ -87,12 +87,14 @@ The following list, which explains the `src` folder in detail, has many items. B
 
     <details>
 
-    <summary>Example: <code>src/steps/add-end-of-line.ts</code></summary>
+    <summary>Example: <code>src/steps/create-options.ts</code></summary>
 
-    The `add-end-of-line` step is represented by a function. The name suggests that the function may add the end-of-line character. It is to run synchronously so its return type is `void`, not `Promise<void>`.
+    The `create-options` step is represented by a function. It transforms the codemod's CLI options into something that helps us write the codemod. The function runs synchronously so its return type is `Options`, not `Promise<Options>`.
 
     ```ts
-    export function addEndOfLine(options: Options): void {
+    import type { CodemodOptions, Options } from '../types/index.js';
+
+    export function createOptions(codemodOptions: CodemodOptions): Options {
       // ...
     }
     ```
@@ -108,7 +110,6 @@ The following list, which explains the `src` folder in detail, has many items. B
     Due to linter configurations, the export statements must be sorted by file path. No worries, you can run the `lint:fix` script to auto-fix the order. In addition, the exported functions (the steps) must have a unique name.
 
     ```ts
-    export * from './add-end-of-line.js';
     export * from './create-options.js';
     ```
 
@@ -162,25 +163,7 @@ Again, there are some conventions:
     });
     ```
 
-    </details>
-
-    <details>
-
-    <summary>Example: <code>tests/steps/add-end-of-line/base-case.test.ts</code></summary>
-
-    `loadFixture()` and `assertFixture()` help us test the codemod against real files, which has two benefits. One, we can make a **strong** (a terminology from math) assertion that the `add-end-of-line` step works as intended. Two, we can read files easily because our code editor can highlight the syntax.
-
-    ```ts
-    import { addEndOfLine } from '../../../src/steps/index.js';
-
-    test('steps | add-end-of-line > base case', function () {
-      loadFixture(inputProject, codemodOptions);
-
-      addEndOfLine(options);
-
-      assertFixture(outputProject, codemodOptions);
-    });
-    ```
+    `loadFixture()` and `assertFixture()` help us test the codemod against real files, which has two benefits. One, we can make a **strong** (a terminology from math) assertion that `runCodemod()` works. Two, we can read files easily because our code editor can highlight the syntax.
 
     </details>
 
