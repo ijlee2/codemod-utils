@@ -4,6 +4,7 @@ const codemodOptions: CodemodOptions = {
   addons: new Set([
     'ast-javascript',
     'ast-template',
+    'ast-template-tag',
     'blueprints',
     'ember',
     'json',
@@ -18,6 +19,7 @@ const options: Options = {
     addons: new Set([
       'ast-javascript',
       'ast-template',
+      'ast-template-tag',
       'blueprints',
       'ember',
       'json',
