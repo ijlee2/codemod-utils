@@ -5,6 +5,7 @@ const latestVersions = new Map([
   ['@changesets/get-github-info', '0.6.0'],
   ['@codemod-utils/ast-javascript', '2.0.5'],
   ['@codemod-utils/ast-template', '2.0.1'],
+  ['@codemod-utils/ast-template-tag', '0.1.0'],
   ['@codemod-utils/blueprints', '2.0.1'],
   ['@codemod-utils/ember', '3.0.1'],
   ['@codemod-utils/files', '3.0.3'],
