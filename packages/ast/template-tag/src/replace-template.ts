@@ -23,6 +23,37 @@ function sliceByteRange(
   return buffer.slice(indexStart, indexEnd).toString();
 }
 
+/**
+ * Replaces the template of a particular `<template>` tag.
+ *
+ * @param file
+ *
+ * A `*.{gjs,gts}` file.
+ *
+ * @param data
+ *
+ * An object with `range` (tag location) and `template` (what to
+ * replace with).
+ *
+ * @return
+ *
+ * The resulting file.
+ *
+ * @example
+ *
+ * Update the template in each tag.
+ *
+ * ```ts
+ * const { templateTags } = preprocess(file);
+ *
+ * templateTags.reverse().forEach(({ contents, range }) => {
+ *   // Some method that can update `*.hbs` files
+ *   const template = transform(contents);
+ *
+ *   file = replaceTemplate(file, { range, template });
+ * });
+ * ```
+ */
 export function replaceTemplate(
   file: string,
   data: {
