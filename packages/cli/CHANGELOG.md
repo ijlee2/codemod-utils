@@ -1,5 +1,16 @@
 # Changelog for @codemod-utils/cli
 
+## 3.4.0
+
+### Minor Changes
+
+- [#185](https://github.com/ijlee2/codemod-utils/pull/185) Removed add-end-of-line ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#186](https://github.com/ijlee2/codemod-utils/pull/186) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+- [#184](https://github.com/ijlee2/codemod-utils/pull/184) Updated copyright year ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.3.0
 
 ### Minor Changes
