@@ -2,6 +2,7 @@ packages:
   - configs/**
   - packages/ast/javascript
   - packages/ast/template
+  - packages/ast/template-tag
   - packages/blueprints
   - packages/cli
   - packages/ember
