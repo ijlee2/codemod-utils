@@ -22,6 +22,7 @@ yargs(hideBin(process.argv))
           choices: [
             'ast-javascript',
             'ast-template',
+            'ast-template-tag',
             'blueprints',
             'ember',
             'json',
