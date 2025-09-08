@@ -1,6 +1,6 @@
 [![This project uses GitHub Actions for continuous integration.](https://github.com/ijlee2/codemod-utils/actions/workflows/ci.yml/badge.svg)](https://github.com/ijlee2/codemod-utils/actions/workflows/ci.yml)
 
-# @codemod-utils/ast-ast-template-tag
+# @codemod-utils/ast-template-tag
 
 _Utilities for handling `*.{gjs,gts}` files_
 
