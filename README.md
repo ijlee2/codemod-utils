@@ -18,6 +18,7 @@ npx @codemod-utils/cli <your-codemod-name>
 
 - [`@codemod-utils/ast-javascript`](./packages/ast/javascript/README.md)
 - [`@codemod-utils/ast-template`](./packages/ast/template/README.md)
+- [`@codemod-utils/ast-template-tag`](./packages/ast/template-tag/README.md)
 - [`@codemod-utils/blueprints`](./packages/blueprints/README.md)
 - [`@codemod-utils/cli`](./packages/cli/README.md)
 - [`@codemod-utils/ember`](./packages/ember/README.md)
