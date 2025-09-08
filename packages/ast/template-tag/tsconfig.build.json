@@ -1,0 +1,8 @@
+{
+  "extends": "@shared-configs/typescript/node20",
+  "compilerOptions": {
+    "declaration": true,
+    "outDir": "dist"
+  },
+  "include": ["src"]
+}

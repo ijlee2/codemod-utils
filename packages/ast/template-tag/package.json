@@ -1,0 +1,69 @@
+{
+  "name": "@codemod-utils/ast-template-tag",
+  "version": "0.0.0",
+  "description": "Utilities for handling *.{gjs,gts} files",
+  "keywords": [
+    "codemod",
+    "ember-codemod"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ijlee2/codemod-utils.git"
+  },
+  "license": "MIT",
+  "author": "Isaac J. Lee",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    }
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "dist/*"
+      ]
+    }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "./build.sh --production",
+    "format": "prettier . --cache --write",
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" && pnpm format",
+    "lint:format": "prettier . --cache --check",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:types": "tsc --noEmit",
+    "test": "./build.sh --test && mt dist-for-testing --quiet"
+  },
+  "dependencies": {
+    "content-tag": "^4.0.0"
+  },
+  "devDependencies": {
+    "@codemod-utils/ast-javascript": "workspace:*",
+    "@codemod-utils/ast-template": "workspace:*",
+    "@codemod-utils/tests": "workspace:*",
+    "@shared-configs/eslint-config-node": "workspace:*",
+    "@shared-configs/prettier": "workspace:*",
+    "@shared-configs/typescript": "workspace:*",
+    "@sondr3/minitest": "^0.1.2",
+    "@types/node": "^20.19.13",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.34.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": "20.* || >= 22"
+  }
+}

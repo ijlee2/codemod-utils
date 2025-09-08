@@ -1,0 +1,19 @@
+# compiled output
+/tmp/
+
+# dependencies
+/node_modules/
+
+# misc
+/.DS_Store
+/.env*
+/.eslintcache
+/.git/
+/.github/
+/.gitignore
+/.pnpm-debug.log
+/.prettierignore
+/build.sh
+/eslint.config.mjs
+/prettier.config.mjs
+/tests/
