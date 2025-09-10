@@ -28,6 +28,18 @@ export function toTemplateTag(ecma: string): string {
   const traverse = AST.traverse(true);
 
   const ast = traverse(ecma, {
+    visitExportDefaultDeclaration(node) {
+      const templateTag = getTemplateTag(node.value.declaration);
+
+      if (templateTag === undefined) {
+        this.traverse(node);
+
+        return false;
+      }
+
+      return templateTag;
+    },
+
     visitImportDeclaration(node) {
       if (
         node.value.source.type !== 'StringLiteral' ||
