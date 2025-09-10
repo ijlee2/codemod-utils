@@ -24,7 +24,7 @@ function sliceByteRange(
 }
 
 /**
- * Replaces the template of a particular `<template>` tag.
+ * Replaces a particular `<template>` tag.
  *
  * @param file
  *
@@ -32,7 +32,7 @@ function sliceByteRange(
  *
  * @param data
  *
- * An object with `range` (tag location) and `template` (what to
+ * An object with `range` (tag location) and `code` (what to
  * replace with).
  *
  * @return
@@ -41,7 +41,7 @@ function sliceByteRange(
  *
  * @example
  *
- * Update the template in each tag.
+ * Update all template tags in a file.
  *
  * ```ts
  * const templateTags = findTemplateTags(file);
@@ -50,24 +50,25 @@ function sliceByteRange(
  *   // Some method that can update `*.hbs` files
  *   const template = transform(contents);
  *
- *   file = replaceTemplate(file, { range, template });
+ *   file = replaceTemplateTag(file, {
+ *     code: `<template>${template}</template>`,
+ *     range,
+ *   });
  * });
  * ```
  */
-export function replaceTemplate(
+export function replaceTemplateTag(
   file: string,
   data: {
+    code: string;
     range: Range;
-    template: string;
   },
 ): string {
-  const { range, template } = data;
+  const { code, range } = data;
 
   return [
     sliceByteRange(file, 0, range.startByte),
-    '<template>',
-    template,
-    '</template>',
+    code,
     sliceByteRange(file, range.endByte, undefined),
   ].join('');
 }
