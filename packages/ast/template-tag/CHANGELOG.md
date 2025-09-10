@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ast-template-tag
 
+## 0.5.0
+
+### Minor Changes
+
+- [#197](https://github.com/ijlee2/codemod-utils/pull/197) Handled <template> tag in ternary operators ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.4.0
 
 ### Minor Changes
