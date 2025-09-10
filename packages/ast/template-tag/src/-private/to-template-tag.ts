@@ -8,24 +8,15 @@ export function removeMarkers(file: string): string {
 
   const ast = traverse(file, {
     visitCallExpression(node) {
-      if (
-        node.value.callee.name !== 'render' ||
-        node.value.arguments.length !== 1
-      ) {
+      const template = getTemplate(node.value);
+
+      if (template === undefined) {
         this.traverse(node);
 
         return false;
       }
 
-      const template = getTemplate(node.value.arguments[0]);
-
-      if (template === undefined) {
-        return false;
-      }
-
-      node.value.arguments = [`<template>${template}</template>`];
-
-      return false;
+      return `<template>${template}</template>`;
     },
 
     visitExportDefaultDeclaration(node) {
@@ -66,18 +57,6 @@ export function removeMarkers(file: string): string {
       }
 
       return `<template>${template}</template>`;
-    },
-
-    visitVariableDeclarator(node) {
-      const template = getTemplate(node.value.init);
-
-      if (template === undefined) {
-        return false;
-      }
-
-      node.value.init = `<template>${template}</template>`;
-
-      return false;
     },
   });
 

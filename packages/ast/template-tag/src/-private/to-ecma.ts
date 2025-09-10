@@ -50,22 +50,15 @@ export function findMarkers(file: string): Marker[] {
 
   traverse(code, {
     visitCallExpression(node) {
-      if (
-        node.value.callee.name !== 'render' ||
-        node.value.arguments.length !== 1
-      ) {
+      const template = getTemplate(node.value);
+
+      if (template === undefined) {
         this.traverse(node);
 
         return false;
       }
 
-      const template = getTemplate(node.value.arguments[0]);
-
-      if (template === undefined) {
-        return false;
-      }
-
-      markers.push(getMarker(node.value.arguments[0]));
+      markers.push(getMarker(node.value));
 
       return false;
     },
@@ -98,18 +91,6 @@ export function findMarkers(file: string): Marker[] {
       }
 
       markers.push(getMarker(node.value));
-
-      return false;
-    },
-
-    visitVariableDeclarator(node) {
-      const template = getTemplate(node.value.init);
-
-      if (template === undefined) {
-        return false;
-      }
-
-      markers.push(getMarker(node.value.init));
 
       return false;
     },
