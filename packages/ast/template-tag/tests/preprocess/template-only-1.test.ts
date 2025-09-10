@@ -2,17 +2,8 @@ import { assert, test } from '@codemod-utils/tests';
 
 import { preprocess } from '../../src/index.js';
 
-test('preprocess > template only (1)', function () {
-  const oldFile = [
-    `import styles from './styles.css';`,
-    ``,
-    `<template>`,
-    `  <div class={{styles.container}}>`,
-    `    Hello world!`,
-    `  </div>`,
-    `</template>;`,
-    ``,
-  ].join('\n');
+test('preprocess > template-only (1)', function () {
+  const oldFile = [`<template></template>;`, ``].join('\n');
 
   const { javascript, templateTags } = preprocess(oldFile);
 
@@ -20,12 +11,7 @@ test('preprocess > template only (1)', function () {
     javascript,
     [
       `import { template as template_fd9b2463e5f141cfb5666b64daa1f11a } from "@ember/template-compiler";`,
-      `import styles from './styles.css';`,
-      `export default template_fd9b2463e5f141cfb5666b64daa1f11a(\``,
-      `  <div class={{styles.container}}>`,
-      `    Hello world!`,
-      `  </div>`,
-      `\`, {`,
+      `export default template_fd9b2463e5f141cfb5666b64daa1f11a(\`\`, {`,
       `    eval () {`,
       `        return eval(arguments[0]);`,
       `    }`,
@@ -37,30 +23,29 @@ test('preprocess > template only (1)', function () {
   assert.deepStrictEqual(templateTags, [
     {
       contentRange: {
-        endByte: 108,
-        endChar: 108,
-        startByte: 46,
-        startChar: 46,
+        endByte: 10,
+        endChar: 10,
+        startByte: 10,
+        startChar: 10,
       },
-      contents:
-        '\n  <div class={{styles.container}}>\n    Hello world!\n  </div>\n',
+      contents: '',
       endRange: {
-        endByte: 119,
-        endChar: 119,
-        startByte: 108,
-        startChar: 108,
+        endByte: 21,
+        endChar: 21,
+        startByte: 10,
+        startChar: 10,
       },
       range: {
-        endByte: 119,
-        endChar: 119,
-        startByte: 36,
-        startChar: 36,
+        endByte: 21,
+        endChar: 21,
+        startByte: 0,
+        startChar: 0,
       },
       startRange: {
-        endByte: 46,
-        endChar: 46,
-        startByte: 36,
-        startChar: 36,
+        endByte: 10,
+        endChar: 10,
+        startByte: 0,
+        startChar: 0,
       },
       tagName: 'template',
       type: 'expression',

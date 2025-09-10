@@ -7,15 +7,7 @@ test('update-javascript > class (1)', function () {
   const oldFile = [
     `import Component from '@glimmer/component';`,
     ``,
-    `import styles from './my-component.css';`,
-    ``,
-    `export default class MyComponent extends Component {`,
-    `  <template>`,
-    `    <div class={{styles.container}}>`,
-    `      Hello world!`,
-    `    </div>`,
-    `  </template>`,
-    `}`,
+    `export default class MyComponent extends Component {}`,
     ``,
   ].join('\n');
 
@@ -28,15 +20,7 @@ test('update-javascript > class (1)', function () {
     [
       `import Component from '@glimmer/component';`,
       ``,
-      `import styles from './my-component.css';`,
-      ``,
-      `export default class MyComponent extends Component {`,
-      `  <template>`,
-      `    <div class={{styles.container}}>`,
-      `      Hello world!`,
-      `    </div>`,
-      `  </template>`,
-      `}`,
+      `export default class MyComponent extends Component {}`,
       ``,
     ].join('\n'),
   );

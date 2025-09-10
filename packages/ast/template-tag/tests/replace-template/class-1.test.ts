@@ -6,26 +6,18 @@ test('replace-template > class (1)', function () {
   const oldFile = [
     `import Component from '@glimmer/component';`,
     ``,
-    `import styles from './my-component.css';`,
-    ``,
-    `export default class MyComponent extends Component {`,
-    `  <template>`,
-    `    <div class={{styles.container}}>`,
-    `      Hello world!`,
-    `    </div>`,
-    `  </template>`,
-    `}`,
+    `export default class MyComponent extends Component {}`,
     ``,
   ].join('\n');
 
   const newFile = replaceTemplate(oldFile, {
     range: {
-      endByte: 233,
-      endChar: 233,
-      startByte: 142,
-      startChar: 142,
+      endByte: 97,
+      endChar: 97,
+      startByte: 97,
+      startChar: 97,
     },
-    template: '\n    New contents\n  ',
+    template: '\n  New contents\n',
   });
 
   assert.strictEqual(
@@ -33,13 +25,9 @@ test('replace-template > class (1)', function () {
     [
       `import Component from '@glimmer/component';`,
       ``,
-      `import styles from './my-component.css';`,
-      ``,
-      `export default class MyComponent extends Component {`,
-      `  <template>`,
-      `    New contents`,
-      `  </template>`,
-      `}`,
+      `export default class MyComponent extends Component {<template>`,
+      `  New contents`,
+      `</template>}`,
       ``,
     ].join('\n'),
   );
