@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 import { AST } from '@codemod-utils/ast-javascript';
 
-import { MARKER, preprocessor } from './content-tag.js';
+import { MARKER } from './content-tag.js';
 
 function getTemplateTag(expression: unknown): string | undefined {
   // @ts-expect-error: Incorrect type
@@ -24,52 +24,10 @@ function getTemplateTag(expression: unknown): string | undefined {
   return `<template>${template}</template>`;
 }
 
-type Marker = {
-  code: string;
-  end: {
-    column: number;
-    index: number;
-    line: number;
-    token: number;
-  };
-};
-
-function getMarker(nodeValue: unknown): Marker {
-  return {
-    // @ts-expect-error: Incorrect type
-    code: AST.print(nodeValue),
-    // @ts-expect-error: Incorrect type
-    end: nodeValue.loc.end,
-  };
-}
-
-function sortMarkers(a: Marker, b: Marker): number {
-  if (a.end.line > b.end.line) {
-    return -1;
-  }
-
-  if (a.end.line < b.end.line) {
-    return 1;
-  }
-
-  if (a.end.column > b.end.column) {
-    return -1;
-  }
-
-  if (a.end.column < b.end.column) {
-    return 1;
-  }
-
-  return 0;
-}
-
-export function findMarkers(file: string): Marker[] {
-  const { code } = preprocessor.process(file);
+export function removeMarkers(file: string): string {
   const traverse = AST.traverse(true);
 
-  const markers: Marker[] = [];
-
-  traverse(code, {
+  const ast = traverse(file, {
     visitExportDefaultDeclaration(node) {
       const templateTag = getTemplateTag(node.value.declaration);
 
@@ -79,9 +37,19 @@ export function findMarkers(file: string): Marker[] {
         return false;
       }
 
-      markers.push(getMarker(node.value));
+      return templateTag;
+    },
 
-      return false;
+    visitImportDeclaration(node) {
+      if (
+        node.value.source.type !== 'StringLiteral' ||
+        node.value.source.value !== '@ember/template-compiler'
+      ) {
+        return false;
+      }
+
+      // For simplicity, always remove the import statement
+      return null;
     },
 
     visitStaticBlock(node) {
@@ -97,9 +65,7 @@ export function findMarkers(file: string): Marker[] {
         return false;
       }
 
-      markers.push(getMarker(node.value));
-
-      return false;
+      return templateTag;
     },
 
     visitVariableDeclarator(node) {
@@ -109,11 +75,11 @@ export function findMarkers(file: string): Marker[] {
         return false;
       }
 
-      markers.push(getMarker(node.value.init));
+      node.value.init = templateTag;
 
       return false;
     },
   });
 
-  return markers.sort(sortMarkers);
+  return AST.print(ast);
 }
