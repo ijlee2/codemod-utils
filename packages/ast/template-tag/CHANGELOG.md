@@ -1,5 +1,15 @@
 # Changelog for @codemod-utils/ast-template-tag
 
+## 0.4.0
+
+### Minor Changes
+
+- [#194](https://github.com/ijlee2/codemod-utils/pull/194) Handled <template> tag inside render() ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#195](https://github.com/ijlee2/codemod-utils/pull/195) Listed @codemod-utils/ast-javascript as a dependency ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.3.0
 
 ### Minor Changes
