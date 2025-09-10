@@ -1,6 +1,6 @@
-import { Preprocessor } from 'content-tag';
-
-const preprocessor = new Preprocessor();
+import { findMarkers, MARKER } from './-private/to-ecma.js';
+import { findTemplateTags } from './find-template-tags.js';
+import { replaceTemplateTag } from './replace-template-tag.js';
 
 /**
  * Converts a file with `<template>` tags to ECMAScript (JavaScript).
@@ -25,7 +25,29 @@ const preprocessor = new Preprocessor();
  * ```
  */
 export function toEcma(file: string): string {
-  const { code } = preprocessor.process(file);
+  const templateTags = findTemplateTags(file);
 
-  return code;
+  if (templateTags.length === 0) {
+    return file;
+  }
+
+  const markers = findMarkers(file);
+
+  templateTags.reverse().forEach(({ range }, index) => {
+    const { code } = markers[index]!;
+
+    file = replaceTemplateTag(file, {
+      code,
+      range,
+    });
+  });
+
+  // Need to sanitize because `content-tag` treats `<template></template>;`
+  // and `export default <template>/template>;` the same
+  file = file.replace('export default export default', 'export default');
+
+  return [
+    `import { template as ${MARKER} } from "@ember/template-compiler";`,
+    file,
+  ].join('\n');
 }
