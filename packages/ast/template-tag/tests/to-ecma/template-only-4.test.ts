@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { preprocess } from '../../src/index.js';
+import { toEcma } from '../../src/index.js';
 
-test('preprocess > template-only (4)', function () {
+test('to-ecma > template-only (4)', function () {
   const oldFile = [
     `import type { TOC } from '@ember/component/template-only';`,
     `import { hash } from '@ember/helper';`,
@@ -81,10 +81,10 @@ test('preprocess > template-only (4)', function () {
     ``,
   ].join('\n');
 
-  const { javascript, templateTags } = preprocess(oldFile);
+  const newFile = toEcma(oldFile);
 
   assert.strictEqual(
-    javascript,
+    newFile,
     [
       `import { template as template_fd9b2463e5f141cfb5666b64daa1f11a } from "@ember/template-compiler";`,
       `import type { TOC } from '@ember/component/template-only';`,
@@ -161,80 +161,4 @@ test('preprocess > template-only (4)', function () {
       ``,
     ].join('\n'),
   );
-
-  assert.deepStrictEqual(templateTags, [
-    {
-      type: 'expression',
-      tagName: 'template',
-      contents: [
-        ``,
-        `    <ContainerQuery`,
-        `      @features={{hash wide=(width min=320)}}`,
-        `      @tagName="article"`,
-        `      class={{styles.container}}`,
-        `      data-test-product-card`,
-        `    >`,
-        `      <header class={{styles.header}}>`,
-        `        <h2 class={{styles.name}} data-test-field="Name">`,
-        `          {{@product.name}}`,
-        `        </h2>`,
-        `      </header>`,
-        ``,
-        `      <div class={{styles.image-container}}>`,
-        `        <ProductsProductImage @src={{@product.imageUrl}} />`,
-        `      </div>`,
-        ``,
-        `      <div class={{styles.body}}>`,
-        `        <p class={{styles.description}} data-test-field="Short Description">`,
-        `          {{@product.shortDescription}}`,
-        `        </p>`,
-        ``,
-        `        <p class={{styles.price}} data-test-field="Price">`,
-        `          {{formatPrice @product.price}}`,
-        `        </p>`,
-        `      </div>`,
-        ``,
-        `      <div class={{styles.actions}}>`,
-        `        <LinkTo`,
-        `          @model={{@product.id}}`,
-        `          @route={{@redirectTo}}`,
-        `          aria-label={{t`,
-        `            "components.products.product.card.learn-more.aria-label"`,
-        `            productName=@product.name`,
-        `          }}`,
-        `          class={{styles.link}}`,
-        `          data-test-link="Learn More"`,
-        `        >`,
-        `          {{t "components.products.product.card.learn-more.label"}}`,
-        `        </LinkTo>`,
-        `      </div>`,
-        `    </ContainerQuery>`,
-        `  `,
-      ].join('\n'),
-      range: {
-        startByte: 633,
-        endByte: 1848,
-        startChar: 633,
-        endChar: 1848,
-      },
-      startRange: {
-        startByte: 633,
-        endByte: 643,
-        startChar: 633,
-        endChar: 643,
-      },
-      contentRange: {
-        startByte: 643,
-        endByte: 1837,
-        startChar: 643,
-        endChar: 1837,
-      },
-      endRange: {
-        startByte: 1837,
-        endByte: 1848,
-        startChar: 1837,
-        endChar: 1848,
-      },
-    },
-  ]);
 });
