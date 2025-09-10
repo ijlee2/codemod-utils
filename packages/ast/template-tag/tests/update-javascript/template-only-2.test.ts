@@ -28,7 +28,7 @@ test('update-javascript > template-only (2)', function () {
       `  <div class={{styles.container}}>`,
       `    Hello world!`,
       `  </div>`,
-      `</template>`,
+      `</template>;`,
       ``,
     ].join('\n'),
   );

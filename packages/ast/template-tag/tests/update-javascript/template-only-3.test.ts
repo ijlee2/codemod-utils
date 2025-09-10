@@ -24,11 +24,11 @@ test('update-javascript > template-only (3)', function () {
     [
       `import styles from './styles.css';`,
       ``,
-      `<template>`,
+      `export default <template>`,
       `  <div class={{styles.container}}>`,
       `    Hello world!`,
       `  </div>`,
-      `</template>`,
+      `</template>;`,
       ``,
     ].join('\n'),
   );
