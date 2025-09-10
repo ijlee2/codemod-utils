@@ -88,11 +88,11 @@ export default class MyComponent extends Component {
 
 ## Under the hood
 
-`@codemod-utils/ast-template-tag` uses [`content-tag`](https://github.com/embroider-build/content-tag) to find `<template>` tags and their locations. To see it in action, you can use a low-level utility called `preprocess()`.
+`@codemod-utils/ast-template-tag` uses [`content-tag`](https://github.com/embroider-build/content-tag) to find `<template>` tags and their locations. To see it in action, you can use a low-level utility called `findTemplateTags()`.
 
 ```diff
 - import { updateTemplates } from '@codemod-utils/ast-template-tag';
-+ import { preprocess, updateTemplates } from '@codemod-utils/ast-template-tag';
++ import { findTemplateTags, updateTemplates } from '@codemod-utils/ast-template-tag';
 
 function removeDataTestAttributes(file: string): string {
   // ...
@@ -103,7 +103,7 @@ let file = readFileSync(join(projectRoot, filePath), 'utf8');
 if (filePath.endsWith('.hbs')) {
   file = removeDataTestAttributes(file);
 } else {
-+   const { templateTags } = preprocess(file);
++   const templateTags = findTemplateTags(file);
 +
 +   templateTags.forEach((templateTag) => {
 +     console.log(templateTag);
