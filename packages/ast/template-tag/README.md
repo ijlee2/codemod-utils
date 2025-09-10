@@ -93,7 +93,7 @@ templateTags.reverse().forEach(({ contents, range }) => {
 
 ### toEcma
 
-Converts a file with `<template>` tags to standard JavaScript.
+Converts a file with `<template>` tags to ECMAScript (JavaScript).
 
 ⚠️ Likely, you won't need this method but [`updateJavaScript`](#updatejavascript) instead.
 
@@ -108,6 +108,34 @@ const ecma = toEcma(file);
 
 // Some method that checks `*.{js,ts}` files
 analyze(ecma);
+```
+
+</details>
+
+
+### toTemplateTag
+
+> [!IMPORTANT]
+>
+> You must install `@codemod-utils/ast-javascript` to use this method.
+
+Converts an ECMA file to show `<template>` tags.
+
+⚠️ Likely, you won't need this method but [`updateJavaScript`](#updatejavascript) instead.
+
+<details>
+
+<summary>Example</summary>
+
+Update `*.{gjs,gts}` files.
+
+```ts
+// Some method that updates `*.{js,ts}` files
+function transform(file: string): string {
+  // ...
+}
+
+file = toTemplateTag(transform(toEcma(file)));
 ```
 
 </details>
