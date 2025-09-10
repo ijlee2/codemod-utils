@@ -5,10 +5,6 @@ import { toTemplateTag } from './to-template-tag.js';
  * Updates the JavaScript part of a file. Leaves the `<template>`
  * tags alone.
  *
- * @requires
- *
- * module:@codemod-utils/ast-javascript
- *
  * @param file
  *
  * A `*.{gjs,gts}` file.

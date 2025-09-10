@@ -3,10 +3,6 @@ import { removeMarkers } from './-private/to-template-tag.js';
 /**
  * Converts an ECMA file to show `<template>` tags.
  *
- * @requires
- *
- * module:@codemod-utils/ast-javascript
- *
  * @param file
  *
  * A `*.{gjs,gts}` file converted to ECMAScript.

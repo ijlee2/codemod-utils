@@ -115,10 +115,6 @@ analyze(ecma);
 
 ### toTemplateTag
 
-> [!IMPORTANT]
->
-> You must install `@codemod-utils/ast-javascript` to use this method.
-
 Converts an ECMA file to show `<template>` tags.
 
 ⚠️ Likely, you won't need this method but [`updateJavaScript`](#updatejavascript) instead.
@@ -142,10 +138,6 @@ file = toTemplateTag(transform(toEcma(file)));
 
 
 ### updateJavaScript
-
-> [!IMPORTANT]
->
-> You must install `@codemod-utils/ast-javascript` to use this method.
 
 Updates the JavaScript part of a file. Leaves the `<template>` tags alone.
 
