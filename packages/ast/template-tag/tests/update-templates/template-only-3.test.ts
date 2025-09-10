@@ -3,11 +3,11 @@ import { assert, test } from '@codemod-utils/tests';
 import { updateTemplates } from '../../src/index.js';
 import { removeClassAttribute } from '../helpers/update-templates.js';
 
-test('update-templates > template-only (2)', function () {
+test('update-templates > template-only (3)', function () {
   const oldFile = [
     `import styles from './styles.css';`,
     ``,
-    `<template>`,
+    `export default <template>`,
     `  <div class={{styles.container}}>`,
     `    Hello world!`,
     `  </div>`,
@@ -22,7 +22,7 @@ test('update-templates > template-only (2)', function () {
     [
       `import styles from './styles.css';`,
       ``,
-      `<template>`,
+      `export default <template>`,
       `  <div>`,
       `    Hello world!`,
       `  </div>`,

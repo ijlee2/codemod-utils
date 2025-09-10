@@ -6,7 +6,7 @@ test('replace-template > template-only (2)', function () {
   const oldFile = [
     `import styles from './styles.css';`,
     ``,
-    `export default <template>`,
+    `<template>`,
     `  <div class={{styles.container}}>`,
     `    Hello world!`,
     `  </div>`,
@@ -16,10 +16,10 @@ test('replace-template > template-only (2)', function () {
 
   const newFile = replaceTemplate(oldFile, {
     range: {
-      endByte: 134,
-      endChar: 134,
-      startByte: 51,
-      startChar: 51,
+      endByte: 119,
+      endChar: 119,
+      startByte: 36,
+      startChar: 36,
     },
     template: '\n  New contents\n',
   });
@@ -29,7 +29,7 @@ test('replace-template > template-only (2)', function () {
     [
       `import styles from './styles.css';`,
       ``,
-      `export default <template>`,
+      `<template>`,
       `  New contents`,
       `</template>;`,
       ``,

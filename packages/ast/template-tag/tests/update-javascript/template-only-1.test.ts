@@ -4,32 +4,11 @@ import { updateJavaScript } from '../../src/index.js';
 import { data, renameGetters } from '../helpers/update-javascript.js';
 
 test('update-javascript > template-only (1)', function () {
-  const oldFile = [
-    `import styles from './styles.css';`,
-    ``,
-    `<template>`,
-    `  <div class={{styles.container}}>`,
-    `    Hello world!`,
-    `  </div>`,
-    `</template>;`,
-    ``,
-  ].join('\n');
+  const oldFile = [`<template></template>;`, ``].join('\n');
 
   const newFile = updateJavaScript(oldFile, (code) => {
     return renameGetters(code, data);
   });
 
-  assert.strictEqual(
-    newFile,
-    [
-      `import styles from './styles.css';`,
-      ``,
-      `<template>`,
-      `  <div class={{styles.container}}>`,
-      `    Hello world!`,
-      `  </div>`,
-      `</template>;`,
-      ``,
-    ].join('\n'),
-  );
+  assert.strictEqual(newFile, [`<template></template>;`, ``].join('\n'));
 });

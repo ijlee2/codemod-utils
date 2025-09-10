@@ -2,11 +2,11 @@ import { assert, test } from '@codemod-utils/tests';
 
 import { preprocess } from '../../src/index.js';
 
-test('preprocess > template-only (2)', function () {
+test('preprocess > template-only (3)', function () {
   const oldFile = [
     `import styles from './styles.css';`,
     ``,
-    `<template>`,
+    `export default <template>`,
     `  <div class={{styles.container}}>`,
     `    Hello world!`,
     `  </div>`,
@@ -37,30 +37,30 @@ test('preprocess > template-only (2)', function () {
   assert.deepStrictEqual(templateTags, [
     {
       contentRange: {
-        endByte: 108,
-        endChar: 108,
-        startByte: 46,
-        startChar: 46,
+        endByte: 123,
+        endChar: 123,
+        startByte: 61,
+        startChar: 61,
       },
       contents:
         '\n  <div class={{styles.container}}>\n    Hello world!\n  </div>\n',
       endRange: {
-        endByte: 119,
-        endChar: 119,
-        startByte: 108,
-        startChar: 108,
+        endByte: 134,
+        endChar: 134,
+        startByte: 123,
+        startChar: 123,
       },
       range: {
-        endByte: 119,
-        endChar: 119,
-        startByte: 36,
-        startChar: 36,
+        endByte: 134,
+        endChar: 134,
+        startByte: 51,
+        startChar: 51,
       },
       startRange: {
-        endByte: 46,
-        endChar: 46,
-        startByte: 36,
-        startChar: 36,
+        endByte: 61,
+        endChar: 61,
+        startByte: 51,
+        startChar: 51,
       },
       tagName: 'template',
       type: 'expression',

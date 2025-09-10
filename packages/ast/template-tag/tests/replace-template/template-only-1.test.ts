@@ -3,36 +3,20 @@ import { assert, test } from '@codemod-utils/tests';
 import { replaceTemplate } from '../../src/index.js';
 
 test('replace-template > template-only (1)', function () {
-  const oldFile = [
-    `import styles from './styles.css';`,
-    ``,
-    `<template>`,
-    `  <div class={{styles.container}}>`,
-    `    Hello world!`,
-    `  </div>`,
-    `</template>;`,
-    ``,
-  ].join('\n');
+  const oldFile = [`<template></template>;`, ``].join('\n');
 
   const newFile = replaceTemplate(oldFile, {
     range: {
-      endByte: 119,
-      endChar: 119,
-      startByte: 36,
-      startChar: 36,
+      endByte: 21,
+      endChar: 21,
+      startByte: 0,
+      startChar: 0,
     },
-    template: '\n  New contents\n',
+    template: 'New contents',
   });
 
   assert.strictEqual(
     newFile,
-    [
-      `import styles from './styles.css';`,
-      ``,
-      `<template>`,
-      `  New contents`,
-      `</template>;`,
-      ``,
-    ].join('\n'),
+    [`<template>New contents</template>;`, ``].join('\n'),
   );
 });

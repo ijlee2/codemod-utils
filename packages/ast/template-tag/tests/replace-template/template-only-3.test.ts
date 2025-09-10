@@ -1,13 +1,12 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { updateTemplates } from '../../src/index.js';
-import { removeClassAttribute } from '../helpers/update-templates.js';
+import { replaceTemplate } from '../../src/index.js';
 
-test('update-templates > template-only (2)', function () {
+test('replace-template > template-only (3)', function () {
   const oldFile = [
     `import styles from './styles.css';`,
     ``,
-    `<template>`,
+    `export default <template>`,
     `  <div class={{styles.container}}>`,
     `    Hello world!`,
     `  </div>`,
@@ -15,17 +14,23 @@ test('update-templates > template-only (2)', function () {
     ``,
   ].join('\n');
 
-  const newFile = updateTemplates(oldFile, removeClassAttribute);
+  const newFile = replaceTemplate(oldFile, {
+    range: {
+      endByte: 134,
+      endChar: 134,
+      startByte: 51,
+      startChar: 51,
+    },
+    template: '\n  New contents\n',
+  });
 
   assert.strictEqual(
     newFile,
     [
       `import styles from './styles.css';`,
       ``,
-      `<template>`,
-      `  <div>`,
-      `    Hello world!`,
-      `  </div>`,
+      `export default <template>`,
+      `  New contents`,
       `</template>;`,
       ``,
     ].join('\n'),

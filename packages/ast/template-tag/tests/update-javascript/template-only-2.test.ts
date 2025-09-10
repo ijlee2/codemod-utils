@@ -7,7 +7,7 @@ test('update-javascript > template-only (2)', function () {
   const oldFile = [
     `import styles from './styles.css';`,
     ``,
-    `export default <template>`,
+    `<template>`,
     `  <div class={{styles.container}}>`,
     `    Hello world!`,
     `  </div>`,
@@ -24,7 +24,7 @@ test('update-javascript > template-only (2)', function () {
     [
       `import styles from './styles.css';`,
       ``,
-      `export default <template>`,
+      `<template>`,
       `  <div class={{styles.container}}>`,
       `    Hello world!`,
       `  </div>`,
