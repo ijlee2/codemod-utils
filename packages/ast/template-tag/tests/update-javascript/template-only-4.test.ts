@@ -3,7 +3,6 @@ import { assert, test } from '@codemod-utils/tests';
 import { updateJavaScript } from '../../src/index.js';
 import { data, renameGetters } from '../helpers/update-javascript.js';
 
-// TODO: Fix bug
 test('update-javascript > template-only (4)', function () {
   const oldFile = [
     `import type { TOC } from '@ember/component/template-only';`,
@@ -111,8 +110,7 @@ test('update-javascript > template-only (4)', function () {
       `  };`,
       `}`,
       ``,
-      `const ProductsProductCardComponent: TOC<ProductsProductCardSignature> =`,
-      `  <template>`,
+      `const ProductsProductCardComponent: TOC<ProductsProductCardSignature> = <template>`,
       `    <ContainerQuery`,
       `      @features={{hash wide=(width min=320)}}`,
       `      @tagName="article"`,
@@ -167,4 +165,4 @@ test('update-javascript > template-only (4)', function () {
       ``,
     ].join('\n'),
   );
-}).ignore();
+});

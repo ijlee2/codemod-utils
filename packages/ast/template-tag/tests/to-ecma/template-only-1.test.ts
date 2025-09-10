@@ -15,7 +15,7 @@ test('to-ecma > template-only (1)', function () {
       `    eval () {`,
       `        return eval(arguments[0]);`,
       `    }`,
-      `});`,
+      `});;`,
       ``,
     ].join('\n'),
   );
