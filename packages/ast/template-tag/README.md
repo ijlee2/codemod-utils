@@ -143,6 +143,10 @@ file = toTemplateTag(transform(toEcma(file)));
 
 ### updateJavaScript
 
+> [!IMPORTANT]
+>
+> You must install `@codemod-utils/ast-javascript` to use this method.
+
 Updates the JavaScript part of a file. Leaves the `<template>` tags alone.
 
 <details>
