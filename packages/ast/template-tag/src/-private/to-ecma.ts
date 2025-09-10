@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 import { AST } from '@codemod-utils/ast-javascript';
-import { Preprocessor } from 'content-tag';
 
-export const MARKER = 'template_fd9b2463e5f141cfb5666b64daa1f11a';
+import { MARKER, preprocessor } from './content-tag.js';
 
 function getTemplateTag(expression: unknown): string | undefined {
   // @ts-expect-error: Incorrect type
@@ -63,8 +62,6 @@ function sortMarkers(a: Marker, b: Marker): number {
 
   return 0;
 }
-
-const preprocessor = new Preprocessor();
 
 export function findMarkers(file: string): Marker[] {
   const { code } = preprocessor.process(file);

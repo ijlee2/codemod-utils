@@ -1,4 +1,5 @@
-import { findMarkers, MARKER } from './-private/to-ecma.js';
+import { MARKER } from './-private/content-tag.js';
+import { findMarkers } from './-private/to-ecma.js';
 import { findTemplateTags } from './find-template-tags.js';
 import { replaceTemplateTag } from './replace-template-tag.js';
 

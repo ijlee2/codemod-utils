@@ -1,6 +1,4 @@
-import { type Parsed as TemplateTag, Preprocessor } from 'content-tag';
-
-const preprocessor = new Preprocessor();
+import { preprocessor, type TemplateTag } from './-private/content-tag.js';
 
 /**
  * Finds `<template>` tags in a file.

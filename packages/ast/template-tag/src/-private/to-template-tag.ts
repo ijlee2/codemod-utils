@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 import { AST } from '@codemod-utils/ast-javascript';
 
-const MARKER = 'template_fd9b2463e5f141cfb5666b64daa1f11a';
+import { MARKER } from './content-tag.js';
 
 function getTemplateTag(expression: unknown): string | undefined {
   // @ts-expect-error: Incorrect type
