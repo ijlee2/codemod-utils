@@ -5,7 +5,7 @@ type Data = {
 };
 
 export const data: Data = {
-  getters: new Set(['timestamp']),
+  getters: new Set(['errorMessage', 'timestamp', 'type']),
 };
 
 export function renameGetters(file: string, data: Data): string {
@@ -29,7 +29,7 @@ export function renameGetters(file: string, data: Data): string {
       node.value.comments = [
         AST.builders.commentLine(' Assigned new name'),
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-        ...node.value.comments,
+        ...(node.value.comments ?? []),
       ];
 
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
