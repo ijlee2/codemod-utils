@@ -55,6 +55,18 @@ export function toTemplateTag(ecma: string): string {
 
       return templateTag;
     },
+
+    visitVariableDeclarator(node) {
+      const templateTag = getTemplateTag(node.value.init);
+
+      if (templateTag === undefined) {
+        return false;
+      }
+
+      node.value.init = templateTag;
+
+      return false;
+    },
   });
 
   return AST.print(ast);
