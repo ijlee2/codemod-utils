@@ -1,0 +1,77 @@
+import { assert, test } from '@codemod-utils/tests';
+
+import { toTemplateTag } from '../../src/index.js';
+
+test('to-template-tag > template-only (5)', function () {
+  const oldFile = [
+    `import { template as template_fd9b2463e5f141cfb5666b64daa1f11a } from "@ember/template-compiler";`,
+    `import type { TOC } from '@ember/component/template-only';`,
+    `import { isTesting, macroCondition } from '@embroider/macros';`,
+    ``,
+    `import styles from './image.css';`,
+    ``,
+    `interface ProductsProductImageSignature {`,
+    `  Args: {`,
+    `    src: string;`,
+    `  };`,
+    `}`,
+    ``,
+    `const ProductsProductImageComponent: TOC<ProductsProductImageSignature> =`,
+    `  macroCondition(isTesting())`,
+    `    ? template_fd9b2463e5f141cfb5666b64daa1f11a(\``,
+    `        <div class={{styles.placeholder-image}}></div>`,
+    `      \`, {`,
+    `    eval () {`,
+    `        return eval(arguments[0]);`,
+    `    }`,
+    `})`,
+    `    : template_fd9b2463e5f141cfb5666b64daa1f11a(\`<img alt="" class={{styles.image}} src={{@src}} />\`, {`,
+    `    eval () {`,
+    `        return eval(arguments[0]);`,
+    `    }`,
+    `});`,
+    ``,
+    `export default ProductsProductImageComponent;`,
+    ``,
+    `declare module '@glint/environment-ember-loose/registry' {`,
+    `  export default interface Registry {`,
+    `    'Products::Product::Image': typeof ProductsProductImageComponent;`,
+    `    'products/product/image': typeof ProductsProductImageComponent;`,
+    `  }`,
+    `}`,
+    ``,
+  ].join('\n');
+
+  const newFile = toTemplateTag(oldFile);
+
+  assert.strictEqual(
+    newFile,
+    [
+      `import type { TOC } from '@ember/component/template-only';`,
+      `import { isTesting, macroCondition } from '@embroider/macros';`,
+      ``,
+      `import styles from './image.css';`,
+      ``,
+      `interface ProductsProductImageSignature {`,
+      `  Args: {`,
+      `    src: string;`,
+      `  };`,
+      `}`,
+      ``,
+      `const ProductsProductImageComponent: TOC<ProductsProductImageSignature> =`,
+      `  macroCondition(isTesting()) ? <template>`,
+      `          <div class={{styles.placeholder-image}}></div>`,
+      `        </template> : <template><img alt="" class={{styles.image}} src={{@src}} /></template>;`,
+      ``,
+      `export default ProductsProductImageComponent;`,
+      ``,
+      `declare module '@glint/environment-ember-loose/registry' {`,
+      `  export default interface Registry {`,
+      `    'Products::Product::Image': typeof ProductsProductImageComponent;`,
+      `    'products/product/image': typeof ProductsProductImageComponent;`,
+      `  }`,
+      `}`,
+      ``,
+    ].join('\n'),
+  );
+});
