@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { replaceTemplate } from '../../src/index.js';
+import { replaceTemplateTag } from '../../src/index.js';
 
-test('replace-template > template-only (4)', function () {
+test('replace-template-tag > template-only (4)', function () {
   const oldFile = [
     `import type { TOC } from '@ember/component/template-only';`,
     `import { hash } from '@ember/helper';`,
@@ -81,14 +81,14 @@ test('replace-template > template-only (4)', function () {
     ``,
   ].join('\n');
 
-  const newFile = replaceTemplate(oldFile, {
+  const newFile = replaceTemplateTag(oldFile, {
+    code: '<template>\n    New contents\n  </template>',
     range: {
       startByte: 633,
       endByte: 1848,
       startChar: 633,
       endChar: 1848,
     },
-    template: '\n    New contents\n  ',
   });
 
   assert.strictEqual(

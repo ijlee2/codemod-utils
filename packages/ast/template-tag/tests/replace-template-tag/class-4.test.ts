@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { replaceTemplate } from '../../src/index.js';
+import { replaceTemplateTag } from '../../src/index.js';
 
-test('replace-template > class (4)', function () {
+test('replace-template-tag > class (4)', function () {
   const oldFile = [
     `import { assert } from '@ember/debug';`,
     `import { on } from '@ember/modifier';`,
@@ -103,14 +103,14 @@ test('replace-template > class (4)', function () {
     ``,
   ].join('\n');
 
-  const newFile = replaceTemplate(oldFile, {
+  const newFile = replaceTemplateTag(oldFile, {
+    code: '<template>\n    New contents\n  </template>',
     range: {
       startByte: 1541,
       endByte: 2418,
       startChar: 1541,
       endChar: 2418,
     },
-    template: '\n    New contents\n  ',
   });
 
   assert.strictEqual(

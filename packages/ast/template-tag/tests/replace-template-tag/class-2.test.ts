@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { replaceTemplate } from '../../src/index.js';
+import { replaceTemplateTag } from '../../src/index.js';
 
-test('replace-template > class (2)', function () {
+test('replace-template-tag > class (2)', function () {
   const oldFile = [
     `import Component from '@glimmer/component';`,
     ``,
@@ -18,14 +18,14 @@ test('replace-template > class (2)', function () {
     ``,
   ].join('\n');
 
-  const newFile = replaceTemplate(oldFile, {
+  const newFile = replaceTemplateTag(oldFile, {
+    code: '<template>\n    New contents\n  </template>',
     range: {
       endByte: 233,
       endChar: 233,
       startByte: 142,
       startChar: 142,
     },
-    template: '\n    New contents\n  ',
   });
 
   assert.strictEqual(
