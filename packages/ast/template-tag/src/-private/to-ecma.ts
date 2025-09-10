@@ -1,28 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 import { AST } from '@codemod-utils/ast-javascript';
 
-import { MARKER, preprocessor } from './content-tag.js';
-
-function getTemplateTag(expression: unknown): string | undefined {
-  // @ts-expect-error: Incorrect type
-  if (expression.type !== 'CallExpression') {
-    return;
-  }
-
-  if (
-    // @ts-expect-error: Incorrect type
-    expression.callee.type !== 'Identifier' ||
-    // @ts-expect-error: Incorrect type
-    expression.callee.name !== MARKER
-  ) {
-    return;
-  }
-
-  // @ts-expect-error: Incorrect type
-  const template = expression.arguments[0].quasis[0].value.raw as string;
-
-  return `<template>${template}</template>`;
-}
+import { getTemplate, preprocessor } from './content-tag.js';
 
 type Marker = {
   code: string;
@@ -71,9 +50,9 @@ export function findMarkers(file: string): Marker[] {
 
   traverse(code, {
     visitExportDefaultDeclaration(node) {
-      const templateTag = getTemplateTag(node.value.declaration);
+      const template = getTemplate(node.value.declaration);
 
-      if (templateTag === undefined) {
+      if (template === undefined) {
         this.traverse(node);
 
         return false;
@@ -91,9 +70,9 @@ export function findMarkers(file: string): Marker[] {
         return false;
       }
 
-      const templateTag = getTemplateTag(bodyNode.expression);
+      const template = getTemplate(bodyNode.expression);
 
-      if (templateTag === undefined) {
+      if (template === undefined) {
         return false;
       }
 
@@ -103,9 +82,9 @@ export function findMarkers(file: string): Marker[] {
     },
 
     visitVariableDeclarator(node) {
-      const templateTag = getTemplateTag(node.value.init);
+      const template = getTemplate(node.value.init);
 
-      if (templateTag === undefined) {
+      if (template === undefined) {
         return false;
       }
 
