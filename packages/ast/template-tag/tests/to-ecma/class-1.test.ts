@@ -16,8 +16,8 @@ test('to-ecma > class (1)', function () {
     newFile,
     [
       `import Component from '@glimmer/component';`,
-      ``,
-      `export default class MyComponent extends Component {}`,
+      `export default class MyComponent extends Component {`,
+      `}`,
       ``,
     ].join('\n'),
   );

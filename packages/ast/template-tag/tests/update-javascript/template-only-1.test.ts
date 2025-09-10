@@ -10,5 +10,5 @@ test('update-javascript > template-only (1)', function () {
     return renameGetters(code, data);
   });
 
-  assert.strictEqual(newFile, [`\`                   \`;`, ``].join('\n'));
+  assert.strictEqual(newFile, [`<template></template>;`, ``].join('\n'));
 });
