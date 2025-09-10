@@ -145,13 +145,13 @@ importers:
 
   packages/ast/template-tag:
     dependencies:
+      '@codemod-utils/ast-javascript':
+        specifier: workspace:^
+        version: link:../javascript
       content-tag:
         specifier: ^4.0.0
         version: 4.0.0
     devDependencies:
-      '@codemod-utils/ast-javascript':
-        specifier: workspace:*
-        version: link:../javascript
       '@codemod-utils/ast-template':
         specifier: workspace:*
         version: link:../template
