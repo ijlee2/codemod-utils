@@ -3,7 +3,7 @@ import { Preprocessor } from 'content-tag';
 const preprocessor = new Preprocessor();
 
 /**
- * Converts a file with `<template>` tags to standard JavaScript.
+ * Converts a file with `<template>` tags to ECMAScript (JavaScript).
  *
  * @param file
  *
