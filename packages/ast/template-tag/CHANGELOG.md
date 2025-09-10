@@ -1,5 +1,16 @@
 # Changelog for @codemod-utils/ast-template-tag
 
+## 0.3.0
+
+### Minor Changes
+
+- [#191](https://github.com/ijlee2/codemod-utils/pull/191) Implemented a two-pass for updateJavaScript() ([@ijlee2](https://github.com/ijlee2))
+- [#190](https://github.com/ijlee2/codemod-utils/pull/190) Created toTemplateTag() ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#192](https://github.com/ijlee2/codemod-utils/pull/192) Refactored code ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.2.0
 
 ### Minor Changes

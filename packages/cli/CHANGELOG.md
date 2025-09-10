@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/cli
 
+## 3.5.0
+
+### Minor Changes
+
+- [#193](https://github.com/ijlee2/codemod-utils/pull/193) Allowed installing @codemod-utils/ast-template-tag@0.3.0 ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.4.0
 
 ### Minor Changes
