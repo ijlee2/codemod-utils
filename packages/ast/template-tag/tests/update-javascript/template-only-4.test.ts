@@ -3,7 +3,6 @@ import { assert, test } from '@codemod-utils/tests';
 import { updateJavaScript } from '../../src/index.js';
 import { data, renameGetters } from '../helpers/update-javascript.js';
 
-// TODO: Fix bug
 test('update-javascript > template-only (4)', function () {
   const oldFile = [
     `import type { TOC } from '@ember/component/template-only';`,
@@ -95,24 +94,19 @@ test('update-javascript > template-only (4)', function () {
       `import { LinkTo } from '@ember/routing';`,
       `import { ContainerQuery, width } from 'ember-container-query';`,
       `import { t } from 'ember-intl';`,
-      ``,
       `import type { Product } from '../../../utils/routes/products';`,
       `import styles from './card.css';`,
       `import ProductsProductImage from './image';`,
-      ``,
       `export function formatPrice(price: number): string {`,
-      `  return \`$\${price}\`;`,
+      `    return \`$\${price}\`;`,
       `}`,
-      ``,
       `interface ProductsProductCardSignature {`,
-      `  Args: {`,
-      `    product: Product;`,
-      `    redirectTo?: string;`,
-      `  };`,
+      `    Args: {`,
+      `        product: Product;`,
+      `        redirectTo?: string;`,
+      `    };`,
       `}`,
-      ``,
-      `const ProductsProductCardComponent: TOC<ProductsProductCardSignature> =`,
-      `  <template>`,
+      `const ProductsProductCardComponent: TOC<ProductsProductCardSignature> = <template>`,
       `    <ContainerQuery`,
       `      @features={{hash wide=(width min=320)}}`,
       `      @tagName="article"`,
@@ -155,16 +149,14 @@ test('update-javascript > template-only (4)', function () {
       `      </div>`,
       `    </ContainerQuery>`,
       `  </template>;`,
-      ``,
       `export default ProductsProductCardComponent;`,
-      ``,
       `declare module '@glint/environment-ember-loose/registry' {`,
-      `  export default interface Registry {`,
-      `    'Products::Product::Card': typeof ProductsProductCardComponent;`,
-      `    'products/product/card': typeof ProductsProductCardComponent;`,
-      `  }`,
+      `    export default interface Registry {`,
+      `        'Products::Product::Card': typeof ProductsProductCardComponent;`,
+      `        'products/product/card': typeof ProductsProductCardComponent;`,
+      `    }`,
       `}`,
       ``,
     ].join('\n'),
   );
-}).ignore();
+});
