@@ -1,24 +1,11 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { preprocess } from '../../src/index.js';
+import { findTemplateTags } from '../../src/index.js';
 
-test('preprocess > template-only (1)', function () {
+test('find-template-tags > template-only (1)', function () {
   const oldFile = [`<template></template>;`, ``].join('\n');
 
-  const { javascript, templateTags } = preprocess(oldFile);
-
-  assert.strictEqual(
-    javascript,
-    [
-      `import { template as template_fd9b2463e5f141cfb5666b64daa1f11a } from "@ember/template-compiler";`,
-      `export default template_fd9b2463e5f141cfb5666b64daa1f11a(\`\`, {`,
-      `    eval () {`,
-      `        return eval(arguments[0]);`,
-      `    }`,
-      `});`,
-      ``,
-    ].join('\n'),
-  );
+  const templateTags = findTemplateTags(oldFile);
 
   assert.deepStrictEqual(templateTags, [
     {

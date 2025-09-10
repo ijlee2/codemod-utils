@@ -1,18 +1,18 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { replaceTemplate } from '../../src/index.js';
+import { replaceTemplateTag } from '../../src/index.js';
 
-test('replace-template > base case', function () {
+test('replace-template-tag > base case', function () {
   const oldFile = '';
 
-  const newFile = replaceTemplate(oldFile, {
+  const newFile = replaceTemplateTag(oldFile, {
+    code: '<template>New contents</template>',
     range: {
       endByte: 0,
       endChar: 0,
       startByte: 0,
       startChar: 0,
     },
-    template: 'New contents',
   });
 
   assert.strictEqual(newFile, '<template>New contents</template>');

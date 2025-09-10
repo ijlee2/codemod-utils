@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { preprocess } from '../../src/index.js';
+import { toEcma } from '../../src/index.js';
 
-test('preprocess > class (1)', function () {
+test('to-ecma > class (1)', function () {
   const oldFile = [
     `import Component from '@glimmer/component';`,
     ``,
@@ -10,10 +10,10 @@ test('preprocess > class (1)', function () {
     ``,
   ].join('\n');
 
-  const { javascript, templateTags } = preprocess(oldFile);
+  const newFile = toEcma(oldFile);
 
   assert.strictEqual(
-    javascript,
+    newFile,
     [
       `import Component from '@glimmer/component';`,
       `export default class MyComponent extends Component {`,
@@ -21,6 +21,4 @@ test('preprocess > class (1)', function () {
       ``,
     ].join('\n'),
   );
-
-  assert.deepStrictEqual(templateTags, []);
 });

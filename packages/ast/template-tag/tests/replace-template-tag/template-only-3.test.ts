@@ -1,12 +1,12 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { replaceTemplate } from '../../src/index.js';
+import { replaceTemplateTag } from '../../src/index.js';
 
-test('replace-template > template-only (2)', function () {
+test('replace-template-tag > template-only (3)', function () {
   const oldFile = [
     `import styles from './styles.css';`,
     ``,
-    `<template>`,
+    `export default <template>`,
     `  <div class={{styles.container}}>`,
     `    Hello world!`,
     `  </div>`,
@@ -14,14 +14,14 @@ test('replace-template > template-only (2)', function () {
     ``,
   ].join('\n');
 
-  const newFile = replaceTemplate(oldFile, {
+  const newFile = replaceTemplateTag(oldFile, {
+    code: '<template>\n  New contents\n</template>',
     range: {
-      endByte: 119,
-      endChar: 119,
-      startByte: 36,
-      startChar: 36,
+      endByte: 134,
+      endChar: 134,
+      startByte: 51,
+      startChar: 51,
     },
-    template: '\n  New contents\n',
   });
 
   assert.strictEqual(
@@ -29,7 +29,7 @@ test('replace-template > template-only (2)', function () {
     [
       `import styles from './styles.css';`,
       ``,
-      `<template>`,
+      `export default <template>`,
       `  New contents`,
       `</template>;`,
       ``,

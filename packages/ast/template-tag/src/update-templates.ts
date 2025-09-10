@@ -1,5 +1,5 @@
-import { preprocess } from './preprocess.js';
-import { replaceTemplate } from './replace-template.js';
+import { findTemplateTags } from './find-template-tags.js';
+import { replaceTemplateTag } from './replace-template-tag.js';
 
 /**
  * Updates the `<template>` tags in a file. Leaves the JavaScript
@@ -55,12 +55,15 @@ export function updateTemplates(
   file: string,
   update: (code: string) => string,
 ): string {
-  const { templateTags } = preprocess(file);
+  const templateTags = findTemplateTags(file);
 
   templateTags.reverse().forEach(({ contents, range }) => {
     const template = update(contents);
 
-    file = replaceTemplate(file, { range, template });
+    file = replaceTemplateTag(file, {
+      code: `<template>${template}</template>`,
+      range,
+    });
   });
 
   return file;

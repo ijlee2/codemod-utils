@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { preprocess } from '../../src/index.js';
+import { toEcma } from '../../src/index.js';
 
-test('preprocess > class (3)', function () {
+test('to-ecma > class (3)', function () {
   const oldFile = [
     `import Component from '@glimmer/component';`,
     `import { local } from 'embroider-css-modules';`,
@@ -36,10 +36,10 @@ test('preprocess > class (3)', function () {
     `}`,
   ].join('\n');
 
-  const { javascript, templateTags } = preprocess(oldFile);
+  const newFile = toEcma(oldFile);
 
   assert.strictEqual(
-    javascript,
+    newFile,
     [
       `import { template as template_fd9b2463e5f141cfb5666b64daa1f11a } from "@ember/template-compiler";`,
       `import Component from '@glimmer/component';`,
@@ -82,82 +82,4 @@ test('preprocess > class (3)', function () {
       ``,
     ].join('\n'),
   );
-
-  assert.deepStrictEqual(templateTags, [
-    {
-      contentRange: {
-        endByte: 287,
-        endChar: 275,
-        startByte: 156,
-        startChar: 156,
-      },
-      contents:
-        '\n' +
-        '  <div\n' +
-        '    class={{local styles "container" "highlight"}}\n' +
-        '    data-test-field="😀😀a🎉🎉"\n' +
-        '  >\n' +
-        '    {{@user.name}}\n' +
-        '  </div>\n',
-      endRange: {
-        endByte: 298,
-        endChar: 286,
-        startByte: 287,
-        startChar: 275,
-      },
-      range: {
-        endByte: 298,
-        endChar: 286,
-        startByte: 146,
-        startChar: 146,
-      },
-      startRange: {
-        endByte: 156,
-        endChar: 156,
-        startByte: 146,
-        startChar: 146,
-      },
-      tagName: 'template',
-      type: 'expression',
-    },
-    {
-      contentRange: {
-        endByte: 608,
-        endChar: 578,
-        startByte: 423,
-        startChar: 411,
-      },
-      contents:
-        '\n' +
-        '    <UserName @user={{@user}} />\n' +
-        '\n' +
-        '    <div class={{styles.container}} data-test-field="timestamp">\n' +
-        '      {{this.timestamp}}\n' +
-        '\n' +
-        '  <p> 😀😀😀 Hello! 🎉🎉🎉\n' +
-        '  </p>\n' +
-        '    </div>\n' +
-        '  ',
-      endRange: {
-        endByte: 619,
-        endChar: 589,
-        startByte: 608,
-        startChar: 578,
-      },
-      range: {
-        endByte: 619,
-        endChar: 589,
-        startByte: 413,
-        startChar: 401,
-      },
-      startRange: {
-        endByte: 423,
-        endChar: 411,
-        startByte: 413,
-        startChar: 401,
-      },
-      tagName: 'template',
-      type: 'class-member',
-    },
-  ]);
 });

@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { preprocess } from '../../src/index.js';
+import { findTemplateTags } from '../../src/index.js';
 
-test('preprocess > class (2)', function () {
+test('find-template-tags > class (2)', function () {
   const oldFile = [
     `import Component from '@glimmer/component';`,
     ``,
@@ -18,31 +18,7 @@ test('preprocess > class (2)', function () {
     ``,
   ].join('\n');
 
-  const { javascript, templateTags } = preprocess(oldFile);
-
-  assert.strictEqual(
-    javascript,
-    [
-      `import { template as template_fd9b2463e5f141cfb5666b64daa1f11a } from "@ember/template-compiler";`,
-      `import Component from '@glimmer/component';`,
-      `import styles from './my-component.css';`,
-      `export default class MyComponent extends Component {`,
-      `    static{`,
-      `        template_fd9b2463e5f141cfb5666b64daa1f11a(\``,
-      `    <div class={{styles.container}}>`,
-      `      Hello world!`,
-      `    </div>`,
-      `  \`, {`,
-      `            component: this,`,
-      `            eval () {`,
-      `                return eval(arguments[0]);`,
-      `            }`,
-      `        });`,
-      `    }`,
-      `}`,
-      ``,
-    ].join('\n'),
-  );
+  const templateTags = findTemplateTags(oldFile);
 
   assert.deepStrictEqual(templateTags, [
     {

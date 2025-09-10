@@ -33,9 +33,67 @@ const newFile = updateTemplates(oldFile, transform);
 
 ## API
 
-### preprocess
+### findTemplateTags
 
-Processes a file with `<template>` tags into things that work with existing methods or libraries.
+Finds `<template>` tags in a file.
+
+<details>
+
+<summary>Example</summary>
+
+Count the number of lines of code (LOC) in `<template>` tags.
+
+```ts
+function getLOC(code: string): number {
+  const matches = file.match(/\r?\n/g);
+
+  return (matches ?? []).length;
+}
+
+const templateTags = findTemplateTags(file);
+
+let loc = 0;
+
+templateTags.forEach(({ contents }) => {
+  loc += getLOC(contents.trim());
+});
+```
+
+</details>
+
+
+### replaceTemplateTag
+
+Replaces a particular `<template>` tag.
+
+⚠️ Likely, you won't need this method but [`updateTemplates`](#updatetemplates) instead.
+
+<details>
+
+<summary>Example</summary>
+
+Update all template tags in a file.
+
+```ts
+const templateTags = findTemplateTags(file);
+
+templateTags.reverse().forEach(({ contents, range }) => {
+  // Some method that can update `*.hbs` files
+  const template = transform(contents);
+
+  file = replaceTemplateTag(file, {
+    code: `<template>${template}</template>`,
+    range,
+  });
+});
+```
+
+</details>
+
+
+### toEcma
+
+Converts a file with `<template>` tags to standard JavaScript.
 
 ⚠️ Likely, you won't need this method but [`updateJavaScript`](#updatejavascript) instead.
 
@@ -46,54 +104,10 @@ Processes a file with `<template>` tags into things that work with existing meth
 Analyze the JavaScript part of the file.
 
 ```ts
-const { javascript } = preprocess(file);
+const ecma = toEcma(file);
 
 // Some method that checks `*.{js,ts}` files
-analyze(javascript);
-```
-
-</details>
-
-<details>
-
-<summary>Example</summary>
-
-Count the number of lines inside `<template>` tags.
-
-```ts
-const { templateTags } = preprocess(file);
-
-let numOfLines = 0;
-
-templateTags.forEach(({ contents }) => {
-  numOfLines += contents.trim().split('\n').length;
-});
-```
-
-</details>
-
-
-### replaceTemplate
-
-Replaces the template of a particular `<template>` tag.
-
-⚠️ Likely, you won't need this method but [`updateTemplates`](#updatetemplates) instead.
-
-<details>
-
-<summary>Example</summary>
-
-Update the template in each tag.
-
-```ts
-const { templateTags } = preprocess(file);
-
-templateTags.reverse().forEach(({ contents, range }) => {
-  // Some method that can update `*.hbs` files
-  const template = transform(contents);
-
-  file = replaceTemplate(file, { range, template });
-});
+analyze(ecma);
 ```
 
 </details>

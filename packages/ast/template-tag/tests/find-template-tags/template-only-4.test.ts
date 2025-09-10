@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { preprocess } from '../../src/index.js';
+import { findTemplateTags } from '../../src/index.js';
 
-test('preprocess > template-only (4)', function () {
+test('find-template-tags > template-only (4)', function () {
   const oldFile = [
     `import type { TOC } from '@ember/component/template-only';`,
     `import { hash } from '@ember/helper';`,
@@ -81,86 +81,7 @@ test('preprocess > template-only (4)', function () {
     ``,
   ].join('\n');
 
-  const { javascript, templateTags } = preprocess(oldFile);
-
-  assert.strictEqual(
-    javascript,
-    [
-      `import { template as template_fd9b2463e5f141cfb5666b64daa1f11a } from "@ember/template-compiler";`,
-      `import type { TOC } from '@ember/component/template-only';`,
-      `import { hash } from '@ember/helper';`,
-      `import { LinkTo } from '@ember/routing';`,
-      `import { ContainerQuery, width } from 'ember-container-query';`,
-      `import { t } from 'ember-intl';`,
-      `import type { Product } from '../../../utils/routes/products';`,
-      `import styles from './card.css';`,
-      `import ProductsProductImage from './image';`,
-      `export function formatPrice(price: number): string {`,
-      `    return \`$\${price}\`;`,
-      `}`,
-      `interface ProductsProductCardSignature {`,
-      `    Args: {`,
-      `        product: Product;`,
-      `        redirectTo?: string;`,
-      `    };`,
-      `}`,
-      `const ProductsProductCardComponent: TOC<ProductsProductCardSignature> = template_fd9b2463e5f141cfb5666b64daa1f11a(\``,
-      `    <ContainerQuery`,
-      `      @features={{hash wide=(width min=320)}}`,
-      `      @tagName="article"`,
-      `      class={{styles.container}}`,
-      `      data-test-product-card`,
-      `    >`,
-      `      <header class={{styles.header}}>`,
-      `        <h2 class={{styles.name}} data-test-field="Name">`,
-      `          {{@product.name}}`,
-      `        </h2>`,
-      `      </header>`,
-      ``,
-      `      <div class={{styles.image-container}}>`,
-      `        <ProductsProductImage @src={{@product.imageUrl}} />`,
-      `      </div>`,
-      ``,
-      `      <div class={{styles.body}}>`,
-      `        <p class={{styles.description}} data-test-field="Short Description">`,
-      `          {{@product.shortDescription}}`,
-      `        </p>`,
-      ``,
-      `        <p class={{styles.price}} data-test-field="Price">`,
-      `          {{formatPrice @product.price}}`,
-      `        </p>`,
-      `      </div>`,
-      ``,
-      `      <div class={{styles.actions}}>`,
-      `        <LinkTo`,
-      `          @model={{@product.id}}`,
-      `          @route={{@redirectTo}}`,
-      `          aria-label={{t`,
-      `            "components.products.product.card.learn-more.aria-label"`,
-      `            productName=@product.name`,
-      `          }}`,
-      `          class={{styles.link}}`,
-      `          data-test-link="Learn More"`,
-      `        >`,
-      `          {{t "components.products.product.card.learn-more.label"}}`,
-      `        </LinkTo>`,
-      `      </div>`,
-      `    </ContainerQuery>`,
-      `  \`, {`,
-      `    eval () {`,
-      `        return eval(arguments[0]);`,
-      `    }`,
-      `});`,
-      `export default ProductsProductCardComponent;`,
-      `declare module '@glint/environment-ember-loose/registry' {`,
-      `    export default interface Registry {`,
-      `        'Products::Product::Card': typeof ProductsProductCardComponent;`,
-      `        'products/product/card': typeof ProductsProductCardComponent;`,
-      `    }`,
-      `}`,
-      ``,
-    ].join('\n'),
-  );
+  const templateTags = findTemplateTags(oldFile);
 
   assert.deepStrictEqual(templateTags, [
     {
