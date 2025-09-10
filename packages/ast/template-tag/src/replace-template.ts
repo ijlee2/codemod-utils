@@ -44,7 +44,7 @@ function sliceByteRange(
  * Update the template in each tag.
  *
  * ```ts
- * const { templateTags } = preprocess(file);
+ * const templateTags = findTemplateTags(file);
  *
  * templateTags.reverse().forEach(({ contents, range }) => {
  *   // Some method that can update `*.hbs` files
