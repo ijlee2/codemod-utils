@@ -63,6 +63,14 @@
     "prettier": "^3.6.2",
     "typescript": "^5.9.2"
   },
+  "peerDependencies": {
+    "@codemod-utils/ast-javascript": "^workspace:*"
+  },
+  "peerDependenciesMeta": {
+    "@codemod-utils/ast-javascript": {
+      "optional": true
+    }
+  },
   "engines": {
     "node": "20.* || >= 22"
   }
