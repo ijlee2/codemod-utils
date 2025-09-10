@@ -7,6 +7,27 @@ export function removeMarkers(file: string): string {
   const traverse = AST.traverse(true);
 
   const ast = traverse(file, {
+    visitCallExpression(node) {
+      if (
+        node.value.callee.name !== 'render' ||
+        node.value.arguments.length !== 1
+      ) {
+        this.traverse(node);
+
+        return false;
+      }
+
+      const template = getTemplate(node.value.arguments[0]);
+
+      if (template === undefined) {
+        return false;
+      }
+
+      node.value.arguments = [`<template>${template}</template>`];
+
+      return false;
+    },
+
     visitExportDefaultDeclaration(node) {
       const template = getTemplate(node.value.declaration);
 

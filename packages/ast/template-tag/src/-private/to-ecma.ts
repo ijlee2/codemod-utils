@@ -49,6 +49,27 @@ export function findMarkers(file: string): Marker[] {
   const markers: Marker[] = [];
 
   traverse(code, {
+    visitCallExpression(node) {
+      if (
+        node.value.callee.name !== 'render' ||
+        node.value.arguments.length !== 1
+      ) {
+        this.traverse(node);
+
+        return false;
+      }
+
+      const template = getTemplate(node.value.arguments[0]);
+
+      if (template === undefined) {
+        return false;
+      }
+
+      markers.push(getMarker(node.value.arguments[0]));
+
+      return false;
+    },
+
     visitExportDefaultDeclaration(node) {
       const template = getTemplate(node.value.declaration);
 
