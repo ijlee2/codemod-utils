@@ -34,6 +34,10 @@ export function toEcma(file: string): string {
 
   const markers = findMarkers(file);
 
+  if (markers.length !== templateTags.length) {
+    throw new RangeError("ERROR: `findMarkers()` couldn't find all markers.");
+  }
+
   templateTags.reverse().forEach(({ range }, index) => {
     const { code } = markers[index]!;
 
