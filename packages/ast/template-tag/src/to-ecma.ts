@@ -1,6 +1,38 @@
-import { Preprocessor } from 'content-tag';
+import type { Parsed as TemplateTag } from 'content-tag';
 
-const preprocessor = new Preprocessor();
+import { findTemplateTags } from './find-template-tags.js';
+import { replaceTemplateTag } from './replace-template-tag.js';
+
+const BufferMap = new Map<string, Buffer>();
+
+function getBuffer(str: string): Buffer {
+  let buffer = BufferMap.get(str);
+
+  if (!buffer) {
+    buffer = Buffer.from(str);
+    BufferMap.set(str, buffer);
+  }
+
+  return buffer;
+}
+
+function getCode(templateTag: TemplateTag): string {
+  const { contents, range, type } = templateTag;
+
+  const templateLength = range.endByte - range.startByte;
+  const newContents = contents.replace(/`/g, '\\`').replace(/\$/g, '\\$');
+  const total = templateLength - getBuffer(newContents).length;
+
+  if (type === 'class-member') {
+    const numSpaces = total - 'static{``}'.length;
+
+    return `static{\`${newContents}${' '.repeat(numSpaces)}\`}`;
+  }
+
+  const numSpaces = total - '``'.length;
+
+  return `\`${newContents}${' '.repeat(numSpaces)}\``;
+}
 
 /**
  * Converts a file with `<template>` tags to ECMAScript (JavaScript).
@@ -25,7 +57,16 @@ const preprocessor = new Preprocessor();
  * ```
  */
 export function toEcma(file: string): string {
-  const { code } = preprocessor.process(file);
+  const templateTags = findTemplateTags(file);
 
-  return code;
+  templateTags.reverse().forEach((templateTag) => {
+    const code = getCode(templateTag);
+
+    file = replaceTemplateTag(file, {
+      code,
+      range: templateTag.range,
+    });
+  });
+
+  return file;
 }
