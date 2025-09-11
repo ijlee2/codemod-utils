@@ -9,4 +9,8 @@ test('update-templates > base case', function () {
   const newFile = updateTemplates(oldFile, removeClassAttribute);
 
   assert.strictEqual(newFile, '');
+
+  const newFile2 = updateTemplates(newFile, removeClassAttribute);
+
+  assert.strictEqual(newFile2, newFile);
 });

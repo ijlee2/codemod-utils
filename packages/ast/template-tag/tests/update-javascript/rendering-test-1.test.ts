@@ -99,4 +99,10 @@ test('update-javascript > rendering test (1)', function () {
       ``,
     ].join('\n'),
   );
+
+  const newFile2 = updateJavaScript(newFile, (code) => {
+    return renameGetters(code, data);
+  });
+
+  assert.strictEqual(newFile2, newFile);
 });

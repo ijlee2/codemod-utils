@@ -9,11 +9,15 @@ test('to-template-tag > template-only (1)', function () {
     `    eval () {`,
     `        return eval(arguments[0]);`,
     `    }`,
-    `});`,
+    `});;`,
     ``,
   ].join('\n');
 
   const newFile = toTemplateTag(oldFile);
 
   assert.strictEqual(newFile, [`<template></template>`, ''].join('\n'));
+
+  const newFile2 = toTemplateTag(newFile);
+
+  assert.strictEqual(newFile2, newFile);
 });

@@ -100,4 +100,8 @@ test('to-template-tag > rendering test (2)', function () {
       ``,
     ].join('\n'),
   );
+
+  const newFile2 = toTemplateTag(newFile);
+
+  assert.strictEqual(newFile2, newFile);
 });

@@ -9,4 +9,8 @@ test('update-templates > template-only (1)', function () {
   const newFile = updateTemplates(oldFile, removeClassAttribute);
 
   assert.strictEqual(newFile, [`<template></template>;`, ``].join('\n'));
+
+  const newFile2 = updateTemplates(newFile, removeClassAttribute);
+
+  assert.strictEqual(newFile2, newFile);
 });

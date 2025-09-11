@@ -1,5 +1,9 @@
 import { AST } from '@codemod-utils/ast-template';
 
+export function identity(file: string): string {
+  return file;
+}
+
 export function removeClassAttribute(file: string): string {
   const traverse = AST.traverse();
 

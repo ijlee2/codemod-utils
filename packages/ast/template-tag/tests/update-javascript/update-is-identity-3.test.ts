@@ -1,14 +1,13 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { updateTemplates } from '../../src/index.js';
-import { removeClassAttribute } from '../helpers/update-templates.js';
+import { updateJavaScript } from '../../src/index.js';
+import { identity } from '../helpers/update-javascript.js';
 
-test('update-templates > rendering test (1)', function () {
+test('update-javascript > update is identity (3)', function () {
   const oldFile = [
     `import Service from '@ember/service';`,
     `import { type Registry as Services, service } from '@ember/service';`,
-    `import { render, type TestContext } from '@ember/test-helpers';`,
-    `import { hbs } from 'ember-cli-htmlbars';`,
+    `import { click, render, type TestContext } from '@ember/test-helpers';`,
     `import { setupRenderingTest } from 'ember-qunit';`,
     `import Example1 from 'my-app/components/example-1';`,
     `import { module, test } from 'qunit';`,
@@ -30,17 +29,27 @@ test('update-templates > rendering test (1)', function () {
     `  });`,
     ``,
     `  test('it renders', async function (assert) {`,
-    `    await render(hbs\`<Example1 />\`);`,
+    `    await render(<template><Example1 /></template>);`,
     ``,
     `    assert.ok(true);`,
     `  });`,
     ``,
-    `  test('We can pass styles', async function (this: TestContext, assert) {`,
-    `    await render<TestContext>(`,
-    `      hbs\``,
-    `        <Example1 class="my-style" />`,
-    `      \`,`,
-    `    );`,
+    `  module('Styles', function () {`,
+    `    test('Splattributes', async function (this: TestContext, assert) {`,
+    `      await render(`,
+    `        <template>`,
+    `          <Example1 class="my-style" />`,
+    `        </template>,`,
+    `      );`,
+    ``,
+    `      assert.ok(true);`,
+    `    });`,
+    `  });`,
+    ``,
+    `  test('We can click on the button', async function (assert) {`,
+    `    await render(<template><Example1 class="my-style" /></template>);`,
+    ``,
+    `    await click('button');`,
     ``,
     `    assert.ok(true);`,
     `  });`,
@@ -48,15 +57,17 @@ test('update-templates > rendering test (1)', function () {
     ``,
   ].join('\n');
 
-  const newFile = updateTemplates(oldFile, removeClassAttribute);
+  const newFile = updateJavaScript(oldFile, identity);
+
+  // TODO: Guarantee identity
+  assert.notStrictEqual(newFile, oldFile);
 
   assert.strictEqual(
     newFile,
     [
       `import Service from '@ember/service';`,
       `import { type Registry as Services, service } from '@ember/service';`,
-      `import { render, type TestContext } from '@ember/test-helpers';`,
-      `import { hbs } from 'ember-cli-htmlbars';`,
+      `import { click, render, type TestContext } from '@ember/test-helpers';`,
       `import { setupRenderingTest } from 'ember-qunit';`,
       `import Example1 from 'my-app/components/example-1';`,
       `import { module, test } from 'qunit';`,
@@ -78,17 +89,25 @@ test('update-templates > rendering test (1)', function () {
       `  });`,
       ``,
       `  test('it renders', async function (assert) {`,
-      `    await render(hbs\`<Example1 />\`);`,
+      `    await render(<template><Example1 /></template>);`,
       ``,
       `    assert.ok(true);`,
       `  });`,
       ``,
-      `  test('We can pass styles', async function (this: TestContext, assert) {`,
-      `    await render<TestContext>(`,
-      `      hbs\``,
-      `        <Example1 class="my-style" />`,
-      `      \`,`,
-      `    );`,
+      `  module('Styles', function () {`,
+      `    test('Splattributes', async function (this: TestContext, assert) {`,
+      `      await render(<template>`,
+      `      <Example1 class="my-style" />`,
+      `      </template>);`,
+      ``,
+      `      assert.ok(true);`,
+      `    });`,
+      `  });`,
+      ``,
+      `  test('We can click on the button', async function (assert) {`,
+      `    await render(<template><Example1 class="my-style" /></template>);`,
+      ``,
+      `    await click('button');`,
       ``,
       `    assert.ok(true);`,
       `  });`,
@@ -97,7 +116,7 @@ test('update-templates > rendering test (1)', function () {
     ].join('\n'),
   );
 
-  const newFile2 = updateTemplates(newFile, removeClassAttribute);
+  const newFile2 = updateJavaScript(newFile, identity);
 
   assert.strictEqual(newFile2, newFile);
 });
