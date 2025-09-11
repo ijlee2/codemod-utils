@@ -4,7 +4,7 @@ type Addon =
   | 'ast-template-tag'
   | 'blueprints'
   | 'ember'
-  | 'json';
+  | 'package-json';
 
 type CodemodOptions = {
   addons: Set<Addon>;

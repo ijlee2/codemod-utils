@@ -7,5 +7,5 @@ packages:
   - packages/cli
   - packages/ember
   - packages/files
-  - packages/json
+  - packages/package-json
   - packages/tests

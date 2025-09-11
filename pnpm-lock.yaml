@@ -234,9 +234,9 @@ importers:
       '@codemod-utils/files':
         specifier: workspace:*
         version: link:../files
-      '@codemod-utils/json':
+      '@codemod-utils/package-json':
         specifier: workspace:*
-        version: link:../json
+        version: link:../package-json
       yargs:
         specifier: ^18.0.0
         version: 18.0.0
@@ -348,7 +348,7 @@ importers:
         specifier: ^5.9.2
         version: 5.9.2
 
-  packages/json:
+  packages/package-json:
     dependencies:
       type-fest:
         specifier: ^4.41.0

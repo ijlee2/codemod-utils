@@ -35,7 +35,7 @@
   "dependencies": {
     "@codemod-utils/blueprints": "workspace:*",
     "@codemod-utils/files": "workspace:*",
-    "@codemod-utils/json": "workspace:*",
+    "@codemod-utils/package-json": "workspace:*",
     "yargs": "^18.0.0"
   },
   "devDependencies": {

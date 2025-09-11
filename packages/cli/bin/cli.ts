@@ -25,7 +25,7 @@ yargs(hideBin(process.argv))
             'ast-template-tag',
             'blueprints',
             'ember',
-            'json',
+            'package-json',
           ] as const,
           describe: 'Optional @codemod-utils packages to install',
           type: 'array',

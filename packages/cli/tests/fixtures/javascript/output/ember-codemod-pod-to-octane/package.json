@@ -33,7 +33,7 @@
     "test": "mt tests --quiet"
   },
   "dependencies": {
-    "@codemod-utils/files": "^3.0.4",
+    "@codemod-utils/files": "^3.0.5",
     "yargs": "^18.0.0"
   },
   "devDependencies": {

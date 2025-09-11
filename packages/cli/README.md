@@ -53,7 +53,7 @@ npx @codemod-utils/cli ember-codemod-v1-to-v2
 By default, `@codemod-utils/cli` only installs [`@codemod-utils/files`](../files/README.md) and [`@codemod-utils/tests`](../tests/README.md). If you need more, pass `--addon` and list the package names.
 
 ```sh
-npx @codemod-utils/cli --addon blueprints json
+npx @codemod-utils/cli --addon blueprints package-json
 ```
 
 The options are:
@@ -63,7 +63,7 @@ The options are:
 - [`ast-template-tag`](../ast/template-tag/README.md)
 - [`blueprints`](../blueprints/README.md)
 - [`ember`](../ember/README.md)
-- [`json`](../json/README.md)
+- [`package-json`](../package-json/README.md)
 
 </details>
 

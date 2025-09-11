@@ -16,8 +16,7 @@ import type { Options, PackageJson } from '../types/index.js';
  *
  * @example
  *
- * Check if the project, against which the codemod is run,
- * has `typescript` as a dependency.
+ * Check if a project has `typescript` as a dependency.
  *
  * ```ts
  * const { dependencies, devDependencies } = readPackageJson({
