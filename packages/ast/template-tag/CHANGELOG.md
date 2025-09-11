@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ast-template-tag
 
+## 0.5.1
+
+### Patch Changes
+
+- [#199](https://github.com/ijlee2/codemod-utils/pull/199) Documented current limitations ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.5.0
 
 ### Minor Changes
