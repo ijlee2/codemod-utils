@@ -48,7 +48,7 @@ export function toEcma(file: string): string {
   });
 
   // Need to sanitize because `content-tag` treats `<template></template>;`
-  // and `export default <template>/template>;` the same
+  // and `export default <template></template>;` the same
   file = file.replace('export default export default', 'export default');
 
   return [

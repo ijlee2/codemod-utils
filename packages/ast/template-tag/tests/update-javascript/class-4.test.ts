@@ -3,7 +3,6 @@ import { assert, test } from '@codemod-utils/tests';
 import { updateJavaScript } from '../../src/index.js';
 import { data, renameGetters } from '../helpers/update-javascript.js';
 
-// TODO: Fix bug
 test('update-javascript > class (4)', function () {
   const oldFile = [
     `import { assert } from '@ember/debug';`,
