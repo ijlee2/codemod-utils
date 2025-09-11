@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { transformHandlebars } from '../../shared-test-setups/index.js';
+import { traverseHandlebars } from '../helpers/index.js';
 
-test('utils | ast | handlebars > transform (base case)', function () {
+test('index > traverse (base case)', function () {
   const oldFile = [
     `{{! Some comment }}`,
     `<div data-test-container local-class="container">`,
@@ -11,13 +11,13 @@ test('utils | ast | handlebars > transform (base case)', function () {
     ``,
   ].join('\n');
 
-  const newFile = transformHandlebars(oldFile);
+  const newFile = traverseHandlebars(oldFile);
 
   assert.strictEqual(
     newFile,
     [
       `{{! Some comment }}`,
-      `<div data-test-container class={{this.styles.container}}>`,
+      `<div data-test-container local-class="container">`,
       `  {{! Some content }}`,
       `</div>`,
       ``,

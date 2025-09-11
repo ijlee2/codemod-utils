@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { transformHandlebars } from '../../shared-test-setups/index.js';
+import { transformHandlebars } from '../helpers/index.js';
 
-test('utils | ast | handlebars > transform (file is empty)', function () {
+test('index > transform (file is empty)', function () {
   const oldFile = '';
 
   const newFile = transformHandlebars(oldFile);
