@@ -16,7 +16,7 @@ import { parseFilePath } from './parse-file-path.js';
  * Analyze each package by reading `package.json`.
  *
  * ```ts
- * import { readPackageJson } from '@codemod-utils/json';
+ * import { readPackageJson } from '@codemod-utils/package-json';
  *
  * const packageRoots = getPackageRoots({
  *   projectRoot,
