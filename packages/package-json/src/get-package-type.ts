@@ -27,6 +27,32 @@ function getPackageFields(packageJson: PackageJson): {
   };
 }
 
+/**
+ * Determines package type based on Ember's conventions.
+ *
+ * @param packageJson
+ *
+ * A JSON that represents `package.json`.
+ *
+ * @return
+ *
+ * A string that represents package type (`'node'`, `'v1-addon'`,
+ * `'v1-app'`, `'v2-addon'`, or `'v2-app'`).
+ *
+ * @example
+ *
+ * Make an early exit in a codemod that converts v1 addons to v2.
+ *
+ * ```ts
+ * const packageType = getPackageType(packageJson);
+ *
+ * if (packageType === 'v2-addon') {
+ *   return;
+ * }
+ *
+ * // Convert to v2
+ * ```
+ */
 export function getPackageType(packageJson: PackageJson): PackageType {
   const { dependencies, emberAddon, keywords } = getPackageFields(packageJson);
 

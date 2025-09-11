@@ -45,6 +45,29 @@ packageJson['dependencies'] = convertToObject(dependencies);
 </details>
 
 
+### getPackageType
+
+Determines package type based on Ember's conventions.
+
+<details>
+
+<summary>Example</summary>
+
+Make an early exit in a codemod that converts v1 addons to v2.
+
+```ts
+const packageType = getPackageType(packageJson);
+
+if (packageType === 'v2-addon') {
+  return;
+}
+
+// Convert to v2
+```
+
+</details>
+
+
 ### readPackageJson
 
 Reads `package.json` and returns the parsed JSON.
