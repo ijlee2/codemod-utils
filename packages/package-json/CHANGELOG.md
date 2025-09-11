@@ -1,4 +1,4 @@
-# Changelog for @codemod-utils/json
+# Changelog for @codemod-utils/package-json
 
 ## 2.0.3
 
