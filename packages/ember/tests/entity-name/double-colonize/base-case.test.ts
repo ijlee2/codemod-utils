@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { doubleColonize } from '../../../../src/index.js';
+import { doubleColonize } from '../../../src/index.js';
 
-test('utils | ember | entity-name | double-colonize > base case', function () {
+test('entity-name | double-colonize > base case', function () {
   assert.strictEqual(doubleColonize('hello'), 'Hello');
 
   assert.strictEqual(doubleColonize('hello-world'), 'HelloWorld');

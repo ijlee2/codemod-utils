@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { pascalize } from '../../../../src/index.js';
+import { pascalize } from '../../../src/index.js';
 
-test('utils | ember | entity-name | pascalize > wrong input', function () {
+test('entity-name | pascalize > wrong input', function () {
   assert.strictEqual(pascalize(''), '');
 
   assert.strictEqual(pascalize('-'), '');

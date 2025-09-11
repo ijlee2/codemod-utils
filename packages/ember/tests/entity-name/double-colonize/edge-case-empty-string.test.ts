@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { doubleColonize } from '../../../../src/index.js';
+import { doubleColonize } from '../../../src/index.js';
 
-test('utils | ember | entity-name | double-colonize > nested', function () {
+test('entity-name | double-colonize > nested', function () {
   assert.strictEqual(doubleColonize('ui/form'), 'Ui::Form');
   assert.strictEqual(doubleColonize('ui/form/input'), 'Ui::Form::Input');
   assert.strictEqual(

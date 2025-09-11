@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { camelize } from '../../../../src/index.js';
+import { camelize } from '../../../src/index.js';
 
-test('utils | ember | entity-name | camelize > nested', function () {
+test('entity-name | camelize > nested', function () {
   assert.strictEqual(camelize('ui/form'), 'uiForm');
 
   assert.strictEqual(camelize('ui/form/input'), 'uiFormInput');

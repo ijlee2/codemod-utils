@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { pascalize } from '../../../../src/index.js';
+import { pascalize } from '../../../src/index.js';
 
-test('utils | ember | entity-name | pascalize > nested', function () {
+test('entity-name | pascalize > nested', function () {
   assert.strictEqual(pascalize('ui/form'), 'UiForm');
 
   assert.strictEqual(pascalize('ui/form/input'), 'UiFormInput');

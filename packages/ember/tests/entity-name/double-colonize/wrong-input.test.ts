@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { doubleColonize } from '../../../../src/index.js';
+import { doubleColonize } from '../../../src/index.js';
 
-test('utils | ember | entity-name | double-colonize > wrong input', function () {
+test('entity-name | double-colonize > wrong input', function () {
   assert.strictEqual(doubleColonize(''), '');
 
   assert.strictEqual(doubleColonize('-'), '');
