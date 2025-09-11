@@ -124,4 +124,9 @@ test('to-template-tag > rendering test (3)', function () {
       ``,
     ].join('\n'),
   );
+
+  const newFile2 = toTemplateTag(newFile);
+
+  // TODO: Fix runtime error to guarantee idempotence
+  assert.strictEqual(newFile2, newFile);
 });

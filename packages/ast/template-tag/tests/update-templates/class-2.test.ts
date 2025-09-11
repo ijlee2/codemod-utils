@@ -38,4 +38,8 @@ test('update-templates > class (2)', function () {
       ``,
     ].join('\n'),
   );
+
+  const newFile2 = updateTemplates(newFile, removeClassAttribute);
+
+  assert.strictEqual(newFile2, newFile);
 });

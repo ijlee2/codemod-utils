@@ -77,4 +77,48 @@ test('update-javascript > class (3)', function () {
       `}`,
     ].join('\n'),
   );
+
+  const newFile2 = updateJavaScript(newFile, (code) => {
+    return renameGetters(code, data);
+  });
+
+  // TODO: Guarantee idempotence
+  assert.notStrictEqual(newFile2, newFile);
+
+  assert.strictEqual(
+    newFile2,
+    [
+      `import Component from '@glimmer/component';`,
+      `import { local } from 'embroider-css-modules';`,
+      ``,
+      `import styles from './example.css';`,
+      ``,
+      `const UserName = <template>`,
+      `  <div`,
+      `    class={{local styles "container" "highlight"}}`,
+      `    data-test-field="😀😀a🎉🎉"`,
+      `  >`,
+      `    {{@user.name}}`,
+      `  </div>`,
+      `</template>;`,
+      ``,
+      `export default class MyComponent extends Component {`,
+      `  // Assigned new name`,
+      `  get __timestamp(): string {`,
+      `    return 'yesterday';`,
+      `  }`,
+      ``,
+      `  <template>`,
+      `  <UserName @user={{@user}} />`,
+      ``,
+      `  <div class={{styles.container}} data-test-field="timestamp">`,
+      `  {{this.timestamp}}`,
+      ``,
+      `  <p> 😀😀😀 Hello! 🎉🎉🎉`,
+      `  </p>`,
+      `  </div>`,
+      `  </template>`,
+      `}`,
+    ].join('\n'),
+  );
 });

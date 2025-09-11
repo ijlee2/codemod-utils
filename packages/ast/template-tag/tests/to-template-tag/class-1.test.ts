@@ -21,4 +21,8 @@ test('to-template-tag > class (1)', function () {
       ``,
     ].join('\n'),
   );
+
+  const newFile2 = toTemplateTag(newFile);
+
+  assert.strictEqual(newFile2, newFile);
 });

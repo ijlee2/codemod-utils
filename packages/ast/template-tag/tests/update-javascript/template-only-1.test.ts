@@ -11,4 +11,10 @@ test('update-javascript > template-only (1)', function () {
   });
 
   assert.strictEqual(newFile, [`<template></template>`, ``].join('\n'));
+
+  const newFile2 = updateJavaScript(newFile, (code) => {
+    return renameGetters(code, data);
+  });
+
+  assert.strictEqual(newFile2, newFile);
 });

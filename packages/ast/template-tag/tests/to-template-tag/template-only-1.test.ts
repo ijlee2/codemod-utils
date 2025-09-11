@@ -16,4 +16,9 @@ test('to-template-tag > template-only (1)', function () {
   const newFile = toTemplateTag(oldFile);
 
   assert.strictEqual(newFile, [`<template></template>`, ''].join('\n'));
+
+  const newFile2 = toTemplateTag(newFile);
+
+  // TODO: Fix runtime error to guarantee idempotence
+  assert.strictEqual(newFile2, newFile);
 });

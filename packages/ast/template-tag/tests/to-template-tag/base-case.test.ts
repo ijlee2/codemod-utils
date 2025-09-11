@@ -8,4 +8,8 @@ test('to-template-tag > base case', function () {
   const newFile = toTemplateTag(oldFile);
 
   assert.strictEqual(newFile, '');
+
+  const newFile2 = toTemplateTag(newFile);
+
+  assert.strictEqual(newFile2, newFile);
 });

@@ -11,4 +11,10 @@ test('update-javascript > base case', function () {
   });
 
   assert.strictEqual(newFile, '');
+
+  const newFile2 = updateJavaScript(newFile, (code) => {
+    return renameGetters(code, data);
+  });
+
+  assert.strictEqual(newFile2, newFile);
 });

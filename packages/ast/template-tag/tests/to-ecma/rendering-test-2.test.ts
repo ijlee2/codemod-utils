@@ -102,4 +102,8 @@ test('to-ecma > rendering test (2)', function () {
       ``,
     ].join('\n'),
   );
+
+  const newFile2 = toEcma(newFile);
+
+  assert.strictEqual(newFile2, newFile);
 });
