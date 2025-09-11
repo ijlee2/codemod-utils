@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { transformJavaScript } from '../../shared-test-setups/index.js';
+import { traverseJavaScript } from '../../helpers/javascript.js';
 
-test('utils | ast | javascript > transform (base case)', function () {
+test('index | javascript > traverse (base case)', function () {
   const oldFile = [
     `import Component from '@glimmer/component';`,
     ``,
@@ -10,16 +10,14 @@ test('utils | ast | javascript > transform (base case)', function () {
     ``,
   ].join('\n');
 
-  const newFile = transformJavaScript(oldFile);
+  const newFile = traverseJavaScript(oldFile);
 
   assert.strictEqual(
     newFile,
     [
       `import Component from '@glimmer/component';`,
       ``,
-      `export default class NavigationMenuComponent extends Component {`,
-      `  styles = styles;`,
-      `}`,
+      `export default class NavigationMenuComponent extends Component {}`,
       ``,
     ].join('\n'),
   );

@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { transformJavaScript } from '../../shared-test-setups/index.js';
+import { transformJavaScript } from '../../helpers/javascript.js';
 
-test('utils | ast | javascript > transform (file is empty)', function () {
+test('index | javascript > transform (file is empty)', function () {
   const oldFile = '';
 
   const newFile = transformJavaScript(oldFile);

@@ -1,7 +1,7 @@
-import { AST } from '../../../src/index.js';
+import { AST } from '../../src/index.js';
 
-export function transformTypeScript(file: string) {
-  const traverse = AST.traverse(true);
+export function transformJavaScript(file: string) {
+  const traverse = AST.traverse();
 
   const ast = traverse(file, {
     visitClassDeclaration(path) {
@@ -23,8 +23,8 @@ export function transformTypeScript(file: string) {
   return AST.print(ast);
 }
 
-export function traverseTypeScript(file: string) {
-  const traverse = AST.traverse(true);
+export function traverseJavaScript(file: string) {
+  const traverse = AST.traverse();
 
   const ast = traverse(file);
 

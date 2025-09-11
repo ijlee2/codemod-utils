@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { traverseTypeScript } from '../../shared-test-setups/index.js';
+import { traverseTypeScript } from '../../helpers/typescript.js';
 
-test('utils | ast | typescript > traverse (base case)', function () {
+test('index | typescript > traverse (base case)', function () {
   const oldFile = [
     `import Component from '@glimmer/component';`,
     ``,

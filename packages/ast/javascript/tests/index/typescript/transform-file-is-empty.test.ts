@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { transformTypeScript } from '../../shared-test-setups/index.js';
+import { transformTypeScript } from '../../helpers/typescript.js';
 
-test('utils | ast | typescript > transform (file is empty)', function () {
+test('index | typescript > transform (file is empty)', function () {
   const oldFile = '';
 
   const newFile = transformTypeScript(oldFile);

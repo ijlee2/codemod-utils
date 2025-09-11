@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { traverseJavaScript } from '../../shared-test-setups/index.js';
+import { traverseJavaScript } from '../../helpers/javascript.js';
 
-test('utils | ast | javascript > traverse (file is empty)', function () {
+test('index | javascript > traverse (file is empty)', function () {
   const oldFile = '';
 
   const newFile = traverseJavaScript(oldFile);

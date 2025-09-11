@@ -1,18 +1,18 @@
 import { parse as babelParser, type ParserOptions } from '@babel/parser';
 import {
-  type Options as formattingOptions,
+  type Options as FormattingOptions,
   parse,
-  print,
+  print as _print,
   types,
   visit,
 } from 'recast';
 
-/* https://github.com/benjamn/recast/blob/v0.23.4/lib/options.ts#L7 */
-const formattingOptions: formattingOptions = {
+/* https://github.com/benjamn/recast/blob/v0.23.11/lib/options.ts#L7 */
+const formattingOptions: FormattingOptions = {
   quote: 'single',
 };
 
-/* https://github.com/facebook/jscodeshift/blob/v0.15.0/parser/babel5Compat.js#L15 */
+/* https://github.com/facebook/jscodeshift/blob/v0.15.2/parser/babel5Compat.js#L15-L38 */
 const jsOptions: ParserOptions = {
   sourceType: 'module',
   allowHashBang: true,
@@ -40,7 +40,7 @@ const jsOptions: ParserOptions = {
   ],
 };
 
-/* https://github.com/facebook/jscodeshift/blob/v0.15.0/parser/tsOptions.js#L14 */
+/* https://github.com/facebook/jscodeshift/blob/v0.15.2/parser/tsOptions.js#L14-L44 */
 const tsOptions: ParserOptions = {
   sourceType: 'module',
   allowImportExportEverywhere: true,
@@ -87,13 +87,15 @@ function getParseOptions(isTypeScript?: boolean) {
   };
 }
 
-function _print(ast: types.ASTNode): string {
-  const { code } = print(ast, formattingOptions);
+export const builders: typeof types.builders = types.builders;
+
+export function print(ast: types.ASTNode): string {
+  const { code } = _print(ast, formattingOptions);
 
   return code;
 }
 
-function _traverse(isTypeScript?: boolean) {
+export function traverse(isTypeScript?: boolean) {
   return function (
     file: string,
     visitMethods: types.Visitor = {},
@@ -105,35 +107,3 @@ function _traverse(isTypeScript?: boolean) {
     return ast;
   };
 }
-
-type AST = {
-  builders: typeof types.builders;
-  print: typeof _print;
-  traverse: typeof _traverse;
-};
-
-/**
- * Provides methods from `recast` to help you parse and transform
- * `*.{js,ts}` files.
- *
- * @example
- *
- * ```ts
- * function transformCode(file: string, isTypeScript: boolean): string {
- *   const traverse = AST.traverse(isTypeScript);
- *
- *   const ast = traverse(file, {
- *     // Use AST.builders to transform the tree
- *   });
- *
- *   return AST.print(ast);
- * }
- * ```
- */
-const AST: AST = {
-  builders: types.builders,
-  print: _print,
-  traverse: _traverse,
-};
-
-export { AST };
