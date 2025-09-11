@@ -1,4 +1,4 @@
-import type { PackageJson, ValidatedPackageJson } from '../types/index.js';
+import type { PackageJson, ValidatedPackageJson } from './types.js';
 
 /**
  * (Type-)Checks that the fields `name` and `version` exist, in the

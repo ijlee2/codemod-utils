@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { convertToMap } from '../../../src/index.js';
+import { convertToMap } from '../../src/index.js';
 
-test('json | convert-to-map > base case', function () {
+test('convert-to-map > base case', function () {
   const devDependencies = {
     'ember-cli-babel': '^7.26.11',
     'ember-cli-htmlbars': '^6.1.1',

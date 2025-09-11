@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { validatePackageJson } from '../../../src/index.js';
+import { validatePackageJson } from '../../src/index.js';
 
-test('json | validate-package-json > base case', function () {
+test('validate-package-json > base case', function () {
   const packageJson = {
     name: 'ember-container-query',
     version: '3.2.0',

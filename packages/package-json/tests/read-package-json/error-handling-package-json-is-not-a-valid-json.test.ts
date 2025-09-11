@@ -1,9 +1,9 @@
 import { assert, loadFixture, test } from '@codemod-utils/tests';
 
-import { readPackageJson } from '../../../src/index.js';
-import { codemodOptions, options } from '../../shared-test-setups/index.js';
+import { readPackageJson } from '../../src/index.js';
+import { codemodOptions, options } from '../shared-test-setups/index.js';
 
-test('json | read-package-json > error handling (package.json is not a valid JSON)', function () {
+test('read-package-json > error handling (package.json is not a valid JSON)', function () {
   const inputProject = {
     'package.json': '{\n  "name": }',
   };

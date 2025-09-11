@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { convertToObject } from '../../../src/index.js';
+import { convertToObject } from '../../src/index.js';
 
-test('json | convert-to-object > edge case (input is undefined)', function () {
+test('convert-to-object > edge case (input is undefined)', function () {
   const devDependencies = undefined;
 
   const expectedValue = {};

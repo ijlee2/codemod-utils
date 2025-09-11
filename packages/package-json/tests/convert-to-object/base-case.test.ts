@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { convertToObject } from '../../../src/index.js';
+import { convertToObject } from '../../src/index.js';
 
-test('json | convert-to-object > base case', function () {
+test('convert-to-object > base case', function () {
   const devDependencies = new Map([
     ['ember-cli-htmlbars', '^6.1.1'],
     ['ember-test-selectors', '^6.0.0'],

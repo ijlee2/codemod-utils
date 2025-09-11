@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import type { Options, PackageJson } from '../types/index.js';
+import type { Options, PackageJson } from './types.js';
 
 /**
  * Reads `package.json` and returns the parsed JSON.

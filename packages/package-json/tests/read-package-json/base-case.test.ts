@@ -1,13 +1,13 @@
 import { assert, loadFixture, test } from '@codemod-utils/tests';
 
-import { readPackageJson } from '../../../src/index.js';
-import { codemodOptions, options } from '../../shared-test-setups/index.js';
+import { readPackageJson } from '../../src/index.js';
+import { codemodOptions, options } from '../shared-test-setups/index.js';
 
-test('json | read-package-json > edge case (package name is scoped)', function () {
+test('read-package-json > base case', function () {
   const inputProject = {
     'package.json': JSON.stringify(
       {
-        name: '@ijlee2/ember-container-query',
+        name: 'ember-container-query',
         version: '3.2.0',
         dependencies: {
           'ember-cli-babel': '^7.26.11',
@@ -33,7 +33,7 @@ test('json | read-package-json > edge case (package name is scoped)', function (
   });
 
   assert.deepStrictEqual(packageJson, {
-    name: '@ijlee2/ember-container-query',
+    name: 'ember-container-query',
     version: '3.2.0',
     dependencies: {
       'ember-cli-babel': '^7.26.11',

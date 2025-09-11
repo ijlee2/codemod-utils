@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { validatePackageJson } from '../../../src/index.js';
+import { validatePackageJson } from '../../src/index.js';
 
-test('json | validate-package-json > package version is missing', function () {
+test('validate-package-json > package version is missing', function () {
   const packageJson = {
     name: 'workspace-root',
     private: true,
