@@ -1,3 +1,3 @@
-export * from './blueprints/decide-version.js';
-export * from './blueprints/get-file-path.js';
-export * from './blueprints/process-template.js';
+export * from './decide-version.js';
+export * from './get-file-path.js';
+export * from './process-template.js';

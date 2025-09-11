@@ -41,7 +41,7 @@
   "devDependencies": {
     "@changesets/cli": "^2.29.7",
     "@changesets/get-github-info": "^0.6.0",
-    "@codemod-utils/tests": "^2.0.3",
+    "@codemod-utils/tests": "^2.0.4",
     "@ijlee2-frontend-configs/eslint-config-node": "^2.1.2",
     "@ijlee2-frontend-configs/prettier": "^2.1.1",
     "@sondr3/minitest": "^0.1.2",
