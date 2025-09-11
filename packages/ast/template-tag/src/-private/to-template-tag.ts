@@ -1,9 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 import { AST } from '@codemod-utils/ast-javascript';
 
-import { getTemplate } from './content-tag.js';
+import { getTemplate, MARKER } from './content-tag.js';
 
 export function removeMarkers(file: string): string {
+  if (!file.includes(MARKER)) {
+    return file;
+  }
+
   const traverse = AST.traverse(true);
 
   const ast = traverse(file, {

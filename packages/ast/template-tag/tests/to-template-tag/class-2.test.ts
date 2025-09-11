@@ -48,6 +48,5 @@ test('to-template-tag > class (2)', function () {
 
   const newFile2 = toTemplateTag(newFile);
 
-  // TODO: Fix runtime error to guarantee idempotence
   assert.strictEqual(newFile2, newFile);
 });

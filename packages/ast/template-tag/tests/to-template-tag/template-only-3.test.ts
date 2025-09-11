@@ -37,6 +37,5 @@ test('to-template-tag > template-only (3)', function () {
 
   const newFile2 = toTemplateTag(newFile);
 
-  // TODO: Fix runtime error to guarantee idempotence
   assert.strictEqual(newFile2, newFile);
 });
