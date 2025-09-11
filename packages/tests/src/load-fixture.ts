@@ -3,7 +3,7 @@ import { existsSync, rmSync } from 'node:fs';
 // eslint-disable-next-line import-x/default
 import fixturify from 'fixturify';
 
-import type { DirJSON, Options } from '../types/index.js';
+import type { DirJSON, Options } from './types.js';
 
 /**
  * Creates a fixture (folders and files) at the specified path.

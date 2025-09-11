@@ -3,7 +3,7 @@ import { join } from 'node:path';
 
 import { globSync } from 'glob';
 
-import type { DirJSON } from '../types/index.js';
+import type { DirJSON } from './types.js';
 
 function updateJson(
   json: DirJSON,
