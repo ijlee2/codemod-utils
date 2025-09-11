@@ -1,4 +1,4 @@
-import type { PackageJson, TsConfigJson } from 'type-fest';
+import type { PackageJson } from 'type-fest';
 
 type Options = {
   [key: string]: unknown;
@@ -8,4 +8,4 @@ type Options = {
 type ValidatedPackageJson = PackageJson &
   Required<Pick<PackageJson, 'name' | 'version'>>;
 
-export type { Options, PackageJson, TsConfigJson, ValidatedPackageJson };
+export type { Options, PackageJson, ValidatedPackageJson };

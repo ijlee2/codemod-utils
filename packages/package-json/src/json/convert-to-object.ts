@@ -1,6 +1,6 @@
 /**
- * Converts a Map (back) to an object. Together with `convertToMap()`,
- * you can update JSONs.
+ * Converts a Map (back) to an object. Use it with `convertToMap()`
+ * to update objects in `package.json`.
  *
  * @param object
  *
@@ -30,22 +30,6 @@
  * });
  *
  * packageJson['dependencies'] = convertToObject(dependencies);
- * ```
- *
- * @example
- *
- * Configure `tsconfig.json` in an Ember app.
- *
- * ```ts
- * const compilerOptions = convertToMap(tsConfigJson['compilerOptions']);
- *
- * compilerOptions.set('paths', {
- *   [`${appName}/tests/*`]: ['tests/*'],
- *   [`${appName}/*`]: ['app/*'],
- *   '*': ['types/*'],
- * });
- *
- * tsConfigJson['compilerOptions'] = convertToObject(compilerOptions);
  * ```
  */
 export function convertToObject(map = new Map()) {

@@ -2,19 +2,19 @@
 
 # @codemod-utils/package-json
 
-_Utilities for handling JSON_
+_Utilities for handling `package.json`_
 
 
 ## What is it?
 
-`@codemod-utils/json` helps you update files like `package.json` and `tsconfig.json`.
+`@codemod-utils/package-json` helps you read and update `package.json`.
 
 
 ## API
 
 ### convertToMap, convertToObject
 
-`convertToMap()` converts an object to a Map, while `convertToObject()` converts the Map back to an object. Use these two utilities to update JSONs.
+`convertToMap()` converts an object to a Map, while `convertToObject()` converts the Map back to an object. Use these two utilities to update objects in `package.json`.
 
 > [!NOTE]
 > `convertToObject()` creates an object with keys in alphabetical order.
@@ -44,26 +44,6 @@ packageJson['dependencies'] = convertToObject(dependencies);
 
 </details>
 
-<details>
-
-<summary>Example</summary>
-
-Configure `tsconfig.json` in an Ember app.
-
-```ts
-const compilerOptions = convertToMap(tsConfigJson['compilerOptions']);
-
-compilerOptions.set('paths', {
-  [`${appName}/tests/*`]: ['tests/*'],
-  [`${appName}/*`]: ['app/*'],
-  '*': ['types/*'],
-});
-
-tsConfigJson['compilerOptions'] = convertToObject(compilerOptions);
-```
-
-</details>
-
 
 ### readPackageJson
 
@@ -76,10 +56,10 @@ Reads `package.json` and returns the parsed JSON.
 
 <summary>Example</summary>
 
-Check if the project, against which the codemod is run, has `typescript` as a dependency.
+Check if a project has `typescript` as a dependency.
 
 ```ts
-import { readPackageJson } from '@codemod-utils/json';
+import { readPackageJson } from '@codemod-utils/package-json';
 
 const { dependencies, devDependencies } = readPackageJson({
   projectRoot,
@@ -105,7 +85,10 @@ const hasTypeScript = projectDependencies.has('typescript');
 <summary>Example</summary>
 
 ```js
-import { readPackageJson, validatePackageJson } from '@codemod-utils/json';
+import {
+  readPackageJson,
+  validatePackageJson,
+} from '@codemod-utils/package-json';
 
 const packageJson = readPackageJson({ projectRoot });
 
