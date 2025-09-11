@@ -1,5 +1,20 @@
 # Changelog for @codemod-utils/package-json
 
+## 3.0.0
+
+### Major Changes
+
+- [#200](https://github.com/ijlee2/codemod-utils/pull/200) Renamed @codemod-utils/json to @codemod-utils/package-json ([@ijlee2](https://github.com/ijlee2))
+- [#200](https://github.com/ijlee2/codemod-utils/pull/200) Removed tsconfig.json support ([@ijlee2](https://github.com/ijlee2))
+
+### Minor Changes
+
+- [#202](https://github.com/ijlee2/codemod-utils/pull/202) Created getPackageType() ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#201](https://github.com/ijlee2/codemod-utils/pull/201) Flattened folder structure ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.3
 
 ### Patch Changes

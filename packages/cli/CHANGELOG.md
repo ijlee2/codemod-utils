@@ -1,5 +1,15 @@
 # Changelog for @codemod-utils/cli
 
+## 3.6.0
+
+### Minor Changes
+
+- [#200](https://github.com/ijlee2/codemod-utils/pull/200) Renamed @codemod-utils/json to @codemod-utils/package-json ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#201](https://github.com/ijlee2/codemod-utils/pull/201) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.5.2
 
 ### Patch Changes

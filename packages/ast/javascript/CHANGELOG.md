@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ast-javascript
 
+## 2.0.7
+
+### Patch Changes
+
+- [#201](https://github.com/ijlee2/codemod-utils/pull/201) Flattened folder structure ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.6
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ember
 
+## 3.0.3
+
+### Patch Changes
+
+- [#201](https://github.com/ijlee2/codemod-utils/pull/201) Flattened folder structure ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.0.2
 
 ### Patch Changes

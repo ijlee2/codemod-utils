@@ -1,5 +1,12 @@
 # Changelog for @codemod-utils/files
 
+## 3.0.5
+
+### Patch Changes
+
+- [#201](https://github.com/ijlee2/codemod-utils/pull/201) Flattened folder structure ([@ijlee2](https://github.com/ijlee2))
+- [#200](https://github.com/ijlee2/codemod-utils/pull/200) Renamed @codemod-utils/json to @codemod-utils/package-json ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.0.4
 
 ### Patch Changes

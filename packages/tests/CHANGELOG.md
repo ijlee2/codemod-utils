@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/tests
 
+## 2.0.4
+
+### Patch Changes
+
+- [#201](https://github.com/ijlee2/codemod-utils/pull/201) Flattened folder structure ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.3
 
 ### Patch Changes

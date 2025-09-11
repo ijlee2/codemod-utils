@@ -43,7 +43,7 @@ npx @codemod-utils/cli <your-codemod-name>
 - [`create-v2-addon-repo`](https://github.com/ijlee2/embroider-toolbox/tree/main/packages/create-v2-addon-repo)
 - [`ember-codemod-args-to-signature`](https://github.com/ijlee2/ember-codemod-args-to-signature)
 - [`ember-codemod-css-modules`](https://github.com/simplepractice/ember-codemod-css-modules)
-- [`ember-codemod-ember-render-helpers-to-v1`](https://github.com/buschtoens/ember-render-helpers/tree/master/packages/ember-codemod-ember-render-helpers-to-v1)
+- [`ember-codemod-ember-render-helpers-to-v1`](https://github.com/buschtoens/ember-render-helpers/tree/main/packages/ember-codemod-ember-render-helpers-to-v1)
 - [`ember-codemod-pod-to-octane`](https://github.com/ijlee2/ember-codemod-pod-to-octane)
 - [`ember-codemod-remove-ember-css-modules`](https://github.com/ijlee2/embroider-css-modules/tree/main/packages/ember-codemod-remove-ember-css-modules)
 - [`ember-codemod-remove-inject-as-service`](https://github.com/ijlee2/ember-codemod-remove-inject-as-service)
