@@ -6,7 +6,7 @@ import {
   convertToObject,
   type PackageJson,
   readPackageJson,
-} from '@codemod-utils/json';
+} from '@codemod-utils/package-json';
 
 import type { Options } from '../types/index.js';
 import { getVersion } from '../utils/blueprints.js';
