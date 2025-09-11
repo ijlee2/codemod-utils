@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { processTemplate } from '../../../src/index.js';
+import { processTemplate } from '../../src/index.js';
 
-test('blueprints | process-template > escape', function () {
+test('process-template > escape', function () {
   const blueprintFile = '<%- context.htmlCode %>';
 
   const file = processTemplate(blueprintFile, {

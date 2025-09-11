@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { processTemplate } from '../../../src/index.js';
+import { processTemplate } from '../../src/index.js';
 
-test('blueprints | process-template > evaluate', function () {
+test('process-template > evaluate', function () {
   const blueprintFile = [
     `<% if (options.packageManager.isNpm) { %>{`,
     `  "scripts": {`,

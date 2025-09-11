@@ -1,4 +1,3 @@
-// eslint-disable-next-line n/no-missing-import
 import template from 'lodash/template.js';
 
 /**

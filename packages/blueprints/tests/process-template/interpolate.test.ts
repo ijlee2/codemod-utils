@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { processTemplate } from '../../../src/index.js';
+import { processTemplate } from '../../src/index.js';
 
-test('blueprints | process-template > interpolate', function () {
+test('process-template > interpolate', function () {
   const blueprintFile = [
     `packages:`,
     `  - '<%= options.packages.addon.name %>'`,
