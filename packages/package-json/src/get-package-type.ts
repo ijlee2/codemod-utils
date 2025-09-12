@@ -1,8 +1,7 @@
-import type { PackageJson } from './types.js';
+import type { PackageJson, PackageType } from './types.js';
 
 type EmberAddon = Record<string, unknown>;
 type PackageName = string;
-type PackageType = 'node' | 'v1-addon' | 'v1-app' | 'v2-addon' | 'v2-app';
 
 function getPackageFields(packageJson: PackageJson): {
   dependencies: Set<PackageName>;
