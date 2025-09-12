@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/package-json
 
+## 3.1.0
+
+### Minor Changes
+
+- [#203](https://github.com/ijlee2/codemod-utils/pull/203) Exported PackageType ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.0.0
 
 ### Major Changes

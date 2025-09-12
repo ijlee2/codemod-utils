@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/cli
 
+## 3.6.1
+
+### Patch Changes
+
+- [#203](https://github.com/ijlee2/codemod-utils/pull/203) Exported PackageType ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.6.0
 
 ### Minor Changes
