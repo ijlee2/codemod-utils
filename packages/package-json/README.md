@@ -49,6 +49,8 @@ packageJson['dependencies'] = convertToObject(dependencies);
 
 Determines package type based on Ember's conventions.
 
+Possible values are `'node'`, `'v1-addon'`, `'v1-app'`, `'v2-addon'`, or `'v2-app'`.
+
 <details>
 
 <summary>Example</summary>
