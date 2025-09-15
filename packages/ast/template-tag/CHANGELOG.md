@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ast-template-tag
 
+## 0.6.0
+
+### Minor Changes
+
+- [#205](https://github.com/ijlee2/codemod-utils/pull/205) Exported the type TemplateTag ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.5.1
 
 ### Patch Changes

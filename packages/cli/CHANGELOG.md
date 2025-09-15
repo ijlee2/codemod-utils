@@ -1,5 +1,12 @@
 # Changelog for @codemod-utils/cli
 
+## 3.6.2
+
+### Patch Changes
+
+- [#206](https://github.com/ijlee2/codemod-utils/pull/206) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+- [#204](https://github.com/ijlee2/codemod-utils/pull/204) Allowed v1 addons to omit the ember-addon key ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.6.1
 
 ### Patch Changes

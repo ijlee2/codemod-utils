@@ -1,6 +1,6 @@
 {
   "name": "@codemod-utils/ast-template-tag",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "Utilities for handling *.{gjs,gts} files",
   "keywords": [
     "codemod",

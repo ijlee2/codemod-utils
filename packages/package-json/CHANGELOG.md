@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/package-json
 
+## 3.1.1
+
+### Patch Changes
+
+- [#204](https://github.com/ijlee2/codemod-utils/pull/204) Allowed v1 addons to omit the ember-addon key ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.1.0
 
 ### Minor Changes
