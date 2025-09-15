@@ -36,3 +36,5 @@ export function findTemplateTags(file: string): TemplateTag[] {
 
   return templateTags;
 }
+
+export type { TemplateTag };
