@@ -55,8 +55,8 @@ function getPackageFields(packageJson: PackageJson): {
 export function getPackageType(packageJson: PackageJson): PackageType {
   const { dependencies, emberAddon, keywords } = getPackageFields(packageJson);
 
-  if (keywords.includes('ember-addon') && emberAddon) {
-    return emberAddon['version'] === 2 ? 'v2-addon' : 'v1-addon';
+  if (keywords.includes('ember-addon')) {
+    return emberAddon?.['version'] === 2 ? 'v2-addon' : 'v1-addon';
   }
 
   if (dependencies.has('ember-source')) {

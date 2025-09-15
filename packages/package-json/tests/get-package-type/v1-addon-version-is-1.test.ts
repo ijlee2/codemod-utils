@@ -2,7 +2,7 @@ import { assert, test } from '@codemod-utils/tests';
 
 import { getPackageType } from '../../src/index.js';
 
-test('get-package-type > v1-addon (ember-addon is missing)', function () {
+test('get-package-type > v1-addon (version is 1)', function () {
   const packageJson = {
     name: 'ember-container-query',
     version: '3.2.0',
@@ -16,6 +16,9 @@ test('get-package-type > v1-addon (ember-addon is missing)', function () {
     },
     ember: {
       edition: 'octane',
+    },
+    'ember-addon': {
+      version: 1,
     },
   };
 
