@@ -37,11 +37,11 @@
   "dependencies": {
     "@codemod-utils/ast-javascript": "^2.0.7",
     "@codemod-utils/ast-template": "^2.0.3",
-    "@codemod-utils/ast-template-tag": "^0.5.1",
+    "@codemod-utils/ast-template-tag": "^0.6.0",
     "@codemod-utils/blueprints": "^2.0.3",
     "@codemod-utils/ember": "^3.0.3",
     "@codemod-utils/files": "^3.0.5",
-    "@codemod-utils/package-json": "^3.0.0",
+    "@codemod-utils/package-json": "^3.1.1",
     "yargs": "^18.0.0"
   },
   "devDependencies": {
