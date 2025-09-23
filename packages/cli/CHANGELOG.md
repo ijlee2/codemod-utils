@@ -1,5 +1,16 @@
 # Changelog for @codemod-utils/cli
 
+## 3.7.0
+
+### Minor Changes
+
+- [#209](https://github.com/ijlee2/codemod-utils/pull/209) Re-ordered packageManager so that package.json can pass sort-package-json ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#209](https://github.com/ijlee2/codemod-utils/pull/209) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+- [#208](https://github.com/ijlee2/codemod-utils/pull/208) Updated type-fest to v5 ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.6.2
 
 ### Patch Changes

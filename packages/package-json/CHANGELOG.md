@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/package-json
 
+## 3.2.0
+
+### Minor Changes
+
+- [#208](https://github.com/ijlee2/codemod-utils/pull/208) Updated type-fest to v5 ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.1.1
 
 ### Patch Changes
