@@ -70,7 +70,7 @@ function updateDevDependencies(
   packageJson['devDependencies'] = convertToObject(devDependencies);
 }
 
-function addPackageManager(packageJson: PackageJson): void {
+function updatePackageManager(packageJson: PackageJson): void {
   const version = getVersion('pnpm').replace(/^\^/, '');
 
   packageJson['packageManager'] = `pnpm@${version}`;
@@ -85,7 +85,7 @@ export function updatePackageJson(options: Options): void {
 
   updateDependencies(packageJson, options);
   updateDevDependencies(packageJson, options);
-  addPackageManager(packageJson);
+  updatePackageManager(packageJson);
 
   const destination = join(projectRoot, codemod.name, 'package.json');
   const file = JSON.stringify(packageJson, null, 2) + '\n';
