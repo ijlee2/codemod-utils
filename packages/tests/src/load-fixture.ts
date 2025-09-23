@@ -1,6 +1,5 @@
 import { existsSync, rmSync } from 'node:fs';
 
-// eslint-disable-next-line import-x/default
 import fixturify from 'fixturify';
 
 import type { DirJSON, Options } from './types.js';
