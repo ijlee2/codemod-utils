@@ -40,14 +40,14 @@
     "@changesets/cli": "^2.29.7",
     "@changesets/get-github-info": "^0.6.0",
     "@codemod-utils/tests": "^2.0.4",
-    "@ijlee2-frontend-configs/eslint-config-node": "^2.2.1",
+    "@ijlee2-frontend-configs/eslint-config-node": "^2.2.2",
     "@ijlee2-frontend-configs/prettier": "^2.2.0",
     "@sondr3/minitest": "^0.1.2",
     "concurrently": "^9.2.1",
-    "eslint": "^9.36.0",
+    "eslint": "^9.37.0",
     "prettier": "^3.6.2"
   },
-  "packageManager": "pnpm@10.17.1",
+  "packageManager": "pnpm@10.18.2",
   "engines": {
     "node": "20.* || >= 22"
   }
