@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ast-template-tag
 
+## 1.0.0
+
+### Major Changes
+
+- [#211](https://github.com/ijlee2/codemod-utils/pull/211) Marked stable release ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.6.0
 
 ### Minor Changes
