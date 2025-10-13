@@ -37,7 +37,7 @@ npx @codemod-utils/cli <your-codemod-name>
 
 ## Codemods written with @codemod-utils
 
-- [`analyze-ember-project-dependencies`](https://github.com/ijlee2/embroider-toolbox/tree/main/packages/analyze-ember-project-dependencies)
+- [`analyze-ember-project-dependencies`](https://github.com/ijlee2/analyze-ember-project-dependencies)
 - [`blueprints-v2-addon`](https://github.com/ijlee2/create-v2-addon-repo/tree/main/packages/blueprints-v2-addon)
 - [`codemod-generate-release-notes`](https://github.com/Ajanth/codemod-generate-release-notes)
 - [`create-v2-addon-repo`](https://github.com/ijlee2/create-v2-addon-repo/tree/main/packages/create-v2-addon-repo)
