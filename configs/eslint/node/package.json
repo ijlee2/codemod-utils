@@ -22,17 +22,17 @@
     "lint:js:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@ijlee2-frontend-configs/eslint-config-node": "^2.2.1"
+    "@ijlee2-frontend-configs/eslint-config-node": "^2.2.2"
   },
   "devDependencies": {
     "@shared-configs/prettier": "workspace:*",
     "concurrently": "^9.2.1",
-    "eslint": "^9.36.0",
+    "eslint": "^9.37.0",
     "prettier": "^3.6.2"
   },
   "peerDependencies": {
-    "eslint": "^9.36.0",
-    "typescript": "^5.9.2"
+    "eslint": "^9.37.0",
+    "typescript": "^5.9.3"
   },
   "peerDependenciesMeta": {
     "eslint": {

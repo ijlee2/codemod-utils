@@ -18,14 +18,14 @@
   },
   "dependencies": {
     "@tsconfig/node20": "^20.1.6",
-    "@tsconfig/strictest": "^2.0.5"
+    "@tsconfig/strictest": "^2.0.6"
   },
   "devDependencies": {
     "@shared-configs/prettier": "workspace:*",
     "prettier": "^3.6.2"
   },
   "peerDependencies": {
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "peerDependenciesMeta": {
     "typescript": {
