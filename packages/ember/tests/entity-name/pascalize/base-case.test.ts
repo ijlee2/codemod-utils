@@ -7,5 +7,7 @@ test('entity-name | pascalize > base case', function () {
 
   assert.strictEqual(pascalize('hello-world'), 'HelloWorld');
 
+  assert.strictEqual(pascalize('hello-world123'), 'HelloWorld123');
+
   assert.strictEqual(pascalize('hello-world-123'), 'HelloWorld123');
 });
