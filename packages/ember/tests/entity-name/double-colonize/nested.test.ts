@@ -11,6 +11,6 @@ test('entity-name | double-colonize > nested', function () {
   );
   assert.strictEqual(
     doubleColonize('widgets/widget-3/tour-schedule/responsive-image'),
-    'Widgets::Widget3::TourSchedule::ResponsiveImage',
+    'Widgets::Widget-3::TourSchedule::ResponsiveImage',
   );
 });

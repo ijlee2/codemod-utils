@@ -7,5 +7,7 @@ test('entity-name | camelize > base case', function () {
 
   assert.strictEqual(camelize('hello-world'), 'helloWorld');
 
+  assert.strictEqual(camelize('hello-world123'), 'helloWorld123');
+
   assert.strictEqual(camelize('hello-world-123'), 'helloWorld123');
 });

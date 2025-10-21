@@ -1,10 +1,15 @@
-function pascalize(value: string): string {
-  return value
-    .split('-')
-    .map((token) => {
-      return token.charAt(0).toUpperCase() + token.substring(1).toLowerCase();
-    })
-    .join('');
+function emberize(value: string): string {
+  const tokens = value.split('-').map((token) => {
+    return token.charAt(0).toUpperCase() + token.substring(1).toLowerCase();
+  });
+
+  return tokens.reduce((accumulator, token) => {
+    const startsWithNumber = /^\d/.test(token);
+
+    accumulator += startsWithNumber ? `-${token}` : token;
+
+    return accumulator;
+  });
 }
 
 /**
@@ -29,5 +34,5 @@ function pascalize(value: string): string {
  * ```
  */
 export function doubleColonize(entityName: string): string {
-  return entityName.split('/').map(pascalize).join('::');
+  return entityName.split('/').map(emberize).join('::');
 }
