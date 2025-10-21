@@ -47,14 +47,14 @@
     "@sondr3/minitest": "^0.1.2",
     "@tsconfig/node20": "^20.1.6",
     "@tsconfig/strictest": "^2.0.6",
-    "@types/node": "^20.19.21",
+    "@types/node": "^20.19.23",
     "@types/yargs": "^17.0.33",
     "concurrently": "^9.2.1",
-    "eslint": "^9.37.0",
+    "eslint": "^9.38.0",
     "prettier": "^3.6.2",
     "typescript": "^5.9.3"
   },
-  "packageManager": "pnpm@10.18.2",
+  "packageManager": "pnpm@10.18.3",
   "engines": {
     "node": "20.* || >= 22"
   }
