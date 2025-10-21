@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ember
 
+## 3.0.4
+
+### Patch Changes
+
+- [#213](https://github.com/ijlee2/codemod-utils/pull/213) Handled numbers in a component name ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.0.3
 
 ### Patch Changes
