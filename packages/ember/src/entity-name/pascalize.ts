@@ -24,5 +24,5 @@ import { doubleColonize } from './double-colonize.js';
 export function pascalize(entityName: string): string {
   const doubleColonizedName = doubleColonize(entityName);
 
-  return doubleColonizedName.replaceAll('::', '');
+  return doubleColonizedName.replaceAll('-', '').replaceAll('::', '');
 }
