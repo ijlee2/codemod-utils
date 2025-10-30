@@ -39,7 +39,7 @@ import postcss from 'postcss';
 import type { Options } from '../types/index.js';
 import { PostcssRemoveAtValue } from '../utils/css/postcss-plugins.js';
 
-function updateFile(file: string): string {
+function transform(file: string): string {
   const plugins = [PostcssRemoveAtValue()];
 
   return postcss(plugins).process(file).css;
@@ -55,7 +55,7 @@ export function removeAtValue(options: Options): void {
   const fileMap = new Map(
     filePaths.map((filePath) => {
       const oldFile = readFileSync(join(projectRoot, filePath), 'utf8');
-      const newFile = updateFile(oldFile);
+      const newFile = transform(oldFile);
 
       return [filePath, newFile];
     }),

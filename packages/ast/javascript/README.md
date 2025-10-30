@@ -12,8 +12,12 @@ _Utilities for handling `*.{js,ts}` files as abstract syntax tree_
 ```ts
 import { AST } from '@codemod-utils/ast-javascript';
 
-function transformCode(file: string, isTypeScript: boolean): string {
-  const traverse = AST.traverse(isTypeScript);
+type Data = {
+  isTypeScript: boolean;
+};
+
+function transform(file: string, data: Data): string {
+  const traverse = AST.traverse(data.isTypeScript);
 
   const ast = traverse(file, {
     /* Use AST.builders to transform the tree */
@@ -59,7 +63,7 @@ Copy-paste the visit methods from your file to AST explorer, then rename `AST.bu
 /* Your file */
 import { AST } from '@codemod-utils/ast-javascript';
 
-export function transformCode(file) {
+export function transform(file) {
   const traverse = AST.traverse(true);
 
   const ast = traverse(file, {

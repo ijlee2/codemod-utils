@@ -46,8 +46,8 @@ import { replaceTemplateTag } from './replace-template-tag.js';
  *   isTypeScript: filePath.endsWith('.gts'),
  * };
  *
- * const newFile = updateTemplates(oldFile, (file) => {
- *   return transform(file, data);
+ * const newFile = updateTemplates(oldFile, (code) => {
+ *   return transform(code, data);
  * });
  * ```
  */

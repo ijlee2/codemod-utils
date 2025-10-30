@@ -12,7 +12,7 @@ _Utilities for handling `*.hbs` files as abstract syntax tree_
 ```ts
 import { AST } from '@codemod-utils/ast-template';
 
-function transformCode(file: string): string {
+function transform(file: string): string {
   const traverse = AST.traverse();
 
   const ast = traverse(file, {
@@ -59,7 +59,7 @@ Copy-paste the visit methods from your file to AST explorer, then rename `AST.bu
 /* Your file */
 import { AST } from '@codemod-utils/ast-template';
 
-function transformCode(file) {
+function transform(file) {
   const traverse = AST.traverse();
 
   const ast = traverse(file, {

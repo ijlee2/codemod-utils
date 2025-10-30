@@ -16,7 +16,7 @@ _Utilities for tests_
 
 The `test` method comes from [`@sondr3/minitest`](https://github.com/sondr3/minitest).
 
-```js
+```ts
 import { test } from '@codemod-utils/tests';
 
 test('Some method', function () {
@@ -26,7 +26,7 @@ test('Some method', function () {
 
 You can append `.only()` to run a subset of tests. This may be useful for debugging.
 
-```js
+```ts
 test('Some method', function () {
   // ...
 }).only();
@@ -39,7 +39,7 @@ Note, test files must have the extension `.test.ts` or `.test.js`. Check the [ma
 
 The `assert` object comes from [Node.js](https://nodejs.org/api/assert.html).
 
-```js
+```ts
 import { assert, test } from '@codemod-utils/tests';
 
 import { createOptions } from '../../../src/steps/index.js';
@@ -68,7 +68,7 @@ Use these methods to document how the codemod updates folders and files.
 
 <summary>Example</summary>
 
-```js
+```ts
 /* tests/fixtures/sample-project/index.ts */
 import { convertFixtureToJson } from '@codemod-utils/tests';
 
@@ -78,7 +78,7 @@ const outputProject = convertFixtureToJson('sample-project/output');
 export { inputProject, outputProject };
 ```
 
-```js
+```ts
 /* tests/index/sample-project.test.ts */
 import { assertFixture, loadFixture, test } from '@codemod-utils/tests';
 

@@ -46,8 +46,8 @@ import { toTemplateTag } from './to-template-tag.js';
  *   isTypeScript: filePath.endsWith('.gts'),
  * };
  *
- * const newFile = updateJavaScript(oldFile, (file) => {
- *   return transform(file, data);
+ * const newFile = updateJavaScript(oldFile, (code) => {
+ *   return transform(code, data);
  * });
  * ```
  */

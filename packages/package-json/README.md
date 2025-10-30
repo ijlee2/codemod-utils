@@ -109,7 +109,7 @@ const hasTypeScript = projectDependencies.has('typescript');
 
 <summary>Example</summary>
 
-```js
+```ts
 import {
   readPackageJson,
   validatePackageJson,
