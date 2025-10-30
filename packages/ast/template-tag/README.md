@@ -176,8 +176,8 @@ const data = {
   isTypeScript: filePath.endsWith('.gts'),
 };
 
-const newFile = updateJavaScript(oldFile, (file) => {
-  return transform(file, data);
+const newFile = updateJavaScript(oldFile, (code) => {
+  return transform(code, data);
 });
 ```
 
@@ -223,8 +223,8 @@ const data = {
   isTypeScript: filePath.endsWith('.gts'),
 };
 
-const newFile = updateTemplates(oldFile, (file) => {
-  return transform(file, data);
+const newFile = updateTemplates(oldFile, (code) => {
+  return transform(code, data);
 });
 ```
 

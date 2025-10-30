@@ -130,7 +130,7 @@ import { createFiles, findFiles } from '@codemod-utils/files';
 
 import type { Options } from '../types/index.js';
 
-+ function updateFile(file: string): string {
++ function transform(file: string): string {
 +   const plugins = [PostcssNestedPlugin()];
 + 
 +   return postcss(plugins).process(file).css;
@@ -146,7 +146,7 @@ export function removeCssNesting(options: Options): void {
   const fileMap = new Map(
     filePaths.map((filePath) => {
       const oldFile = readFileSync(join(projectRoot, filePath), 'utf8');
-+       const newFile = updateFile(oldFile);
++       const newFile = transform(oldFile);
 
 -       return [filePath, oldFile];
 +       return [filePath, newFile];

@@ -33,8 +33,12 @@ Libraries like [`recast`](https://github.com/benjamn/recast) and [`ember-templat
 ```ts
 import { AST } from '@codemod-utils/ast-javascript';
 
-function updateFile(file: string, isTypeScript: boolean): string {
-  const traverse = AST.traverse(isTypeScript);
+type Data = {
+  isTypeScript: boolean;
+};
+
+function transform(file: string, data: Data): string {
+  const traverse = AST.traverse(data.isTypeScript);
 
   const ast = traverse(file, {
     /* Use AST.builders to transform the tree */
@@ -53,7 +57,7 @@ function updateFile(file: string, isTypeScript: boolean): string {
 ```ts
 import { AST } from '@codemod-utils/ast-template';
 
-function updateFile(file: string): string {
+function transform(file: string): string {
   const traverse = AST.traverse();
 
   const ast = traverse(file, {

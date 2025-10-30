@@ -31,7 +31,7 @@ function traverse() {
  * ```ts
  * import { AST } from '@codemod-utils/ast-template';
  *
- * function transformCode(file: string): string {
+ * function transform(file: string): string {
  *   const traverse = AST.traverse();
  *
  *   const ast = traverse(file, {
