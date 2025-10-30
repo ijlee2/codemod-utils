@@ -1,5 +1,12 @@
 # Changelog for @codemod-utils/ast-javascript
 
+## 2.0.9
+
+### Patch Changes
+
+- [#216](https://github.com/ijlee2/codemod-utils/pull/216) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+- [#215](https://github.com/ijlee2/codemod-utils/pull/215) Standardized documentations ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.8
 
 ### Patch Changes
