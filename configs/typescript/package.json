@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@tsconfig/node20": "^20.1.6",
-    "@tsconfig/strictest": "^2.0.6"
+    "@tsconfig/strictest": "^2.0.7"
   },
   "devDependencies": {
     "@shared-configs/prettier": "workspace:*",
