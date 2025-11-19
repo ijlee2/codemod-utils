@@ -1,6 +1,6 @@
 {
   "name": "workspace-root",
-  "version": "3.7.3",
+  "version": "3.7.4",
   "private": true,
   "description": "Workspace root for @codemod-utils",
   "repository": {
