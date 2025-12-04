@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, sep } from 'node:path';
 
 import { globSync } from 'glob';
 
@@ -32,7 +32,7 @@ function createJson(filePaths: string[], cwd: string): DirJSON {
   const json: DirJSON = {};
 
   filePaths.forEach((filePath) => {
-    const keys = filePath.split('/');
+    const keys = filePath.split(sep);
 
     updateJson(json, { cwd, keys });
   });
@@ -71,7 +71,7 @@ function createJson(filePaths: string[], cwd: string): DirJSON {
  * ```
  */
 export function convertFixtureToJson(projectRoot: string): DirJSON {
-  const cwd = `${process.cwd()}/tests/fixtures/${projectRoot}`;
+  const cwd = join(process.cwd(), `tests/fixtures/${projectRoot}`);
 
   const filePaths = globSync('**/*', {
     cwd,
