@@ -12,29 +12,6 @@ _Utilities for tests_
 
 ## API
 
-### test
-
-The `test` method comes from [`@sondr3/minitest`](https://github.com/sondr3/minitest).
-
-```ts
-import { test } from '@codemod-utils/tests';
-
-test('Some method', function () {
-  // ...
-});
-```
-
-You can append `.only()` to run a subset of tests. This may be useful for debugging.
-
-```ts
-test('Some method', function () {
-  // ...
-}).only();
-```
-
-Note, test files must have the extension `.test.ts` or `.test.js`. Check the [main tutorial](../../tutorials/main-tutorial/02-understand-the-folder-structure.md#tests) for conventions around tests.
-
-
 ### assert
 
 The `assert` object comes from [Node.js](https://nodejs.org/api/assert.html).
@@ -60,7 +37,7 @@ Make strong assertions whenever possible, using methods such as [`assert.deepStr
 - `assert.throws()` - check error messages
 
 
-### convertFixtureToJson, loadFixture, assertFixture
+### assertFixture, convertFixtureToJson, loadFixture
 
 Use these methods to document how the codemod updates folders and files.
 
@@ -106,6 +83,69 @@ test('index > sample-project', function () {
 </details>
 
 In the example above (an "acceptance" test), `inputProject` and `outputProject` were derived from folders and files that actually exist. At times, it may be easier to define `inputProject` and `outputProject` in the test file. This is often the case for "integration" tests, i.e. tests for a single step. Maybe only a few types of files need to be checked, or the file content can be empty because it plays no role in the step.
+
+
+### createFile
+
+The `createFile()` helps you create a file (its content) from an array of strings. The output works on POSIX and Windows.
+
+<details>
+
+<summary>Example</summary>
+
+```ts
+const oldFile = createFile([
+  `import Component from '@glimmer/component';`,
+  ``,
+  `export default class Hello extends Component {}`,
+  ``,
+]);
+
+const newFile = transform(oldFile);
+
+assert.strictEqual(
+  newFile,
+  createFile([
+    `import Component from '@glimmer/component';`,
+    ``,
+    `import styles from './hello.module.css';`,
+    ``,
+    `export default class Hello extends Component {`,
+    `  styles = styles;`,
+    `}`,
+    ``,
+  ]),
+);
+```
+
+</details>
+
+
+### test
+
+The `test()` method comes from [`@sondr3/minitest`](https://github.com/sondr3/minitest).
+
+```ts
+import { test } from '@codemod-utils/tests';
+
+test('index > sample-project', function () {
+  // ...
+});
+```
+
+You can append `.ignore()` or `.only()` to run a subset of tests. This may be useful for debugging.
+
+```ts
+test('index > sample-project', function () {
+  // ...
+}).ignore();
+
+test('index > sample-project', function () {
+  // ...
+}).only();
+```
+
+Note, test files must have the extension `.test.ts` or `.test.js`. Check the [main tutorial](../../tutorials/main-tutorial/02-understand-the-folder-structure.md#tests) for conventions around tests.
 
 
 ## Compatibility
