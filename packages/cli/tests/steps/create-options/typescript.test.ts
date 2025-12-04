@@ -6,6 +6,6 @@ import {
   options,
 } from '../../helpers/shared-test-setups/typescript.js';
 
-test('migration | steps | create-options > typescript', function () {
+test('steps | create-options > typescript', function () {
   assert.deepStrictEqual(createOptions(codemodOptions), options);
 });
