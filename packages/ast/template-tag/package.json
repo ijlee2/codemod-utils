@@ -60,7 +60,7 @@
     "@types/node": "^20.19.25",
     "concurrently": "^9.2.1",
     "eslint": "^9.39.1",
-    "prettier": "^3.6.2",
+    "prettier": "^3.7.4",
     "typescript": "^5.9.3"
   },
   "engines": {
