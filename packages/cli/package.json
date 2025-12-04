@@ -22,7 +22,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "./build.sh --production",
+    "build": "sh build.sh --production",
     "format": "prettier . --cache --write",
     "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" && pnpm format",
@@ -30,7 +30,7 @@
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
-    "test": "./build.sh --test && mt dist-for-testing --quiet"
+    "test": "sh build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {
     "@codemod-utils/blueprints": "workspace:*",
