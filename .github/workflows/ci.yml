@@ -61,20 +61,6 @@ jobs:
   test-on-windows:
     name: Test on Windows
     runs-on: windows-latest
-    continue-on-error: true
-    strategy:
-      fail-fast: false
-      matrix:
-        package:
-          - '@codemod-utils/ast-javascript'
-          - '@codemod-utils/ast-template'
-          - '@codemod-utils/ast-template-tag'
-          - '@codemod-utils/blueprints'
-          - '@codemod-utils/cli'
-          - '@codemod-utils/ember'
-          - '@codemod-utils/files'
-          - '@codemod-utils/package-json'
-          - '@codemod-utils/tests'
     timeout-minutes: 5
     steps:
       - name: Check out a copy of the repo
@@ -93,4 +79,4 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Test
-        run: pnpm --filter "${{ matrix.package }}" test
+        run: pnpm test
