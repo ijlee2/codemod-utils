@@ -1,7 +1,7 @@
 import { assertFixture, loadFixture, test } from '@codemod-utils/tests';
 
 import { createDirectory } from '../../src/index.js';
-import { codemodOptions } from '../shared-test-setups/index.js';
+import { codemodOptions } from '../helpers/index.js';
 
 test('create-directory > idempotency', function () {
   const inputProject = {

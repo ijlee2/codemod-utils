@@ -1,7 +1,7 @@
 import { assert, loadFixture, test } from '@codemod-utils/tests';
 
 import { findFiles } from '../../src/index.js';
-import { codemodOptions } from '../shared-test-setups/index.js';
+import { codemodOptions } from '../helpers/index.js';
 
 test('find-files > error handling (projectRoot is undefined)', function () {
   const inputProject = {
