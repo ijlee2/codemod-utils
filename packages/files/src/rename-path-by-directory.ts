@@ -1,4 +1,4 @@
-import { join } from 'node:path/posix';
+import { join, sep } from 'node:path/posix';
 
 import type { FilePath } from './types.js';
 
@@ -45,9 +45,9 @@ export function renamePathByDirectory(
     return join(to, filePath);
   }
 
-  if (!filePath.startsWith(`${from}/`)) {
+  if (!filePath.startsWith(`${from}${sep}`)) {
     return filePath;
   }
 
-  return join(to, filePath.replace(`${from}/`, ''));
+  return join(to, filePath.replace(`${from}${sep}`, ''));
 }

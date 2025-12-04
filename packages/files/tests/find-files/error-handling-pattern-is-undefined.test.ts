@@ -44,7 +44,7 @@ test('find-files > error handling (pattern is undefined)', function () {
     (error: Error) => {
       assert.strictEqual(
         error.message,
-        'ERROR: The glob pattern is undefined.\n',
+        'ERROR: The glob pattern is undefined.',
       );
 
       return true;
