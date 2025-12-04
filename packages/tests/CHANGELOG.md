@@ -1,5 +1,16 @@
 # Changelog for @codemod-utils/tests
 
+## 2.1.0
+
+### Minor Changes
+
+- [#224](https://github.com/ijlee2/codemod-utils/pull/224) Supported Windows ([@ijlee2](https://github.com/ijlee2))
+- [#224](https://github.com/ijlee2/codemod-utils/pull/224) Created createFile() ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#220](https://github.com/ijlee2/codemod-utils/pull/220) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.6
 
 ### Patch Changes

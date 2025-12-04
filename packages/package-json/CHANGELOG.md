@@ -1,5 +1,16 @@
 # Changelog for @codemod-utils/package-json
 
+## 3.3.0
+
+### Minor Changes
+
+- [#225](https://github.com/ijlee2/codemod-utils/pull/225) Supported Windows ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#225](https://github.com/ijlee2/codemod-utils/pull/225) Removed new line from error messages ([@ijlee2](https://github.com/ijlee2))
+- [#220](https://github.com/ijlee2/codemod-utils/pull/220) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.2.3
 
 ### Patch Changes

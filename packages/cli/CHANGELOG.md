@@ -1,5 +1,16 @@
 # Changelog for @codemod-utils/cli
 
+## 3.8.0
+
+### Minor Changes
+
+- [#227](https://github.com/ijlee2/codemod-utils/pull/227) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+- [#226](https://github.com/ijlee2/codemod-utils/pull/226) Supported Windows ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#220](https://github.com/ijlee2/codemod-utils/pull/220) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.7.4
 
 ### Patch Changes

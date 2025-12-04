@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/ast-template
 
+## 2.1.0
+
+### Minor Changes
+
+- [#224](https://github.com/ijlee2/codemod-utils/pull/224) Supported Windows ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.4
 
 ### Patch Changes

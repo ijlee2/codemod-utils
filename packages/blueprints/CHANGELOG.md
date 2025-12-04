@@ -1,5 +1,15 @@
 # Changelog for @codemod-utils/blueprints
 
+## 2.1.0
+
+### Minor Changes
+
+- [#226](https://github.com/ijlee2/codemod-utils/pull/226) Supported Windows ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#225](https://github.com/ijlee2/codemod-utils/pull/225) Removed new line from error messages ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.3
 
 ### Patch Changes
