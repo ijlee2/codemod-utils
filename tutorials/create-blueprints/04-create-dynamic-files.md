@@ -113,7 +113,7 @@ Now your turn. Update the blueprint for the test app's `package.json`.
 </details>
 
 > [!NOTE]
-> Often, it is easy to miscalculate data and misplace the newline character `\n` . You can run `./update-test-fixtures.sh` to check if the fixture files are updated correctly.
+> Often, it is easy to miscalculate data and misplace the newline character `\n` (`\r\n` on Windows). You can run `./update-test-fixtures.sh` to check if the fixture files are updated correctly.
 
 
 ## Resolve file paths
