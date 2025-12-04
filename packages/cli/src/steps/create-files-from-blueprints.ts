@@ -48,13 +48,13 @@ function setExecutePermissions(options: Options) {
   const files = new Set(['update-test-fixtures.sh']);
 
   if (codemod.hasTypeScript) {
-    files.add(`bin/${codemod.name}.ts`);
+    files.add(join('bin', `${codemod.name}.ts`));
     files.add('build.sh');
   } else {
-    files.add(`bin/${codemod.name}.js`);
+    files.add(join('bin', `${codemod.name}.js`));
   }
 
-  Array.from(files).forEach((file) => {
+  files.forEach((file) => {
     const filePath = join(projectRoot, codemod.name, file);
 
     chmodSync(filePath, 0o755);

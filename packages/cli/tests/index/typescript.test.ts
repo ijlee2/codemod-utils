@@ -4,7 +4,7 @@ import { createCodemod } from '../../src/index.js';
 import { inputProject, outputProject } from '../fixtures/typescript/index.js';
 import { codemodOptions } from '../helpers/shared-test-setups/typescript.js';
 
-test('migration | index > typescript', function () {
+test('index > typescript', function () {
   loadFixture(inputProject, codemodOptions);
 
   createCodemod(codemodOptions);
