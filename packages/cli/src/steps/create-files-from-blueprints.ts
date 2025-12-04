@@ -1,4 +1,4 @@
-import { chmodSync, readFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { join } from 'node:path/posix';
 
 import { processTemplate } from '@codemod-utils/blueprints';
@@ -42,24 +42,24 @@ function resolveBlueprintFilePath(
     .replace('.__js__', codemod.hasTypeScript ? '.ts' : '.js');
 }
 
-function setExecutePermissions(options: Options) {
-  const { codemod, projectRoot } = options;
+// function setExecutePermissions(options: Options) {
+//   const { codemod, projectRoot } = options;
 
-  const files = new Set(['update-test-fixtures.sh']);
+//   const files = new Set(['update-test-fixtures.sh']);
 
-  if (codemod.hasTypeScript) {
-    files.add(join('bin', `${codemod.name}.ts`));
-    files.add('build.sh');
-  } else {
-    files.add(join('bin', `${codemod.name}.js`));
-  }
+//   if (codemod.hasTypeScript) {
+//     files.add(join('bin', `${codemod.name}.ts`));
+//     files.add('build.sh');
+//   } else {
+//     files.add(join('bin', `${codemod.name}.js`));
+//   }
 
-  files.forEach((file) => {
-    const filePath = join(projectRoot, codemod.name, file);
+//   files.forEach((file) => {
+//     const filePath = join(projectRoot, codemod.name, file);
 
-    chmodSync(filePath, 0o755);
-  });
-}
+//     chmodSync(filePath, 0o755);
+//   });
+// }
 
 export function createFilesFromBlueprints(options: Options): void {
   const { codemod } = options;
@@ -92,5 +92,5 @@ export function createFilesFromBlueprints(options: Options): void {
   );
 
   createFiles(fileMap, options);
-  setExecutePermissions(options);
+  // setExecutePermissions(options);
 }
