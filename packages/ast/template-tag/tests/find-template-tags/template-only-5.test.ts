@@ -1,9 +1,9 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { findTemplateTags } from '../../src/index.js';
 
 test('find-template-tags > template-only (5)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import type { TOC } from '@ember/component/template-only';`,
     `import { isTesting, macroCondition } from '@embroider/macros';`,
     ``,
@@ -31,7 +31,7 @@ test('find-template-tags > template-only (5)', function () {
     `  }`,
     `}`,
     ``,
-  ].join('\n');
+  ]);
 
   const templateTags = findTemplateTags(oldFile);
 
@@ -43,8 +43,11 @@ test('find-template-tags > template-only (5)', function () {
         startByte: 355,
         startChar: 355,
       },
-      contents:
-        '\n        <div class={{styles.placeholder-image}}></div>\n      ',
+      contents: createFile([
+        ``,
+        `        <div class={{styles.placeholder-image}}></div>`,
+        `      `,
+      ]),
       endRange: {
         endByte: 428,
         endChar: 428,

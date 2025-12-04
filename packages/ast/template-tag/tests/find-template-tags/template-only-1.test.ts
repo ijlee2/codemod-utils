@@ -1,9 +1,9 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { findTemplateTags } from '../../src/index.js';
 
 test('find-template-tags > template-only (1)', function () {
-  const oldFile = [`<template></template>;`, ``].join('\n');
+  const oldFile = createFile([`<template></template>;`, ``]);
 
   const templateTags = findTemplateTags(oldFile);
 

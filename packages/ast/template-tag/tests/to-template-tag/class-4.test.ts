@@ -1,9 +1,9 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { toTemplateTag } from '../../src/index.js';
 
 test('to-template-tag > class (4)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import { template as template_fd9b2463e5f141cfb5666b64daa1f11a } from "@ember/template-compiler";`,
     `import { assert } from '@ember/debug';`,
     `import { on } from '@ember/modifier';`,
@@ -109,13 +109,13 @@ test('to-template-tag > class (4)', function () {
     `}`,
     `}`,
     ``,
-  ].join('\n');
+  ]);
 
   const newFile = toTemplateTag(oldFile);
 
   assert.strictEqual(
     newFile,
-    [
+    createFile([
       `import { assert } from '@ember/debug';`,
       `import { on } from '@ember/modifier';`,
       `import { action, get } from '@ember/object';`,
@@ -213,7 +213,7 @@ test('to-template-tag > class (4)', function () {
       `  </template>`,
       `}`,
       ``,
-    ].join('\n'),
+    ]),
   );
 
   const newFile2 = toTemplateTag(newFile);

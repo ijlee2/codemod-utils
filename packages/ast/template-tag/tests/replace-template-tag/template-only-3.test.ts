@@ -1,9 +1,9 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { replaceTemplateTag } from '../../src/index.js';
 
 test('replace-template-tag > template-only (3)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import styles from './styles.css';`,
     ``,
     `export default <template>`,
@@ -12,10 +12,10 @@ test('replace-template-tag > template-only (3)', function () {
     `  </div>`,
     `</template>;`,
     ``,
-  ].join('\n');
+  ]);
 
   const newFile = replaceTemplateTag(oldFile, {
-    code: '<template>\n  New contents\n</template>',
+    code: createFile([`<template>`, `  New contents`, `</template>`]),
     range: {
       endByte: 134,
       endChar: 134,
@@ -26,13 +26,13 @@ test('replace-template-tag > template-only (3)', function () {
 
   assert.strictEqual(
     newFile,
-    [
+    createFile([
       `import styles from './styles.css';`,
       ``,
       `export default <template>`,
       `  New contents`,
       `</template>;`,
       ``,
-    ].join('\n'),
+    ]),
   );
 });

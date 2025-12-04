@@ -1,10 +1,10 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { updateTemplates } from '../../src/index.js';
 import { removeClassAttribute } from '../helpers/update-templates.js';
 
 test('update-templates > rendering test (3)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import Service from '@ember/service';`,
     `import { type Registry as Services, service } from '@ember/service';`,
     `import { click, render, type TestContext } from '@ember/test-helpers';`,
@@ -55,13 +55,13 @@ test('update-templates > rendering test (3)', function () {
     `  });`,
     `});`,
     ``,
-  ].join('\n');
+  ]);
 
   const newFile = updateTemplates(oldFile, removeClassAttribute);
 
   assert.strictEqual(
     newFile,
-    [
+    createFile([
       `import Service from '@ember/service';`,
       `import { type Registry as Services, service } from '@ember/service';`,
       `import { click, render, type TestContext } from '@ember/test-helpers';`,
@@ -112,7 +112,7 @@ test('update-templates > rendering test (3)', function () {
       `  });`,
       `});`,
       ``,
-    ].join('\n'),
+    ]),
   );
 
   const newFile2 = updateTemplates(newFile, removeClassAttribute);

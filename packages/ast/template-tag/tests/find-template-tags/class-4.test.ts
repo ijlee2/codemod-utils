@@ -1,9 +1,9 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { findTemplateTags } from '../../src/index.js';
 
 test('find-template-tags > class (4)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import { assert } from '@ember/debug';`,
     `import { on } from '@ember/modifier';`,
     `import { action, get } from '@ember/object';`,
@@ -101,7 +101,7 @@ test('find-template-tags > class (4)', function () {
     `  </template>`,
     `}`,
     ``,
-  ].join('\n');
+  ]);
 
   const templateTags = findTemplateTags(oldFile);
 
@@ -109,7 +109,7 @@ test('find-template-tags > class (4)', function () {
     {
       type: 'class-member',
       tagName: 'template',
-      contents: [
+      contents: createFile([
         ``,
         `    <UiFormField @errorMessage={{this.errorMessage}} @isWide={{@isWide}}>`,
         `      <:label as |l|>`,
@@ -144,7 +144,7 @@ test('find-template-tags > class (4)', function () {
         `      </:field>`,
         `    </UiFormField>`,
         `  `,
-      ].join('\n'),
+      ]),
       range: {
         startByte: 1541,
         endByte: 2418,

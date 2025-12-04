@@ -8,10 +8,6 @@ export const data: Data = {
   getters: new Set(['errorMessage', 'timestamp', 'type']),
 };
 
-export function identity(file: string): string {
-  return file;
-}
-
 export function renameGetters(file: string, data: Data): string {
   const traverse = AST.traverse(true);
 

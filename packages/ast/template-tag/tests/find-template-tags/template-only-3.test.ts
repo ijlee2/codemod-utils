@@ -1,9 +1,9 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { findTemplateTags } from '../../src/index.js';
 
 test('find-template-tags > template-only (3)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import styles from './styles.css';`,
     ``,
     `export default <template>`,
@@ -12,7 +12,7 @@ test('find-template-tags > template-only (3)', function () {
     `  </div>`,
     `</template>;`,
     ``,
-  ].join('\n');
+  ]);
 
   const templateTags = findTemplateTags(oldFile);
 
@@ -24,8 +24,13 @@ test('find-template-tags > template-only (3)', function () {
         startByte: 61,
         startChar: 61,
       },
-      contents:
-        '\n  <div class={{styles.container}}>\n    Hello world!\n  </div>\n',
+      contents: createFile([
+        ``,
+        `  <div class={{styles.container}}>`,
+        `    Hello world!`,
+        `  </div>`,
+        ``,
+      ]),
       endRange: {
         endByte: 134,
         endChar: 134,

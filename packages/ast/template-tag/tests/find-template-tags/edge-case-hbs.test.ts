@@ -1,13 +1,13 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { findTemplateTags } from '../../src/index.js';
 
 test('find-template-tags > edge case (hbs)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `<div class={{this.styles.container}}>`,
     `  Hello world!`,
     `</div>`,
-  ].join('\n');
+  ]);
 
   assert.throws(
     () => {

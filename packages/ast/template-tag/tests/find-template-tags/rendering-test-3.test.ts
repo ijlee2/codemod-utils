@@ -1,9 +1,9 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { findTemplateTags } from '../../src/index.js';
 
 test('find-template-tags > rendering test (3)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import Service from '@ember/service';`,
     `import { type Registry as Services, service } from '@ember/service';`,
     `import { click, render, type TestContext } from '@ember/test-helpers';`,
@@ -54,7 +54,7 @@ test('find-template-tags > rendering test (3)', function () {
     `  });`,
     `});`,
     ``,
-  ].join('\n');
+  ]);
 
   const templateTags = findTemplateTags(oldFile);
 
@@ -95,7 +95,11 @@ test('find-template-tags > rendering test (3)', function () {
         startByte: 991,
         startChar: 991,
       },
-      contents: '\n          <Example1 class="my-style" />\n        ',
+      contents: createFile([
+        ``,
+        `          <Example1 class="my-style" />`,
+        `        `,
+      ]),
       endRange: {
         endByte: 1051,
         endChar: 1051,

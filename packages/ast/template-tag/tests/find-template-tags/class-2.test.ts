@@ -1,9 +1,9 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { findTemplateTags } from '../../src/index.js';
 
 test('find-template-tags > class (2)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import Component from '@glimmer/component';`,
     ``,
     `import styles from './my-component.css';`,
@@ -16,7 +16,7 @@ test('find-template-tags > class (2)', function () {
     `  </template>`,
     `}`,
     ``,
-  ].join('\n');
+  ]);
 
   const templateTags = findTemplateTags(oldFile);
 
@@ -28,8 +28,13 @@ test('find-template-tags > class (2)', function () {
         startByte: 152,
         startChar: 152,
       },
-      contents:
-        '\n    <div class={{styles.container}}>\n      Hello world!\n    </div>\n  ',
+      contents: createFile([
+        ``,
+        `    <div class={{styles.container}}>`,
+        `      Hello world!`,
+        `    </div>`,
+        `  `,
+      ]),
       endRange: {
         endByte: 233,
         endChar: 233,

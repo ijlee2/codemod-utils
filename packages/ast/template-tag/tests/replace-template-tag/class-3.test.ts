@@ -1,9 +1,9 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { replaceTemplateTag } from '../../src/index.js';
 
 test('replace-template-tag > class (3)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import Component from '@glimmer/component';`,
     `import { local } from 'embroider-css-modules';`,
     ``,
@@ -34,10 +34,10 @@ test('replace-template-tag > class (3)', function () {
     `    </div>`,
     `  </template>`,
     `}`,
-  ].join('\n');
+  ]);
 
   const newFile = replaceTemplateTag(oldFile, {
-    code: '<template>\n    New contents\n  </template>',
+    code: createFile([`<template>`, `    New contents`, `  </template>`]),
     range: {
       endByte: 619,
       endChar: 589,
@@ -48,7 +48,7 @@ test('replace-template-tag > class (3)', function () {
 
   assert.strictEqual(
     newFile,
-    [
+    createFile([
       `import Component from '@glimmer/component';`,
       `import { local } from 'embroider-css-modules';`,
       ``,
@@ -72,6 +72,6 @@ test('replace-template-tag > class (3)', function () {
       `    New contents`,
       `  </template>`,
       `}`,
-    ].join('\n'),
+    ]),
   );
 });
