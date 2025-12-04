@@ -19,7 +19,7 @@ test('read-package-json > error handling (package.json is an empty file)', funct
     (error: Error) => {
       assert.strictEqual(
         error.message,
-        'ERROR: package.json is not valid. (Unexpected end of JSON input)\n',
+        'ERROR: package.json is not valid. (Unexpected end of JSON input)',
       );
 
       return true;

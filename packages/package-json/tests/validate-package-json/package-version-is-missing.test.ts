@@ -15,7 +15,7 @@ test('validate-package-json > package version is missing', function () {
     (error: Error) => {
       assert.strictEqual(
         error.message,
-        'ERROR: package.json is not valid. (Package version is missing.)\n',
+        'ERROR: package.json is not valid. (Package version is missing.)',
       );
 
       return true;
