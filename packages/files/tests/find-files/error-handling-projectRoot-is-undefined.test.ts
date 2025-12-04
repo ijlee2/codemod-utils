@@ -44,7 +44,7 @@ test('find-files > error handling (projectRoot is undefined)', function () {
     (error: Error) => {
       assert.strictEqual(
         error.message,
-        'ERROR: The project root is undefined.\n',
+        'ERROR: The project root is undefined.',
       );
 
       return true;

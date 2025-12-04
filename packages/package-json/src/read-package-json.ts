@@ -37,7 +37,7 @@ export function readPackageJson(options: Options): PackageJson {
   const filePath = join(projectRoot, 'package.json');
 
   if (!existsSync(filePath)) {
-    throw new SyntaxError(`ERROR: package.json is missing.\n`);
+    throw new SyntaxError(`ERROR: package.json is missing.`);
   }
 
   try {
@@ -47,7 +47,7 @@ export function readPackageJson(options: Options): PackageJson {
   } catch (error: unknown) {
     if (error instanceof Error) {
       throw new SyntaxError(
-        `ERROR: package.json is not valid. (${error.message})\n`,
+        `ERROR: package.json is not valid. (${error.message})`,
       );
     }
 

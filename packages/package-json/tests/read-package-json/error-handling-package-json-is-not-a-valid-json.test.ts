@@ -21,7 +21,7 @@ test('read-package-json > error handling (package.json is not a valid JSON)', fu
         error.message,
         [
           `ERROR: package.json is not valid. (Unexpected token '}', "{\n`,
-          '  "name": }" is not valid JSON)\n',
+          '  "name": }" is not valid JSON)',
         ].join(''),
       );
 

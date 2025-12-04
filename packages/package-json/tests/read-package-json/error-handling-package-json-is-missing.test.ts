@@ -15,7 +15,7 @@ test('read-package-json > error handling (package.json is missing)', function ()
       });
     },
     (error: Error) => {
-      assert.strictEqual(error.message, 'ERROR: package.json is missing.\n');
+      assert.strictEqual(error.message, 'ERROR: package.json is missing.');
 
       return true;
     },

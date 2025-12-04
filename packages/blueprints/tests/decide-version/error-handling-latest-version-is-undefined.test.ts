@@ -18,7 +18,7 @@ test('decide-version > error handling (latest version is undefined)', function (
     (error: Error) => {
       assert.strictEqual(
         error.message,
-        'ERROR: The latest version of `type-css-modules` is unknown.\n',
+        'ERROR: The latest version of `type-css-modules` is unknown.',
       );
 
       return true;
