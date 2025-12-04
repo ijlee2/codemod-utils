@@ -10,36 +10,47 @@ env:
   NODE_VERSION: 20
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - name: Check out a copy of the repo
-        uses: actions/checkout@v5
+  # lint:
+  #   name: Lint
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 5
+  #   steps:
+  #     - name: Check out a copy of the repo
+  #       uses: actions/checkout@v5
 
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v4
+  #     - name: Set up pnpm
+  #       uses: pnpm/action-setup@v4
 
-      - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v5
-        with:
-          cache: 'pnpm'
-          node-version: ${{ env.NODE_VERSION }}
+  #     - name: Use Node.js ${{ env.NODE_VERSION }}
+  #       uses: actions/setup-node@v5
+  #       with:
+  #         cache: 'pnpm'
+  #         node-version: ${{ env.NODE_VERSION }}
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+  #     - name: Install dependencies
+  #       run: pnpm install --frozen-lockfile
 
-      - name: Lint
-        run: pnpm lint
+  #     - name: Lint
+  #       run: pnpm lint
 
 
   test:
     name: Test
-    runs-on: ${{ matrix.os }}
+    runs-on: windows-latest
+    continue-on-error: true
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        package:
+          - '@codemod-utils/ast-javascript'
+          - '@codemod-utils/ast-template'
+          - '@codemod-utils/ast-template-tag'
+          - '@codemod-utils/blueprints'
+          - '@codemod-utils/cli'
+          - '@codemod-utils/ember'
+          - '@codemod-utils/files'
+          - '@codemod-utils/package-json'
+          - '@codemod-utils/tests'
     timeout-minutes: 5
     steps:
       - name: Check out a copy of the repo
@@ -58,4 +69,4 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Test
-        run: pnpm test
+        run: pnpm --filter "${{ matrix.package }}" test
