@@ -1,7 +1,7 @@
 import { assertFixture, loadFixture, test } from '@codemod-utils/tests';
 
 import { removeDirectoryIfEmpty } from '../../src/index.js';
-import { codemodOptions, options } from '../shared-test-setups/index.js';
+import { codemodOptions, options } from '../helpers/index.js';
 
 test('remove-directory-if-empty > base case', function () {
   const inputProject = {

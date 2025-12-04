@@ -1,7 +1,7 @@
 import { assertFixture, loadFixture, test } from '@codemod-utils/tests';
 
 import { createFiles } from '../../src/index.js';
-import { codemodOptions, options } from '../shared-test-setups/index.js';
+import { codemodOptions, options } from '../helpers/index.js';
 
 test('create-files > base case', function () {
   const inputProject = {};

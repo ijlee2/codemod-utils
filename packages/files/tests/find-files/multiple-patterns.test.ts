@@ -1,7 +1,7 @@
 import { assert, loadFixture, test } from '@codemod-utils/tests';
 
-import { findFiles } from '../../src/index.js';
-import { codemodOptions, options } from '../shared-test-setups/index.js';
+import { findFiles, normalizeFilePath } from '../../src/index.js';
+import { codemodOptions, options } from '../helpers/index.js';
 
 test('find-files > multiple patterns', function () {
   const inputProject = {
@@ -38,11 +38,14 @@ test('find-files > multiple patterns', function () {
     projectRoot: options.projectRoot,
   });
 
-  assert.deepStrictEqual(filePaths, [
-    'index.js',
-    'package.json',
-    'tests/dummy/app/index.html',
-    'tests/dummy/config/optional-features.json',
-    'tests/index.html',
-  ]);
+  assert.deepStrictEqual(
+    filePaths,
+    [
+      'index.js',
+      'package.json',
+      'tests/dummy/app/index.html',
+      'tests/dummy/config/optional-features.json',
+      'tests/index.html',
+    ].map(normalizeFilePath),
+  );
 });

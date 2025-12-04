@@ -1,7 +1,7 @@
 import { assert, loadFixture, test } from '@codemod-utils/tests';
 
-import { findFiles } from '../../src/index.js';
-import { codemodOptions, options } from '../shared-test-setups/index.js';
+import { findFiles, normalizeFilePath } from '../../src/index.js';
+import { codemodOptions, options } from '../helpers/index.js';
 
 test('find-files > base case', function () {
   const inputProject = {
@@ -38,11 +38,14 @@ test('find-files > base case', function () {
     projectRoot: options.projectRoot,
   });
 
-  assert.deepStrictEqual(filePaths, [
-    'tests/dummy/app/.eslintrc.js',
-    'tests/dummy/app/app.ts',
-    'tests/dummy/app/router.ts',
-    'tests/dummy/config/environment.js',
-    'tests/dummy/config/targets.js',
-  ]);
+  assert.deepStrictEqual(
+    filePaths,
+    [
+      'tests/dummy/app/.eslintrc.js',
+      'tests/dummy/app/app.ts',
+      'tests/dummy/app/router.ts',
+      'tests/dummy/config/environment.js',
+      'tests/dummy/config/targets.js',
+    ].map(normalizeFilePath),
+  );
 });

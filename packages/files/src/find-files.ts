@@ -70,11 +70,11 @@ export function findFiles(
   const { ignoreList = [], projectRoot } = options;
 
   if (!pattern) {
-    throw new RangeError('ERROR: The glob pattern is undefined.\n');
+    throw new RangeError('ERROR: The glob pattern is undefined.');
   }
 
   if (!projectRoot) {
-    throw new RangeError('ERROR: The project root is undefined.\n');
+    throw new RangeError('ERROR: The project root is undefined.');
   }
 
   const filePaths = globSync(pattern, {

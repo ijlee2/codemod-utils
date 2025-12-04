@@ -238,6 +238,13 @@ moveFiles(filePathMap, {
 </details>
 
 
+### normalizeFilePath
+
+Converts a file path to work on Windows as needed.
+
+⚠️ Likely, you won't need this method.
+
+
 ### parseFilePath
 
 Parses a file path, similarly to `parse()` from `node:path`, but correctly handles file extensions with more than one `.`, e.g. `.d.ts` and `.css.d.ts`.

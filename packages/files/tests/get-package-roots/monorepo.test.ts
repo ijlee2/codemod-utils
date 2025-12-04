@@ -1,7 +1,7 @@
 import { assert, loadFixture, test } from '@codemod-utils/tests';
 
-import { getPackageRoots } from '../../src/index.js';
-import { codemodOptions, options } from '../shared-test-setups/index.js';
+import { getPackageRoots, normalizeFilePath } from '../../src/index.js';
+import { codemodOptions, options } from '../helpers/index.js';
 
 test('get-package-roots > monorepo', function () {
   const inputProject = {
@@ -33,11 +33,14 @@ test('get-package-roots > monorepo', function () {
     projectRoot: options.projectRoot,
   });
 
-  assert.deepStrictEqual(packageRoots, [
-    'tmp/test-project/docs-app',
-    'tmp/test-project/packages/my-folder/my-package-1',
-    'tmp/test-project/packages/my-package-2',
-    'tmp/test-project/packages/my-package-3',
-    'tmp/test-project/test-app',
-  ]);
+  assert.deepStrictEqual(
+    packageRoots,
+    [
+      'tmp/test-project/docs-app',
+      'tmp/test-project/packages/my-folder/my-package-1',
+      'tmp/test-project/packages/my-package-2',
+      'tmp/test-project/packages/my-package-3',
+      'tmp/test-project/test-app',
+    ].map(normalizeFilePath),
+  );
 });

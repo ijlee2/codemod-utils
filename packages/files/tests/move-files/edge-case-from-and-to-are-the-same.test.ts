@@ -1,7 +1,7 @@
 import { assertFixture, loadFixture, test } from '@codemod-utils/tests';
 
 import { moveFiles } from '../../src/index.js';
-import { codemodOptions, options } from '../shared-test-setups/index.js';
+import { codemodOptions, options } from '../helpers/index.js';
 
 test('move-files > edge case (from and to are the same)', function () {
   const inputProject = {

@@ -5,7 +5,7 @@ import {
   type FileContent,
   type FilePath,
 } from '../../src/index.js';
-import { codemodOptions, options } from '../shared-test-setups/index.js';
+import { codemodOptions, options } from '../helpers/index.js';
 
 test('create-files > edge case (fileMap is empty)', function () {
   const inputProject = {};

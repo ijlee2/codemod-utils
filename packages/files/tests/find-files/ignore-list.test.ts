@@ -1,7 +1,7 @@
 import { assert, loadFixture, test } from '@codemod-utils/tests';
 
-import { findFiles } from '../../src/index.js';
-import { codemodOptions, options } from '../shared-test-setups/index.js';
+import { findFiles, normalizeFilePath } from '../../src/index.js';
+import { codemodOptions, options } from '../helpers/index.js';
 
 test('find-files > ignore list', function () {
   const inputProject = {
@@ -39,8 +39,11 @@ test('find-files > ignore list', function () {
     projectRoot: options.projectRoot,
   });
 
-  assert.deepStrictEqual(filePaths, [
-    'tests/integration/components/container-query-test.ts',
-    'tests/test-helper.ts',
-  ]);
+  assert.deepStrictEqual(
+    filePaths,
+    [
+      'tests/integration/components/container-query-test.ts',
+      'tests/test-helper.ts',
+    ].map(normalizeFilePath),
+  );
 });

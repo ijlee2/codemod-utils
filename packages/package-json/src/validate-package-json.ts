@@ -26,7 +26,7 @@ export function validatePackageJson(
 
   if (!name) {
     throw new SyntaxError(
-      'ERROR: package.json is not valid. (Package name is missing.)\n',
+      'ERROR: package.json is not valid. (Package name is missing.)',
     );
   }
 
@@ -36,14 +36,14 @@ export function validatePackageJson(
 
     if (!packageName) {
       throw new SyntaxError(
-        'ERROR: package.json is not valid. (Package name is missing.)\n',
+        'ERROR: package.json is not valid. (Package name is missing.)',
       );
     }
   }
 
   if (!version) {
     throw new SyntaxError(
-      'ERROR: package.json is not valid. (Package version is missing.)\n',
+      'ERROR: package.json is not valid. (Package version is missing.)',
     );
   }
 }

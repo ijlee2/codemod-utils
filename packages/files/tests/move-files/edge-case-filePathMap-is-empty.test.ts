@@ -1,7 +1,7 @@
 import { assertFixture, loadFixture, test } from '@codemod-utils/tests';
 
 import { type FilePath, moveFiles } from '../../src/index.js';
-import { codemodOptions, options } from '../shared-test-setups/index.js';
+import { codemodOptions, options } from '../helpers/index.js';
 
 test('move-files > edge case (filePathMap is empty)', function () {
   const inputProject = {
