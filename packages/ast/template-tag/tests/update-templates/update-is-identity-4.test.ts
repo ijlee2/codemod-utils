@@ -1,10 +1,10 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { updateTemplates } from '../../src/index.js';
-import { identity } from '../helpers/update-templates.js';
+import { identity } from '../helpers/index.js';
 
 test('update-templates > update is identity (4)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import type { TOC } from '@ember/component/template-only';`,
     `import { isTesting, macroCondition } from '@embroider/macros';`,
     ``,
@@ -32,7 +32,7 @@ test('update-templates > update is identity (4)', function () {
     `  }`,
     `}`,
     ``,
-  ].join('\n');
+  ]);
 
   const newFile = updateTemplates(oldFile, identity);
 

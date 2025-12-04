@@ -1,10 +1,10 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { updateJavaScript } from '../../src/index.js';
 import { data, renameGetters } from '../helpers/update-javascript.js';
 
 test('update-javascript > class (3)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import Component from '@glimmer/component';`,
     `import { local } from 'embroider-css-modules';`,
     ``,
@@ -35,7 +35,7 @@ test('update-javascript > class (3)', function () {
     `    </div>`,
     `  </template>`,
     `}`,
-  ].join('\n');
+  ]);
 
   const newFile = updateJavaScript(oldFile, (code) => {
     return renameGetters(code, data);
@@ -43,7 +43,7 @@ test('update-javascript > class (3)', function () {
 
   assert.strictEqual(
     newFile,
-    [
+    createFile([
       `import Component from '@glimmer/component';`,
       `import { local } from 'embroider-css-modules';`,
       ``,
@@ -75,7 +75,7 @@ test('update-javascript > class (3)', function () {
       `  </div>`,
       `  </template>`,
       `}`,
-    ].join('\n'),
+    ]),
   );
 
   const newFile2 = updateJavaScript(newFile, (code) => {
@@ -87,7 +87,7 @@ test('update-javascript > class (3)', function () {
 
   assert.strictEqual(
     newFile2,
-    [
+    createFile([
       `import Component from '@glimmer/component';`,
       `import { local } from 'embroider-css-modules';`,
       ``,
@@ -119,6 +119,6 @@ test('update-javascript > class (3)', function () {
       `  </div>`,
       `  </template>`,
       `}`,
-    ].join('\n'),
+    ]),
   );
 });

@@ -1,9 +1,10 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile } from '@codemod-utils/tests';
 
 import { replaceTemplateTag } from '../../src/index.js';
+import { testOnPosix } from '../helpers/index.js';
 
-test('replace-template-tag > template-only (5)', function () {
-  const oldFile = [
+testOnPosix('replace-template-tag > template-only (5)', function () {
+  const oldFile = createFile([
     `import type { TOC } from '@ember/component/template-only';`,
     `import { isTesting, macroCondition } from '@embroider/macros';`,
     ``,
@@ -31,7 +32,7 @@ test('replace-template-tag > template-only (5)', function () {
     `  }`,
     `}`,
     ``,
-  ].join('\n');
+  ]);
 
   const newFile = replaceTemplateTag(oldFile, {
     code: '<template>New contents</template>',
@@ -45,7 +46,7 @@ test('replace-template-tag > template-only (5)', function () {
 
   assert.strictEqual(
     newFile,
-    [
+    createFile([
       `import type { TOC } from '@ember/component/template-only';`,
       `import { isTesting, macroCondition } from '@embroider/macros';`,
       ``,
@@ -71,6 +72,6 @@ test('replace-template-tag > template-only (5)', function () {
       `  }`,
       `}`,
       ``,
-    ].join('\n'),
+    ]),
   );
 });

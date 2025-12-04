@@ -1,10 +1,10 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { updateTemplates } from '../../src/index.js';
 import { removeClassAttribute } from '../helpers/update-templates.js';
 
 test('update-templates > class (2)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import Component from '@glimmer/component';`,
     ``,
     `import styles from './my-component.css';`,
@@ -17,13 +17,13 @@ test('update-templates > class (2)', function () {
     `  </template>`,
     `}`,
     ``,
-  ].join('\n');
+  ]);
 
   const newFile = updateTemplates(oldFile, removeClassAttribute);
 
   assert.strictEqual(
     newFile,
-    [
+    createFile([
       `import Component from '@glimmer/component';`,
       ``,
       `import styles from './my-component.css';`,
@@ -36,7 +36,7 @@ test('update-templates > class (2)', function () {
       `  </template>`,
       `}`,
       ``,
-    ].join('\n'),
+    ]),
   );
 
   const newFile2 = updateTemplates(newFile, removeClassAttribute);

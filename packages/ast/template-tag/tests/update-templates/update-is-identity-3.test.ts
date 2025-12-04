@@ -1,10 +1,10 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { updateTemplates } from '../../src/index.js';
-import { identity } from '../helpers/update-templates.js';
+import { identity } from '../helpers/index.js';
 
 test('update-templates > update is identity (3)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import Service from '@ember/service';`,
     `import { type Registry as Services, service } from '@ember/service';`,
     `import { click, render, type TestContext } from '@ember/test-helpers';`,
@@ -55,7 +55,7 @@ test('update-templates > update is identity (3)', function () {
     `  });`,
     `});`,
     ``,
-  ].join('\n');
+  ]);
 
   const newFile = updateTemplates(oldFile, identity);
 

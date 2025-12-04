@@ -1,9 +1,9 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { toTemplateTag } from '../../src/index.js';
 
 test('to-template-tag > class (2)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import { template as template_fd9b2463e5f141cfb5666b64daa1f11a } from "@ember/template-compiler";`,
     `import Component from '@glimmer/component';`,
     ``,
@@ -24,13 +24,13 @@ test('to-template-tag > class (2)', function () {
     `}`,
     `}`,
     ``,
-  ].join('\n');
+  ]);
 
   const newFile = toTemplateTag(oldFile);
 
   assert.strictEqual(
     newFile,
-    [
+    createFile([
       `import Component from '@glimmer/component';`,
       ``,
       `import styles from './my-component.css';`,
@@ -43,7 +43,7 @@ test('to-template-tag > class (2)', function () {
       `    </template>`,
       `}`,
       ``,
-    ].join('\n'),
+    ]),
   );
 
   const newFile2 = toTemplateTag(newFile);

@@ -1,10 +1,10 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { updateJavaScript } from '../../src/index.js';
 import { data, renameGetters } from '../helpers/update-javascript.js';
 
 test('update-javascript > class (2)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import Component from '@glimmer/component';`,
     ``,
     `import styles from './my-component.css';`,
@@ -17,7 +17,7 @@ test('update-javascript > class (2)', function () {
     `  </template>`,
     `}`,
     ``,
-  ].join('\n');
+  ]);
 
   const newFile = updateJavaScript(oldFile, (code) => {
     return renameGetters(code, data);
@@ -25,7 +25,7 @@ test('update-javascript > class (2)', function () {
 
   assert.strictEqual(
     newFile,
-    [
+    createFile([
       `import Component from '@glimmer/component';`,
       ``,
       `import styles from './my-component.css';`,
@@ -38,7 +38,7 @@ test('update-javascript > class (2)', function () {
       `    </template>`,
       `}`,
       ``,
-    ].join('\n'),
+    ]),
   );
 
   const newFile2 = updateJavaScript(newFile, (code) => {

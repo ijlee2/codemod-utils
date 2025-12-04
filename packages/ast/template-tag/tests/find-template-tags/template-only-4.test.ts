@@ -1,9 +1,10 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile } from '@codemod-utils/tests';
 
 import { findTemplateTags } from '../../src/index.js';
+import { testOnPosix } from '../helpers/index.js';
 
-test('find-template-tags > template-only (4)', function () {
-  const oldFile = [
+testOnPosix('find-template-tags > template-only (4)', function () {
+  const oldFile = createFile([
     `import type { TOC } from '@ember/component/template-only';`,
     `import { hash } from '@ember/helper';`,
     `import { LinkTo } from '@ember/routing';`,
@@ -79,7 +80,7 @@ test('find-template-tags > template-only (4)', function () {
     `  }`,
     `}`,
     ``,
-  ].join('\n');
+  ]);
 
   const templateTags = findTemplateTags(oldFile);
 
@@ -87,7 +88,7 @@ test('find-template-tags > template-only (4)', function () {
     {
       type: 'expression',
       tagName: 'template',
-      contents: [
+      contents: createFile([
         ``,
         `    <ContainerQuery`,
         `      @features={{hash wide=(width min=320)}}`,
@@ -131,7 +132,7 @@ test('find-template-tags > template-only (4)', function () {
         `      </div>`,
         `    </ContainerQuery>`,
         `  `,
-      ].join('\n'),
+      ]),
       range: {
         startByte: 633,
         endByte: 1848,

@@ -1,10 +1,10 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { updateJavaScript } from '../../src/index.js';
 import { data, renameGetters } from '../helpers/update-javascript.js';
 
 test('update-javascript > class (4)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import { assert } from '@ember/debug';`,
     `import { on } from '@ember/modifier';`,
     `import { action, get } from '@ember/object';`,
@@ -102,7 +102,7 @@ test('update-javascript > class (4)', function () {
     `  </template>`,
     `}`,
     ``,
-  ].join('\n');
+  ]);
 
   const newFile = updateJavaScript(oldFile, (code) => {
     return renameGetters(code, data);
@@ -110,7 +110,7 @@ test('update-javascript > class (4)', function () {
 
   assert.strictEqual(
     newFile,
-    [
+    createFile([
       `import { assert } from '@ember/debug';`,
       `import { on } from '@ember/modifier';`,
       `import { action, get } from '@ember/object';`,
@@ -210,7 +210,7 @@ test('update-javascript > class (4)', function () {
       `  </template>`,
       `}`,
       ``,
-    ].join('\n'),
+    ]),
   );
 
   const newFile2 = updateJavaScript(newFile, (code) => {
@@ -222,7 +222,7 @@ test('update-javascript > class (4)', function () {
 
   assert.strictEqual(
     newFile2,
-    [
+    createFile([
       `import { assert } from '@ember/debug';`,
       `import { on } from '@ember/modifier';`,
       `import { action, get } from '@ember/object';`,
@@ -322,6 +322,6 @@ test('update-javascript > class (4)', function () {
       `  </template>`,
       `}`,
       ``,
-    ].join('\n'),
+    ]),
   );
 });

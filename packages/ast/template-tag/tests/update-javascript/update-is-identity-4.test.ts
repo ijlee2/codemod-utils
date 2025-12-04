@@ -1,10 +1,10 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { updateJavaScript } from '../../src/index.js';
-import { identity } from '../helpers/update-javascript.js';
+import { identity } from '../helpers/index.js';
 
 test('update-javascript > update is identity (4)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import type { TOC } from '@ember/component/template-only';`,
     `import { isTesting, macroCondition } from '@embroider/macros';`,
     ``,
@@ -32,7 +32,7 @@ test('update-javascript > update is identity (4)', function () {
     `  }`,
     `}`,
     ``,
-  ].join('\n');
+  ]);
 
   const newFile = updateJavaScript(oldFile, identity);
 
@@ -41,7 +41,7 @@ test('update-javascript > update is identity (4)', function () {
 
   assert.strictEqual(
     newFile,
-    [
+    createFile([
       `import type { TOC } from '@ember/component/template-only';`,
       `import { isTesting, macroCondition } from '@embroider/macros';`,
       ``,
@@ -67,7 +67,7 @@ test('update-javascript > update is identity (4)', function () {
       `  }`,
       `}`,
       ``,
-    ].join('\n'),
+    ]),
   );
 
   const newFile2 = updateJavaScript(newFile, identity);
@@ -77,7 +77,7 @@ test('update-javascript > update is identity (4)', function () {
 
   assert.strictEqual(
     newFile2,
-    [
+    createFile([
       `import type { TOC } from '@ember/component/template-only';`,
       `import { isTesting, macroCondition } from '@embroider/macros';`,
       ``,
@@ -103,6 +103,6 @@ test('update-javascript > update is identity (4)', function () {
       `  }`,
       `}`,
       ``,
-    ].join('\n'),
+    ]),
   );
 });
