@@ -1,22 +1,22 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
-import { transformTypeScript } from '../../helpers/typescript.js';
+import { transformTypeScript } from '../../helpers/index.js';
 
 test('index | typescript > transform (base case)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import Component from '@glimmer/component';`,
     ``,
     `interface NavigationMenuSignature {}`,
     ``,
     `export default class NavigationMenuComponent extends Component<NavigationMenuSignature> {}`,
     ``,
-  ].join('\n');
+  ]);
 
   const newFile = transformTypeScript(oldFile);
 
   assert.strictEqual(
     newFile,
-    [
+    createFile([
       `import Component from '@glimmer/component';`,
       ``,
       `interface NavigationMenuSignature {}`,
@@ -25,6 +25,6 @@ test('index | typescript > transform (base case)', function () {
       `  styles = styles;`,
       `}`,
       ``,
-    ].join('\n'),
+    ]),
   );
 });
