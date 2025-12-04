@@ -1,9 +1,9 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { processTemplate } from '../../src/index.js';
 
 test('process-template > evaluate', function () {
-  const blueprintFile = [
+  const blueprintFile = createFile([
     `<% if (options.packageManager.isNpm) { %>{`,
     `  "scripts": {`,
     `    "prepare": "npm run build",`,
@@ -17,7 +17,7 @@ test('process-template > evaluate', function () {
     `    "prepare": "yarn build",`,
     `  },`,
     `}<% } %>`,
-  ].join('\n');
+  ]);
 
   const file = processTemplate(blueprintFile, {
     options: {
@@ -29,13 +29,13 @@ test('process-template > evaluate', function () {
     },
   });
 
-  const expectedValue = [
+  const expectedValue = createFile([
     `{`,
     `  "scripts": {`,
     `    "prepare": "yarn build",`,
     `  },`,
     `}`,
-  ].join('\n');
+  ]);
 
   assert.strictEqual(file, expectedValue);
 });
