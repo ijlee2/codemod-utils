@@ -1,9 +1,10 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile } from '@codemod-utils/tests';
 
 import { findTemplateTags } from '../../src/index.js';
+import { testOnPosix } from '../helpers/index.js';
 
-test('find-template-tags > class (3)', function () {
-  const oldFile = [
+testOnPosix('find-template-tags > class (3)', function () {
+  const oldFile = createFile([
     `import Component from '@glimmer/component';`,
     `import { local } from 'embroider-css-modules';`,
     ``,
@@ -34,7 +35,7 @@ test('find-template-tags > class (3)', function () {
     `    </div>`,
     `  </template>`,
     `}`,
-  ].join('\n');
+  ]);
 
   const templateTags = findTemplateTags(oldFile);
 
@@ -46,14 +47,16 @@ test('find-template-tags > class (3)', function () {
         startByte: 156,
         startChar: 156,
       },
-      contents:
-        '\n' +
-        '  <div\n' +
-        '    class={{local styles "container" "highlight"}}\n' +
-        '    data-test-field="😀😀a🎉🎉"\n' +
-        '  >\n' +
-        '    {{@user.name}}\n' +
-        '  </div>\n',
+      contents: createFile([
+        ``,
+        `  <div`,
+        `    class={{local styles "container" "highlight"}}`,
+        `    data-test-field="😀😀a🎉🎉"`,
+        `  >`,
+        `    {{@user.name}}`,
+        `  </div>`,
+        ``,
+      ]),
       endRange: {
         endByte: 298,
         endChar: 286,
@@ -82,17 +85,18 @@ test('find-template-tags > class (3)', function () {
         startByte: 423,
         startChar: 411,
       },
-      contents:
-        '\n' +
-        '    <UserName @user={{@user}} />\n' +
-        '\n' +
-        '    <div class={{styles.container}} data-test-field="timestamp">\n' +
-        '      {{this.timestamp}}\n' +
-        '\n' +
-        '  <p> 😀😀😀 Hello! 🎉🎉🎉\n' +
-        '  </p>\n' +
-        '    </div>\n' +
-        '  ',
+      contents: createFile([
+        ``,
+        `    <UserName @user={{@user}} />`,
+        ``,
+        `    <div class={{styles.container}} data-test-field="timestamp">`,
+        `      {{this.timestamp}}`,
+        ``,
+        `  <p> 😀😀😀 Hello! 🎉🎉🎉`,
+        `  </p>`,
+        `    </div>`,
+        `  `,
+      ]),
       endRange: {
         endByte: 619,
         endChar: 589,

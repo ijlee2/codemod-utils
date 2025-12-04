@@ -1,10 +1,10 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { updateTemplates } from '../../src/index.js';
 import { removeClassAttribute } from '../helpers/update-templates.js';
 
 test('update-templates > template-only (4)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import type { TOC } from '@ember/component/template-only';`,
     `import { hash } from '@ember/helper';`,
     `import { LinkTo } from '@ember/routing';`,
@@ -80,13 +80,13 @@ test('update-templates > template-only (4)', function () {
     `  }`,
     `}`,
     ``,
-  ].join('\n');
+  ]);
 
   const newFile = updateTemplates(oldFile, removeClassAttribute);
 
   assert.strictEqual(
     newFile,
-    [
+    createFile([
       `import type { TOC } from '@ember/component/template-only';`,
       `import { hash } from '@ember/helper';`,
       `import { LinkTo } from '@ember/routing';`,
@@ -158,7 +158,7 @@ test('update-templates > template-only (4)', function () {
       `  }`,
       `}`,
       ``,
-    ].join('\n'),
+    ]),
   );
 
   const newFile2 = updateTemplates(newFile, removeClassAttribute);

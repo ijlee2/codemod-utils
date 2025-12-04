@@ -1,9 +1,10 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile } from '@codemod-utils/tests';
 
 import { findTemplateTags } from '../../src/index.js';
+import { testOnPosix } from '../helpers/index.js';
 
-test('find-template-tags > template-only (2)', function () {
-  const oldFile = [
+testOnPosix('find-template-tags > template-only (2)', function () {
+  const oldFile = createFile([
     `import styles from './styles.css';`,
     ``,
     `<template>`,
@@ -12,7 +13,7 @@ test('find-template-tags > template-only (2)', function () {
     `  </div>`,
     `</template>;`,
     ``,
-  ].join('\n');
+  ]);
 
   const templateTags = findTemplateTags(oldFile);
 
@@ -24,8 +25,13 @@ test('find-template-tags > template-only (2)', function () {
         startByte: 46,
         startChar: 46,
       },
-      contents:
-        '\n  <div class={{styles.container}}>\n    Hello world!\n  </div>\n',
+      contents: createFile([
+        ``,
+        `  <div class={{styles.container}}>`,
+        `    Hello world!`,
+        `  </div>`,
+        ``,
+      ]),
       endRange: {
         endByte: 119,
         endChar: 119,

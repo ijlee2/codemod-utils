@@ -1,3 +1,5 @@
+import { EOL } from 'node:os';
+
 import { MARKER } from './-private/content-tag.js';
 import { findMarkers } from './-private/to-ecma.js';
 import { findTemplateTags } from './find-template-tags.js';
@@ -54,5 +56,5 @@ export function toEcma(file: string): string {
   return [
     `import { template as ${MARKER} } from "@ember/template-compiler";`,
     file,
-  ].join('\n');
+  ].join(EOL);
 }

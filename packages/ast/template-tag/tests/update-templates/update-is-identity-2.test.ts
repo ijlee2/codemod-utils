@@ -1,10 +1,10 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { updateTemplates } from '../../src/index.js';
-import { identity } from '../helpers/update-templates.js';
+import { identity } from '../helpers/index.js';
 
 test('update-templates > update is identity (2)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `import { assert } from '@ember/debug';`,
     `import { on } from '@ember/modifier';`,
     `import { action, get } from '@ember/object';`,
@@ -102,7 +102,7 @@ test('update-templates > update is identity (2)', function () {
     `  </template>`,
     `}`,
     ``,
-  ].join('\n');
+  ]);
 
   const newFile = updateTemplates(oldFile, identity);
 

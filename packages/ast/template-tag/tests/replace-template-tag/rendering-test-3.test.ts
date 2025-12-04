@@ -1,9 +1,10 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile } from '@codemod-utils/tests';
 
 import { replaceTemplateTag } from '../../src/index.js';
+import { testOnPosix } from '../helpers/index.js';
 
-test('replace-template-tag > rendering test (3)', function () {
-  const oldFile = [
+testOnPosix('replace-template-tag > rendering test (3)', function () {
+  const oldFile = createFile([
     `import Service from '@ember/service';`,
     `import { type Registry as Services, service } from '@ember/service';`,
     `import { click, render, type TestContext } from '@ember/test-helpers';`,
@@ -54,7 +55,7 @@ test('replace-template-tag > rendering test (3)', function () {
     `  });`,
     `});`,
     ``,
-  ].join('\n');
+  ]);
 
   const newFile = replaceTemplateTag(oldFile, {
     code: '<template>New contents</template>',
@@ -68,7 +69,7 @@ test('replace-template-tag > rendering test (3)', function () {
 
   assert.strictEqual(
     newFile,
-    [
+    createFile([
       `import Service from '@ember/service';`,
       `import { type Registry as Services, service } from '@ember/service';`,
       `import { click, render, type TestContext } from '@ember/test-helpers';`,
@@ -117,6 +118,6 @@ test('replace-template-tag > rendering test (3)', function () {
       `  });`,
       `});`,
       ``,
-    ].join('\n'),
+    ]),
   );
 });

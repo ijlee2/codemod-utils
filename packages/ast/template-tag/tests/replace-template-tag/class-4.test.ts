@@ -1,9 +1,10 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile } from '@codemod-utils/tests';
 
 import { replaceTemplateTag } from '../../src/index.js';
+import { testOnPosix } from '../helpers/index.js';
 
-test('replace-template-tag > class (4)', function () {
-  const oldFile = [
+testOnPosix('replace-template-tag > class (4)', function () {
+  const oldFile = createFile([
     `import { assert } from '@ember/debug';`,
     `import { on } from '@ember/modifier';`,
     `import { action, get } from '@ember/object';`,
@@ -101,10 +102,10 @@ test('replace-template-tag > class (4)', function () {
     `  </template>`,
     `}`,
     ``,
-  ].join('\n');
+  ]);
 
   const newFile = replaceTemplateTag(oldFile, {
-    code: '<template>\n    New contents\n  </template>',
+    code: createFile([`<template>`, `    New contents`, `  </template>`]),
     range: {
       startByte: 1541,
       endByte: 2418,
@@ -115,7 +116,7 @@ test('replace-template-tag > class (4)', function () {
 
   assert.strictEqual(
     newFile,
-    [
+    createFile([
       `import { assert } from '@ember/debug';`,
       `import { on } from '@ember/modifier';`,
       `import { action, get } from '@ember/object';`,
@@ -182,6 +183,6 @@ test('replace-template-tag > class (4)', function () {
       `  </template>`,
       `}`,
       ``,
-    ].join('\n'),
+    ]),
   );
 });

@@ -1,6 +1,6 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { transformJavaScript } from '../../helpers/javascript.js';
+import { transformJavaScript } from '../../helpers/index.js';
 
 test('index | javascript > transform (file is empty)', function () {
   const oldFile = '';

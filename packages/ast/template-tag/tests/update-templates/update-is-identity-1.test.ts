@@ -1,7 +1,7 @@
 import { assert, test } from '@codemod-utils/tests';
 
 import { updateTemplates } from '../../src/index.js';
-import { identity } from '../helpers/update-templates.js';
+import { identity } from '../helpers/index.js';
 
 test('update-templates > update is identity (1)', function () {
   const oldFile = '';

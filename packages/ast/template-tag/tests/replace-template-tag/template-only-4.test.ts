@@ -1,9 +1,10 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile } from '@codemod-utils/tests';
 
 import { replaceTemplateTag } from '../../src/index.js';
+import { testOnPosix } from '../helpers/index.js';
 
-test('replace-template-tag > template-only (4)', function () {
-  const oldFile = [
+testOnPosix('replace-template-tag > template-only (4)', function () {
+  const oldFile = createFile([
     `import type { TOC } from '@ember/component/template-only';`,
     `import { hash } from '@ember/helper';`,
     `import { LinkTo } from '@ember/routing';`,
@@ -79,10 +80,10 @@ test('replace-template-tag > template-only (4)', function () {
     `  }`,
     `}`,
     ``,
-  ].join('\n');
+  ]);
 
   const newFile = replaceTemplateTag(oldFile, {
-    code: '<template>\n    New contents\n  </template>',
+    code: createFile([`<template>`, `    New contents`, `  </template>`]),
     range: {
       startByte: 633,
       endByte: 1848,
@@ -93,7 +94,7 @@ test('replace-template-tag > template-only (4)', function () {
 
   assert.strictEqual(
     newFile,
-    [
+    createFile([
       `import type { TOC } from '@ember/component/template-only';`,
       `import { hash } from '@ember/helper';`,
       `import { LinkTo } from '@ember/routing';`,
@@ -129,6 +130,6 @@ test('replace-template-tag > template-only (4)', function () {
       `  }`,
       `}`,
       ``,
-    ].join('\n'),
+    ]),
   );
 });
