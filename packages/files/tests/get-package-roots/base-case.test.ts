@@ -1,6 +1,6 @@
 import { assert, loadFixture, test } from '@codemod-utils/tests';
 
-import { getPackageRoots } from '../../src/index.js';
+import { getPackageRoots, normalizeFilePath } from '../../src/index.js';
 import { codemodOptions, options } from '../helpers/index.js';
 
 test('get-package-roots > base case', function () {
@@ -14,5 +14,8 @@ test('get-package-roots > base case', function () {
     projectRoot: options.projectRoot,
   });
 
-  assert.deepStrictEqual(packageRoots, ['tmp/test-project']);
+  assert.deepStrictEqual(
+    packageRoots,
+    ['tmp/test-project'].map(normalizeFilePath),
+  );
 });

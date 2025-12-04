@@ -1,6 +1,6 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { parseFilePath } from '../../src/index.js';
+import { normalizeFilePath, parseFilePath } from '../../src/index.js';
 
 test('parse-file-path > edge case (no directory)', function () {
   const filePath = 'README.md';
@@ -9,7 +9,7 @@ test('parse-file-path > edge case (no directory)', function () {
 
   assert.deepEqual(parsedPath, {
     base: 'README.md',
-    dir: '',
+    dir: normalizeFilePath(''),
     ext: '.md',
     name: 'README',
   });

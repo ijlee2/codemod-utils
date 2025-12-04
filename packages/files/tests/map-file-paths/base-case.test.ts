@@ -1,9 +1,12 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { mapFilePaths } from '../../src/index.js';
+import { mapFilePaths, normalizeFilePath } from '../../src/index.js';
 
 test('map-file-paths > base case', function () {
-  const filePaths = ['addon/components/container-query.hbs', 'addon/.gitkeep'];
+  const filePaths = [
+    'addon/components/container-query.hbs',
+    'addon/.gitkeep',
+  ].map(normalizeFilePath);
 
   const filePathMap = mapFilePaths(filePaths, {
     from: 'addon',
@@ -14,10 +17,15 @@ test('map-file-paths > base case', function () {
     filePathMap,
     new Map([
       [
-        'addon/components/container-query.hbs',
-        'ember-container-query/src/components/container-query.hbs',
+        normalizeFilePath('addon/components/container-query.hbs'),
+        normalizeFilePath(
+          'ember-container-query/src/components/container-query.hbs',
+        ),
       ],
-      ['addon/.gitkeep', 'ember-container-query/src/.gitkeep'],
+      [
+        normalizeFilePath('addon/.gitkeep'),
+        normalizeFilePath('ember-container-query/src/.gitkeep'),
+      ],
     ]),
   );
 });
