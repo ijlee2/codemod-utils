@@ -5,6 +5,7 @@ export * from './find-files.js';
 export * from './get-package-roots.js';
 export * from './map-file-paths.js';
 export * from './move-files.js';
+export * from './normalize-file-path.js';
 export * from './parse-file-path.js';
 export * from './remove-directory-if-empty.js';
 export * from './remove-files.js';

@@ -1,6 +1,7 @@
 import { existsSync, mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 
+import { normalizeFilePath } from './normalize-file-path.js';
 import type { FilePath } from './types.js';
 
 /**
@@ -25,7 +26,7 @@ import type { FilePath } from './types.js';
  * ```
  */
 export function createDirectory(filePath: FilePath): void {
-  const directory = dirname(filePath);
+  const directory = dirname(normalizeFilePath(filePath));
 
   if (existsSync(directory)) {
     return;
