@@ -1,11 +1,13 @@
-import { assert, loadFixture, test } from '@codemod-utils/tests';
+import { EOL } from 'node:os';
+
+import { assert, createFile, loadFixture, test } from '@codemod-utils/tests';
 
 import { readPackageJson } from '../../src/index.js';
 import { codemodOptions, options } from '../shared-test-setups/index.js';
 
 test('read-package-json > error handling (package.json is not a valid JSON)', function () {
   const inputProject = {
-    'package.json': '{\n  "name": }',
+    'package.json': createFile([`{`, `  "name": }`]),
   };
 
   loadFixture(inputProject, codemodOptions);
@@ -20,7 +22,7 @@ test('read-package-json > error handling (package.json is not a valid JSON)', fu
       assert.strictEqual(
         error.message,
         [
-          `ERROR: package.json is not valid. (Unexpected token '}', "{\n`,
+          `ERROR: package.json is not valid. (Unexpected token '}', "{${EOL}`,
           '  "name": }" is not valid JSON)',
         ].join(''),
       );
