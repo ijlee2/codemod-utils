@@ -1,13 +1,13 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { processTemplate } from '../../src/index.js';
 
 test('process-template > interpolate', function () {
-  const blueprintFile = [
+  const blueprintFile = createFile([
     `packages:`,
     `  - '<%= options.packages.addon.name %>'`,
     `  - '<%= options.packages.testApp.name %>'`,
-  ].join('\n');
+  ]);
 
   const file = processTemplate(blueprintFile, {
     options: {
@@ -22,11 +22,11 @@ test('process-template > interpolate', function () {
     },
   });
 
-  const expectedValue = [
+  const expectedValue = createFile([
     `packages:`,
     `  - 'ember-container-query'`,
     `  - 'test-app'`,
-  ].join('\n');
+  ]);
 
   assert.strictEqual(file, expectedValue);
 });

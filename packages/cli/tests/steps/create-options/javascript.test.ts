@@ -6,6 +6,6 @@ import {
   options,
 } from '../../helpers/shared-test-setups/javascript.js';
 
-test('migration | steps | create-options > javascript', function () {
+test('steps | create-options > javascript', function () {
   assert.deepStrictEqual(createOptions(codemodOptions), options);
 });

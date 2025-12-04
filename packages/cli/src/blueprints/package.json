@@ -21,7 +21,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "./build.sh --production",
+    "build": "sh build.sh --production",
     "format": "prettier . --cache --write",
     "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" && pnpm format",
@@ -32,7 +32,7 @@
     "prepare": "pnpm build",
     "release:prepare": "changeset version",
     "release:publish": "pnpm build && changeset publish",
-    "test": "./build.sh --test && mt dist-for-testing --quiet"
+    "test": "sh build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {},
   "devDependencies": {},

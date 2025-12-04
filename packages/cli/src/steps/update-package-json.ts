@@ -1,4 +1,5 @@
 import { writeFileSync } from 'node:fs';
+import { EOL } from 'node:os';
 import { join } from 'node:path';
 
 import {
@@ -22,7 +23,7 @@ function updateDependencies(packageJson: PackageJson, options: Options): void {
     packagesToInstall.add(`@codemod-utils/${identifier}`);
   });
 
-  Array.from(packagesToInstall).forEach((packageName) => {
+  packagesToInstall.forEach((packageName) => {
     const version = getVersion(packageName);
 
     dependencies.set(packageName, version);
@@ -60,7 +61,7 @@ function updateDevDependencies(
     packagesToInstall.add('typescript');
   }
 
-  Array.from(packagesToInstall).forEach((packageName) => {
+  packagesToInstall.forEach((packageName) => {
     const version = getVersion(packageName);
 
     devDependencies.set(packageName, version);
@@ -87,8 +88,8 @@ export function updatePackageJson(options: Options): void {
   updateDevDependencies(packageJson, options);
   updatePackageManager(packageJson);
 
-  const destination = join(projectRoot, codemod.name, 'package.json');
-  const file = JSON.stringify(packageJson, null, 2) + '\n';
+  const filePath = join(projectRoot, codemod.name, 'package.json');
+  const file = JSON.stringify(packageJson, null, 2).replaceAll('\n', EOL) + EOL;
 
-  writeFileSync(destination, file, 'utf8');
+  writeFileSync(filePath, file, 'utf8');
 }
