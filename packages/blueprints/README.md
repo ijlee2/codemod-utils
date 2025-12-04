@@ -175,7 +175,7 @@ processTemplate(blueprintFile, {
 
 </details>
 
-Often, it is easy to miscalculate data and misplace the newline character `\n` . If you intend to publish your codemod, I recommend using [`@codemod-utils/tests`](../tests) (create and test file fixtures) to check the output and prevent regressions.
+Often, it is easy to miscalculate data and misplace the newline character `\n` (`\r\n` on Windows). If you intend to publish your codemod, I recommend using [`@codemod-utils/tests`](../tests) (create and test file fixtures) to check the output and prevent regressions.
 
 
 ## Compatibility
