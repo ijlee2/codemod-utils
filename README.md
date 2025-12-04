@@ -37,6 +37,7 @@ npx @codemod-utils/cli <your-codemod-name>
 
 ## Codemods written with @codemod-utils
 
+- [`@ember-intl/lint`](https://github.com/ember-intl/ember-intl/tree/main/packages/ember-intl-lint)
 - [`analyze-ember-project-dependencies`](https://github.com/ijlee2/analyze-ember-project-dependencies)
 - [`blueprints-v2-addon`](https://github.com/ijlee2/create-v2-addon-repo/tree/main/packages/blueprints-v2-addon)
 - [`codemod-generate-release-notes`](https://github.com/Ajanth/codemod-generate-release-notes)
@@ -47,6 +48,7 @@ npx @codemod-utils/cli <your-codemod-name>
 - [`ember-codemod-css-modules`](https://github.com/simplepractice/ember-codemod-css-modules)
 - [`ember-codemod-ember-render-helpers-to-v1`](https://github.com/buschtoens/ember-render-helpers/tree/main/packages/ember-codemod-ember-render-helpers-to-v1)
 - [`ember-codemod-pod-to-octane`](https://github.com/ijlee2/ember-codemod-pod-to-octane)
+- [`ember-codemod-remove-global-styles`](https://github.com/ijlee2/embroider-css-modules/tree/main/packages/ember-codemod-remove-global-styles)
 - [`ember-codemod-remove-ember-css-modules`](https://github.com/ijlee2/embroider-css-modules/tree/main/packages/ember-codemod-remove-ember-css-modules)
 - [`ember-codemod-remove-inject-as-service`](https://github.com/ijlee2/ember-codemod-remove-inject-as-service)
 - [`ember-codemod-rename-test-modules`](https://github.com/ijlee2/ember-codemod-rename-test-modules)

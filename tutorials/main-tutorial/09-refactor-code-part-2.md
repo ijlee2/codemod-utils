@@ -197,14 +197,14 @@ import { assert, test } from '@codemod-utils/tests';
 import { renameModule } from '../../../../src/utils/rename-tests/index.js';
 
 test('utils | rename-tests | rename-module > javascript', function () {
-  const oldFile = `module('Old name', function (hooks) {});\n`;
+  const oldFile = `module('Old name', function (hooks) {});`;
 
   const newFile = renameModule(oldFile, {
     isTypeScript: false,
     moduleName: 'New name',
   });
 
-  assert.strictEqual(newFile, `module('New name', function (hooks) {});\n`);
+  assert.strictEqual(newFile, `module('New name', function (hooks) {});`);
 });
 ```
 
@@ -216,7 +216,7 @@ A few remarks:
 
     ```ts
     // Arrange
-    const oldFile = `module('Old name', function (hooks) {});\n`;
+    const oldFile = `module('Old name', function (hooks) {});`;
 
     // Act
     const newFile = renameModule(oldFile, {
@@ -225,7 +225,7 @@ A few remarks:
     });
 
     // Assert
-    assert.strictEqual(newFile, `module('New name', function (hooks) {});\n`);
+    assert.strictEqual(newFile, `module('New name', function (hooks) {});`);
     ```
 
 - The `assert` object that `@codemod-utils/tests` provides comes from Node.js.
@@ -234,26 +234,28 @@ A few remarks:
 
 - Although the implementation for `renameModule()` is complex (we had to parse and update abstract syntax trees), the test for it is simple, because `renameModule()` provided a good interface. 
 
-- The input and output files were simple enough that we could write their content in one line without sacrificing readability. Should they have many lines, create an array of strings and use the `join()` method instead. This way, you can simulate what one would see in an actual file.
+- The input and output files were simple enough that we could write their content in one line without sacrificing readability. Should they have many lines, create an array of strings and use `createFile()` from `@codemod-utils/tests` instead. This way, you can simulate what one would see in an actual file.
 
     ```ts
-    const oldFile = [
+    import { createFile } from '@codemod-utils/tests';
+
+    const oldFile = createFile([
       `module('Old name', function (hooks) {`,
       `  module('Old name', function (nestedHooks) {});`,
       `});`,
       ``,
-    ].join('\n');
+    ]);
 
     // ...
 
     assert.strictEqual(
       newFile,
-      [
+      createFile([
         `module('New name', function (hooks) {`,
         `  module('Old name', function (nestedHooks) {});`,
         `});`,
         ``,
-      ].join('\n'),
+      ]),
     );
     ```
 
@@ -277,14 +279,14 @@ import { assert, test } from '@codemod-utils/tests';
 import { renameModule } from '../../../../src/utils/rename-tests/index.js';
 
 test('utils | rename-tests | rename-module > typescript', function () {
-  const oldFile = `module('Old name', function (hooks) {});\n`;
+  const oldFile = `module('Old name', function (hooks) {});`;
 
   const newFile = renameModule(oldFile, {
     isTypeScript: true,
     moduleName: 'New name',
   });
 
-  assert.strictEqual(newFile, `module('New name', function (hooks) {});\n`);
+  assert.strictEqual(newFile, `module('New name', function (hooks) {});`);
 });
 ```
 
@@ -327,14 +329,14 @@ import { assert, test } from '@codemod-utils/tests';
 import { renameModule } from '../../../../src/utils/rename-tests/index.js';
 
 test('utils | rename-tests | rename-module > edge case (module does not exist)', function () {
-  const oldFile = `test('Old name', function (assert) {});\n`;
+  const oldFile = `test('Old name', function (assert) {});`;
 
   const newFile = renameModule(oldFile, {
     isTypeScript: true,
     moduleName: 'New name',
   });
 
-  assert.strictEqual(newFile, `test('Old name', function (assert) {});\n`);
+  assert.strictEqual(newFile, `test('Old name', function (assert) {});`);
 });
 ```
 
@@ -352,14 +354,14 @@ import { assert, test } from '@codemod-utils/tests';
 import { renameModule } from '../../../../src/utils/rename-tests/index.js';
 
 test('utils | rename-tests | rename-module > edge case (module has incorrect arguments)', function () {
-  const oldFile = `module('Old name');\n`;
+  const oldFile = `module('Old name');`;
 
   const newFile = renameModule(oldFile, {
     isTypeScript: true,
     moduleName: 'New name',
   });
 
-  assert.strictEqual(newFile, `module('Old name');\n`);
+  assert.strictEqual(newFile, `module('Old name');`);
 });
 ```
 
@@ -372,17 +374,17 @@ test('utils | rename-tests | rename-module > edge case (module has incorrect arg
 This test checks that `renameModule()` renames only the parent module.
 
 ```ts
-import { assert, test } from '@codemod-utils/tests';
+import { assert, createFile, test } from '@codemod-utils/tests';
 
 import { renameModule } from '../../../../src/utils/rename-tests/index.js';
 
 test('utils | rename-tests | rename-module > edge case (nested modules)', function () {
-  const oldFile = [
+  const oldFile = createFile([
     `module('Old name', function (hooks) {`,
     `  module('Old name', function (nestedHooks) {});`,
     `});`,
     ``,
-  ].join('\n');
+  ]);
 
   const newFile = renameModule(oldFile, {
     isTypeScript: true,
@@ -391,12 +393,12 @@ test('utils | rename-tests | rename-module > edge case (nested modules)', functi
 
   assert.strictEqual(
     newFile,
-    [
+    createFile([
       `module('New name', function (hooks) {`,
       `  module('Old name', function (nestedHooks) {});`,
       `});`,
       ``,
-    ].join('\n'),
+    ]),
   );
 });
 ```
