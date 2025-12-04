@@ -77,7 +77,7 @@ To read blueprint files, get the path to the `blueprints` folder.
 
 ```ts
 /* src/utils/blueprints/blueprints-root.ts */
-import { join } from 'node:path';
+import { join } from 'node:path/posix';
 
 import { getFilePath } from '@codemod-utils/blueprints';
 
@@ -92,7 +92,7 @@ Afterwards, prepend the file path with `blueprintsRoot`.
 
 ```ts
 import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join } from 'node:path/posix';
 
 const blueprintFilePaths = ['LICENSE.md', 'README.md'];
 
@@ -150,7 +150,7 @@ Then, pass data to the file.
 
 ```ts
 import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join } from 'node:path/posix';
 
 import { processTemplate } from '@codemod-utils/blueprints';
 

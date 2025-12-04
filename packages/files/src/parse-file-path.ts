@@ -1,4 +1,4 @@
-import { parse } from 'node:path';
+import { parse } from 'node:path/posix';
 
 import type { FilePath, ParsedPath } from './types.js';
 

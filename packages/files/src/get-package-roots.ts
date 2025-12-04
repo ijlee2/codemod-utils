@@ -1,4 +1,4 @@
-import { join } from 'node:path';
+import { join } from 'node:path/posix';
 
 import { findFiles } from './find-files.js';
 import { parseFilePath } from './parse-file-path.js';

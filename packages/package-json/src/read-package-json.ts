@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join } from 'node:path/posix';
 
 import type { Options, PackageJson } from './types.js';
 

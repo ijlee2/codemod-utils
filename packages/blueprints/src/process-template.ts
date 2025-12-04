@@ -51,7 +51,7 @@ import template from 'lodash/template.js';
  *
  * ```ts
  * import { readFileSync } from 'node:fs';
- * import { join } from 'node:path';
+ * import { join } from 'node:path/posix';
  *
  * // Read file
  * const blueprintFilePath = '__testAppLocation__/ember-cli-build.js';

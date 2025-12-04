@@ -82,6 +82,7 @@ export function findFiles(
     dot: true,
     ignore: ignoreList,
     nodir: true,
+    posix: true,
   });
 
   return filePaths.sort();

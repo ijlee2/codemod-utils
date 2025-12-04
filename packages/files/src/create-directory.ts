@@ -1,5 +1,5 @@
 import { existsSync, mkdirSync } from 'node:fs';
-import { dirname } from 'node:path';
+import { dirname } from 'node:path/posix';
 
 import type { FilePath } from './types.js';
 

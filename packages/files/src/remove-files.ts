@@ -1,5 +1,5 @@
 import { existsSync, rmSync } from 'node:fs';
-import { join } from 'node:path';
+import { join } from 'node:path/posix';
 
 import { removeDirectoryIfEmpty } from './remove-directory-if-empty.js';
 import type { FilePath, Options } from './types.js';

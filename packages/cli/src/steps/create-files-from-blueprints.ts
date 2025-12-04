@@ -1,5 +1,5 @@
 import { chmodSync, readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join } from 'node:path/posix';
 
 import { processTemplate } from '@codemod-utils/blueprints';
 import { createFiles, findFiles } from '@codemod-utils/files';

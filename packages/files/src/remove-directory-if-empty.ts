@@ -1,5 +1,5 @@
 import { readdirSync, rmSync } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { dirname, join } from 'node:path/posix';
 
 import type { FilePath, Options } from './types.js';
 

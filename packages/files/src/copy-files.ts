@@ -1,5 +1,5 @@
 import { copyFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join } from 'node:path/posix';
 
 import { createDirectory } from './create-directory.js';
 import type { FilePathMap, Options } from './types.js';

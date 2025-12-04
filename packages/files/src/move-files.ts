@@ -1,5 +1,5 @@
 import { renameSync } from 'node:fs';
-import { join } from 'node:path';
+import { join } from 'node:path/posix';
 
 import { createDirectory } from './create-directory.js';
 import { removeDirectoryIfEmpty } from './remove-directory-if-empty.js';

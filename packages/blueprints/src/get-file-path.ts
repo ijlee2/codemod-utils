@@ -1,4 +1,4 @@
-import { dirname } from 'node:path';
+import { dirname } from 'node:path/posix';
 import { fileURLToPath } from 'node:url';
 
 /**
@@ -18,7 +18,7 @@ import { fileURLToPath } from 'node:url';
  *
  * ```ts
  * // src/utils/blueprints/blueprints-root.ts
- * import { join } from 'node:path';
+ * import { join } from 'node:path/posix';
  *
  * const fileURL = import.meta.url;
  *
@@ -31,7 +31,7 @@ import { fileURLToPath } from 'node:url';
  *
  * ```ts
  * import { readFileSync } from 'node:fs';
- * import { join } from 'node:path';
+ * import { join } from 'node:path/posix';
  *
  * const blueprintFilePaths = ['LICENSE.md', 'README.md'];
  *
@@ -44,7 +44,7 @@ import { fileURLToPath } from 'node:url';
  * ```
  */
 export function getFilePath(fileURL: string): string {
-  const __filename = fileURLToPath(fileURL);
+  const __filename = fileURLToPath(fileURL, { windows: false });
   const __dirname = dirname(__filename);
 
   return __dirname;
