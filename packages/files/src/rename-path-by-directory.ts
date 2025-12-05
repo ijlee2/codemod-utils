@@ -1,6 +1,5 @@
-import { join, sep } from 'node:path';
+import { join, normalize, sep } from 'node:path';
 
-import { normalizeFilePath } from './normalize-file-path.js';
 import type { FilePath } from './types.js';
 
 /**
@@ -40,11 +39,11 @@ export function renamePathByDirectory(
     to: string;
   },
 ): FilePath {
-  filePath = normalizeFilePath(filePath);
-  const from = normalizeFilePath(options.from);
-  const to = normalizeFilePath(options.to);
+  filePath = normalize(filePath);
+  const from = normalize(options.from);
+  const to = normalize(options.to);
 
-  if (from === '') {
+  if (options.from === '') {
     return join(to, filePath);
   }
 

@@ -1,4 +1,5 @@
-import { normalizeFilePath } from './normalize-file-path.js';
+import { normalize } from 'node:path';
+
 import { renamePathByDirectory } from './rename-path-by-directory.js';
 import type { FilePath } from './types.js';
 
@@ -35,8 +36,8 @@ export function mapFilePaths(
     to: string;
   },
 ) {
-  const from = normalizeFilePath(options.from);
-  const to = normalizeFilePath(options.to);
+  const from = normalize(options.from);
+  const to = normalize(options.to);
 
   return new Map(
     filePaths.map((oldFilePath) => {

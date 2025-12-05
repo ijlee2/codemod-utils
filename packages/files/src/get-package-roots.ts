@@ -1,7 +1,6 @@
-import { join } from 'node:path';
+import { join, normalize } from 'node:path';
 
 import { findFiles } from './find-files.js';
-import { normalizeFilePath } from './normalize-file-path.js';
 import { parseFilePath } from './parse-file-path.js';
 import type { Options } from './types.js';
 
@@ -35,7 +34,7 @@ export function getPackageRoots(
     projectRoot: string;
   },
 ): string[] {
-  const projectRoot = normalizeFilePath(options.projectRoot);
+  const projectRoot = normalize(options.projectRoot);
 
   const filePaths = findFiles('**/package.json', {
     ignoreList: ['**/{dist,node_modules}/**/*'],

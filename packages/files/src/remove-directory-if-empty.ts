@@ -1,7 +1,6 @@
 import { readdirSync, rmSync } from 'node:fs';
-import { dirname, join, sep } from 'node:path';
+import { dirname, join, normalize, sep } from 'node:path';
 
-import { normalizeFilePath } from './normalize-file-path.js';
 import type { FilePath, Options } from './types.js';
 
 /**
@@ -38,7 +37,7 @@ export function removeDirectoryIfEmpty(
 ): void {
   const { projectRoot } = options;
 
-  const directories = dirname(normalizeFilePath(filePath)).split(sep);
+  const directories = dirname(normalize(filePath)).split(sep);
   const depth = directories.length;
 
   for (let i = 0; i < depth; i++) {

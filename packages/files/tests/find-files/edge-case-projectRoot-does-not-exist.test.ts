@@ -1,6 +1,8 @@
+import { normalize } from 'node:path';
+
 import { assert, loadFixture, test } from '@codemod-utils/tests';
 
-import { findFiles, normalizeFilePath } from '../../src/index.js';
+import { findFiles } from '../../src/index.js';
 import { codemodOptions } from '../helpers/index.js';
 
 test('find-files > edge case (projectRoot does not exist)', function () {
@@ -38,5 +40,5 @@ test('find-files > edge case (projectRoot does not exist)', function () {
     projectRoot: 'path/to/somewhere/else',
   });
 
-  assert.deepStrictEqual(filePaths, [].map(normalizeFilePath));
+  assert.deepStrictEqual(filePaths, [].map(normalize));
 });
