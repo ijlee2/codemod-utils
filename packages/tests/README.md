@@ -85,9 +85,9 @@ test('index > sample-project', function () {
 In the example above (an "acceptance" test), `inputProject` and `outputProject` were derived from folders and files that actually exist. At times, it may be easier to define `inputProject` and `outputProject` in the test file. This is often the case for "integration" tests, i.e. tests for a single step. Maybe only a few types of files need to be checked, or the file content can be empty because it plays no role in the step.
 
 
-### createFile
+### normalizeFile
 
-The `createFile()` helps you create a file (its content) from an array of strings. The output works on POSIX and Windows.
+`normalizeFile()` helps you create a file (its content) with the correct newline character, so that a test can pass on both POSIX and Windows.
 
 <details>
 
