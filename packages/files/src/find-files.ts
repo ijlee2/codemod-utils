@@ -11,6 +11,9 @@ import type { FilePath, Options } from './types.js';
  *
  * A glob pattern that describes which files you are looking for.
  *
+ * ⚠️ Glob patterns should always use `/` as a path separator,
+ * even on Windows systems.
+ *
  * @param options
  *
  * An object with `ignoreList` (an array of file paths or glob

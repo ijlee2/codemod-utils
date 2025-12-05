@@ -95,6 +95,10 @@ createFiles(fileMap, {
 
 Often, you will want a codemod step to apply to select files. `findFiles` provides the paths of all files that match your search criteria (i.e. [glob pattern](https://github.com/isaacs/node-glob#glob-primer), ignore list, and project root). The paths are sorted in alphabetical order.
 
+> [!IMPORTANT]
+>
+> Glob patterns should always use `/` as a path separator, even on Windows systems.
+
 <details>
 
 <summary>Example</summary>
