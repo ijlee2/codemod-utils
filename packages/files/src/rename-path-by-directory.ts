@@ -40,10 +40,10 @@ export function renamePathByDirectory(
   },
 ): FilePath {
   filePath = normalize(filePath);
-  const from = normalize(options.from);
-  const to = normalize(options.to);
+  const from = options.from === '' ? '' : normalize(options.from);
+  const to = options.to === '' ? '' : normalize(options.to);
 
-  if (options.from === '') {
+  if (from === '') {
     return join(to, filePath);
   }
 
