@@ -8,7 +8,7 @@ const latestVersions = new Map([
   ['@codemod-utils/ast-template-tag', '1.1.0'],
   ['@codemod-utils/blueprints', '2.1.0'],
   ['@codemod-utils/ember', '3.0.4'],
-  ['@codemod-utils/files', '3.2.0'],
+  ['@codemod-utils/files', '3.2.1'],
   ['@codemod-utils/package-json', '3.3.0'],
   ['@codemod-utils/tests', '2.2.0'],
   ['@ijlee2-frontend-configs/eslint-config-node', '2.3.0'],

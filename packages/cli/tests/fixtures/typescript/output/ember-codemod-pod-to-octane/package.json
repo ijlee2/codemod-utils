@@ -35,7 +35,7 @@
     "test": "sh build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {
-    "@codemod-utils/files": "^3.2.0",
+    "@codemod-utils/files": "^3.2.1",
     "yargs": "^18.0.0"
   },
   "devDependencies": {
