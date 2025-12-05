@@ -1,6 +1,8 @@
+import { normalize } from 'node:path';
+
 import { assert, loadFixture, test } from '@codemod-utils/tests';
 
-import { getPackageRoots, normalizeFilePath } from '../../src/index.js';
+import { getPackageRoots } from '../../src/index.js';
 import { codemodOptions, options } from '../helpers/index.js';
 
 test('get-package-roots > monorepo', function () {
@@ -41,6 +43,6 @@ test('get-package-roots > monorepo', function () {
       'tmp/test-project/packages/my-package-2',
       'tmp/test-project/packages/my-package-3',
       'tmp/test-project/test-app',
-    ].map(normalizeFilePath),
+    ].map(normalize),
   );
 });

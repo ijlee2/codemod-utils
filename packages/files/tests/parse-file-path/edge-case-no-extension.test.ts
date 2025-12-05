@@ -1,6 +1,6 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { normalizeFilePath, parseFilePath } from '../../src/index.js';
+import { parseFilePath } from '../../src/index.js';
 
 test('parse-file-path > edge case (no extension)', function () {
   const filePath = '.gitignore';
@@ -9,7 +9,7 @@ test('parse-file-path > edge case (no extension)', function () {
 
   assert.deepEqual(parsedPath, {
     base: '.gitignore',
-    dir: normalizeFilePath(''),
+    dir: '',
     ext: '',
     name: '.gitignore',
   });

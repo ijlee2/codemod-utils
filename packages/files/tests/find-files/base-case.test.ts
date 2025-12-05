@@ -1,6 +1,8 @@
+import { normalize } from 'node:path';
+
 import { assert, loadFixture, test } from '@codemod-utils/tests';
 
-import { findFiles, normalizeFilePath } from '../../src/index.js';
+import { findFiles } from '../../src/index.js';
 import { codemodOptions, options } from '../helpers/index.js';
 
 test('find-files > base case', function () {
@@ -46,6 +48,6 @@ test('find-files > base case', function () {
       'tests/dummy/app/router.ts',
       'tests/dummy/config/environment.js',
       'tests/dummy/config/targets.js',
-    ].map(normalizeFilePath),
+    ].map(normalize),
   );
 });

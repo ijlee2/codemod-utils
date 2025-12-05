@@ -1,6 +1,8 @@
+import { normalize } from 'node:path';
+
 import { assert, loadFixture, test } from '@codemod-utils/tests';
 
-import { findFiles, normalizeFilePath } from '../../src/index.js';
+import { findFiles } from '../../src/index.js';
 import { codemodOptions, options } from '../helpers/index.js';
 
 test('find-files > multiple patterns', function () {
@@ -46,6 +48,6 @@ test('find-files > multiple patterns', function () {
       'tests/dummy/app/index.html',
       'tests/dummy/config/optional-features.json',
       'tests/index.html',
-    ].map(normalizeFilePath),
+    ].map(normalize),
   );
 });

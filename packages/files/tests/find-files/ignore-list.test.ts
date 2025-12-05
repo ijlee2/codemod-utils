@@ -1,6 +1,8 @@
+import { normalize } from 'node:path';
+
 import { assert, loadFixture, test } from '@codemod-utils/tests';
 
-import { findFiles, normalizeFilePath } from '../../src/index.js';
+import { findFiles } from '../../src/index.js';
 import { codemodOptions, options } from '../helpers/index.js';
 
 test('find-files > ignore list', function () {
@@ -44,6 +46,6 @@ test('find-files > ignore list', function () {
     [
       'tests/integration/components/container-query-test.ts',
       'tests/test-helper.ts',
-    ].map(normalizeFilePath),
+    ].map(normalize),
   );
 });

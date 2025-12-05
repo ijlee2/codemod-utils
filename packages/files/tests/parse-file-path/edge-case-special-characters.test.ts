@@ -1,6 +1,8 @@
+import { normalize } from 'node:path';
+
 import { assert, test } from '@codemod-utils/tests';
 
-import { normalizeFilePath, parseFilePath } from '../../src/index.js';
+import { parseFilePath } from '../../src/index.js';
 
 test('parse-file-path > edge case (special characters)', function () {
   const filePath = 'photos/image (1).png';
@@ -9,7 +11,7 @@ test('parse-file-path > edge case (special characters)', function () {
 
   assert.deepEqual(parsedPath, {
     base: 'image (1).png',
-    dir: normalizeFilePath('photos'),
+    dir: normalize('photos'),
     ext: '.png',
     name: 'image (1)',
   });

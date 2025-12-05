@@ -1,6 +1,8 @@
+import { normalize } from 'node:path';
+
 import { assert, test } from '@codemod-utils/tests';
 
-import { mapFilePaths, normalizeFilePath } from '../../src/index.js';
+import { mapFilePaths } from '../../src/index.js';
 
 test('map-file-paths > edge case (no match)', function () {
   const filePaths = [
@@ -8,7 +10,7 @@ test('map-file-paths > edge case (no match)', function () {
     'addon',
     'addon.js',
     'app/index.js',
-  ].map(normalizeFilePath);
+  ].map(normalize);
 
   const filePathMap = mapFilePaths(filePaths, {
     from: 'addon',
@@ -18,13 +20,10 @@ test('map-file-paths > edge case (no match)', function () {
   assert.deepStrictEqual(
     filePathMap,
     new Map([
-      [
-        normalizeFilePath('.addon/index.js'),
-        normalizeFilePath('.addon/index.js'),
-      ],
-      [normalizeFilePath('addon'), normalizeFilePath('addon')],
-      [normalizeFilePath('addon.js'), normalizeFilePath('addon.js')],
-      [normalizeFilePath('app/index.js'), normalizeFilePath('app/index.js')],
+      [normalize('.addon/index.js'), normalize('.addon/index.js')],
+      [normalize('addon'), normalize('addon')],
+      [normalize('addon.js'), normalize('addon.js')],
+      [normalize('app/index.js'), normalize('app/index.js')],
     ]),
   );
 });

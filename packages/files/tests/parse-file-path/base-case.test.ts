@@ -1,6 +1,8 @@
+import { normalize } from 'node:path';
+
 import { assert, test } from '@codemod-utils/tests';
 
-import { normalizeFilePath, parseFilePath } from '../../src/index.js';
+import { parseFilePath } from '../../src/index.js';
 
 test('parse-file-path > base case', function () {
   const filePath = 'src/components/navigation-menu.hbs';
@@ -9,7 +11,7 @@ test('parse-file-path > base case', function () {
 
   assert.deepEqual(parsedPath, {
     base: 'navigation-menu.hbs',
-    dir: normalizeFilePath('src/components'),
+    dir: normalize('src/components'),
     ext: '.hbs',
     name: 'navigation-menu',
   });

@@ -1,6 +1,5 @@
-import { parse } from 'node:path';
+import { normalize, parse } from 'node:path';
 
-import { normalizeFilePath } from './normalize-file-path.js';
 import type { FilePath, ParsedPath } from './types.js';
 
 /**
@@ -30,7 +29,7 @@ import type { FilePath, ParsedPath } from './types.js';
  */
 export function parseFilePath(filePath: FilePath): ParsedPath {
   // eslint-disable-next-line prefer-const
-  let { base, dir, ext, name } = parse(normalizeFilePath(filePath));
+  let { base, dir, ext, name } = parse(normalize(filePath));
 
   while (true) {
     const { ext: extPrefix, name: fileName } = parse(name);
