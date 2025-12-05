@@ -1,10 +1,10 @@
-import { assert, createFile } from '@codemod-utils/tests';
+import { assert, normalizeFile } from '@codemod-utils/tests';
 
 import { findTemplateTags } from '../../src/index.js';
 import { testOnPosix } from '../helpers/index.js';
 
 testOnPosix('find-template-tags > template-only (5)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `import type { TOC } from '@ember/component/template-only';`,
     `import { isTesting, macroCondition } from '@embroider/macros';`,
     ``,
@@ -44,7 +44,7 @@ testOnPosix('find-template-tags > template-only (5)', function () {
         startByte: 355,
         startChar: 355,
       },
-      contents: createFile([
+      contents: normalizeFile([
         ``,
         `        <div class={{styles.placeholder-image}}></div>`,
         `      `,

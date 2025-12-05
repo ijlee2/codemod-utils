@@ -1,8 +1,8 @@
 import { EOL } from 'node:os';
 
 /**
- * Creates a file (its content) from an array of strings.
- * The output works on POSIX and Windows.
+ * Creates a file (its content) with the correct newline character,
+ * so that a test can pass on both POSIX and Windows.
  *
  * @param lines
  *
@@ -17,7 +17,7 @@ import { EOL } from 'node:os';
  * Assert that the codemod updated the fixture correctly.
  *
  * ```ts
- * const oldFile = createFile([
+ * const oldFile = normalizeFile([
  *   `import Component from '@glimmer/component';`,
  *   ``,
  *   `export default class Hello extends Component {}`,
@@ -28,7 +28,7 @@ import { EOL } from 'node:os';
  *
  * assert.strictEqual(
  *   newFile,
- *   createFile([
+ *   normalizeFile([
  *     `import Component from '@glimmer/component';`,
  *     ``,
  *     `import styles from './hello.module.css';`,
@@ -41,6 +41,6 @@ import { EOL } from 'node:os';
  * );
  * ```
  */
-export function createFile(lines: string[]): string {
+export function normalizeFile(lines: string[]): string {
   return lines.join(EOL);
 }

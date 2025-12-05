@@ -1,13 +1,13 @@
 import { EOL } from 'node:os';
 
-import { assert, createFile, loadFixture, test } from '@codemod-utils/tests';
+import { assert, loadFixture, normalizeFile, test } from '@codemod-utils/tests';
 
 import { readPackageJson } from '../../src/index.js';
 import { codemodOptions, options } from '../shared-test-setups/index.js';
 
 test('read-package-json > error handling (package.json is not a valid JSON)', function () {
   const inputProject = {
-    'package.json': createFile([`{`, `  "name": }`]),
+    'package.json': normalizeFile([`{`, `  "name": }`]),
   };
 
   loadFixture(inputProject, codemodOptions);

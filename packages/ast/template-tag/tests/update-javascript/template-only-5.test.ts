@@ -1,10 +1,10 @@
-import { assert, createFile, test } from '@codemod-utils/tests';
+import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { updateJavaScript } from '../../src/index.js';
 import { data, renameGetters } from '../helpers/update-javascript.js';
 
 test('update-javascript > template-only (5)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `import type { TOC } from '@ember/component/template-only';`,
     `import { isTesting, macroCondition } from '@embroider/macros';`,
     ``,
@@ -40,7 +40,7 @@ test('update-javascript > template-only (5)', function () {
 
   assert.strictEqual(
     newFile,
-    createFile([
+    normalizeFile([
       `import type { TOC } from '@ember/component/template-only';`,
       `import { isTesting, macroCondition } from '@embroider/macros';`,
       ``,
@@ -78,7 +78,7 @@ test('update-javascript > template-only (5)', function () {
 
   assert.strictEqual(
     newFile2,
-    createFile([
+    normalizeFile([
       `import type { TOC } from '@ember/component/template-only';`,
       `import { isTesting, macroCondition } from '@embroider/macros';`,
       ``,

@@ -1,10 +1,10 @@
-import { assert, createFile } from '@codemod-utils/tests';
+import { assert, normalizeFile } from '@codemod-utils/tests';
 
 import { replaceTemplateTag } from '../../src/index.js';
 import { testOnPosix } from '../helpers/index.js';
 
 testOnPosix('replace-template-tag > class (1)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `import Component from '@glimmer/component';`,
     ``,
     `export default class MyComponent extends Component {}`,
@@ -12,7 +12,7 @@ testOnPosix('replace-template-tag > class (1)', function () {
   ]);
 
   const newFile = replaceTemplateTag(oldFile, {
-    code: createFile([`<template>`, `  New contents`, `</template>`]),
+    code: normalizeFile([`<template>`, `  New contents`, `</template>`]),
     range: {
       endByte: 97,
       endChar: 97,
@@ -23,7 +23,7 @@ testOnPosix('replace-template-tag > class (1)', function () {
 
   assert.strictEqual(
     newFile,
-    createFile([
+    normalizeFile([
       `import Component from '@glimmer/component';`,
       ``,
       `export default class MyComponent extends Component {<template>`,

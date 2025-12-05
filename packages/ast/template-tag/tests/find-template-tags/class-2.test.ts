@@ -1,10 +1,10 @@
-import { assert, createFile } from '@codemod-utils/tests';
+import { assert, normalizeFile } from '@codemod-utils/tests';
 
 import { findTemplateTags } from '../../src/index.js';
 import { testOnPosix } from '../helpers/index.js';
 
 testOnPosix('find-template-tags > class (2)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `import Component from '@glimmer/component';`,
     ``,
     `import styles from './my-component.css';`,
@@ -29,7 +29,7 @@ testOnPosix('find-template-tags > class (2)', function () {
         startByte: 152,
         startChar: 152,
       },
-      contents: createFile([
+      contents: normalizeFile([
         ``,
         `    <div class={{styles.container}}>`,
         `      Hello world!`,

@@ -1,10 +1,10 @@
-import { assert, createFile } from '@codemod-utils/tests';
+import { assert, normalizeFile } from '@codemod-utils/tests';
 
 import { replaceTemplateTag } from '../../src/index.js';
 import { testOnPosix } from '../helpers/index.js';
 
 testOnPosix('replace-template-tag > class (3)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `import Component from '@glimmer/component';`,
     `import { local } from 'embroider-css-modules';`,
     ``,
@@ -38,7 +38,7 @@ testOnPosix('replace-template-tag > class (3)', function () {
   ]);
 
   const newFile = replaceTemplateTag(oldFile, {
-    code: createFile([`<template>`, `    New contents`, `  </template>`]),
+    code: normalizeFile([`<template>`, `    New contents`, `  </template>`]),
     range: {
       endByte: 619,
       endChar: 589,
@@ -49,7 +49,7 @@ testOnPosix('replace-template-tag > class (3)', function () {
 
   assert.strictEqual(
     newFile,
-    createFile([
+    normalizeFile([
       `import Component from '@glimmer/component';`,
       `import { local } from 'embroider-css-modules';`,
       ``,

@@ -1,9 +1,9 @@
-import { assert, createFile, test } from '@codemod-utils/tests';
+import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { toEcma } from '../../src/index.js';
 
 test('to-ecma > rendering test (2)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `import Service from '@ember/service';`,
     `import { type Registry as Services, service } from '@ember/service';`,
     `import { render, type TestContext } from '@ember/test-helpers';`,
@@ -50,7 +50,7 @@ test('to-ecma > rendering test (2)', function () {
 
   assert.strictEqual(
     newFile,
-    createFile([
+    normalizeFile([
       `import { template as template_fd9b2463e5f141cfb5666b64daa1f11a } from "@ember/template-compiler";`,
       `import Service from '@ember/service';`,
       `import { type Registry as Services, service } from '@ember/service';`,

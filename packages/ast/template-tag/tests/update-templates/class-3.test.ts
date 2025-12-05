@@ -1,10 +1,10 @@
-import { assert, createFile, test } from '@codemod-utils/tests';
+import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { updateTemplates } from '../../src/index.js';
 import { removeClassAttribute } from '../helpers/update-templates.js';
 
 test('update-templates > class (3)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `import Component from '@glimmer/component';`,
     `import { local } from 'embroider-css-modules';`,
     ``,
@@ -41,7 +41,7 @@ test('update-templates > class (3)', function () {
 
   assert.strictEqual(
     newFile,
-    createFile([
+    normalizeFile([
       `import Component from '@glimmer/component';`,
       `import { local } from 'embroider-css-modules';`,
       ``,
