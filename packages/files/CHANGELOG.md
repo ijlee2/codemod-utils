@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/files
 
+## 3.2.1
+
+### Patch Changes
+
+- [#231](https://github.com/ijlee2/codemod-utils/pull/231) Called normalize() only when options.from is not empty ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.2.0
 
 ### Minor Changes
