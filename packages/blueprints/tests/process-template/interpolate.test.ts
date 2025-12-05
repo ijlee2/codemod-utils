@@ -1,9 +1,9 @@
-import { assert, createFile, test } from '@codemod-utils/tests';
+import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { processTemplate } from '../../src/index.js';
 
 test('process-template > interpolate', function () {
-  const blueprintFile = createFile([
+  const blueprintFile = normalizeFile([
     `packages:`,
     `  - '<%= options.packages.addon.name %>'`,
     `  - '<%= options.packages.testApp.name %>'`,
@@ -22,7 +22,7 @@ test('process-template > interpolate', function () {
     },
   });
 
-  const expectedValue = createFile([
+  const expectedValue = normalizeFile([
     `packages:`,
     `  - 'ember-container-query'`,
     `  - 'test-app'`,

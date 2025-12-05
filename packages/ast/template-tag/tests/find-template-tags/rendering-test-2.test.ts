@@ -1,10 +1,10 @@
-import { assert, createFile } from '@codemod-utils/tests';
+import { assert, normalizeFile } from '@codemod-utils/tests';
 
 import { findTemplateTags } from '../../src/index.js';
 import { testOnPosix } from '../helpers/index.js';
 
 testOnPosix('find-template-tags > rendering test (2)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `import Service from '@ember/service';`,
     `import { type Registry as Services, service } from '@ember/service';`,
     `import { render, type TestContext } from '@ember/test-helpers';`,
@@ -86,7 +86,7 @@ testOnPosix('find-template-tags > rendering test (2)', function () {
         startByte: 950,
         startChar: 950,
       },
-      contents: createFile([
+      contents: normalizeFile([
         ``,
         `        <Example1 class="my-style" />`,
         `      `,

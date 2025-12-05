@@ -1,14 +1,14 @@
-import { assert, createFile, test } from '@codemod-utils/tests';
+import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { updateTemplates } from '../../src/index.js';
 import { removeClassAttribute } from '../helpers/update-templates.js';
 
 test('update-templates > template-only (1)', function () {
-  const oldFile = createFile([`<template></template>;`, ``]);
+  const oldFile = normalizeFile([`<template></template>;`, ``]);
 
   const newFile = updateTemplates(oldFile, removeClassAttribute);
 
-  assert.strictEqual(newFile, createFile([`<template></template>;`, ``]));
+  assert.strictEqual(newFile, normalizeFile([`<template></template>;`, ``]));
 
   const newFile2 = updateTemplates(newFile, removeClassAttribute);
 

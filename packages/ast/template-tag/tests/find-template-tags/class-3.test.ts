@@ -1,10 +1,10 @@
-import { assert, createFile } from '@codemod-utils/tests';
+import { assert, normalizeFile } from '@codemod-utils/tests';
 
 import { findTemplateTags } from '../../src/index.js';
 import { testOnPosix } from '../helpers/index.js';
 
 testOnPosix('find-template-tags > class (3)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `import Component from '@glimmer/component';`,
     `import { local } from 'embroider-css-modules';`,
     ``,
@@ -47,7 +47,7 @@ testOnPosix('find-template-tags > class (3)', function () {
         startByte: 156,
         startChar: 156,
       },
-      contents: createFile([
+      contents: normalizeFile([
         ``,
         `  <div`,
         `    class={{local styles "container" "highlight"}}`,
@@ -85,7 +85,7 @@ testOnPosix('find-template-tags > class (3)', function () {
         startByte: 423,
         startChar: 411,
       },
-      contents: createFile([
+      contents: normalizeFile([
         ``,
         `    <UserName @user={{@user}} />`,
         ``,

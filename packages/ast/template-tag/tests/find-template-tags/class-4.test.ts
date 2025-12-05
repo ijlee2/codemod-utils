@@ -1,10 +1,10 @@
-import { assert, createFile } from '@codemod-utils/tests';
+import { assert, normalizeFile } from '@codemod-utils/tests';
 
 import { findTemplateTags } from '../../src/index.js';
 import { testOnPosix } from '../helpers/index.js';
 
 testOnPosix('find-template-tags > class (4)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `import { assert } from '@ember/debug';`,
     `import { on } from '@ember/modifier';`,
     `import { action, get } from '@ember/object';`,
@@ -110,7 +110,7 @@ testOnPosix('find-template-tags > class (4)', function () {
     {
       type: 'class-member',
       tagName: 'template',
-      contents: createFile([
+      contents: normalizeFile([
         ``,
         `    <UiFormField @errorMessage={{this.errorMessage}} @isWide={{@isWide}}>`,
         `      <:label as |l|>`,

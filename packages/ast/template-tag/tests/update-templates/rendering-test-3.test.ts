@@ -1,10 +1,10 @@
-import { assert, createFile, test } from '@codemod-utils/tests';
+import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { updateTemplates } from '../../src/index.js';
 import { removeClassAttribute } from '../helpers/update-templates.js';
 
 test('update-templates > rendering test (3)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `import Service from '@ember/service';`,
     `import { type Registry as Services, service } from '@ember/service';`,
     `import { click, render, type TestContext } from '@ember/test-helpers';`,
@@ -61,7 +61,7 @@ test('update-templates > rendering test (3)', function () {
 
   assert.strictEqual(
     newFile,
-    createFile([
+    normalizeFile([
       `import Service from '@ember/service';`,
       `import { type Registry as Services, service } from '@ember/service';`,
       `import { click, render, type TestContext } from '@ember/test-helpers';`,

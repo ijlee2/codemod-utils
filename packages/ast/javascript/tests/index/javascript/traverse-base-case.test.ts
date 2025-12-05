@@ -1,9 +1,9 @@
-import { assert, createFile, test } from '@codemod-utils/tests';
+import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { traverseJavaScript } from '../../helpers/index.js';
 
 test('index | javascript > traverse (base case)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `import Component from '@glimmer/component';`,
     ``,
     `export default class NavigationMenuComponent extends Component {}`,
@@ -14,7 +14,7 @@ test('index | javascript > traverse (base case)', function () {
 
   assert.strictEqual(
     newFile,
-    createFile([
+    normalizeFile([
       `import Component from '@glimmer/component';`,
       ``,
       `export default class NavigationMenuComponent extends Component {}`,

@@ -1,10 +1,10 @@
-import { assert, createFile } from '@codemod-utils/tests';
+import { assert, normalizeFile } from '@codemod-utils/tests';
 
 import { replaceTemplateTag } from '../../src/index.js';
 import { testOnPosix } from '../helpers/index.js';
 
 testOnPosix('replace-template-tag > rendering test (3)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `import Service from '@ember/service';`,
     `import { type Registry as Services, service } from '@ember/service';`,
     `import { click, render, type TestContext } from '@ember/test-helpers';`,
@@ -69,7 +69,7 @@ testOnPosix('replace-template-tag > rendering test (3)', function () {
 
   assert.strictEqual(
     newFile,
-    createFile([
+    normalizeFile([
       `import Service from '@ember/service';`,
       `import { type Registry as Services, service } from '@ember/service';`,
       `import { click, render, type TestContext } from '@ember/test-helpers';`,

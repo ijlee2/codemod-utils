@@ -1,9 +1,9 @@
-import { assert, createFile, test } from '@codemod-utils/tests';
+import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { toTemplateTag } from '../../src/index.js';
 
 test('to-template-tag > class (1)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `import Component from '@glimmer/component';`,
     ``,
     `export default class MyComponent extends Component {}`,
@@ -14,7 +14,7 @@ test('to-template-tag > class (1)', function () {
 
   assert.strictEqual(
     newFile,
-    createFile([
+    normalizeFile([
       `import Component from '@glimmer/component';`,
       ``,
       `export default class MyComponent extends Component {}`,

@@ -1,9 +1,9 @@
-import { assert, createFile, test } from '@codemod-utils/tests';
+import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { processTemplate } from '../../src/index.js';
 
 test('process-template > evaluate', function () {
-  const blueprintFile = createFile([
+  const blueprintFile = normalizeFile([
     `<% if (options.packageManager.isNpm) { %>{`,
     `  "scripts": {`,
     `    "prepare": "npm run build",`,
@@ -29,7 +29,7 @@ test('process-template > evaluate', function () {
     },
   });
 
-  const expectedValue = createFile([
+  const expectedValue = normalizeFile([
     `{`,
     `  "scripts": {`,
     `    "prepare": "yarn build",`,

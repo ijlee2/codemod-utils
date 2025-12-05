@@ -1,15 +1,15 @@
-import { assert, createFile, test } from '@codemod-utils/tests';
+import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { toEcma } from '../../src/index.js';
 
 test('to-ecma > template-only (1)', function () {
-  const oldFile = createFile([`<template></template>;`, ``]);
+  const oldFile = normalizeFile([`<template></template>;`, ``]);
 
   const newFile = toEcma(oldFile);
 
   assert.strictEqual(
     newFile,
-    createFile([
+    normalizeFile([
       `import { template as template_fd9b2463e5f141cfb5666b64daa1f11a } from "@ember/template-compiler";`,
       `export default template_fd9b2463e5f141cfb5666b64daa1f11a(\`\`, {`,
       `    eval () {`,

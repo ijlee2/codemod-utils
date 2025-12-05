@@ -1,9 +1,9 @@
-import { assert, createFile, test } from '@codemod-utils/tests';
+import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { findTemplateTags } from '../../src/index.js';
 
 test('find-template-tags > edge case (hbs)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `<div class={{this.styles.container}}>`,
     `  Hello world!`,
     `</div>`,

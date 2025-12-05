@@ -1,10 +1,10 @@
-import { assert, createFile } from '@codemod-utils/tests';
+import { assert, normalizeFile } from '@codemod-utils/tests';
 
 import { findTemplateTags } from '../../src/index.js';
 import { testOnPosix } from '../helpers/index.js';
 
 testOnPosix('find-template-tags > template-only (4)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `import type { TOC } from '@ember/component/template-only';`,
     `import { hash } from '@ember/helper';`,
     `import { LinkTo } from '@ember/routing';`,
@@ -88,7 +88,7 @@ testOnPosix('find-template-tags > template-only (4)', function () {
     {
       type: 'expression',
       tagName: 'template',
-      contents: createFile([
+      contents: normalizeFile([
         ``,
         `    <ContainerQuery`,
         `      @features={{hash wide=(width min=320)}}`,

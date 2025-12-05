@@ -1,10 +1,10 @@
-import { assert, createFile, test } from '@codemod-utils/tests';
+import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { updateTemplates } from '../../src/index.js';
 import { removeClassAttribute } from '../helpers/update-templates.js';
 
 test('update-templates > class (4)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `import { assert } from '@ember/debug';`,
     `import { on } from '@ember/modifier';`,
     `import { action, get } from '@ember/object';`,
@@ -108,7 +108,7 @@ test('update-templates > class (4)', function () {
 
   assert.strictEqual(
     newFile,
-    createFile([
+    normalizeFile([
       `import { assert } from '@ember/debug';`,
       `import { on } from '@ember/modifier';`,
       `import { action, get } from '@ember/object';`,

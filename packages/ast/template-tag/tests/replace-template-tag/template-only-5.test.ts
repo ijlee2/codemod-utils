@@ -1,10 +1,10 @@
-import { assert, createFile } from '@codemod-utils/tests';
+import { assert, normalizeFile } from '@codemod-utils/tests';
 
 import { replaceTemplateTag } from '../../src/index.js';
 import { testOnPosix } from '../helpers/index.js';
 
 testOnPosix('replace-template-tag > template-only (5)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `import type { TOC } from '@ember/component/template-only';`,
     `import { isTesting, macroCondition } from '@embroider/macros';`,
     ``,
@@ -46,7 +46,7 @@ testOnPosix('replace-template-tag > template-only (5)', function () {
 
   assert.strictEqual(
     newFile,
-    createFile([
+    normalizeFile([
       `import type { TOC } from '@ember/component/template-only';`,
       `import { isTesting, macroCondition } from '@embroider/macros';`,
       ``,

@@ -1,10 +1,10 @@
-import { assert, createFile } from '@codemod-utils/tests';
+import { assert, normalizeFile } from '@codemod-utils/tests';
 
 import { replaceTemplateTag } from '../../src/index.js';
 import { testOnPosix } from '../helpers/index.js';
 
 testOnPosix('replace-template-tag > template-only (3)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `import styles from './styles.css';`,
     ``,
     `export default <template>`,
@@ -16,7 +16,7 @@ testOnPosix('replace-template-tag > template-only (3)', function () {
   ]);
 
   const newFile = replaceTemplateTag(oldFile, {
-    code: createFile([`<template>`, `  New contents`, `</template>`]),
+    code: normalizeFile([`<template>`, `  New contents`, `</template>`]),
     range: {
       endByte: 134,
       endChar: 134,
@@ -27,7 +27,7 @@ testOnPosix('replace-template-tag > template-only (3)', function () {
 
   assert.strictEqual(
     newFile,
-    createFile([
+    normalizeFile([
       `import styles from './styles.css';`,
       ``,
       `export default <template>`,

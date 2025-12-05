@@ -1,10 +1,10 @@
-import { assert, createFile } from '@codemod-utils/tests';
+import { assert, normalizeFile } from '@codemod-utils/tests';
 
 import { findTemplateTags } from '../../src/index.js';
 import { testOnPosix } from '../helpers/index.js';
 
 testOnPosix('find-template-tags > template-only (1)', function () {
-  const oldFile = createFile([`<template></template>;`, ``]);
+  const oldFile = normalizeFile([`<template></template>;`, ``]);
 
   const templateTags = findTemplateTags(oldFile);
 
