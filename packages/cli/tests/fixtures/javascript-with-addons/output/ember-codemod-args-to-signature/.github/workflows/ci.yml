@@ -60,7 +60,7 @@ jobs:
 
   test-on-windows:
     name: Test on Windows
-    runs-on: window-latest
+    runs-on: windows-latest
     timeout-minutes: 5
     steps:
       - name: Check out a copy of the repo

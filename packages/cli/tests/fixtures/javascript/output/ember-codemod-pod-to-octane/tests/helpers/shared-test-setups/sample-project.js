@@ -1,9 +1,11 @@
+import { normalize } from 'node:path';
+
 const codemodOptions = {
-  projectRoot: 'tmp/sample-project',
+  projectRoot: normalize('tmp/sample-project'),
 };
 
 const options = {
-  projectRoot: 'tmp/sample-project',
+  projectRoot: normalize('tmp/sample-project'),
 };
 
 export { codemodOptions, options };
