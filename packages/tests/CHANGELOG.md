@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/tests
 
+## 2.2.0
+
+### Minor Changes
+
+- [#230](https://github.com/ijlee2/codemod-utils/pull/230) Renamed createFile() to normalizeFile() ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.1.0
 
 ### Minor Changes

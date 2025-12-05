@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/files
 
+## 3.2.0
+
+### Minor Changes
+
+- [#230](https://github.com/ijlee2/codemod-utils/pull/230) Added a warning for findFiles() ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.1.1
 
 ### Patch Changes
