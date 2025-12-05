@@ -3,6 +3,7 @@ import { normalize } from 'node:path';
 import { assert, test } from '@codemod-utils/tests';
 
 import { mapFilePaths } from '../../src/index.js';
+import { normalizeFilePathMap } from '../helpers/index.js';
 
 test('map-file-paths > base case', function () {
   const filePaths = [
@@ -17,15 +18,14 @@ test('map-file-paths > base case', function () {
 
   assert.deepStrictEqual(
     filePathMap,
-    new Map([
-      [
-        normalize('addon/components/container-query.hbs'),
-        normalize('ember-container-query/src/components/container-query.hbs'),
-      ],
-      [
-        normalize('addon/.gitkeep'),
-        normalize('ember-container-query/src/.gitkeep'),
-      ],
-    ]),
+    normalizeFilePathMap(
+      new Map([
+        [
+          'addon/components/container-query.hbs',
+          'ember-container-query/src/components/container-query.hbs',
+        ],
+        ['addon/.gitkeep', 'ember-container-query/src/.gitkeep'],
+      ]),
+    ),
   );
 });
