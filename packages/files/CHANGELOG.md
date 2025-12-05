@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/files
 
+## 3.1.1
+
+### Patch Changes
+
+- [#229](https://github.com/ijlee2/codemod-utils/pull/229) Replaced normalizeFilePath() with normalize() ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.1.0
 
 ### Minor Changes

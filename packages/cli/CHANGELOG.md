@@ -1,5 +1,12 @@
 # Changelog for @codemod-utils/cli
 
+## 3.8.1
+
+### Patch Changes
+
+- [#229](https://github.com/ijlee2/codemod-utils/pull/229) Updated blueprints ([@ijlee2](https://github.com/ijlee2))
+- [#229](https://github.com/ijlee2/codemod-utils/pull/229) Replaced normalizeFilePath() with normalize() ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.8.0
 
 ### Minor Changes
