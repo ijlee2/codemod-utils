@@ -40,7 +40,7 @@
     "@codemod-utils/ast-template-tag": "^1.1.0",
     "@codemod-utils/blueprints": "^2.1.0",
     "@codemod-utils/ember": "^3.0.4",
-    "@codemod-utils/files": "^3.2.0",
+    "@codemod-utils/files": "^3.2.1",
     "@codemod-utils/package-json": "^3.3.0",
     "yargs": "^18.0.0"
   },
