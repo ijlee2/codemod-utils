@@ -1,3 +1,3 @@
-import getConfig from '@ijlee2-frontend-configs/changesets';
+import getFormatter from '@ijlee2-frontend-configs/changesets';
 
-export default getConfig('<your-github-handle>/ember-codemod-pod-to-octane');
+export default getFormatter('<your-github-handle>/ember-codemod-pod-to-octane');
