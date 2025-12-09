@@ -54,6 +54,7 @@ npx @codemod-utils/cli <your-codemod-name>
 - [`ember-codemod-rename-test-modules`](https://github.com/ijlee2/ember-codemod-rename-test-modules)
 - [`ember-codemod-sort-invocations`](https://github.com/ijlee2/ember-codemod-sort-invocations)
 - [`ember-codemod-v1-to-v2`](https://github.com/ijlee2/ember-codemod-v1-to-v2)
+- [`prettier-plugin-ember-hbs-tag`](https://github.com/ijlee2/prettier-plugin-ember-hbs-tag/)
 - [`type-css-modules`](https://github.com/ijlee2/embroider-css-modules/tree/main/packages/type-css-modules)
 - [`update-workspace-root-version`](https://github.com/ijlee2/update-workspace-root-version)
 

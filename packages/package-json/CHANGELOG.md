@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/package-json
 
+## 3.3.1
+
+### Patch Changes
+
+- [#233](https://github.com/ijlee2/codemod-utils/pull/233) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.3.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/cli
 
+## 3.9.0
+
+### Minor Changes
+
+- [#234](https://github.com/ijlee2/codemod-utils/pull/234) Simplified changesets configuration ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.8.3
 
 ### Patch Changes
