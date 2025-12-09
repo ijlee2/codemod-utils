@@ -2,7 +2,6 @@ import { decideVersion } from '@codemod-utils/blueprints';
 
 const latestVersions = new Map([
   ['@changesets/cli', '2.29.8'],
-  ['@changesets/get-github-info', '0.7.0'],
   ['@codemod-utils/ast-javascript', '2.1.0'],
   ['@codemod-utils/ast-template', '2.1.0'],
   ['@codemod-utils/ast-template-tag', '1.1.0'],
@@ -11,6 +10,7 @@ const latestVersions = new Map([
   ['@codemod-utils/files', '3.2.1'],
   ['@codemod-utils/package-json', '3.3.0'],
   ['@codemod-utils/tests', '2.2.0'],
+  ['@ijlee2-frontend-configs/changesets', '1.0.0'],
   ['@ijlee2-frontend-configs/eslint-config-node', '2.3.0'],
   ['@ijlee2-frontend-configs/prettier', '2.3.0'],
   ['@sondr3/minitest', '0.1.2'],

@@ -43,8 +43,8 @@ function updateDevDependencies(
 
   const packagesToInstall = new Set([
     '@changesets/cli',
-    '@changesets/get-github-info',
     '@codemod-utils/tests',
+    '@ijlee2-frontend-configs/changesets',
     '@ijlee2-frontend-configs/eslint-config-node',
     '@ijlee2-frontend-configs/prettier',
     '@sondr3/minitest',
