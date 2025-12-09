@@ -1,5 +1,11 @@
 # Changelog for @codemod-utils/cli
 
+## 3.9.1
+
+### Patch Changes
+
+- [`c1f2929`](https://github.com/ijlee2/codemod-utils/commit/c1f2929176780a17ad4430fe47078a1326307e63) Renamed function ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.9.0
 
 ### Minor Changes
