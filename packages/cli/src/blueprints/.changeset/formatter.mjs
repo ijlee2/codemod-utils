@@ -1,3 +1,3 @@
-import getConfig from '@ijlee2-frontend-configs/changesets';
+import getFormatter from '@ijlee2-frontend-configs/changesets';
 
-export default getConfig('<your-github-handle>/<%= options.codemod.name %>');
+export default getFormatter('<your-github-handle>/<%= options.codemod.name %>');
