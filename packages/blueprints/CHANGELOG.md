@@ -1,4 +1,4 @@
-# Changelog for @codemod-utils/blueprints
+# @codemod-utils/blueprints
 
 ## 2.1.0
 

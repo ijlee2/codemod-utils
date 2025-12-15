@@ -1,4 +1,4 @@
-# Changelog for @codemod-utils/cli
+# @codemod-utils/cli
 
 ## 3.9.1
 

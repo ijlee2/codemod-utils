@@ -1,4 +1,4 @@
-# Changelog for @codemod-utils/ember
+# @codemod-utils/ember
 
 ## 3.0.4
 

@@ -1,4 +1,4 @@
-# Changelog for @codemod-utils/ast-javascript
+# @codemod-utils/ast-javascript
 
 ## 2.1.0
 
