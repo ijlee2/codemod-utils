@@ -1,4 +1,4 @@
-# Changelog for @codemod-utils/files
+# @codemod-utils/files
 
 ## 3.2.1
 

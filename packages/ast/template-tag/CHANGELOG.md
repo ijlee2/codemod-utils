@@ -1,4 +1,4 @@
-# Changelog for @codemod-utils/ast-template-tag
+# @codemod-utils/ast-template-tag
 
 ## 1.1.0
 

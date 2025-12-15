@@ -1,4 +1,4 @@
-# Changelog for @codemod-utils/tests
+# @codemod-utils/tests
 
 ## 2.2.0
 
