@@ -33,18 +33,18 @@
     "test": "mt tests --quiet"
   },
   "dependencies": {
-    "@codemod-utils/files": "^3.2.1",
+    "@codemod-utils/files": "^3.2.2",
     "yargs": "^18.0.0"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.8",
-    "@codemod-utils/tests": "^2.2.0",
-    "@ijlee2-frontend-configs/changesets": "^1.0.0",
-    "@ijlee2-frontend-configs/eslint-config-node": "^2.3.1",
-    "@ijlee2-frontend-configs/prettier": "^2.3.1",
+    "@codemod-utils/tests": "^2.2.1",
+    "@ijlee2-frontend-configs/changesets": "^1.0.1",
+    "@ijlee2-frontend-configs/eslint-config-node": "^2.3.2",
+    "@ijlee2-frontend-configs/prettier": "^2.3.2",
     "@sondr3/minitest": "^0.1.2",
     "concurrently": "^9.2.1",
-    "eslint": "^9.39.1",
+    "eslint": "^9.39.2",
     "prettier": "^3.7.4"
   },
   "packageManager": "pnpm@10.25.0",
