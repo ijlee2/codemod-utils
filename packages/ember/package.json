@@ -8,7 +8,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:ijlee2/codemod-utils.git"
+    "url": "git@github.com:ijlee2/codemod-utils.git",
+    "directory": "packages/ember"
   },
   "license": "MIT",
   "author": "Isaac J. Lee",
