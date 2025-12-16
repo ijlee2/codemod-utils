@@ -234,12 +234,12 @@ A few remarks:
 
 - Although the implementation for `renameModule()` is complex (we had to parse and update abstract syntax trees), the test for it is simple, because `renameModule()` provided a good interface. 
 
-- The input and output files were simple enough that we could write their content in one line without sacrificing readability. Should they have many lines, create an array of strings and use `createFile()` from `@codemod-utils/tests` instead. This way, you can simulate what one would see in an actual file.
+- The input and output files were simple enough that we could write their content in one line without sacrificing readability. Should they have many lines, create an array of strings and use `normalizeFile()` from `@codemod-utils/tests` instead. This way, you can simulate what one would see in an actual file.
 
     ```ts
-    import { createFile } from '@codemod-utils/tests';
+    import { normalizeFile } from '@codemod-utils/tests';
 
-    const oldFile = createFile([
+    const oldFile = normalizeFile([
       `module('Old name', function (hooks) {`,
       `  module('Old name', function (nestedHooks) {});`,
       `});`,
@@ -250,7 +250,7 @@ A few remarks:
 
     assert.strictEqual(
       newFile,
-      createFile([
+      normalizeFile([
         `module('New name', function (hooks) {`,
         `  module('Old name', function (nestedHooks) {});`,
         `});`,
@@ -374,12 +374,12 @@ test('utils | rename-tests | rename-module > edge case (module has incorrect arg
 This test checks that `renameModule()` renames only the parent module.
 
 ```ts
-import { assert, createFile, test } from '@codemod-utils/tests';
+import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { renameModule } from '../../../../src/utils/rename-tests/index.js';
 
 test('utils | rename-tests | rename-module > edge case (nested modules)', function () {
-  const oldFile = createFile([
+  const oldFile = normalizeFile([
     `module('Old name', function (hooks) {`,
     `  module('Old name', function (nestedHooks) {});`,
     `});`,
@@ -393,7 +393,7 @@ test('utils | rename-tests | rename-module > edge case (nested modules)', functi
 
   assert.strictEqual(
     newFile,
-    createFile([
+    normalizeFile([
       `module('New name', function (hooks) {`,
       `  module('Old name', function (nestedHooks) {});`,
       `});`,

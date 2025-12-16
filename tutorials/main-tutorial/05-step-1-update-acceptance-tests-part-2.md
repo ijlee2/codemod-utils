@@ -594,11 +594,14 @@ Currently, `data.moduleName` is hard-coded. We can derive the test module name f
 
 <summary>Solution: <code>src/steps/rename-acceptance-tests.ts</code></summary>
 
+It's important to note that Windows uses `\` as the file separator, while the entity name uses `/` (independently of the operating system). We can use `relative()` and `sep` to normalize values.
+
 The implementation for `renameModule()` remains unchanged and has been hidden for simplicity.
 
 ```diff
 import { readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+- import { join } from 'node:path';
++ import { join, relative, sep } from 'node:path';
 
 import { AST } from '@codemod-utils/ast-javascript';
 - import { findFiles } from '@codemod-utils/files';
@@ -614,10 +617,10 @@ type Data = {
 + function getModuleName(filePath: string): string {
 +   let { dir, name } = parseFilePath(filePath);
 + 
-+   dir = dir.replace(/^tests\/acceptance(\/)?/, '');
++   dir = relative('tests/acceptance', dir);
 +   name = name.replace(/-test$/, '');
 + 
-+   const entityName = join(dir, name);
++   const entityName = join(dir, name).replaceAll(sep, '/');
 + 
 +   // a.k.a. friendlyTestDescription
 +   return ['Acceptance', entityName].join(' | ');

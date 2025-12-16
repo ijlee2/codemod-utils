@@ -31,6 +31,7 @@ npx @codemod-utils/cli <your-codemod-name>
 
 - [Main tutorial](./tutorials/main-tutorial/00-introduction.md)
 - [Create blueprints](./tutorials/create-blueprints/00-introduction.md)
+- [Support Windows](./tutorials/support-windows/00-introduction.md)
 - [Update CSS files](./tutorials/update-css-files/00-introduction.md)
 - [Update `<template>` tags](./tutorials/update-template-tags/00-introduction.md)
 
