@@ -1,5 +1,11 @@
 # @codemod-utils/package-json
 
+## 3.3.2
+
+### Patch Changes
+
+- [#236](https://github.com/ijlee2/codemod-utils/pull/236) Added repository.directory ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.3.1
 
 ### Patch Changes

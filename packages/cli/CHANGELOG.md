@@ -1,5 +1,12 @@
 # @codemod-utils/cli
 
+## 3.9.2
+
+### Patch Changes
+
+- [#238](https://github.com/ijlee2/codemod-utils/pull/238) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+- [#236](https://github.com/ijlee2/codemod-utils/pull/236) Added repository.directory ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.9.1
 
 ### Patch Changes

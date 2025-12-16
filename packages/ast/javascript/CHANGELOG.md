@@ -1,5 +1,11 @@
 # @codemod-utils/ast-javascript
 
+## 2.1.1
+
+### Patch Changes
+
+- [#236](https://github.com/ijlee2/codemod-utils/pull/236) Added repository.directory ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.1.0
 
 ### Minor Changes

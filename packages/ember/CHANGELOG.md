@@ -1,5 +1,11 @@
 # @codemod-utils/ember
 
+## 3.0.5
+
+### Patch Changes
+
+- [#236](https://github.com/ijlee2/codemod-utils/pull/236) Added repository.directory ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.0.4
 
 ### Patch Changes
