@@ -282,7 +282,7 @@ See if you can complete the starter code shown above. The requirements are:
 <summary>Solution: <code>src/steps/create-options.ts</code></summary>
 
 ```diff
-+ import { join } from 'node:path';
++ import { join, sep } from 'node:path';
 + 
 import type { CodemodOptions, Options } from '../types/index.js';
 
@@ -296,12 +296,12 @@ export function createOptions(codemodOptions: CodemodOptions): Options {
  
   return {
 +     addon: {
-+       location: join('packages', addonLocation),
++       location: join('packages', addonLocation).replaceAll(sep, '/'),
 +       name: addonName,
 +     },
     projectRoot,
 +     testApp: {
-+       location: join('tests', addonLocation),
++       location: join('tests', addonLocation).replaceAll(sep, '/'),
 +       name: `test-app-for-${dasherize(addonName)}`,
 +     },
   };

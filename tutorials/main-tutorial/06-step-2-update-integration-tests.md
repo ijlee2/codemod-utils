@@ -120,10 +120,10 @@ type Data = {
 function getModuleName(filePath: string): string {
   let { dir, name } = parseFilePath(filePath);
 
-  dir = dir.replace(/^tests\/acceptance(\/)?/, '');
+  dir = relative('tests/acceptance', dir);
   name = name.replace(/-test$/, '');
 
-  const entityName = join(dir, name);
+  const entityName = join(dir, name).replaceAll(sep, '/');
 
   // a.k.a. friendlyTestDescription
   return ['Acceptance', entityName].join(' | ');
@@ -179,7 +179,7 @@ I highlighted only how `getModuleName()` and `renameModule()` differ between `re
 
 ```diff
 import { readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, relative, sep } from 'node:path';
 
 import { AST } from '@codemod-utils/ast-javascript';
 import { findFiles, parseFilePath } from '@codemod-utils/files';
@@ -194,11 +194,11 @@ type Data = {
 function getModuleName(filePath: string): string {
   let { dir, name } = parseFilePath(filePath);
 
--   dir = dir.replace(/^tests\/acceptance(\/)?/, '');
-+   dir = dir.replace(/^tests\/integration(\/)?/, '');
+-   dir = relative('tests/acceptance', dir);
++   dir = relative('tests/integration', dir);
   name = name.replace(/-test$/, '');
 
-  const entityName = join(dir, name);
+  const entityName = join(dir, name).replaceAll(sep, '/');
 
   // a.k.a. friendlyTestDescription
 -   return ['Acceptance', entityName].join(' | ');
@@ -339,10 +339,10 @@ We say that an [iterative method](https://en.wikipedia.org/wiki/Iterative_method
 function getModuleName(filePath: string): string {
   let { dir, name } = parseFilePath(filePath);
 
-  dir = dir.replace(/^tests\/integration(\/)?/, '');
+  dir = relative('tests/integration', dir);
   name = name.replace(/-test$/, '');
 
-  const entityName = join(dir, name);
+  const entityName = join(dir, name).replaceAll(sep, '/');
 
   // a.k.a. friendlyTestDescription
   return ['Integration', entityName].join(' | ');
@@ -355,7 +355,7 @@ Let's correct the overshoot by adding the entity type (here, we represent it as 
 function getModuleName(filePath: string): string {
   let { dir, name } = parseFilePath(filePath);
 
-  dir = dir.replace(/^tests\/integration(\/)?/, '');
+  dir = relative('tests/integration', dir);
   name = name.replace(/-test$/, '');
 
   const entityType = /* ... */;
@@ -387,6 +387,8 @@ const entityName = join(remainingPath, name);
 Let me first show you the solution for `parseEntity()`, then explain the particular approach.
 
 ```ts
+import { sep } from 'node:path';
+
 const folderToEntityType = new Map([
   ['components', 'Component'],
   ['helpers', 'Helper'],
@@ -397,12 +399,12 @@ function parseEntity(dir: string): {
   entityType: string | undefined;
   remainingPath: string;
 } {
-  const [folder, ...remainingPaths] = dir.split('/');
+  const [folder, ...remainingPaths] = dir.split(sep);
   const entityType = folderToEntityType.get(folder!);
 
   return {
     entityType,
-    remainingPath: remainingPaths.join('/'),
+    remainingPath: remainingPaths.join(sep),
   };
 }
 ```
@@ -419,7 +421,7 @@ The implementations for `renameModule()` and `renameIntegrationTests()` remain u
 
 ```diff
 import { readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, relative, sep } from 'node:path';
 
 import { AST } from '@codemod-utils/ast-javascript';
 import { findFiles, parseFilePath } from '@codemod-utils/files';
@@ -441,24 +443,24 @@ type Data = {
 +   entityType: string | undefined;
 +   remainingPath: string;
 + } {
-+   const [folder, ...remainingPaths] = dir.split('/');
++   const [folder, ...remainingPaths] = dir.split(sep);
 +   const entityType = folderToEntityType.get(folder!);
 + 
 +   return {
 +     entityType,
-+     remainingPath: remainingPaths.join('/'),
++     remainingPath: remainingPaths.join(sep),
 +   };
 + }
 + 
 function getModuleName(filePath: string): string {
   let { dir, name } = parseFilePath(filePath);
 
-  dir = dir.replace(/^tests\/integration(\/)?/, '');
+  dir = relative('tests/integration', dir);
   name = name.replace(/-test$/, '');
 
--   const entityName = join(dir, name);
+-   const entityName = join(dir, name).replaceAll(sep, '/');
 +   const { entityType, remainingPath } = parseEntity(dir);
-+   const entityName = join(remainingPath, name);
++   const entityName = join(remainingPath, name).replaceAll(sep, '/');
 
   // a.k.a. friendlyTestDescription
 -   return ['Integration', entityName].join(' | ');

@@ -94,7 +94,7 @@ In the example above (an "acceptance" test), `inputProject` and `outputProject` 
 <summary>Example</summary>
 
 ```ts
-const oldFile = createFile([
+const oldFile = normalizeFile([
   `import Component from '@glimmer/component';`,
   ``,
   `export default class Hello extends Component {}`,
@@ -105,7 +105,7 @@ const newFile = transform(oldFile);
 
 assert.strictEqual(
   newFile,
-  createFile([
+  normalizeFile([
     `import Component from '@glimmer/component';`,
     ``,
     `import styles from './hello.module.css';`,

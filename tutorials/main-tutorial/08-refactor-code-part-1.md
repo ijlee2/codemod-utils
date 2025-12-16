@@ -361,6 +361,8 @@ Note, `parseEntity()` has an additional argument called `folderToEntityType`.
 <summary>Solution: <code>src/utils/rename-tests/parse-entity.ts</code></summary>
 
 ```ts
+import { sep } from 'node:path';
+
 export function parseEntity(
   dir: string,
   folderToEntityType: Map<string, string>,
@@ -368,12 +370,12 @@ export function parseEntity(
   entityType: string | undefined;
   remainingPath: string;
 } {
-  const [folder, ...remainingPaths] = dir.split('/');
+  const [folder, ...remainingPaths] = dir.split(sep);
   const entityType = folderToEntityType.get(folder!);
 
   return {
     entityType,
-    remainingPath: remainingPaths.join('/'),
+    remainingPath: remainingPaths.join(sep),
   };
 }
 ```
@@ -386,7 +388,7 @@ export function parseEntity(
 
 ```diff
 import { readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, relative, sep } from 'node:path';
 
 import { findFiles, parseFilePath } from '@codemod-utils/files';
 
@@ -405,12 +407,12 @@ const folderToEntityType = new Map([
 function getModuleName(filePath: string): string {
   let { dir, name } = parseFilePath(filePath);
 
-  dir = dir.replace(/^tests\/integration(\/)?/, '');
+  dir = relative('tests/integration', dir);
   name = name.replace(/-test$/, '');
 
 -   const { entityType, remainingPath } = parseEntity(dir);
 +   const { entityType, remainingPath } = parseEntity(dir, folderToEntityType);
-  const entityName = join(remainingPath, name);
+  const entityName = join(remainingPath, name).replaceAll(sep, '/');
 
   // a.k.a. friendlyTestDescription
   return ['Integration', entityType, entityName].join(' | ');
@@ -429,7 +431,7 @@ export function renameIntegrationTests(options: Options): void {
 
 ```diff
 import { readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, relative, sep } from 'node:path';
 
 import { findFiles, parseFilePath } from '@codemod-utils/files';
 
@@ -448,12 +450,12 @@ const folderToEntityType = new Map([
 function getModuleName(filePath: string): string {
   let { dir, name } = parseFilePath(filePath);
 
-  dir = dir.replace(/^tests\/unit(\/)?/, '');
+  dir = relative('tests/unit', dir);
   name = name.replace(/-test$/, '');
 
 -   const { entityType, remainingPath } = parseEntity(dir);
 +   const { entityType, remainingPath } = parseEntity(dir, folderToEntityType);
-  const entityName = join(remainingPath, name);
+  const entityName = join(remainingPath, name).replaceAll(sep, '/');
 
   // a.k.a. friendlyTestDescription
   return ['Unit', entityType, entityName].join(' | ');
@@ -490,6 +492,8 @@ We can address both problems by standardizing the `getModuleName()` function. In
 <summary>Solution: <code>src/utils/rename-tests/parse-entity.ts</code></summary>
 
 ```diff
+import { sep } from 'node:path';
+
 export function parseEntity(
   dir: string,
   folderToEntityType: Map<string, string>,
@@ -497,7 +501,7 @@ export function parseEntity(
   entityType: string | undefined;
   remainingPath: string;
 } {
-  const [folder, ...remainingPaths] = dir.split('/');
+  const [folder, ...remainingPaths] = dir.split(sep);
   const entityType = folderToEntityType.get(folder!);
 
 +   if (entityType === undefined) {
@@ -509,7 +513,7 @@ export function parseEntity(
 + 
   return {
     entityType,
-    remainingPath: remainingPaths.join('/'),
+    remainingPath: remainingPaths.join(sep),
   };
 }
 ```
@@ -522,7 +526,7 @@ export function parseEntity(
 
 ```diff
 import { readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, relative, sep } from 'node:path';
 
 import { findFiles, parseFilePath } from '@codemod-utils/files';
 
@@ -535,12 +539,12 @@ import type { Options } from '../../types/index.js';
 function getModuleName(filePath: string): string {
   let { dir, name } = parseFilePath(filePath);
 
-  dir = dir.replace(/^tests\/acceptance(\/)?/, '');
+  dir = relative('tests/acceptance', dir);
   name = name.replace(/-test$/, '');
 
--   const entityName = join(dir, name);
+-   const entityName = join(dir, name).replaceAll(sep, '/');
 +   const { entityType, remainingPath } = parseEntity(dir, folderToEntityType);
-+   const entityName = join(remainingPath, name);
++   const entityName = join(remainingPath, name).replaceAll(sep, '/');
 
   // a.k.a. friendlyTestDescription
 -   return ['Acceptance', entityName].join(' | ');
@@ -560,7 +564,7 @@ export function renameAcceptanceTests(options: Options): void {
 
 ```diff
 import { readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, relative, sep } from 'node:path';
 
 import { findFiles, parseFilePath } from '@codemod-utils/files';
 
@@ -574,11 +578,11 @@ const folderToEntityType = new Map([
 function getModuleName(filePath: string): string {
   let { dir, name } = parseFilePath(filePath);
 
-  dir = dir.replace(/^tests\/integration(\/)?/, '');
+  dir = relative('tests/integration', dir);
   name = name.replace(/-test$/, '');
 
   const { entityType, remainingPath } = parseEntity(dir, folderToEntityType);
-  const entityName = join(remainingPath, name);
+  const entityName = join(remainingPath, name).replaceAll(sep, '/');
 
   // a.k.a. friendlyTestDescription
 -   return ['Integration', entityType, entityName].join(' | ');
@@ -598,7 +602,7 @@ export function renameIntegrationTests(options: Options): void {
 
 ```diff
 import { readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, relative, sep } from 'node:path';
 
 import { findFiles, parseFilePath } from '@codemod-utils/files';
 
@@ -612,11 +616,11 @@ const folderToEntityType = new Map([
 function getModuleName(filePath: string): string {
   let { dir, name } = parseFilePath(filePath);
 
-  dir = dir.replace(/^tests\/unit(\/)?/, '');
+  dir = relative('tests/unit', dir);
   name = name.replace(/-test$/, '');
 
   const { entityType, remainingPath } = parseEntity(dir, folderToEntityType);
-  const entityName = join(remainingPath, name);
+  const entityName = join(remainingPath, name).replaceAll(sep, '/');
 
   // a.k.a. friendlyTestDescription
 -   return ['Unit', entityType, entityName].join(' | ');

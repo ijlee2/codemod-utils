@@ -23,7 +23,7 @@ Note that, because `'instance-initializers'` and `'utils'` need to be mapped to 
 
 ```diff
 import { readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, relative, sep } from 'node:path';
 
 import { AST } from '@codemod-utils/ast-javascript';
 import { findFiles, parseFilePath } from '@codemod-utils/files';
@@ -57,24 +57,24 @@ function parseEntity(dir: string): {
   entityType: string | undefined;
   remainingPath: string;
 } {
-  const [folder, ...remainingPaths] = dir.split('/');
+  const [folder, ...remainingPaths] = dir.split(sep);
   const entityType = folderToEntityType.get(folder!);
 
   return {
     entityType,
-    remainingPath: remainingPaths.join('/'),
+    remainingPath: remainingPaths.join(sep),
   };
 }
 
 function getModuleName(filePath: string): string {
   let { dir, name } = parseFilePath(filePath);
 
--   dir = dir.replace(/^tests\/integration(\/)?/, '');
-+   dir = dir.replace(/^tests\/unit(\/)?/, '');
+-   dir = relative('tests/integration', dir);
++   dir = relative('tests/unit', dir);
   name = name.replace(/-test$/, '');
 
   const { entityType, remainingPath } = parseEntity(dir);
-  const entityName = join(remainingPath, name);
+  const entityName = join(remainingPath, name).replaceAll(sep, '/');
 
   // a.k.a. friendlyTestDescription
 -   return ['Integration', entityType, entityName].join(' | ');
