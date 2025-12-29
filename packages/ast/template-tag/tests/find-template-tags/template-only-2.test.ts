@@ -22,8 +22,10 @@ testOnPosix('find-template-tags > template-only (2)', function () {
       contentRange: {
         endByte: 108,
         endChar: 108,
+        endUtf16Codepoint: 108,
         startByte: 46,
         startChar: 46,
+        startUtf16Codepoint: 46,
       },
       contents: normalizeFile([
         ``,
@@ -35,20 +37,26 @@ testOnPosix('find-template-tags > template-only (2)', function () {
       endRange: {
         endByte: 119,
         endChar: 119,
+        endUtf16Codepoint: 119,
         startByte: 108,
         startChar: 108,
+        startUtf16Codepoint: 108,
       },
       range: {
         endByte: 119,
         endChar: 119,
+        endUtf16Codepoint: 119,
         startByte: 36,
         startChar: 36,
+        startUtf16Codepoint: 36,
       },
       startRange: {
         endByte: 46,
         endChar: 46,
+        endUtf16Codepoint: 46,
         startByte: 36,
         startChar: 36,
+        startUtf16Codepoint: 36,
       },
       tagName: 'template',
       type: 'expression',

@@ -86,8 +86,14 @@ testOnPosix('find-template-tags > template-only (4)', function () {
 
   assert.deepStrictEqual(templateTags, [
     {
-      type: 'expression',
-      tagName: 'template',
+      contentRange: {
+        endByte: 1837,
+        endChar: 1837,
+        endUtf16Codepoint: 1837,
+        startByte: 643,
+        startChar: 643,
+        startUtf16Codepoint: 643,
+      },
       contents: normalizeFile([
         ``,
         `    <ContainerQuery`,
@@ -133,30 +139,32 @@ testOnPosix('find-template-tags > template-only (4)', function () {
         `    </ContainerQuery>`,
         `  `,
       ]),
-      range: {
-        startByte: 633,
+      endRange: {
         endByte: 1848,
-        startChar: 633,
         endChar: 1848,
+        endUtf16Codepoint: 1848,
+        startByte: 1837,
+        startChar: 1837,
+        startUtf16Codepoint: 1837,
+      },
+      range: {
+        endByte: 1848,
+        endChar: 1848,
+        endUtf16Codepoint: 1848,
+        startByte: 633,
+        startChar: 633,
+        startUtf16Codepoint: 633,
       },
       startRange: {
-        startByte: 633,
         endByte: 643,
-        startChar: 633,
         endChar: 643,
+        endUtf16Codepoint: 643,
+        startByte: 633,
+        startChar: 633,
+        startUtf16Codepoint: 633,
       },
-      contentRange: {
-        startByte: 643,
-        endByte: 1837,
-        startChar: 643,
-        endChar: 1837,
-      },
-      endRange: {
-        startByte: 1837,
-        endByte: 1848,
-        startChar: 1837,
-        endChar: 1848,
-      },
+      tagName: 'template',
+      type: 'expression',
     },
   ]);
 });
