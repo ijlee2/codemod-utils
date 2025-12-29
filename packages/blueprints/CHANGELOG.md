@@ -1,5 +1,11 @@
 # @codemod-utils/blueprints
 
+## 2.1.2
+
+### Patch Changes
+
+- [#243](https://github.com/ijlee2/codemod-utils/pull/243) Updated copyright year ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.1.1
 
 ### Patch Changes

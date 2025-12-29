@@ -1,5 +1,11 @@
 # @codemod-utils/files
 
+## 3.2.3
+
+### Patch Changes
+
+- [#243](https://github.com/ijlee2/codemod-utils/pull/243) Updated copyright year ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.2.2
 
 ### Patch Changes

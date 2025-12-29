@@ -1,5 +1,15 @@
 # @codemod-utils/ast-template-tag
 
+## 1.2.0
+
+### Minor Changes
+
+- [#241](https://github.com/ijlee2/codemod-utils/pull/241) Updated content-tag to 4.1.0 (soft-breaking) ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#243](https://github.com/ijlee2/codemod-utils/pull/243) Updated copyright year ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.1
 
 ### Patch Changes
