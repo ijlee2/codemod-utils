@@ -108,8 +108,14 @@ testOnPosix('find-template-tags > class (4)', function () {
 
   assert.deepStrictEqual(templateTags, [
     {
-      type: 'class-member',
-      tagName: 'template',
+      contentRange: {
+        endByte: 2407,
+        endChar: 2407,
+        endUtf16Codepoint: 2407,
+        startByte: 1551,
+        startChar: 1551,
+        startUtf16Codepoint: 1551,
+      },
       contents: normalizeFile([
         ``,
         `    <UiFormField @errorMessage={{this.errorMessage}} @isWide={{@isWide}}>`,
@@ -146,30 +152,32 @@ testOnPosix('find-template-tags > class (4)', function () {
         `    </UiFormField>`,
         `  `,
       ]),
-      range: {
-        startByte: 1541,
+      endRange: {
         endByte: 2418,
-        startChar: 1541,
         endChar: 2418,
+        endUtf16Codepoint: 2418,
+        startByte: 2407,
+        startChar: 2407,
+        startUtf16Codepoint: 2407,
+      },
+      range: {
+        endByte: 2418,
+        endChar: 2418,
+        endUtf16Codepoint: 2418,
+        startByte: 1541,
+        startChar: 1541,
+        startUtf16Codepoint: 1541,
       },
       startRange: {
-        startByte: 1541,
         endByte: 1551,
-        startChar: 1541,
         endChar: 1551,
+        endUtf16Codepoint: 1551,
+        startByte: 1541,
+        startChar: 1541,
+        startUtf16Codepoint: 1541,
       },
-      contentRange: {
-        startByte: 1551,
-        endByte: 2407,
-        startChar: 1551,
-        endChar: 2407,
-      },
-      endRange: {
-        startByte: 2407,
-        endByte: 2418,
-        startChar: 2407,
-        endChar: 2418,
-      },
+      tagName: 'template',
+      type: 'class-member',
     },
   ]);
 });
