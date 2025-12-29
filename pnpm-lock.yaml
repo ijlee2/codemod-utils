@@ -149,8 +149,8 @@ importers:
         specifier: workspace:^
         version: link:../javascript
       content-tag:
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.1.0
+        version: 4.1.0
     devDependencies:
       '@codemod-utils/ast-template':
         specifier: workspace:*
@@ -1131,8 +1131,8 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  content-tag@4.0.0:
-    resolution: {integrity: sha512-qqJiY9nueYAI396MOmfOk+w/0KL6ERKxANQcSKcR0CrNTc38yT//b73l+WHr9brZx57bFHNaW7a/6Yll0bn95w==}
+  content-tag@4.1.0:
+    resolution: {integrity: sha512-On6gUuvI1l5MScHO+Xbwjeq1Pk9H6HOipDWkzqGGUGmKpq6K5TRmQuCl1LGSHbdIo2l+lSsgLKrLgCl5kKYA+A==}
 
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
@@ -2999,7 +2999,7 @@ snapshots:
       tree-kill: 1.2.2
       yargs: 17.7.2
 
-  content-tag@4.0.0: {}
+  content-tag@4.1.0: {}
 
   convert-source-map@2.0.0: {}
 
@@ -3611,7 +3611,7 @@ snapshots:
   prettier-plugin-ember-template-tag@2.1.2(prettier@3.7.4):
     dependencies:
       '@babel/core': 7.28.5
-      content-tag: 4.0.0
+      content-tag: 4.1.0
       prettier: 3.7.4
     transitivePeerDependencies:
       - supports-color

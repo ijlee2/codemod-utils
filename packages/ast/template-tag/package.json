@@ -49,7 +49,7 @@
   },
   "dependencies": {
     "@codemod-utils/ast-javascript": "workspace:^",
-    "content-tag": "^4.0.0"
+    "content-tag": "^4.1.0"
   },
   "devDependencies": {
     "@codemod-utils/ast-template": "workspace:*",
