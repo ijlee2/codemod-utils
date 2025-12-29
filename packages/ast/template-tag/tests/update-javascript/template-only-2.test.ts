@@ -24,11 +24,9 @@ test('update-javascript > template-only (2)', function () {
     normalizeFile([
       `import styles from './styles.css';`,
       ``,
-      `<template>`,
-      `  <div class={{styles.container}}>`,
-      `    Hello world!`,
-      `  </div>`,
-      `</template>`,
+      `<template><div class={{styles.container}}>`,
+      `  Hello world!`,
+      `</div></template>`,
       ``,
     ]),
   );

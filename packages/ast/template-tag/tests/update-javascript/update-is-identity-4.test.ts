@@ -54,9 +54,7 @@ test('update-javascript > update is identity (4)', function () {
       `}`,
       ``,
       `const ProductsProductImageComponent: TOC<ProductsProductImageSignature> =`,
-      `  macroCondition(isTesting()) ? <template>`,
-      `          <div class={{styles.placeholder-image}}></div>`,
-      `        </template> : <template><img alt="" class={{styles.image}} src={{@src}} /></template>;`,
+      `  macroCondition(isTesting()) ? <template><div class={{styles.placeholder-image}}></div></template> : <template><img alt="" class={{styles.image}} src={{@src}} /></template>;`,
       ``,
       `export default ProductsProductImageComponent;`,
       ``,
@@ -72,37 +70,5 @@ test('update-javascript > update is identity (4)', function () {
 
   const newFile2 = updateJavaScript(newFile, identity);
 
-  // TODO: Guarantee idempotence
-  assert.notStrictEqual(newFile2, newFile);
-
-  assert.strictEqual(
-    newFile2,
-    normalizeFile([
-      `import type { TOC } from '@ember/component/template-only';`,
-      `import { isTesting, macroCondition } from '@embroider/macros';`,
-      ``,
-      `import styles from './image.css';`,
-      ``,
-      `interface ProductsProductImageSignature {`,
-      `  Args: {`,
-      `    src: string;`,
-      `  };`,
-      `}`,
-      ``,
-      `const ProductsProductImageComponent: TOC<ProductsProductImageSignature> =`,
-      `  macroCondition(isTesting()) ? <template>`,
-      `            <div class={{styles.placeholder-image}}></div>`,
-      `          </template> : <template><img alt="" class={{styles.image}} src={{@src}} /></template>;`,
-      ``,
-      `export default ProductsProductImageComponent;`,
-      ``,
-      `declare module '@glint/environment-ember-loose/registry' {`,
-      `  export default interface Registry {`,
-      `    'Products::Product::Image': typeof ProductsProductImageComponent;`,
-      `    'products/product/image': typeof ProductsProductImageComponent;`,
-      `  }`,
-      `}`,
-      ``,
-    ]),
-  );
+  assert.strictEqual(newFile2, newFile);
 });
