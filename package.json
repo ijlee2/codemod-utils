@@ -24,11 +24,11 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.8",
-    "@ijlee2-frontend-configs/changesets": "^1.0.1",
+    "@ijlee2-frontend-configs/changesets": "^1.0.2",
     "sort-package-json": "^3.6.0",
     "update-workspace-root-version": "^2.1.2"
   },
-  "packageManager": "pnpm@10.25.0",
+  "packageManager": "pnpm@10.26.2",
   "engines": {
     "node": "20.* || >= 22",
     "pnpm": ">= 10"
