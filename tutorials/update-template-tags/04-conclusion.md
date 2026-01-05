@@ -1,8 +1,8 @@
 # Conclusion
 
-Even when `content-tag` doesn't provide a way to update `*.{gjs,gts}` files, you can support these files thanks to `@codemod-utils/ast-template-tag`. The best part? You can reuse code.
+Though `content-tag` doesn't provide a way to update `*.{gjs,gts}` files, you can still support these files thanks to `@codemod-utils/ast-template-tag`. The best part? You can reuse code.
 
-As exercise, see if you can update the JavaScript part of a `*.{gjs,gts}` file.
+As exercise, try updating some JavaScript code in `*.{gjs,gts,js,ts}` files.
 
 ```ts
 import { updateJavaScript } from '@codemod-utils/ast-template-tag';
@@ -16,7 +16,7 @@ let file = readFileSync(join(projectRoot, filePath), 'utf8');
 file = updateJavaScript(file, transform);
 ```
 
-How would you tell `transform()` whether the file is in TypeScript (`*.gts`)?
+How would you tell `transform()` whether the file uses `<template>` tag and TypeScript?
 
 <details>
 
@@ -26,6 +26,7 @@ How would you tell `transform()` whether the file is in TypeScript (`*.gts`)?
 import { updateJavaScript } from '@codemod-utils/ast-template-tag';
 
 type Data = {
+  isTemplateTag: boolean;
   isTypeScript: boolean;
 };
 
@@ -36,7 +37,8 @@ function transform(file: string, data: Data): string {
 let file = readFileSync(join(projectRoot, filePath), 'utf8');
 
 const data = {
-  isTypeScript: filePath.endsWith('.gts'),
+  isTemplateTag: filePath.endsWith('.gjs') || filePath.endsWith('.gts'),
+  isTypeScript: filePath.endsWith('.gts') || filePath.endsWith('.ts'),
 };
 
 file = updateJavaScript(file, (code) => {
