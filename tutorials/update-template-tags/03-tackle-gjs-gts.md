@@ -23,7 +23,7 @@ if (filePath.endsWith('.hbs')) {
 }
 ```
 
-Easy, no? Run `./update-test-fixtures.sh` once more to see that,
+Easy, no? Run `./update-test-fixtures.sh` once more to check whether
 
 - The remaining file (`app/components/my-component.gjs`) is updated.
 - Only the test selectors were removed.
@@ -113,7 +113,7 @@ if (filePath.endsWith('.hbs')) {
 }
 ```
 
-`templateTags` is an array of objects. We can run tests to understand what each `templateTag` looks like.
+`templateTags` is an array of objects. Run the tests again to see what `templateTag` contains.
 
 <details>
 
@@ -137,10 +137,38 @@ if (filePath.endsWith('.hbs')) {
     '      Increment by 1\n' +
     '    </button>\n' +
     '  </div>\n',
-  range: { startByte: 186, endByte: 388, startChar: 186, endChar: 388 },
-  startRange: { startByte: 186, endByte: 196, startChar: 186, endChar: 196 },
-  contentRange: { startByte: 196, endByte: 377, startChar: 196, endChar: 377 },
-  endRange: { startByte: 377, endByte: 388, startChar: 377, endChar: 388 }
+  range: {
+    startByte: 186,
+    endByte: 388,
+    startChar: 186,
+    endChar: 388,
+    startUtf16Codepoint: 186,
+    endUtf16Codepoint: 388
+  },
+  startRange: {
+    startByte: 186,
+    endByte: 196,
+    startChar: 186,
+    endChar: 196,
+    startUtf16Codepoint: 186,
+    endUtf16Codepoint: 196
+  },
+  contentRange: {
+    startByte: 196,
+    endByte: 377,
+    startChar: 196,
+    endChar: 377,
+    startUtf16Codepoint: 196,
+    endUtf16Codepoint: 377
+  },
+  endRange: {
+    startByte: 377,
+    endByte: 388,
+    startChar: 377,
+    endChar: 388,
+    startUtf16Codepoint: 377,
+    endUtf16Codepoint: 388
+  }
 }
 {
   type: 'expression',
@@ -153,10 +181,38 @@ if (filePath.endsWith('.hbs')) {
     '      </p>\n' +
     '    </div>\n' +
     '  ',
-  range: { startByte: 408, endByte: 584, startChar: 408, endChar: 584 },
-  startRange: { startByte: 408, endByte: 418, startChar: 408, endChar: 418 },
-  contentRange: { startByte: 418, endByte: 573, startChar: 418, endChar: 573 },
-  endRange: { startByte: 573, endByte: 584, startChar: 573, endChar: 584 }
+  range: {
+    startByte: 408,
+    endByte: 584,
+    startChar: 408,
+    endChar: 584,
+    startUtf16Codepoint: 408,
+    endUtf16Codepoint: 584
+  },
+  startRange: {
+    startByte: 408,
+    endByte: 418,
+    startChar: 408,
+    endChar: 418,
+    startUtf16Codepoint: 408,
+    endUtf16Codepoint: 418
+  },
+  contentRange: {
+    startByte: 418,
+    endByte: 573,
+    startChar: 418,
+    endChar: 573,
+    startUtf16Codepoint: 418,
+    endUtf16Codepoint: 573
+  },
+  endRange: {
+    startByte: 573,
+    endByte: 584,
+    startChar: 573,
+    endChar: 584,
+    startUtf16Codepoint: 573,
+    endUtf16Codepoint: 584
+  }
 }
 {
   type: 'class-member',
@@ -169,10 +225,38 @@ if (filePath.endsWith('.hbs')) {
     '        <Display @count={{this.count}} data-test-my-count />\n' +
     '      </div>\n' +
     '    ',
-  range: { startByte: 711, endByte: 918, startChar: 711, endChar: 918 },
-  startRange: { startByte: 711, endByte: 721, startChar: 711, endChar: 721 },
-  contentRange: { startByte: 721, endByte: 907, startChar: 721, endChar: 907 },
-  endRange: { startByte: 907, endByte: 918, startChar: 907, endChar: 918 }
+  range: {
+    startByte: 711,
+    endByte: 918,
+    startChar: 711,
+    endChar: 918,
+    startUtf16Codepoint: 711,
+    endUtf16Codepoint: 918
+  },
+  startRange: {
+    startByte: 711,
+    endByte: 721,
+    startChar: 711,
+    endChar: 721,
+    startUtf16Codepoint: 711,
+    endUtf16Codepoint: 721
+  },
+  contentRange: {
+    startByte: 721,
+    endByte: 907,
+    startChar: 721,
+    endChar: 907,
+    startUtf16Codepoint: 721,
+    endUtf16Codepoint: 907
+  },
+  endRange: {
+    startByte: 907,
+    endByte: 918,
+    startChar: 907,
+    endChar: 918,
+    startUtf16Codepoint: 907,
+    endUtf16Codepoint: 918
+  }
 }
 ```
 
