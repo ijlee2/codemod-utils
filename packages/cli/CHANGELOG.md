@@ -1,5 +1,16 @@
 # @codemod-utils/cli
 
+## 3.10.0
+
+### Minor Changes
+
+- [#246](https://github.com/ijlee2/codemod-utils/pull/246) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#247](https://github.com/ijlee2/codemod-utils/pull/247) Removed directories field ([@ijlee2](https://github.com/ijlee2))
+- [#245](https://github.com/ijlee2/codemod-utils/pull/245) Fixed lint errors ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.9.3
 
 ### Patch Changes

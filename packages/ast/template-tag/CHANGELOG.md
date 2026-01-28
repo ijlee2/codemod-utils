@@ -1,5 +1,11 @@
 # @codemod-utils/ast-template-tag
 
+## 1.2.1
+
+### Patch Changes
+
+- [#247](https://github.com/ijlee2/codemod-utils/pull/247) Removed directories field ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.2.0
 
 ### Minor Changes

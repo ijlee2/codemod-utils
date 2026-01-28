@@ -1,5 +1,11 @@
 # @codemod-utils/ast-template
 
+## 2.1.3
+
+### Patch Changes
+
+- [#247](https://github.com/ijlee2/codemod-utils/pull/247) Removed directories field ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.1.2
 
 ### Patch Changes

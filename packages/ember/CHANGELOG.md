@@ -1,5 +1,11 @@
 # @codemod-utils/ember
 
+## 3.0.7
+
+### Patch Changes
+
+- [#247](https://github.com/ijlee2/codemod-utils/pull/247) Removed directories field ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.0.6
 
 ### Patch Changes

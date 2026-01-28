@@ -1,6 +1,6 @@
 {
   "name": "@codemod-utils/package-json",
-  "version": "3.3.3",
+  "version": "3.3.4",
   "description": "Utilities for handling package.json",
   "keywords": [
     "codemod",
