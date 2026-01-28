@@ -75,11 +75,13 @@ const tsOptions: ParserOptions = {
   ],
 };
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 function getParseOptions(isTypeScript?: boolean) {
   const options = isTypeScript ? tsOptions : jsOptions;
 
   return {
     parser: {
+      // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
       parse(file: string) {
         return babelParser(file, options);
       },

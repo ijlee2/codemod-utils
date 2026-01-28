@@ -1,6 +1,6 @@
 import { AST } from '../../src/index.js';
 
-export function transformHandlebars(file: string) {
+export function transformHandlebars(file: string): string {
   const traverse = AST.traverse();
 
   const ast = traverse(file, {
@@ -24,7 +24,7 @@ export function transformHandlebars(file: string) {
   return AST.print(ast);
 }
 
-export function traverseHandlebars(file: string) {
+export function traverseHandlebars(file: string): string {
   const traverse = AST.traverse();
 
   const ast = traverse(file);

@@ -35,7 +35,7 @@ export function mapFilePaths(
     from: string;
     to: string;
   },
-) {
+): Map<string, string> {
   const from = options.from === '' ? '' : normalize(options.from);
   const to = options.to === '' ? '' : normalize(options.to);
 
