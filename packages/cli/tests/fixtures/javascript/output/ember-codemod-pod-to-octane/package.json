@@ -14,9 +14,6 @@
   "type": "module",
   "main": "src/index.js",
   "bin": "bin/ember-codemod-pod-to-octane.js",
-  "directories": {
-    "test": "tests"
-  },
   "files": [
     "bin",
     "src"
