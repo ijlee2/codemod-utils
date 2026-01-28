@@ -30,9 +30,6 @@
       ]
     }
   },
-  "directories": {
-    "test": "tests"
-  },
   "files": [
     "dist"
   ],
