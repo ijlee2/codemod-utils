@@ -36,9 +36,10 @@ npx @codemod-utils/cli <your-codemod-name>
 - [Update `<template>` tags](./tutorials/update-template-tags/00-introduction.md)
 
 
-## Codemods written with @codemod-utils
+## Made with @codemod-utils
 
 1. [`@ember-intl/lint`](https://github.com/ember-intl/ember-intl/tree/main/packages/ember-intl-lint)
+1. [`@ember-intl/vite`](https://github.com/ember-intl/ember-intl/tree/main/packages/ember-intl-vite)
 1. [`analyze-ember-project-dependencies`](https://github.com/ijlee2/analyze-ember-project-dependencies)
 1. [`blueprints-v2-addon`](https://github.com/ijlee2/create-v2-addon-repo/tree/main/packages/blueprints-v2-addon)
 1. [`codemod-generate-release-notes`](https://github.com/Ajanth/codemod-generate-release-notes)
