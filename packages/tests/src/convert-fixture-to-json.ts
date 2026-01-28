@@ -8,7 +8,7 @@ import type { DirJSON } from './types.js';
 function updateJson(
   json: DirJSON,
   { cwd, keys }: { cwd: string; keys: string[] },
-) {
+): void {
   const key = keys.shift()!;
   const isFile = keys.length === 0;
 

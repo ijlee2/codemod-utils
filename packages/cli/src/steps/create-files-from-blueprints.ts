@@ -42,7 +42,7 @@ function resolveBlueprintFilePath(
     .replace('.__js__', codemod.hasTypeScript ? '.ts' : '.js');
 }
 
-function setExecutePermissions(options: Options) {
+function setExecutePermissions(options: Options): void {
   const { codemod, projectRoot } = options;
 
   const files = new Set(['update-test-fixtures.sh']);
