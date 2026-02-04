@@ -1,5 +1,11 @@
 # @codemod-utils/ast-template-tag
 
+## 1.2.2
+
+### Patch Changes
+
+- [#249](https://github.com/ijlee2/codemod-utils/pull/249) Fixed typo in documentation ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.2.1
 
 ### Patch Changes
