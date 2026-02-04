@@ -16,7 +16,7 @@ import { preprocessor, type TemplateTag } from './-private/content-tag.js';
  * Count the number of lines of code (LOC) in `<template>` tags.
  *
  * ```ts
- * function getLOC(code: string): number {
+ * function getLOC(file: string): number {
  *   const matches = file.match(/\r?\n/g);
  *
  *   return (matches ?? []).length;
