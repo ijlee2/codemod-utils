@@ -85,7 +85,9 @@ npx @codemod-utils/cli --root <path/to/your/project>
 
 <summary>Optional: Create a JavaScript project</summary>
 
-By default, `@codemod-utils/cli` creates a TypeScript project to help you maintain and extend the codemod. To create a JavaScript project, set `--typescript` to `false`.
+By default, `@codemod-utils/cli` creates a TypeScript project to help you maintain and extend the codemod.
+
+To create a JavaScript project, set `--typescript` to `false`.
 
 ```sh
 npx @codemod-utils/cli --typescript false

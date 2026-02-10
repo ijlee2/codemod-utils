@@ -5,12 +5,25 @@
 _Utilities for writing codemods_
 
 
+## What are codemods?
+
+A codemod is a function that takes files as input and output. It reads the files of interest, makes some changes, then saves the result to your disk.
+
+<div align="left">
+  <img alt="" src="./docs/src/images/codemod.jpg" width="600" />
+</div>
+
+One special case is the identity function. That is, not all codemods need to make a change. As a result, linters are a codemod. Tools that gather files, collect metrics, analyze package dependencies, or find vulnerabilities are also one.
+
+In short, codemods are everywhere and you’ve likely used a few already.
+
+
 ## What is it?
 
 `@codemod-utils` provides a set of **tools and conventions** to help you write codemods. Use [`@codemod-utils/cli`](/packages/cli/README.md) to get started.
 
 ```sh
-npx @codemod-utils/cli <your-codemod-name>
+pnpx @codemod-utils/cli <your-codemod-name>
 ```
 
 
