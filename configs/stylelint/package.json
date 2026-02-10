@@ -1,32 +1,31 @@
 {
-  "name": "@shared-configs/prettier",
+  "name": "@shared-configs/stylelint",
   "version": "0.0.0",
   "private": true,
-  "description": "Configuration for prettier",
+  "description": "Configuration for stylelint",
   "repository": {
     "type": "git",
     "url": "git@github.com:ijlee2/codemod-utils.git"
   },
   "author": "Isaac J. Lee",
   "type": "module",
-  "exports": {
-    "./node": "./node/index.mjs"
-  },
+  "main": "index.mjs",
   "scripts": {
     "lint": "prettier \"**/*.mjs\" --cache --check",
     "lint:fix": "prettier \"**/*.mjs\" --cache --write"
   },
   "dependencies": {
-    "@ijlee2-frontend-configs/prettier": "^2.4.1"
+    "@ijlee2-frontend-configs/stylelint": "^2.4.0"
   },
   "devDependencies": {
+    "@shared-configs/prettier": "workspace:*",
     "prettier": "^3.8.1"
   },
   "peerDependencies": {
-    "prettier": "^3.8.1"
+    "stylelint": "^17.1.1"
   },
   "peerDependenciesMeta": {
-    "prettier": {
+    "stylelint": {
       "optional": false
     }
   },
