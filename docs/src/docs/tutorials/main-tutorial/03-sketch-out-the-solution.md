@@ -1,8 +1,8 @@
 # Sketch out the solution
 
-In [the previous chapter](./02-understand-the-folder-structure.md), we got to know a bit about the folder structure and the conventions from `@codemod-utils`.
+In [the previous chapter](./02-understand-the-folder-structure), we got to know a bit about the folder structure and the conventions of `codemod-utils`.
 
-Before we start writing code, let's break the problem (of making test module names consistent) into small steps.
+Before we start writing code, we'll break the problem (standardize test module names) into small steps.
 
 Goals:
 
@@ -21,7 +21,9 @@ Here’s the crux: When your project has many variations in code because it hasn
 
 Nonetheless, the ability to help others just might be the deciding factor for you. As a rule of thumb, consider writing a codemod if you can cover [the usual 80%](https://en.wikipedia.org/wiki/Pareto_principle).
 
-(Note, a **base case** is a scenario where something usual and expected happens. On the contrary, an **edge case** is where something rare or unexpected happens.)
+> [!NOTE]
+>
+> A **base case** is a scenario where something usual and expected happens. On the contrary, an **edge case** is where something rare or unexpected happens.
 
 
 ## Divide and conquer
@@ -38,31 +40,39 @@ So that's 3 steps to take and maybe 3 base cases to consider.
 
 Actually, the problem is more complex, because the `tests/integration` folder can include tests for a component, helper, or modifier (3 entity types), whereas the `tests/unit` folder can include tests for an adapter, controller, initializer, instance initializer, mixin, model, route, serializer, service, and utility (10 entity types).
 
-What if the end-developer's project follows the pod layout or named their test files incorrectly? For example, instead of the usual `tests/integration/components/ui/page-test.ts`, the test module for the `<Ui::Page>` component lives in `tests/integration/components/page-test.ts` or `tests/integration/components/ui-page-test.ts`.
+What if the end-developer's project follows the pod layout or named their test files incorrectly? For example, what if the component `<Ui::Page>`'s tests live in the file `tests/integration/components/page-test.ts` or `tests/integration/components/ui-page-test.ts`, instead of the usual `tests/integration/components/ui/page-test.ts`?
 
 Where, O where, do we start?
 
 
-### Cover the usual 80%
+### Cover the usual 80% {#divide-and-conquer-cover-the-usual-80-percent}
 
 We can simplify the problem by "composing" codemods and ignoring one-off cases.
 
-For example, we ask the end-developer to run [`ember-codemod-pod-to-octane`](https://github.com/ijlee2/ember-codemod-pod-to-octane) first. It's a prerequisite for running our codemod. This way, we know that the files in their `tests` folder follow the Octane layout, and don't have to write extra code, tests, and fixtures to cover the pod case. (Ember Octane supports "flat" and "nested" component structures. Both happen to create test files in the same way, so there's luckily only 1 folder structure to consider.)
+For example, we ask the end-developer to run [`ember-codemod-pod-to-octane`](https://github.com/ijlee2/ember-codemod-pod-to-octane) first. It's a prerequisite for running our codemod. This way, we know that the files in their `tests` folder follow the Octane layout, and don't have to write extra code, tests, and fixtures to cover the pod case.
 
-Furthermore, incorrect file names should be a rare event. Rather than parsing the file to determine the correct location (extra code and maintenance for us), we ask the end-developer to either (1) fix the file name as another prerequisite, or (2) let them clone our repo to handle this edge case themselves. It could also be that, the way we will rename test modules can handle incorrect file names by making an approximate solution ("good enough"). At any rate, the codemod shouldn't cause runtime errors due to incorrect file names.
+> [!NOTE]
+> 
+> Octane supports "flat" and "nested" component structures. Both happen to create test files in the same way, so there's luckily only 1 folder structure to consider.
+
+Furthermore, incorrect file names should be a rare event. Rather than parsing the file to determine the correct location (extra code and maintenance for us), we ask the end-developer to either (1) fix the file name as another prerequisite, or (2) let them clone our repo to handle this edge case themselves.
+
+It could also be that, the way we will rename test modules can handle incorrect file names by making an approximate solution ("good enough"). At any rate, the codemod shouldn't cause runtime errors due to incorrect file names.
 
 As we will see later, other edge cases like,
 
 - A mix of JavaScript and TypeScript files
 - Files that live in `tests/{acceptance,integration,unit}`, but whose name doesn't have the suffix `-test`
-- Files that do have the suffix `-test`, but are empty or doesn't have `module()` with the right arguments
+- Files that do have the suffix `-test`, but are empty or doesn't call `module` with the right arguments
 
-can be addressed naturally, thanks to `@codemod-utils`.
+can be addressed naturally, thanks to `codemod-utils`.
 
 
-### Simplify development
+### Simplify development {#divide-and-conquer-simplify-development}
 
-With the right sequence of steps, we can make the codemod more maintainable and extensible. For the initial development, I recommend that you follow a "funnel" approach:
+If we take the right sequence of steps, we can write the codemod more easily and come up with a solution that is maintainable and extensible.
+
+For your first codemod, I recommend that you follow a "funnel" approach:
 
 - Write steps first that help you reach the 80% faster
 - Write steps first that are easier to implement
@@ -79,9 +89,9 @@ So, instead, we'll write the easiest step first, then the second easiest, and so
 
 <details>
 
-<summary>Example of steps ordered by coverage</summary>
+<summary>Example of ordering steps by coverage</summary>
 
-In [`ember-codemod-v1-to-v2`](https://github.com/ijlee2/ember-codemod-v1-to-v2), the steps that cover many files occur first, while those that cover individual files occur last.
+In [`ember-codemod-v1-to-v2`](https://github.com/ijlee2/ember-codemod-v1-to-v2/blob/main/src/index.ts), the steps that cover many files occur first, while those that cover individual files occur last.
 
 ```ts
 export function runCodemod(codemodOptions: CodemodOptions): void {
@@ -98,20 +108,8 @@ export function runCodemod(codemodOptions: CodemodOptions): void {
 
   // Fine-tune individual files
   updateAddonPackageJson(context, options);
-  updateAddonTsConfigJson(options);
   updateTestAppPackageJson(options);
-  updateTestAppTsConfigJson(options);
 }
 ```
 
 </details>
-
-
-<div align="center">
-  <div>
-    Next: <a href="./04-step-1-update-acceptance-tests-part-1.md">Step 1: Update acceptance tests (Part 1)</a>
-  </div>
-  <div>
-    Previous: <a href="./02-understand-the-folder-structure.md">Understand the folder structure</a>
-  </div>
-</div>

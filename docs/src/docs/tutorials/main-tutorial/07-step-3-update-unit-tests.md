@@ -1,6 +1,6 @@
 # Step 3: Update unit tests
 
-We now have a more robust `getModuleName()`, one that supports test folders like `tests/integration` and `tests/unit` with multiple entity types. Let's create a step for the last time, called `rename-unit-tests`.
+We have a more robust `getModuleName`, one that supports multiple entity types living in the same folder. Let's create a step for the last time, called `rename-unit-tests`.
 
 Goals:
 
@@ -13,15 +13,34 @@ Goals:
 
 If the approach that we took for `rename-integration-tests` is right, then we should be able to reuse code almost entirely.
 
-<details>
+::: code-group
 
-<summary>Solution: <code>src/steps/rename-unit-tests.ts</code></summary>
+```diff [src/index.ts]
+import {
+  createOptions,
+  renameAcceptanceTests,
+  renameIntegrationTests,
++   renameUnitTests,
+} from './steps/index.js';
+import type { CodemodOptions } from './types/index.js';
 
-I highlighted only the differences between `rename-integration-tests` and `rename-unit-tests`.
+export function runCodemod(codemodOptions: CodemodOptions): void {
+  const options = createOptions(codemodOptions);
 
-Note that, because `'instance-initializers'` and `'utils'` need to be mapped to the words `'Instance Initializer'` and `'Utility'`, installing a package that has `singularize()` and `capitalize()` wouldn't be enough. Again, avoid premature abstractions.
+  renameAcceptanceTests(options);
+  renameIntegrationTests(options);
++   renameUnitTests(options);
+}
+```
 
-```diff
+```diff [src/steps/index.ts]
+export * from './create-options.js';
+export * from './rename-acceptance-tests.js';
+export * from './rename-integration-tests.js';
++ export * from './rename-unit-tests.js';
+```
+
+```diff [src/steps/rename-unit-tests.ts]
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
@@ -143,55 +162,14 @@ function renameModule(file: string, data: Data): string {
 }
 ```
 
-</details>
+:::
 
-<details>
-
-<summary>Solution: <code>src/steps/index.ts</code></summary>
-
-```diff
-export * from './create-options.js';
-export * from './rename-acceptance-tests.js';
-export * from './rename-integration-tests.js';
-+ export * from './rename-unit-tests.js';
-```
-
-</details>
-
-<details>
-
-<summary>Solution: <code>src/index.ts</code></summary>
-
-```diff
-import {
-  createOptions,
-  renameAcceptanceTests,
-  renameIntegrationTests,
-+   renameUnitTests,
-} from './steps/index.js';
-import type { CodemodOptions } from './types/index.js';
-
-export function runCodemod(codemodOptions: CodemodOptions): void {
-  const options = createOptions(codemodOptions);
-
-  renameAcceptanceTests(options);
-  renameIntegrationTests(options);
-+   renameUnitTests(options);
-}
-```
-
-</details>
+> [!NOTE]
+>
+> I highlighted only the differences between `rename-integration-tests` and `rename-unit-tests`.
+>
+> Since `'instance-initializers'` and `'utils'` need to be mapped to the words `'Instance Initializer'` and `'Utility'`, installing a package that has methods like `singularize` and `capitalize` wouldn't have been enough. Again, avoid premature abstractions.
 
 I think it is. Of course, I've shown you the ideal case where everything fits together well. When it's time to write your own codemod, don't be afraid to experiment with the steps and find the clearest path to the solution.
 
 Before proceeding further, run the shell script to update the output fixture files for the last time.
-
-
-<div align="center">
-  <div>
-    Next: <a href="./08-refactor-code-part-1.md">Refactor code (Part 1)</a>
-  </div>
-  <div>
-    Previous: <a href="./06-step-2-update-integration-tests.md">Step 2: Update integration tests</a>
-  </div>
-</div>

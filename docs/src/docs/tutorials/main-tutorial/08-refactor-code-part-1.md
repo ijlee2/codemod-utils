@@ -2,7 +2,7 @@
 
 Now that we have a working solution, let's simplify it.
 
-We are allowed to refactor code, because we have the acceptance test `tests/index/sample-project.test.ts` (acceptance tests don't care about implementation detail) and a large number of fixture files for this test (we covered enough base and edge cases). If there aren't enough tests or fixture files to cover the usual 80%, I encourage you to do so before you refactor code.
+We are allowed to refactor, because we have the acceptance test `tests/index/sample-project.test.ts` (acceptance tests don't care about implementation detail) and a large number of fixture files for this test (we covered enough base and edge cases). If there aren't enough tests or fixture files to cover the usual 80%, I encourage you to write tests first.
 
 Goals:
 
@@ -12,9 +12,11 @@ Goals:
 
 ## Split a step into substeps
 
-Currently, `src/index.ts` shows that the codemod takes 3 steps, excluding `create-options`.
+Currently, `src/index.ts` shows that the codemod takes 3 steps after `create-options`.
 
-```ts
+::: code-group
+
+```ts [src/index.ts]{4-6}
 export function runCodemod(codemodOptions: CodemodOptions): void {
   const options = createOptions(codemodOptions);
 
@@ -24,17 +26,21 @@ export function runCodemod(codemodOptions: CodemodOptions): void {
 }
 ```
 
-We could leave the steps as is, or group them since they are related (all have to do with renaming tests). To illustrate an example of a step with substeps, we'll take the latter approach.
+:::
 
-See if you can
+We could leave these steps as is, or group them since they are related (all have to do with renaming tests).
+
+To illustrate a step with substeps, we take the latter approach. See if you can:
 
 - Create the `src/steps/rename-tests` folder.
 - Move the 3 steps to the new folder (they are now substeps).
 - Create the `rename-tests` step, which runs the 3 substeps.
 
-so that `src/index.ts` can show instead,
+This way, `src/index.ts` can show the following instead:
 
-```ts
+::: code-group
+
+```ts [src/index.ts]{7}
 import { createOptions, renameTests } from './steps/index.js';
 import type { CodemodOptions } from './types/index.js';
 
@@ -45,62 +51,17 @@ export function runCodemod(codemodOptions: CodemodOptions): void {
 }
 ```
 
-<details>
-
-<summary>Solution: <code>src/steps/rename-tests/index.ts</code></summary>
-
-```ts
-export * from './rename-acceptance-tests.js';
-export * from './rename-integration-tests.js';
-export * from './rename-unit-tests.js';
-```
-
-</details>
+:::
 
 <details>
 
-<summary>Solution: <code>src/steps/rename-tests/rename-acceptance-tests.ts</code></summary>
+<summary>Solution</summary>
 
-The code below shows only the lines that need to be changed after we move the file.
+Some of the diffs below only show what to change after moving the file. Both `lint` and `test` continue to pass.
 
-```diff
-- import type { Options } from '../types/index.js';
-+ import type { Options } from '../../types/index.js';
-```
+::: code-group
 
-</details>
-
-<details>
-
-<summary>Solution: <code>src/steps/rename-tests/rename-integration-tests.ts</code></summary>
-
-The code below shows only the lines that need to be changed after we move the file.
-
-```diff
-- import type { Options } from '../types/index.js';
-+ import type { Options } from '../../types/index.js';
-```
-
-</details>
-
-<details>
-
-<summary>Solution: <code>src/steps/rename-tests/rename-unit-tests.ts</code></summary>
-
-The code below shows only the lines that need to be changed after we move the file.
-
-```diff
-- import type { Options } from '../types/index.js';
-+ import type { Options } from '../../types/index.js';
-```
-
-</details>
-
-<details>
-
-<summary>Solution: <code>src/steps/index.ts</code></summary>
-
-```diff
+```diff [src/steps/index.ts]
 export * from './create-options.js';
 - export * from './rename-acceptance-tests.js';
 - export * from './rename-integration-tests.js';
@@ -108,13 +69,7 @@ export * from './create-options.js';
 + export * from './rename-tests.js';
 ```
 
-</details>
-
-<details>
-
-<summary>Solution: <code>src/steps/rename-tests.ts</code></summary>
-
-```ts
+```ts [src/steps/rename-tests.ts]
 import type { Options } from '../types/index.js';
 import {
   renameAcceptanceTests,
@@ -129,19 +84,46 @@ export function renameTests(options: Options): void {
 }
 ```
 
+```ts [src/steps/rename-tests/index.ts]
+export * from './rename-acceptance-tests.js';
+export * from './rename-integration-tests.js';
+export * from './rename-unit-tests.js';
+```
+
+```diff [src/steps/rename-tests/rename-acceptance-tests.ts]
+- import type { Options } from '../types/index.js';
++ import type { Options } from '../../types/index.js';
+```
+
+```diff [src/steps/rename-tests/rename-integration-tests.ts]
+- import type { Options } from '../types/index.js';
++ import type { Options } from '../../types/index.js';
+```
+
+```diff [src/steps/rename-tests/rename-unit-tests.ts]
+- import type { Options } from '../types/index.js';
++ import type { Options } from '../../types/index.js';
+```
+
+:::
+
 </details>
 
-Both `lint` and `test` should continue to pass.
-
-Note that we have performed a refactoring technique called "extract functions." Had we begun the tutorial by creating the `rename-tests` step—one that updates acceptance, integration, and unit tests (all in a single, large function)—we would now extract a function for each substep so that `renameTests()` clearly shows what's happening inside.
-
-```ts
-export function renameTests(options: Options): void {
-  renameAcceptanceTests(options);
-  renameIntegrationTests(options);
-  renameUnitTests(options);
-}
-```
+> [!NOTE]
+>
+> We performed a refactoring technique called "extract functions." Had we begun the tutorial by creating the `rename-tests` step—one that updates acceptance, integration, and unit tests (all in a single, large function)—we would now extract a function for each substep so that `renameTests` clearly shows what's happening inside.
+>
+> ::: code-group
+>
+> ```ts [src/steps/rename-tests.ts]
+> export function renameTests(options: Options): void {
+>   renameAcceptanceTests(options);
+>   renameIntegrationTests(options);
+>   renameUnitTests(options);
+> }
+> ```
+>
+> :::
 
 
 ## Extract utilities
@@ -149,30 +131,126 @@ export function renameTests(options: Options): void {
 In Chapters 5-7, we duplicated code so that we can avoid premature abstractions and quickly implement the steps. Now that the codemod is working and we understand our code better, let's try removing duplicated code.
 
 
-### renameModule()
+### renameModule {#extract-utilities-rename-module}
 
-A function that we can easily extract is `renameModule()`, because the implementation is the same for all 3 substeps.
+A function that we can easily extract is `renameModule`, because the implementation is the same for all 3 substeps.
 
-- Create the `src/utils/rename-tests` folder.
-- Extract `renameModule()` to the file `src/utils/rename-tests/rename-module.ts`.
-- Re-export `renameModule()` from the file `src/utils/rename-tests/index.ts`.
-- Consume `renameModule()` in all 3 substeps.
+1. Create the `src/utils/rename-tests` folder.
+1. Extract `renameModule` to the file `src/utils/rename-tests/rename-module.ts`.
+1. Re-export `renameModule` from the file `src/utils/rename-tests/index.ts`.
+1. Consume `renameModule` in all 3 substeps.
 
 <details>
 
-<summary>Solution: <code>src/utils/rename-tests/index.ts</code></summary>
+<summary>Solution</summary>
 
-```ts
+::: code-group
+
+```diff [src/steps/rename-tests/rename-acceptance-tests.ts]
+import { readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+- import { AST } from '@codemod-utils/ast-javascript';
+import { findFiles, parseFilePath } from '@codemod-utils/files';
+
+import type { Options } from '../../types/index.js';
++ import { renameModule } from '../../utils/rename-tests/index.js';
+
+- type Data = {
+-   isTypeScript: boolean;
+-   moduleName: string;
+- };
+- 
+function getModuleName(filePath: string): string {
+  // ...
+}
+
+- function renameModule(file: string, data: Data): string {
+-   // ...
+- }
+- 
+export function renameAcceptanceTests(options: Options): void {
+  // ...
+}
+```
+
+```diff [src/steps/rename-tests/rename-integration-tests.ts]
+import { readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+- import { AST } from '@codemod-utils/ast-javascript';
+import { findFiles, parseFilePath } from '@codemod-utils/files';
+
+import type { Options } from '../../types/index.js';
++ import { renameModule } from '../../utils/rename-tests/index.js';
+
+- type Data = {
+-   isTypeScript: boolean;
+-   moduleName: string;
+- };
+- 
+const folderToEntityType = new Map([
+  // ...
+]);
+
+function parseEntity(dir: string): {
+  // ...
+}
+
+function getModuleName(filePath: string): string {
+  // ...
+}
+
+- function renameModule(file: string, data: Data): string {
+-   // ...
+- }
+- 
+export function renameIntegrationTests(options: Options): void {
+  // ...
+}
+```
+
+```diff [src/steps/rename-tests/rename-unit-tests.ts]
+import { readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+- import { AST } from '@codemod-utils/ast-javascript';
+import { findFiles, parseFilePath } from '@codemod-utils/files';
+
+import type { Options } from '../../types/index.js';
++ import { renameModule } from '../../utils/rename-tests/index.js';
+
+- type Data = {
+-   isTypeScript: boolean;
+-   moduleName: string;
+- };
+- 
+const folderToEntityType = new Map([
+  // ...
+]);
+
+function parseEntity(dir: string): {
+  // ...
+}
+
+function getModuleName(filePath: string): string {
+  // ...
+}
+
+- function renameModule(file: string, data: Data): string {
+-   // ...
+- }
+- 
+export function renameUnitTests(options: Options): void {
+  // ...
+}
+```
+
+```ts [src/utils/rename-tests/index.ts]
 export * from './rename-module.js';
 ```
 
-</details>
-
-<details>
-
-<summary>Solution: <code>src/utils/rename-tests/rename-module.ts</code></summary>
-
-```ts
+```ts [src/utils/rename-tests/rename-module.ts]
 import { AST } from '@codemod-utils/ast-javascript';
 
 type Data = {
@@ -218,175 +296,24 @@ export function renameModule(file: string, data: Data): string {
 }
 ```
 
-</details>
-
-<details>
-
-<summary>Solution: <code>src/steps/rename-tests/rename-acceptance-tests.ts</code></summary>
-
-```diff
-import { readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-
-- import { AST } from '@codemod-utils/ast-javascript';
-import { findFiles, parseFilePath } from '@codemod-utils/files';
-
-import type { Options } from '../../types/index.js';
-+ import { renameModule } from '../../utils/rename-tests/index.js';
-
-- type Data = {
--   isTypeScript: boolean;
--   moduleName: string;
-- };
-- 
-function getModuleName(filePath: string): string {
-  // ...
-}
-
-- function renameModule(file: string, data: Data): string {
--   // ...
-- }
-- 
-export function renameAcceptanceTests(options: Options): void {
-  // ...
-}
-```
-
-</details>
-
-<details>
-
-<summary>Solution: <code>src/steps/rename-tests/rename-integration-tests.ts</code></summary>
-
-```diff
-import { readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-
-- import { AST } from '@codemod-utils/ast-javascript';
-import { findFiles, parseFilePath } from '@codemod-utils/files';
-
-import type { Options } from '../../types/index.js';
-+ import { renameModule } from '../../utils/rename-tests/index.js';
-
-- type Data = {
--   isTypeScript: boolean;
--   moduleName: string;
-- };
-- 
-const folderToEntityType = new Map([
-  // ...
-]);
-
-function parseEntity(dir: string): {
-  // ...
-}
-
-function getModuleName(filePath: string): string {
-  // ...
-}
-
-- function renameModule(file: string, data: Data): string {
--   // ...
-- }
-- 
-export function renameIntegrationTests(options: Options): void {
-  // ...
-}
-```
-
-</details>
-
-<details>
-
-<summary>Solution: <code>src/steps/rename-tests/rename-unit-tests.ts</code></summary>
-
-```diff
-import { readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-
-- import { AST } from '@codemod-utils/ast-javascript';
-import { findFiles, parseFilePath } from '@codemod-utils/files';
-
-import type { Options } from '../../types/index.js';
-+ import { renameModule } from '../../utils/rename-tests/index.js';
-
-- type Data = {
--   isTypeScript: boolean;
--   moduleName: string;
-- };
-- 
-const folderToEntityType = new Map([
-  // ...
-]);
-
-function parseEntity(dir: string): {
-  // ...
-}
-
-function getModuleName(filePath: string): string {
-  // ...
-}
-
-- function renameModule(file: string, data: Data): string {
--   // ...
-- }
-- 
-export function renameUnitTests(options: Options): void {
-  // ...
-}
-```
+:::
 
 </details>
 
 
-### parseEntity()
+### parseEntity {#extract-utilities-parse-entity}
 
-Next, let's extract `parseEntity()`, whose implementation is the same in `rename-integration-tests` and `rename-unit-tests`. We'll move the function to the `src/utils/rename-tests` folder.
-
-<details>
-
-<summary>Solution: <code>src/utils/rename-tests/index.ts</code></summary>
-
-```diff
-+ export * from './parse-entity.js';
-export * from './rename-module.js';
-```
-
-</details>
+Next, let's extract `parseEntity`, whose implementation is the same in `rename-integration-tests` and `rename-unit-tests`. We move the function also to the `src/utils/rename-tests` folder.
 
 <details>
 
-Note, `parseEntity()` has an additional argument called `folderToEntityType`.
+<summary>Solution</summary>
 
-<summary>Solution: <code>src/utils/rename-tests/parse-entity.ts</code></summary>
+Note, `parseEntity` allows an additional argument called `folderToEntityType`.
 
-```ts
-import { sep } from 'node:path';
+::: code-group
 
-export function parseEntity(
-  dir: string,
-  folderToEntityType: Map<string, string>,
-): {
-  entityType: string | undefined;
-  remainingPath: string;
-} {
-  const [folder, ...remainingPaths] = dir.split(sep);
-  const entityType = folderToEntityType.get(folder!);
-
-  return {
-    entityType,
-    remainingPath: remainingPaths.join(sep),
-  };
-}
-```
-
-</details>
-
-<details>
-
-<summary>Solution: <code>src/steps/rename-tests/rename-integration-tests.ts</code></summary>
-
-```diff
+```diff [src/steps/rename-tests/rename-integration-tests.ts]
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
@@ -423,13 +350,7 @@ export function renameIntegrationTests(options: Options): void {
 }
 ```
 
-</details>
-
-<details>
-
-<summary>Solution: <code>src/steps/rename-tests/rename-unit-tests.ts</code></summary>
-
-```diff
+```diff [src/steps/rename-tests/rename-unit-tests.ts]
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
@@ -466,32 +387,12 @@ export function renameUnitTests(options: Options): void {
 }
 ```
 
-</details>
+```diff [src/utils/rename-tests/index.ts]
++ export * from './parse-entity.js';
+export * from './rename-module.js';
+```
 
-
-## Standardize functions
-
-At the moment, we can't (and shouldn't) extract `getModuleName()` as a utility, because the implementation differs among the substeps. Namely, `rename-acceptance-tests` doesn't have the notion of `entityType`.
-
-You might also remember the fine print from Chapter 6. When `entityType` is `undefined` (i.e. our codemod doesn't recognize the entity type), `getModuleName()` will return a funny-looking string like `'Unit |  | foo/bar'`.
-
-We can address both problems by standardizing the `getModuleName()` function. In some sense, we are standardizing its **interface**; in particular, the output of the function.
-
-- Update `getModuleName()` in `rename-acceptance-tests` so that the return statement includes `entityType`:
-
-    ```ts
-    return ['Acceptance', entityType, entityName].join(' | ');
-    ```
-
-- Update `getModuleName()` in all 3 substeps so that it handles the edge case of `entityType` being `undefined`. Hint: Make an early exit in `parseEntity()`.
-
-    One possible implementation is, if `getModuleName()` receives the file path of `'tests/unit/resources/remote-data-test.ts'`, it returns the module name of `'Unit | resources/remote-data'` (instead of `'Unit | | remote-data'`) as an approximate solution.
-
-<details>
-
-<summary>Solution: <code>src/utils/rename-tests/parse-entity.ts</code></summary>
-
-```diff
+```ts [src/utils/rename-tests/parse-entity.ts]
 import { sep } from 'node:path';
 
 export function parseEntity(
@@ -504,13 +405,6 @@ export function parseEntity(
   const [folder, ...remainingPaths] = dir.split(sep);
   const entityType = folderToEntityType.get(folder!);
 
-+   if (entityType === undefined) {
-+     return {
-+       entityType,
-+       remainingPath: dir,
-+     };
-+   }
-+ 
   return {
     entityType,
     remainingPath: remainingPaths.join(sep),
@@ -518,13 +412,36 @@ export function parseEntity(
 }
 ```
 
+:::
+
 </details>
+
+
+## Standardize functions
+
+At the moment, we can't (and shouldn't) extract `getModuleName` as a utility, because the implementation differs among the substeps. Namely, `rename-acceptance-tests` doesn't have the notion of `entityType`.
+
+You might also remember the fine print from Chapter 6. When `entityType` is `undefined` (i.e. our codemod doesn't recognize the entity type), `getModuleName()` will return a funny-looking string like `'Unit |  | foo/bar'`.
+
+We can address both problems by standardizing the `getModuleName` function. In a sense, we are standardizing its **interface**; in particular, the output of the function.
+
+1. Update `getModuleName` in `rename-acceptance-tests` so that the return statement includes `entityType`:
+
+    ```ts
+    return ['Acceptance', entityType, entityName].join(' | ');
+    ```
+
+1. Update `getModuleName` in all 3 substeps. Handle the edge case of `entityType` being `undefined` by making an early exit in `parseEntity`.
+
+    One possible solution: If `getModuleName` receives the file path of `'tests/unit/resources/remote-data-test.ts'`, then it returns the module name of `'Unit | resources/remote-data'` (instead of `'Unit | | remote-data'`) as an approximate solution.
 
 <details>
 
-<summary>Solution: <code>src/steps/rename-tests/rename-acceptance-tests.ts</code></summary>
+<summary>Solution</summary>
 
-```diff
+::: code-group
+
+```diff [src/steps/rename-tests/rename-acceptance-tests.ts]
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
@@ -556,13 +473,7 @@ export function renameAcceptanceTests(options: Options): void {
 }
 ```
 
-</details>
-
-<details>
-
-<summary>Solution: <code>src/steps/rename-tests/rename-integration-tests.ts</code></summary>
-
-```diff
+```diff [src/steps/rename-tests/rename-integration-tests.ts]
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
@@ -594,13 +505,7 @@ export function renameIntegrationTests(options: Options): void {
 }
 ```
 
-</details>
-
-<details>
-
-<summary>Solution: <code>src/steps/rename-tests/rename-unit-tests.ts</code></summary>
-
-```diff
+```diff [src/steps/rename-tests/rename-unit-tests.ts]
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
@@ -632,16 +537,35 @@ export function renameUnitTests(options: Options): void {
 }
 ```
 
+```diff [src/utils/rename-tests/parse-entity.ts]
+import { sep } from 'node:path';
+
+export function parseEntity(
+  dir: string,
+  folderToEntityType: Map<string, string>,
+): {
+  entityType: string | undefined;
+  remainingPath: string;
+} {
+  const [folder, ...remainingPaths] = dir.split(sep);
+  const entityType = folderToEntityType.get(folder!);
+
++   if (entityType === undefined) {
++     return {
++       entityType,
++       remainingPath: dir,
++     };
++   }
++ 
+  return {
+    entityType,
+    remainingPath: remainingPaths.join(sep),
+  };
+}
+```
+
+:::
+
 </details>
 
-Even though `getModuleName()` now has the same "structure" in all 3 steps, we will resist the urge to extract it as a utility so that we don't introduce a wrong abstraction.
-
-
-<div align="center">
-  <div>
-    Next: <a href="./09-refactor-code-part-2.md">Refactor code (Part 2)</a>
-  </div>
-  <div>
-    Previous: <a href="./07-step-3-update-unit-tests.md">Step 3: Update unit tests</a>
-  </div>
-</div>
+Even though `getModuleName` now has the same "structure" in all 3 steps, we resist the urge to extract it as a utility so that we don't introduce a wrong abstraction.
