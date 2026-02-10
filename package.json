@@ -11,7 +11,9 @@
   "author": "Isaac J. Lee",
   "type": "module",
   "scripts": {
-    "build": "pnpm --filter \"./packages/**\" build",
+    "build": "concurrently \"pnpm:build:*\"",
+    "build:docs": "pnpm --filter docs build",
+    "build:packages": "pnpm --filter \"./packages/**\" build",
     "format": "pnpm --filter \"*\" format",
     "lint": "pnpm --filter \"*\" lint && pnpm lint:package-json",
     "lint:fix": "pnpm --filter \"*\" lint:fix && pnpm lint:package-json:fix",
@@ -19,13 +21,14 @@
     "lint:package-json:fix": "sort-package-json \"**/package.json\" --ignore \"**/{blueprints,dist,dist-for-testing,node_modules,tests,tmp}/**\"",
     "prepare": "pnpm build",
     "release:prepare": "changeset version; update-workspace-root-version",
-    "release:publish": "pnpm build && changeset publish",
+    "release:publish": "pnpm build:packages && changeset publish",
     "start": "pnpm --filter docs-app-for-codemod-utils start",
     "test": "pnpm --filter \"*\" test"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.8",
     "@ijlee2-frontend-configs/changesets": "^1.0.2",
+    "concurrently": "^9.2.1",
     "sort-package-json": "^3.6.1",
     "update-workspace-root-version": "^2.1.5"
   },
