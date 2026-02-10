@@ -18,22 +18,47 @@ Goals:
 We'll create a step called `rename-integration-tests`. Now that we have some experience, we can take larger small steps.
 
 
-### Scaffold the step
+### Scaffold the step {#take-small-steps-again-scaffold-the-step}
 
-In [Chapter 4](04-step-1-update-acceptance-tests-part-1.md#take-small-steps), we scaffolded (partially implemented) `rename-acceptance-tests` by taking 4 steps:
+In [Chapter 4](04-step-1-update-acceptance-tests-part-1#take-small-steps), we scaffolded (partially implemented) `rename-acceptance-tests` by taking 4 steps:
 
 1. Export an empty function.
 1. Find files.
 1. Read and write files (identity function).
-1. Extract the function `renameModule()`.
+1. Extract the function `renameModule`.
 
 See if you can similarly scaffold `rename-integration-tests`. Feel free to look back at the chapter.
 
 <details>
 
-<summary>Solution: <code>src/steps/rename-integration-tests.ts</code></summary>
+<summary>Solution</summary>
 
-```ts
+::: code-group
+
+```diff [src/index.ts]
+- import { createOptions, renameAcceptanceTests } from './steps/index.js';
++ import {
++   createOptions,
++   renameAcceptanceTests,
++   renameIntegrationTests,
++ } from './steps/index.js';
+import type { CodemodOptions } from './types/index.js';
+
+export function runCodemod(codemodOptions: CodemodOptions): void {
+  const options = createOptions(codemodOptions);
+
+  renameAcceptanceTests(options);
++   renameIntegrationTests(options);
+}
+```
+
+```diff [src/steps/index.ts]
+export * from './create-options.js';
+export * from './rename-acceptance-tests.js';
++ export * from './rename-integration-tests.js';
+```
+
+```ts [src/steps/rename-integration-tests.ts]
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -63,49 +88,16 @@ export function renameIntegrationTests(options: Options): void {
 }
 ```
 
-</details>
-
-<details>
-
-<summary>Solution: <code>src/steps/index.ts</code></summary>
-
-```diff
-export * from './create-options.js';
-export * from './rename-acceptance-tests.js';
-+ export * from './rename-integration-tests.js';
-```
-
-</details>
-
-<details>
-
-<summary>Solution: <code>src/index.ts</code></summary>
-
-```diff
-- import { createOptions, renameAcceptanceTests } from './steps/index.js';
-+ import {
-+   createOptions,
-+   renameAcceptanceTests,
-+   renameIntegrationTests,
-+ } from './steps/index.js';
-import type { CodemodOptions } from './types/index.js';
-
-export function runCodemod(codemodOptions: CodemodOptions): void {
-  const options = createOptions(codemodOptions);
-
-  renameAcceptanceTests(options);
-+   renameIntegrationTests(options);
-}
-```
+:::
 
 </details>
 
 Don't forget to check that `lint` and `test` pass.
 
 
-### Transform code
+### Transform code {#take-small-steps-again-transform-code}
 
-In [Chapter 5](./05-step-1-update-acceptance-tests-part-2.md), we used AST Explorer to try out ideas, then moved the implementation to our codemod. We ended up with two functions, `getModuleName()` and `renameModule()`.
+In [Chapter 5](./05-step-1-update-acceptance-tests-part-2), we used AST Explorer to try out ideas, then moved the implementation to our codemod. We ended up with two functions, `getModuleName` and `renameModule`.
 
 <details>
 
@@ -173,11 +165,13 @@ Try copy-pasting the starter code to `rename-integration-tests`, then remove ref
 
 <details>
 
-<summary>Solution: <code>src/steps/rename-integration-tests.ts</code></summary>
+<summary>Solution</summary>
 
-I highlighted only how `getModuleName()` and `renameModule()` differ between `rename-acceptance-tests` and `rename-integration-tests`.
+I highlighted only how `getModuleName` and `renameModule` differ between `rename-acceptance-tests` and `rename-integration-tests`.
 
-```diff
+::: code-group
+
+```diff [src/steps/rename-integration-tests.ts]
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
@@ -265,6 +259,8 @@ export function renameIntegrationTests(options: Options): void {
 }
 ```
 
+:::
+
 </details>
 
 Let's run `test` to check the names of test modules.
@@ -273,7 +269,7 @@ Let's run `test` to check the names of test modules.
 
 <summary>Expected output</summary>
 
-```sh
+```sh {:no-line-numbers}
 ❯ pnpm test
 
 failures:
@@ -312,28 +308,32 @@ AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
 
 From the "actual" lines (marked with `+`), we see that the codemod did update test module names, but the names are incorrect (they are not what Ember CLI would generate).
 
-```ts
-/* Actual: Module names don't include the entity type */
+::: code-group
+
+```ts [Actual]
+// Module names don't include the entity type
 module('Integration | components/navigation-menu', function (hooks) {});
 module('Integration | components/products/product/card', function (hooks) {});
 module('Integration | components/products/product/details', function (hooks) {});
 ```
 
-```ts
-/* Expected: Module names include the entity type */
+```ts [Expected]
+// Module names include the entity type
 module('Integration | Component | navigation-menu', function (hooks) {});
 module('Integration | Component | products/product/card', function (hooks) {});
 module('Integration | Component | products/product/details', function (hooks) {});
 ```
 
-We can conclude that `getModuleName()`, which worked for acceptance tests, failed to for integration tests. This illustrates why we want to avoid premature abstractions (e.g. by extracting utility functions early).
+:::
 
-The good news is, `getModuleName()` got us quite far with implementing `rename-integration-tests`. We just need to figure out how to update the function.
+We conclude that `getModuleName`, which worked for acceptance tests, failed to work for integration tests. This illustrates why we want to avoid premature abstractions (e.g. by extracting utility functions early).
+
+The good news is, `getModuleName` got us quite far with implementing `rename-integration-tests`. We just need to figure out how to update the function.
 
 
 ## Correct overshoots
 
-We say that an [iterative method](https://en.wikipedia.org/wiki/Iterative_method) has "overshot," if an iteration (another word for step) helped us reach somewhere close to the solution, but made us go a bit too far. An overshoot occurred when we copy-pasted `getModuleName()` from `rename-acceptance-tests`.
+We say that an [iterative method](https://en.wikipedia.org/wiki/Iterative_method) has "overshot," if an iteration (a step) helped us near the solution, but made us go a bit too far. An overshoot occurred when we had copy-pasted `getModuleName` from `rename-acceptance-tests`.
 
 ```ts
 function getModuleName(filePath: string): string {
@@ -351,7 +351,7 @@ function getModuleName(filePath: string): string {
 
 Let's correct the overshoot by adding the entity type (here, we represent it as a string such as `'Component'`, `'Helper'`, or `'Modifier'`) before the entity name (e.g. `'navigation-menu'`, `'products/product/card'`).
 
-```ts
+```ts {7-8,11}
 function getModuleName(filePath: string): string {
   let { dir, name } = parseFilePath(filePath);
 
@@ -367,9 +367,9 @@ function getModuleName(filePath: string): string {
 ```
 
 
-### Go with simple
+### Go with simple {#correct-overshoots-go-with-simple}
 
-The code for `getModuleName()` shows a variable called `dir`. This variable holds a string that represents the test file's relative folder path, e.g. `'components'`, `'components/products/product'`, and `'modifiers'`.
+The code for `getModuleName` shows a variable called `dir`. This variable represents the test file's relative folder path, e.g. `'components'`, `'components/products/product'`, or `'modifiers'`.
 
 You might see how we can derive the entity's type and name from `dir`.
 
@@ -384,7 +384,7 @@ const { entityType, remainingPath } = parseEntity(dir);
 const entityName = join(remainingPath, name);
 ```
 
-Let me first show you the solution for `parseEntity()`, then explain the particular approach.
+Let me first show you the solution for `parseEntity`, then explain the particular approach.
 
 ```ts
 import { sep } from 'node:path';
@@ -409,17 +409,19 @@ function parseEntity(dir: string): {
 }
 ```
 
-I hard-coded the mapping between folders and entity types, _despite_ knowing that Ember CLI pluralizes the entity type to name the folder. I didn't try to create a regular expression or install a package that has `singularize()` and `capitalize()`.
+I hard-coded the mapping between folders and entity types, _despite_ knowing that Ember CLI pluralizes the entity type to name the folder. I didn't try to create a regular expression or install a package that has methods like `singularize` and `capitalize`.
 
-In short, I took the simplest approach to quickly implement a step. Later, after finishing writing the codemod and writing more tests, we can revisit the steps and come up with better approaches.
+In other words, take the simplest approach to quickly implement a step. Later, once the codemod is finished and has more tests, we can revisit the steps and come up with a better approach.
 
 <details>
 
-<summary>Solution: <code>src/steps/rename-integration-tests.ts</code></summary>
+<summary>Solution</summary>
 
-The implementations for `renameModule()` and `renameIntegrationTests()` remain unchanged and have been hidden for simplicity.
+The implementations for `renameModule` and `renameIntegrationTests` remain unchanged and have been hidden for simplicity.
 
-```diff
+::: code-group
+
+```diff [src/steps/rename-integration-tests.ts]
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
@@ -476,6 +478,8 @@ export function renameIntegrationTests(options: Options): void {
 }
 ```
 
+:::
+
 </details>
 
 Run `test` once more to check the names of test modules. This time, we should see the names that Ember CLI gives when we generate an integration test.
@@ -484,7 +488,7 @@ Run `test` once more to check the names of test modules. This time, we should se
 
 <summary>Expected output</summary>
 
-```sh
+```sh {:no-line-numbers}
 ❯ pnpm test
 
 failures:
@@ -523,14 +527,6 @@ AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
 
 Now that we're satisfied, we can run `./update-test-fixtures.sh` to update the output fixture files.
 
-(You might have noticed that I surreptitiously ignored what would happen when `entityType` is `undefined`. We will address this edge case in [Chapter 8](./08-refactor-code-part-1.md#standardize-functions).
-
-
-<div align="center">
-  <div>
-    Next: <a href="./07-step-3-update-unit-tests.md">Step 3: Update unit tests</a>
-  </div>
-  <div>
-    Previous: <a href="./05-step-1-update-acceptance-tests-part-2.md">Step 1: Update acceptance tests (Part 2)</a>
-  </div>
-</div>
+> [!NOTE]
+> 
+> You might have noticed that I ignored what happens when `entityType` is `undefined`. We will address this edge case in [Chapter 8](./08-refactor-code-part-1#standardize-functions).

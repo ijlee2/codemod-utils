@@ -4,7 +4,7 @@
 > Please complete the [main tutorial](../main-tutorial/00-introduction.md) first.
 
 > [!NOTE]
-> This tutorial shows how to use [`@codemod-utils/ast-template-tag`](../../packages/ast/template-tag#readme) to update `*.{gjs,gts}` files.
+> This tutorial shows how to use [`@codemod-utils/ast-template-tag`](https://github.com/ijlee2/codemod-utils/tree/main/packages/ast/template-tag#readme) to update `*.{gjs,gts}` files.
 
 [`<template>` tag](https://github.com/ember-template-imports/ember-template-imports) allows Ember developers to write the template (traditionally, an `*.hbs` file) and the JavaScript (`*.{js,ts}`) in the same file. The new format has the file extension of `.gjs` or `.gts`.
 

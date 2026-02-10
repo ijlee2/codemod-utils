@@ -1,7 +1,6 @@
 # Refactor code (Part 2)
 
-In [the previous chapter](./08-refactor-code-part-1.md), we wrote a step called `rename-tests` and extracted a couple of utilities. Before we call the codemod done, we'll write integration and unit tests to document their inputs and outputs.
-
+In [the previous chapter](./08-refactor-code-part-1), we wrote a step called `rename-tests` and extracted a couple of utilities. Before we call the codemod done, we'll write integration and unit tests to document their inputs and outputs.
 
 Goals:
 
@@ -11,11 +10,11 @@ Goals:
 
 ## Write integration tests
 
-Recall from [Chapter 2](02-understand-the-folder-structure.md#tests) that tests for the steps live in the `tests/steps` folder. These tests are analogous to the integration tests that we write for components in Ember. The folder structure for `tests/steps` should match that for `src/steps`.
+Recall from [Chapter 2](02-understand-the-folder-structure#folder-structure-tests) that tests for the steps live in the `tests/steps` folder. These tests are analogous to the integration tests that we write for components in Ember. The folder structure for `/tests/steps` should match that for `/src/steps`.
 
 For steps like `rename-tests`, where files are read and updated, we can take one of two approaches:
 
-- Store fixture projects in `tests/fixtures/steps/<step-name>`.
+- Store fixture projects in `/tests/fixtures/steps/<step-name>`.
 - Hard-code the fixture projects as JSONs in tests (preferred if a project is simple).
 
 The fixture projects for integration tests are allowed to be different (even simplified) from those for acceptance tests. For each step, we can also create multiple fixture projects so that the project names clearly indicate what is being tested. A related idea is forming a [basis](https://crunchingnumbers.live/2019/10/11/write-tests-like-a-mathematician-part-3/), i.e. finding a minimum set of tests that can check the step thoroughly.
@@ -26,22 +25,20 @@ To test `rename-tests`, we will create 3 projects:
 - `javascript` (base cases with JavaScript files)
 - `typescript` (base cases with TypeScript files)
 
-The `javascript` and `typescript` projects will cover different entity types, but they won't cover _all_ because we already have a good acceptance test and will write unit tests. To create the 3 projects, please cherry-pick the commit `chore: Added fixtures (rename-tests)` from [my solution repo](https://github.com/ijlee2/ember-codemod-rename-test-modules/commits/main).
+The `javascript` and `typescript` projects will cover different entity types, but they won't cover _all_ because we already have a good acceptance test and will write unit tests. To create the 3 projects, please cherry-pick the commit `chore: Added fixtures (rename-tests)` from [my solution repo](https://github.com/ijlee2/ember-codemod-rename-test-modules/).
 
-```sh
+```sh {:no-line-numbers}
 git remote add solution git@github.com:ijlee2/ember-codemod-rename-test-modules.git
 git fetch solution
 git cherry-pick 88b4995
 git remote remove solution
 ```
 
-Create the file `tests/steps/rename-tests/javascript.test.ts`, then copy-paste the following starter code.
+Create the following test file for the `javascript` project.
 
-<details>
+::: code-group
 
-<summary>Starter code</code></summary>
-
-```ts
+```ts [tests/steps/rename-tests/javascript.test.ts]
 import {
   assertFixture,
   convertFixtureToJson,
@@ -72,15 +69,15 @@ test('steps | rename-tests > javascript', function () {
 });
 ```
 
-</details>
+:::
 
 A few remarks:
 
-- `convertFixtureToJson()` assumes that fixture projects are located in `tests/fixtures`. That's why we provide the relative paths `steps/rename-tests/javascript/input` and `steps/rename-tests/javascript/output`.
+- `convertFixtureToJson` assumes that fixture projects are located in `/tests/fixtures`. That's why we provide the relative paths `'steps/rename-tests/javascript/input'` and `'steps/rename-tests/javascript/output'`.
 
 - We see the **Arrange-Act-Assert** (AAA, "triple-A") testing pattern.
 
-    ```ts
+    ```ts {:no-line-numbers}
     // Arrange
     loadFixture(inputProject, codemodOptions);
 
@@ -93,13 +90,15 @@ A few remarks:
 
 - The `codemodOptions` and `options` are really meant for the project named `sample-project`. We reused them for the `javascript` project out of convenience in this tutorial. For your actual codemod project, please use the right ones so that your tests run under the correct assumptions.
 
-It's now your turn. Use the other 2 projects to write two more tests.
+Now your turn. Use the other projects (`edge-cases` and `typescript`) to write two more tests.
 
 <details>
 
-<summary>Solution: <code>tests/steps/rename-tests/edge-cases.test.ts</code></summary>
+<summary>Solution</summary>
 
-```diff
+::: code-group
+
+```diff [tests/steps/rename-tests/edge-cases.test.ts]
 import {
   assertFixture,
   convertFixtureToJson,
@@ -133,13 +132,7 @@ import {
 });
 ```
 
-</details>
-
-<details>
-
-<summary>Solution: <code>tests/steps/rename-tests/typescript.test.ts</code></summary>
-
-```diff
+```diff [tests/steps/rename-tests/typescript.test.ts]
 import {
   assertFixture,
   convertFixtureToJson,
@@ -173,25 +166,25 @@ import {
 });
 ```
 
+:::
+
 </details>
 
 
 ## Write unit tests
 
-Recall from [Chapter 2](02-understand-the-folder-structure.md#tests) that tests for the utilities live in the `tests/utils` folder. These tests are analogous to the unit tests that we write for utilities in Ember. The folder structure for `tests/utils` should match that for `src/utils`.
+Recall from [Chapter 2](02-understand-the-folder-structure#folder-structure-tests) that tests for the utilities live in the `/tests/utils` folder. These tests are analogous to the unit tests that we write for utilities in Ember. The folder structure for `/tests/utils` should match that for `/src/utils`.
 
-In the previous chapter, we extracted 2 utilities: `renameModule()` and `parseEntity()`. To show you how to write unit tests, I will walk you through `renameModule()`, then let you write tests for `parseEntity()`.
+We have two utilities: `renameModule` and `parseEntity`. I will use `renameModule` to show how to write unit tests. You can then write tests for `parseEntity`.
 
 
-### renameModule()
+### renameModule {#write-unit-tests-rename-module}
 
-Let's check the base case for a JavaScript file. Create the file `tests/utils/rename-tests/rename-module/javascript.test.ts`, then copy-paste the following starter code.
+Let's check the base case for JavaScript files. Create the following test file for the `javascript` project.
 
-<details>
+::: code-group
 
-<summary>Starter code</code></summary>
-
-```ts
+```ts [tests/utils/rename-tests/rename-module/javascript.test.ts]
 import { assert, test } from '@codemod-utils/tests';
 
 import { renameModule } from '../../../../src/utils/rename-tests/index.js';
@@ -208,13 +201,13 @@ test('utils | rename-tests | rename-module > javascript', function () {
 });
 ```
 
-</details>
+:::
 
 A few remarks:
 
 - We see the AAA pattern again.
 
-    ```ts
+    ```ts {:no-line-numbers}
     // Arrange
     const oldFile = `module('Old name', function (hooks) {});`;
 
@@ -230,13 +223,13 @@ A few remarks:
 
 - The `assert` object that `@codemod-utils/tests` provides comes from Node.js.
 
-    Make strong assertions whenever possible, using methods such as [`assert.deepStrictEqual()`](https://nodejs.org/docs/latest-v18.x/api/assert.html#assertdeepstrictequalactual-expected-message), [`assert.strictEqual()`](https://nodejs.org/docs/latest-v18.x/api/assert.html#assertstrictequalactual-expected-message), and [`assert.throws()`](https://nodejs.org/docs/latest-v18.x/api/assert.html#assertthrowsfn-error-message). Weak assertions like [`assert.match()`](https://nodejs.org/docs/latest-v18.x/api/assert.html#assertmatchstring-regexp-message) and [`assert.ok()`](https://nodejs.org/docs/latest-v18.x/api/assert.html#assertokvalue-message), which create a "room for interpretation" and can make tests pass when they shouldn't (false negatives), should be avoided.
+    Make strong assertions whenever possible, by using [`assert.deepStrictEqual`](https://nodejs.org/docs/latest-v22.x/api/assert.html#assertdeepstrictequalactual-expected-message), [`assert.strictEqual`](https://nodejs.org/docs/latest-v22.x/api/assert.html#assertstrictequalactual-expected-message), and [`assert.throws`](https://nodejs.org/docs/latest-v22.x/api/assert.html#assertthrowsfn-error-message). Avoid weak assertions like [`assert.match`](https://nodejs.org/docs/latest-v22.x/api/assert.html#assertmatchstring-regexp-message) and [`assert.ok`](https://nodejs.org/docs/latest-v22.x/api/assert.html#assertokvalue-message), which create a "room for interpretation" and can make tests pass when they shouldn't (false negatives).
 
-- Although the implementation for `renameModule()` is complex (we had to parse and update abstract syntax trees), the test for it is simple, because `renameModule()` provided a good interface. 
+- Although the implementation for `renameModule` is complex (we had to parse and update abstract syntax trees), the test for it is simple, because `renameModule` provided a good interface. 
 
-- The input and output files were simple enough that we could write their content in one line without sacrificing readability. Should they have many lines, create an array of strings and use `normalizeFile()` from `@codemod-utils/tests` instead. This way, you can simulate what one would see in an actual file.
+- The input and output files were simple enough that we could write their content in one line without sacrificing readability. Should they have many lines, create an array of strings and use `normalizeFile` from `@codemod-utils/tests` instead. This way, you can simulate what one would see in an actual file.
 
-    ```ts
+    ```ts {3-8,14-19}
     import { normalizeFile } from '@codemod-utils/tests';
 
     const oldFile = normalizeFile([
@@ -259,46 +252,25 @@ A few remarks:
     );
     ```
 
-Use the starter code to write 5 more tests:
+Use the test file for `javascript` to write 5 more tests:
 
-- A base case for a TypeScript file
-- An edge case, where the file is empty
-- An edge case, where `module()` does not exist
-- An edge case, where `module()` has incorrect arguments (e.g. the 2nd argument is missing)
-- An edge case with nested modules
+1. `typescript.test.ts`: Base case for TypeScript files. Checks that `renameModule` can handle TypeScript files.
 
-<details>
+1. `edge-case-file-is-empty.test.ts`: When the file is empty, `renameModule` returns the same file content and doesn't run into an error.
 
-<summary>Solution: <code>tests/utils/rename-tests/rename-module/typescript.test.ts</code></summary>
+1. `edge-case-module-does-not-exist.test.ts`: When the file doesn't have a `module` call, `renameModule` returns the same file content and doesn't run into an error.
 
-This test checks that `renameModule()` can handle TypeScript files.
+1. `edge-case-module-has-incorrect-arguments.test.ts`: When `module` has incorrect arguments (e.g. the 2nd argument is missing), `renameModule` returns the same file content and doesn't run into an error.
 
-```ts
-import { assert, test } from '@codemod-utils/tests';
-
-import { renameModule } from '../../../../src/utils/rename-tests/index.js';
-
-test('utils | rename-tests | rename-module > typescript', function () {
-  const oldFile = `module('Old name', function (hooks) {});`;
-
-  const newFile = renameModule(oldFile, {
-    isTypeScript: true,
-    moduleName: 'New name',
-  });
-
-  assert.strictEqual(newFile, `module('New name', function (hooks) {});`);
-});
-```
-
-</details>
+1. `edge-case-nested-modules.test.ts`: When there are nested modules, `renameModule` renames only the parent(-most) module.
 
 <details>
 
-<summary>Solution: <code>tests/utils/rename-tests/rename-module/edge-case-file-is-empty.test.ts</code></summary>
+<summary>Solution</summary>
 
-This test checks that, when the file is empty, `renameModule()` returns the same file content and doesn't run into an error.
+::: code-group
 
-```ts
+```ts [tests/utils/rename-tests/rename-module/edge-case-file-is-empty.test.ts]
 import { assert, test } from '@codemod-utils/tests';
 
 import { renameModule } from '../../../../src/utils/rename-tests/index.js';
@@ -315,15 +287,7 @@ test('utils | rename-tests | rename-module > edge case (file is empty)', functio
 });
 ```
 
-</details>
-
-<details>
-
-<summary>Solution: <code>tests/utils/rename-tests/rename-module/edge-case-module-does-not-exist.test.ts</code></summary>
-
-This test checks that, when the file doesn't have a `module()` call, `renameModule()` returns the same file content and doesn't run into an error.
-
-```ts
+```ts [tests/utils/rename-tests/rename-module/edge-case-module-does-not-exist.test.ts]
 import { assert, test } from '@codemod-utils/tests';
 
 import { renameModule } from '../../../../src/utils/rename-tests/index.js';
@@ -340,15 +304,7 @@ test('utils | rename-tests | rename-module > edge case (module does not exist)',
 });
 ```
 
-</details>
-
-<details>
-
-<summary>Solution: <code>tests/utils/rename-tests/rename-module/edge-case-module-has-incorrect-arguments.test.ts</code></summary>
-
-This test checks that, when the `module()` call is incorrect, `renameModule()` returns the same file content and doesn't run into an error.
-
-```ts
+```ts [tests/utils/rename-tests/rename-module/edge-case-module-has-incorrect-arguments.test.ts]
 import { assert, test } from '@codemod-utils/tests';
 
 import { renameModule } from '../../../../src/utils/rename-tests/index.js';
@@ -365,15 +321,7 @@ test('utils | rename-tests | rename-module > edge case (module has incorrect arg
 });
 ```
 
-</details>
-
-<details>
-
-<summary>Solution: <code>tests/utils/rename-tests/rename-module/edge-case-nested-modules.test.ts</code></summary>
-
-This test checks that `renameModule()` renames only the parent module.
-
-```ts
+```ts [tests/utils/rename-tests/rename-module/edge-case-nested-modules.test.ts]
 import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { renameModule } from '../../../../src/utils/rename-tests/index.js';
@@ -403,21 +351,43 @@ test('utils | rename-tests | rename-module > edge case (nested modules)', functi
 });
 ```
 
+```ts [tests/utils/rename-tests/rename-module/typescript.test.ts]
+import { assert, test } from '@codemod-utils/tests';
+
+import { renameModule } from '../../../../src/utils/rename-tests/index.js';
+
+test('utils | rename-tests | rename-module > typescript', function () {
+  const oldFile = `module('Old name', function (hooks) {});`;
+
+  const newFile = renameModule(oldFile, {
+    isTypeScript: true,
+    moduleName: 'New name',
+  });
+
+  assert.strictEqual(newFile, `module('New name', function (hooks) {});`);
+});
+```
+
+:::
+
 </details>
 
 
-### parseEntity()
+### parseEntity {#write-unit-tests-parse-entity}
 
-Now, see if you can write unit tests for `parseEntity()`. The function returns an object, a data structure that is "complex," so you will want to use `assert.deepStrictEqual()` to make an assertion.
+Now, try writing tests for `parseEntity`. The function returns an object, a data structure that is "complex," so you will want to use `assert.deepStrictEqual`.
 
-- A base case where the entity type is known
-- An edge case where the entity type is unknown
+1. `base-case.test.ts`: Entity type is known
+
+1. `edge-case-entity-type-is-unknown.test.ts`: Entity type is unknown
 
 <details>
 
-<summary>Solution: <code>tests/utils/rename-tests/parse-entity/base-case.test.ts</code></summary>
+<summary>Solution</summary>
 
-```ts
+::: code-group
+
+```ts [tests/utils/rename-tests/parse-entity/base-case.test.ts]
 import { assert, test } from '@codemod-utils/tests';
 
 import { parseEntity } from '../../../../src/utils/rename-tests/index.js';
@@ -438,13 +408,7 @@ test('utils | rename-tests | parse-entity > base case', function () {
 });
 ```
 
-</details>
-
-<details>
-
-<summary>Solution: <code>tests/utils/rename-tests/parse-entity/edge-case-entity-type-is-unknown.test.ts</code></summary>
-
-```ts
+```ts [tests/utils/rename-tests/parse-entity/edge-case-entity-type-is-unknown.test.ts]
 import { assert, test } from '@codemod-utils/tests';
 
 import { parseEntity } from '../../../../src/utils/rename-tests/index.js';
@@ -472,16 +436,12 @@ test('utils | rename-tests | parse-entity > edge case (entity type is unknown)',
 });
 ```
 
+:::
+
 </details>
 
-Note that `dir` and `folderToEntityType`, the test setup for `parseEntity()`, show "realistic" values to help with documentation. Avoid values like `'foo'`, `'bar'`, and `1`, which don't clearly communicate to all contributors what the function needs.
-
-
-<div align="center">
-  <div>
-    Next: <a href="./10-conclusion.md">Conclusion</a>
-  </div>
-  <div>
-    Previous: <a href="./08-refactor-code-part-1.md">Refactor code (Part 1)</a>
-  </div>
-</div>
+> [!TIP]
+>
+> The tests for `parseEntity` show realistic values for `dir` and `folderToEntityType`. Such values improve documentation.
+> 
+> Avoid values like `'foo'`, `'bar'`, and `1`, which don't clearly communicate what a function needs to everyone.

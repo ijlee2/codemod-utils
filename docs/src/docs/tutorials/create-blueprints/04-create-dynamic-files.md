@@ -13,7 +13,7 @@ Goals:
 
 ## Pass data
 
-Often, blueprints need context: If some condition is true, a file should be generated in a different way. To get the resulting file, we pass the blueprint and the things that we know to [`processTemplate()`](../../packages/blueprints#processtemplate).
+Often, blueprints need context: If some condition is true, a file should be generated in a different way. To get the resulting file, we pass the blueprint and the things that we know to [`processTemplate()`](https://github.com/ijlee2/codemod-utils/tree/main/packages/blueprints#processtemplate).
 
 ```ts
 import { processTemplate } from '@codemod-utils/blueprints';

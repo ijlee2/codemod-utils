@@ -42,11 +42,11 @@ pnpx @codemod-utils/cli <your-codemod-name>
 
 ## Tutorials
 
-- [Main tutorial](./tutorials/main-tutorial/00-introduction.md)
-- [Create blueprints](./tutorials/create-blueprints/00-introduction.md)
-- [Support Windows](./tutorials/support-windows/00-introduction.md)
-- [Update CSS files](./tutorials/update-css-files/00-introduction.md)
-- [Update `<template>` tags](./tutorials/update-template-tags/00-introduction.md)
+- [Main tutorial](https://codemod-utils.netlify.app/docs/tutorials/main-tutorial/00-introduction)
+- [Create blueprints](https://codemod-utils.netlify.app/docs/tutorials/create-blueprints/00-introduction)
+- [Support Windows](https://codemod-utils.netlify.app/docs/tutorials/support-windows/00-introduction)
+- [Update CSS files](https://codemod-utils.netlify.app/docs/tutorials/update-css-files/00-introduction)
+- [Update `<template>` tags](https://codemod-utils.netlify.app/docs/tutorials/update-template-tags/00-introduction)
 
 
 ## Made with codemod-utils
