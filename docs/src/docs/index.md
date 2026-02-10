@@ -13,7 +13,7 @@ In short, codemods are everywhere and you’ve likely used a few already.
 
 ## What is codemod-utils?
 
-`@codemod-utils` provides a set of **tools and conventions** to help you write codemods. Use `@codemod-utils/cli` to get started.
+`codemod-utils` provides a set of **tools and conventions** to help you write codemods. Use `@codemod-utils/cli` to get started.
 
 ```sh {:no-line-numbers}
 pnpx @codemod-utils/cli <your-codemod-name>
@@ -33,7 +33,7 @@ pnpx @codemod-utils/cli <your-codemod-name>
 - [@codemod-utils/tests](https://github.com/ijlee2/codemod-utils/tree/main/packages/tests/README.md)
 
 
-## Made with @codemod-utils
+## Made with codemod-utils
 
 1. [@ember-intl/lint](https://github.com/ember-intl/ember-intl/tree/main/packages/ember-intl-lint)
 1. [@ember-intl/vite](https://github.com/ember-intl/ember-intl/tree/main/packages/ember-intl-vite)

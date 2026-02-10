@@ -18,9 +18,9 @@ One special case is the identity function. That is, not all codemods need to mak
 In short, codemods are everywhere and you’ve likely used a few already.
 
 
-## What is it?
+## What is codemod-utils?
 
-`@codemod-utils` provides a set of **tools and conventions** to help you write codemods. Use [`@codemod-utils/cli`](/packages/cli/README.md) to get started.
+`codemod-utils` provides a set of **tools and conventions** to help you write codemods. Use [`@codemod-utils/cli`](/packages/cli/README.md) to get started.
 
 ```sh
 pnpx @codemod-utils/cli <your-codemod-name>
@@ -49,7 +49,7 @@ pnpx @codemod-utils/cli <your-codemod-name>
 - [Update `<template>` tags](./tutorials/update-template-tags/00-introduction.md)
 
 
-## Made with @codemod-utils
+## Made with codemod-utils
 
 1. [`@ember-intl/lint`](https://github.com/ember-intl/ember-intl/tree/main/packages/ember-intl-lint)
 1. [`@ember-intl/vite`](https://github.com/ember-intl/ember-intl/tree/main/packages/ember-intl-vite)
