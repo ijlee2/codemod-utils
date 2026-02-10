@@ -9,4 +9,8 @@ hero:
     - link: /docs
       text: Docs
       theme: brand
+
+    - link: /docs/quickstart
+      text: Quickstart
+      theme: alt
 ---
