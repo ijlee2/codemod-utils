@@ -1,5 +1,6 @@
 packages:
   - configs/**
+  - docs
   - packages/ast/javascript
   - packages/ast/template
   - packages/ast/template-tag
