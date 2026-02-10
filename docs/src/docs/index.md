@@ -4,7 +4,7 @@
 
 A codemod is a function that takes files as input and output. It reads the files of interest, makes some changes, then saves the result to your disk.
 
-![](../images/codemod.jpg)
+![](../images/index/codemod.jpg)
 
 One special case is the identity function. That is, not all codemods need to make a change. As a result, linters are a codemod. Tools that gather files, collect metrics, analyze package dependencies, or find vulnerabilities are also one.
 
