@@ -14,6 +14,9 @@ importers:
       '@ijlee2-frontend-configs/changesets':
         specifier: ^1.0.2
         version: 1.0.2(@changesets/cli@2.29.8(@types/node@20.19.31))
+      concurrently:
+        specifier: ^9.2.1
+        version: 9.2.1
       sort-package-json:
         specifier: ^3.6.1
         version: 3.6.1
