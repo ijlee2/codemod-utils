@@ -84,4 +84,4 @@ git push -u origin main
 >
 > Try running these scripts now. They should pass out of the box.
 
-Not sure how to start? If this is your first time writing a codemod, we recommend going through the [main tutorial](https://github.com/ijlee2/codemod-utils/blob/main/tutorials/main-tutorial/00-introduction.md). See existing codemods in [Made with codemod-utils](./#made-with-codemod-utils).
+Not sure how to start? If this is your first time writing a codemod, we recommend going through the [main tutorial](./tutorials/main-tutorial/00-introduction). See existing codemods in [Made with codemod-utils](./#made-with-codemod-utils).

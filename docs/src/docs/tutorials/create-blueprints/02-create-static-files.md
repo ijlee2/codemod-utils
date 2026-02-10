@@ -131,7 +131,7 @@ export function runCodemod(codemodOptions: CodemodOptions): void {
 
 Unlike in [the main tutorial](../main-tutorial/04-step-1-update-acceptance-tests-part-1.md#read-and-write-files), we won't use `writeFileSync()` from Node.js to create files. The reason is, the folders where files will be created (i.e. folders named `__addonLocation__` and `__testAppLocation__`) don't exist on the user's machine.
 
-Luckily, `@codemod-utils/files` provides [`createFiles()`](../../packages/files/README.md#createfiles), which creates missing folders as needed. We just need to provide this function a `Map`, which maps a blueprint's file path to its file content.
+Luckily, `@codemod-utils/files` provides [`createFiles()`](https://github.com/ijlee2/codemod-utils/tree/main/packages/files/README.md#createfiles), which creates missing folders as needed. We just need to provide this function a `Map`, which maps a blueprint's file path to its file content.
 
 <details>
 

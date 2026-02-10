@@ -145,7 +145,7 @@ test('index > sample-project', function () {
 }).only();
 ```
 
-Note, test files must have the extension `.test.ts` or `.test.js`. Check the [main tutorial](../../tutorials/main-tutorial/02-understand-the-folder-structure.md#tests) for conventions around tests.
+Note, test files must have the extension `.test.ts` or `.test.js`.
 
 
 ## Compatibility
