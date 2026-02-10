@@ -10,7 +10,7 @@
   "author": "Isaac J. Lee",
   "type": "module",
   "exports": {
-    "./node20": "./node20/index.json"
+    "./node": "./node/index.json"
   },
   "scripts": {
     "lint": "prettier \"**/*.{json,mjs}\" --cache --check",

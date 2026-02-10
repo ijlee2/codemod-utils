@@ -1,5 +1,5 @@
 {
-  "extends": "@shared-configs/typescript/node20",
+  "extends": "@shared-configs/typescript/node",
   "compilerOptions": {
     "declaration": false,
     "outDir": "dist"
