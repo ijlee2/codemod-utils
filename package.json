@@ -12,7 +12,7 @@
   "type": "module",
   "scripts": {
     "build": "concurrently \"pnpm:build:*\"",
-    "build:docs": "pnpm --filter docs build",
+    "build:docs": "pnpm --filter docs-app-for-codemod-utils build",
     "build:packages": "pnpm --filter \"./packages/**\" build",
     "format": "pnpm --filter \"*\" format",
     "lint": "pnpm --filter \"*\" lint && pnpm lint:package-json",
