@@ -1,17 +1,19 @@
 # Beware of line breaks
 
-Windows uses `\r\n` (also called a CRLF) for a line break and `node:os` provides `EOL`. The problem is, Windows can also handle files with `\n` or a mix. Moreover, output fixtures can end up with `\r\n`'s when tests are run on Windows.
+Windows uses `\r\n` (called CRLF) to break lines. The problem is, while the `node:os` package provides `EOL` (end of line), Windows can also handle files with `\n` or a mix. Moreover, output fixture files may end up with `\r\n`'s when tests are run on Windows.
 
-The uncertainty in line breaks makes reading and writing files non-trivial. For simplicity, we'll always prefer `\r\n` on Windows when writing files. End-users who want `\n` can use `git` and `prettier` to remove CRLFs.
+Reading and writing files aren't trivial due to the uncertainty in line breaks. For simplicity, we'll let codemods always use `\r\n` when writing files on Windows. End-developers who want `\n` can use `git` and `prettier` to remove CRLFs.
 
 
 ## When to always use `EOL`
 
-### `JSON.stringify()`
+### `JSON.stringify` {#when-to-always-use-eol-json-stringify}
 
-`JSON.stringify()` uses `\n` for line breaks. Before saving the result to a file, make sure to replace `\n` with `EOL`.
+`JSON.stringify` uses `\n` for line breaks. Before saving the result to a file, make sure to replace `\n` with `EOL`.
 
-```diff
+::: code-group
+
+```ts [Example (Correct)]{13}
 import { EOL } from 'node:os';
 import { join } from 'node:path';
 
@@ -24,33 +26,52 @@ function updatePackageJson(options: Options): void {
 
   // ...
 
--   const file = JSON.stringify(packageJson, null, 2) + '\n';
-+   const file = JSON.stringify(packageJson, null, 2).replaceAll('\n', EOL) + EOL;
+  const file = JSON.stringify(packageJson, null, 2).replaceAll('\n', EOL) + EOL;
 
   writeFileSync(join(projectRoot, 'package.json'), file, 'utf8');
 }
 ```
 
+```ts [Example (Inorrect)]{13}
+import { EOL } from 'node:os';
+import { join } from 'node:path';
 
-### Test fixtures
+import { readPackageJson } from '@codemod-utils/package-json';
 
-Fixtures files should use `EOL` so that the same test can pass on POSIX and Windows. `@codemod-utils/tests` provides `normalizeFile()` to hide the implementation detail.
+function updatePackageJson(options: Options): void {
+  const { projectRoot } = options;
 
-```diff
-- import { assert, test } from '@codemod-utils/tests';
-+ import { assert, normalizeFile, test } from '@codemod-utils/tests';
+  const packageJson = readPackageJson({ projectRoot });
+
+  // ...
+
+  const file = JSON.stringify(packageJson, null, 2) + '\n';
+
+  writeFileSync(join(projectRoot, 'package.json'), file, 'utf8');
+}
+```
+
+:::
+
+
+### Test fixtures {#when-to-always-use-eol-test-fixtures}
+
+Fixtures files—those that are defined in a test file—should use `EOL` so that the same test can pass on POSIX and Windows. `@codemod-utils/tests` provides `normalizeFile` that picks the correct character for a line break.
+
+::: code-group
+
+```ts [Example (Correct)]{6-11,20-25}
+import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { renameModule } from '../../../../src/utils/rename-tests/index.js';
 
 test('utils | rename-tests | rename-module', function () {
--   const oldFile = [
-+   const oldFile = normalizeFile([
+  const oldFile = normalizeFile([
     `module('Old name', function (hooks) {`,
     `  module('Old name', function (nestedHooks) {});`,
     `});`,
     ``,
--   ].join('\n');
-+   ]);
+  ]);
 
   const newFile = renameModule(oldFile, {
     isTypeScript: true,
@@ -59,24 +80,55 @@ test('utils | rename-tests | rename-module', function () {
 
   assert.strictEqual(
     newFile,
--     [
-+     normalizeFile([
+    normalizeFile([
       `module('New name', function (hooks) {`,
       `  module('Old name', function (nestedHooks) {});`,
       `});`,
       ``,
--     ].join('\n'),
-+     ]),
+    ]),
   );
 });
 ```
 
-In some cases, making a test pass on Windows involves high cost and little reward. For example, `content-tag` (the underlying dependency of `@codemod-utils/ast-template-tag`) returns different character and line indices on Windows. It'd be a pain to assert their values with a conditional branch, and to update these values manually if you need to change the input file.
+```ts [Example (Inorrect)]{6-11,20-25}
+import { assert, test } from '@codemod-utils/tests';
 
-If you want to run a test only on POSIX, you can write a test helper.
+import { renameModule } from '../../../../src/utils/rename-tests/index.js';
 
-```ts
-/* tests/helpers/test-on-posix.ts */
+test('utils | rename-tests | rename-module', function () {
+  const oldFile = [
+    `module('Old name', function (hooks) {`,
+    `  module('Old name', function (nestedHooks) {});`,
+    `});`,
+    ``,
+  ].join('\n');
+
+  const newFile = renameModule(oldFile, {
+    isTypeScript: true,
+    moduleName: 'New name',
+  });
+
+  assert.strictEqual(
+    newFile,
+    [
+      `module('New name', function (hooks) {`,
+      `  module('Old name', function (nestedHooks) {});`,
+      `});`,
+      ``,
+    ].join('\n'),
+  );
+});
+```
+
+:::
+
+In some cases, making a test pass on Windows involves high cost and little reward. For example, `content-tag` (the underlying dependency of `@codemod-utils/ast-template-tag`) returns different indices for characters and lines on Windows. It's cumbersome to assert their values with a conditional branch, and to update these values manually when you change the input file or when `content-tag` makes a breaking change.
+
+To run a test only on POSIX, consider writing a test helper.
+
+::: code-group
+
+```ts [tests/helpers/test-on-posix.ts]{8-10}
 import { EOL } from 'node:os';
 
 import { test } from '@codemod-utils/tests';
@@ -90,22 +142,25 @@ export function testOnPosix(...parameters: Parameters<typeof test>): void {
 }
 ```
 
-```diff
-- import { assert, test } from '@codemod-utils/tests';
-+ import { assert, normalizeFile } from '@codemod-utils/tests';
+```ts [Example (Before)]
+import { assert, test } from '@codemod-utils/tests';
 
 import { getClassToStyles } from '../../../../src/utils/css/index.js';
-+ import { testOnPosix } from '../../../helpers/index.js';
 
-- test('utils | css | get-class-to-styles', function () {
-+ testOnPosix('utils | css | get-class-to-styles', function () {
+test('utils | css | get-class-to-styles', function () {
   /* ... */
 });
 ```
 
+```ts [Example (After)]
+import { assert, normalizeFile } from '@codemod-utils/tests';
 
-<div align="center">
-  <div>
-    Previous: <a href="./01-beware-of-file-paths.md">Beware of file paths</a>
-  </div>
-</div>
+import { getClassToStyles } from '../../../../src/utils/css/index.js';
+import { testOnPosix } from '../../../helpers/test-on-posix.js';
+
+testOnPosix('utils | css | get-class-to-styles', function () {
+  /* ... */
+});
+```
+
+:::
