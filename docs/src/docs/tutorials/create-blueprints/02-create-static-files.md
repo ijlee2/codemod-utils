@@ -62,7 +62,7 @@ Copy-paste the following starter code:
 Then, scaffold a step called `create-files-from-blueprints`. Use `findFiles()` from `@codemod-utils/files` to find the blueprint files, then log the file paths.
 
 > [!NOTE]
-> Need a refresher on [`findFiles()`](../main-tutorial/04-step-1-update-acceptance-tests-part-1.md#find-files)? Don't forget to run tests to check your code.
+> Need a refresher on [`findFiles()`](../main-tutorial/04-update-acceptance-tests-part-1.md#find-files)? Don't forget to run tests to check your code.
 >
 > ```sh
 > ❯ pnpm test
@@ -129,7 +129,7 @@ export function runCodemod(codemodOptions: CodemodOptions): void {
 
 ## Read and write blueprint files
 
-Unlike in [the main tutorial](../main-tutorial/04-step-1-update-acceptance-tests-part-1.md#read-and-write-files), we won't use `writeFileSync()` from Node.js to create files. The reason is, the folders where files will be created (i.e. folders named `__addonLocation__` and `__testAppLocation__`) don't exist on the user's machine.
+Unlike in [the main tutorial](../main-tutorial/04-update-acceptance-tests-part-1.md#read-and-write-files), we won't use `writeFileSync()` from Node.js to create files. The reason is, the folders where files will be created (i.e. folders named `__addonLocation__` and `__testAppLocation__`) don't exist on the user's machine.
 
 Luckily, `@codemod-utils/files` provides [`createFiles()`](https://github.com/ijlee2/codemod-utils/tree/main/packages/files/README.md#createfiles), which creates missing folders as needed. We just need to provide this function a `Map`, which maps a blueprint's file path to its file content.
 

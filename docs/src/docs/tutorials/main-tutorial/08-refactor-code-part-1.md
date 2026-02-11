@@ -1,4 +1,4 @@
-# Refactor code
+# Refactor code (Part 1)
 
 Now that we have a working solution, let's simplify it.
 

@@ -10,7 +10,7 @@ _Utilities for writing codemods_
 A codemod is a function that takes files as input and output. It reads the files of interest, makes some changes, then saves the result to your disk.
 
 <div align="left">
-  <img alt="" src="./docs/src/images/codemod.jpg" width="600" />
+  <img alt="" src="./docs/src/images/index/codemod.jpg" width="600" />
 </div>
 
 One special case is the identity function. That is, not all codemods need to make a change. As a result, linters are a codemod. Tools that gather files, collect metrics, analyze package dependencies, or find vulnerabilities are also one.

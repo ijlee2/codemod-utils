@@ -34,20 +34,20 @@ export const sidebar: DefaultTheme.Sidebar = [
             text: '3. Sketch out the solution',
           },
           {
-            link: '/docs/tutorials/main-tutorial/04-step-1-update-acceptance-tests-part-1',
-            text: '4. Step 1: Update acceptance tests (Part 1)',
+            link: '/docs/tutorials/main-tutorial/04-update-acceptance-tests-part-1',
+            text: '4. Update acceptance tests (Part 1)',
           },
           {
-            link: '/docs/tutorials/main-tutorial/05-step-1-update-acceptance-tests-part-2',
-            text: '5. Step 1: Update acceptance tests (Part 2)',
+            link: '/docs/tutorials/main-tutorial/05-update-acceptance-tests-part-2',
+            text: '5. Update acceptance tests (Part 2)',
           },
           {
-            link: '/docs/tutorials/main-tutorial/06-step-2-update-integration-tests',
-            text: '6. Step 2: Update integration tests',
+            link: '/docs/tutorials/main-tutorial/06-update-integration-tests',
+            text: '6. Update integration tests',
           },
           {
-            link: '/docs/tutorials/main-tutorial/07-step-3-update-unit-tests',
-            text: '7. Step 3: Update unit tests',
+            link: '/docs/tutorials/main-tutorial/07-update-unit-tests',
+            text: '7. Update unit tests',
           },
           {
             link: '/docs/tutorials/main-tutorial/08-refactor-code-part-1',

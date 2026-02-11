@@ -1,6 +1,6 @@
-# Step 1: Update acceptance tests (Part 2)
+# Update acceptance tests (Part 2)
 
-At [the end of the last chapter](./04-step-1-update-acceptance-tests-part-1#extract-function), we extracted a function called `renameModule`. It received an input file (a file that may or may not be a valid acceptance test) and returned it unchanged.
+At [the end of the last chapter](./04-update-acceptance-tests-part-1#extract-function), we extracted a function called `renameModule`. It received an input file (a file that may or may not be a valid acceptance test) and returned it unchanged.
 
 ```ts
 function renameModule(file: string): string {
@@ -714,7 +714,7 @@ AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
 
 ### Fix fixtures
 
-As mentioned in [Chapter 2](./02-understand-the-folder-structure#folder-structure-update-test-fixtures-sh), acceptance tests will likely fail when you create or update a step. Run the shell script to update the output fixture files and get the acceptance tests to pass.
+As mentioned in [Chapter 2](./02-understand-the-folder-structure#folder-structure-update-test-fixtures-sh), acceptance tests will likely fail when you create or update a step. Run `update-test-fixtures.sh` to update the output fixtures and get the acceptance tests to pass.
 
 ```sh {:no-line-numbers}
 ./update-test-fixtures.sh

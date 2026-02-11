@@ -1,4 +1,4 @@
-# Step 3: Update unit tests
+# Update unit tests
 
 We have a more robust `getModuleName`, one that supports multiple entity types living in the same folder. Let's create a step for the last time, called `rename-unit-tests`.
 
