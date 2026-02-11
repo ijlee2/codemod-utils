@@ -2,4 +2,4 @@
 "docs-app-for-codemod-utils": minor
 ---
 
-Reviewed tutorial (main-tutorial)
+Reviewed tutorial (create-blueprints)
