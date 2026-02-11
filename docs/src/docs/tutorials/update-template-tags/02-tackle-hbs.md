@@ -1,10 +1,12 @@
 # Tackle `*.hbs`
 
-We can read `*.{gjs,gts,hbs}` files and write back their content. How should we now remove test selectors?
+So far, we can read `*.{gjs,gts,hbs}` files and write back their content. How should we remove test selectors?
 
-Let's take small steps by focusing on `*.hbs`:
+Let's take small steps by focusing on `*.hbs` first.
 
-```diff
+::: code-group
+
+```diff [src/steps/remove-test-selectors.ts]
 function removeDataTestAttributes(file: string): string {
   return file;
 }
@@ -17,12 +19,16 @@ let file = readFileSync(join(projectRoot, filePath), 'utf8');
 + }
 ```
 
+:::
 
-## Use `@codemod-utils/ast-template`
 
-First, update `removeDataTestAttributes()` so that it uses [`@codemod-utils/ast-template`](https://github.com/ijlee2/codemod-utils/tree/main/packages/ast/template/README.md#what-is-it) and remains a no-op.
+## Use @codemod-utils/ast-template
 
-```diff
+First, update `removeDataTestAttributes` so that it uses [`@codemod-utils/ast-template`](https://github.com/ijlee2/codemod-utils/tree/main/packages/ast/template/README.md#what-is-it) and remains a no-op.
+
+::: code-group
+
+```diff [src/steps/remove-test-selectors.ts]
 + import { AST } from '@codemod-utils/ast-template';
 
 function removeDataTestAttributes(file: string): string {
@@ -37,13 +43,17 @@ function removeDataTestAttributes(file: string): string {
 }
 ```
 
+:::
+
 To find the correct visit method, recall that we want to remove attributes if their name starts with `data-test`.
 
 <details>
 
-<summary><code>removeDataTestAttributes()</code></summary>
+<summary>Solution</summary>
 
-```diff
+::: code-group
+
+```diff [src/steps/remove-test-selectors.ts]
 import { AST } from '@codemod-utils/ast-template';
 
 function removeDataTestAttributes(file: string): string {
@@ -64,29 +74,19 @@ function removeDataTestAttributes(file: string): string {
 }
 ```
 
+:::
+
 </details>
 
-Finally, run `./update-test-fixtures.sh`. You will see only the file `app/templates/index.hbs` updated.
+Finally, run `update-test-fixtures.sh`. Only the output fixture `app/templates/index.hbs` is updated.
 
-<details>
+::: code-group
 
-<summary><code>tests/fixtures/sample-project/output/app/templates/index.hbs</code></summary>
-
-```diff
+```diff [tests/fixtures/sample-project/output/app/templates/index.hbs]
 - <div data-test-my-component>
 + <div>
   <MyComponent />
 </div>
 ```
 
-</details>
-
-
-<div align="center">
-  <div>
-    Next: <a href="./03-tackle-gjs-gts.md">Tackle <code>*.{gjs,gts}</code></a>
-  </div>
-  <div>
-    Previous: <a href="./01-create-a-project.md">Create a project</a>
-  </div>
-</div>
+:::

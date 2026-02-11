@@ -7,9 +7,9 @@ For simplicity, we'll assume our target project to be an Ember app. That is, the
 
 Change the directory to a place where you like to keep projects. Then, run these commands:
 
-```sh
+```sh {:no-line-numbers}
 # Create project
-npx @codemod-utils/cli remove-test-selectors --addon ast-template ast-template-tag
+pnpx @codemod-utils/cli remove-test-selectors --addon ast-template ast-template-tag
 
 # Install dependencies
 cd remove-test-selectors
@@ -23,11 +23,13 @@ Create a step called `remove-test-selectors`. It is to read `*.{gjs,gts,hbs}` fi
 
 <details>
 
-<summary><code>src/steps/remove-test-selectors.ts</code></summary>
+<summary>Solution</summary>
 
-For brevity, how `src/index.ts` calls `removeTestSelectors()` is not shown.
+For brevity, how `src/index.ts` calls `removeTestSelectors` is not shown.
 
-```ts
+::: code-group
+
+```ts [src/steps/remove-test-selectors.ts]
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -60,17 +62,15 @@ export function removeTestSelectors(options: Options): void {
 }
 ```
 
+:::
+
 </details>
 
-To test the step, we'll create a component with 3 `<template>` tags and render it in the `index` route.
+To test this step, we create a component with three `<template>` tags and the `index` route to render the component.
 
-<details>
+::: code-group
 
-<summary><code>tests/fixtures/sample-project/input/app/components/my-component.gjs</code></summary>
-
-The indentations are inconsistent on purpose. We'll check that formatting is preserved.
-
-```js
+```gjs [tests/fixtures/sample-project/input/app/components/my-component.gjs]
 import { on } from '@ember/modifier';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -118,26 +118,16 @@ export default class MyComponent extends Component {
 }
 ```
 
-</details>
-
-<details>
-
-<summary><code>tests/fixtures/sample-project/input/app/templates/index.hbs</code></summary>
-
-```hbs
+```hbs [tests/fixtures/sample-project/input/app/templates/index.hbs]
 <div data-test-my-component>
   <MyComponent />
 </div>
 ```
 
-</details>
+:::
 
-
-<div align="center">
-  <div>
-    Next: <a href="./02-tackle-hbs.md">Tackle <code>*.hbs</code></a>
-  </div>
-  <div>
-    Previous: <a href="./00-introduction.md">Introduction</a>
-  </div>
-</div>
+> [!NOTE]
+> 
+> One file tests the `*.{gjs,gts}` case, while the other `*.hbs`.
+>
+> Indentations are inconsistent on purpose. We'll check whether formatting is preserved.
