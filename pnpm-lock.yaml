@@ -10,10 +10,10 @@ importers:
     devDependencies:
       '@changesets/cli':
         specifier: ^2.29.8
-        version: 2.29.8(@types/node@20.19.31)
+        version: 2.29.8(@types/node@20.19.33)
       '@ijlee2-frontend-configs/changesets':
         specifier: ^1.0.2
-        version: 1.0.2(@changesets/cli@2.29.8(@types/node@20.19.31))
+        version: 1.0.2(@changesets/cli@2.29.8(@types/node@20.19.33))
       concurrently:
         specifier: ^9.2.1
         version: 9.2.1
@@ -57,7 +57,7 @@ importers:
     dependencies:
       '@ijlee2-frontend-configs/stylelint':
         specifier: ^2.4.0
-        version: 2.4.0(stylelint@17.1.1(typescript@5.9.3))
+        version: 2.4.0(stylelint@17.2.0(typescript@5.9.3))
     devDependencies:
       '@shared-configs/prettier':
         specifier: workspace:*
@@ -106,17 +106,17 @@ importers:
         specifier: ^3.8.1
         version: 3.8.1
       stylelint:
-        specifier: ^17.1.1
-        version: 17.1.1(typescript@5.9.3)
+        specifier: ^17.2.0
+        version: 17.2.0(typescript@5.9.3)
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
       vite:
         specifier: ^7.3.1
-        version: 7.3.1(@types/node@20.19.31)
+        version: 7.3.1(@types/node@20.19.33)
       vitepress:
         specifier: ^1.6.4
-        version: 1.6.4(@algolia/client-search@5.48.0)(@types/node@20.19.31)(postcss@8.5.6)(typescript@5.9.3)
+        version: 1.6.4(@algolia/client-search@5.48.0)(@types/node@20.19.33)(postcss@8.5.6)(typescript@5.9.3)
 
   packages/ast/javascript:
     dependencies:
@@ -143,8 +143,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2
       '@types/node':
-        specifier: ^20.19.31
-        version: 20.19.31
+        specifier: ^20.19.33
+        version: 20.19.33
       concurrently:
         specifier: ^9.2.1
         version: 9.2.1
@@ -180,8 +180,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2
       '@types/node':
-        specifier: ^20.19.31
-        version: 20.19.31
+        specifier: ^20.19.33
+        version: 20.19.33
       concurrently:
         specifier: ^9.2.1
         version: 9.2.1
@@ -223,8 +223,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2
       '@types/node':
-        specifier: ^20.19.31
-        version: 20.19.31
+        specifier: ^20.19.33
+        version: 20.19.33
       concurrently:
         specifier: ^9.2.1
         version: 9.2.1
@@ -263,8 +263,8 @@ importers:
         specifier: ^4.17.23
         version: 4.17.23
       '@types/node':
-        specifier: ^20.19.31
-        version: 20.19.31
+        specifier: ^20.19.33
+        version: 20.19.33
       concurrently:
         specifier: ^9.2.1
         version: 9.2.1
@@ -309,8 +309,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2
       '@types/node':
-        specifier: ^20.19.31
-        version: 20.19.31
+        specifier: ^20.19.33
+        version: 20.19.33
       '@types/yargs':
         specifier: ^17.0.35
         version: 17.0.35
@@ -348,8 +348,8 @@ importers:
         specifier: ^4.5.3
         version: 4.5.3
       '@types/node':
-        specifier: ^20.19.31
-        version: 20.19.31
+        specifier: ^20.19.33
+        version: 20.19.33
       concurrently:
         specifier: ^9.2.1
         version: 9.2.1
@@ -366,8 +366,8 @@ importers:
   packages/files:
     dependencies:
       glob:
-        specifier: ^13.0.1
-        version: 13.0.1
+        specifier: ^13.0.2
+        version: 13.0.2
     devDependencies:
       '@codemod-utils/tests':
         specifier: workspace:*
@@ -385,8 +385,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2
       '@types/node':
-        specifier: ^20.19.31
-        version: 20.19.31
+        specifier: ^20.19.33
+        version: 20.19.33
       concurrently:
         specifier: ^9.2.1
         version: 9.2.1
@@ -422,8 +422,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2
       '@types/node':
-        specifier: ^20.19.31
-        version: 20.19.31
+        specifier: ^20.19.33
+        version: 20.19.33
       concurrently:
         specifier: ^9.2.1
         version: 9.2.1
@@ -443,8 +443,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       glob:
-        specifier: ^13.0.1
-        version: 13.0.1
+        specifier: ^13.0.2
+        version: 13.0.2
     devDependencies:
       '@shared-configs/eslint-config-node':
         specifier: workspace:*
@@ -459,8 +459,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2
       '@types/node':
-        specifier: ^20.19.31
-        version: 20.19.31
+        specifier: ^20.19.33
+        version: 20.19.33
       concurrently:
         specifier: ^9.2.1
         version: 9.2.1
@@ -701,6 +701,13 @@ packages:
   '@codemod-utils/package-json@3.3.5':
     resolution: {integrity: sha512-GCcvMgT34SqEKIgnkm6D+P5PqO4T6TNW5+LhGjlJqqeM0yDzjMoasocj1qZz9DSIKCHitz+7H2NIQ3nGhoda1g==}
     engines: {node: 20.* || >= 22}
+
+  '@csstools/css-calc@3.0.1':
+    resolution: {integrity: sha512-bsDKIP6f4ta2DO9t+rAbSSwv4EMESXy5ZIvzQl1afmD6Z1XHkVu9ijcG9QR/qSgQS1dVa+RaQ/MfQ7FIB/Dn1Q==}
+    engines: {node: '>=20.19.0'}
+    peerDependencies:
+      '@csstools/css-parser-algorithms': ^4.0.0
+      '@csstools/css-tokenizer': ^4.0.0
 
   '@csstools/css-parser-algorithms@4.0.0':
     resolution: {integrity: sha512-+B87qS7fIG3L5h3qwJ/IFbjoVoOe/bpOdh9hAjXbvx0o8ImEmUsGXN0inFOnk2ChCFgqkkGFQ+TpM5rbhkKe4w==}
@@ -1461,8 +1468,8 @@ packages:
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
 
-  '@types/node@20.19.31':
-    resolution: {integrity: sha512-5jsi0wpncvTD33Sh1UCgacK37FFwDn+EG7wCmEvs62fCvBL+n8/76cAYDok21NF6+jaVWIqKwCZyX7Vbu8eB3A==}
+  '@types/node@20.19.33':
+    resolution: {integrity: sha512-Rs1bVAIdBs5gbTIKza/tgpMuG1k3U/UMJLWecIMxNdJFDMzcM5LOiLVRYh3PilWEYDIeUDv7bpiHPLPsbydGcw==}
 
   '@types/rimraf@3.0.2':
     resolution: {integrity: sha512-F3OznnSLAUxFrCEu/L5PY8+ny8DtcFRjx7fZZ9bycvXRi3KPTRS9HOitGZwvPg0juRhXFWIeKX58cnX5YqLohQ==}
@@ -1987,9 +1994,9 @@ packages:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
 
-  css-functions-list@3.2.3:
-    resolution: {integrity: sha512-IQOkD3hbR5KrN93MtcYuad6YPuTSUhntLHDuLEbFWE+ff2/XSZNdZG+LcbbIW5AXKg/WFIfYItIzVoHngHXZzA==}
-    engines: {node: '>=12 || >=16'}
+  css-functions-list@3.3.3:
+    resolution: {integrity: sha512-8HFEBPKhOpJPEPu70wJJetjKta86Gw9+CCyCnB3sui2qQfOvRyqBy4IKLKKAwdMpWb2lHXWk9Wb4Z6AmaUT1Pg==}
+    engines: {node: '>=12'}
 
   css-tree@3.1.0:
     resolution: {integrity: sha512-0eW44TGN5SQXU1mWSkKwFstI/22X2bG1nYzZTYMAWjylYURhse752YgbE4Cx46AC+bAvI+/dYTPRk1LqSUnu6w==}
@@ -2345,8 +2352,8 @@ packages:
     resolution: {integrity: sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==}
     engines: {node: 6.* || 8.* || >= 10.*}
 
-  get-east-asian-width@1.3.0:
-    resolution: {integrity: sha512-vpeMIQKxczTD/0s2CdEWHcb0eeJe6TFjxb+J5xgX7hScxqrGuyjmv4c1D4A/gelKfyox0gJJwIHF+fLjeaM8kQ==}
+  get-east-asian-width@1.4.0:
+    resolution: {integrity: sha512-QZjmEOC+IT1uk6Rx0sX22V6uHWVwbdbxf1faPqJ1QhLdGgsRGCZoyaQBm/piRdJy/D2um6hM1UP7ZEeQ4EkP+Q==}
     engines: {node: '>=18'}
 
   get-tsconfig@4.13.6:
@@ -2363,8 +2370,8 @@ packages:
     resolution: {integrity: sha512-XxwI8EOhVQgWp6iDL+3b0r86f4d6AX6zSU55HfB4ydCEuXLXc5FcYeOu+nnGftS4TEju/11rt4KJPTMgbfmv4A==}
     engines: {node: '>=10.13.0'}
 
-  glob@13.0.1:
-    resolution: {integrity: sha512-B7U/vJpE3DkJ5WXTgTpTRN63uV42DseiXXKMwG14LQBXmsdeIoHAPbU/MEo6II0k5ED74uc2ZGTC6MwHFQhF6w==}
+  glob@13.0.2:
+    resolution: {integrity: sha512-035InabNu/c1lW0tzPhAgapKctblppqsKKG9ZaNzbr+gXwWMjXoiyGSyB9sArzrjG7jY+zntRq5ZSUYemrnWVQ==}
     engines: {node: 20 || >=22}
 
   global-modules@2.0.0:
@@ -2617,8 +2624,8 @@ packages:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==}
     engines: {node: '>=10'}
 
-  lru-cache@11.2.5:
-    resolution: {integrity: sha512-vFrFJkWtJvJnD5hg+hJvVE8Lh/TcMzKnTgCWmtBipwI5yLX/iX+5UB2tfuyODF5E7k9xEzMdYgGqaSb1c0c5Yw==}
+  lru-cache@11.2.6:
+    resolution: {integrity: sha512-ESL2CrkS/2wTPfuend7Zhkzo2u0daGJ/A2VucJOgQ/C48S/zB8MMeMHSGKYpXhIjbPxfuezITkaBH1wqv00DDQ==}
     engines: {node: 20 || >=22}
 
   lru-cache@5.1.1:
@@ -3095,8 +3102,8 @@ packages:
     peerDependencies:
       stylelint: ^16.18.0 || ^17.0.0
 
-  stylelint@17.1.1:
-    resolution: {integrity: sha512-SBHVcLEcRF1M9OkD3oT0hT2PayDNLw2hd+aovmzfNQ2ys4Xd3oS9ZNizILWqhQvW802AqKN/vUTMwJqQYMBlWw==}
+  stylelint@17.2.0:
+    resolution: {integrity: sha512-602jhMkRt6P1dSh9kEzbFIaOKY//h4D0E7u/w2WHKxmi5VAjjMqe6P8rQPJuCWdbB3apOkjOFN5kcg6qWPIZWQ==}
     engines: {node: '>=20.19.0'}
     hasBin: true
 
@@ -3692,7 +3699,7 @@ snapshots:
     dependencies:
       '@changesets/types': 6.1.0
 
-  '@changesets/cli@2.29.8(@types/node@20.19.31)':
+  '@changesets/cli@2.29.8(@types/node@20.19.33)':
     dependencies:
       '@changesets/apply-release-plan': 7.0.14
       '@changesets/assemble-release-plan': 6.0.9
@@ -3708,7 +3715,7 @@ snapshots:
       '@changesets/should-skip-package': 0.1.2
       '@changesets/types': 6.1.0
       '@changesets/write': 0.4.0
-      '@inquirer/external-editor': 1.0.3(@types/node@20.19.31)
+      '@inquirer/external-editor': 1.0.3(@types/node@20.19.33)
       '@manypkg/get-packages': 1.1.3
       ansi-colors: 4.1.3
       ci-info: 3.9.0
@@ -3816,11 +3823,16 @@ snapshots:
 
   '@codemod-utils/files@3.2.5':
     dependencies:
-      glob: 13.0.1
+      glob: 13.0.2
 
   '@codemod-utils/package-json@3.3.5':
     dependencies:
       type-fest: 5.4.4
+
+  '@csstools/css-calc@3.0.1(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)':
+    dependencies:
+      '@csstools/css-parser-algorithms': 4.0.0(@csstools/css-tokenizer@4.0.0)
+      '@csstools/css-tokenizer': 4.0.0
 
   '@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0)':
     dependencies:
@@ -4129,9 +4141,9 @@ snapshots:
 
   '@iconify/types@2.0.0': {}
 
-  '@ijlee2-frontend-configs/changesets@1.0.2(@changesets/cli@2.29.8(@types/node@20.19.31))':
+  '@ijlee2-frontend-configs/changesets@1.0.2(@changesets/cli@2.29.8(@types/node@20.19.33))':
     dependencies:
-      '@changesets/cli': 2.29.8(@types/node@20.19.31)
+      '@changesets/cli': 2.29.8(@types/node@20.19.33)
       '@changesets/get-github-info': 0.7.0
     transitivePeerDependencies:
       - encoding
@@ -4168,18 +4180,18 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@ijlee2-frontend-configs/stylelint@2.4.0(stylelint@17.1.1(typescript@5.9.3))':
+  '@ijlee2-frontend-configs/stylelint@2.4.0(stylelint@17.2.0(typescript@5.9.3))':
     dependencies:
-      stylelint: 17.1.1(typescript@5.9.3)
-      stylelint-config-standard: 40.0.0(stylelint@17.1.1(typescript@5.9.3))
-      stylelint-order: 7.0.1(stylelint@17.1.1(typescript@5.9.3))
+      stylelint: 17.2.0(typescript@5.9.3)
+      stylelint-config-standard: 40.0.0(stylelint@17.2.0(typescript@5.9.3))
+      stylelint-order: 7.0.1(stylelint@17.2.0(typescript@5.9.3))
 
-  '@inquirer/external-editor@1.0.3(@types/node@20.19.31)':
+  '@inquirer/external-editor@1.0.3(@types/node@20.19.33)':
     dependencies:
       chardet: 2.1.1
       iconv-lite: 0.7.0
     optionalDependencies:
-      '@types/node': 20.19.31
+      '@types/node': 20.19.33
 
   '@isaacs/balanced-match@4.0.1': {}
 
@@ -4387,11 +4399,11 @@ snapshots:
 
   '@types/fs-extra@9.0.13':
     dependencies:
-      '@types/node': 20.19.31
+      '@types/node': 20.19.33
 
   '@types/glob@9.0.0':
     dependencies:
-      glob: 13.0.1
+      glob: 13.0.2
 
   '@types/hast@3.0.4':
     dependencies:
@@ -4422,14 +4434,14 @@ snapshots:
 
   '@types/node@12.20.55': {}
 
-  '@types/node@20.19.31':
+  '@types/node@20.19.33':
     dependencies:
       undici-types: 6.21.0
 
   '@types/rimraf@3.0.2':
     dependencies:
       '@types/glob': 9.0.0
-      '@types/node': 20.19.31
+      '@types/node': 20.19.33
 
   '@types/semver@7.7.1': {}
 
@@ -4644,9 +4656,9 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.11.1':
     optional: true
 
-  '@vitejs/plugin-vue@5.2.4(vite@5.4.21(@types/node@20.19.31))(vue@3.5.28(typescript@5.9.3))':
+  '@vitejs/plugin-vue@5.2.4(vite@5.4.21(@types/node@20.19.33))(vue@3.5.28(typescript@5.9.3))':
     dependencies:
-      vite: 5.4.21(@types/node@20.19.31)
+      vite: 5.4.21(@types/node@20.19.33)
       vue: 3.5.28(typescript@5.9.3)
 
   '@vue/compiler-core@3.5.28':
@@ -4965,7 +4977,7 @@ snapshots:
       shebang-command: 2.0.0
       which: 2.0.2
 
-  css-functions-list@3.2.3: {}
+  css-functions-list@3.3.3: {}
 
   css-tree@3.1.0:
     dependencies:
@@ -5380,7 +5392,7 @@ snapshots:
 
   get-caller-file@2.0.5: {}
 
-  get-east-asian-width@1.3.0: {}
+  get-east-asian-width@1.4.0: {}
 
   get-tsconfig@4.13.6:
     dependencies:
@@ -5396,7 +5408,7 @@ snapshots:
     dependencies:
       is-glob: 4.0.3
 
-  glob@13.0.1:
+  glob@13.0.2:
     dependencies:
       minimatch: 10.1.2
       minipass: 7.1.2
@@ -5614,7 +5626,7 @@ snapshots:
       chalk: 4.1.2
       is-unicode-supported: 0.1.0
 
-  lru-cache@11.2.5: {}
+  lru-cache@11.2.6: {}
 
   lru-cache@5.1.1:
     dependencies:
@@ -5793,7 +5805,7 @@ snapshots:
 
   path-scurry@2.0.1:
     dependencies:
-      lru-cache: 11.2.5
+      lru-cache: 11.2.6
       minipass: 7.1.2
 
   path-type@4.0.0: {}
@@ -6031,12 +6043,12 @@ snapshots:
   string-width@7.2.0:
     dependencies:
       emoji-regex: 10.4.0
-      get-east-asian-width: 1.3.0
+      get-east-asian-width: 1.4.0
       strip-ansi: 7.1.2
 
   string-width@8.1.1:
     dependencies:
-      get-east-asian-width: 1.3.0
+      get-east-asian-width: 1.4.0
       strip-ansi: 7.1.2
 
   string_decoder@1.3.0:
@@ -6060,23 +6072,24 @@ snapshots:
 
   strip-json-comments@3.1.1: {}
 
-  stylelint-config-recommended@18.0.0(stylelint@17.1.1(typescript@5.9.3)):
+  stylelint-config-recommended@18.0.0(stylelint@17.2.0(typescript@5.9.3)):
     dependencies:
-      stylelint: 17.1.1(typescript@5.9.3)
+      stylelint: 17.2.0(typescript@5.9.3)
 
-  stylelint-config-standard@40.0.0(stylelint@17.1.1(typescript@5.9.3)):
+  stylelint-config-standard@40.0.0(stylelint@17.2.0(typescript@5.9.3)):
     dependencies:
-      stylelint: 17.1.1(typescript@5.9.3)
-      stylelint-config-recommended: 18.0.0(stylelint@17.1.1(typescript@5.9.3))
+      stylelint: 17.2.0(typescript@5.9.3)
+      stylelint-config-recommended: 18.0.0(stylelint@17.2.0(typescript@5.9.3))
 
-  stylelint-order@7.0.1(stylelint@17.1.1(typescript@5.9.3)):
+  stylelint-order@7.0.1(stylelint@17.2.0(typescript@5.9.3)):
     dependencies:
       postcss: 8.5.6
       postcss-sorting: 9.1.0(postcss@8.5.6)
-      stylelint: 17.1.1(typescript@5.9.3)
+      stylelint: 17.2.0(typescript@5.9.3)
 
-  stylelint@17.1.1(typescript@5.9.3):
+  stylelint@17.2.0(typescript@5.9.3):
     dependencies:
+      '@csstools/css-calc': 3.0.1(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)
       '@csstools/css-parser-algorithms': 4.0.0(@csstools/css-tokenizer@4.0.0)
       '@csstools/css-syntax-patches-for-csstree': 1.0.27
       '@csstools/css-tokenizer': 4.0.0
@@ -6086,7 +6099,7 @@ snapshots:
       balanced-match: 3.0.1
       colord: 2.9.3
       cosmiconfig: 9.0.0(typescript@5.9.3)
-      css-functions-list: 3.2.3
+      css-functions-list: 3.3.3
       css-tree: 3.1.0
       debug: 4.4.3
       fast-glob: 3.3.3
@@ -6297,16 +6310,16 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite@5.4.21(@types/node@20.19.31):
+  vite@5.4.21(@types/node@20.19.33):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.5.6
       rollup: 4.57.1
     optionalDependencies:
-      '@types/node': 20.19.31
+      '@types/node': 20.19.33
       fsevents: 2.3.3
 
-  vite@7.3.1(@types/node@20.19.31):
+  vite@7.3.1(@types/node@20.19.33):
     dependencies:
       esbuild: 0.27.3
       fdir: 6.5.0(picomatch@4.0.3)
@@ -6315,10 +6328,10 @@ snapshots:
       rollup: 4.57.1
       tinyglobby: 0.2.15
     optionalDependencies:
-      '@types/node': 20.19.31
+      '@types/node': 20.19.33
       fsevents: 2.3.3
 
-  vitepress@1.6.4(@algolia/client-search@5.48.0)(@types/node@20.19.31)(postcss@8.5.6)(typescript@5.9.3):
+  vitepress@1.6.4(@algolia/client-search@5.48.0)(@types/node@20.19.33)(postcss@8.5.6)(typescript@5.9.3):
     dependencies:
       '@docsearch/css': 3.8.2
       '@docsearch/js': 3.8.2(@algolia/client-search@5.48.0)
@@ -6327,7 +6340,7 @@ snapshots:
       '@shikijs/transformers': 2.5.0
       '@shikijs/types': 2.5.0
       '@types/markdown-it': 14.1.2
-      '@vitejs/plugin-vue': 5.2.4(vite@5.4.21(@types/node@20.19.31))(vue@3.5.28(typescript@5.9.3))
+      '@vitejs/plugin-vue': 5.2.4(vite@5.4.21(@types/node@20.19.33))(vue@3.5.28(typescript@5.9.3))
       '@vue/devtools-api': 7.7.9
       '@vue/shared': 3.5.28
       '@vueuse/core': 12.8.2(typescript@5.9.3)
@@ -6336,7 +6349,7 @@ snapshots:
       mark.js: 8.11.1
       minisearch: 7.2.0
       shiki: 2.5.0
-      vite: 5.4.21(@types/node@20.19.31)
+      vite: 5.4.21(@types/node@20.19.33)
       vue: 3.5.28(typescript@5.9.3)
     optionalDependencies:
       postcss: 8.5.6
