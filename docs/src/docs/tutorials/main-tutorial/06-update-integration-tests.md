@@ -1,4 +1,4 @@
-# Step 2: Update integration tests
+# Update integration tests
 
 Now that we have a way to update acceptance tests, we expect that we can update integration tests in a similar manner. But how much code that we copy-paste will "just work"? Should we extract utility functions to avoid code duplication?
 
@@ -20,7 +20,7 @@ We'll create a step called `rename-integration-tests`. Now that we have some exp
 
 ### Scaffold the step {#take-small-steps-again-scaffold-the-step}
 
-In [Chapter 4](04-step-1-update-acceptance-tests-part-1#take-small-steps), we scaffolded (partially implemented) `rename-acceptance-tests` by taking 4 steps:
+In [Chapter 4](04-update-acceptance-tests-part-1#take-small-steps), we scaffolded (partially implemented) `rename-acceptance-tests` by taking 4 steps:
 
 1. Export an empty function.
 1. Find files.
@@ -97,7 +97,7 @@ Don't forget to check that `lint` and `test` pass.
 
 ### Transform code {#take-small-steps-again-transform-code}
 
-In [Chapter 5](./05-step-1-update-acceptance-tests-part-2), we used AST Explorer to try out ideas, then moved the implementation to our codemod. We ended up with two functions, `getModuleName` and `renameModule`.
+In [Chapter 5](./05-update-acceptance-tests-part-2), we used AST Explorer to try out ideas, then moved the implementation to our codemod. We ended up with two functions, `getModuleName` and `renameModule`.
 
 <details>
 
@@ -525,7 +525,7 @@ AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
 
 </details>
 
-Now that we're satisfied, we can run `./update-test-fixtures.sh` to update the output fixture files.
+Now that we're satisfied, we can run `update-test-fixtures.sh` to update the output fixture files.
 
 > [!NOTE]
 > 

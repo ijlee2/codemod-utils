@@ -1,24 +1,22 @@
 # Define options
 
-Recall from [the previous chapter](./02-create-static-files.md) that we want the addons to live in `packages` and the test apps in `tests`.
+Recall from [the previous chapter](./02-create-static-files) that we want addons to live in `/packages` and test apps in `/tests`.
 
-```sh
+```sh {:no-line-numbers}
 workspace-root
 ├── packages
 │   ├── addon-1
-│   ├── addon-2
 │   ├── ...
 │   └── addon-n
 └── tests
     ├── test-app-for-addon-1
-    ├── test-app-for-addon-2
     ├── ...
     └── test-app-for-addon-n
 ```
 
-Currently, our codemod doesn't take these requirements into account. It also hard-codes the package names `addon-1` and `test-app-for-addon-1` in `package.json`.
+Currently, our codemod doesn't take this requirement into account. It also hard-codes the package names `addon-1` and `test-app-for-addon-1` in `package.json`.
 
-```sh
+```sh {:no-line-numbers}
 workspace-root
 ├── __addonLocation__ ❌
 │   └── package.json ❌
@@ -26,7 +24,7 @@ workspace-root
     └── package.json ❌
 ```
 
-In this chapter, we'll update the codemod so that our users can specify the name and location of their new addon. We can then derive the name and location of the corresponding test app.
+In this chapter, we'll allow end-developers to provide the name and location of an addon. We can then derive the name and location of the corresponding test app.
 
 Goals:
 
@@ -37,15 +35,13 @@ Goals:
 
 ## Read codemod options
 
-[`yargs`](https://yargs.js.org/) helps us provide a command-line interface to our users (e.g. they can pass `--help` to learn the possible options). It also helps us parse and validate their desired options.
+[`yargs`](https://yargs.js.org/) helps our codemod provide a CLI (command-line interface) to end-developers. It also helps us parse and validate their desired options.
 
 Open the executable file in the `bin` folder.
 
-<details>
+::: code-group
 
-<summary><code>bin/blueprints-v2-addon.ts</code></summary>
-
-```ts
+```ts [bin/create-v2-addon-repo.ts]{15-18,22}
 #!/usr/bin/env node
 'use strict';
 
@@ -56,7 +52,7 @@ import { runCodemod } from '../src/index.js';
 import type { CodemodOptions } from '../src/types/index.js';
 
 // Provide a title to the process in `ps`
-process.title = 'blueprints-v2-addon';
+process.title = 'create-v2-addon-repo';
 
 // Set codemod options
 const argv = yargs(hideBin(process.argv))
@@ -73,22 +69,25 @@ const codemodOptions: CodemodOptions = {
 runCodemod(codemodOptions);
 ```
 
-</details>
+:::
 
-From the line `.option('root')`, we see that `@codemod-utils/cli` has defined an option (an **argument**) called `--root`. The argument value, `argv['root']`, is stored in `codemodOptions.projectRoot`.
+The line `.option('root')` means, `root` is an argument and end-developers can pass the flag `--root`. Its value `argv['root']` is stored in `codemodOptions.projectRoot`.
 
 > [!NOTE]
-> The argument `root` is renamed to `projectRoot` so that users can type a short command, while the renamed variable makes our code easier to understand.
 >
-> In general, prefer argument names that are descriptive and ideal in length, then camelize the argument names to name the keys in `codemodOptions`.
+> The argument `root` is renamed to `projectRoot` for `codemodOptions` (and for `options` later). This is so that end-developers can enter a shorter command, while the renamed variable makes our code more readable.
+>
+> In general, prefer argument names that are short and descriptive. Camelize the argument names to derive the keys of `codemodOptions`.
 
-Study the documentation for [`.option()`](https://yargs.js.org/docs/#api-reference-optionskey-opt), then create 2 more options: `--addon-location` and `--addon-name`. Specify that these options expect a string and are required. For now, you can leave `codemodOptions` as is.
+Study the documentation for [`yargs.option`](https://yargs.js.org/docs/#api-reference-optionskey-opt), then create 2 more options: `addon-location` and `addon-name`. These options expect a string and are required. For now, you may leave `codemodOptions` as is.
 
 <details>
 
-<summary>Solution: <code>bin/blueprints-v2-addon.ts</code></summary>
+<summary>Solution</summary>
 
-```diff
+::: code-group
+
+```diff [bin/create-v2-addon-repo.ts]
 #!/usr/bin/env node
 'use strict';
 
@@ -99,18 +98,18 @@ import { runCodemod } from '../src/index.js';
 import type { CodemodOptions } from '../src/types/index.js';
 
 // Provide a title to the process in `ps`
-process.title = 'blueprints-v2-addon';
+process.title = 'create-v2-addon-repo';
 
 // Set codemod options
 const argv = yargs(hideBin(process.argv))
 +   .option('addon-location', {
 +     demandOption: true,
-+     describe: "Location of the addon package (e.g. 'ui/button')",
++     describe: "Location of the addon (e.g. 'ui/button')",
 +     type: 'string',
 +   })
 +   .option('addon-name', {
 +     demandOption: true,
-+     describe: "Name of the addon package (e.g. '@my-ui/button')",
++     describe: "Name of the addon (e.g. '@my-ui/button')",
 +     type: 'string',
 +   })
   .option('root', {
@@ -125,19 +124,25 @@ const codemodOptions: CodemodOptions = {
 
 runCodemod(codemodOptions);
 ```
+
+:::
 
 </details>
 
 
 ## Store codemod options
 
-Recall that `argv` has the argument values. Update the executable file so that `codemodOptions` includes the addon's name and location. (Which other files need to be updated, in order for `lint` and `test` to pass?)
+`argv` holds the values for `--addon-name` and `--addon-location`.
+
+Update the executable so that `codemodOptions` includes the addon's name and location. (Which other files need to be updated, in order for `lint` and `test` to pass?)
 
 <details>
 
-<summary>Solution: <code>bin/blueprints-v2-addon.ts</code></summary>
+<summary>Solution</summary>
 
-```diff
+::: code-group
+
+```diff [bin/create-v2-addon-repo.ts]
 #!/usr/bin/env node
 'use strict';
 
@@ -148,18 +153,18 @@ import { runCodemod } from '../src/index.js';
 import type { CodemodOptions } from '../src/types/index.js';
 
 // Provide a title to the process in `ps`
-process.title = 'blueprints-v2-addon';
+process.title = 'create-v2-addon-repo';
 
 // Set codemod options
 const argv = yargs(hideBin(process.argv))
   .option('addon-location', {
     demandOption: true,
-    describe: "Location of the addon package (e.g. 'ui/button')",
+    describe: "Location of the addon (e.g. 'ui/button')",
     type: 'string',
   })
   .option('addon-name', {
     demandOption: true,
-    describe: "Name of the addon package (e.g. '@my-ui/button')",
+    describe: "Name of the addon (e.g. '@my-ui/button')",
     type: 'string',
   })
   .option('root', {
@@ -177,13 +182,7 @@ const codemodOptions: CodemodOptions = {
 runCodemod(codemodOptions);
 ```
 
-</details>
-
-<details>
-
-<summary>Solution: <code>src/types/index.ts</code></summary>
-
-```diff
+```diff [src/types/index.ts]
 type CodemodOptions = {
 +   addonLocation: string;
 +   addonName: string;
@@ -197,13 +196,7 @@ type Options = {
 export type { CodemodOptions, Options };
 ```
 
-</details>
-
-<details>
-
-<summary>Solution: <code>tests/helpers/shared-test-setups/sample-project.ts</code></summary>
-
-```diff
+```diff [tests/helpers/shared-test-setups/sample-project.ts]
 import type { CodemodOptions, Options } from '../../../src/types/index.js';
 
 const codemodOptions: CodemodOptions = {
@@ -219,20 +212,20 @@ const options: Options = {
 export { codemodOptions, options };
 ```
 
+:::
+
 </details>
 
 
 ## Transform codemod options
 
-`codemodOptions`, defined in the executable file, uses a flat object to store the user's desired options.
+`codemodOptions`, defined in the executable, uses a flat object to store information.
 
-On the other hand, `options`, defined in the `create-options` step, may rename and group the options. This helps us write code that is easier to read and makes more logical sense. By default, `options` is an exact copy of `codemodOptions`.
+By default, `options`, which is defined in the `create-options` step, is an exact copy of `codemodOptions`.
 
-<details>
+::: code-group
 
-<summary><code>src/steps/create-options.ts</code></summary>
-
-```ts
+```ts [src/steps/create-options.ts]{4,7}
 import type { CodemodOptions, Options } from '../types/index.js';
 
 export function createOptions(codemodOptions: CodemodOptions): Options {
@@ -244,14 +237,21 @@ export function createOptions(codemodOptions: CodemodOptions): Options {
 }
 ```
 
-</details>
+:::
+
+Depending on your needs, you can rename or regroup the keys from `codemodOptions` to create `options`. You may even decide to use a different data structure!
+
+By taking an extra step, we can write the subsequent steps logically and isolate a breaking change to the codemod's options.
 
 > [!IMPORTANT]
-> `createOptions()` should return a new object and not modify `codemodOptions`. This helps us avoid test setups from leaking.
+>
+> `createOptions()` should not modify `codemodOptions`, but instead return a new object. This prevents a test from changing the setup of another test.
 
-Our goal for `options` is to group the name and location, once for the addon and once more for the test app.
+Coming back to our codemod, we want `options` to group the addon's name and location and, similarly, the test app's.
 
-```ts
+::: code-group
+
+```ts [src/steps/create-options.ts]{6-16}
 import type { CodemodOptions, Options } from '../types/index.js';
 
 export function createOptions(codemodOptions: CodemodOptions): Options {
@@ -271,17 +271,21 @@ export function createOptions(codemodOptions: CodemodOptions): Options {
 }
 ```
 
-See if you can complete the starter code shown above. The requirements are:
+:::
 
-- The addon lives in `packages`.
-- The test app lives in `tests`.
-- The test app's name is `test-app-for-${dasherize(addonName)}`.
+Complete the code shown above. Recall the additional requirements:
+
+- The addon lives in `/packages`.
+- The test app lives in `/tests` (its path mirrors the addon's).
+- The test app's name is `test-app-for-${dasherize(addon.name)}`.
 
 <details>
 
-<summary>Solution: <code>src/steps/create-options.ts</code></summary>
+<summary>Solution</summary>
 
-```diff
+::: code-group
+
+```diff [src/steps/create-options.ts]
 + import { join, sep } from 'node:path';
 + 
 import type { CodemodOptions, Options } from '../types/index.js';
@@ -308,13 +312,7 @@ export function createOptions(codemodOptions: CodemodOptions): Options {
 }
 ```
 
-</details>
-
-<details>
-
-<summary>Solution: <code>src/types/index.ts</code></summary>
-
-```diff
+```diff [src/types/index.ts]
 type CodemodOptions = {
   addonLocation: string;
   addonName: string;
@@ -336,13 +334,7 @@ type Options = {
 export type { CodemodOptions, Options };
 ```
 
-</details>
-
-<details>
-
-<summary>Solution: <code>tests/helpers/shared-test-setups/sample-project.ts</code></summary>
-
-```diff
+```diff [tests/helpers/shared-test-setups/sample-project.ts]
 import type { CodemodOptions, Options } from '../../../src/types/index.js';
 
 const codemodOptions: CodemodOptions = {
@@ -366,15 +358,19 @@ const options: Options = {
 export { codemodOptions, options };
 ```
 
+:::
+
 </details>
 
-In order for `./update-test-fixtures.sh` to update the output fixture files, we pass `--addon-location` and `--addon-name` like our users would.
+In order for `update-test-fixtures.sh` to update the output fixtures, we need to pass `--addon-location` and `--addon-name` like end-developers will.
 
 <details>
 
-<summary>Solution: <code>update-test-fixtures.sh</code></summary>
+<summary>Solution</summary>
 
-```diff
+::: code-group
+
+```diff [update-test-fixtures.sh]
 #!/usr/bin/env sh
 
 #----------
@@ -396,22 +392,14 @@ pnpm build
 rm -r "tests/fixtures/sample-project/output"
 cp -r "tests/fixtures/sample-project/input" "tests/fixtures/sample-project/output"
 
-./dist/bin/ember-codemod-pod-to-octane.js \
-+   --addon-location ui/button \
-+   --addon-name @my-ui/button \
+./dist/bin/create-v2-addon-repo.js \
++   --addon-location "ui/button" \
++   --addon-name "@my-ui/button" \
   --root "tests/fixtures/sample-project/output"
 ```
+
+:::
 
 </details>
 
 Now that we know the names and locations, we can create the `package.json`'s dynamically and place them in the right folder.
-
-
-<div align="center">
-  <div>
-    Next: <a href="./04-create-dynamic-files.md">Create dynamic files</a>
-  </div>
-  <div>
-    Previous: <a href="./02-create-static-files.md">Create static files</a>
-  </div>
-</div>

@@ -1,8 +1,8 @@
 # Create dynamic files
 
-The blueprint files that we wrote in [Chapter 2](./02-create-static-files.md) are static: Regardless of the user's options, we always create the same file at the same place.
+The blueprints that we added in [Chapter 2](./02-create-static-files#add-blueprints) are static: Regardless of the codemod options, we always create the same file at the same location.
 
-In this chapter, we'll create the files dynamically: The addon's `package.json` will display `options.addon.name` instead of `addon-1`, and will live in `options.addon.location`. The same change will take place for the test app's `package.json`.
+In this chapter, we'll update the blueprints to be dynamic: The addon's `package.json` will display the value of `options.addon.name` instead of `'addon-1'`, and will be created at the location specified by `options.addon.location`. The same changes will occur for the test app's `package.json`.
 
 Goals:
 
@@ -13,7 +13,7 @@ Goals:
 
 ## Pass data
 
-Often, blueprints need context: If some condition is true, a file should be generated in a different way. To get the resulting file, we pass the blueprint and the things that we know to [`processTemplate()`](https://github.com/ijlee2/codemod-utils/tree/main/packages/blueprints#processtemplate).
+A blueprint needs data (some context) to make decisions. We use [`processTemplate`](https://github.com/ijlee2/codemod-utils/tree/main/packages/blueprints#processtemplate) from `@codemod-utils/blueprints` to tell the blueprint what we know and retrieve the resulting file.
 
 ```ts
 import { processTemplate } from '@codemod-utils/blueprints';
@@ -26,13 +26,15 @@ const data = {
 const file = processTemplate(blueprintFile, data);
 ```
 
-Update the `create-files-from-blueprints` step so that it processes the blueprint files. How will you pass the names and locations of the addon and test app?
+Update the `create-files-from-blueprints` step so that blueprints know which names and locations to use.
 
 <details>
 
-<summary>Solution: <code>src/steps/create-files-from-blueprints.ts</code></summary>
+<summary>Solution</summary>
 
-```diff
+::: code-group
+
+```diff [src/steps/create-files-from-blueprints.ts]
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -54,11 +56,11 @@ export function createFilesFromBlueprints(options: Options): void {
         'utf8',
       );
 
--       return [blueprintFilePath, blueprintFile];
 +       const file = processTemplate(blueprintFile, {
 +         options,
 +       });
 +
+-       return [blueprintFilePath, blueprintFile];
 +       return [blueprintFilePath, file];
     }),
   );
@@ -67,26 +69,24 @@ export function createFilesFromBlueprints(options: Options): void {
 }
 ```
 
+:::
+
 </details>
 
 
 ## Add delimiters
 
-Next, we use [delimiters](https://lodash.com/docs/#template) (think of these as a placeholder) to embed logic in a blueprint file. `processTemplate()` supports 3 types of delimiters and asks for [the same syntax as Ember.js](https://github.com/ember-cli/ember-cli/blob/v5.3.0/lib/utilities/process-template.js).
+Next, we use [delimiters](https://lodash.com/docs/#template) (placeholders) to embed logic in a blueprint. `processTemplate` supports 3 types of delimiters, [the same used by Ember CLI](https://github.com/ember-cli/ember-cli/blob/v0.6.2-%40ember-tooling/blueprint-model/packages/blueprint-model/utilities/process-template.js):
 
 - Escape (`<%- %>`) - escape an HTML code
 - Evaluate (`<% %>`) - evaluate a JavaScript code (e.g. conditionals, loops)
 - Interpolate (`<%= %>`) - substitute a value (string interpolations)
 
-For example, we can use the interpolate delimiter so that the addon's `package.json` shows the user-defined addon name.
+We can use the interpolate delimiter so that the addon's `package.json` shows the correct addon name.
 
-<details>
+::: code-group
 
-<summary><code>src/blueprints/__addonLocation__/package.json</code></summary>
-
-Since we passed `options` to the data object, the addon name can be found in `options.addon.name`.
-
-```diff
+```diff [src/blueprints/__addonLocation__/package.json]
 {
 -   "name": "addon-1",
 +   "name": "<%= options.addon.name %>",
@@ -94,15 +94,22 @@ Since we passed `options` to the data object, the addon name can be found in `op
 }
 ```
 
-</details>
+:::
 
-Now your turn. Update the blueprint for the test app's `package.json`.
+> [!IMPORTANT]
+> 
+> The delimiter refers to the name `options`. This name matches the key that we had used when passing `options` to `processTemplate`.
+
+
+Now your turn. Update the blueprint for the test app.
 
 <details>
 
-<summary>Solution: <code>src/blueprints/__testAppLocation__/package.json</code></summary>
+<summary>Solution</summary>
 
-```diff
+::: code-group
+
+```diff [src/blueprints/__testAppLocation__/package.json]
 {
 -   "name": "test-app-for-addon-1",
 +   "name": "<%= options.testApp.name %>",
@@ -110,15 +117,18 @@ Now your turn. Update the blueprint for the test app's `package.json`.
 }
 ```
 
+:::
+
 </details>
 
-> [!NOTE]
-> Often, it is easy to miscalculate data and misplace the newline character `\n` (`\r\n` on Windows). You can run `./update-test-fixtures.sh` to check if the fixture files are updated correctly.
+> [!TIP]
+>
+> It's easy to miscalculate data and misplace the newline character `\n` (`\r\n` on Windows) in blueprints with delimiters. Run `update-test-fixtures.sh` as a sanity check.
 
 
 ## Resolve file paths
 
-Currently, the file map that we passed to `createFiles()` uses the blueprint file path.
+The file map that we passed to `createFiles` still uses the blueprint file path.
 
 ```ts
 const fileMap = new Map(
@@ -132,9 +142,9 @@ const fileMap = new Map(
 );
 ```
 
-As a consequence, because the blueprint for the addon's `package.json` lives in a folder named `__addonLocation__`, the resulting file will also appear in `__addonLocation__`. We want the file to be in `options.addon.location` instead.
+Since the blueprint for the addon's `package.json` lives in the folder `__addonLocation__`, the resulting file will also appear in `__addonLocation__`.
 
-```sh
+```sh {:no-line-numbers}
 workspace-root
 ├── __addonLocation__
 │   └── package.json
@@ -142,13 +152,11 @@ workspace-root
     └── package.json
 ```
 
-To fix this issue, we can write a function called `resolveBlueprintFilePath()`. It replaces the placeholder `__addonLocation__` with `options.addon.location`.
+We want the file to be in `options.addon.location` instead. Let's write a function called `resolveBlueprintFilePath`. It is to replace the placeholder `'__addonLocation__'` with `options.addon.location`.
 
-<details>
+::: code-group
 
-<summary><code>src/steps/create-files-from-blueprints.ts</code></summary>
-
-```diff
+```diff [src/steps/create-files-from-blueprints.ts]
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -194,15 +202,17 @@ export function createFilesFromBlueprints(options: Options): void {
 }
 ```
 
-</details>
+:::
 
-Update `resolveBlueprintFilePath()` so that it replaces `__testAppLocation__` with the user-defined test-app location.
+Update `resolveBlueprintFilePath` so that it can also replace `'__testAppLocation__'` with `options.testApp.location`.
 
 <details>
 
-<summary><code>src/steps/create-files-from-blueprints.ts</code></summary>
+<summary>Solution</summary>
 
-```diff
+::: code-group
+
+```diff [src/steps/create-files-from-blueprints.ts]
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -251,11 +261,13 @@ export function createFilesFromBlueprints(options: Options): void {
 }
 ```
 
+:::
+
 </details>
 
-Run `./update-test-fixtures.sh` once more to see the `package.json`'s in the right place.
+Run `update-test-fixtures.sh` once more to see `package.json`'s in the correct place.
 
-```sh
+```sh {:no-line-numbers}
 workspace-root
 ├── packages
 │   └── ui
@@ -267,12 +279,13 @@ workspace-root
             └── package.json
 ```
 
-> [!IMPORTANT]
-> To create `.gitignore` and `.npmignore` via blueprints, the blueprint files must be named differently, e.g. `__gitignore__` and `__npmignore__`. Otherwise, these files will be missing in `src/blueprints` when the codemod is published.
+> [!WARNING]
 >
-> You might already see how to update `resolveBlueprintFilePath()` to handle `.gitignore` and `.npmignore`.
+> Blueprint files can fail to exist when the codemod is published. (The codemod's tests pass locally and in CI, of course.) This can happen for files like `.gitignore` and `.npmignore`.
+> 
+> For such files, we can give the blueprint files a different name, e.g. `__gitignore__` and `__npmignore__`. Then, we tell `resolveBlueprintFilePath` to rename the blueprints at runtime.
 >
-> ```diff
+> ```ts {9-10}
 > function resolveBlueprintFilePath(
 >   blueprintFilePath: string,
 >   options: Options,
@@ -281,28 +294,18 @@ workspace-root
 > 
 >   return blueprintFilePath
 >     .replace('__addonLocation__', addon.location)
-> +     .replace('__gitignore__', '.gitignore')
-> +     .replace('__npmignore__', '.npmignore')
+>     .replace('__gitignore__', '.gitignore')
+>     .replace('__npmignore__', '.npmignore')
 >     .replace('__testAppLocation__', testApp.location);
 > }
 > ```
 >
-> To double-check, run `pnpm publish --dry-run` and review the files.
+> You can run `pnpm publish --dry-run` to check whether all blueprints exist like you expect.
 >
-> ```sh
-> npm notice 911B  dist/bin/blueprints-v2-addon.js
+> ```sh {:no-line-numbers}
+> npm notice 911B  dist/bin/create-v2-addon-repo.js
 > npm notice 145B  dist/src/blueprints/__addonLocation__/__gitignore__
 > npm notice 109B  dist/src/blueprints/__addonLocation__/.eslintignore
 > npm notice 340B  dist/src/blueprints/__addonLocation__/.eslintrc.js
 > ...
 > ```
-
-
-<div align="center">
-  <div>
-    Next: <a href="./05-conclusion.md">Conclusion</a>
-  </div>
-  <div>
-    Previous: <a href="./03-define-options.md">Define options</a>
-  </div>
-</div>

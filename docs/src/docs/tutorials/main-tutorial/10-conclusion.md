@@ -8,7 +8,7 @@ To summarize what you learned:
 
 - Break a problem into small steps. There may be a sequence of steps that makes it easier to solve the problem.
 
-- Before implementing the first step, create fixture projects and acceptance tests. You can then run `./update-test-fixtures.sh` to see the effect of your code change.
+- Before implementing the first step, create fixture projects and acceptance tests. You can then run `update-test-fixtures.sh` to see the effect of your code change.
 
 - Take the simplest approach to implement steps fast. Prefer duplication over premature abstraction.
 

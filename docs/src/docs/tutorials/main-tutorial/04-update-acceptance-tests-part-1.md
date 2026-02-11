@@ -1,4 +1,4 @@
-# Step 1: Update acceptance tests (Part 1)
+# Update acceptance tests (Part 1)
 
 So far, we used the [CLI to scaffold a project](./01-create-a-project) and wrote down [3 steps to rename test modules](./03-sketch-out-the-solution):
 

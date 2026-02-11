@@ -1,6 +1,6 @@
 # Create a project
 
-Recall that `@codemod-utils/cli` automatically adds `@codemod-utils/files` and `@codemod-utils/tests`. We will instruct the CLI to also add [`@codemod-utils/blueprints`](https://github.com/ijlee2/codemod-utils/tree/main/packages/blueprints/README.md), so that we can use blueprints to create files.
+`@codemod-utils/cli` always adds `@codemod-utils/files` and `@codemod-utils/tests`. We will instruct the CLI to also include [`@codemod-utils/blueprints`](https://github.com/ijlee2/codemod-utils/tree/main/packages/blueprints/README.md) so that we can create files using blueprints.
 
 Goals:
 
@@ -12,22 +12,22 @@ Goals:
 
 Change the directory to a place where you like to keep projects. Then, run these commands:
 
-```sh
+```sh {:no-line-numbers}
 # Create project
-npx @codemod-utils/cli blueprints-v2-addon --addon blueprints
+pnpx @codemod-utils/cli create-v2-addon-repo --addon blueprints
 
 # Install dependencies
-cd blueprints-v2-addon
+cd create-v2-addon-repo
 pnpm install
 ```
 
 
 ## Folder structure
 
-Let's take a look at how `blueprints-v2-addon` is structured as a tree. For simplicity, the tree only shows what's new, compared to that from [the main tutorial](../main-tutorial/02-understand-the-folder-structure.md#folder-structure).
+Let's take a look at how `create-v2-addon-repo` is structured as a tree. For simplicity, the tree only shows what's new, compared to what we saw in [the main tutorial](../main-tutorial/02-understand-the-folder-structure#folder-structure).
 
-```sh
-blueprints-v2-addon
+```sh {:no-line-numbers}
+create-v2-addon-repo
 └── src
     ├── blueprints
     │   └── .gitkeep
@@ -35,31 +35,42 @@ blueprints-v2-addon
         └── blueprints.ts
 ```
 
-We see that the CLI has scaffolded `src/blueprints` and `src/utils`.
+We see that the CLI has scaffolded files in `/src/blueprints` and `/src/utils`.
 
 
-### blueprints
+### src/blueprints {#folder-structure-src-blueprints}
 
-The `blueprints` folder contains blueprint files, which we use to create files that our end-developers (users) will have.
+The `src/blueprints` folder stores blueprint files that we will use to create files.
 
-> [!NOTE]
+> [!IMPORTANT]
+>
 > `.gitkeep` is a placeholder file, one that our users don't need. Remove it.
 
-For the most part, the folder structure and file names will match what end-developers will see in their project. At runtime, it is possible to change the file path (e.g. rename `__gitignore__` to `.gitignore`) or exclude the file (e.g. `tsconfig.json` for JavaScript projects).
+The file paths (i.e. the folder structure, file name, and file extension) in `/src/blueprints` should match what end-developers will see in their project. This will help you understand how your blueprints work and fix issues quickly.
+
+You can also write the codemod so that, at runtime, it will change file paths (e.g. rename `__gitignore__` to `.gitignore`) or exclude files under certain circumstances (e.g. don't create `tsconfig.json` for JavaScript projects).
 
 
-### utils/blueprints.ts
+### src/utils/blueprints.ts {#folder-structure-src-utils-blueprints-ts}
 
-The file exports a variable called `blueprintsRoot`. When end-developers install our codemod, our blueprint files are saved _somewhere_ on their machine. `blueprintsRoot` represents this runtime location.
+This file provides a variable called `blueprintsRoot`. When end-developers install our codemod, our blueprint files get saved somewhere on their machine. `blueprintsRoot` represents this runtime location.
 
-In short, we can write and test our codemod as usual, without worrying about where the blueprint files will end up.
+::: code-group
 
+```ts [src/utils/blueprints.ts]
+export * from './blueprints/blueprints-root.js';
+```
 
-<div align="center">
-  <div>
-    Next: <a href="./02-create-static-files.md">Create static files</a>
-  </div>
-  <div>
-    Previous: <a href="./00-introduction.md">Introduction</a>
-  </div>
-</div>
+```ts [src/utils/blueprints/blueprints-root.ts]{7}
+import { join } from 'node:path';
+
+import { getFilePath } from '@codemod-utils/blueprints';
+
+const fileURL = import.meta.url;
+
+export const blueprintsRoot = join(getFilePath(fileURL), '../../blueprints');
+```
+
+:::
+
+In short, `blueprintsRoot` helps us write and test our codemod as usual. We don't need to think about where the blueprints will end up.
