@@ -7,23 +7,23 @@ As a concrete example, we'll use [`postcss-nested`](https://github.com/postcss/p
 - We want to migrate away from Sass.
 - We prefer native CSS while [CSS nesting remains in spec](https://www.w3.org/TR/css-nesting-1/).
 - We want to remove a PostCSS plugin (our project has too many plugins).
-- We use [CSS modules](https://github.com/css-modules/css-modules) (class selectors are hashed) so nesting isn't needed.
+- With [CSS modules](https://github.com/css-modules/css-modules) (class selectors are hashed), nesting isn't really needed.
 
 
 ## Use the CLI
 
 Change the directory to a place where you like to keep projects. Then, run these commands:
 
-```sh
+```sh {:no-line-numbers}
 # Create project
-npx @codemod-utils/cli write-native-css
+pnpx @codemod-utils/cli write-native-css
 
 # Install dependencies
 cd write-native-css
 pnpm install
 
-# Install postcss and postcss-nested as dependencies
-pnpm install postcss and postcss-nested
+# Install postcss and postcss-nested
+pnpm add postcss postcss-nested
 ```
 
 
@@ -33,11 +33,13 @@ Create a step called `remove-css-nesting`. It is to read `*.css` files and write
 
 <details>
 
-<summary><code>src/steps/remove-css-nesting.ts</code></summary>
+<summary>Solution</summary>
 
-For brevity, how `src/index.ts` calls `removeCssNesting()` is not shown.
+For brevity, how `src/index.ts` calls `removeCssNesting` is not shown.
 
-```ts
+::: code-group
+
+```ts [src/steps/remove-css-nesting.ts]
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -64,17 +66,15 @@ export function removeCssNesting(options: Options): void {
 }
 ```
 
+:::
+
 </details>
 
-To test the step, here's a stylesheet with nested code:
+Here's a fixture file with nested code to test the step:
 
-<details>
+::: code-group
 
-<summary><code>tests/fixtures/sample-project/input/app/components/ui/page.css</code></summary>
-
-Note, the syntax `@value` is specific to CSS modules. We will later replace it with `var()` from native CSS.
-
-```css
+```css [tests/fixtures/sample-project/input/app/components/ui/page.css]
 @value (
   desktop,
   spacing-400,
@@ -113,14 +113,39 @@ Note, the syntax `@value` is specific to CSS modules. We will later replace it w
 }
 ```
 
-</details>
+:::
+
+> [!NOTE]
+>
+> The syntax `@value` is specific to CSS modules. We will later replace it with `var()` from native CSS.
 
 
 ## Update step
 
-Next, we use the `postcss-nested` plugin to update the file.
+Next, we use `postcss` and `postcss-nested` to update the file.
 
-```diff
+::: code-group
+
+```ts [How to use PostCSS plugins]
+import postcss from 'postcss';
+
+function transform(file: string): string {
+  const plugins = [/* ... */];
+
+  return postcss(plugins).process(file).css;
+}
+```
+
+:::
+
+
+<details>
+
+<summary>Solution</summary>
+
+::: code-group
+
+```diff [src/steps/remove-css-nesting.ts]
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -157,13 +182,15 @@ export function removeCssNesting(options: Options): void {
 }
 ```
 
-Run `./update-test-fixtures.sh`. You will see that `.header`, `.body`, and `@media` blocks are no longer inside the `.container` block.
+:::
 
-<details>
+</details>
 
-<summary><code>tests/fixtures/sample-project/output/app/components/ui/page.css</code></summary>
+Run `update-test-fixtures.sh`. You will see that the `.header`, `.body`, and `@media` blocks aren't inside the `.container` block anymore.
 
-```css
+::: code-group
+
+```css [tests/fixtures/sample-project/output/app/components/ui/page.css]{22-39}
 @value (
   desktop,
   spacing-400,
@@ -205,17 +232,8 @@ Run `./update-test-fixtures.sh`. You will see that `.header`, `.body`, and `@med
   }
 ```
 
-</details>
+:::
 
 > [!TIP]
-> Often, formatting can't be preserved. Ask the consuming project to use `prettier` and `stylelint` so that you can separate formatting concerns.
-
-
-<div align="center">
-  <div>
-    Next: <a href="./02-write-custom-plugins.md">Write custom plugins</a>
-  </div>
-  <div>
-    Previous: <a href="./00-introduction.md">Introduction</a>
-  </div>
-</div>
+>
+> Often, formatting isn't preserved. Ask end-developers to use `prettier` and `stylelint` so that you can separate formatting concerns.

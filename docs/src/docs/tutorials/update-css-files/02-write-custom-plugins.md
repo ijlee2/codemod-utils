@@ -1,18 +1,20 @@
 # Write custom plugins
 
-No worries if there isn't a plugin that meets your needs. PostCSS lets you [write your own](https://postcss.org/api/).
+If there isn't a PostCSS plugin that meets your needs, you will need to [write your own](https://postcss.org/api/).
 
-[In the previous chapter](./01-use-existing-plugins.md), we encountered the `@value` syntax, specific to CSS modules. We'll familiarize a bit with PostCSS' plugin API by replacing `@value` with `var()` from native CSS.
+[In the previous chapter](./01-use-existing-plugins), we encountered `@value`, a syntax that is specific to CSS modules. We'll familiarize with the plugin API by replacing `@value` with `var()` from native CSS.
 
 
 ## Scaffold step
 
-First, create the utility file `src/utils/css/postcss-plugins.ts`, where we can scaffold a PostCSS plugin. For simplicity, we'll disable type checks.
+First, create the utility file `src/utils/css/postcss-plugins.ts` so that we can scaffold a PostCSS plugin. For simplicity, we'll disable type checks.
 
-```ts
+::: code-group
+
+```ts [src/utils/css/postcss-plugins.ts]
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-export const PostcssRemoveAtValue = () => {
+export function PostcssRemoveAtValue() {
   return {
     postcssPlugin: 'postcss-remove-at-value',
 
@@ -20,16 +22,20 @@ export const PostcssRemoveAtValue = () => {
       return {};
     },
   };
-};
+}
 ```
+
+:::
 
 Then, create the step `remove-at-value`. Similarly to `remove-css-nesting`, it is to use the custom plugin to update `*.css` files.
 
 <details>
 
-<summary>Solution: <code>src/steps/remove-at-value.ts</code></summary>
+<summary>Solution</summary>
 
-```ts
+::: code-group
+
+```ts [src/steps/remove-at-value.ts]{11}
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -65,6 +71,8 @@ export function removeAtValue(options: Options): void {
 }
 ```
 
+:::
+
 </details>
 
 
@@ -72,25 +80,31 @@ export function removeAtValue(options: Options): void {
 
 Currently, native CSS doesn't support using `var()` in media queries. So expressions like `@media desktop` (note, `desktop` is some value) need to be changed.
 
-```css
-/* Before */
+::: code-group
+
+```css [Example (Before)]
 @media desktop {
   /* ... */
 }
+```
 
-/* After */
+```css [Example (After)]
 @media only screen and (width >= 960px) {
   /* ... */
 }
 ```
 
+:::
+
 Since `@media` starts with an `@` symbol, we use PostCSS' `AtRule` to target these nodes.
 
 <details>
 
-<summary>Solution: <code>src/utils/css/postcss-plugins.ts</code></summary>
+<summary>Solution</summary>
 
-```diff
+::: code-group
+
+```diff [src/utils/css/postcss-plugins.ts]
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 + const breakpoints = new Map([
@@ -99,7 +113,7 @@ Since `@media` starts with an `@` symbol, we use PostCSS' `AtRule` to target the
 +   ['desktop', 'only screen and (width >= 960px)'],
 + ]);
 + 
-export const PostcssRemoveAtValue = () => {
+export function PostcssRemoveAtValue() {
   return {
     postcssPlugin: 'postcss-remove-at-value',
 
@@ -120,18 +134,18 @@ export const PostcssRemoveAtValue = () => {
 +       };
     },
   };
-};
+}
 ```
+
+:::
 
 </details>
 
-Afterwards, run `.update-test-fixtures.sh`. Media queries in the output file have been changed.
+Afterwards, run `update-test-fixtures.sh` to see that media queries have been changed.
 
-<details>
+::: code-group
 
-<summary><code>tests/fixtures/sample-project/output/app/components/ui/page.css</code></summary>
-
-```diff
+```diff [tests/fixtures/sample-project/output/app/components/ui/page.css]
 @value (
   desktop,
   spacing-400,
@@ -174,15 +188,15 @@ Afterwards, run `.update-test-fixtures.sh`. Media queries in the output file hav
   }
 ```
 
-</details>
+:::
 
 
 ## Handle values
 
-To replace values in expressions, such as `spacing-600 spacing-400` and `calc(100% - navigation-menu-height)`, with CSS variables, the codemod needs to know that `spacing-400`, `spacing-600`, and `navigation-menu-height` are indeed things related to the problem that we want to solve.
+The output fixture still shows values in various expressions (e.g. `spacing-600 spacing-400`, `calc(100% - navigation-menu-height)`). To replace them with CSS variables, the codemod needs to know that `spacing-400`, `spacing-600`, and `navigation-menu-height` are related to the problem that we want to solve.
 
 
-### Extend plugin
+### Extend plugin {#handle-values-extend-plugin}
 
 Consider the import statements:
 
@@ -196,15 +210,17 @@ Consider the import statements:
 @value navigation-menu-height: 3rem;
 ```
 
-Since `@value` also starts with an `@` symbol, we can extend the plugin's `AtRule` to record all values. Let's create a `Map` to keep track of the value name and how to change this name.
+Since `@value` also starts with an `@` symbol, we can extend the plugin's `AtRule` to record all values. Let's create a `Map` to record a value's name and how to change the name.
 
 <details>
 
-<summary>Solution: <code>src/utils/css/postcss-plugins.ts</code></summary>
+<summary>Solution</summary>
 
-For brevity, I already added `node.remove()` and `OnceExit`. These, respectively, remove the `@value` imports and log the map to help us understand what's going on.
+For brevity, I already added `node.remove()` and `OnceExit`. These, respectively, remove the `@value` imports and log `valueMap` as a sanity check.
 
-```diff
+::: code-group
+
+```diff [src/utils/css/postcss-plugins.ts]
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 const breakpoints = new Map([
@@ -213,11 +229,11 @@ const breakpoints = new Map([
   ['desktop', 'only screen and (width >= 960px)'],
 ]);
 
-+ function recordValues(expression: string, valueMap: Map<string, string>) {
++ function recordValues(expression: string, valueMap: Map<string, string>): void {
 +   // ...
 + }
 + 
-export const PostcssRemoveAtValue = () => {
+export function PostcssRemoveAtValue() {
   return {
     postcssPlugin: 'postcss-remove-at-value',
 
@@ -251,22 +267,33 @@ export const PostcssRemoveAtValue = () => {
       };
     },
   };
-};
+}
 ```
+
+:::
 
 </details>
 
 
-### Record values
+### Record values {#handle-values-record-values}
 
-Next, we implement `recordValues()`, which receives two inputs: `expression` and `valueMap`. It is to parse `expression` and update `valueMap` by recording the value name and the converted syntax.
+Next, let's implement `recordValues`.
+
+```ts
+function recordValues(expression: string, valueMap: Map<string, string>): void {
+  // ...
+}
+```
+
+It needs to parse `expression` to find all values in an expression, then update `valueMap` by recording each value's old and new names.
 
 > [!NOTE]
-> Because CSS modules allows [a few different possibilities for `@value` imports](https://github.com/css-modules/postcss-modules-values/blob/v4.0.0/README.md), the correct solution will be far from obvious. Give it a try before checking the solution below.
+>
+> CSS modules allows [a few different patterns for importing values](https://github.com/css-modules/postcss-modules-values/blob/v4.0.0/README.md), so the correct solution will be far from obvious. Feel free to jump to the solution below.
 
 <details>
 
-<summary>Solution: <code>recordValues()</code></summary>
+<summary>Solution</summary>
 
 ```ts
 function recordValues(expression: string, valueMap: Map<string, string>) {
@@ -310,7 +337,7 @@ function recordValues(expression: string, valueMap: Map<string, string>) {
 
 </details>
 
-By running the `test` command, we can see how value names will be converted.
+Since logging is enabled, we can run the `test` script to see how values will be converted.
 
 ```sh
 Map(4) {
@@ -322,18 +349,22 @@ Map(4) {
 ```
 
 
-### Consume recorded values
+### Consume recorded values {#handle-values-consume-recorded-values}
 
 Finally, we replace the values with the corresponding CSS variables or literals.
 
 <details>
 
-<summary>Solution: <code>PostcssRemoveAtValue</code></summary>
+<summary>Solution</summary>
 
-It's hard to update dynamic expressions in `calc()`. For simplicity, we'll warn the user and ask them to update the code.
+It's hard to update dynamic expressions inside `calc()`. For simplicity, we'll warn the user and ask them to update the code.
 
-```diff
-export const PostcssRemoveAtValue = () => {
+::: code-group
+
+```diff [src/steps/remove-at-value.ts]
+// ...
+
+export function PostcssRemoveAtValue() {
   return {
     postcssPlugin: 'postcss-remove-at-value',
 
@@ -398,18 +429,18 @@ export const PostcssRemoveAtValue = () => {
       };
     },
   };
-};
+}
 ```
+
+:::
 
 </details>
 
-Run `.update-test-fixtures.sh` once more. You'll see that `@value` imports and values have been removed, wherever possible.
+Run `update-test-fixtures.sh` once more. You'll see that `@value` imports and values have been removed, wherever possible.
 
-<details>
+::: code-group
 
-<summary><code>tests/fixtures/sample-project/output/app/components/ui/page.css</code></summary>
-
-```diff
+```diff [tests/fixtures/sample-project/output/app/components/ui/page.css]
 - @value (
 -   desktop,
 -   spacing-400,
@@ -452,14 +483,4 @@ Run `.update-test-fixtures.sh` once more. You'll see that `@value` imports and v
   }
 ```
 
-</details>
-
-
-<div align="center">
-  <div>
-    Next: <a href="./03-conclusion.md">Conclusion</a>
-  </div>
-  <div>
-    Previous: <a href="./01-use-existing-plugins.md">Use existing plugins</a>
-  </div>
-</div>
+:::

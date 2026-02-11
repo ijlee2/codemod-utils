@@ -1,13 +1,15 @@
 # Tackle `*.{gjs,gts}`
 
-Now that we have a method for updating `*.hbs` files, we can reuse it to update `*.{gjs,gts}`.
+Now that we have a method for updating `*.hbs` files, we can reuse it to update `*.{gjs,gts}` files.
 
 
-## Use `@codemod-utils/ast-template-tag`
+## Use @codemod-utils/ast-template-tag
 
-The addon provides a utility called [`updateTemplates()`](https://github.com/ijlee2/codemod-utils/tree/main/packages/ast/template-tag/README.md#updatetemplates). It updates the `<template>` tags in a file and leaves the JavaScript part alone.
+The addon provides a utility called [`updateTemplates`](https://github.com/ijlee2/codemod-utils/tree/main/packages/ast/template-tag/README.md#updatetemplates). It updates the `<template>` tags in a file and leaves the JavaScript part alone.
 
-```diff
+::: code-group
+
+```diff [src/steps/remove-test-selectors.ts]
 + import { updateTemplates } from '@codemod-utils/ast-template-tag';
 
 function removeDataTestAttributes(file: string): string {
@@ -23,17 +25,17 @@ if (filePath.endsWith('.hbs')) {
 }
 ```
 
-Easy, no? Run `./update-test-fixtures.sh` once more to check whether
+:::
+
+Easy, no? Run `update-test-fixtures.sh` once more to check whether
 
 - The remaining file (`app/components/my-component.gjs`) is updated.
 - Only the test selectors were removed.
 - Formatting is preserved.
 
-<details>
+::: code-group
 
-<summary><code>tests/fixtures/sample-project/output/app/components/my-component.gjs</code></summary>
-
-```diff
+```diff [tests/fixtures/sample-project/output/app/components/my-component.gjs]
 import { on } from '@ember/modifier';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -83,14 +85,16 @@ export default class MyComponent extends Component {
 }
 ```
 
-</details>
+:::
 
 
 ## Under the hood
 
-`@codemod-utils/ast-template-tag` uses [`content-tag`](https://github.com/embroider-build/content-tag) to find `<template>` tags and their locations. To see it in action, you can use a low-level utility called `findTemplateTags()`.
+`@codemod-utils/ast-template-tag` knows the locations of `<template>` tags in a file. To see this in action, you can call a low-level utility called `findTemplateTags`.
 
-```diff
+::: code-group
+
+```diff [src/steps/remove-test-selectors.ts]
 - import { updateTemplates } from '@codemod-utils/ast-template-tag';
 + import { findTemplateTags, updateTemplates } from '@codemod-utils/ast-template-tag';
 
@@ -113,7 +117,9 @@ if (filePath.endsWith('.hbs')) {
 }
 ```
 
-`templateTags` is an array of objects. Run the tests again to see what `templateTag` contains.
+:::
+
+`templateTags` is an array of objects. Run tests again to see what the object looks like.
 
 <details>
 
@@ -121,7 +127,7 @@ if (filePath.endsWith('.hbs')) {
 
 `my-component.gjs` has 3 `<template>` tags, so `templateTags` has 3 elements. The object keys that matter to us are `contents` and `range`.
 
-```sh
+```sh {:no-line-numbers}
 ❯ pnpm test
 
 {
@@ -263,16 +269,7 @@ if (filePath.endsWith('.hbs')) {
 </details>
 
 > [!NOTE]
-> Because `range.startByte` is monotonically increasing, we conclude that `templateTags` is a sorted array. The `<template>` tag, which appears first in the file, appears first in the array.
 >
-> To avoid bugs due to line and character positions, we will want to update templates in `*.{gjs,gts}` files in the reverse order. `updateTemplates()` handles this for us.
-
-
-<div align="center">
-  <div>
-    Next: <a href="./04-conclusion.md">Conclusion</a>
-  </div>
-  <div>
-    Previous: <a href="./02-tackle-hbs.md">Tackle <code>*.hbs</code></a>
-  </div>
-</div>
+> Because `range.startByte` is monotonically increasing, we can assume that `templateTags` is a sorted array. The `<template>` tag, which appears first in a file, appears first in the array.
+>
+> To avoid bugs due to line and character positions, we need to update the file's templates in the opposite order (from last to first). `updateTemplates` handles this for us.
