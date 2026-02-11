@@ -1,7 +1,7 @@
 # Conclusion
 
-You have learned how blueprints help you create or update files in a project. The blueprint files can be static (the content is always the same) or dynamic (the content differs, depending on the circumstances).
+You can now use blueprints to create and update files. Blueprints can be static (the content is always the same) or dynamic (the content differs, depending on some data).
 
-You might also understand better why `codemodOptions` and `options` exist, as well as which related files to update, should you decide to provide users more codemod options.
+You can also perhaps see better why two separate values (`codemodOptions` and `options`) exist to represent a codemod's options. Furthemore, which files in `/src` to update, if you want to provide end-developers more options.
 
-For brevity, our `blueprints-v2-addon` created only 1 file in the addon and the test app. To familiarize yourself with delimiters (in particular, with evaluate and interpolate), I encourage you to extend the project and add more blueprint files. You can also explore how to write integration tests for the `create-files-from-blueprints` step.
+For brevity, our `create-v2-addon-repo` created only 1 file in the addon and the test app. To familiarize yourself with delimiters (in particular, with evaluate and interpolate), I encourage you to extend the codemod and add more blueprint files. You can also explore how to write integration tests for the `create-files-from-blueprints` step.

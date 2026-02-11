@@ -1,8 +1,8 @@
 # Create static files
 
-Our codemod will support **workspaces**. For us, this means, a project that includes 1 addon and 1 test app, or many addons and equally many test apps.
+Our version of `create-v2-addon-repo` will create a [workspace](https://pnpm.io/workspaces), where each addon has a corresponding test app. End-developers can expect their project to look like this:
 
-```sh
+```sh {:no-line-numbers}
 workspace-root
 ├── packages
 │   ├── addon-1
@@ -14,12 +14,12 @@ workspace-root
     └── test-app-for-addon-n
 ```
 
-We learned in [the previous chapter](./01-create-a-project.md) that,
+We learned in [the previous chapter](./01-create-a-project) that,
 
-- The `blueprints` folder contains blueprint files, which we use to create files that our end-developers (users) will have.
-- The `blueprintsRoot` variable represents where the blueprint files will be saved on their machine.
+- The `src/blueprints` folder contains blueprint files. We can use blueprints to create files that our end-developers want.
+- `blueprintsRoot` represents where the blueprint files will be saved upon install.
 
-Let's look at how we can create files from `blueprints`.
+Let's look at how to create files from blueprints.
 
 Goals:
 
@@ -27,44 +27,41 @@ Goals:
 - Read and write blueprint files
 
 
-## Add blueprint files
+## Add blueprints
 
-We'll start by creating 1 file for the addon and 1 file for the test app. Both files are **static** (the file content never changes). In other words, there's nothing **dynamic** (e.g. string interpolations, conditional statements, for-loops) that would make the first step complex.
+As mentioned in [Introduction](./00-introduction), we'll create just one file (`package.json`) in each addon and test app. In this chapter, this file will be **static** (the file content is always the same). There's nothing **dynamic** (e.g. string interpolations, conditional statements, loops) that would make our first step complex.
 
-Copy-paste the following starter code:
+Create these files in `/src/blueprints`.
 
-<details>
+::: code-group
 
-<summary><code>src/blueprints/__addonLocation__/package.json</code></summary>
-
-```json
+```json [src/blueprints/__addonLocation__/package.json]
 {
   "name": "addon-1",
   "version": "0.0.0"
 }
 ```
 
-</details>
-
-<details>
-
-<summary><code>src/blueprints/__testAppLocation__/package.json</code></summary>
-
-```json
+```json [src/blueprints/__testAppLocation__/package.json]
 {
   "name": "test-app-for-addon-1",
   "version": "0.0.0"
 }
 ```
 
-</details>
+:::
 
-Then, scaffold a step called `create-files-from-blueprints`. Use `findFiles()` from `@codemod-utils/files` to find the blueprint files, then log the file paths.
+> [!IMPORTANT]
+> 
+> Placeholders in a file path should have an identifier that seldom occurs in real life. The examples above show two underscores (`__`), one before and one after the name of the variable that we'll use in the source code.
 
-> [!NOTE]
-> Need a refresher on [`findFiles()`](../main-tutorial/04-update-acceptance-tests-part-1.md#find-files)? Don't forget to run tests to check your code.
+Then, scaffold a step called `create-files-from-blueprints`. Use `findFiles` from `@codemod-utils/files` to find the blueprint files and log their file paths.
+
+> [!TIP]
 >
-> ```sh
+> See the [main tutorial](../main-tutorial/04-update-acceptance-tests-part-1#take-small-steps-find-files) for a refresher on `findFiles`. Don't forget to run tests to check progress.
+>
+> ```sh {:no-line-numbers}
 > ❯ pnpm test
 > 
 > [
@@ -75,11 +72,26 @@ Then, scaffold a step called `create-files-from-blueprints`. Use `findFiles()` f
 
 <details>
 
-<summary>Solution: <code>src/steps/create-files-from-blueprints.ts</code></summary>
+<summary>Solution</summary>
 
-Note, the project root for `findFiles()` points to `blueprintsRoot`, not `options.projectRoot`.
+We must set `projectRoot` to `blueprintsRoot` (not `options.projectRoot`) when calling `findFiles`.
 
-```ts
+::: code-group
+
+```diff [src/index.ts]
+- import { createOptions } from './steps/index.js';
++ import { createFilesFromBlueprints, createOptions } from './steps/index.js';
+import type { CodemodOptions } from './types/index.js';
+
+export function runCodemod(codemodOptions: CodemodOptions): void {
+  const options = createOptions(codemodOptions);
+
+-   // ...
++   createFilesFromBlueprints(options);
+}
+```
+
+```ts [src/steps/create-files-from-blueprints.ts]{7-9}
 import { findFiles } from '@codemod-utils/files';
 
 import type { Options } from '../types/index.js';
@@ -94,54 +106,54 @@ export function createFilesFromBlueprints(options: Options): void {
 }
 ```
 
-</details>
-
-<details>
-
-<summary>Solution: <code>src/steps/index.ts</code></summary>
-
-```diff
+```diff [src/steps/index.ts]
 + export * from './create-files-from-blueprints.js';
 export * from './create-options.js';
 ```
 
+:::
+
 </details>
 
-<details>
 
-<summary>Solution: <code>src/index.ts</code></summary>
+## Read and write blueprints
 
-```diff
-- import { createOptions } from './steps/index.js';
-+ import { createFilesFromBlueprints, createOptions } from './steps/index.js';
-import type { CodemodOptions } from './types/index.js';
+Unlike in the [main tutorial](../main-tutorial/04-update-acceptance-tests-part-1#take-small-steps-read-and-write-files), we won't use `writeFileSync` to create files from blueprints. The reason is, the folders `__addonLocation__` and `__testAppLocation__` don't exist yet on an end-developer's machine. We would need to write boilerplate code to create these folders first and more code to handle possible runtime errors.
 
-export function runCodemod(codemodOptions: CodemodOptions): void {
-  const options = createOptions(codemodOptions);
+`@codemod-utils/files` provides [`createFiles`](https://github.com/ijlee2/codemod-utils/tree/main/packages/files/README.md#createfiles), which creates missing folders as needed. We just need to provide a `Map`, which maps a file's path to its content.
 
--   // ...
-+   createFilesFromBlueprints(options);
+::: code-group
+
+```ts [Example]
+import { createFiles } from '@codemod-utils/files';
+
+import type { Options } from '../types/index.js';
+
+export function createLicenseAndReadme(options: Options): void {
+  const fileMap = new Map([
+    ['LICENSE.md', 'The MIT License (MIT)'],
+    ['README.md', '# addon-1'],
+  ]);
+
+  createFiles(fileMap, options);
 }
 ```
 
-</details>
+:::
 
-
-## Read and write blueprint files
-
-Unlike in [the main tutorial](../main-tutorial/04-update-acceptance-tests-part-1.md#read-and-write-files), we won't use `writeFileSync()` from Node.js to create files. The reason is, the folders where files will be created (i.e. folders named `__addonLocation__` and `__testAppLocation__`) don't exist on the user's machine.
-
-Luckily, `@codemod-utils/files` provides [`createFiles()`](https://github.com/ijlee2/codemod-utils/tree/main/packages/files/README.md#createfiles), which creates missing folders as needed. We just need to provide this function a `Map`, which maps a blueprint's file path to its file content.
+Use the example above to update the `create-files-from-blueprints` step.
 
 <details>
 
-<summary>Solution: <code>src/steps/create-files-from-blueprints.ts</code></summary>
+<summary>Solution</summary>
 
-```diff
-- import { findFiles } from '@codemod-utils/files';
+::: code-group
+
+```diff [src/steps/create-files-from-blueprints.ts]
 + import { readFileSync } from 'node:fs';
 + import { join } from 'node:path';
 +
+- import { findFiles } from '@codemod-utils/files';
 + import { createFiles, findFiles } from '@codemod-utils/files';
 
 import type { Options } from '../types/index.js';
@@ -168,24 +180,16 @@ export function createFilesFromBlueprints(options: Options): void {
 }
 ```
 
+:::
+
 </details>
 
-To see the effect of `create-files-from-blueprints`, run `./update-test-fixtures.sh`, then check the `sample-project`'s `output` folder. You will see that we're already a few steps closer to creating the addon and the test app. ✨
+Finally, let's check that our implementation is correct. Run `update-test-fixtures.sh`, then find the `output` folder for the fixture project named `sample-project`. You will see that we're already a few steps closer to creating the addon and the test app. ✨
 
-```sh
+```sh {:no-line-numbers}
 workspace-root
 ├── __addonLocation__
 │   └── package.json
 └── __testAppLocation__
     └── package.json
 ```
-
-
-<div align="center">
-  <div>
-    Next: <a href="./03-define-options.md">Define options</a>
-  </div>
-  <div>
-    Previous: <a href="./01-create-a-project.md">Create a project</a>
-  </div>
-</div>
