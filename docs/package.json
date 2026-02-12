@@ -9,6 +9,7 @@
     "url": "git@github.com:ijlee2/codemod-utils.git"
   },
   "author": "Isaac J. Lee",
+  "type": "module",
   "scripts": {
     "build": "vitepress build",
     "format": "prettier . --cache --write",
