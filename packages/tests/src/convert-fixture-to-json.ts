@@ -42,7 +42,7 @@ function createJson(filePaths: string[], cwd: string): DirJSON {
 
 /**
  * Reads the fixture (folders and files) at the specified path.
- * Returns a JSON representation to enable fixture-driven tests.
+ * Returns a JSON representation for fixture-driven tests.
  *
  * @param projectRoot
  *

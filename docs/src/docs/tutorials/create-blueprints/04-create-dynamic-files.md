@@ -13,7 +13,7 @@ Goals:
 
 ## Pass data
 
-A blueprint needs data (some context) to make decisions. We use [`processTemplate`](https://github.com/ijlee2/codemod-utils/tree/main/packages/blueprints#processtemplate) from `@codemod-utils/blueprints` to tell the blueprint what we know and retrieve the resulting file.
+A blueprint needs data (some context) to make decisions. We use [`processTemplate`](../../packages/codemod-utils-blueprints#api-process-template) from `@codemod-utils/blueprints` to tell the blueprint what we know and retrieve the resulting file.
 
 ```ts
 import { processTemplate } from '@codemod-utils/blueprints';

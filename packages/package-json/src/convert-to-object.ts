@@ -1,5 +1,5 @@
 /**
- * Converts a Map (back) to an object. Use it with `convertToMap()`
+ * Converts a Map (back) to an object. Use it along with `convertToMap`
  * to update objects in `package.json`.
  *
  * @param object

@@ -14,7 +14,7 @@ import { EOL } from 'node:os';
  *
  * @example
  *
- * Assert that the codemod updated the fixture correctly.
+ * Assert that `transform` correctly updates a file.
  *
  * ```ts
  * const oldFile = normalizeFile([

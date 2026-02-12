@@ -5,7 +5,7 @@ Now that we have a method for updating `*.hbs` files, we can reuse it to update 
 
 ## Use @codemod-utils/ast-template-tag
 
-The addon provides a utility called [`updateTemplates`](https://github.com/ijlee2/codemod-utils/tree/main/packages/ast/template-tag/README.md#updatetemplates). It updates the `<template>` tags in a file and leaves the JavaScript part alone.
+The addon provides a utility called [`updateTemplates`](../../packages/codemod-utils-ast-template-tag#api-update-templates). It updates the `<template>` tags in a file and leaves the JavaScript part alone.
 
 ::: code-group
 

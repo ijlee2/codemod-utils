@@ -23,7 +23,7 @@ type PackageVersion = string;
  *
  * @example
  *
- * First, pass `latestVersions` to `decideVersion()`.
+ * First, pass `latestVersions` to `decideVersion`.
  *
  * ```ts
  * const latestVersions = new Map([
@@ -42,7 +42,7 @@ type PackageVersion = string;
  * }
  * ```
  *
- * Then, pass `dependencies` to `decideVersion()`.
+ * Then, pass `dependencies` to `decideVersion`.
  *
  * ```ts
  * const options = {

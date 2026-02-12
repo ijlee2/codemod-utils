@@ -5,7 +5,10 @@ import fixturify from 'fixturify';
 import type { DirJSON, Options } from './types.js';
 
 /**
- * Checks that the fixture at the specified path has the right shape.
+ * Asserts that the codemod updated the input project correctly.
+ *
+ * Checks that all file names and contents specified in the `outputProject`
+ * (expected) match those in the updated input project (actual).
  *
  * @param outputProject
  *
@@ -21,11 +24,6 @@ import type { DirJSON, Options } from './types.js';
  * An object with `projectRoot`. Here, `projectRoot` denotes where
  * we created the fixture for a test. (This is somewhere in the `tmp`
  * folder.)
- *
- * @return
- *
- * Returns `true`, if and only if, all folders and files are present
- * and all file contents are correct.
  *
  * @example
  *
