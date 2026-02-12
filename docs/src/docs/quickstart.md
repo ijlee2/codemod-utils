@@ -59,7 +59,7 @@ git push -u origin main
 
 > [!TIP]
 > 
-> As you write code, you will want to lint and test files.
+> As you write code, run `lint` and `test` to check your code.
 >
 > ```sh {:no-line-numbers}
 > # Lint files
@@ -72,4 +72,4 @@ git push -u origin main
 >
 > Try running these scripts now. They should pass out of the box.
 
-Not sure how to start? If this is your first time writing a codemod, we recommend going through the [main tutorial](./tutorials/main-tutorial/00-introduction). See existing codemods in [Made with codemod-utils](./#made-with-codemod-utils).
+Not sure how to start? I recommend following the [main tutorial](./tutorials/main-tutorial/00-introduction) first. You can also check out existing codemods in [Made with codemod-utils](./#made-with-codemod-utils).
