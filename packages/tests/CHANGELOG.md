@@ -1,5 +1,11 @@
 # @codemod-utils/tests
 
+## 2.2.7
+
+### Patch Changes
+
+- [#267](https://github.com/ijlee2/codemod-utils/pull/267) Updated homepage field ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.2.6
 
 ### Patch Changes

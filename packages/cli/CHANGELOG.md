@@ -1,5 +1,11 @@
 # @codemod-utils/cli
 
+## 3.10.4
+
+### Patch Changes
+
+- [#267](https://github.com/ijlee2/codemod-utils/pull/267) Updated homepage field ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.10.3
 
 ### Patch Changes

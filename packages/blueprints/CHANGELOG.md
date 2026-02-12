@@ -1,5 +1,11 @@
 # @codemod-utils/blueprints
 
+## 2.1.5
+
+### Patch Changes
+
+- [#267](https://github.com/ijlee2/codemod-utils/pull/267) Updated homepage field ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.1.4
 
 ### Patch Changes
