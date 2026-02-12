@@ -7,7 +7,9 @@ _Utilities for handling `*.{gjs,gts}` files_
 
 `@codemod-utils/ast-template-tag` uses [`content-tag`](https://github.com/embroider-build/content-tag) to help you parse and transform `*.{gjs,gts}` files.
 
-```ts
+::: code-group
+
+```ts [How to update JavaScript]
 import { updateJavaScript } from '@codemod-utils/ast-template-tag';
 
 // Reuse a method that can update `*.{js,ts}` files
@@ -18,7 +20,7 @@ function transform(file: string): string {
 const newFile = updateJavaScript(oldFile, transform);
 ```
 
-```ts
+```ts [How to update templates]
 import { updateTemplates } from '@codemod-utils/ast-template-tag';
 
 // Reuse a method that can update `*.hbs` files
@@ -29,19 +31,34 @@ function transform(file: string): string {
 const newFile = updateTemplates(oldFile, transform);
 ```
 
+:::
+
+
 ## API
 
-### findTemplateTags
+### findTemplateTags {#api-find-template-tags}
 
 Finds `<template>` tags in a file.
 
-<details>
+::: code-group
 
-<summary>Example</summary>
+```ts [Signature]
+/**
+ * @param file
+ *
+ * A `*.{gjs,gts}` file.
+ *
+ * @return
+ *
+ * A sorted array that tracks tag contents and locations.
+ */
+function findTemplateTags(file: string): TemplateTag[];
+```
 
-Count the number of lines of code (LOC) in `<template>` tags.
-
-```ts
+```ts [Example]
+/**
+ * Count the number of lines of code (LOC) in `<template>` tags.
+ */
 function getLOC(file: string): number {
   const matches = file.match(/\r?\n/g);
 
@@ -57,22 +74,48 @@ templateTags.forEach(({ contents }) => {
 });
 ```
 
-</details>
+:::
 
 
-### replaceTemplateTag
+### replaceTemplateTag {#api-replace-template-tag}
 
 Replaces a particular `<template>` tag.
 
-⚠️ Likely, you won't need this method but [`updateTemplates`](#updatetemplates) instead.
+> [!NOTE]
+>
+> Likely, you won't need this method but [`updateTemplates`](#api-update-templates) instead.
 
-<details>
+::: code-group
 
-<summary>Example</summary>
+```ts [Signature]
+/**
+ * @param file
+ *
+ * A `*.{gjs,gts}` file.
+ *
+ * @param data
+ *
+ * An object with `range` (tag location) and `code` (what to
+ * replace with).
+ *
+ * @return
+ *
+ * The resulting file.
+ */
+function replaceTemplateTag(
+  file: string,
+  data: {
+    code: string;
+    range: Range;
+  },
+): string;
 
-Update all template tags in a file.
+```
 
-```ts
+```ts [Example]
+/**
+ * Update all template tags in a file.
+ */
 const templateTags = findTemplateTags(file);
 
 templateTags.reverse().forEach(({ contents, range }) => {
@@ -86,44 +129,72 @@ templateTags.reverse().forEach(({ contents, range }) => {
 });
 ```
 
-</details>
+:::
 
 
-### toEcma
+### toEcma {#api-to-ecma}
 
 Converts a file with `<template>` tags to ECMAScript (JavaScript).
 
-⚠️ Likely, you won't need this method but [`updateJavaScript`](#updatejavascript) instead.
+> [!NOTE]
+>
+> Likely, you won't need this method but [`updateJavaScript`](#api-update-javascript) instead.
 
-<details>
+::: code-group
 
-<summary>Example</summary>
+```ts [Signature]
+/**
+ * @param file
+ *
+ * A `*.{gjs,gts}` file.
+ *
+ * @return
+ *
+ * File in standard JavaScript.
+ */
+function toEcma(file: string): string;
+```
 
-Analyze the JavaScript part of the file.
-
-```ts
+```ts [Example]
+/**
+ * Analyze the JavaScript part of the file.
+ */
 const ecma = toEcma(file);
 
 // Some method that checks `*.{js,ts}` files
 analyze(ecma);
 ```
 
-</details>
+:::
 
 
-### toTemplateTag
+### toTemplateTag {#api-to-template-tag}
 
 Converts an ECMA file to show `<template>` tags.
 
-⚠️ Likely, you won't need this method but [`updateJavaScript`](#updatejavascript) instead.
+> [!NOTE]
+>
+> Likely, you won't need this method but [`updateTemplates`](#api-update-templates) instead.
 
-<details>
+::: code-group
 
-<summary>Example</summary>
+```ts [Signature]
+/**
+ * @param file
+ *
+ * A `*.{gjs,gts}` file converted to ECMAScript.
+ *
+ * @return
+ *
+ * File with `<template>` tags.
+ */
+function toTemplateTag(file: string): string;
+```
 
-Update `*.{gjs,gts}` files.
-
-```ts
+```ts [Example]
+/**
+ * Update `*.{gjs,gts}` files.
+ */
 // Some method that updates `*.{js,ts}` files
 function transform(file: string): string {
   // ...
@@ -132,20 +203,39 @@ function transform(file: string): string {
 file = toTemplateTag(transform(toEcma(file)));
 ```
 
-</details>
+:::
 
 
-### updateJavaScript
+### updateJavaScript {#api-update-javascript}
 
 Updates the JavaScript part of a file. Leaves the `<template>` tags alone.
 
-<details>
+::: code-group
 
-<summary>Example</summary>
+```ts [Signature]
+/**
+ * @param file
+ *
+ * A `*.{gjs,gts}` file.
+ *
+ * @param update
+ *
+ * A method that describes how to update code.
+ *
+ * @return
+ *
+ * The resulting file.
+ */
+function updateJavaScript(
+  file: string,
+  update: (code: string) => string,
+): string;
+```
 
-Reuse a method that can update `*.{js,ts}` files.
-
-```ts
+```ts [Example 1]
+/**
+ * Reuse a method that can update `*.{js,ts}` files.
+ */
 function transform(file: string): string {
   // ...
 }
@@ -153,15 +243,10 @@ function transform(file: string): string {
 const newFile = updateJavaScript(oldFile, transform);
 ```
 
-</details>
-
-<details>
-
-<summary>Example</summary>
-
-Provide data when updating file.
-
-```ts
+```ts [Example 2]
+/**
+ * Provide data when updating file.
+ */
 type Data = {
   isTypeScript: boolean;
 };
@@ -179,20 +264,39 @@ const newFile = updateJavaScript(oldFile, (code) => {
 });
 ```
 
-</details>
+:::
 
 
-### updateTemplates
+### updateTemplates {#api-update-templates}
 
 Updates the `<template>` tags in a file. Leaves the JavaScript part alone.
 
-<details>
+::: code-group
 
-<summary>Example</summary>
+```ts [Signature]
+/**
+ * @param file
+ *
+ * A `*.{gjs,gts}` file.
+ *
+ * @param update
+ *
+ * A method that describes how to update code.
+ *
+ * @return
+ *
+ * The resulting file.
+ */
+function updateTemplates(
+  file: string,
+  update: (code: string) => string,
+): string;
+```
 
-Reuse a method that can update `*.hbs` files.
-
-```ts
+```ts [Example 1]
+/**
+ * Reuse a method that can update `*.hbs` files.
+ */
 function transform(file: string): string {
   // ...
 }
@@ -200,15 +304,10 @@ function transform(file: string): string {
 const newFile = updateTemplates(oldFile, transform);
 ```
 
-</details>
-
-<details>
-
-<summary>Example</summary>
-
-Provide data when updating file.
-
-```ts
+```ts [Example 2]
+/**
+ * Provide data when updating file.
+ */
 type Data = {
   isTypeScript: boolean;
 };
@@ -226,4 +325,4 @@ const newFile = updateTemplates(oldFile, (code) => {
 });
 ```
 
-</details>
+:::

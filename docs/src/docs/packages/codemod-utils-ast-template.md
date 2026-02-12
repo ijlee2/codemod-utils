@@ -7,7 +7,9 @@ _Utilities for handling `*.hbs` files as abstract syntax tree_
 
 `@codemod-utils/ast-template` provides methods from [`ember-template-recast`](https://github.com/ember-template-lint/ember-template-recast) to help you parse and transform `*.hbs` files.
 
-```ts
+::: code-group
+
+```ts [How to update templates]
 import { AST } from '@codemod-utils/ast-template';
 
 function transform(file: string): string {
@@ -21,25 +23,31 @@ function transform(file: string): string {
 }
 ```
 
+:::
+
 
 ## API
 
-In the `traverse` call, you can specify how to visit the nodes of interest ("visit methods") and how to modify them ("builders").
+### AST {#api-ast}
 
-- [Builders](https://github.com/glimmerjs/glimmer-vm/blob/v0.84.3/packages/%40glimmer/syntax/lib/v1/public-builders.ts#L530-L570)
-- [Visit methods](https://github.com/glimmerjs/glimmer-vm/blob/v0.84.3/packages/%40glimmer/syntax/lib/v1/visitor-keys.ts#L8-L39)
+An object that provides `builders`, `print`, and `traverse`.
+
+In a `traverse` call, you can specify how to visit the nodes of interest ("visit methods") and how to modify them ("builders").
+
+- [Builders](https://github.com/glimmerjs/glimmer-vm/blob/v0.95.0-%40glimmer/syntax/packages/%40glimmer/syntax/lib/v1/public-builders.ts#L490-L528)
+- [Visit methods](https://github.com/glimmerjs/glimmer-vm/blob/v0.95.0-%40glimmer/syntax/packages/%40glimmer/syntax/lib/v1/visitor-keys.ts#L5-L30)
 
 
 ## How to test your code
 
 Currently, `ember-template-recast` lacks documentation and tutorials. This is unfortunate, given the large amount of builders and visit methods that it provides to help you transform code.
 
-I recommend using [AST Explorer](https://astexplorer.net/) to test a small piece of code and familiarize with the API. The error messages from TypeScript, which you can find in your browser's console, can sometimes help. [AST Workshop](https://github.com/mainmatter/ast-workshop) provides a good starting point for Handlebars.
+I recommend using [AST Explorer](https://astexplorer.net/) to test a small piece of code and familiarize with the API. The error messages from TypeScript, which you can find in your browser's console, can sometimes help.
 
-If you intend to publish your codemod, I recommend using [`@codemod-utils/tests`](../tests) (create and test file fixtures) to check the output and prevent regressions.
+If you intend to publish your codemod, I recommend using [`@codemod-utils/tests`](./codemod-utils-tests) (create and test file fixtures) to check the output and prevent regressions.
 
 
-### AST Explorer for Handlebars
+### AST Explorer {#how-to-test-your-code-ast-explorer}
 
 Select the following options to create a 4-tab window:
 
@@ -47,14 +55,35 @@ Select the following options to create a 4-tab window:
 - Parser: `ember-template-recast`
 - Transform: `ember-template-recast`
 
-Copy-paste the visit methods from your file to AST explorer, then rename `AST.builders` to `b`.
+![](../../images/packages/ast-template-01.png)
 
-<details>
+Once you are satisfied with the code, you can copy-paste the visit method(s) to your file, then rename `b.` to `AST.builders.`.
 
-<summary>Example</summary>
+::: code-group
 
-```ts
-/* Your file */
+```ts [Example (AST Explorer)]{5-17}
+module.exports = function(env) {
+  const b = env.syntax.builders;
+
+  return {
+    AttrNode(node) {
+      if (node.name !== 'local-class') {
+        return;
+      }
+
+      node.name = 'class';
+
+      const attributeValue = node.value.chars.trim();
+
+      node.value = b.mustache(
+        b.path(`this.styles.${attributeValue}`),
+      );
+    },
+  };
+};
+```
+
+```ts [Example (Your file)]{7-19}
 import { AST } from '@codemod-utils/ast-template';
 
 function transform(file) {
@@ -80,32 +109,7 @@ function transform(file) {
 }
 ```
 
-```ts
-/* AST Explorer */
-module.exports = function(env) {
-  const b = env.syntax.builders;
-
-  return {
-    AttrNode(node) {
-      if (node.name !== 'local-class') {
-        return;
-      }
-
-      node.name = 'class';
-
-      const attributeValue = node.value.chars.trim();
-
-      node.value = b.mustache(
-        b.path(`this.styles.${attributeValue}`),
-      );
-    },
-  };
-};
-```
-
-<img width="1440" alt="" src="https://github.com/ijlee2/codemod-utils/assets/16869656/149deed5-153e-42c9-ace1-cd531d85c59d">
-
-</details>
+:::
 
 
 ## How to type your code
