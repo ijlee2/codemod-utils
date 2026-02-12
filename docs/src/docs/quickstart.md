@@ -2,7 +2,7 @@
 
 ## 1. Run CLI {#1-run-cli}
 
-Change the directory to a place where you like to keep projects. Run [`@codemod-utils/cli`](https://github.com/ijlee2/codemod-utils/blob/main/packages/cli/README.md) to scaffold your codemod.
+Change the directory to a place where you like to keep projects. Run [`@codemod-utils/cli`](./packages/codemod-utils-cli) to scaffold your codemod.
 
 ```sh {:no-line-numbers}
 pnpx @codemod-utils/cli <your-codemod-name> [options]
@@ -11,36 +11,24 @@ pnpx @codemod-utils/cli <your-codemod-name> [options]
 This will create a folder named `your-codemod-name`.
 
 
-### Add more utilities {#1-run-cli-add-more-utilities}
+### Add utilities {#1-run-cli-add-utilities}
 
-By default, `@codemod-utils/cli` only installs the core packages: [`@codemod-utils/files`](https://github.com/ijlee2/codemod-utils/blob/main/packages/files/README.md) and [`@codemod-utils/tests`](https://github.com/ijlee2/codemod-utils/blob/main/packages/tests/README.md). Every codemod will need them.
+By default, `@codemod-utils/cli` only installs the core packages: [`@codemod-utils/files`](./packages/codemod-utils-files) and [`@codemod-utils/tests`](./packages/codemod-utils-tests). Every codemod will need them.
 
-If you need more, pass `--addon` and list the package names.
+If your codemod needs more, pass `--addon` and list the package name (without the prefix `@codemod-utils/`).
 
 ```sh {:no-line-numbers}
 pnpx @codemod-utils/cli --addon blueprints package-json
 ```
 
-The options for `--addon` are:
+Possible values for `--addon` are:
 
-- [`ast-javascript`](https://github.com/ijlee2/codemod-utils/tree/main/packages/ast/javascript/README.md)
-- [`ast-template`](https://github.com/ijlee2/codemod-utils/tree/main/packages/ast/template/README.md)
-- [`ast-template-tag`](https://github.com/ijlee2/codemod-utils/tree/main/packages/ast/template-tag/README.md)
-- [`blueprints`](https://github.com/ijlee2/codemod-utils/tree/main/packages/blueprints/README.md)
-- [`ember`](https://github.com/ijlee2/codemod-utils/tree/main/packages/ember/README.md)
-- [`package-json`](https://github.com/ijlee2/codemod-utils/tree/main/packages/package-json/README.md)
-
-
-### JavaScript only? {#1-run-cli-javascript-only}
-
-By default, `@codemod-utils/cli` creates a TypeScript project to help you maintain and extend the codemod.
-
-To create a JavaScript project, set `--typescript` to `false`.
-
-```sh {:no-line-numbers}
-pnpx @codemod-utils/cli --typescript false
-```
-
+- [`ast-javascript`](./packages/codemod-utils-ast-javascript)
+- [`ast-template`](./packages/codemod-utils-ast-template)
+- [`ast-template-tag`](./packages/codemod-utils-ast-template-tag)
+- [`blueprints`](./packages/codemod-utils-blueprints)
+- [`ember`](./packages/codemod-utils-ember)
+- [`package-json`](./packages/codemod-utils-package-json)
 
 
 ## 2. Make the initial commit {#2-make-the-initial-commit}
