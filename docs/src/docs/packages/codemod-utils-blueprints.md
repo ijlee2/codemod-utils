@@ -44,6 +44,9 @@ function decideVersion(
 ```
 
 ```ts [Example (Utility)]
+/**
+ * First, pass `latestVersions` to `decideVersion`.
+ */
 import { decideVersion } from '@codemod-utils/blueprints';
 
 const latestVersions = new Map([
@@ -62,6 +65,9 @@ export function getVersion(packageName, options) {
 ```
 
 ```ts [Example (Consumer)]
+/**
+ * Then, pass `dependencies` to `decideVersion`.
+ */
 const options = {
   dependencies: new Map([
     ['webpack', '^5.82.0'],
@@ -102,6 +108,9 @@ function getFilePath(fileURL: string): string;
 ```
 
 ```ts [Example (Utility)]
+/**
+ * To read blueprint files, get the path to the `blueprints` folder.
+ */
 import { join } from 'node:path';
 
 import { getFilePath } from '@codemod-utils/blueprints';
@@ -112,6 +121,9 @@ export const blueprintsRoot = join(getFilePath(fileURL), '../../blueprints');
 ```
 
 ```ts [Example (Consumer)]
+/**
+ * Afterwards, prepend the file path with `blueprintsRoot`.
+ */
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -159,7 +171,10 @@ function processTemplate(file: string, data?: object): string;
 ```
 
 ```js [Example (Blueprint)]{10,11-14}
-/* blueprints/__testAppLocation__/ember-cli-build.js */
+/*
+ * First, create a blueprint file.
+ */
+// blueprints/__testAppLocation__/ember-cli-build.js
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
@@ -182,6 +197,9 @@ module.exports = function (defaults) {
 ```
 
 ```ts [Example (Consumer)]
+/**
+ * Then, pass data to the file.
+ */
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 

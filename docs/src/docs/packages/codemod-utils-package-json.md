@@ -10,20 +10,29 @@ _Utilities for handling `package.json`_
 
 ## API
 
-### convertToMap, convertToObject
+### convertToMap {#api-convert-to-map}
 
-`convertToMap()` converts an object to a Map, while `convertToObject()` converts the Map back to an object. Use these two utilities to update objects in `package.json`.
+Converts an object to a Map. Use it along with [`convertToObject`](#api-convert-to-object) to update objects in `package.json`.
 
-> [!NOTE]
-> `convertToObject()` creates an object with keys in alphabetical order.
+::: code-group
 
-<details>
+```ts [Signature]
+/**
+ * @param object
+ *
+ * An object.
+ *
+ * @return
+ *
+ * The object as a Map.
+ */
+function convertToMap(object?: {}): Map<string, unknown>;
+```
 
-<summary>Example</summary>
-
-Remove dependencies (if they exist) from `package.json`.
-
-```ts
+```ts [Example]{4}
+/**
+ * Remove dependencies (if they exist) from `package.json`.
+ */
 const dependencies = convertToMap(packageJson['dependencies']);
 
 const packagesToDelete = [
@@ -40,22 +49,78 @@ packagesToDelete.forEach((packageName) => {
 packageJson['dependencies'] = convertToObject(dependencies);
 ```
 
-</details>
+:::
+
+ 
+### convertToObject {#api-convert-to-object}
+
+Converts a Map (back) to an object. Use it along with `convertToMap` to update objects in `package.json`.
+
+::: code-group
+
+```ts [Signature]
+/**
+ * @param object
+ *
+ * A Map.
+ *
+ * @return
+ *
+ * The Map as an object. (The object keys are sorted in alphabetical
+ * order.)
+ */
+function convertToObject(map?: Map<any, any>): any;
+```
+
+```ts [Example]{17}
+/**
+ * Remove dependencies (if they exist) from `package.json`.
+ */
+const dependencies = convertToMap(packageJson['dependencies']);
+
+const packagesToDelete = [
+  '@embroider/macros',
+  'ember-auto-import',
+  'ember-cli-babel',
+  'ember-cli-htmlbars',
+];
+
+packagesToDelete.forEach((packageName) => {
+  dependencies.delete(packageName);
+});
+
+packageJson['dependencies'] = convertToObject(dependencies);
+```
+
+:::
 
 
-### getPackageType
+### getPackageType {#api-get-package-type}
 
 Determines package type based on Ember's conventions.
 
 Possible values are `'node'`, `'v1-addon'`, `'v1-app'`, `'v2-addon'`, or `'v2-app'`.
 
-<details>
+::: code-group
 
-<summary>Example</summary>
+```ts [Signature]
+/**
+ * @param packageJson
+ *
+ * A JSON that represents `package.json`.
+ *
+ * @return
+ *
+ * A string that represents package type (`'node'`, `'v1-addon'`,
+ * `'v1-app'`, `'v2-addon'`, or `'v2-app'`).
+ */
+function getPackageType(packageJson: PackageJson): PackageType;
+```
 
-Make an early exit in a codemod that converts v1 addons to v2.
-
-```ts
+```ts [Example]
+/**
+ * Make an early exit in a codemod that converts v1 addons to v2.
+ */
 const packageType = getPackageType(packageJson);
 
 if (packageType === 'v2-addon') {
@@ -65,23 +130,36 @@ if (packageType === 'v2-addon') {
 // Convert to v2
 ```
 
-</details>
+:::
 
 
-### readPackageJson
+### readPackageJson {#api-read-package-json}
 
 Reads `package.json` and returns the parsed JSON.
 
-> [!NOTE]
-> `readPackageJson()` checks that `package.json` exists and is a valid JSON.
+> [!IMPORTANT]
+>
+> `readPackageJson` checks that `package.json` exists and is a valid JSON.
 
-<details>
+::: code-group
 
-<summary>Example</summary>
+```ts [Signature]
+/**
+ * @param options
+ *
+ * An object with `projectRoot`.
+ *
+ * @return
+ *
+ * A JSON that represents `package.json`.
+ */
+function readPackageJson(options: Options): PackageJson;
+```
 
-Check if a project has `typescript` as a dependency.
-
-```ts
+```ts [Example]
+/**
+ * Check if a project has `typescript` as a dependency.
+ */
 import { readPackageJson } from '@codemod-utils/package-json';
 
 const { dependencies, devDependencies } = readPackageJson({
@@ -96,18 +174,27 @@ const projectDependencies = new Map([
 const hasTypeScript = projectDependencies.has('typescript');
 ```
 
-</details>
+:::
 
 
-### validatePackageJson
+### validatePackageJson {#api-validate-package-json}
 
 (Type-)Checks that the fields `name` and `version` exist, in the sense that their values are a non-empty string.
 
-<details>
+::: code-group
 
-<summary>Example</summary>
+```ts [Signature]
+/**
+ * @param packageJson
+ *
+ * A JSON that represents `package.json`.
+ */
+function validatePackageJson(
+  packageJson: PackageJson,
+): asserts packageJson is ValidatedPackageJson;
+```
 
-```ts
+```ts [Example]
 import {
   readPackageJson,
   validatePackageJson,
@@ -121,4 +208,4 @@ validatePackageJson(packageJson);
 const { name, version } = packageJson;
 ```
 
-</details>
+:::
