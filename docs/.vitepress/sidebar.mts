@@ -2,7 +2,7 @@ import type { DefaultTheme } from 'vitepress/theme';
 
 export const sidebar: DefaultTheme.Sidebar = [
   {
-    collapsed: false,
+    collapsed: true,
     items: [
       {
         link: '/docs/quickstart',
@@ -13,6 +13,48 @@ export const sidebar: DefaultTheme.Sidebar = [
   },
   {
     collapsed: false,
+    items: [
+      {
+        link: '/docs/packages/codemod-utils-ast-javascript',
+        text: '@codemod-utils/ast-javascript',
+      },
+      {
+        link: '/docs/packages/codemod-utils-ast-template',
+        text: '@codemod-utils/ast-template',
+      },
+      {
+        link: '/docs/packages/codemod-utils-ast-template-tag',
+        text: '@codemod-utils/ast-template-tag',
+      },
+      {
+        link: '/docs/packages/codemod-utils-blueprints',
+        text: '@codemod-utils/blueprints',
+      },
+      {
+        link: '/docs/packages/codemod-utils-cli',
+        text: '@codemod-utils/cli',
+      },
+      {
+        link: '/docs/packages/codemod-utils-ember',
+        text: '@codemod-utils/ember',
+      },
+      {
+        link: '/docs/packages/codemod-utils-files',
+        text: '@codemod-utils/files',
+      },
+      {
+        link: '/docs/packages/codemod-utils-package-json',
+        text: '@codemod-utils/package-json',
+      },
+      {
+        link: '/docs/packages/codemod-utils-tests',
+        text: '@codemod-utils/tests',
+      },
+    ],
+    text: 'Packages',
+  },
+  {
+    collapsed: true,
     items: [
       {
         collapsed: true,
