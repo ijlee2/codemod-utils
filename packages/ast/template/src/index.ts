@@ -23,8 +23,10 @@ function traverse() {
 }
 
 /**
- * Provides methods from `ember-template-recast` to help you parse
- * and transform `*.hbs` files.
+ * An object that provides `builders`, `print`, and `traverse`.
+ * 
+ * In a `traverse` call, you can specify how to visit the nodes of
+ * interest ("visit methods") and how to modify them ("builders").
  *
  * @example
  *

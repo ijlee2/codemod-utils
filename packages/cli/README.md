@@ -7,15 +7,15 @@ _CLI to create a codemod project_
 
 ## Usage
 
-Step 1. Use `npx` to run `@codemod-utils/cli`.
+Step 1. Use `pnpx` to run `@codemod-utils/cli`.
 
 ```sh
-npx @codemod-utils/cli <your-codemod-name> [options]
+pnpx @codemod-utils/cli <your-codemod-name> [options]
 ```
 
 This will create a folder named `<your-codemod-name>`.
 
-Step 2. Change to the codemod directory, then run these scripts in sequence:
+Step 2. Make the first commit. Change to the codemod directory, then run these scripts in sequence:
 
 ```sh
 # Install dependencies
@@ -37,26 +37,19 @@ git push -u origin main
 ```
 
 
-### Arguments
+## Options
 
-You must pass the name of your codemod.
+### addon
 
-```sh
-npx @codemod-utils/cli ember-codemod-v1-to-v2
-```
+By default, `@codemod-utils/cli` only installs the core packages: [`@codemod-utils/files`](../files/README.md) and [`@codemod-utils/tests`](../tests/README.md). Every codemod will need them.
 
-
-<details>
-
-<summary>Optional: Add more utilities</summary>
-
-By default, `@codemod-utils/cli` only installs [`@codemod-utils/files`](../files/README.md) and [`@codemod-utils/tests`](../tests/README.md). If you need more, pass `--addon` and list the package names.
+If your codemod needs more, pass `--addon` and list the package name (without the prefix `@codemod-utils/`).
 
 ```sh
-npx @codemod-utils/cli --addon blueprints package-json
+pnpx @codemod-utils/cli --addon blueprints package-json
 ```
 
-The options are:
+Possible values for `--addon` are:
 
 - [`ast-javascript`](../ast/javascript/README.md)
 - [`ast-template`](../ast/template/README.md)
@@ -65,35 +58,25 @@ The options are:
 - [`ember`](../ember/README.md)
 - [`package-json`](../package-json/README.md)
 
-</details>
 
-
-<details>
-
-<summary>Optional: Specify the project root</summary>
+### root
 
 Pass `--root` to run the codemod somewhere else (i.e. not in the current directory).
 
 ```sh
-npx @codemod-utils/cli --root <path/to/your/project>
+pnpx @codemod-utils/cli --root <path/to/your/project>
 ```
 
-</details>
 
-
-<details>
-
-<summary>Optional: Create a JavaScript project</summary>
+### typescript
 
 By default, `@codemod-utils/cli` creates a TypeScript project to help you maintain and extend the codemod.
 
 To create a JavaScript project, set `--typescript` to `false`.
 
 ```sh
-npx @codemod-utils/cli --typescript false
+pnpx @codemod-utils/cli --typescript false
 ```
-
-</details>
 
 
 ## Compatibility

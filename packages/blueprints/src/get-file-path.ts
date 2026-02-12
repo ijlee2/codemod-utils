@@ -2,7 +2,7 @@ import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 /**
- * Returns where `npx` installs the codemod on the user's machine.
+ * Returns where the codemod ends up being installed on the user's machine.
  *
  * @param fileURL
  *
@@ -22,9 +22,7 @@ import { fileURLToPath } from 'node:url';
  *
  * const fileURL = import.meta.url;
  *
- * const blueprintsRoot = join(getFilePath(fileURL), '../../blueprints');
- *
- * // '<some/absolute/path>/src/blueprints'
+ * export const blueprintsRoot = join(getFilePath(fileURL), '../../blueprints');
  * ```
  *
  * Afterwards, prepend the file path with `blueprintsRoot`.

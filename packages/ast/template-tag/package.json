@@ -6,6 +6,7 @@
     "codemod",
     "ember-codemod"
   ],
+  "homepage": "https://codemod-utils.netlify.app/docs/packages/codemod-utils-ast-template-tag",
   "repository": {
     "type": "git",
     "url": "git@github.com:ijlee2/codemod-utils.git",
