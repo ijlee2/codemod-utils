@@ -1,5 +1,12 @@
 # @codemod-utils/blueprints
 
+## 2.1.4
+
+### Patch Changes
+
+- [#264](https://github.com/ijlee2/codemod-utils/pull/264) Moved detailed explanations in READMEs to documentation site (Part 2) ([@ijlee2](https://github.com/ijlee2))
+- [#263](https://github.com/ijlee2/codemod-utils/pull/263) Moved detailed explanations in READMEs to documentation site (Part 1) ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.1.3
 
 ### Patch Changes

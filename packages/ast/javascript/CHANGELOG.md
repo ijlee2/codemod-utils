@@ -1,5 +1,11 @@
 # @codemod-utils/ast-javascript
 
+## 2.1.5
+
+### Patch Changes
+
+- [#263](https://github.com/ijlee2/codemod-utils/pull/263) Moved detailed explanations in READMEs to documentation site (Part 1) ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.1.4
 
 ### Patch Changes

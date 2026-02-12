@@ -1,5 +1,16 @@
 # docs-app-for-codemod-utils
 
+## 1.1.0
+
+### Minor Changes
+
+- [#264](https://github.com/ijlee2/codemod-utils/pull/264) Moved detailed explanations in READMEs to documentation site (Part 2) ([@ijlee2](https://github.com/ijlee2))
+- [#263](https://github.com/ijlee2/codemod-utils/pull/263) Moved detailed explanations in READMEs to documentation site (Part 1) ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#262](https://github.com/ijlee2/codemod-utils/pull/262) Updated project configurations ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.0
 
 ### Major Changes

@@ -1,6 +1,6 @@
 {
   "name": "@codemod-utils/tests",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "description": "Utilities for tests",
   "keywords": [
     "codemod",

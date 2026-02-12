@@ -1,5 +1,11 @@
 # @codemod-utils/ast-template-tag
 
+## 1.2.3
+
+### Patch Changes
+
+- [#263](https://github.com/ijlee2/codemod-utils/pull/263) Moved detailed explanations in READMEs to documentation site (Part 1) ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.2.2
 
 ### Patch Changes

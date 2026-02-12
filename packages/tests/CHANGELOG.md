@@ -1,5 +1,11 @@
 # @codemod-utils/tests
 
+## 2.2.6
+
+### Patch Changes
+
+- [#264](https://github.com/ijlee2/codemod-utils/pull/264) Moved detailed explanations in READMEs to documentation site (Part 2) ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.2.5
 
 ### Patch Changes
