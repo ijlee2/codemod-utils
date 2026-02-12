@@ -120,7 +120,7 @@ export * from './create-options.js';
 
 Unlike in the [main tutorial](../main-tutorial/04-update-acceptance-tests-part-1#take-small-steps-read-and-write-files), we won't use `writeFileSync` to create files from blueprints. The reason is, the folders `__addonLocation__` and `__testAppLocation__` don't exist yet on an end-developer's machine. We would need to write boilerplate code to create these folders first and more code to handle possible runtime errors.
 
-`@codemod-utils/files` provides [`createFiles`](https://github.com/ijlee2/codemod-utils/tree/main/packages/files/README.md#createfiles), which creates missing folders as needed. We just need to provide a `Map`, which maps a file's path to its content.
+`@codemod-utils/files` provides [`createFiles`](../../packages/codemod-utils-files#api-create-files), which creates missing folders as needed. We just need to provide a `Map`, which maps a file's path to its content.
 
 ::: code-group
 

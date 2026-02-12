@@ -1,8 +1,8 @@
 # Create a project
 
-We will use [`@codemod-utils/cli`](https://github.com/ijlee2/codemod-utils/blob/main/packages/cli/README.md) (a command-line interface) to create a Node project. The project comes with lint, test, CI (continuous integration), and documentation out of the box.
+We will use [`@codemod-utils/cli`](../../packages/codemod-utils-cli) (a command-line interface) to create a Node project. The project comes with lint, test, CI (continuous integration), and documentation out of the box.
 
-The CLI automatically adds [`@codemod-utils/files`](https://github.com/ijlee2/codemod-utils/blob/main/packages/files/README.md) and [`@codemod-utils/tests`](https://github.com/ijlee2/codemod-utils/blob/main/packages/tests/README.md) (these packages are "core"), because every codemod will need them. For `ember-codemod-rename-test-modules`, we will need to parse and update JavaScript and TypeScript files, so we will instruct the CLI to also add [`@codemod-utils/ast-javascript`](https://github.com/ijlee2/codemod-utils/blob/main/packages/ast/javascript/README.md) (an "addon").
+The CLI automatically adds [`@codemod-utils/files`](../../packages/codemod-utils-files) and [`@codemod-utils/tests`](../../packages/codemod-utils-tests) (these packages are "core"), because every codemod will need them. For `ember-codemod-rename-test-modules`, we will need to parse and update JavaScript and TypeScript files, so we will instruct the CLI to also add [`@codemod-utils/ast-javascript`](../../packages/codemod-utils-ast-javascript) (an "addon").
 
 Goals:
 

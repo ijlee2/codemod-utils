@@ -1,6 +1,6 @@
 # Create a project
 
-`@codemod-utils/cli` always adds `@codemod-utils/files` and `@codemod-utils/tests`. We will instruct the CLI to also include [`@codemod-utils/blueprints`](https://github.com/ijlee2/codemod-utils/tree/main/packages/blueprints/README.md) so that we can create files using blueprints.
+`@codemod-utils/cli` always adds `@codemod-utils/files` and `@codemod-utils/tests`. We will instruct the CLI to also include [`@codemod-utils/blueprints`](../../packages/codemod-utils-blueprints) so that we can create files using blueprints.
 
 Goals:
 

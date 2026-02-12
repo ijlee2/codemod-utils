@@ -24,7 +24,7 @@ let file = readFileSync(join(projectRoot, filePath), 'utf8');
 
 ## Use @codemod-utils/ast-template
 
-First, update `removeDataTestAttributes` so that it uses [`@codemod-utils/ast-template`](https://github.com/ijlee2/codemod-utils/tree/main/packages/ast/template/README.md#what-is-it) and remains a no-op.
+First, update `removeDataTestAttributes` so that it uses [`@codemod-utils/ast-template`](../../packages/codemod-utils-ast-template) and remains a no-op.
 
 ::: code-group
 
