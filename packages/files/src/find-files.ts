@@ -35,7 +35,8 @@ import type { FilePath, Options } from './types.js';
  *
  * @example
  *
- * Find all component classes in an Ember app.
+ * Find all component classes in an Ember app. Provide `ignoreList`,
+ * an array of file paths or glob patterns, to exclude files.
  *
  * ```ts
  * const filePaths = findFiles('app/components/**\/*.{js,ts}', {
@@ -46,7 +47,8 @@ import type { FilePath, Options } from './types.js';
  *
  * @example
  *
- * Pass an array of glob patterns (pattern A or pattern B or ...).
+ * To look for multiple types of files, pass an array of glob patterns
+ * (pattern A or pattern B or ...).
  *
  * ```ts
  * const filePaths = findFiles([
