@@ -43,7 +43,7 @@
     "@shared-configs/prettier": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
     "@sondr3/minitest": "^0.1.2",
-    "@types/node": "^20.19.33",
+    "@types/node": "^22.19.11",
     "@types/yargs": "^17.0.35",
     "concurrently": "^9.2.1",
     "eslint": "^9.39.2",
@@ -51,6 +51,6 @@
     "typescript": "^5.9.3"
   },
   "engines": {
-    "node": "20.* || >= 22"
+    "node": "22.* || >= 24"
   }
 }

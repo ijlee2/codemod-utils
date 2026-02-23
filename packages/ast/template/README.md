@@ -31,7 +31,7 @@ Visit https://codemod-utils.netlify.app/docs/packages/codemod-utils-ast-template
 
 ## Compatibility
 
-- Node.js v20 or above
+- Node.js v22 or above
 
 
 ## Contributing

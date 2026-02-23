@@ -45,6 +45,11 @@ pnpx @codemod-utils/cli <your-codemod-name>
 Visit https://codemod-utils.netlify.app/.
 
 
+## Compatibility
+
+- Node.js v22 or above
+
+
 ## Contributing
 
 See the [Contributing](./CONTRIBUTING.md) guide for details.

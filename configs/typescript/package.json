@@ -17,7 +17,7 @@
     "lint:fix": "prettier \"**/*.{json,mjs}\" --cache --write"
   },
   "dependencies": {
-    "@tsconfig/node20": "^20.1.9",
+    "@tsconfig/node22": "^22.0.5",
     "@tsconfig/strictest": "^2.0.8"
   },
   "devDependencies": {
@@ -33,6 +33,6 @@
     }
   },
   "engines": {
-    "node": "20.* || >= 22"
+    "node": "22.* || >= 24"
   }
 }
