@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "fixturify": "^3.0.0",
-    "glob": "^13.0.2"
+    "glob": "^13.0.6"
   },
   "devDependencies": {
     "@shared-configs/eslint-config-node": "workspace:*",

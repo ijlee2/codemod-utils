@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.8",
-    "@ijlee2-frontend-configs/changesets": "^1.0.2",
+    "@ijlee2-frontend-configs/changesets": "^2.0.0",
     "concurrently": "^9.2.1",
     "sort-package-json": "^3.6.1",
     "update-workspace-root-version": "^2.1.5"
