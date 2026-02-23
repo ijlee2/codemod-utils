@@ -40,7 +40,7 @@ cd <path/to/cloned/repo>
 
 ## Compatibility
 
-- Node.js v20 or above
+- Node.js v22 or above
 
 
 ## Contributing
