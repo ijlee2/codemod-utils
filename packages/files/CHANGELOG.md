@@ -1,5 +1,15 @@
 # @codemod-utils/files
 
+## 4.0.0
+
+### Major Changes
+
+- [#268](https://github.com/ijlee2/codemod-utils/pull/268) Dropped support for Node 20 ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#269](https://github.com/ijlee2/codemod-utils/pull/269) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.2.8
 
 ### Patch Changes

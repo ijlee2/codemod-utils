@@ -1,5 +1,11 @@
 # @codemod-utils/ast-template-tag
 
+## 2.0.0
+
+### Major Changes
+
+- [#268](https://github.com/ijlee2/codemod-utils/pull/268) Dropped support for Node 20 ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.2.4
 
 ### Patch Changes

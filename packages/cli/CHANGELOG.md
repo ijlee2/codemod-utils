@@ -1,5 +1,12 @@
 # @codemod-utils/cli
 
+## 4.0.0
+
+### Major Changes
+
+- [#270](https://github.com/ijlee2/codemod-utils/pull/270) Updated blueprints to support Node 22 and above ([@ijlee2](https://github.com/ijlee2))
+- [#268](https://github.com/ijlee2/codemod-utils/pull/268) Dropped support for Node 20 ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.10.4
 
 ### Patch Changes

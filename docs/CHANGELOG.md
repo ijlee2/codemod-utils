@@ -1,5 +1,15 @@
 # docs-app-for-codemod-utils
 
+## 1.2.0
+
+### Minor Changes
+
+- [#268](https://github.com/ijlee2/codemod-utils/pull/268) Dropped support for Node 20 ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#269](https://github.com/ijlee2/codemod-utils/pull/269) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.1
 
 ### Patch Changes
