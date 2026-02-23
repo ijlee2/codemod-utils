@@ -17,7 +17,7 @@ Visit https://codemod-utils.netlify.app/docs/packages/codemod-utils-tests.
 
 ## Compatibility
 
-- Node.js v20 or above
+- Node.js v22 or above
 
 
 ## Contributing
