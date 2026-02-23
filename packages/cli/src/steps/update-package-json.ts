@@ -54,7 +54,7 @@ function updateDevDependencies(
   ]);
 
   if (codemod.hasTypeScript) {
-    packagesToInstall.add('@tsconfig/node20');
+    packagesToInstall.add('@tsconfig/node22');
     packagesToInstall.add('@tsconfig/strictest');
     packagesToInstall.add('@types/node');
     packagesToInstall.add('@types/yargs');
