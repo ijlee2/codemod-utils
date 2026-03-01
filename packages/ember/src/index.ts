@@ -1,3 +1,3 @@
-export * from './entity-name/camelize.js';
-export * from './entity-name/double-colonize.js';
-export * from './entity-name/pascalize.js';
+export * from './camelize.js';
+export * from './double-colonize.js';
+export * from './pascalize.js';
