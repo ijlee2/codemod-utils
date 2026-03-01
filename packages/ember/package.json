@@ -51,7 +51,6 @@
     "@shared-configs/prettier": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
     "@sondr3/minitest": "^0.1.2",
-    "@types/lodash.template": "^4.5.3",
     "@types/node": "^22.19.11",
     "concurrently": "^9.2.1",
     "eslint": "^9.39.2",

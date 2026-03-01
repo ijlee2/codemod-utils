@@ -1,6 +1,6 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { doubleColonize } from '../../../src/index.js';
+import { doubleColonize } from '../../src/index.js';
 
 test('entity-name | double-colonize > nested', function () {
   assert.strictEqual(doubleColonize('ui/form'), 'Ui::Form');
