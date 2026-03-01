@@ -344,9 +344,6 @@ importers:
       '@sondr3/minitest':
         specifier: ^0.1.2
         version: 0.1.2
-      '@types/lodash.template':
-        specifier: ^4.5.3
-        version: 4.5.3
       '@types/node':
         specifier: ^22.19.11
         version: 22.19.11
@@ -1438,9 +1435,6 @@ packages:
 
   '@types/linkify-it@5.0.0':
     resolution: {integrity: sha512-sVDA58zAw4eWAffKOaQH5/5j3XeayukzDk+ewSsnv3p4yJEZHCCzMDiZM8e0OUrRvmpGZ85jf4yDHkHsgBNr9Q==}
-
-  '@types/lodash.template@4.5.3':
-    resolution: {integrity: sha512-Mo0UYKLu1oXgkV9TVoXZLlXXjyIXlW7ZQRxi/4gQJmzJr63dmicE8gG0OkPjYTKBrBic852q0JzqrtNUWLBIyA==}
 
   '@types/lodash@4.17.24':
     resolution: {integrity: sha512-gIW7lQLZbue7lRSWEFql49QJJWThrTFFeIMJdp3eH4tKoxm1OvEPg02rm4wCCSHS0cL3/Fizimb35b7k8atwsQ==}
@@ -4410,10 +4404,6 @@ snapshots:
   '@types/json-schema@7.0.15': {}
 
   '@types/linkify-it@5.0.0': {}
-
-  '@types/lodash.template@4.5.3':
-    dependencies:
-      '@types/lodash': 4.17.24
 
   '@types/lodash@4.17.24': {}
 
