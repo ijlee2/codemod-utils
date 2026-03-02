@@ -79,6 +79,10 @@ export default defineConfig({
             link: 'https://github.com/ijlee2/codemod-utils/blob/main/packages/tests/CHANGELOG.md',
             text: '@codemod-utils/tests',
           },
+          {
+            link: 'https://github.com/ijlee2/codemod-utils/blob/main/packages/threads/CHANGELOG.md',
+            text: '@codemod-utils/threads',
+          },
         ],
         text: 'Changelogs',
       },

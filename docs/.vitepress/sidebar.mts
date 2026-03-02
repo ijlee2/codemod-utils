@@ -50,6 +50,10 @@ export const sidebar: DefaultTheme.Sidebar = [
         link: '/docs/packages/codemod-utils-tests',
         text: '@codemod-utils/tests',
       },
+      {
+        link: '/docs/packages/codemod-utils-threads',
+        text: '@codemod-utils/threads',
+      },
     ],
     text: 'Packages',
   },
