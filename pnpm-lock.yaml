@@ -471,6 +471,39 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
 
+  packages/threads:
+    devDependencies:
+      '@codemod-utils/tests':
+        specifier: workspace:*
+        version: link:../tests
+      '@shared-configs/eslint-config-node':
+        specifier: workspace:*
+        version: link:../../configs/eslint/node
+      '@shared-configs/prettier':
+        specifier: workspace:*
+        version: link:../../configs/prettier
+      '@shared-configs/typescript':
+        specifier: workspace:*
+        version: link:../../configs/typescript
+      '@sondr3/minitest':
+        specifier: ^0.1.2
+        version: 0.1.2
+      '@types/node':
+        specifier: ^22.19.11
+        version: 22.19.11
+      concurrently:
+        specifier: ^9.2.1
+        version: 9.2.1
+      eslint:
+        specifier: ^9.39.2
+        version: 9.39.2
+      prettier:
+        specifier: ^3.8.1
+        version: 3.8.1
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
 packages:
 
   '@algolia/abtesting@1.14.0':
