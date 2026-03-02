@@ -38,6 +38,7 @@ pnpx @codemod-utils/cli <your-codemod-name>
 - [`@codemod-utils/files`](./packages/files/README.md)
 - [`@codemod-utils/package-json`](./packages/package-json/README.md)
 - [`@codemod-utils/tests`](./packages/tests/README.md)
+- [`@codemod-utils/threads`](./packages/threads/README.md)
 
 
 ## Documentation
