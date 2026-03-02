@@ -11,9 +11,9 @@ test('parallelize > vector (error)', async function () {
 
   await assert.rejects(
     async () => {
-      await parallelize(taskThatErrors, {
-        datasets,
-        workerFilePath: '../tests/helpers/vector/worker.js',
+      await parallelize(taskThatErrors, datasets, {
+        importMetaUrl: import.meta.url,
+        workerFilePath: '../helpers/vector/worker.js',
       });
     },
     (error: Error) => {
