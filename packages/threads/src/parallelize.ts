@@ -5,6 +5,11 @@ import { runTask, type Task } from './run-task.js';
 
 const MIN_NUM_TASKS_PER_WORKER = 100;
 
+type WorkerOptions = {
+  importMetaUrl: string;
+  workerFilePath: string;
+};
+
 function batchDatasets<T>(
   datasets: T[],
   numTasksPerWorker: number,
@@ -22,11 +27,13 @@ function batchDatasets<T>(
 }
 
 function createRunWorker<U>(
-  workerFilePath: string,
+  workerOptions: WorkerOptions,
 ): <T>(datasets: T[]) => Promise<U[]> {
+  const { importMetaUrl, workerFilePath } = workerOptions;
+
   function runWorker<T>(datasets: T[]): Promise<U[]> {
     return new Promise((resolve, reject) => {
-      const workerUrl = new URL(workerFilePath, import.meta.url);
+      const workerUrl = new URL(workerFilePath, importMetaUrl);
 
       const worker = new Worker(workerUrl, {
         env: SHARE_ENV,
@@ -50,12 +57,9 @@ function createRunWorker<U>(
 
 export async function parallelize<T extends unknown[], U>(
   task: Task<T, U>,
-  options: {
-    datasets: T[];
-    workerFilePath: string;
-  },
+  datasets: T[],
+  workerOptions: WorkerOptions,
 ): Promise<U[]> {
-  const { datasets, workerFilePath } = options;
   const numTasks = datasets.length;
 
   if (numTasks < MIN_NUM_TASKS_PER_WORKER) {
@@ -74,7 +78,7 @@ export async function parallelize<T extends unknown[], U>(
     numTasksPerWorker,
   );
 
-  const runWorker = createRunWorker<U>(workerFilePath);
+  const runWorker = createRunWorker<U>(workerOptions);
 
   const [mainThreadResults, ...workerResults] = await Promise.all([
     runTask(task, datasetsForMainThread),
