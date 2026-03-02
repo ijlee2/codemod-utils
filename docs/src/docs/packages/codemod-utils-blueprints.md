@@ -96,7 +96,7 @@ Returns where the codemod ends up being installed on the user's machine.
 
 ```ts [Signature]
 /**
- * @param fileURL
+ * @param importMetaUrl
  *
  * Pass the value of `import.meta.url`.
  *
@@ -104,7 +104,7 @@ Returns where the codemod ends up being installed on the user's machine.
  *
  * The installation path.
  */
-function getFilePath(fileURL: string): string;
+function getFilePath(importMetaUrl: string): string;
 ```
 
 ```ts [Example (Utility)]
@@ -115,9 +115,10 @@ import { join } from 'node:path';
 
 import { getFilePath } from '@codemod-utils/blueprints';
 
-const fileURL = import.meta.url;
-
-export const blueprintsRoot = join(getFilePath(fileURL), '../../blueprints');
+export const blueprintsRoot = join(
+  getFilePath(import.meta.url),
+  '../../blueprints',
+);
 ```
 
 ```ts [Example (Consumer)]

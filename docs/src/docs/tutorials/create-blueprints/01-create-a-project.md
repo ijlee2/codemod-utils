@@ -61,14 +61,15 @@ This file provides a variable called `blueprintsRoot`. When end-developers insta
 export * from './blueprints/blueprints-root.js';
 ```
 
-```ts [src/utils/blueprints/blueprints-root.ts]{7}
+```ts [src/utils/blueprints/blueprints-root.ts]{5-8}
 import { join } from 'node:path';
 
 import { getFilePath } from '@codemod-utils/blueprints';
 
-const fileURL = import.meta.url;
-
-export const blueprintsRoot = join(getFilePath(fileURL), '../../blueprints');
+export const blueprintsRoot = join(
+  getFilePath(import.meta.url),
+  '../../blueprints',
+);
 ```
 
 :::
