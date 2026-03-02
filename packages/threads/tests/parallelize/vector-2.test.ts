@@ -1,0 +1,18 @@
+import { test } from '@codemod-utils/tests';
+
+import { parallelize } from '../../src/index.js';
+import { assertOutput, getDatasets, task } from '../helpers/vector/index.js';
+
+const MIN_NUM_TASKS_PER_WORKER = 100;
+
+test('parallelize > vector (2)', async function () {
+  const numTasks = MIN_NUM_TASKS_PER_WORKER - 1;
+  const datasets = getDatasets(numTasks);
+
+  const output = await parallelize(task, {
+    datasets,
+    workerFilePath: '../tests/helpers/vector/worker.js',
+  });
+
+  assertOutput(output);
+});
