@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 /**
  * Returns where the codemod ends up being installed on the user's machine.
  *
- * @param fileURL
+ * @param importMetaUrl
  *
  * Pass the value of `import.meta.url`.
  *
@@ -20,9 +20,10 @@ import { fileURLToPath } from 'node:url';
  * // src/utils/blueprints/blueprints-root.ts
  * import { join } from 'node:path';
  *
- * const fileURL = import.meta.url;
- *
- * export const blueprintsRoot = join(getFilePath(fileURL), '../../blueprints');
+ * export const blueprintsRoot = join(
+ *   getFilePath(import.meta.url),
+ *   '../../blueprints',
+ * );
  * ```
  *
  * Afterwards, prepend the file path with `blueprintsRoot`.
@@ -41,8 +42,8 @@ import { fileURLToPath } from 'node:url';
  * });
  * ```
  */
-export function getFilePath(fileURL: string): string {
-  const __filename = fileURLToPath(fileURL);
+export function getFilePath(importMetaUrl: string): string {
+  const __filename = fileURLToPath(importMetaUrl);
   const __dirname = dirname(__filename);
 
   return __dirname;
