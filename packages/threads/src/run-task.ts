@@ -18,13 +18,6 @@ export async function runTask<T extends unknown[], U>(
     try {
       const result = await promise;
       results.push(result);
-    } catch (error) {
-      if (!firstCaughtError) {
-        firstCaughtError = error as Error;
-      }
-
-      // Re-throw to reject `promise`
-      throw error;
     } finally {
       tasksRunning.delete(promise);
     }
@@ -32,36 +25,21 @@ export async function runTask<T extends unknown[], U>(
 
   async function spawnTasks(): Promise<void> {
     for (const dataset of datasets) {
-      // Don't spawn tasks if an error has occurred
-      if (firstCaughtError) {
-        break;
-      }
-
       // Wait for a task to complete before spawning more
       if (tasksRunning.size >= MAX_NUM_TASKS_RUNNING) {
-        try {
-          await Promise.race(tasksRunning);
-        } catch {
-          // Error is caught here, but handled in `runTask`.
-          // Continue to process the remaining tasks.
-        }
+        await Promise.race(tasksRunning);
       }
 
-      // Don't use `await` here. Just spawn the task.
-      runTask(...dataset).catch(() => {
-        // Errors are already handled in `runTask`.
-        // This catch is to prevent `unhandled rejection`` warnings.
+      runTask(...dataset).catch((error) => {
+        if (!firstCaughtError) {
+          firstCaughtError = error as Error;
+        }
       });
     }
 
-    try {
-      // Wait for all remaining tasks to complete
-      if (tasksRunning.size > 0) {
-        await Promise.all(tasksRunning);
-      }
-    } catch {
-      // Error is caught here, but `firstCaughtError` has already been
-      // defined in `runTask`
+    // Wait for all remaining tasks to complete
+    if (tasksRunning.size > 0) {
+      await Promise.all(tasksRunning);
     }
   }
 

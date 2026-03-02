@@ -85,3 +85,11 @@ export function task(vector: Vector, _options: Options): Vector {
 
   return newVector;
 }
+
+export function taskThatErrors(vector: Vector, options: Options): Vector {
+  if (options.isRandom) {
+    throw new Error(`Could not run ${options.id}`);
+  }
+
+  return task(vector, options);
+}
