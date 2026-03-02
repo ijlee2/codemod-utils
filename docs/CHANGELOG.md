@@ -1,5 +1,11 @@
 # docs-app-for-codemod-utils
 
+## 1.3.1
+
+### Patch Changes
+
+- [#277](https://github.com/ijlee2/codemod-utils/pull/277) Renamed fileURL to importMetaUrl ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.3.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @codemod-utils/blueprints
 
+## 3.0.1
+
+### Patch Changes
+
+- [#277](https://github.com/ijlee2/codemod-utils/pull/277) Renamed fileURL to importMetaUrl ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.0.0
 
 ### Major Changes
