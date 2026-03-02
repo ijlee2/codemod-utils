@@ -26,6 +26,7 @@ yargs(hideBin(process.argv))
             'blueprints',
             'ember',
             'package-json',
+            'threads',
           ] as const,
           describe: 'Optional @codemod-utils packages to install',
           type: 'array',

@@ -10,6 +10,7 @@ const latestVersions = new Map([
   ['@codemod-utils/files', '4.0.0'],
   ['@codemod-utils/package-json', '4.0.0'],
   ['@codemod-utils/tests', '3.0.0'],
+  ['@codemod-utils/threads', '0.1.0'],
   ['@ijlee2-frontend-configs/changesets', '2.0.0'],
   ['@ijlee2-frontend-configs/eslint-config-node', '3.0.1'],
   ['@ijlee2-frontend-configs/prettier', '3.0.1'],

@@ -57,6 +57,7 @@ Possible values for `--addon` are:
 - [`blueprints`](../blueprints/README.md)
 - [`ember`](../ember/README.md)
 - [`package-json`](../package-json/README.md)
+- [`threads`](../threads/README.md)
 
 
 ### root
