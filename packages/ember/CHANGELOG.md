@@ -1,5 +1,11 @@
 # @codemod-utils/ember
 
+## 4.0.1
+
+### Patch Changes
+
+- [#271](https://github.com/ijlee2/codemod-utils/pull/271) Simplified folder structure ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.0.0
 
 ### Major Changes

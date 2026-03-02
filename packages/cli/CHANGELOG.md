@@ -1,5 +1,15 @@
 # @codemod-utils/cli
 
+## 4.1.0
+
+### Minor Changes
+
+- [#274](https://github.com/ijlee2/codemod-utils/pull/274) Allowed installing @codemod-utils/threads ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#274](https://github.com/ijlee2/codemod-utils/pull/274) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.0.0
 
 ### Major Changes

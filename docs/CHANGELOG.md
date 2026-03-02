@@ -1,5 +1,11 @@
 # docs-app-for-codemod-utils
 
+## 1.3.0
+
+### Minor Changes
+
+- [#275](https://github.com/ijlee2/codemod-utils/pull/275) Scaffolded page for @codemod-utils/threads ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.2.0
 
 ### Minor Changes
