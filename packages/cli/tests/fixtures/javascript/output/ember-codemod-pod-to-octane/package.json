@@ -37,14 +37,14 @@
     "@changesets/cli": "^2.29.8",
     "@codemod-utils/tests": "^3.0.0",
     "@ijlee2-frontend-configs/changesets": "^2.0.0",
-    "@ijlee2-frontend-configs/eslint-config-node": "^3.0.0",
-    "@ijlee2-frontend-configs/prettier": "^3.0.0",
+    "@ijlee2-frontend-configs/eslint-config-node": "^3.0.1",
+    "@ijlee2-frontend-configs/prettier": "^3.0.1",
     "@sondr3/minitest": "^0.1.2",
     "concurrently": "^9.2.1",
     "eslint": "^9.39.2",
     "prettier": "^3.8.1"
   },
-  "packageManager": "pnpm@10.30.1",
+  "packageManager": "pnpm@10.30.3",
   "engines": {
     "node": "22.* || >= 24"
   }
