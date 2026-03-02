@@ -31,6 +31,7 @@ pnpx @codemod-utils/cli <your-codemod-name>
 - [@codemod-utils/files](https://github.com/ijlee2/codemod-utils/tree/main/packages/files/README.md)
 - [@codemod-utils/package-json](https://github.com/ijlee2/codemod-utils/tree/main/packages/package-json/README.md)
 - [@codemod-utils/tests](https://github.com/ijlee2/codemod-utils/tree/main/packages/tests/README.md)
+- [@codemod-utils/threads](https://github.com/ijlee2/codemod-utils/tree/main/packages/threads/README.md)
 
 
 ## Made with codemod-utils

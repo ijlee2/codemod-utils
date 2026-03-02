@@ -29,6 +29,7 @@ Possible values for `--addon` are:
 - [`blueprints`](./packages/codemod-utils-blueprints)
 - [`ember`](./packages/codemod-utils-ember)
 - [`package-json`](./packages/codemod-utils-package-json)
+- [`threads`](./packages/codemod-utils-threads)
 
 
 ## 2. Make the initial commit {#2-make-the-initial-commit}
