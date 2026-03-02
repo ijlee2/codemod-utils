@@ -10,3 +10,4 @@ packages:
   - packages/files
   - packages/package-json
   - packages/tests
+  - packages/threads

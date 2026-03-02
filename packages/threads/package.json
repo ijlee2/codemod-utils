@@ -1,0 +1,64 @@
+{
+  "name": "@codemod-utils/threads",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Utilities for parallelization",
+  "keywords": [
+    "codemod",
+    "ember-codemod"
+  ],
+  "homepage": "https://codemod-utils.netlify.app/",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ijlee2/codemod-utils.git",
+    "directory": "packages/threads"
+  },
+  "license": "MIT",
+  "author": "Isaac J. Lee",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    }
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "dist/*"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "sh build.sh --production",
+    "format": "prettier . --cache --write",
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" && pnpm format",
+    "lint:format": "prettier . --cache --check",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:types": "tsc --noEmit",
+    "test": "sh build.sh --test && mt dist-for-testing --quiet"
+  },
+  "devDependencies": {
+    "@codemod-utils/tests": "workspace:*",
+    "@shared-configs/eslint-config-node": "workspace:*",
+    "@shared-configs/prettier": "workspace:*",
+    "@shared-configs/typescript": "workspace:*",
+    "@sondr3/minitest": "^0.1.2",
+    "@types/node": "^22.19.11",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.39.2",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": "22.* || >= 24"
+  }
+}
