@@ -28,7 +28,7 @@ function emberize(value: string): string {
  * @example
  *
  * ```ts
- * const newValue = doubleColonize('ui/form/input');
+ * const output = doubleColonize('ui/form/input');
  *
  * // 'Ui::Form::Input'
  * ```

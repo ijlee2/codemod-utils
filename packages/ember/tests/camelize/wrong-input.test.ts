@@ -2,7 +2,7 @@ import { assert, test } from '@codemod-utils/tests';
 
 import { camelize } from '../../src/index.js';
 
-test('entity-name | camelize > wrong input', function () {
+test('camelize > wrong input', function () {
   assert.strictEqual(camelize(''), '');
 
   assert.strictEqual(camelize('-'), '');

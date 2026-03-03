@@ -2,7 +2,7 @@ import { assert, test } from '@codemod-utils/tests';
 
 import { pascalize } from '../../src/index.js';
 
-test('entity-name | pascalize > nested', function () {
+test('pascalize > nested', function () {
   assert.strictEqual(pascalize('ui/form'), 'UiForm');
 
   assert.strictEqual(pascalize('ui/form/input'), 'UiFormInput');
@@ -13,4 +13,6 @@ test('entity-name | pascalize > nested', function () {
     pascalize('widgets/widget-3/tour-schedule/responsive-image'),
     'WidgetsWidget3TourScheduleResponsiveImage',
   );
+
+  assert.strictEqual(pascalize('rezept/äpfel-und-öl'), 'RezeptÄpfelUndÖl');
 });
