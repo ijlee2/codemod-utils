@@ -1,5 +1,11 @@
 # docs-app-for-codemod-utils
 
+## 1.3.2
+
+### Patch Changes
+
+- [#278](https://github.com/ijlee2/codemod-utils/pull/278) Created invertDoubleColonize ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.3.1
 
 ### Patch Changes

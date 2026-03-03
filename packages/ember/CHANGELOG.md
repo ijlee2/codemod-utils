@@ -1,5 +1,11 @@
 # @codemod-utils/ember
 
+## 4.1.0
+
+### Minor Changes
+
+- [#278](https://github.com/ijlee2/codemod-utils/pull/278) Created invertDoubleColonize ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.0.1
 
 ### Patch Changes
