@@ -33,7 +33,7 @@ function camelize(entityName: string): string;
 ```ts [Example]
 import { camelize } from '@codemod-utils/ember';
 
-const newValue = camelize('ui/form/generate-error-message');
+const output = camelize('ui/form/generate-error-message');
 
 // 'uiFormGenerateErrorMessage'
 ```
@@ -64,9 +64,40 @@ function doubleColonize(entityName: string): string;
 ```ts [Example]
 import { doubleColonize } from '@codemod-utils/ember';
 
-const newValue = doubleColonize('ui/form/input');
+const output = doubleColonize('ui/form/input');
 
 // 'Ui::Form::Input'
+```
+
+:::
+
+
+### invertDoubleColonize {#api-invert-double-colonize}
+
+Converts a double-colonized name back to an entity name.
+
+::: code-group
+
+```ts [Signature]
+/**
+ * @param name
+ *
+ * An entity's name in double colon case.
+ *
+ * @return
+ *
+ * The name of an entity (made up of lowercase letters, hyphen,
+ * and forward slash).
+ */
+function invertDoubleColonize(entityName: string): string;
+```
+
+```ts [Example]
+import { invertDoubleColonize } from '@codemod-utils/ember';
+
+const output = invertDoubleColonize('Ui::Form::Input');
+
+// 'ui/form/input'
 ```
 
 :::
@@ -95,7 +126,7 @@ function pascalize(entityName: string): string;
 ```ts [Example]
 import { pascalize } from '@codemod-utils/ember';
 
-const newValue = pascalize('ui/form/input');
+const output = pascalize('ui/form/input');
 
 // 'UiFormInput'
 ```

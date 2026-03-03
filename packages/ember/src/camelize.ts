@@ -16,7 +16,7 @@ import { pascalize } from './pascalize.js';
  * @example
  *
  * ```ts
- * const newValue = camelize('ui/form/generate-error-message');
+ * const output = camelize('ui/form/generate-error-message');
  *
  * // 'uiFormGenerateErrorMessage'
  * ```

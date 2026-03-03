@@ -16,7 +16,7 @@ import { doubleColonize } from './double-colonize.js';
  * @example
  *
  * ```ts
- * const newValue = pascalize('ui/form/input');
+ * const output = pascalize('ui/form/input');
  *
  * // 'UiFormInput'
  * ```
