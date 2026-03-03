@@ -6,7 +6,7 @@ const latestVersions = new Map([
   ['@codemod-utils/ast-template', '3.0.0'],
   ['@codemod-utils/ast-template-tag', '2.0.0'],
   ['@codemod-utils/blueprints', '3.0.1'],
-  ['@codemod-utils/ember', '4.0.1'],
+  ['@codemod-utils/ember', '4.1.0'],
   ['@codemod-utils/files', '4.0.0'],
   ['@codemod-utils/package-json', '4.0.0'],
   ['@codemod-utils/tests', '3.0.0'],
