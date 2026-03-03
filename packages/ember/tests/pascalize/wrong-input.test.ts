@@ -2,7 +2,7 @@ import { assert, test } from '@codemod-utils/tests';
 
 import { pascalize } from '../../src/index.js';
 
-test('entity-name | pascalize > wrong input', function () {
+test('pascalize > wrong input', function () {
   assert.strictEqual(pascalize(''), '');
 
   assert.strictEqual(pascalize('-'), '');

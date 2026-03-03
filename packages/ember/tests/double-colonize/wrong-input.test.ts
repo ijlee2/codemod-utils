@@ -2,7 +2,7 @@ import { assert, test } from '@codemod-utils/tests';
 
 import { doubleColonize } from '../../src/index.js';
 
-test('entity-name | double-colonize > wrong input', function () {
+test('double-colonize > wrong input', function () {
   assert.strictEqual(doubleColonize(''), '');
 
   assert.strictEqual(doubleColonize('-'), '');
