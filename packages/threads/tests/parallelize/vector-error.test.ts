@@ -1,7 +1,7 @@
 import { assert, test } from '@codemod-utils/tests';
 
 import { parallelize } from '../../src/index.js';
-import { getDatasets, taskThatErrors } from '../helpers/vector/index.js';
+import { getDatasets, taskThatErrors } from '../helpers/vector/setup.js';
 
 const MIN_NUM_TASKS_PER_WORKER = 100;
 

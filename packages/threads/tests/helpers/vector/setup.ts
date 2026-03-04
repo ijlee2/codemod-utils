@@ -7,8 +7,6 @@ type Options = {
   isRandom: boolean;
 };
 
-export type Dataset = [Vector, Options];
-
 function vecInit(n: number): Vector {
   return new Array(n).fill(0) as Vector;
 }
@@ -49,8 +47,8 @@ export function assertOutput(output: Vector[]): void {
   assert.strictEqual(failed, false);
 }
 
-export function getDatasets(numTasks: number): Dataset[] {
-  const datasets: Dataset[] = [];
+export function getDatasets(numTasks: number): [Vector, Options][] {
+  const datasets: [Vector, Options][] = [];
 
   for (let i = 0; i < numTasks; i++) {
     const isRandom = i % 2 === 0;
