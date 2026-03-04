@@ -1,5 +1,11 @@
 # docs-app-for-codemod-utils
 
+## 1.3.3
+
+### Patch Changes
+
+- [#281](https://github.com/ijlee2/codemod-utils/pull/281) Listed --threads as an option @codemod-utils/cli ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.3.2
 
 ### Patch Changes
