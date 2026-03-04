@@ -55,6 +55,7 @@ Possible values for `--addon` are:
 - [`blueprints`](./codemod-utils-blueprints)
 - [`ember`](./codemod-utils-ember)
 - [`package-json`](./codemod-utils-package-json)
+- [`threads`](./packages/codemod-utils-threads)
 
 
 ### root {#options-root}
