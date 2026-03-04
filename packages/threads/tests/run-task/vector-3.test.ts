@@ -1,7 +1,7 @@
 import { test } from '@codemod-utils/tests';
 
 import { runTask } from '../../src/index.js';
-import { assertOutput, getDatasets, task } from '../helpers/vector/index.js';
+import { assertOutput, getDatasets, task } from '../helpers/vector/setup.js';
 
 const MAX_NUM_TASKS_RUNNING = 10;
 

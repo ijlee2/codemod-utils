@@ -3,7 +3,7 @@ import { availableParallelism } from 'node:os';
 import { test } from '@codemod-utils/tests';
 
 import { parallelize } from '../../src/index.js';
-import { assertOutput, getDatasets, task } from '../helpers/vector/index.js';
+import { assertOutput, getDatasets, task } from '../helpers/vector/setup.js';
 
 const MIN_NUM_TASKS_PER_WORKER = 100;
 
