@@ -36,7 +36,7 @@
     "yargs": "^18.0.0"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.29.8",
+    "@changesets/cli": "^2.30.0",
     "@codemod-utils/tests": "^3.0.0",
     "@ijlee2-frontend-configs/changesets": "^2.0.0",
     "@ijlee2-frontend-configs/eslint-config-node": "^3.0.1",
@@ -47,7 +47,7 @@
     "@types/node": "^22.19.11",
     "@types/yargs": "^17.0.35",
     "concurrently": "^9.2.1",
-    "eslint": "^9.39.2",
+    "eslint": "^9.39.3",
     "prettier": "^3.8.1",
     "typescript": "^5.9.3"
   },

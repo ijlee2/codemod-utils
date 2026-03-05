@@ -57,7 +57,7 @@
     "@types/lodash": "^4.17.24",
     "@types/node": "^22.19.11",
     "concurrently": "^9.2.1",
-    "eslint": "^9.39.2",
+    "eslint": "^9.39.3",
     "prettier": "^3.8.1",
     "typescript": "^5.9.3"
   },

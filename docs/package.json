@@ -31,7 +31,7 @@
     "@shared-configs/stylelint": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
     "concurrently": "^9.2.1",
-    "eslint": "^9.39.2",
+    "eslint": "^9.39.3",
     "prettier": "^3.8.1",
     "stylelint": "^17.4.0",
     "typescript": "^5.9.3",

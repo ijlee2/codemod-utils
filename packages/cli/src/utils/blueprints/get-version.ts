@@ -1,7 +1,7 @@
 import { decideVersion } from '@codemod-utils/blueprints';
 
 const latestVersions = new Map([
-  ['@changesets/cli', '2.29.8'],
+  ['@changesets/cli', '2.30.0'],
   ['@codemod-utils/ast-javascript', '3.0.0'],
   ['@codemod-utils/ast-template', '3.0.0'],
   ['@codemod-utils/ast-template-tag', '2.0.0'],
@@ -10,7 +10,7 @@ const latestVersions = new Map([
   ['@codemod-utils/files', '4.0.0'],
   ['@codemod-utils/package-json', '4.0.0'],
   ['@codemod-utils/tests', '3.0.0'],
-  ['@codemod-utils/threads', '0.2.0'],
+  ['@codemod-utils/threads', '0.3.0'],
   ['@ijlee2-frontend-configs/changesets', '2.0.0'],
   ['@ijlee2-frontend-configs/eslint-config-node', '3.0.1'],
   ['@ijlee2-frontend-configs/prettier', '3.0.1'],
@@ -20,7 +20,7 @@ const latestVersions = new Map([
   ['@types/node', '22.19.11'],
   ['@types/yargs', '17.0.35'],
   ['concurrently', '9.2.1'],
-  ['eslint', '9.39.2'],
+  ['eslint', '9.39.3'],
   ['pnpm', '10.30.3'],
   ['prettier', '3.8.1'],
   ['typescript', '5.9.3'],
