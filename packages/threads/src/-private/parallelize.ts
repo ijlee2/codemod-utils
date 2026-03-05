@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import { SHARE_ENV, Worker } from 'node:worker_threads';
 
 export type WorkerOptions = {
@@ -48,4 +49,16 @@ export function createRunWorker<U>(
   }
 
   return runWorker;
+}
+
+export function validateWorkerFilePath(workerOptions: WorkerOptions): void {
+  const { importMetaUrl, workerFilePath } = workerOptions;
+
+  const workerUrl = new URL(workerFilePath, importMetaUrl);
+
+  if (!existsSync(workerUrl)) {
+    throw new Error(
+      `Worker file not found (workerFilePath: ${workerFilePath})`,
+    );
+  }
 }
