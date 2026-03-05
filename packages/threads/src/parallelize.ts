@@ -3,6 +3,7 @@ import { availableParallelism } from 'node:os';
 import {
   batchDatasets,
   createRunWorker,
+  validateWorkerFilePath,
   type WorkerOptions,
 } from './-private/parallelize.js';
 import { runTask, type Task } from './run-task.js';
@@ -14,6 +15,8 @@ export async function parallelize<T extends unknown[], U>(
   datasets: T[],
   workerOptions: WorkerOptions,
 ): Promise<U[]> {
+  validateWorkerFilePath(workerOptions);
+
   const numTasks = datasets.length;
 
   if (numTasks < MIN_NUM_TASKS_PER_WORKER) {
