@@ -1,5 +1,11 @@
 # docs-app-for-codemod-utils
 
+## 1.3.4
+
+### Patch Changes
+
+- [#283](https://github.com/ijlee2/codemod-utils/pull/283) Documented public API ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.3.3
 
 ### Patch Changes

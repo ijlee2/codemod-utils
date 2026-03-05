@@ -1,5 +1,12 @@
 # @codemod-utils/threads
 
+## 0.3.0
+
+### Minor Changes
+
+- [#283](https://github.com/ijlee2/codemod-utils/pull/283) Documented public API ([@ijlee2](https://github.com/ijlee2))
+- [#282](https://github.com/ijlee2/codemod-utils/pull/282) Checked the existence of worker file ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.2.1
 
 ### Patch Changes
