@@ -46,7 +46,7 @@ const MIN_NUM_TASKS_PER_WORKER = 100;
  * export async function analyzeFiles(options: Options): Promise<void> {
  *   const { projectRoot } = options;
  *
- *   const datasets: Parameters<typeof task> = [
+ *   const datasets: Parameters<typeof task>[] = [
  *     ['LICENSE.md', projectRoot],
  *     ['README.md', projectRoot],
  *   ];
