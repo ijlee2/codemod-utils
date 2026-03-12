@@ -1,5 +1,15 @@
 # docs-app-for-codemod-utils
 
+## 1.4.0
+
+### Minor Changes
+
+- [#285](https://github.com/ijlee2/codemod-utils/pull/285) Updated vite to 8.0.0 ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#286](https://github.com/ijlee2/codemod-utils/pull/286) Fixed a typo in documentation ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.3.4
 
 ### Patch Changes

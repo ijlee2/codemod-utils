@@ -1,5 +1,11 @@
 # @codemod-utils/threads
 
+## 0.3.1
+
+### Patch Changes
+
+- [#286](https://github.com/ijlee2/codemod-utils/pull/286) Fixed a typo in documentation ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.3.0
 
 ### Minor Changes
