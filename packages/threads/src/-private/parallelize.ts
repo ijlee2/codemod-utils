@@ -22,12 +22,12 @@ export function batchDatasets<T>(
   return [datasetsForMainThread, datasetsForWorkerThreads];
 }
 
-export function createRunWorker<U>(
+export function getCreateWorker<U>(
   workerOptions: WorkerOptions,
 ): <T>(datasets: T[]) => Promise<U[]> {
   const { importMetaUrl, workerFilePath } = workerOptions;
 
-  function runWorker<T>(datasets: T[]): Promise<U[]> {
+  function createWorker<T>(datasets: T[]): Promise<U[]> {
     return new Promise((resolve, reject) => {
       const workerUrl = new URL(workerFilePath, importMetaUrl);
 
@@ -48,7 +48,7 @@ export function createRunWorker<U>(
     });
   }
 
-  return runWorker;
+  return createWorker;
 }
 
 export function validateWorkerFilePath(workerOptions: WorkerOptions): void {

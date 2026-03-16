@@ -2,7 +2,7 @@ import { availableParallelism } from 'node:os';
 
 import {
   batchDatasets,
-  createRunWorker,
+  getCreateWorker,
   validateWorkerFilePath,
   type WorkerOptions,
 } from './-private/parallelize.js';
@@ -115,11 +115,11 @@ export async function parallelize<T extends unknown[], U>(
     numTasksPerWorker,
   );
 
-  const runWorker = createRunWorker<U>(workerOptions);
+  const createWorker = getCreateWorker<U>(workerOptions);
 
   const [mainThreadResults, ...workerResults] = await Promise.all([
     runTask(task, datasetsForMainThread),
-    ...datasetsForWorkerThreads.map(runWorker),
+    ...datasetsForWorkerThreads.map(createWorker),
   ]);
 
   return [...mainThreadResults, ...workerResults.flat()];
