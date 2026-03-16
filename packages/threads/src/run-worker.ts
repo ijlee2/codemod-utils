@@ -1,6 +1,6 @@
 import { parentPort, workerData } from 'node:worker_threads';
 
-import { runTask, type Task } from './-private/run-task.js';
+import { runTask, type Task } from './-private/index.js';
 
 /**
  * Runs a task on a worker.
