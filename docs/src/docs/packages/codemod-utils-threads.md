@@ -55,7 +55,7 @@ function parallelize<T extends unknown[], U>(
 ): Promise<U[]>;
 ```
 
-```ts [Example (src/steps/analyze-files.ts)]
+```ts [Example (src/steps/analyze-files.ts)]{12-15}
 import type { Options } from '../types/index.js';
 import { task } from './analyze-files/task.js';
 
@@ -83,33 +83,19 @@ export function task(filePath: string, projectRoot: string): Result {
 ```
 
 ```ts [Example (src/steps/analyze-files/worker.ts)]
-import { parentPort, workerData } from 'node:worker_threads';
-
-import { runTask } from '@codemod-utils/threads';
+import { runWorker } from '@codemod-utils/threads';
 
 import { task } from './task.js';
 
-type WorkerData = {
-  datasets: Parameters<typeof task>[];
-};
-
-const { datasets } = workerData as WorkerData;
-
-runTask(task, datasets)
-  .then((result) => {
-    parentPort?.postMessage(result);
-  })
-  .catch((error) => {
-    throw error;
-  });
+runWorker(task);
 ```
 
 :::
 
 
-### runTask {#api-run-task}
+### runWorker {#api-run-worker}
 
-Runs a task on many datasets. The size of datasets should be moderate. Primarily used to create a worker file for a task.
+Runs a task on a worker.
 
 > [!TIP]
 > 
@@ -122,43 +108,18 @@ Runs a task on many datasets. The size of datasets should be moderate. Primarily
  * @param task
  *
  * Some function to call.
- *
- * @param datasets
- *
- * An array of dataset's.
- * 
- * @return
- * 
- * An array of the task's return value.
  */
 type Task<T extends unknown[], U> = (...dataset: T) => U | Promise<U>;
 
-function runTask<T extends unknown[], U>(
-  task: Task<T, U>,
-  datasets: T[],
-): Promise<U[]>;
+function runWorker<T extends unknown[], U>(task: Task<T, U>): void;
 ```
 
 ```ts [Example (Worker)]{5}
-import { parentPort, workerData } from 'node:worker_threads';
-
-import { runTask } from '@codemod-utils/threads';
+import { runWorker } from '@codemod-utils/threads';
 
 import { task } from './task.js';
 
-type WorkerData = {
-  datasets: Parameters<typeof task>[];
-};
-
-const { datasets } = workerData as WorkerData;
-
-runTask(task, datasets)
-  .then((result) => {
-    parentPort?.postMessage(result);
-  })
-  .catch((error) => {
-    throw error;
-  });
+runWorker(task);
 ```
 
 :::

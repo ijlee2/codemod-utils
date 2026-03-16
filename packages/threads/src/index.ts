@@ -1,2 +1,2 @@
 export * from './parallelize.js';
-export * from './run-task.js';
+export * from './run-worker.js';
