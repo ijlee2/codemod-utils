@@ -1,5 +1,12 @@
 # docs-app-for-codemod-utils
 
+## 1.4.1
+
+### Patch Changes
+
+- [#288](https://github.com/ijlee2/codemod-utils/pull/288) Made runTask private ([@ijlee2](https://github.com/ijlee2))
+- [#288](https://github.com/ijlee2/codemod-utils/pull/288) Created runWorker ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.4.0
 
 ### Minor Changes

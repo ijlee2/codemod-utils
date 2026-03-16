@@ -1,5 +1,16 @@
 # @codemod-utils/threads
 
+## 0.4.0
+
+### Minor Changes
+
+- [#288](https://github.com/ijlee2/codemod-utils/pull/288) Made runTask private ([@ijlee2](https://github.com/ijlee2))
+- [#288](https://github.com/ijlee2/codemod-utils/pull/288) Created runWorker ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#289](https://github.com/ijlee2/codemod-utils/pull/289) Refactored private methods ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.3.1
 
 ### Patch Changes
