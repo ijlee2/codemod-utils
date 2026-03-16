@@ -6,7 +6,7 @@ import {
   validateWorkerFilePath,
   type WorkerOptions,
 } from './-private/parallelize.js';
-import { runTask, type Task } from './run-task.js';
+import { runTask, type Task } from './-private/run-task.js';
 
 const MIN_NUM_TASKS_PER_WORKER = 100;
 
