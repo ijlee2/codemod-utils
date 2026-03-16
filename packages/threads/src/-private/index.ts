@@ -1,3 +1,3 @@
 export * from './batch-datasets.js';
-export * from './parallelize.js';
-export * from './run-task.js';
+export * from './task.js';
+export * from './worker.js';
