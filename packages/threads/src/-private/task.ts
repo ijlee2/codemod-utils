@@ -1,6 +1,7 @@
+const MAX_NUM_TASKS_RUNNING = 10;
+
 class Queue<U> {
   private error: Error | undefined = undefined;
-  declare private maxNumTasksRunning: number;
   private results: U[] = [];
   private tasksRunning = new Set<U | Promise<U>>();
 
@@ -9,7 +10,7 @@ class Queue<U> {
   }
 
   get hasTooManyTasks(): boolean {
-    return this.tasksRunning.size >= this.maxNumTasksRunning;
+    return this.tasksRunning.size >= MAX_NUM_TASKS_RUNNING;
   }
 
   get output():
@@ -36,10 +37,6 @@ class Queue<U> {
     };
   }
 
-  constructor(maxNumTasksRunning: number) {
-    this.maxNumTasksRunning = maxNumTasksRunning;
-  }
-
   async finishTasks(): Promise<void> {
     await Promise.all(this.tasksRunning);
   }
@@ -63,15 +60,13 @@ class Queue<U> {
   }
 }
 
-const MAX_NUM_TASKS_RUNNING = 10;
-
 export type Task<T extends unknown[], U> = (...dataset: T) => U | Promise<U>;
 
 export async function runTask<T extends unknown[], U>(
   task: Task<T, U>,
   datasets: T[],
 ): Promise<U[]> {
-  const queue = new Queue<U>(MAX_NUM_TASKS_RUNNING);
+  const queue = new Queue<U>();
 
   for (const dataset of datasets) {
     if (queue.hasTooManyTasks) {
