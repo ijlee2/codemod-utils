@@ -40,6 +40,8 @@ const MIN_NUM_TASKS_PER_WORKER = 100;
  *
  * ```ts
  * // src/steps/analyze-files.ts
+ * import { parallelize } from '@codemod-utils/threads';
+ *
  * import type { Options } from '../types/index.js';
  * import { task } from './analyze-files/task.js';
  *
@@ -69,25 +71,11 @@ const MIN_NUM_TASKS_PER_WORKER = 100;
  *
  * ```ts
  * // src/steps/analyze-files/worker.ts
- * import { parentPort, workerData } from 'node:worker_threads';
- *
- * import { runTask } from '@codemod-utils/threads';
+ * import { runWorker } from '@codemod-utils/threads';
  *
  * import { task } from './task.js';
  *
- * type WorkerData = {
- *   datasets: Parameters<typeof task>[];
- * };
- *
- * const { datasets } = workerData as WorkerData;
- *
- * runTask(task, datasets)
- *   .then((result) => {
- *     parentPort?.postMessage(result);
- *   })
- *   .catch((error) => {
- *     throw error;
- *   });
+ * runWorker(task);
  * ```
  */
 export async function parallelize<T extends unknown[], U>(
