@@ -6,22 +6,6 @@ export type WorkerOptions = {
   workerFilePath: string;
 };
 
-export function batchDatasets<T>(
-  datasets: T[],
-  numTasksPerWorker: number,
-): [T[], T[][]] {
-  const numTasks = datasets.length;
-  const datasetsForWorkerThreads: T[][] = [];
-
-  for (let i = 0; i < numTasks; i += numTasksPerWorker) {
-    datasetsForWorkerThreads.push(datasets.slice(i, i + numTasksPerWorker));
-  }
-
-  const datasetsForMainThread: T[] = datasetsForWorkerThreads.shift() ?? [];
-
-  return [datasetsForMainThread, datasetsForWorkerThreads];
-}
-
 export function getCreateWorker<U>(
   workerOptions: WorkerOptions,
 ): <T>(datasets: T[]) => Promise<U[]> {
