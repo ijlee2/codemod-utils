@@ -47,7 +47,7 @@ export function assertOutput(output: Vector[]): void {
   assert.strictEqual(failed, false);
 }
 
-export function getDatasets(numTasks: number): [Vector, Options][] {
+export function getDatasets(numTasks: number): Parameters<typeof task>[] {
   const datasets: [Vector, Options][] = [];
 
   for (let i = 0; i < numTasks; i++) {
