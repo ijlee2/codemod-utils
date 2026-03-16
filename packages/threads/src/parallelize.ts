@@ -3,10 +3,11 @@ import { availableParallelism } from 'node:os';
 import {
   batchDatasets,
   getCreateWorker,
+  runTask,
+  type Task,
   validateWorkerFilePath,
   type WorkerOptions,
-} from './-private/parallelize.js';
-import { runTask, type Task } from './-private/run-task.js';
+} from './-private/index.js';
 
 const MIN_NUM_TASKS_PER_WORKER = 100;
 
