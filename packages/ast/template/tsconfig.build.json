@@ -2,7 +2,8 @@
   "extends": "@shared-configs/typescript/node",
   "compilerOptions": {
     "declaration": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "types": ["@types/node"]
   },
   "include": ["src"]
 }
