@@ -24,8 +24,10 @@ testOnPosix('replace-template-tag > class (2)', function () {
     range: {
       endByte: 233,
       endChar: 233,
+      endUtf16Codepoint: 233,
       startByte: 142,
       startChar: 142,
+      startUtf16Codepoint: 142,
     },
   });
 

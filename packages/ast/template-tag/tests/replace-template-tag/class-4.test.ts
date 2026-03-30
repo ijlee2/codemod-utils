@@ -107,10 +107,12 @@ testOnPosix('replace-template-tag > class (4)', function () {
   const newFile = replaceTemplateTag(oldFile, {
     code: normalizeFile([`<template>`, `    New contents`, `  </template>`]),
     range: {
-      startByte: 1541,
       endByte: 2418,
-      startChar: 1541,
       endChar: 2418,
+      endUtf16Codepoint: 2418,
+      startByte: 1541,
+      startChar: 1541,
+      startUtf16Codepoint: 1541,
     },
   });
 

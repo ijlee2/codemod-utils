@@ -20,8 +20,10 @@ testOnPosix('replace-template-tag > template-only (3)', function () {
     range: {
       endByte: 134,
       endChar: 134,
+      endUtf16Codepoint: 134,
       startByte: 51,
       startChar: 51,
+      startUtf16Codepoint: 51,
     },
   });
 

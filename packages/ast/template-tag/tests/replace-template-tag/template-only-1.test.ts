@@ -10,8 +10,10 @@ test('replace-template-tag > template-only (1)', function () {
     range: {
       endByte: 21,
       endChar: 21,
+      endUtf16Codepoint: 21,
       startByte: 0,
       startChar: 0,
+      startUtf16Codepoint: 0,
     },
   });
 

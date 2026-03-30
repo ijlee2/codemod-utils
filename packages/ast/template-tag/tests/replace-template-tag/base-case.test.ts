@@ -10,8 +10,10 @@ test('replace-template-tag > base case', function () {
     range: {
       endByte: 0,
       endChar: 0,
+      endUtf16Codepoint: 0,
       startByte: 0,
       startChar: 0,
+      startUtf16Codepoint: 0,
     },
   });
 
