@@ -1,5 +1,15 @@
 # @codemod-utils/threads
 
+## 1.0.0
+
+### Major Changes
+
+- [#293](https://github.com/ijlee2/codemod-utils/pull/293) Stable release ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#292](https://github.com/ijlee2/codemod-utils/pull/292) Set target to esnext ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.4.0
 
 ### Minor Changes

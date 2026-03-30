@@ -1,5 +1,12 @@
 # @codemod-utils/package-json
 
+## 4.0.1
+
+### Patch Changes
+
+- [#292](https://github.com/ijlee2/codemod-utils/pull/292) Set target to esnext ([@ijlee2](https://github.com/ijlee2))
+- [#292](https://github.com/ijlee2/codemod-utils/pull/292) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.0.0
 
 ### Major Changes

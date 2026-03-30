@@ -1,5 +1,16 @@
 # @codemod-utils/cli
 
+## 4.2.0
+
+### Minor Changes
+
+- [#294](https://github.com/ijlee2/codemod-utils/pull/294) Updated TypeScript configurations ([@ijlee2](https://github.com/ijlee2))
+- [#294](https://github.com/ijlee2/codemod-utils/pull/294) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#292](https://github.com/ijlee2/codemod-utils/pull/292) Set target to esnext ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.1.5
 
 ### Patch Changes

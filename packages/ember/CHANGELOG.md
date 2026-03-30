@@ -1,5 +1,11 @@
 # @codemod-utils/ember
 
+## 4.1.1
+
+### Patch Changes
+
+- [#292](https://github.com/ijlee2/codemod-utils/pull/292) Set target to esnext ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.1.0
 
 ### Minor Changes

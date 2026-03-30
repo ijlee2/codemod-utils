@@ -1,5 +1,15 @@
 # @codemod-utils/ast-template-tag
 
+## 2.1.0
+
+### Minor Changes
+
+- [#292](https://github.com/ijlee2/codemod-utils/pull/292) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#292](https://github.com/ijlee2/codemod-utils/pull/292) Set target to esnext ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.0
 
 ### Major Changes

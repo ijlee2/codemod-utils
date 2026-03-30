@@ -1,5 +1,11 @@
 # @codemod-utils/tests
 
+## 3.0.1
+
+### Patch Changes
+
+- [#292](https://github.com/ijlee2/codemod-utils/pull/292) Set target to esnext ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.0.0
 
 ### Major Changes
