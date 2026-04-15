@@ -18,7 +18,7 @@ _Codemod to [PROVIDE A SHORT DESCRIPTION.]_
 Pass `--root` to run the codemod somewhere else (i.e. not in the current directory).
 
 ```sh
-npx ember-codemod-pod-to-octane --root <path/to/your/project>
+pnpx ember-codemod-pod-to-octane --root <path/to/your/project>
 ```
 
 </details>

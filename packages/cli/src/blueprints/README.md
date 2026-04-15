@@ -18,7 +18,7 @@ _Codemod to [PROVIDE A SHORT DESCRIPTION.]_
 Pass `--root` to run the codemod somewhere else (i.e. not in the current directory).
 
 ```sh
-npx <%= options.codemod.name %> --root <path/to/your/project>
+pnpx <%= options.codemod.name %> --root <path/to/your/project>
 ```
 
 </details>
