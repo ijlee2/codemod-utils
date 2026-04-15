@@ -30,7 +30,7 @@
     "@ijlee2-frontend-configs/changesets": "^2.1.0",
     "concurrently": "^9.2.1",
     "sort-package-json": "^3.6.1",
-    "update-workspace-root-version": "^3.0.0"
+    "update-workspace-root-version": "^3.0.1"
   },
   "packageManager": "pnpm@10.33.0",
   "engines": {
