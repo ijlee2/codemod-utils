@@ -1,5 +1,11 @@
 # @codemod-utils/blueprints
 
+## 3.1.0
+
+### Minor Changes
+
+- [#295](https://github.com/ijlee2/codemod-utils/pull/295) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.0.2
 
 ### Patch Changes
