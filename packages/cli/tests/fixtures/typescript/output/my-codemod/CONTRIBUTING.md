@@ -1,6 +1,6 @@
-# Contributing to @my-org/my-codemod
+# Contributing to my-codemod
 
-Open source projects like `@my-org/my-codemod` live on your words of encouragement and contribution. Please give feedback, report issues, or submit pull requests!
+Open source projects like `my-codemod` live on your words of encouragement and contribution. Please give feedback, report issues, or submit pull requests!
 
 Here are some guidelines to help you and everyone else.
 

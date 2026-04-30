@@ -7,7 +7,7 @@ import { hideBin } from 'yargs/helpers';
 import { runCodemod } from '../src/index.js';
 
 // Provide a title to the process in `ps`
-process.title = 'my-codemod';
+process.title = '@my-org/my-codemod';
 
 // Set codemod options
 const argv = yargs(hideBin(process.argv))

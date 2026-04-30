@@ -11,7 +11,7 @@ const codemodOptions: CodemodOptions = {
     'threads',
   ]),
   hasTypeScript: false,
-  packageName: 'my-codemod',
+  packageName: '@my-org/my-codemod',
   projectRoot: 'tmp/javascript-with-addons',
 };
 
@@ -27,7 +27,7 @@ const options: Options = {
       'threads',
     ]),
     hasTypeScript: false,
-    name: 'my-codemod',
+    name: '@my-org/my-codemod',
     unscopedName: 'my-codemod',
   },
   projectRoot: 'tmp/javascript-with-addons',
