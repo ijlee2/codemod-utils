@@ -1,6 +1,6 @@
 [![This project uses GitHub Actions for continuous integration.](https://github.com/<your-github-handle>/my-codemod/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-github-handle>/my-codemod/actions/workflows/ci.yml)
 
-# my-codemod
+# @my-org/my-codemod
 
 _Codemod to [PROVIDE A SHORT DESCRIPTION.]_
 
@@ -18,7 +18,7 @@ _Codemod to [PROVIDE A SHORT DESCRIPTION.]_
 Pass `--root` to run the codemod somewhere else (i.e. not in the current directory).
 
 ```sh
-pnpx my-codemod --root <path/to/your/project>
+pnpx @my-org/my-codemod --root <path/to/your/project>
 ```
 
 </details>

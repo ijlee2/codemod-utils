@@ -37,13 +37,13 @@ rm -r "tests/fixtures/typescript/output"
 cp -r "tests/fixtures/typescript/input" "tests/fixtures/typescript/output"
 
 ./dist/bin/cli.js \
-  my-codemod \
+  @my-org/my-codemod \
   --root "tests/fixtures/typescript/output"
 
 rm -r "tests/fixtures/typescript-with-addons/output"
 cp -r "tests/fixtures/typescript-with-addons/input" "tests/fixtures/typescript-with-addons/output"
 
 ./dist/bin/cli.js \
-  my-codemod \
+  @my-org/my-codemod \
   --addon ast-javascript ast-template ast-template-tag blueprints ember package-json threads \
   --root "tests/fixtures/typescript-with-addons/output"
