@@ -10,7 +10,7 @@ type Addon =
 type CodemodOptions = {
   addons: Set<Addon>;
   hasTypeScript: boolean;
-  name: string;
+  packageName: string;
   projectRoot: string;
 };
 
@@ -19,6 +19,7 @@ type Options = {
     addons: Set<Addon>;
     hasTypeScript: boolean;
     name: string;
+    unscopedName: string;
   };
   projectRoot: string;
 };

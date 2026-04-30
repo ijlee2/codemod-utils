@@ -3,7 +3,7 @@ import type { CodemodOptions, Options } from '../../../src/types/index.js';
 const codemodOptions: CodemodOptions = {
   addons: new Set(),
   hasTypeScript: false,
-  name: 'my-codemod',
+  packageName: 'my-codemod',
   projectRoot: 'tmp/javascript',
 };
 
@@ -12,6 +12,7 @@ const options: Options = {
     addons: new Set(),
     hasTypeScript: false,
     name: 'my-codemod',
+    unscopedName: 'my-codemod',
   },
   projectRoot: 'tmp/javascript',
 };

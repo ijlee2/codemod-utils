@@ -48,7 +48,7 @@ yargs(hideBin(process.argv))
       createCodemod({
         addons: new Set(argv['addon']),
         hasTypeScript: argv['typescript'],
-        name: argv['name'],
+        packageName: argv['name'],
         projectRoot: argv['root'] ?? process.cwd(),
       });
     },
