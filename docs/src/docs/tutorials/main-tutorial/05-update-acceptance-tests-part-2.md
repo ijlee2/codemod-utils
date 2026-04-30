@@ -209,13 +209,13 @@ It's a game of Goldilocks: We have to pick one that provides us enough informati
 
 ```ts
 recast.visit(ast, {
-  visitCallExpression(node) {
+  visitCallExpression(path) {
     // ...
   },
 });
 ```
 
-To understand what `visitCallExpression` does, use `console.log` to check the value of `node.value`. The error message in the console tells us what `visitCallExpression` should return.
+To understand what `visitCallExpression` does, use `console.log` to check the value of `path.node`. The error message in the console tells us what `visitCallExpression` should return.
 
 <details>
 
@@ -230,9 +230,9 @@ export default function transformer(code, { recast, parsers }) {
 
   recast.visit(ast, {
 -     // ...
-+     visitCallExpression(node) {
++     visitCallExpression(path) {
 +       console.log('-- CallExpression --');
-+       console.log(node.value);
++       console.log(path.node);
 + 
 +       return false;
 +     },
@@ -248,7 +248,7 @@ export default function transformer(code, { recast, parsers }) {
 
 </details>
 
-From the console's log, we see that `visitCallExpression` visited only 1 node. This is surprising, because the `test` and `module` functions, located inside the parent `module`, are also of the type `CallExpression`. This works in our favor, but may be a bug in some other case. To visit all `CallExpression` nodes, you can write `this.traverse(node)` to make a recursion.
+From the console's log, we see that `visitCallExpression` visited only 1 node. This is surprising, because the `test` and `module` functions, located inside the parent `module`, are also of the type `CallExpression`. This works in our favor, but may be a bug in some other case. To visit all `CallExpression` nodes, you can write `this.traverse(path)` to make a recursion.
 
 <details>
 
@@ -256,8 +256,8 @@ From the console's log, we see that `visitCallExpression` visited only 1 node. T
 
 ```ts
 recast.visit(ast, {
-  visitCallExpression(node) {
-    this.traverse(node);
+  visitCallExpression(path) {
+    this.traverse(path);
 
     // ...
 
@@ -273,7 +273,7 @@ recast.visit(ast, {
 
 ### Make early exits {#ast-explorer-make-early-exits}
 
-Early exits are key to traversing `node`'s. Without them, TypeScript will likely throw an error when you access a nested property of `node` (because you made too many assumptions).
+Early exits are key to traversing `path`'s. Without them, TypeScript will likely throw an error when you access a nested property of `path` (because you made too many assumptions).
 
 Recall the console's logs from earlier:
 
@@ -281,13 +281,13 @@ Recall the console's logs from earlier:
 
 ![](../../../images/tutorials/main-tutorial/02.png)
 
-Use what are highlighted in orange (`node.value.callee` and `node.value.arguments`) to make early exits. If done correctly, you will continue to see the node for the parent `module` in the console. As soon as `module` is renamed or has incorrect arguments, the node will disappear from the console.
+Use what are highlighted in orange (`path.node.callee` and `path.node.arguments`) to make early exits. If done correctly, you will continue to see the node for the parent `module` in the console. As soon as `module` is renamed or has incorrect arguments, the node will disappear from the console.
 
 <details>
 
 <summary>Solution</summary>
 
-An extra check `node.value.arguments[0].type !== 'Literal'` is needed for JavaScript files. Apparently, the `type` is `Literal` for JS and `StringLiteral` for TS? 😓
+An extra check `path.node.arguments[0]!.type !== 'Literal'` is needed for JavaScript files. Apparently, the `type` is `Literal` for JS and `StringLiteral` for TS? 😓
 
 ::: code-group
 
@@ -297,27 +297,27 @@ export default function transformer(code, { recast, parsers }) {
   const b = recast.types.builders;
 
   recast.visit(ast, {
-    visitCallExpression(node) {
+    visitCallExpression(path) {
 +       if (
-+         node.value.callee.type !== 'Identifier' ||
-+         node.value.callee.name !== 'module'
++         path.node.callee.type !== 'Identifier' ||
++         path.node.callee.name !== 'module'
 +       ) {
 +         return false;
 +       }
 + 
-+       if (node.value.arguments.length !== 2) {
++       if (path.node.arguments.length !== 2) {
 +         return false;
 +       }
 + 
 +       if (
-+         node.value.arguments[0].type !== 'Literal' &&
-+         node.value.arguments[0].type !== 'StringLiteral'
++         path.node.arguments[0]!.type !== 'Literal' &&
++         path.node.arguments[0]!.type !== 'StringLiteral'
 +       ) {
 +         return false;
 +       }
 + 
       console.log('-- CallExpression --');
-      console.log(node.value);
+      console.log(path.node);
 
       return false;
     },
@@ -358,28 +358,28 @@ export default function transformer(code, { recast, parsers }) {
 +   const moduleName = 'New name';
 + 
   recast.visit(ast, {
-    visitCallExpression(node) {
+    visitCallExpression(path) {
       if (
-        node.value.callee.type !== 'Identifier' ||
-        node.value.callee.name !== 'module'
+        path.node.callee.type !== 'Identifier' ||
+        path.node.callee.name !== 'module'
       ) {
         return false;
       }
 
-      if (node.value.arguments.length !== 2) {
+      if (path.node.arguments.length !== 2) {
         return false;
       }
 
       if (
-        node.value.arguments[0].type !== 'Literal' &&
-        node.value.arguments[0].type !== 'StringLiteral'
+        path.node.arguments[0]!.type !== 'Literal' &&
+        path.node.arguments[0]!.type !== 'StringLiteral'
       ) {
         return false;
       }
  
 -       console.log('-- CallExpression --');
--       console.log(node.value);
-+       node.value.arguments[0] = b.stringLiteral(moduleName);
+-       console.log(path.node);
++       path.node.arguments[0] = b.stringLiteral(moduleName);
 
       return false;
     },
@@ -411,35 +411,35 @@ export default function transformer(code, { recast, parsers }) {
   const moduleName = 'New name';
 
   recast.visit(ast, {
-    visitCallExpression(node) {
+    visitCallExpression(path) {
       if (
-        node.value.callee.type !== 'Identifier' ||
-        node.value.callee.name !== 'module'
+        path.node.callee.type !== 'Identifier' ||
+        path.node.callee.name !== 'module'
       ) {
         return false;
       }
 
-      if (node.value.arguments.length !== 2) {
+      if (path.node.arguments.length !== 2) {
         return false;
       }
 
 -       if (
--         node.value.arguments[0].type !== 'Literal' &&
--         node.value.arguments[0].type !== 'StringLiteral'
+-         path.node.arguments[0]!.type !== 'Literal' &&
+-         path.node.arguments[0]!.type !== 'StringLiteral'
 -       ) {
 -         return false;
 -       }
 - 
--       node.value.arguments[0] = b.stringLiteral(moduleName);
-+       switch (node.value.arguments[0].type) {
+-       path.node.arguments[0] = b.stringLiteral(moduleName);
++       switch (path.node.arguments[0]!.type) {
 +         case 'Literal': {
-+           node.value.arguments[0] = b.literal(moduleName);
++           path.node.arguments[0] = b.literal(moduleName);
 + 
 +           break;
 +         }
 + 
 +         case 'StringLiteral': {
-+           node.value.arguments[0] = b.stringLiteral(moduleName);
++           path.node.arguments[0] = b.stringLiteral(moduleName);
 + 
 +           break;
 +         }
@@ -487,27 +487,27 @@ function renameModule(file: string, data: Data): string {
 
   const ast = traverse(file, {
 -     // ...
-+     visitCallExpression(node) {
++     visitCallExpression(path) {
 +       if (
-+         node.value.callee.type !== 'Identifier' ||
-+         node.value.callee.name !== 'module'
++         path.node.callee.type !== 'Identifier' ||
++         path.node.callee.name !== 'module'
 +       ) {
 +         return false;
 +       }
 + 
-+       if (node.value.arguments.length !== 2) {
++       if (path.node.arguments.length !== 2) {
 +         return false;
 +       }
 + 
-+       switch (node.value.arguments[0].type) {
++       switch (path.node.arguments[0]!.type) {
 +         case 'Literal': {
-+           node.value.arguments[0] = AST.builders.literal(data.moduleName);
++           path.node.arguments[0] = AST.builders.literal(data.moduleName);
 + 
 +           break;
 +         }
 + 
 +         case 'StringLiteral': {
-+           node.value.arguments[0] = AST.builders.stringLiteral(data.moduleName);
++           path.node.arguments[0] = AST.builders.stringLiteral(data.moduleName);
 + 
 +           break;
 +         }

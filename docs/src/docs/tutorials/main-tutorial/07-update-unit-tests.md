@@ -104,27 +104,27 @@ function renameModule(file: string, data: Data): string {
   const traverse = AST.traverse(data.isTypeScript);
 
   const ast = traverse(file, {
-    visitCallExpression(node) {
+    visitCallExpression(path) {
       if (
-        node.value.callee.type !== 'Identifier' ||
-        node.value.callee.name !== 'module'
+        path.node.callee.type !== 'Identifier' ||
+        path.node.callee.name !== 'module'
       ) {
         return false;
       }
 
-      if (node.value.arguments.length !== 2) {
+      if (path.node.arguments.length !== 2) {
         return false;
       }
 
-      switch (node.value.arguments[0].type) {
+      switch (path.node.arguments[0].type) {
         case 'Literal': {
-          node.value.arguments[0] = AST.builders.literal(data.moduleName);
+          path.node.arguments[0] = AST.builders.literal(data.moduleName);
 
           break;
         }
 
         case 'StringLiteral': {
-          node.value.arguments[0] = AST.builders.stringLiteral(data.moduleName);
+          path.node.arguments[0] = AST.builders.stringLiteral(data.moduleName);
 
           break;
         }
