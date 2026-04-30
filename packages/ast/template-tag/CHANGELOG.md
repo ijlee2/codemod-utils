@@ -1,5 +1,11 @@
 # @codemod-utils/ast-template-tag
 
+## 2.2.0
+
+### Minor Changes
+
+- [#303](https://github.com/ijlee2/codemod-utils/pull/303) Fixed lint errors ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.1.0
 
 ### Minor Changes

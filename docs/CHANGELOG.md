@@ -1,5 +1,11 @@
 # docs-app-for-codemod-utils
 
+## 1.5.0
+
+### Minor Changes
+
+- [#304](https://github.com/ijlee2/codemod-utils/pull/304) Recreated images and updated texts ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.4.4
 
 ### Patch Changes
