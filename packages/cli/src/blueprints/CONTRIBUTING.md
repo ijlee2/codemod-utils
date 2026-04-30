@@ -14,13 +14,13 @@ Here are some guidelines to help you and everyone else.
 1. Fork and clone this repo.
 
     ```sh
-    git clone git@github.com:<your-github-handle>/<%= options.codemod.name %>.git
+    git clone git@github.com:<your-github-handle>/<%= options.codemod.unscopedName %>.git
     ```
 
 1. Change directory.
 
     ```sh
-    cd <%= options.codemod.name %>
+    cd <%= options.codemod.unscopedName %>
     ```
 
 1. Use [`pnpm`](https://pnpm.io/installation) to install dependencies.
@@ -102,7 +102,7 @@ Here are some guidelines to help you and everyone else.
     git push origin tag-0.1.2
     ```
 
-1. [Create a tag](https://github.com/<your-github-handle>/<%= options.codemod.name %>/releases/new) and provide release notes. The tag name should match the workspace root's version (e.g. `0.1.2`).
+1. [Create a tag](https://github.com/<your-github-handle>/<%= options.codemod.unscopedName %>/releases/new) and provide release notes. The tag name should match the workspace root's version (e.g. `0.1.2`).
 
 1. Publish the package.
 

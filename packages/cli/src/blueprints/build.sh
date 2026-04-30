@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-COMMAND="<%= options.codemod.name %>"
 ENVIRONMENT=$1
 
 if [ $ENVIRONMENT = "--production" ]
@@ -12,7 +11,7 @@ then
   tsc --project "tsconfig.build.json"
 
   # Configure files
-  chmod +x "dist/bin/$COMMAND.js"
+  chmod +x "dist/bin/<%= options.codemod.unscopedName %>.js"
 
   if [ -d "src/blueprints" ]
   then

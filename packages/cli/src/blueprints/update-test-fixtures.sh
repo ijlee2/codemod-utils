@@ -19,5 +19,5 @@ pnpm build
 rm -r "tests/fixtures/sample-project/output"
 cp -r "tests/fixtures/sample-project/input" "tests/fixtures/sample-project/output"
 
-./dist/bin/<%= options.codemod.name %>.js \
+./dist/bin/<%= options.codemod.unscopedName %>.js \
   --root "tests/fixtures/sample-project/output"

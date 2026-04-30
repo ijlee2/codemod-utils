@@ -1,4 +1,4 @@
-[![This project uses GitHub Actions for continuous integration.](https://github.com/<your-github-handle>/<%= options.codemod.name %>/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-github-handle>/<%= options.codemod.name %>/actions/workflows/ci.yml)
+[![This project uses GitHub Actions for continuous integration.](https://github.com/<your-github-handle>/<%= options.codemod.unscopedName %>/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-github-handle>/<%= options.codemod.unscopedName %>/actions/workflows/ci.yml)
 
 # <%= options.codemod.name %>
 
@@ -37,12 +37,12 @@ cd <path/to/cloned/repo>
 pnpm build
 
 # Run codemod
-./dist/bin/<%= options.codemod.name %>.js --root <path/to/your/project>
+./dist/bin/<%= options.codemod.unscopedName %>.js --root <path/to/your/project>
 ```<% } else { %>```sh
 cd <path/to/cloned/repo>
 
 # Run codemod
-./bin/<%= options.codemod.name %>.js --root <path/to/your/project>
+./bin/<%= options.codemod.unscopedName %>.js --root <path/to/your/project>
 ```<% } %>
 
 

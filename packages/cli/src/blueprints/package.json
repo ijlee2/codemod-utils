@@ -13,7 +13,7 @@
   "author": "",
   "type": "module",
   "main": "dist/src/index.js",
-  "bin": "dist/bin/<%= options.codemod.name %>.js",
+  "bin": "dist/bin/<%= options.codemod.unscopedName %>.js",
   "files": [
     "dist"
   ],
@@ -52,7 +52,7 @@
   "author": "",
   "type": "module",
   "main": "src/index.js",
-  "bin": "bin/<%= options.codemod.name %>.js",
+  "bin": "bin/<%= options.codemod.unscopedName %>.js",
   "files": [
     "bin",
     "src"
