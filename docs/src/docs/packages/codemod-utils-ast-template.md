@@ -37,6 +37,42 @@ In a `traverse` call, you can specify how to visit the nodes of interest ("visit
 - [Builders](https://github.com/glimmerjs/glimmer-vm/blob/v0.95.0-%40glimmer/syntax/packages/%40glimmer/syntax/lib/v1/public-builders.ts#L490-L528)
 - [Visit methods](https://github.com/glimmerjs/glimmer-vm/blob/v0.95.0-%40glimmer/syntax/packages/%40glimmer/syntax/lib/v1/visitor-keys.ts#L5-L30)
 
+::: code-group
+
+```ts [Example]{9,23,28}
+import { AST } from '@codemod-utils/ast-template';
+
+type Data = {
+  newName: string;
+  oldName: string;
+};
+
+function transform(file: string, data: Data): string {
+  const traverse = AST.traverse();
+
+  const ast = traverse(file, {
+    ElementNode(node) {
+      if (node.tag !== 'MyComponent') {
+        return;
+      }
+
+      // Rename argument
+      node.attributes = node.attributes.map((attribute) => {
+        if (attribute.name !== `@${data.oldName}`) {
+          return attribute;
+        }
+
+        return AST.builders.attr(`@${data.newName}`, attribute.value);
+      });
+    },
+  });
+
+  return AST.print(ast);
+}
+```
+
+:::
+
 
 ## How to test your code
 
@@ -49,59 +85,71 @@ If you intend to publish your codemod, I recommend using [`@codemod-utils/tests`
 
 ### AST Explorer {#how-to-test-your-code-ast-explorer}
 
-Select the following options to create a 4-tab window:
+In the top navigation menu, select these options to create a 4-tab window:
 
 - Language: `Handlebars`
 - Parser: `ember-template-recast`
 - Transform: `ember-template-recast`
 
-![](../../images/packages/ast-template-01.png)
+The upper-left tab allows you to provide one or more examples of code. In the bottom-left tab, write the code that will transform the examples. You will see the results in the bottom-right tab.
 
-Once you are satisfied with the code, you can copy-paste the visit method(s) to your file, then rename `b.` to `AST.builders.`.
+![](../../images/packages/ast-template.png)
+
+Once you are happy with the code, copy-paste the visit method(s) to your file, then rename `b.` to `AST.builders.`.
 
 ::: code-group
 
-```ts [Example (AST Explorer)]{5-17}
-module.exports = function(env) {
+```ts [Example (AST Explorer)]{10-22}
+module.exports = function (env) {
   const b = env.syntax.builders;
 
+  const data = {
+    newName: 'userId',
+    oldName: 'id',
+  };
+
   return {
-    AttrNode(node) {
-      if (node.name !== 'local-class') {
+    ElementNode(node) {
+      if (node.tag !== 'MyComponent') {
         return;
       }
 
-      node.name = 'class';
+      node.attributes = node.attributes.map((attribute) => {
+        if (attribute.name !== `@${data.oldName}`) {
+          return attribute;
+        }
 
-      const attributeValue = node.value.chars.trim();
-
-      node.value = b.mustache(
-        b.path(`this.styles.${attributeValue}`),
-      );
+        return b.attr(`@${data.newName}`, attribute.value);
+      });
     },
   };
 };
 ```
 
-```ts [Example (Your file)]{7-19}
+```ts [Example (Your file)]{12-24}
 import { AST } from '@codemod-utils/ast-template';
 
-function transform(file) {
+type Data = {
+  newName: string;
+  oldName: string;
+};
+
+function transform(file: string, data: Data): string {
   const traverse = AST.traverse();
 
   const ast = traverse(file, {
-    AttrNode(node) {
-      if (node.name !== 'local-class') {
+    ElementNode(node) {
+      if (node.tag !== 'MyComponent') {
         return;
       }
 
-      node.name = 'class';
+      node.attributes = node.attributes.map((attribute) => {
+        if (attribute.name !== `@${data.oldName}`) {
+          return attribute;
+        }
 
-      const attributeValue = node.value.chars.trim();
-
-      node.value = AST.builders.mustache(
-        AST.builders.path(`this.styles.${attributeValue}`),
-      );
+        return AST.builders.attr(`@${data.newName}`, attribute.value);
+      });
     },
   });
 
@@ -114,8 +162,16 @@ function transform(file) {
 
 ## How to type your code
 
-`@codemod-utils/ast-template` avoids re-exporting the types from `ember-template-recast`. This is to prevent a change in their API from catastrophically affecting your code.
+In theory, every visit method provides you the correct type with `node`.
 
-When you write a function that depends on their implementation, type what you don't own as `unknown`, then use `@ts-ignore` or `@ts-expect-error` as needed.
+If a type error occurs when accessing a property in `node`, you likely didn't make an early exit correctly. If the error occurs because `ember-template-recast` didn't provide enough information, then use `@ts-expect-error` to ignore the error for now.
 
-Most importantly, write tests to document the inputs and outputs of your codemod. When there is an API change, you can refactor code with ease and confidence.
+If you need to refer to a specific type, you may use TypeScript's `typeof` operator and `Parameters` and `ReturnType` utilities to reach it.
+
+```ts
+import { AST } from '@codemod-utils/ast-template';
+
+type Attribute = ReturnType<typeof AST.builders.attr>;
+```
+
+Alternatively, you can type what you don't own as `unknown`, then use `@ts-expect-error` to ignore errors.

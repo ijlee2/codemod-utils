@@ -41,6 +41,42 @@ In a `traverse` call, you can specify how to visit the nodes of interest ("visit
 - [Builders](https://github.com/benjamn/ast-types/blob/v0.16.1/src/gen/builders.ts#L3747-L4019)
 - [Visit methods](https://github.com/benjamn/ast-types/blob/v0.16.1/src/gen/visitor.ts#L7-L307)
 
+::: code-group
+
+```ts [Example]{10,21,28}
+import { AST } from '@codemod-utils/ast-javascript';
+
+type Data = {
+  isTypeScript: boolean;
+  newName: string;
+  oldName: string;
+};
+
+function transform(file: string, data: Data): string {
+  const traverse = AST.traverse(data.isTypeScript);
+
+  const ast = traverse(file, {
+    visitCallExpression(path) {
+      this.traverse(path);
+
+      // Rename function
+      if (
+        path.node.callee.type === 'Identifier' &&
+        path.node.callee.name === data.oldName
+      ) {
+        path.node.callee = AST.builders.identifier(data.newName);
+      }
+
+      return false;
+    },
+  });
+
+  return AST.print(ast);
+}
+```
+
+:::
+
 
 ## How to test your code
 
@@ -53,62 +89,71 @@ If you intend to publish your codemod, I recommend using [`@codemod-utils/tests`
 
 ### AST Explorer {#how-to-test-your-code-ast-explorer}
 
-Select the following options to create a 4-tab window:
+In the top navigation menu, select these options to create a 4-tab window:
 
 - Language: `JavaScript`
 - Parser: `recast`
 - Transform: `recast`
 
-![](../../images/packages/ast-javascript-01.png)
+The upper-left tab allows you to provide one or more examples of code. In the bottom-left tab, write the code that will transform the examples. You will see the results in the bottom-right tab.
 
-Once you are satisfied with the code, you can copy-paste the visit method(s) to your file, then rename `b.` to `AST.builders.`.
+![](../../images/packages/ast-javascript.png)
+
+Once you are happy with the code, copy-paste the visit method(s) to your file, then rename `b.` to `AST.builders.`.
 
 ::: code-group
 
-```ts [Example (AST Explorer)]{6-19}
+```ts [Example (AST Explorer)]{11-22}
 export default function transformer(code, { recast, parsers }) {
   const ast = recast.parse(code, { parser: parsers.typescript });
   const b = recast.types.builders;
 
+  const data = {
+    newName: 'add',
+    oldName: 'sum',
+  };
+
   recast.visit(ast, {
-    visitClassDeclaration(path) {
-      const { body } = path.node.body;
+    visitCallExpression(path) {
+      this.traverse(path);
 
-      const nodesToAdd = [
-        b.classProperty(
-          b.identifier('styles'),
-          b.identifier('styles')
-        )
-      ];
-
-      body.unshift(...nodesToAdd);
+      if (
+        path.node.callee.type === 'Identifier' &&
+        path.node.callee.name === data.oldName
+      ) {
+        path.node.callee = b.identifier(data.newName);
+      }
 
       return false;
-    }
+    },
   });
 
   return recast.print(ast).code;
 }
 ```
 
-```ts [Example (Your file)]{7-20}
+```ts [Example (Your file)]{13-24}
 import { AST } from '@codemod-utils/ast-javascript';
 
-export function transform(file) {
-  const traverse = AST.traverse(true);
+type Data = {
+  isTypeScript: boolean;
+  newName: string;
+  oldName: string;
+};
+
+function transform(file: string, data: Data): string {
+  const traverse = AST.traverse(data.isTypeScript);
 
   const ast = traverse(file, {
-    visitClassDeclaration(path) {
-      const { body } = path.node.body;
+    visitCallExpression(path) {
+      this.traverse(path);
 
-      const nodesToAdd = [
-        AST.builders.classProperty(
-          AST.builders.identifier('styles'),
-          AST.builders.identifier('styles'),
-        ),
-      ];
-
-      body.unshift(...nodesToAdd);
+      if (
+        path.node.callee.type === 'Identifier' &&
+        path.node.callee.name === data.oldName
+      ) {
+        path.node.callee = AST.builders.identifier(data.newName);
+      }
 
       return false;
     },
@@ -123,8 +168,16 @@ export function transform(file) {
 
 ## How to type your code
 
-`@codemod-utils/ast-javascript` avoids re-exporting the types from `recast`. This is to prevent a change in their API from catastrophically affecting your code.
+In theory, every visit method provides you the correct type with `path`.
 
-When you write a function that depends on their implementation, type what you don't own as `unknown`, then use `@ts-ignore` or `@ts-expect-error` as needed.
+If a type error occurs when accessing a property in `path.node` or `path.value`, you likely didn't make an early exit correctly. If the error occurs because `recast` didn't provide enough information (e.g. `path.parent`, `path.parentPath`), then use `@ts-expect-error` to ignore the error for now.
 
-Most importantly, write tests to document the inputs and outputs of your codemod. When there is an API change, you can refactor code with ease and confidence.
+If you need to refer to a specific type, you may use TypeScript's `typeof` operator and `Parameters` and `ReturnType` utilities to reach it.
+
+```ts
+import { AST } from '@codemod-utils/ast-javascript';
+
+type Decorator = ReturnType<typeof AST.builders.decorator>;
+```
+
+Alternatively, you can type what you don't own as `unknown`, then use `@ts-expect-error` to ignore errors.
