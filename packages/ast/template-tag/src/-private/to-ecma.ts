@@ -12,16 +12,6 @@ type Marker = {
   };
 };
 
-function getMarker(nodeValue: unknown): Marker {
-  return {
-    // @ts-expect-error: Incorrect type
-    code: AST.print(nodeValue),
-    // @ts-expect-error: Incorrect type
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-    end: nodeValue.loc.end,
-  };
-}
-
 function sortMarkers(a: Marker, b: Marker): number {
   if (a.end.line > b.end.line) {
     return -1;
@@ -49,52 +39,60 @@ export function findMarkers(file: string): Marker[] {
   const markers: Marker[] = [];
 
   traverse(code, {
-    visitCallExpression(node) {
-      const template = getTemplate(node.value);
+    visitCallExpression(path) {
+      const template = getTemplate(path.node);
 
       if (template === undefined) {
-        this.traverse(node);
+        this.traverse(path);
 
         return false;
       }
 
-      markers.push(getMarker(node.value));
+      markers.push({
+        code: AST.print(path.node),
+        // @ts-expect-error: Incorrect type
+        end: path.node.loc!.end,
+      });
 
       return false;
     },
 
-    visitExportDefaultDeclaration(node) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      const template = getTemplate(node.value.declaration);
+    visitExportDefaultDeclaration(path) {
+      const template = getTemplate(path.node.declaration);
 
       if (template === undefined) {
-        this.traverse(node);
+        this.traverse(path);
 
         return false;
       }
 
-      markers.push(getMarker(node.value));
+      markers.push({
+        code: AST.print(path.node),
+        // @ts-expect-error: Incorrect type
+        end: path.node.loc!.end,
+      });
 
       return false;
     },
 
-    visitStaticBlock(node) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-      const bodyNode = node.value.body[0];
+    visitStaticBlock(path) {
+      const bodyNode = path.node.body[0]!;
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       if (bodyNode.type !== 'ExpressionStatement') {
         return false;
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       const template = getTemplate(bodyNode.expression);
 
       if (template === undefined) {
         return false;
       }
 
-      markers.push(getMarker(node.value));
+      markers.push({
+        code: AST.print(path.node),
+        // @ts-expect-error: Incorrect type
+        end: path.node.loc!.end,
+      });
 
       return false;
     },

@@ -10,11 +10,11 @@ export function removeMarkers(file: string): string {
   const traverse = AST.traverse(true);
 
   const ast = traverse(file, {
-    visitCallExpression(node) {
-      const template = getTemplate(node.value);
+    visitCallExpression(path) {
+      const template = getTemplate(path.node);
 
       if (template === undefined) {
-        this.traverse(node);
+        this.traverse(path);
 
         return false;
       }
@@ -22,12 +22,11 @@ export function removeMarkers(file: string): string {
       return `<template>${template}</template>`;
     },
 
-    visitExportDefaultDeclaration(node) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      const template = getTemplate(node.value.declaration);
+    visitExportDefaultDeclaration(path) {
+      const template = getTemplate(path.node.declaration);
 
       if (template === undefined) {
-        this.traverse(node);
+        this.traverse(path);
 
         return false;
       }
@@ -35,12 +34,10 @@ export function removeMarkers(file: string): string {
       return `<template>${template}</template>`;
     },
 
-    visitImportDeclaration(node) {
+    visitImportDeclaration(path) {
       if (
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        node.value.source.type !== 'StringLiteral' ||
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        node.value.source.value !== '@ember/template-compiler'
+        path.node.source.type !== 'StringLiteral' ||
+        path.node.source.value !== '@ember/template-compiler'
       ) {
         return false;
       }
@@ -49,16 +46,13 @@ export function removeMarkers(file: string): string {
       return null;
     },
 
-    visitStaticBlock(node) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-      const bodyNode = node.value.body[0];
+    visitStaticBlock(path) {
+      const bodyNode = path.node.body[0]!;
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       if (bodyNode.type !== 'ExpressionStatement') {
         return false;
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       const template = getTemplate(bodyNode.expression);
 
       if (template === undefined) {
