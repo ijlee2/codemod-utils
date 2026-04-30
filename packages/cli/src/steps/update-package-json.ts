@@ -81,14 +81,14 @@ export function updatePackageJson(options: Options): void {
   const { codemod, projectRoot } = options;
 
   const packageJson = readPackageJson({
-    projectRoot: join(projectRoot, codemod.name),
+    projectRoot: join(projectRoot, codemod.unscopedName),
   });
 
   updateDependencies(packageJson, options);
   updateDevDependencies(packageJson, options);
   updatePackageManager(packageJson);
 
-  const filePath = join(projectRoot, codemod.name, 'package.json');
+  const filePath = join(projectRoot, codemod.unscopedName, 'package.json');
   const file = JSON.stringify(packageJson, null, 2).replaceAll('\n', EOL) + EOL;
 
   writeFileSync(filePath, file, 'utf8');

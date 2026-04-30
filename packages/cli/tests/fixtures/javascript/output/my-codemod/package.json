@@ -1,0 +1,51 @@
+{
+  "name": "my-codemod",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Small description for my-codemod goes here",
+  "keywords": [
+    "codemod",
+    "ember-codemod",
+    "emberjs"
+  ],
+  "repository": "",
+  "license": "MIT",
+  "author": "",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": "bin/my-codemod.js",
+  "files": [
+    "bin",
+    "src"
+  ],
+  "scripts": {
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
+    "format": "prettier . --cache --write",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" && pnpm format",
+    "lint:format": "prettier . --cache --check",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "release:prepare": "changeset version",
+    "release:publish": "changeset publish",
+    "test": "mt tests --quiet"
+  },
+  "dependencies": {
+    "@codemod-utils/files": "^4.0.1",
+    "yargs": "^18.0.0"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.30.0",
+    "@codemod-utils/tests": "^3.0.1",
+    "@ijlee2-frontend-configs/changesets": "^2.1.0",
+    "@ijlee2-frontend-configs/eslint-config-node": "^3.2.0",
+    "@ijlee2-frontend-configs/prettier": "^3.0.2",
+    "@sondr3/minitest": "^0.1.2",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.39.4",
+    "prettier": "^3.8.3"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": "22.* || >= 24"
+  }
+}

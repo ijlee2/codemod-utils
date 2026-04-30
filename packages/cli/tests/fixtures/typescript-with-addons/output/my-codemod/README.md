@@ -1,6 +1,6 @@
-[![This project uses GitHub Actions for continuous integration.](https://github.com/<your-github-handle>/<%= options.codemod.unscopedName %>/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-github-handle>/<%= options.codemod.unscopedName %>/actions/workflows/ci.yml)
+[![This project uses GitHub Actions for continuous integration.](https://github.com/<your-github-handle>/my-codemod/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-github-handle>/my-codemod/actions/workflows/ci.yml)
 
-# <%= options.codemod.name %>
+# @my-org/my-codemod
 
 _Codemod to [PROVIDE A SHORT DESCRIPTION.]_
 
@@ -18,7 +18,7 @@ _Codemod to [PROVIDE A SHORT DESCRIPTION.]_
 Pass `--root` to run the codemod somewhere else (i.e. not in the current directory).
 
 ```sh
-pnpx <%= options.codemod.name %> --root <path/to/your/project>
+pnpx @my-org/my-codemod --root <path/to/your/project>
 ```
 
 </details>
@@ -30,20 +30,15 @@ The codemod is designed to cover typical cases. It is not designed to cover one-
 
 To better meet your needs, consider cloning the repo and running the codemod locally.
 
-<% if (options.codemod.hasTypeScript) { %>```sh
+```sh
 cd <path/to/cloned/repo>
 
 # Compile TypeScript
 pnpm build
 
 # Run codemod
-./dist/bin/<%= options.codemod.unscopedName %>.js --root <path/to/your/project>
-```<% } else { %>```sh
-cd <path/to/cloned/repo>
-
-# Run codemod
-./bin/<%= options.codemod.unscopedName %>.js --root <path/to/your/project>
-```<% } %>
+./dist/bin/my-codemod.js --root <path/to/your/project>
+```
 
 
 ## Compatibility

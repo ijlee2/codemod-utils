@@ -36,7 +36,7 @@ function resolveBlueprintFilePath(
   const { codemod } = options;
 
   return blueprintFilePath
-    .replace('__codemod-name__', codemod.name)
+    .replace('__codemod-unscoped-name__', codemod.unscopedName)
     .replace('__gitignore__', '.gitignore')
     .replace('__npmignore__', '.npmignore')
     .replace('.__js__', codemod.hasTypeScript ? '.ts' : '.js');
@@ -48,14 +48,14 @@ function setExecutePermissions(options: Options): void {
   const files = new Set(['update-test-fixtures.sh']);
 
   if (codemod.hasTypeScript) {
-    files.add(join('bin', `${codemod.name}.ts`));
+    files.add(join('bin', `${codemod.unscopedName}.ts`));
     files.add('build.sh');
   } else {
-    files.add(join('bin', `${codemod.name}.js`));
+    files.add(join('bin', `${codemod.unscopedName}.js`));
   }
 
   files.forEach((file) => {
-    const filePath = join(projectRoot, codemod.name, file);
+    const filePath = join(projectRoot, codemod.unscopedName, file);
 
     chmodSync(filePath, 0o755);
   });
@@ -74,7 +74,7 @@ export function createFilesFromBlueprints(options: Options): void {
   const fileMap = new Map(
     blueprintFilePaths.map((blueprintFilePath) => {
       const filePath = join(
-        codemod.name,
+        codemod.unscopedName,
         resolveBlueprintFilePath(blueprintFilePath, options),
       );
 

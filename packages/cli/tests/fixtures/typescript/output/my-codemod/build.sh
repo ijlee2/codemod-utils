@@ -11,7 +11,7 @@ then
   tsc --project "tsconfig.build.json"
 
   # Configure files
-  chmod +x "dist/bin/<%= options.codemod.unscopedName %>.js"
+  chmod +x "dist/bin/my-codemod.js"
 
   if [ -d "src/blueprints" ]
   then

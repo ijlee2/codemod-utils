@@ -1,6 +1,6 @@
-# Contributing to <%= options.codemod.name %>
+# Contributing to @my-org/my-codemod
 
-Open source projects like `<%= options.codemod.name %>` live on your words of encouragement and contribution. Please give feedback, report issues, or submit pull requests!
+Open source projects like `@my-org/my-codemod` live on your words of encouragement and contribution. Please give feedback, report issues, or submit pull requests!
 
 Here are some guidelines to help you and everyone else.
 
@@ -14,13 +14,13 @@ Here are some guidelines to help you and everyone else.
 1. Fork and clone this repo.
 
     ```sh
-    git clone git@github.com:<your-github-handle>/<%= options.codemod.unscopedName %>.git
+    git clone git@github.com:<your-github-handle>/my-codemod.git
     ```
 
 1. Change directory.
 
     ```sh
-    cd <%= options.codemod.unscopedName %>
+    cd my-codemod
     ```
 
 1. Use [`pnpm`](https://pnpm.io/installation) to install dependencies.
@@ -102,7 +102,7 @@ Here are some guidelines to help you and everyone else.
     git push origin tag-0.1.2
     ```
 
-1. [Create a tag](https://github.com/<your-github-handle>/<%= options.codemod.unscopedName %>/releases/new) and provide release notes. The tag name should match the workspace root's version (e.g. `0.1.2`).
+1. [Create a tag](https://github.com/<your-github-handle>/my-codemod/releases/new) and provide release notes. The tag name should match the workspace root's version (e.g. `0.1.2`).
 
 1. Publish the package.
 

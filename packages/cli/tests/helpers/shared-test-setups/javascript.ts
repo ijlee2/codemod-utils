@@ -3,7 +3,7 @@ import type { CodemodOptions, Options } from '../../../src/types/index.js';
 const codemodOptions: CodemodOptions = {
   addons: new Set(),
   hasTypeScript: false,
-  name: 'ember-codemod-pod-to-octane',
+  packageName: 'my-codemod',
   projectRoot: 'tmp/javascript',
 };
 
@@ -11,7 +11,8 @@ const options: Options = {
   codemod: {
     addons: new Set(),
     hasTypeScript: false,
-    name: 'ember-codemod-pod-to-octane',
+    name: 'my-codemod',
+    unscopedName: 'my-codemod',
   },
   projectRoot: 'tmp/javascript',
 };
