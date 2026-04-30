@@ -46,7 +46,7 @@
     "test": "sh build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {
-    "type-fest": "^5.5.0"
+    "type-fest": "^5.6.0"
   },
   "devDependencies": {
     "@codemod-utils/tests": "workspace:*",
