@@ -19,7 +19,7 @@ function updateJson(
   }
 
   if (!(key in json)) {
-    json[key] = {} as DirJSON;
+    json[key] = {};
   }
 
   updateJson(json[key] as DirJSON, {
