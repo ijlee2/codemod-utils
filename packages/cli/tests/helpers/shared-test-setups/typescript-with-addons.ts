@@ -11,7 +11,7 @@ const codemodOptions: CodemodOptions = {
     'threads',
   ]),
   hasTypeScript: true,
-  name: 'ember-codemod-args-to-signature',
+  name: 'my-codemod',
   projectRoot: 'tmp/typescript-with-addons',
 };
 
@@ -27,7 +27,7 @@ const options: Options = {
       'threads',
     ]),
     hasTypeScript: true,
-    name: 'ember-codemod-args-to-signature',
+    name: 'my-codemod',
   },
   projectRoot: 'tmp/typescript-with-addons',
 };
