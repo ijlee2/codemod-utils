@@ -1,6 +1,6 @@
 {
   "name": "docs-app-for-codemod-utils",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "private": true,
   "description": "Docs app for codemod-utils",
   "homepage": "https://codemod-utils.netlify.app/",

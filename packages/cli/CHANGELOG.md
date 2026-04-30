@@ -1,5 +1,16 @@
 # @codemod-utils/cli
 
+## 4.3.0
+
+### Minor Changes
+
+- [#298](https://github.com/ijlee2/codemod-utils/pull/298) Handled scoped package name ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#302](https://github.com/ijlee2/codemod-utils/pull/302) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+- [#299](https://github.com/ijlee2/codemod-utils/pull/299) Tested scoped package with JavaScript ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.2.1
 
 ### Patch Changes

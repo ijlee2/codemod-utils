@@ -1,5 +1,11 @@
 # @codemod-utils/tests
 
+## 3.0.2
+
+### Patch Changes
+
+- [#301](https://github.com/ijlee2/codemod-utils/pull/301) Fixed lint error ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.0.1
 
 ### Patch Changes
