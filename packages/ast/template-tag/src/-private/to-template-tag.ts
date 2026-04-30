@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 import { AST } from '@codemod-utils/ast-javascript';
 
 import { getTemplate, MARKER } from './content-tag.js';
@@ -24,6 +23,7 @@ export function removeMarkers(file: string): string {
     },
 
     visitExportDefaultDeclaration(node) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       const template = getTemplate(node.value.declaration);
 
       if (template === undefined) {
@@ -37,7 +37,9 @@ export function removeMarkers(file: string): string {
 
     visitImportDeclaration(node) {
       if (
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         node.value.source.type !== 'StringLiteral' ||
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         node.value.source.value !== '@ember/template-compiler'
       ) {
         return false;
@@ -48,12 +50,15 @@ export function removeMarkers(file: string): string {
     },
 
     visitStaticBlock(node) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
       const bodyNode = node.value.body[0];
 
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       if (bodyNode.type !== 'ExpressionStatement') {
         return false;
       }
 
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       const template = getTemplate(bodyNode.expression);
 
       if (template === undefined) {

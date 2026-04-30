@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 import { AST } from '@codemod-utils/ast-javascript';
 
 import { getTemplate, preprocessor } from './content-tag.js';
@@ -18,6 +17,7 @@ function getMarker(nodeValue: unknown): Marker {
     // @ts-expect-error: Incorrect type
     code: AST.print(nodeValue),
     // @ts-expect-error: Incorrect type
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
     end: nodeValue.loc.end,
   };
 }
@@ -64,6 +64,7 @@ export function findMarkers(file: string): Marker[] {
     },
 
     visitExportDefaultDeclaration(node) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       const template = getTemplate(node.value.declaration);
 
       if (template === undefined) {
@@ -78,12 +79,15 @@ export function findMarkers(file: string): Marker[] {
     },
 
     visitStaticBlock(node) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
       const bodyNode = node.value.body[0];
 
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       if (bodyNode.type !== 'ExpressionStatement') {
         return false;
       }
 
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       const template = getTemplate(bodyNode.expression);
 
       if (template === undefined) {
