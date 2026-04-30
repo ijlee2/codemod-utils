@@ -9,7 +9,7 @@ assignees: ''
 
 Hello! Thanks for taking time to suggest how we can improve documentation.
 
-Here, documentation can mean a few different things, including README, code comments, and tests. Anything that will help everyone understand how to use `@my-org/my-codemod`!
+Here, documentation can mean a few different things, including README, code comments, and tests. Anything that will help everyone understand how to use `my-codemod`!
 
 
 ## I would like to see... 🙋‍♀️🙋‍♂️

@@ -1,5 +1,12 @@
 import type { PackageJson, ValidatedPackageJson } from './types.js';
 
+function unscope(packageName: string): string | undefined {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_scope, unscopedPackageName] = packageName.split('/');
+
+  return unscopedPackageName;
+}
+
 /**
  * (Type-)Checks that the fields `name` and `version` exist, in the
  * sense that their values are a non-empty string.
@@ -31,10 +38,9 @@ export function validatePackageJson(
   }
 
   if (name.includes('/')) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [_scope, packageName] = name.split('/');
+    const unscopedName = unscope(name);
 
-    if (!packageName) {
+    if (!unscopedName) {
       throw new SyntaxError(
         'ERROR: package.json is not valid. (Package name is missing.)',
       );
