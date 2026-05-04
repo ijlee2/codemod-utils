@@ -1,5 +1,12 @@
 # @codemod-utils/ast-template-tag
 
+## 2.3.0
+
+### Minor Changes
+
+- [#306](https://github.com/ijlee2/codemod-utils/pull/306) Replaced range.{startByte,endByte} with range.{startChar,endChar} ([@ijlee2](https://github.com/ijlee2))
+- [#306](https://github.com/ijlee2/codemod-utils/pull/306) Fixed lint errors ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.2.0
 
 ### Minor Changes
