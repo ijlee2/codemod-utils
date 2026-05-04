@@ -1,4 +1,4 @@
-import { type Range, sliceByteRange } from './-private/content-tag.js';
+import type { Range } from './-private/content-tag.js';
 
 /**
  * Replaces a particular `<template>` tag.
@@ -42,10 +42,11 @@ export function replaceTemplateTag(
   },
 ): string {
   const { code, range } = data;
+  const characters = Array.from(file);
 
   return [
-    sliceByteRange(file, 0, range.startByte),
+    characters.slice(0, range.startChar).join(''),
     code,
-    sliceByteRange(file, range.endByte, undefined),
+    characters.slice(range.endChar).join(''),
   ].join('');
 }

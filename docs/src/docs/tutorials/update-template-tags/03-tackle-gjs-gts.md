@@ -270,6 +270,6 @@ if (filePath.endsWith('.hbs')) {
 
 > [!NOTE]
 >
-> Because `range.startByte` is monotonically increasing, we can assume that `templateTags` is a sorted array. The `<template>` tag, which appears first in a file, appears first in the array.
+> Because `range.startChar` is monotonically increasing, we can assume that `templateTags` is a sorted array. The `<template>` tag, which appears first in a file, appears first in the array.
 >
 > To avoid bugs due to line and character positions, we need to update the file's templates in the opposite order (from last to first). `updateTemplates` handles this for us.

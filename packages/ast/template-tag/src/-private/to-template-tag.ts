@@ -11,11 +11,15 @@ export function removeMarkers(file: string): string {
 
   const ast = traverse(file, {
     visitCallExpression(path) {
+      if (path.node.type !== 'CallExpression') {
+        this.traverse(path);
+        return false;
+      }
+
       const template = getTemplate(path.node);
 
       if (template === undefined) {
         this.traverse(path);
-
         return false;
       }
 
@@ -23,11 +27,14 @@ export function removeMarkers(file: string): string {
     },
 
     visitExportDefaultDeclaration(path) {
+      if (path.node.declaration.type !== 'CallExpression') {
+        this.traverse(path);
+        return false;
+      }
+
       const template = getTemplate(path.node.declaration);
 
       if (template === undefined) {
-        this.traverse(path);
-
         return false;
       }
 
@@ -49,7 +56,10 @@ export function removeMarkers(file: string): string {
     visitStaticBlock(path) {
       const bodyNode = path.node.body[0]!;
 
-      if (bodyNode.type !== 'ExpressionStatement') {
+      if (
+        bodyNode.type !== 'ExpressionStatement' ||
+        bodyNode.expression.type !== 'CallExpression'
+      ) {
         return false;
       }
 

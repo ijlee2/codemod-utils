@@ -40,11 +40,15 @@ export function findMarkers(file: string): Marker[] {
 
   traverse(code, {
     visitCallExpression(path) {
+      if (path.node.type !== 'CallExpression') {
+        this.traverse(path);
+        return false;
+      }
+
       const template = getTemplate(path.node);
 
       if (template === undefined) {
         this.traverse(path);
-
         return false;
       }
 
@@ -58,11 +62,14 @@ export function findMarkers(file: string): Marker[] {
     },
 
     visitExportDefaultDeclaration(path) {
+      if (path.node.declaration.type !== 'CallExpression') {
+        this.traverse(path);
+        return false;
+      }
+
       const template = getTemplate(path.node.declaration);
 
       if (template === undefined) {
-        this.traverse(path);
-
         return false;
       }
 
@@ -78,7 +85,10 @@ export function findMarkers(file: string): Marker[] {
     visitStaticBlock(path) {
       const bodyNode = path.node.body[0]!;
 
-      if (bodyNode.type !== 'ExpressionStatement') {
+      if (
+        bodyNode.type !== 'ExpressionStatement' ||
+        bodyNode.expression.type !== 'CallExpression'
+      ) {
         return false;
       }
 
