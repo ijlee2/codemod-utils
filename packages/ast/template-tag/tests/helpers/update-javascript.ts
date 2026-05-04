@@ -12,28 +12,23 @@ export function renameGetters(file: string, data: Data): string {
   const traverse = AST.traverse(true);
 
   const ast = traverse(file, {
-    visitClassMethod(node) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      if (node.value.kind !== 'get') {
+    visitClassMethod(path) {
+      if (path.node.kind !== 'get' || path.node.key.type !== 'Identifier') {
         return false;
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      const getterName = node.value.key.name as string;
+      const getterName = path.node.key.name;
 
       if (!data.getters.has(getterName)) {
         return false;
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      node.value.comments = [
+      path.node.comments = [
         AST.builders.commentLine(' Assigned new name'),
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-        ...(node.value.comments ?? []),
+        ...(path.node.comments ?? []),
       ];
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      node.value.key.name = `__${getterName}`;
+      path.node.key.name = `__${getterName}`;
 
       return false;
     },
