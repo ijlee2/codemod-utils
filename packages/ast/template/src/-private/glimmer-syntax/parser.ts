@@ -6,13 +6,51 @@ import {
   traverse,
 } from '@glimmer/syntax';
 
-import {
-  type AnnotatedAttrNode,
-  type AnnotatedStringLiteral,
-  type QuoteType,
-  useCustomPrinter,
-} from './builders.js';
 import { getLines, sortByLoc, sourceForLoc } from './utils.js';
+
+type QuoteType = '"' | "'";
+
+interface AnnotatedAttrNode extends AST.AttrNode {
+  /**
+   * Supports cases like `<input disabled>` or `<div ...attributes>`
+   */
+  isValueless?: boolean;
+
+  /**
+   * TextNode values can use single, double, or no quotes
+   * `type=input` vs `type='input'` vs `type="input"`
+   * ConcatStatement values can use single or double quotes
+   * `class='thing {{get this classNames}}'` vs `class="thing {{get this classNames}}"`
+   * MustacheStatements never use quotes
+   */
+  quoteType?: QuoteType | null;
+}
+
+interface AnnotatedStringLiteral extends AST.StringLiteral {
+  quoteType?: QuoteType;
+}
+
+/**
+ * The glimmer printer doesn't have any formatting suppport. It always uses
+ * double quotes, and won't print attrs without a value. To choose quote types
+ * or omit the value, we have to do it ourselves.
+ */
+function useCustomPrinter(node: AST.BaseNode): boolean {
+  switch (node.type) {
+    case 'AttrNode': {
+      const n = node as AnnotatedAttrNode;
+      return Boolean(n.isValueless) || n.quoteType !== undefined;
+    }
+
+    case 'StringLiteral': {
+      return Boolean((node as AnnotatedStringLiteral).quoteType);
+    }
+
+    default: {
+      return false;
+    }
+  }
+}
 
 const leadingWhitespace = /(^\s+)/;
 const attrNodeParts = /(^[^=]+)(\s+)?(=)?(\s+)?(['"])?(\S+)?/;

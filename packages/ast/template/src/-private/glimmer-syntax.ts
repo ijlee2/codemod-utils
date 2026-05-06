@@ -1,12 +1,12 @@
 import {
   type AST,
+  builders,
   type NodeVisitor,
   print as upstreamPrint,
   traverse,
   Walker,
 } from '@glimmer/syntax';
 
-import { builders } from './glimmer-syntax/builders.js';
 import { type NodeInfo, Parser } from './glimmer-syntax/parser.js';
 
 const NODE_INFO = new WeakMap<AST.Node, NodeInfo>();
