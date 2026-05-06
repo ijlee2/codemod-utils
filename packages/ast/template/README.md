@@ -7,7 +7,7 @@ _Utilities for handling `*.hbs` files as abstract syntax tree_
 
 ## What is it?
 
-`@codemod-utils/ast-template` provides methods from [`ember-template-recast`](https://github.com/ember-template-lint/ember-template-recast) to help you parse and transform `*.hbs` files.
+`@codemod-utils/ast-template` provides methods from [`@glimmer/syntax`](https://github.com/emberjs/ember.js/tree/main/packages/%40glimmer/syntax) to help you parse and transform `*.hbs` files.
 
 ```ts
 import { AST } from '@codemod-utils/ast-template';
