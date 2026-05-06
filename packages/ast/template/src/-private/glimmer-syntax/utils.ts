@@ -1,25 +1,7 @@
 import type { AST } from '@glimmer/syntax';
 
-const reLines = /(.*?(?:\r\n?|\n|$))/gm;
-
-export function compact(array: unknown[]): unknown[] {
-  const newArray: unknown[] = [];
-
-  array.forEach((a) => {
-    if (typeof a !== 'undefined' && a !== null && a !== '') {
-      newArray.push(a);
-    }
-  });
-
-  return newArray;
-}
-
-export function compactJoin(array: unknown[], delimeter = ''): string {
-  return compact(array).join(delimeter);
-}
-
 export function getLines(source: string): string[] {
-  const result = source.match(reLines);
+  const result = source.match(/(.*?(?:\r\n?|\n|$))/gm);
 
   if (!result) {
     throw new Error('could not parse source');
@@ -28,7 +10,7 @@ export function getLines(source: string): string[] {
   return result.slice(0, -1);
 }
 
-export function isSyntheticWithNoLocation(node: AST.Node): boolean {
+function isSyntheticWithNoLocation(node: AST.Node): boolean {
   if (node && node.loc) {
     const { start, end } = node.loc;
 

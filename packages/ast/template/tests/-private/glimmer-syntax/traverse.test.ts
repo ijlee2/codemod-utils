@@ -1,8 +1,8 @@
 import { assert, normalizeFile, test } from '@codemod-utils/tests';
+import type { NodeVisitor } from '@glimmer/syntax';
 
 import {
   builders,
-  type NodeVisitor,
   print,
   traverse,
 } from '../../../src/-private/glimmer-syntax.js';

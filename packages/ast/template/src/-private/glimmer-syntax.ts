@@ -38,5 +38,4 @@ export function traverse() {
   };
 }
 
-export type { AST, NodeVisitor };
 export { builders };

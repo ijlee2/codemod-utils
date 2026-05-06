@@ -2,9 +2,9 @@
 import { EOL } from 'node:os';
 
 import { assert, normalizeFile, test } from '@codemod-utils/tests';
+import type { AST } from '@glimmer/syntax';
 
 import {
-  type AST,
   builders,
   parse,
   print,

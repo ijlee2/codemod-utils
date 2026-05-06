@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access */
 import { assert, normalizeFile, test } from '@codemod-utils/tests';
+import type { AST } from '@glimmer/syntax';
 
 import {
-  type AST,
   builders,
   parse,
   print,

@@ -1,10 +1,7 @@
 import { assert, normalizeFile, test } from '@codemod-utils/tests';
+import type { AST } from '@glimmer/syntax';
 
-import {
-  type AST,
-  parse,
-  print,
-} from '../../../src/-private/glimmer-syntax.js';
+import { parse, print } from '../../../src/-private/glimmer-syntax.js';
 
 test('-private | glimmer-syntax | NullLiteral > it should print correctly', function () {
   const template = normalizeFile([`{{contact-null`, `  null`, `}}`]);
