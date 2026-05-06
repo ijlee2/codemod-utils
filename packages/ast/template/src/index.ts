@@ -22,6 +22,12 @@ function traverse() {
   };
 }
 
+type AST = {
+  builders: typeof builders;
+  print: typeof print;
+  traverse: typeof traverse;
+};
+
 /**
  * An object that provides `builders`, `print`, and `traverse`.
  *
@@ -44,7 +50,7 @@ function traverse() {
  * }
  * ```
  */
-export const AST = {
+export const AST: AST = {
   builders,
   print,
   traverse,
