@@ -4,7 +4,7 @@ import {
   type NodeVisitor,
   print,
   transform,
-} from 'ember-template-recast';
+} from './-private/glimmer-syntax.js';
 
 function traverse() {
   return function (
