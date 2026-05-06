@@ -20,7 +20,7 @@ Goals:
 
 ## Hello, AST!
 
-Libraries like [`recast`](https://github.com/benjamn/recast) and [`ember-template-recast`](https://github.com/ember-template-lint/ember-template-recast) help us convert JS/TS and HBS files to an **AST (abstract syntax tree)**. `codemod-utils` wraps these libraries to provide you an interface that is standardized:
+Libraries like [`recast`](https://github.com/benjamn/recast) and [`@glimmer/syntax`](https://github.com/emberjs/ember.js/tree/main/packages/%40glimmer/syntax) help us convert JS/TS and HBS files to an **AST (abstract syntax tree)**. `codemod-utils` wraps these libraries to provide you an interface that is standardized:
 
 - `AST.traverse` (traverse the tree)
 - `AST.builders` (build a new tree)
@@ -138,7 +138,7 @@ const ast = traverse(file, {
 });
 ```
 
-Currently, `ember-template-recast` and `recast` lack documentation and tutorials. This is unfortunate, given the large amount of **builders** and **visit methods** that they provide to help you transform code.
+Currently, `recast` and `@glimmer/syntax` lack documentation and tutorials. This is unfortunate, given the large amount of **builders** and **visit methods** that they provide to help you transform code.
 
 We will use [AST Explorer](https://astexplorer.net) to test a small piece of code and familiarize with the API. The error messages from TypeScript, which you can find in your browser's console, can sometimes help.
 
