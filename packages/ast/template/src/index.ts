@@ -1,26 +1,10 @@
-import {
-  type AST as _AST,
-  builders,
-  type NodeVisitor,
-  print,
-  transform,
-} from 'ember-template-recast';
+import { builders, print, traverse } from './-private/glimmer-syntax.js';
 
-function traverse() {
-  return function (
-    file: string,
-    visitMethods: NodeVisitor = {},
-  ): _AST.Template {
-    const { ast } = transform({
-      plugin() {
-        return visitMethods;
-      },
-      template: file,
-    });
-
-    return ast;
-  };
-}
+type AST = {
+  builders: typeof builders;
+  print: typeof print;
+  traverse: typeof traverse;
+};
 
 /**
  * An object that provides `builders`, `print`, and `traverse`.
@@ -44,7 +28,7 @@ function traverse() {
  * }
  * ```
  */
-export const AST = {
+export const AST: AST = {
   builders,
   print,
   traverse,
