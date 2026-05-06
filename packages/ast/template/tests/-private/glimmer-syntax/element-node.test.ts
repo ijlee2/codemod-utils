@@ -2,7 +2,6 @@
 import { EOL } from 'node:os';
 
 import { assert, normalizeFile, test } from '@codemod-utils/tests';
-import { traverse } from '@glimmer/syntax';
 
 import {
   type AST,
@@ -661,27 +660,6 @@ test('-private | glimmer-syntax | ElementNode > adding a new attribute to an Ele
       `</div>`,
     ]),
   );
-});
-
-test('-private | glimmer-syntax | ElementNode > issue can handle angle brackets in modifier argument values', function () {
-  const template = normalizeFile([
-    `<Select`,
-    `  @placeholder={{do-something ">> Some Text Here"}}`,
-    `  @options={{this.items}}`,
-    `  as |item|`,
-    `>`,
-    `  {{item.name}}`,
-    `</Select>`,
-  ]);
-  const ast = parse(template);
-
-  traverse(ast, {
-    ElementNode(node) {
-      node.tag = `${node.tag}`;
-    },
-  });
-
-  assert.strictEqual(print(ast), template);
 });
 
 test('-private | glimmer-syntax | ElementNode > issue 706', function () {

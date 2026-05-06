@@ -3,8 +3,7 @@ import {
   builders,
   type NodeVisitor,
   print as upstreamPrint,
-  traverse,
-  Walker,
+  traverse as upstreamTraverse,
 } from '@glimmer/syntax';
 
 import { type NodeInfo, Parser } from './glimmer-syntax/parser.js';
@@ -29,107 +28,13 @@ export function print(ast: AST.Node): string {
   });
 }
 
-type TransformOptions = {
-  /**
-   * The path (relative to the current working directory) to the file being transformed.
-   *
-   * This is useful when a given transform need to have differing behavior based on the
-   * location of the file (e.g. a component template should be modified differently than
-   * a route template).
-   */
-  filePath?: string;
+export function traverse() {
+  return function (file: string, visitMethods: NodeVisitor = {}): AST.Template {
+    const { ast } = new Parser(file, NODE_INFO);
 
-  /**
-   * The plugin to use for transformation.
-   */
-  plugin: TransformPluginBuilder;
+    upstreamTraverse(ast, visitMethods);
 
-  /**
-   * The template to transform (either as a string or a pre-parsed AST.Template).
-   */
-  template: string | AST.Template;
-};
-
-type TransformPluginBuilder = {
-  (env: TransformPluginEnv): NodeVisitor;
-};
-
-type TransformPluginEnv = {
-  contents: string;
-  filePath: string | undefined;
-  parseOptions: {
-    srcName: string | undefined;
-  };
-  syntax: {
-    Walker: typeof Walker;
-    builders: typeof builders;
-    parse: typeof parse;
-    print: typeof print;
-    traverse: typeof traverse;
-  };
-};
-
-type TransformResult = {
-  ast: AST.Template;
-  code: string;
-};
-
-export function transform(
-  template: string | AST.Template,
-  plugin: TransformPluginBuilder,
-): TransformResult;
-export function transform(options: TransformOptions): TransformResult;
-export function transform(
-  templateOrOptions: string | AST.Template | TransformOptions,
-  plugin?: TransformPluginBuilder,
-): TransformResult {
-  let ast: AST.Template;
-  let contents: string;
-  let filePath: undefined | string;
-  let template: string | AST.Template;
-
-  if (plugin === undefined) {
-    const options = templateOrOptions as TransformOptions;
-    // TransformOptions invocation style
-    filePath = options.filePath;
-    plugin = options.plugin;
-    template = options.template;
-  } else {
-    filePath = undefined;
-    template = templateOrOptions as AST.Template;
-  }
-
-  if (typeof template === 'string') {
-    ast = parse(template);
-    contents = template;
-  } else {
-    // assume we were passed an ast
-    ast = template;
-    contents = print(ast);
-  }
-
-  const env: TransformPluginEnv = {
-    contents,
-    filePath,
-    parseOptions: {
-      srcName: filePath,
-    },
-    syntax: {
-      Walker,
-      builders,
-      parse,
-      print,
-      traverse,
-    },
-  };
-
-  const visitor = plugin(env);
-
-  traverse(ast, visitor);
-
-  return {
-    ast,
-    code: print(ast),
+    return ast;
   };
 }
 

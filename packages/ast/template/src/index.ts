@@ -1,26 +1,4 @@
-import {
-  type AST as _AST,
-  builders,
-  type NodeVisitor,
-  print,
-  transform,
-} from './-private/glimmer-syntax.js';
-
-function traverse() {
-  return function (
-    file: string,
-    visitMethods: NodeVisitor = {},
-  ): _AST.Template {
-    const { ast } = transform({
-      plugin() {
-        return visitMethods;
-      },
-      template: file,
-    });
-
-    return ast;
-  };
-}
+import { builders, print, traverse } from './-private/glimmer-syntax.js';
 
 type AST = {
   builders: typeof builders;
