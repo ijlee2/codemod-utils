@@ -1,5 +1,15 @@
 # docs-app-for-codemod-utils
 
+## 1.6.0
+
+### Minor Changes
+
+- [#309](https://github.com/ijlee2/codemod-utils/pull/309) Updated vitepress to 2.0.0-alpha.17 ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#311](https://github.com/ijlee2/codemod-utils/pull/311) Replaced ember-template-recast with @glimmer/syntax in documentations ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.5.1
 
 ### Patch Changes

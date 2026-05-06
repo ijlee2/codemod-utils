@@ -1,5 +1,15 @@
 # @codemod-utils/ast-template
 
+## 3.1.0
+
+### Minor Changes
+
+- [#310](https://github.com/ijlee2/codemod-utils/pull/310) Replaced ember-template-recast with @glimmer/syntax ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#311](https://github.com/ijlee2/codemod-utils/pull/311) Replaced ember-template-recast with @glimmer/syntax in documentations ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.0.1
 
 ### Patch Changes

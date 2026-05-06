@@ -1,5 +1,11 @@
 # @codemod-utils/cli
 
+## 4.4.0
+
+### Minor Changes
+
+- [#312](https://github.com/ijlee2/codemod-utils/pull/312) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.3.2
 
 ### Patch Changes
