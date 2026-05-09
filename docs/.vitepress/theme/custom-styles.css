@@ -1,33 +1,40 @@
 /* stylelint-disable selector-class-pattern */
 :root {
-  --ember-black: #212121;
-  --ember-brand: #db3122;
-  --ember-brand-old: #e04e39;
-  --ember-faint-gray: #efebea;
-  --ember-gray: #817f7f;
-  --ember-linen: #fdf7f6;
+  --my-black: #212121;
+  --my-brand: #4957c4;
+  --my-brand-light: #6963eb;
+  --my-faint-gray: #efebea;
+  --my-gray: #817f7f;
 }
 
 html:not(.dark) {
-  --vp-button-brand-bg: var(--ember-brand) !important;
-  --vp-button-brand-hover-bg: var(--ember-brand-old) !important;
-  --vp-c-brand-1: var(--ember-brand) !important;
-  --vp-c-brand-2: var(--ember-brand-old) !important;
-  --vp-c-text-1: var(--ember-black) !important;
-  --vp-c-text-2: var(--ember-gray) !important;
-  --vp-c-text-3: var(--ember-faint-gray) !important;
-  --vp-code-block-bg: var(--ember-linen) !important;
+  --vp-button-brand-bg: #5b6ce3 !important;
+  --vp-button-brand-hover-bg: #6963eb !important;
+  --vp-c-brand-1: var(--my-brand) !important;
+  --vp-c-brand-2: var(--my-brand-light) !important;
+  --vp-c-text-1: var(--my-black) !important;
+  --vp-c-text-2: var(--my-gray) !important;
+  --vp-c-text-3: var(--my-faint-gray) !important;
+  --vp-code-bg: #f7f5fc !important;
+  --vp-code-block-bg: #fcf8f2 !important;
   --vp-code-line-highlight-color: rgb(251 200 64 / 38%) !important;
-  --vp-code-line-number-color: var(--ember-gray) !important;
-  --vp-home-hero-name-color: var(--ember-brand) !important;
+  --vp-code-line-number-color: var(--my-gray) !important;
+  --vp-home-hero-name-color: transparent !important;
+  /* stylelint-disable-next-line value-no-vendor-prefix */
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    305deg,
+    rgb(222 55 183) 0%,
+    rgb(87 199 193) 50%,
+    rgb(250 230 55) 100%
+  ) !important;
 }
 
 html:not(.dark) :focus-visible {
-  outline-color: var(--ember-brand-old) !important;
+  outline-color: var(--my-brand-light) !important;
 }
 
 html:not(.dark) .VPSidebarItem .caret {
-  color: var(--ember-black) !important;
+  color: var(--my-black) !important;
 }
 
 html:not(.dark) .VPSidebarItem.level-1 .text {
@@ -35,9 +42,9 @@ html:not(.dark) .VPSidebarItem.level-1 .text {
 }
 
 html.dark {
-  --vp-button-brand-bg: var(--ember-brand) !important;
-  --vp-button-brand-hover-bg: var(--ember-brand-old) !important;
-  --vp-home-hero-name-color: var(--ember-brand) !important;
+  --vp-button-brand-bg: var(--my-brand) !important;
+  --vp-button-brand-hover-bg: var(--my-brand-light) !important;
+  --vp-home-hero-name-color: var(--my-brand) !important;
 }
 
 html.dark .VPSidebarItem.level-1 .text {
