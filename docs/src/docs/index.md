@@ -57,5 +57,6 @@ pnpx @codemod-utils/cli <your-codemod-name>
 1. [ember-codemod-v1-to-v2](https://github.com/ijlee2/ember-codemod-v1-to-v2)
 1. [ignore-lint-errors](https://github.com/ijlee2/ignore-lint-errors)
 1. [prettier-plugin-ember-hbs-tag](https://github.com/ijlee2/prettier-plugin-ember-hbs-tag/)
+1. [shadcn-ember](https://github.com/IgnaceMaes/shadcn-ember/tree/main/packages/cli)
 1. [type-css-modules](https://github.com/ijlee2/embroider-css-modules/tree/main/packages/type-css-modules)
 1. [update-workspace-root-version](https://github.com/ijlee2/update-workspace-root-version)
