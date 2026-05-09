@@ -1,5 +1,11 @@
 # @codemod-utils/ast-template-tag
 
+## 2.4.0
+
+### Minor Changes
+
+- [#314](https://github.com/ijlee2/codemod-utils/pull/314) Updated content-tag to 4.2.0 ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.3.0
 
 ### Minor Changes

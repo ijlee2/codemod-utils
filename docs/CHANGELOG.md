@@ -1,5 +1,12 @@
 # docs-app-for-codemod-utils
 
+## 1.6.1
+
+### Patch Changes
+
+- [#314](https://github.com/ijlee2/codemod-utils/pull/314) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+- [#313](https://github.com/ijlee2/codemod-utils/pull/313) Described codemod-utils as a framework for writing codemods ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.6.0
 
 ### Minor Changes
