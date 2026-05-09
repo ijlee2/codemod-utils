@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: codemod-utils
-  tagline: Utilities for writing codemods
+  tagline: Framework for writing codemods
 
   actions:
     - link: /docs

@@ -2,7 +2,7 @@
 
 # @codemod-utils
 
-_Utilities for writing codemods_
+_Framework for writing codemods_
 
 
 ## What are codemods?
@@ -20,7 +20,7 @@ In short, codemods are everywhere and you’ve likely used a few already.
 
 ## What is codemod-utils?
 
-`codemod-utils` provides a set of **tools and conventions** to help you write codemods. Use [`@codemod-utils/cli`](./packages/cli/README.md) to get started.
+`codemod-utils` provides a **framework** (tools and conventions) to help you write codemods. Use [`@codemod-utils/cli`](./packages/cli/README.md) to get started.
 
 ```sh
 pnpx @codemod-utils/cli <your-codemod-name>

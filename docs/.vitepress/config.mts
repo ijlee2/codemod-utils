@@ -5,7 +5,7 @@ import { sidebar } from './sidebar.mts';
 export default defineConfig({
   base: '/',
   cleanUrls: true,
-  description: 'Utilities for writing codemods',
+  description: 'Framework for writing codemods',
   markdown: {
     anchor: {
       level: [2, 3],

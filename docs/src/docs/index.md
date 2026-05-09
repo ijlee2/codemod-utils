@@ -13,7 +13,7 @@ In short, codemods are everywhere and you’ve likely used a few already.
 
 ## What is codemod-utils?
 
-`codemod-utils` provides a set of **tools and conventions** to help you write codemods. Use `@codemod-utils/cli` to get started.
+`codemod-utils` provides a **framework** (tools and conventions) to help you write codemods. Use `@codemod-utils/cli` to get started.
 
 ```sh {:no-line-numbers}
 pnpx @codemod-utils/cli <your-codemod-name>
