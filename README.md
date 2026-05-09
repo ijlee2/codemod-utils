@@ -2,7 +2,7 @@
 
 # @codemod-utils
 
-_Utilities for writing codemods_
+_Framework for writing codemods_
 
 
 ## What are codemods?
@@ -20,7 +20,7 @@ In short, codemods are everywhere and you’ve likely used a few already.
 
 ## What is codemod-utils?
 
-`codemod-utils` provides a set of **tools and conventions** to help you write codemods. Use [`@codemod-utils/cli`](./packages/cli/README.md) to get started.
+`codemod-utils` provides a **framework** (tools and conventions) to help you write codemods. Use [`@codemod-utils/cli`](./packages/cli/README.md) to get started.
 
 ```sh
 pnpx @codemod-utils/cli <your-codemod-name>
@@ -69,6 +69,7 @@ Visit https://codemod-utils.netlify.app/.
 1. [ember-codemod-v1-to-v2](https://github.com/ijlee2/ember-codemod-v1-to-v2)
 1. [ignore-lint-errors](https://github.com/ijlee2/ignore-lint-errors)
 1. [prettier-plugin-ember-hbs-tag](https://github.com/ijlee2/prettier-plugin-ember-hbs-tag/)
+1. [shadcn-ember](https://github.com/IgnaceMaes/shadcn-ember/tree/main/packages/cli)
 1. [type-css-modules](https://github.com/ijlee2/embroider-css-modules/tree/main/packages/type-css-modules)
 1. [update-workspace-root-version](https://github.com/ijlee2/update-workspace-root-version)
 
