@@ -5,11 +5,18 @@
   --my-brand-light: #6963eb;
   --my-faint-gray: #efebea;
   --my-gray: #817f7f;
+  /* stylelint-disable-next-line value-no-vendor-prefix */
+  --my-hero: -webkit-linear-gradient(
+    305deg,
+    rgb(222 55 183) 0%,
+    rgb(87 199 193) 50%,
+    rgb(250 230 55) 100%
+  );
 }
 
 html:not(.dark) {
-  --vp-button-brand-bg: #5b6ce3 !important;
-  --vp-button-brand-hover-bg: #6963eb !important;
+  --vp-button-brand-bg: var(--my-brand) !important;
+  --vp-button-brand-hover-bg: var(--my-brand-light) !important;
   --vp-c-brand-1: var(--my-brand) !important;
   --vp-c-brand-2: var(--my-brand-light) !important;
   --vp-c-text-1: var(--my-black) !important;
@@ -20,13 +27,7 @@ html:not(.dark) {
   --vp-code-line-highlight-color: rgb(251 200 64 / 38%) !important;
   --vp-code-line-number-color: var(--my-gray) !important;
   --vp-home-hero-name-color: transparent !important;
-  /* stylelint-disable-next-line value-no-vendor-prefix */
-  --vp-home-hero-name-background: -webkit-linear-gradient(
-    305deg,
-    rgb(222 55 183) 0%,
-    rgb(87 199 193) 50%,
-    rgb(250 230 55) 100%
-  ) !important;
+  --vp-home-hero-name-background: var(--my-hero) !important;
 }
 
 html:not(.dark) :focus-visible {
@@ -44,7 +45,8 @@ html:not(.dark) .VPSidebarItem.level-1 .text {
 html.dark {
   --vp-button-brand-bg: var(--my-brand) !important;
   --vp-button-brand-hover-bg: var(--my-brand-light) !important;
-  --vp-home-hero-name-color: var(--my-brand) !important;
+  --vp-home-hero-name-color: transparent !important;
+  --vp-home-hero-name-background: var(--my-hero) !important;
 }
 
 html.dark .VPSidebarItem.level-1 .text {
