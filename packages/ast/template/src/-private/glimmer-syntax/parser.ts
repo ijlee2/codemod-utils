@@ -2,7 +2,7 @@ import {
   type AST,
   builders,
   preprocess,
-  print as _print,
+  print as upstreamPrint,
   traverse,
 } from '@glimmer/syntax';
 
@@ -989,7 +989,7 @@ export class Parser {
               this.sourceForLoc({
                 start: original.loc.start,
                 end: block.path.loc.start,
-              }) + _print(ast.path);
+              }) + upstreamPrint(ast.path);
 
             // TODO: this is a logic error
             const pathIndex = endSource.indexOf(
@@ -1391,7 +1391,7 @@ export class Parser {
         // @ts-expect-error: Incorrect type
         break;
       default:
-        return _print(_ast, {
+        return upstreamPrint(_ast, {
           entityEncoding: 'raw',
           // @ts-expect-error: Incorrect type
           override: (ast) => {
