@@ -38,8 +38,10 @@ interface AnnotatedStringLiteral extends AST.StringLiteral {
 function useCustomPrinter(node: AST.BaseNode): boolean {
   switch (node.type) {
     case 'AttrNode': {
-      const n = node as AnnotatedAttrNode;
-      return Boolean(n.isValueless) || n.quoteType !== undefined;
+      return (
+        Boolean((node as AnnotatedAttrNode).isValueless) ||
+        (node as AnnotatedAttrNode).quoteType !== undefined
+      );
     }
 
     case 'StringLiteral': {
@@ -52,10 +54,10 @@ function useCustomPrinter(node: AST.BaseNode): boolean {
   }
 }
 
-const leadingWhitespace = /(^\s+)/;
 const attrNodeParts = /(^[^=]+)(\s+)?(=)?(\s+)?(['"])?(\S+)?/;
 const hashPairParts = /(^[^=]+)(\s+)?=(\s+)?(\S+)/;
 const invalidUnquotedAttrValue = /[^-.a-zA-Z0-9]/;
+const leadingWhitespace = /(^\s+)/;
 
 const voidTagNames = new Set([
   'area',
@@ -83,18 +85,16 @@ const voidTagNames = new Set([
   * https://github.com/glimmerjs/glimmer-vm/pull/953
   * https://github.com/glimmerjs/glimmer-vm/pull/954
 */
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/no-explicit-any
-function fixASTIssues(sourceLines: any, ast: any) {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+function fixASTIssues(sourceLines: string[], ast: AST.Template): AST.Template {
   traverse(ast, {
-    AttrNode(attr: AST.AttrNode) {
-      const node = attr as AnnotatedAttrNode;
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    AttrNode(node: AnnotatedAttrNode) {
       const source = sourceForLoc(sourceLines, node.loc);
       const attrNodePartsResults = source.match(attrNodeParts);
+
       if (attrNodePartsResults === null) {
         throw new Error(`Could not match attr node parts for ${source}`);
       }
+
       const [, , , equals, , quote] = attrNodePartsResults;
       const isValueless = !equals;
 
@@ -106,9 +106,8 @@ function fixASTIssues(sourceLines: any, ast: any) {
       ) {
         // \n is not valid within an attribute name (it would indicate two attributes)
         // always assume the attribute ends on the starting line
-        const {
-          start: { line, column },
-        } = node.loc;
+        const { column, line } = node.loc.start;
+
         node.loc = builders.loc(line, column, line, column + node.name.length);
       }
 
@@ -116,34 +115,34 @@ function fixASTIssues(sourceLines: any, ast: any) {
       node.quoteType = (quote as QuoteType) || null;
     },
 
-    StringLiteral(lit) {
+    StringLiteral(node: AnnotatedStringLiteral) {
       const quotes = /^['"]/;
-      const node = lit as AnnotatedStringLiteral;
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       const source = sourceForLoc(sourceLines, node.loc);
+
       if (!source.match(quotes)) {
         throw new Error('Invalid string literal found');
       }
+
       node.quoteType = source[0] as QuoteType;
     },
 
     TextNode(node, path) {
       if (path.parentNode === null) {
         throw new Error(
-          'ember-template-recast: Error while sanitizing input AST: found TextNode with no parentNode',
+          'Error while sanitizing input AST: found TextNode with no parentNode',
         );
       }
 
       switch (path.parentNode.type) {
         case 'AttrNode': {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           const source = sourceForLoc(sourceLines, node.loc);
-          if (
-            node.chars.length > 0 &&
-            ((source.startsWith(`'`) && source.endsWith(`'`)) ||
-              (source.startsWith(`"`) && source.endsWith(`"`)))
-          ) {
-            const { start, end } = node.loc;
+          const hasQuotes =
+            (source.startsWith(`'`) && source.endsWith(`'`)) ||
+            (source.startsWith(`"`) && source.endsWith(`"`));
+
+          if (node.chars.length > 0 && hasQuotes) {
+            const { end, start } = node.loc;
+
             node.loc = builders.loc(
               start.line,
               start.column + 1,
@@ -151,38 +150,41 @@ function fixASTIssues(sourceLines: any, ast: any) {
               end.column - 1,
             );
           }
+
           break;
         }
+
         case 'ConcatStatement': {
           const parent = path.parentNode;
           const isFirstPart = parent.parts.indexOf(node) === 0;
 
-          const { start, end } = node.loc;
-          if (
-            isFirstPart &&
-            node.loc.start.column > path.parentNode.loc.start.column + 1
-          ) {
-            // TODO: manually working around https://github.com/glimmerjs/glimmer-vm/pull/954
-            node.loc = builders.loc(
-              start.line,
-              start.column - 1,
-              end.line,
-              end.column,
-            );
-          } else if (isFirstPart && node.chars.charAt(0) === '\n') {
-            node.loc = builders.loc(
-              start.line,
-              start.column + 1,
-              end.line,
-              end.column,
-            );
+          const { end, start } = node.loc;
+
+          if (isFirstPart) {
+            if (node.loc.start.column > path.parentNode.loc.start.column + 1) {
+              // TODO: manually working around https://github.com/glimmerjs/glimmer-vm/pull/954
+              node.loc = builders.loc(
+                start.line,
+                start.column - 1,
+                end.line,
+                end.column,
+              );
+            } else if (node.chars.charAt(0) === '\n') {
+              node.loc = builders.loc(
+                start.line,
+                start.column + 1,
+                end.line,
+                end.column,
+              );
+            }
           }
+
+          break;
         }
       }
     },
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return ast;
 }
 
@@ -219,7 +221,6 @@ export class Parser {
 
     const source = getLines(template);
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     ast = fixASTIssues(source, ast);
     this.source = source;
     this._originalAst = ast;
