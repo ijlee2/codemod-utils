@@ -49,6 +49,7 @@ Visit https://codemod-utils.netlify.app/.
 ## Made with codemod-utils
 
 1. [@ember-intl/lint](https://github.com/ember-intl/ember-intl/tree/main/packages/ember-intl-lint)
+1. [@ember-intl/update](https://github.com/ember-intl/ember-intl/tree/main/packages/ember-intl-update)
 1. [@ember-intl/vite](https://github.com/ember-intl/ember-intl/tree/main/packages/ember-intl-vite)
 1. [add-return-type](https://github.com/ijlee2/add-return-type)
 1. [analyze-ember-project-dependencies](https://github.com/ijlee2/analyze-ember-project-dependencies)
