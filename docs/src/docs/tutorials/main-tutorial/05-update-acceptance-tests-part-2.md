@@ -32,9 +32,7 @@ Libraries like [`recast`](https://github.com/benjamn/recast) and [`@glimmer/synt
 import { AST } from '@codemod-utils/ast-javascript';
 
 function transform(file: string): string {
-  const traverse = AST.traverse();
-
-  const ast = traverse(file, {
+  const ast = AST.traverse(file, {
     /* Use AST.builders to transform the tree */
   });
 
@@ -46,9 +44,7 @@ function transform(file: string): string {
 import { AST } from '@codemod-utils/ast-template';
 
 function transform(file: string): string {
-  const traverse = AST.traverse();
-
-  const ast = traverse(file, {
+  const ast = AST.traverse(file, {
     /* Use AST.builders to transform the tree */
   });
 
@@ -78,9 +74,7 @@ import { findFiles } from '@codemod-utils/files';
 import type { Options } from '../types/index.js';
 
 function renameModule(file: string): string {
-+   const traverse = AST.traverse();
-+ 
-+   const ast = traverse(file, {
++   const ast = AST.traverse(file, {
 +     // ...
 +   });
 + 
@@ -118,7 +112,7 @@ Since `renameModule` is an identity, the `test` script should continue to pass.
 Next, we want to specify how to update the tree (how to rename the test module).
 
 ```ts
-const ast = traverse(file, {
+const ast = AST.traverse(file, {
   // ...
 });
 ```
@@ -398,9 +392,7 @@ import type { Options } from '../types/index.js';
 +
 - function renameModule(file: string): string {
 + function renameModule(file: string, data: Data): string {
-  const traverse = AST.traverse();
-
-  const ast = traverse(file, {
+  const ast = AST.traverse(file, {
 -     // ...
 +     visitCallExpression(path) {
 +       if (
