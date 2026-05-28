@@ -34,11 +34,10 @@ function sortMarkers(a: Marker, b: Marker): number {
 
 export function findMarkers(file: string): Marker[] {
   const { code } = preprocessor.process(file);
-  const traverse = AST.traverse();
 
   const markers: Marker[] = [];
 
-  traverse(code, {
+  AST.traverse(code, {
     visitCallExpression(path) {
       if (path.node.type !== 'CallExpression') {
         this.traverse(path);

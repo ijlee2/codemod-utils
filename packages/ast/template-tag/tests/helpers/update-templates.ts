@@ -1,9 +1,7 @@
 import { AST } from '@codemod-utils/ast-template';
 
 export function removeClassAttribute(file: string): string {
-  const traverse = AST.traverse();
-
-  const ast = traverse(file, {
+  const ast = AST.traverse(file, {
     // @ts-expect-error: Incorrect type
     AttrNode(node) {
       if (node.name !== 'class') {
