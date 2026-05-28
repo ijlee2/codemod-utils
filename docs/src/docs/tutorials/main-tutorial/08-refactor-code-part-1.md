@@ -157,7 +157,6 @@ import type { Options } from '../../types/index.js';
 + import { renameModule } from '../../utils/rename-tests/index.js';
 
 - type Data = {
--   isTypeScript: boolean;
 -   moduleName: string;
 - };
 - 
@@ -185,7 +184,6 @@ import type { Options } from '../../types/index.js';
 + import { renameModule } from '../../utils/rename-tests/index.js';
 
 - type Data = {
--   isTypeScript: boolean;
 -   moduleName: string;
 - };
 - 
@@ -221,7 +219,6 @@ import type { Options } from '../../types/index.js';
 + import { renameModule } from '../../utils/rename-tests/index.js';
 
 - type Data = {
--   isTypeScript: boolean;
 -   moduleName: string;
 - };
 - 
@@ -254,12 +251,11 @@ export * from './rename-module.js';
 import { AST } from '@codemod-utils/ast-javascript';
 
 type Data = {
-  isTypeScript: boolean;
   moduleName: string;
 };
 
 export function renameModule(file: string, data: Data): string {
-  const traverse = AST.traverse(data.isTypeScript);
+  const traverse = AST.traverse();
 
   const ast = traverse(file, {
     visitCallExpression(path) {
@@ -274,18 +270,8 @@ export function renameModule(file: string, data: Data): string {
         return false;
       }
 
-      switch (path.node.arguments[0].type) {
-        case 'Literal': {
-          path.node.arguments[0] = AST.builders.literal(data.moduleName);
-
-          break;
-        }
-
-        case 'StringLiteral': {
-          path.node.arguments[0] = AST.builders.stringLiteral(data.moduleName);
-
-          break;
-        }
+      if (path.node.arguments[0]!.type === 'StringLiteral') {
+        path.node.arguments[0] = AST.builders.stringLiteral(data.moduleName);
       }
 
       return false;

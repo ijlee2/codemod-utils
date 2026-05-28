@@ -12,12 +12,8 @@ _Utilities for handling `*.{js,ts}` files as abstract syntax tree_
 ```ts [How to update JavaScript]
 import { AST } from '@codemod-utils/ast-javascript';
 
-type Data = {
-  isTypeScript: boolean;
-};
-
-function transform(file: string, data: Data): string {
-  const traverse = AST.traverse(data.isTypeScript);
+function transform(file: string): string {
+  const traverse = AST.traverse();
 
   const ast = traverse(file, {
     /* Use AST.builders to transform the tree */
@@ -43,17 +39,16 @@ In a `traverse` call, you can specify how to visit the nodes of interest ("visit
 
 ::: code-group
 
-```ts [Example]{10,21,28}
+```ts [Example]{9,20,27}
 import { AST } from '@codemod-utils/ast-javascript';
 
 type Data = {
-  isTypeScript: boolean;
   newName: string;
   oldName: string;
 };
 
 function transform(file: string, data: Data): string {
-  const traverse = AST.traverse(data.isTypeScript);
+  const traverse = AST.traverse();
 
   const ast = traverse(file, {
     visitCallExpression(path) {
@@ -132,17 +127,16 @@ export default function transformer(code, { recast, parsers }) {
 }
 ```
 
-```ts [Example (Your file)]{13-24}
+```ts [Example (Your file)]{12-23}
 import { AST } from '@codemod-utils/ast-javascript';
 
 type Data = {
-  isTypeScript: boolean;
   newName: string;
   oldName: string;
 };
 
 function transform(file: string, data: Data): string {
-  const traverse = AST.traverse(data.isTypeScript);
+  const traverse = AST.traverse();
 
   const ast = traverse(file, {
     visitCallExpression(path) {

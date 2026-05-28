@@ -50,7 +50,6 @@ import { findFiles, parseFilePath } from '@codemod-utils/files';
 import type { Options } from '../types/index.js';
 
 type Data = {
-  isTypeScript: boolean;
   moduleName: string;
 };
 
@@ -101,7 +100,7 @@ function getModuleName(filePath: string): string {
 }
 
 function renameModule(file: string, data: Data): string {
-  const traverse = AST.traverse(data.isTypeScript);
+  const traverse = AST.traverse();
 
   const ast = traverse(file, {
     visitCallExpression(path) {
@@ -151,7 +150,6 @@ function renameModule(file: string, data: Data): string {
     const oldFile = readFileSync(oldPath, 'utf8');
 
     const data = {
-      isTypeScript: filePath.endsWith('.ts'),
       moduleName: getModuleName(filePath),
     };
 
