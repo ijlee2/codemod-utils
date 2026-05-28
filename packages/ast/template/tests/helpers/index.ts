@@ -1,5 +1,11 @@
 import { AST } from '../../src/index.js';
 
+export function identity(file: string): string {
+  const ast = AST.traverse(file);
+
+  return AST.print(ast);
+}
+
 export function transform(file: string): string {
   const ast = AST.traverse(file, {
     AttrNode(node) {
@@ -18,12 +24,6 @@ export function transform(file: string): string {
       }
     },
   });
-
-  return AST.print(ast);
-}
-
-export function traverse(file: string): string {
-  const ast = AST.traverse(file);
 
   return AST.print(ast);
 }

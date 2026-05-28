@@ -14,18 +14,15 @@ const formattingOptions: FormattingOptions = {
 
 /* https://github.com/facebook/jscodeshift/blob/v17.3.0/parser/tsOptions.js#L14-L46 */
 const tsOptions: ParserOptions = {
-  sourceType: 'module',
   allowImportExportEverywhere: true,
   allowReturnOutsideFunction: true,
-  startLine: 1,
-  tokens: true,
   plugins: [
     'asyncGenerators',
-    'decoratorAutoAccessors',
     'bigInt',
     'classPrivateMethods',
     'classPrivateProperties',
     'classProperties',
+    'decoratorAutoAccessors',
     'decorators-legacy',
     'doExpressions',
     'dynamicImport',
@@ -46,6 +43,9 @@ const tsOptions: ParserOptions = {
     'throwExpressions',
     'typescript',
   ],
+  sourceType: 'module',
+  startLine: 1,
+  tokens: true,
 };
 
 export const builders: typeof types.builders = types.builders;
