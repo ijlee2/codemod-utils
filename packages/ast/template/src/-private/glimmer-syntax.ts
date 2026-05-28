@@ -28,14 +28,15 @@ export function print(ast: AST.Node): string {
   });
 }
 
-export function traverse() {
-  return function (file: string, visitMethods: NodeVisitor = {}): AST.Template {
-    const { ast } = new Parser(file, NODE_INFO);
+export function traverse(
+  file: string,
+  visitMethods: NodeVisitor = {},
+): AST.Template {
+  const { ast } = new Parser(file, NODE_INFO);
 
-    upstreamTraverse(ast, visitMethods);
+  upstreamTraverse(ast, visitMethods);
 
-    return ast;
-  };
+  return ast;
 }
 
 export { builders };

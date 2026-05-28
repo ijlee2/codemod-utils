@@ -121,9 +121,7 @@ function getModuleName(filePath: string): string {
 }
 
 function renameModule(file: string, data: Data): string {
-  const traverse = AST.traverse();
-
-  const ast = traverse(file, {
+  const ast = AST.traverse(file, {
     visitCallExpression(path) {
       if (
         path.node.callee.type !== 'Identifier' ||
@@ -198,9 +196,7 @@ function getModuleName(filePath: string): string {
 }
 
 function renameModule(file: string, data: Data): string {
-  const traverse = AST.traverse();
-
-  const ast = traverse(file, {
+  const ast = AST.traverse(file, {
     visitCallExpression(path) {
       if (
         path.node.callee.type !== 'Identifier' ||

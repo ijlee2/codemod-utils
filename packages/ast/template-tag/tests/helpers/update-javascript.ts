@@ -9,9 +9,7 @@ export const data: Data = {
 };
 
 export function renameGetters(file: string, data: Data): string {
-  const traverse = AST.traverse();
-
-  const ast = traverse(file, {
+  const ast = AST.traverse(file, {
     visitClassMethod(path) {
       if (path.node.kind !== 'get' || path.node.key.type !== 'Identifier') {
         return false;

@@ -33,9 +33,7 @@ First, update `removeDataTestAttributes` so that it uses [`@codemod-utils/ast-te
 
 function removeDataTestAttributes(file: string): string {
 -   return file;
-+   const traverse = AST.traverse();
-+
-+   const ast = traverse(file, {
++   const ast = AST.traverse(file, {
 +     /* Use AST.builders to transform the tree */
 +   });
 +
@@ -57,9 +55,7 @@ To find the correct visit method, recall that we want to remove attributes if th
 import { AST } from '@codemod-utils/ast-template';
 
 function removeDataTestAttributes(file: string): string {
-  const traverse = AST.traverse();
-
-  const ast = traverse(file, {
+  const ast = AST.traverse(file, {
 -     /* Use AST.builders to transform the tree */
 +     AttrNode(node) {
 +       if (!node.name.startsWith('data-test')) {
