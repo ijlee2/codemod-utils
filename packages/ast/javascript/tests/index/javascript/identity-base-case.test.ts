@@ -1,8 +1,8 @@
 import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
-import { traverse } from '../../helpers/index.js';
+import { identity } from '../../helpers/index.js';
 
-test('index | javascript > traverse (base case)', function () {
+test('index | javascript > identity (base case)', function () {
   const oldFile = normalizeFile([
     `import Component from '@glimmer/component';`,
     ``,
@@ -10,7 +10,7 @@ test('index | javascript > traverse (base case)', function () {
     ``,
   ]);
 
-  const newFile = traverse(oldFile);
+  const newFile = identity(oldFile);
 
   assert.strictEqual(
     newFile,

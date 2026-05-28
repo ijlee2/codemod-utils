@@ -1,8 +1,8 @@
 import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
-import { traverse } from '../helpers/index.js';
+import { identity } from '../helpers/index.js';
 
-test('index > traverse (base case)', function () {
+test('index > identity (base case)', function () {
   const oldFile = normalizeFile([
     `{{! Some comment }}`,
     `<div data-test-container local-class="container">`,
@@ -10,7 +10,7 @@ test('index > traverse (base case)', function () {
     `</div>`,
   ]);
 
-  const newFile = traverse(oldFile);
+  const newFile = identity(oldFile);
 
   assert.strictEqual(
     newFile,
