@@ -193,7 +193,6 @@ test('utils | rename-tests | rename-module > javascript', function () {
   const oldFile = `module('Old name', function (hooks) {});`;
 
   const newFile = renameModule(oldFile, {
-    isTypeScript: false,
     moduleName: 'New name',
   });
 
@@ -213,7 +212,6 @@ A few remarks:
 
     // Act
     const newFile = renameModule(oldFile, {
-      isTypeScript: false,
       moduleName: 'New name',
     });
 
@@ -252,9 +250,7 @@ A few remarks:
     );
     ```
 
-Use the test file for `javascript` to write 5 more tests:
-
-1. `typescript.test.ts`: Base case for TypeScript files. Checks that `renameModule` can handle TypeScript files.
+Use the test file for `javascript` to write 4 more tests:
 
 1. `edge-case-file-is-empty.test.ts`: When the file is empty, `renameModule` returns the same file content and doesn't run into an error.
 
@@ -279,7 +275,6 @@ test('utils | rename-tests | rename-module > edge case (file is empty)', functio
   const oldFile = '';
 
   const newFile = renameModule(oldFile, {
-    isTypeScript: true,
     moduleName: 'New name',
   });
 
@@ -296,7 +291,6 @@ test('utils | rename-tests | rename-module > edge case (module does not exist)',
   const oldFile = `test('Old name', function (assert) {});`;
 
   const newFile = renameModule(oldFile, {
-    isTypeScript: true,
     moduleName: 'New name',
   });
 
@@ -313,7 +307,6 @@ test('utils | rename-tests | rename-module > edge case (module has incorrect arg
   const oldFile = `module('Old name');`;
 
   const newFile = renameModule(oldFile, {
-    isTypeScript: true,
     moduleName: 'New name',
   });
 
@@ -335,7 +328,6 @@ test('utils | rename-tests | rename-module > edge case (nested modules)', functi
   ]);
 
   const newFile = renameModule(oldFile, {
-    isTypeScript: true,
     moduleName: 'New name',
   });
 
@@ -348,23 +340,6 @@ test('utils | rename-tests | rename-module > edge case (nested modules)', functi
       ``,
     ]),
   );
-});
-```
-
-```ts [tests/utils/rename-tests/rename-module/typescript.test.ts]
-import { assert, test } from '@codemod-utils/tests';
-
-import { renameModule } from '../../../../src/utils/rename-tests/index.js';
-
-test('utils | rename-tests | rename-module > typescript', function () {
-  const oldFile = `module('Old name', function (hooks) {});`;
-
-  const newFile = renameModule(oldFile, {
-    isTypeScript: true,
-    moduleName: 'New name',
-  });
-
-  assert.strictEqual(newFile, `module('New name', function (hooks) {});`);
 });
 ```
 

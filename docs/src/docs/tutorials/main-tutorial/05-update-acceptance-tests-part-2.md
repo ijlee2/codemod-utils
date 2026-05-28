@@ -28,15 +28,11 @@ Libraries like [`recast`](https://github.com/benjamn/recast) and [`@glimmer/synt
 
 ::: code-group
 
-```ts [How to use @codemod-utils/ast-javascript]{1,8-14}
+```ts [How to use @codemod-utils/ast-javascript]{1}
 import { AST } from '@codemod-utils/ast-javascript';
 
-type Data = {
-  isTypeScript: boolean;
-};
-
-function transform(file: string, data: Data): string {
-  const traverse = AST.traverse(data.isTypeScript);
+function transform(file: string): string {
+  const traverse = AST.traverse();
 
   const ast = traverse(file, {
     /* Use AST.builders to transform the tree */
@@ -46,7 +42,7 @@ function transform(file: string, data: Data): string {
 }
 ```
 
-```ts [How to use @codemod-utils/ast-template]{1,4-10}
+```ts [How to use @codemod-utils/ast-template]{1}
 import { AST } from '@codemod-utils/ast-template';
 
 function transform(file: string): string {
@@ -62,7 +58,7 @@ function transform(file: string): string {
 
 :::
 
-Based on the how-to's above, try using `AST` in `renameModule` so that it remains an identity function. That is, define `traverse` (on line 10) so that the input `file` and the returned file have the same value. How will you indicate if the file is written in JavaScript or TypeScript?
+Based on the how-to's above, try using `AST` in `renameModule` so that it remains an identity function. That is, define `traverse` (on line 10) so that the input `file` and the returned file have the same value.
 
 <details>
 
@@ -81,22 +77,16 @@ import { findFiles } from '@codemod-utils/files';
 
 import type { Options } from '../types/index.js';
 
-- function renameModule(file: string): string {
--   return file;
-- }
-+ type Data = {
-+   isTypeScript: boolean;
-+ };
-+ 
-+ function renameModule(file: string, data: Data): string {
-+   const traverse = AST.traverse(data.isTypeScript);
+function renameModule(file: string): string {
++   const traverse = AST.traverse();
 + 
 +   const ast = traverse(file, {
 +     // ...
 +   });
 + 
+-   return file;
 +   return AST.print(ast);
-+ }
+}
 
 export function renameAcceptanceTests(options: Options): void {
   const { projectRoot } = options;
@@ -109,12 +99,7 @@ export function renameAcceptanceTests(options: Options): void {
     const oldPath = join(projectRoot, filePath);
     const oldFile = readFileSync(oldPath, 'utf8');
 
--     const newFile = renameModule(oldFile);
-+     const data = {
-+       isTypeScript: filePath.endsWith('.ts'),
-+     };
-+ 
-+     const newFile = renameModule(oldFile, data);
+    const newFile = renameModule(oldFile);
 
     writeFileSync(oldPath, newFile, 'utf8');
   });
@@ -287,8 +272,6 @@ Use what are highlighted in orange (`path.node.callee` and `path.node.arguments`
 
 <summary>Solution</summary>
 
-An extra check `path.node.arguments[0]!.type !== 'Literal'` is needed for JavaScript files. Apparently, the `type` is `Literal` for JS and `StringLiteral` for TS? 😓
-
 ::: code-group
 
 ```diff [Transform function]
@@ -309,15 +292,12 @@ export default function transformer(code, { recast, parsers }) {
 +         return false;
 +       }
 + 
-+       if (
-+         path.node.arguments[0]!.type !== 'Literal' &&
-+         path.node.arguments[0]!.type !== 'StringLiteral'
-+       ) {
-+         return false;
+-       console.log('-- CallExpression --');
+-       console.log(path.node);
++       if (path.node.arguments[0].type === 'StringLiteral') {
++         console.log('-- CallExpression --');
++         console.log(path.node);
 +       }
-+ 
-      console.log('-- CallExpression --');
-      console.log(path.node);
 
       return false;
     },
@@ -370,16 +350,11 @@ export default function transformer(code, { recast, parsers }) {
         return false;
       }
 
-      if (
-        path.node.arguments[0]!.type !== 'Literal' &&
-        path.node.arguments[0]!.type !== 'StringLiteral'
-      ) {
-        return false;
+      if (path.node.arguments[0].type === 'StringLiteral') {
+-         console.log('-- CallExpression --');
+-         console.log(path.node);
++         path.node.arguments[0] = b.stringLiteral(moduleName);
       }
- 
--       console.log('-- CallExpression --');
--       console.log(path.node);
-+       path.node.arguments[0] = b.stringLiteral(moduleName);
 
       return false;
     },
@@ -395,76 +370,16 @@ export default function transformer(code, { recast, parsers }) {
 
 </details>
 
-To be precise about types, let's use a `switch` statement and refactor code.
-
-<details>
-
-<summary>Solution</summary>
-
-::: code-group
-
-```diff [Transform function]
-export default function transformer(code, { recast, parsers }) {
-  const ast = recast.parse(code, { parser: parsers.typescript });
-  const b = recast.types.builders;
-  
-  const moduleName = 'New name';
-
-  recast.visit(ast, {
-    visitCallExpression(path) {
-      if (
-        path.node.callee.type !== 'Identifier' ||
-        path.node.callee.name !== 'module'
-      ) {
-        return false;
-      }
-
-      if (path.node.arguments.length !== 2) {
-        return false;
-      }
-
--       if (
--         path.node.arguments[0]!.type !== 'Literal' &&
--         path.node.arguments[0]!.type !== 'StringLiteral'
--       ) {
--         return false;
--       }
-- 
--       path.node.arguments[0] = b.stringLiteral(moduleName);
-+       switch (path.node.arguments[0]!.type) {
-+         case 'Literal': {
-+           path.node.arguments[0] = b.literal(moduleName);
-+ 
-+           break;
-+         }
-+ 
-+         case 'StringLiteral': {
-+           path.node.arguments[0] = b.stringLiteral(moduleName);
-+ 
-+           break;
-+         }
-+       }
-
-      return false;
-    },
-  });
-
-  return recast.print(ast).code;
-}
-```
-
-:::
-
-</details>
-
 
 ## Time to get real
 
-Once you arrive at an implementation in AST Explorer, moving the code to the codemod is trivial. Copy-paste the object with the visit methods, then replace `b.` with `AST.builders.`. (How should we pass `moduleName`?)
+Once you arrive at an implementation in AST Explorer, moving the code to the codemod is trivial. Copy-paste the object with the visit methods, then replace `b.` with `AST.builders.`. How should we pass data like `moduleName`?
 
 <details>
 
 <summary>Solution</summary>
+
+To pass data, we use an object. Objects help us maintain and extend code, because they don't create an order dependency among items that don't have a natural order.
 
 ::: code-group
 
@@ -477,13 +392,13 @@ import { findFiles } from '@codemod-utils/files';
 
 import type { Options } from '../types/index.js';
 
-type Data = {
-  isTypeScript: boolean;
++ type Data = {
 +   moduleName: string;
-};
-
-function renameModule(file: string, data: Data): string {
-  const traverse = AST.traverse(data.isTypeScript);
++ };
++
+- function renameModule(file: string): string {
++ function renameModule(file: string, data: Data): string {
+  const traverse = AST.traverse();
 
   const ast = traverse(file, {
 -     // ...
@@ -494,25 +409,15 @@ function renameModule(file: string, data: Data): string {
 +       ) {
 +         return false;
 +       }
-+ 
++
 +       if (path.node.arguments.length !== 2) {
 +         return false;
 +       }
-+ 
-+       switch (path.node.arguments[0]!.type) {
-+         case 'Literal': {
-+           path.node.arguments[0] = AST.builders.literal(data.moduleName);
-+ 
-+           break;
-+         }
-+ 
-+         case 'StringLiteral': {
-+           path.node.arguments[0] = AST.builders.stringLiteral(data.moduleName);
-+ 
-+           break;
-+         }
++
++       if (path.node.arguments[0]!.type === 'StringLiteral') {
++         path.node.arguments[0] = AST.builders.stringLiteral(data.moduleName);
 +       }
-+ 
++
 +       return false;
 +     },
   });
@@ -531,12 +436,12 @@ export function renameAcceptanceTests(options: Options): void {
     const oldPath = join(projectRoot, filePath);
     const oldFile = readFileSync(oldPath, 'utf8');
 
-    const data = {
-      isTypeScript: filePath.endsWith('.ts'),
++     const data = {
 +       moduleName: 'New module',
-    };
-
-    const newFile = renameModule(oldFile, data);
++     };
++
+-     const newFile = renameModule(oldFile);
++     const newFile = renameModule(oldFile, data);
 
     writeFileSync(oldPath, newFile, 'utf8');
   });
@@ -618,7 +523,6 @@ import { AST } from '@codemod-utils/ast-javascript';
 import type { Options } from '../types/index.js';
 
 type Data = {
-  isTypeScript: boolean;
   moduleName: string;
 };
 
@@ -650,7 +554,6 @@ export function renameAcceptanceTests(options: Options): void {
     const oldFile = readFileSync(oldPath, 'utf8');
 
     const data = {
-      isTypeScript: filePath.endsWith('.ts'),
 -       moduleName: 'New module',
 +       moduleName: getModuleName(filePath),
     };

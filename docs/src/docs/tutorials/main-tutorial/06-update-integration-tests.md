@@ -105,7 +105,6 @@ In [Chapter 5](./05-update-acceptance-tests-part-2), we used AST Explorer to try
 
 ```ts
 type Data = {
-  isTypeScript: boolean;
   moduleName: string;
 };
 
@@ -122,7 +121,7 @@ function getModuleName(filePath: string): string {
 }
 
 function renameModule(file: string, data: Data): string {
-  const traverse = AST.traverse(data.isTypeScript);
+  const traverse = AST.traverse();
 
   const ast = traverse(file, {
     visitCallExpression(path) {
@@ -181,7 +180,6 @@ import { findFiles, parseFilePath } from '@codemod-utils/files';
 import type { Options } from '../types/index.js';
 
 type Data = {
-  isTypeScript: boolean;
   moduleName: string;
 };
 
@@ -200,7 +198,7 @@ function getModuleName(filePath: string): string {
 }
 
 function renameModule(file: string, data: Data): string {
-  const traverse = AST.traverse(data.isTypeScript);
+  const traverse = AST.traverse();
 
   const ast = traverse(file, {
     visitCallExpression(path) {
@@ -248,7 +246,6 @@ export function renameIntegrationTests(options: Options): void {
     const oldFile = readFileSync(oldPath, 'utf8');
 
     const data = {
-      isTypeScript: filePath.endsWith('.ts'),
       moduleName: getModuleName(filePath),
     };
 
@@ -431,7 +428,6 @@ import { findFiles, parseFilePath } from '@codemod-utils/files';
 import type { Options } from '../types/index.js';
 
 type Data = {
-  isTypeScript: boolean;
   moduleName: string;
 };
 
