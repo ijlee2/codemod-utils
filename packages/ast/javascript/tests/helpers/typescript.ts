@@ -1,7 +1,7 @@
 import { AST } from '../../src/index.js';
 
 export function transformTypeScript(file: string): string {
-  const traverse = AST.traverse(true);
+  const traverse = AST.traverse();
 
   const ast = traverse(file, {
     visitClassDeclaration(path) {
@@ -24,7 +24,7 @@ export function transformTypeScript(file: string): string {
 }
 
 export function traverseTypeScript(file: string): string {
-  const traverse = AST.traverse(true);
+  const traverse = AST.traverse();
 
   const ast = traverse(file);
 

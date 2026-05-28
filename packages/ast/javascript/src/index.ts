@@ -15,12 +15,10 @@ type AST = {
  * @example
  *
  * ```ts
- * type Data = {
- *   isTypeScript: boolean;
- * };
+ * import { AST } from '@codemod-utils/ast-javascript';
  *
- * function transform(file: string, data: Data): string {
- *   const traverse = AST.traverse(data.isTypeScript);
+ * function transform(file: string): string {
+ *   const traverse = AST.traverse();
  *
  *   const ast = traverse(file, {
  *     // Use AST.builders to transform the tree
