@@ -12,7 +12,7 @@ const formattingOptions: FormattingOptions = {
   quote: 'single',
 };
 
-/* https://github.com/facebook/jscodeshift/blob/v0.15.2/parser/tsOptions.js#L14-L44 */
+/* https://github.com/facebook/jscodeshift/blob/v17.3.0/parser/tsOptions.js#L14-L46 */
 const tsOptions: ParserOptions = {
   sourceType: 'module',
   allowImportExportEverywhere: true,
@@ -21,6 +21,7 @@ const tsOptions: ParserOptions = {
   tokens: true,
   plugins: [
     'asyncGenerators',
+    'decoratorAutoAccessors',
     'bigInt',
     'classPrivateMethods',
     'classPrivateProperties',
@@ -29,12 +30,12 @@ const tsOptions: ParserOptions = {
     'doExpressions',
     'dynamicImport',
     'exportDefaultFrom',
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore Type '"exportExtensions"' is not assignable to type 'PluginConfig'.
+    // @ts-expect-error: Type '"exportExtensions"' is not assignable to type 'PluginConfig'.
     'exportExtensions',
     'exportNamespaceFrom',
     'functionBind',
     'functionSent',
+    'importAttributes',
     'importMeta',
     'nullishCoalescingOperator',
     'numericSeparator',
