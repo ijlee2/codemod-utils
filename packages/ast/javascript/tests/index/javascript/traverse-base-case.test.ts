@@ -1,6 +1,6 @@
 import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
-import { traverseJavaScript } from '../../helpers/index.js';
+import { traverse } from '../../helpers/index.js';
 
 test('index | javascript > traverse (base case)', function () {
   const oldFile = normalizeFile([
@@ -10,7 +10,7 @@ test('index | javascript > traverse (base case)', function () {
     ``,
   ]);
 
-  const newFile = traverseJavaScript(oldFile);
+  const newFile = traverse(oldFile);
 
   assert.strictEqual(
     newFile,

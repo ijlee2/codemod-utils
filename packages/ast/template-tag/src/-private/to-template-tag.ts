@@ -7,7 +7,7 @@ export function removeMarkers(file: string): string {
     return file;
   }
 
-  const traverse = AST.traverse(true);
+  const traverse = AST.traverse();
 
   const ast = traverse(file, {
     visitCallExpression(path) {

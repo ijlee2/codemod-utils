@@ -12,35 +12,7 @@ const formattingOptions: FormattingOptions = {
   quote: 'single',
 };
 
-/* https://github.com/facebook/jscodeshift/blob/v0.15.2/parser/babel5Compat.js#L15-L38 */
-const jsOptions: ParserOptions = {
-  sourceType: 'module',
-  allowHashBang: true,
-  ecmaVersion: Infinity,
-  allowImportExportEverywhere: true,
-  allowReturnOutsideFunction: true,
-  startLine: 1,
-  tokens: true,
-  plugins: [
-    'estree',
-    'jsx',
-    'asyncGenerators',
-    'classProperties',
-    'doExpressions',
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore Type '"exportExtensions"' is not assignable to type 'PluginConfig'.
-    'exportExtensions',
-    'functionBind',
-    'functionSent',
-    'objectRestSpread',
-    'dynamicImport',
-    'nullishCoalescingOperator',
-    'optionalChaining',
-    ['decorators', { decoratorsBeforeExport: true }],
-  ],
-};
-
-/* https://github.com/facebook/jscodeshift/blob/v0.15.2/parser/tsOptions.js#L14-L44 */
+/* https://github.com/facebook/jscodeshift/blob/v17.3.0/parser/tsOptions.js#L14-L46 */
 const tsOptions: ParserOptions = {
   sourceType: 'module',
   allowImportExportEverywhere: true,
@@ -49,6 +21,7 @@ const tsOptions: ParserOptions = {
   tokens: true,
   plugins: [
     'asyncGenerators',
+    'decoratorAutoAccessors',
     'bigInt',
     'classPrivateMethods',
     'classPrivateProperties',
@@ -57,12 +30,12 @@ const tsOptions: ParserOptions = {
     'doExpressions',
     'dynamicImport',
     'exportDefaultFrom',
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore Type '"exportExtensions"' is not assignable to type 'PluginConfig'.
+    // @ts-expect-error: Type '"exportExtensions"' is not assignable to type 'PluginConfig'.
     'exportExtensions',
     'exportNamespaceFrom',
     'functionBind',
     'functionSent',
+    'importAttributes',
     'importMeta',
     'nullishCoalescingOperator',
     'numericSeparator',
@@ -75,20 +48,6 @@ const tsOptions: ParserOptions = {
   ],
 };
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-function getParseOptions(isTypeScript?: boolean) {
-  const options = isTypeScript ? tsOptions : jsOptions;
-
-  return {
-    parser: {
-      // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-      parse(file: string) {
-        return babelParser(file, options);
-      },
-    },
-  };
-}
-
 export const builders: typeof types.builders = types.builders;
 
 export function print(ast: types.ASTNode): string {
@@ -97,12 +56,18 @@ export function print(ast: types.ASTNode): string {
   return code;
 }
 
-export function traverse(isTypeScript?: boolean) {
+export function traverse() {
   return function (
     file: string,
     visitMethods: types.Visitor = {},
   ): types.ASTNode {
-    const ast = parse(file, getParseOptions(isTypeScript)) as types.ASTNode;
+    const ast = parse(file, {
+      parser: {
+        parse(file: string) {
+          return babelParser(file, tsOptions);
+        },
+      },
+    }) as types.ASTNode;
 
     visit(ast, visitMethods);
 

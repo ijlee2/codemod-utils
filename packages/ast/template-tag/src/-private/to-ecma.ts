@@ -34,7 +34,7 @@ function sortMarkers(a: Marker, b: Marker): number {
 
 export function findMarkers(file: string): Marker[] {
   const { code } = preprocessor.process(file);
-  const traverse = AST.traverse(true);
+  const traverse = AST.traverse();
 
   const markers: Marker[] = [];
 
