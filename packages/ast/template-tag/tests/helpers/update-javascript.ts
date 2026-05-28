@@ -9,7 +9,7 @@ export const data: Data = {
 };
 
 export function renameGetters(file: string, data: Data): string {
-  const traverse = AST.traverse(true);
+  const traverse = AST.traverse();
 
   const ast = traverse(file, {
     visitClassMethod(path) {
