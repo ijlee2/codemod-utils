@@ -113,18 +113,8 @@ function renameModule(file: string, data: Data): string {
         return false;
       }
 
-      switch (path.node.arguments[0].type) {
-        case 'Literal': {
-          path.node.arguments[0] = AST.builders.literal(data.moduleName);
-
-          break;
-        }
-
-        case 'StringLiteral': {
-          path.node.arguments[0] = AST.builders.stringLiteral(data.moduleName);
-
-          break;
-        }
+      if (path.node.arguments[0]!.type === 'StringLiteral') {
+        path.node.arguments[0] = AST.builders.stringLiteral(data.moduleName);
       }
 
       return false;
