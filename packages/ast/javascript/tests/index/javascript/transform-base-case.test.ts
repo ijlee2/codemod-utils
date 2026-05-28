@@ -1,6 +1,6 @@
 import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
-import { transformJavaScript } from '../../helpers/index.js';
+import { transform } from '../../helpers/index.js';
 
 test('index | javascript > transform (base case)', function () {
   const oldFile = normalizeFile([
@@ -10,7 +10,7 @@ test('index | javascript > transform (base case)', function () {
     ``,
   ]);
 
-  const newFile = transformJavaScript(oldFile);
+  const newFile = transform(oldFile);
 
   assert.strictEqual(
     newFile,

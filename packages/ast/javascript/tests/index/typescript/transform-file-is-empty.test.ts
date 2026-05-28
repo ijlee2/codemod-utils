@@ -1,11 +1,11 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { transformTypeScript } from '../../helpers/index.js';
+import { transform } from '../../helpers/index.js';
 
 test('index | typescript > transform (file is empty)', function () {
   const oldFile = '';
 
-  const newFile = transformTypeScript(oldFile);
+  const newFile = transform(oldFile);
 
   assert.strictEqual(newFile, '');
 });
