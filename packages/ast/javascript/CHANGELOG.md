@@ -1,5 +1,11 @@
 # @codemod-utils/ast-javascript
 
+## 4.0.1
+
+### Patch Changes
+
+- [#324](https://github.com/ijlee2/codemod-utils/pull/324) Simplified traverse call ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.0.0
 
 ### Major Changes

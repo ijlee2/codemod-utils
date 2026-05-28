@@ -1,5 +1,11 @@
 # docs-app-for-codemod-utils
 
+## 1.8.0
+
+### Minor Changes
+
+- [#324](https://github.com/ijlee2/codemod-utils/pull/324) Addressed breaking changes in `@codemod-utils/ast-template@v4` ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.7.0
 
 ### Minor Changes

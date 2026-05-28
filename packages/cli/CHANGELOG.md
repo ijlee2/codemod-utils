@@ -1,5 +1,11 @@
 # @codemod-utils/cli
 
+## 4.6.0
+
+### Minor Changes
+
+- [#325](https://github.com/ijlee2/codemod-utils/pull/325) Updated latestVersions (install `@codemod-utils/ast-template@v4`) ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.5.0
 
 ### Minor Changes
