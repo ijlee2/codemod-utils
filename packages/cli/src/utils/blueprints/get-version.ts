@@ -2,9 +2,9 @@ import { decideVersion } from '@codemod-utils/blueprints';
 
 const latestVersions = new Map([
   ['@changesets/cli', '2.31.0'],
-  ['@codemod-utils/ast-javascript', '4.0.0'],
-  ['@codemod-utils/ast-template', '3.1.0'],
-  ['@codemod-utils/ast-template-tag', '2.5.0'],
+  ['@codemod-utils/ast-javascript', '4.0.1'],
+  ['@codemod-utils/ast-template', '4.0.0'],
+  ['@codemod-utils/ast-template-tag', '2.6.0'],
   ['@codemod-utils/blueprints', '3.1.0'],
   ['@codemod-utils/ember', '4.1.1'],
   ['@codemod-utils/files', '4.0.1'],
