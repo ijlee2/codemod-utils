@@ -1,5 +1,11 @@
 # @codemod-utils/cli
 
+## 4.5.0
+
+### Minor Changes
+
+- [#323](https://github.com/ijlee2/codemod-utils/pull/323) Updated latestVersions (install `@codemod-utils/ast-javascript@v4`) ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.4.1
 
 ### Patch Changes

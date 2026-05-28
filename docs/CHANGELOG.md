@@ -1,5 +1,18 @@
 # docs-app-for-codemod-utils
 
+## 1.7.0
+
+### Minor Changes
+
+- [#321](https://github.com/ijlee2/codemod-utils/pull/321) Addressed breaking changes in `@codemod-utils/ast-javascript@v4` ([@ijlee2](https://github.com/ijlee2))
+- [#316](https://github.com/ijlee2/codemod-utils/pull/316) Updated theme and described features ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#322](https://github.com/ijlee2/codemod-utils/pull/322) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+- [#318](https://github.com/ijlee2/codemod-utils/pull/318) Listed `@ember-intl/update` in Made with codemod-utils ([@ijlee2](https://github.com/ijlee2))
+- [#317](https://github.com/ijlee2/codemod-utils/pull/317) Updated styles ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.6.1
 
 ### Patch Changes

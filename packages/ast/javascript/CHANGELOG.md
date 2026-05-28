@@ -1,5 +1,15 @@
 # @codemod-utils/ast-javascript
 
+## 4.0.0
+
+### Major Changes
+
+- [#319](https://github.com/ijlee2/codemod-utils/pull/319) Always used TypeScript parser options ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#322](https://github.com/ijlee2/codemod-utils/pull/322) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.0.2
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @codemod-utils/ast-template-tag
 
+## 2.5.0
+
+### Minor Changes
+
+- [#319](https://github.com/ijlee2/codemod-utils/pull/319) Addressed breaking changes in `@codemod-utils/ast-javascript@v4` ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.4.0
 
 ### Minor Changes
