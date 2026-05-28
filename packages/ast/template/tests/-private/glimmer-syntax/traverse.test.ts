@@ -13,7 +13,7 @@ test('-private | glimmer-syntax | traverse > can remove during traversal by retu
     `{{ other-stuff }}`,
   ]);
 
-  const ast = traverse()(template, {
+  const ast = traverse(template, {
     ElementNode() {
       return null;
     },
@@ -28,7 +28,7 @@ test('-private | glimmer-syntax | traverse > can replace with many items during 
     `{{other-stuff}}`,
   ]);
 
-  const ast = traverse()(template, {
+  const ast = traverse(template, {
     ElementNode() {
       return [builders.text('hello '), builders.text('world')];
     },
@@ -51,7 +51,7 @@ test('-private | glimmer-syntax | traverse > issue can handle angle brackets in 
     `</Select>`,
   ]);
 
-  const ast = traverse()(template, {
+  const ast = traverse(template, {
     ElementNode(node) {
       node.tag = `${node.tag}`;
     },
@@ -63,7 +63,7 @@ test('-private | glimmer-syntax | traverse > issue can handle angle brackets in 
 test('-private | glimmer-syntax | traverse > MustacheStatements retain whitespace when multiline replacements occur', function () {
   const template = normalizeFile([`<p></p>`, `{{ other-stuff }}`]);
 
-  const ast = traverse()(template, {
+  const ast = traverse(template, {
     ElementNode() {
       return [builders.text('x'), builders.text('y')];
     },

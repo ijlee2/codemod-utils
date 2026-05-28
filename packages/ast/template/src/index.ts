@@ -18,9 +18,7 @@ type AST = {
  * import { AST } from '@codemod-utils/ast-template';
  *
  * function transform(file: string): string {
- *   const traverse = AST.traverse();
- *
- *   const ast = traverse(file, {
+ *   const ast = AST.traverse(file, {
  *     // Use AST.builders to transform the tree
  *   });
  *
