@@ -56,21 +56,19 @@ export function print(ast: types.ASTNode): string {
   return code;
 }
 
-export function traverse() {
-  return function (
-    file: string,
-    visitMethods: types.Visitor = {},
-  ): types.ASTNode {
-    const ast = parse(file, {
-      parser: {
-        parse(file: string) {
-          return babelParser(file, tsOptions);
-        },
+export function traverse(
+  file: string,
+  visitMethods: types.Visitor = {},
+): types.ASTNode {
+  const ast = parse(file, {
+    parser: {
+      parse(file: string) {
+        return babelParser(file, tsOptions);
       },
-    }) as types.ASTNode;
+    },
+  }) as types.ASTNode;
 
-    visit(ast, visitMethods);
+  visit(ast, visitMethods);
 
-    return ast;
-  };
+  return ast;
 }

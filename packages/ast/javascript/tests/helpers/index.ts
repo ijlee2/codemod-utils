@@ -1,9 +1,7 @@
 import { AST } from '../../src/index.js';
 
 export function transform(file: string): string {
-  const traverse = AST.traverse();
-
-  const ast = traverse(file, {
+  const ast = AST.traverse(file, {
     visitClassDeclaration(path) {
       const { body } = path.node.body;
 
@@ -24,9 +22,7 @@ export function transform(file: string): string {
 }
 
 export function traverse(file: string): string {
-  const traverse = AST.traverse();
-
-  const ast = traverse(file);
+  const ast = AST.traverse(file);
 
   return AST.print(ast);
 }
