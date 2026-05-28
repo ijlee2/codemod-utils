@@ -1,6 +1,6 @@
 import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
-import { transformHandlebars } from '../helpers/index.js';
+import { transform } from '../helpers/index.js';
 
 test('index > transform (base case)', function () {
   const oldFile = normalizeFile([
@@ -10,7 +10,7 @@ test('index > transform (base case)', function () {
     `</div>`,
   ]);
 
-  const newFile = transformHandlebars(oldFile);
+  const newFile = transform(oldFile);
 
   assert.strictEqual(
     newFile,
