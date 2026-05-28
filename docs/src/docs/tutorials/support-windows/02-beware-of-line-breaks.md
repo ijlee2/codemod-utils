@@ -60,7 +60,7 @@ Fixtures files—those that are defined in a test file—should use `EOL` so tha
 
 ::: code-group
 
-```ts [Example (Correct)]{6-11,20-25}
+```ts [Example (Correct)]{6-11,19-24}
 import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { renameModule } from '../../../../src/utils/rename-tests/index.js';
@@ -74,7 +74,6 @@ test('utils | rename-tests | rename-module', function () {
   ]);
 
   const newFile = renameModule(oldFile, {
-    isTypeScript: true,
     moduleName: 'New name',
   });
 
@@ -90,7 +89,7 @@ test('utils | rename-tests | rename-module', function () {
 });
 ```
 
-```ts [Example (Inorrect)]{6-11,20-25}
+```ts [Example (Inorrect)]{6-11,19-24}
 import { assert, test } from '@codemod-utils/tests';
 
 import { renameModule } from '../../../../src/utils/rename-tests/index.js';
@@ -104,7 +103,6 @@ test('utils | rename-tests | rename-module', function () {
   ].join('\n');
 
   const newFile = renameModule(oldFile, {
-    isTypeScript: true,
     moduleName: 'New name',
   });
 
