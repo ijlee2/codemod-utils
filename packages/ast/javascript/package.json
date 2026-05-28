@@ -46,7 +46,7 @@
     "test": "sh build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {
-    "@babel/parser": "^7.29.3",
+    "@babel/parser": "^7.29.7",
     "recast": "^0.23.11"
   },
   "devDependencies": {
@@ -55,7 +55,7 @@
     "@shared-configs/prettier": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
     "@sondr3/minitest": "^0.1.2",
-    "@types/node": "^22.19.18",
+    "@types/node": "^22.19.19",
     "concurrently": "^9.2.1",
     "eslint": "^9.39.4",
     "prettier": "^3.8.3",
