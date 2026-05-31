@@ -51,4 +51,14 @@ test('parse-version > version is exact', function () {
     patch: 0,
     prefix: undefined,
   });
+
+  const versionInfo = parseVersion('6.9.0');
+
+  if (
+    versionInfo &&
+    (versionInfo.major < 6 ||
+      (versionInfo.major === 6 && versionInfo.minor < 8))
+  ) {
+    console.log('hello');
+  }
 });

@@ -25,12 +25,14 @@ type VersionInfo = {
  * Do something when the package version is below `6.8.0`.
  *
  * ```ts
- * const { major, minor } = parseVersion('^6.12.0');
+ * const versionInfo = parseVersion('^6.12.0');
  *
- * if (major < 6 || (major === 6 && minor < 8)) {
+ * if (
+ *   versionInfo?.major < 6 ||
+ *   (versionInfo.major === 6 && versionInfo.minor < 8)
+ * ) {
  *   // Do something
  * }
- * ```
  * ```
  */
 export function parseVersion(
