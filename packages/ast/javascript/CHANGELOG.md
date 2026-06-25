@@ -1,5 +1,11 @@
 # @codemod-utils/ast-javascript
 
+## 4.0.2
+
+### Patch Changes
+
+- [#327](https://github.com/ijlee2/codemod-utils/pull/327) Sorted parser options ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.0.1
 
 ### Patch Changes
