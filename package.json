@@ -28,18 +28,18 @@
   "devDependencies": {
     "@changesets/cli": "^2.31.0",
     "@ijlee2-frontend-configs/changesets": "^2.1.1",
-    "concurrently": "^9.2.1",
-    "sort-package-json": "^3.6.1",
+    "concurrently": "^10.0.3",
+    "sort-package-json": "^4.0.0",
     "update-workspace-root-version": "^3.0.2"
   },
-  "packageManager": "pnpm@10.34.1",
+  "packageManager": "pnpm@10.34.4",
   "engines": {
     "node": "22.* || >= 24",
     "pnpm": ">= 10"
   },
   "pnpm": {
     "overrides": {
-      "vite": "^8.0.14"
+      "vite": "^8.1.0"
     }
   }
 }
