@@ -32,13 +32,13 @@
     "test": "sh build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {
-    "@codemod-utils/ast-javascript": "^4.0.1",
+    "@codemod-utils/ast-javascript": "^4.0.2",
     "@codemod-utils/ast-template": "^4.0.0",
     "@codemod-utils/ast-template-tag": "^2.6.0",
     "@codemod-utils/blueprints": "^3.1.0",
     "@codemod-utils/ember": "^4.1.1",
     "@codemod-utils/files": "^4.0.1",
-    "@codemod-utils/package-json": "^4.0.2",
+    "@codemod-utils/package-json": "^4.0.3",
     "@codemod-utils/threads": "^1.0.0",
     "yargs": "^18.0.0"
   },
@@ -46,19 +46,19 @@
     "@changesets/cli": "^2.31.0",
     "@codemod-utils/tests": "^3.0.2",
     "@ijlee2-frontend-configs/changesets": "^2.1.1",
-    "@ijlee2-frontend-configs/eslint-config-node": "^3.4.2",
-    "@ijlee2-frontend-configs/prettier": "^3.1.1",
+    "@ijlee2-frontend-configs/eslint-config-node": "^3.4.4",
+    "@ijlee2-frontend-configs/prettier": "^3.2.0",
     "@sondr3/minitest": "^0.1.2",
     "@tsconfig/node22": "^22.0.5",
     "@tsconfig/strictest": "^2.0.8",
-    "@types/node": "^22.19.19",
+    "@types/node": "^22.20.0",
     "@types/yargs": "^17.0.35",
-    "concurrently": "^9.2.1",
+    "concurrently": "^10.0.3",
     "eslint": "^9.39.4",
-    "prettier": "^3.8.3",
+    "prettier": "^3.8.4",
     "typescript": "^5.9.3"
   },
-  "packageManager": "pnpm@10.34.1",
+  "packageManager": "pnpm@10.34.4",
   "engines": {
     "node": "22.* || >= 24"
   }
