@@ -1,5 +1,11 @@
 # @codemod-utils/cli
 
+## 4.7.0
+
+### Minor Changes
+
+- [#331](https://github.com/ijlee2/codemod-utils/pull/331) Updated dependencies in blueprints ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.6.1
 
 ### Patch Changes
