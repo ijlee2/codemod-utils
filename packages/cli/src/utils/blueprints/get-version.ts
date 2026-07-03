@@ -2,7 +2,7 @@ import { decideVersion } from '@codemod-utils/blueprints';
 
 const latestVersions = new Map([
   ['@changesets/cli', '2.31.0'],
-  ['@codemod-utils/ast-javascript', '4.0.2'],
+  ['@codemod-utils/ast-javascript', '4.1.0'],
   ['@codemod-utils/ast-template', '4.0.0'],
   ['@codemod-utils/ast-template-tag', '2.6.0'],
   ['@codemod-utils/blueprints', '3.1.0'],
@@ -12,8 +12,8 @@ const latestVersions = new Map([
   ['@codemod-utils/tests', '3.0.2'],
   ['@codemod-utils/threads', '1.0.0'],
   ['@ijlee2-frontend-configs/changesets', '2.1.1'],
-  ['@ijlee2-frontend-configs/eslint-config-node', '3.4.4'],
-  ['@ijlee2-frontend-configs/prettier', '3.2.0'],
+  ['@ijlee2-frontend-configs/eslint-config-node', '3.4.5'],
+  ['@ijlee2-frontend-configs/prettier', '3.3.0'],
   ['@sondr3/minitest', '0.1.2'],
   ['@tsconfig/node22', '22.0.5'],
   ['@tsconfig/strictest', '2.0.8'],
@@ -22,7 +22,7 @@ const latestVersions = new Map([
   ['concurrently', '10.0.3'],
   ['eslint', '9.39.4'],
   ['pnpm', '10.34.4'],
-  ['prettier', '3.8.4'],
+  ['prettier', '3.9.4'],
   ['typescript', '5.9.3'],
   ['yargs', '18.0.0'],
 ]);
