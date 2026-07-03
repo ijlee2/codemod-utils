@@ -30,7 +30,7 @@
     "@ijlee2-frontend-configs/changesets": "^2.1.1",
     "concurrently": "^10.0.3",
     "sort-package-json": "^4.0.0",
-    "update-workspace-root-version": "^3.0.2"
+    "update-workspace-root-version": "^3.0.3"
   },
   "packageManager": "pnpm@10.34.4",
   "engines": {
@@ -39,7 +39,7 @@
   },
   "pnpm": {
     "overrides": {
-      "vite": "^8.1.0"
+      "vite": "^8.1.3"
     }
   }
 }
