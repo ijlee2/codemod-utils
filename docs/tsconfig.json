@@ -2,7 +2,8 @@
   "extends": "@shared-configs/typescript/node",
   "compilerOptions": {
     "allowImportingTsExtensions": true,
-    "declaration": false
+    "declaration": false,
+    "rootDir": "."
   },
-  "include": [".vitepress/**/*"]
+  "include": [".vitepress/**/*", "types/**/*"]
 }

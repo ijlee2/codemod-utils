@@ -3,6 +3,7 @@
   "compilerOptions": {
     "declaration": false,
     "outDir": "dist",
+    "rootDir": ".",
     "types": ["@types/node", "@types/yargs"]
   },
   "include": ["bin", "src"],
