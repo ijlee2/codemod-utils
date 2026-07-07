@@ -1,5 +1,16 @@
 # docs-app-for-codemod-utils
 
+## 1.9.0
+
+### Minor Changes
+
+- [#333](https://github.com/ijlee2/codemod-utils/pull/333) Updated eslint to v10 ([@ijlee2](https://github.com/ijlee2))
+- [#333](https://github.com/ijlee2/codemod-utils/pull/333) Updated typescript to v6 ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#334](https://github.com/ijlee2/codemod-utils/pull/334) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.8.2
 
 ### Patch Changes

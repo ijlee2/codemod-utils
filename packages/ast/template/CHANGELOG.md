@@ -1,5 +1,12 @@
 # @codemod-utils/ast-template
 
+## 4.1.0
+
+### Minor Changes
+
+- [#333](https://github.com/ijlee2/codemod-utils/pull/333) Updated eslint to v10 ([@ijlee2](https://github.com/ijlee2))
+- [#333](https://github.com/ijlee2/codemod-utils/pull/333) Updated typescript to v6 ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.0.0
 
 ### Major Changes

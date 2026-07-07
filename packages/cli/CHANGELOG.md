@@ -1,5 +1,13 @@
 # @codemod-utils/cli
 
+## 4.8.0
+
+### Minor Changes
+
+- [#335](https://github.com/ijlee2/codemod-utils/pull/335) Updated latestVersions (eslint@v10, typescript@v6) ([@ijlee2](https://github.com/ijlee2))
+- [#333](https://github.com/ijlee2/codemod-utils/pull/333) Updated eslint to v10 ([@ijlee2](https://github.com/ijlee2))
+- [#333](https://github.com/ijlee2/codemod-utils/pull/333) Updated typescript to v6 ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.7.0
 
 ### Minor Changes
