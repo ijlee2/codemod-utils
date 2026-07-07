@@ -3,7 +3,8 @@
   "compilerOptions": {
     "declaration": true,
     "outDir": "dist-for-testing",
+    "rootDir": "./src",
     "types": ["@types/node"]
   },
-  "include": ["src", "tests"]
+  "include": ["src"]
 }

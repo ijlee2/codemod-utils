@@ -3,7 +3,7 @@ const MAX_NUM_TASKS_RUNNING = 10;
 class Queue<U> {
   private error: Error | undefined = undefined;
   private results: U[] = [];
-  private tasksRunning = new Set<U | Promise<U>>();
+  private tasksRunning = new Set<Promise<U> | U>();
 
   get hasTasks(): boolean {
     return this.tasksRunning.size > 0;
@@ -41,7 +41,7 @@ class Queue<U> {
     await Promise.all(this.tasksRunning);
   }
 
-  async runTask(taskPromise: U | Promise<U>): Promise<void> {
+  async runTask(taskPromise: Promise<U> | U): Promise<void> {
     this.tasksRunning.add(taskPromise);
 
     try {
@@ -60,7 +60,7 @@ class Queue<U> {
   }
 }
 
-export type Task<T extends unknown[], U> = (...dataset: T) => U | Promise<U>;
+export type Task<T extends unknown[], U> = (...dataset: T) => Promise<U> | U;
 
 export async function runTask<T extends unknown[], U>(
   task: Task<T, U>,

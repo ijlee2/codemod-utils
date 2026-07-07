@@ -3,7 +3,8 @@
   "compilerOptions": {
     "declaration": true,
     "outDir": "dist",
-    "types": ["@types/node"]
+    "rootDir": "./src",
+    "types": ["@types/lodash", "@types/node"]
   },
   "include": ["src"]
 }
