@@ -1,5 +1,11 @@
 # @codemod-utils/ast-javascript
 
+## 4.2.1
+
+### Patch Changes
+
+- [#336](https://github.com/ijlee2/codemod-utils/pull/336) Reverted updating @babel/parser to v8 ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.2.0
 
 ### Minor Changes
