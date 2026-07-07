@@ -2,7 +2,7 @@ import { decideVersion } from '@codemod-utils/blueprints';
 
 const latestVersions = new Map([
   ['@changesets/cli', '2.31.0'],
-  ['@codemod-utils/ast-javascript', '4.2.0'],
+  ['@codemod-utils/ast-javascript', '4.2.1'],
   ['@codemod-utils/ast-template', '4.1.0'],
   ['@codemod-utils/ast-template-tag', '2.7.0'],
   ['@codemod-utils/blueprints', '3.2.0'],
