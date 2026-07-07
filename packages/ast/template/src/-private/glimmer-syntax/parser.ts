@@ -23,7 +23,7 @@ interface AnnotatedAttrNode extends AST.AttrNode {
    * `class='thing {{get this classNames}}'` vs `class="thing {{get this classNames}}"`
    * MustacheStatements never use quotes
    */
-  quoteType?: QuoteType | null;
+  quoteType?: null | QuoteType;
 }
 
 interface AnnotatedStringLiteral extends AST.StringLiteral {
@@ -233,10 +233,10 @@ export class Parser {
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   private _rebuildParamsHash(
     ast:
-      | AST.MustacheStatement
-      | AST.SubExpression
+      | AST.BlockStatement
       | AST.ElementModifierStatement
-      | AST.BlockStatement,
+      | AST.MustacheStatement
+      | AST.SubExpression,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     nodeInfo: any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

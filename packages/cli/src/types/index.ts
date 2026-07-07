@@ -1,7 +1,7 @@
 type Addon =
   | 'ast-javascript'
-  | 'ast-template'
   | 'ast-template-tag'
+  | 'ast-template'
   | 'blueprints'
   | 'ember'
   | 'package-json'

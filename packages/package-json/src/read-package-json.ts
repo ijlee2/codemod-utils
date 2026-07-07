@@ -48,6 +48,9 @@ export function readPackageJson(options: Options): PackageJson {
     if (error instanceof Error) {
       throw new SyntaxError(
         `ERROR: package.json is not valid. (${error.message})`,
+        {
+          cause: error,
+        },
       );
     }
 
