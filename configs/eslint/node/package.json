@@ -1,6 +1,6 @@
 {
   "name": "@shared-configs/eslint-config-node",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "description": "Configuration for eslint (Node)",
   "repository": {
