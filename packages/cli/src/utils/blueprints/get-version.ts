@@ -12,7 +12,7 @@ const latestVersions = new Map([
   ['@codemod-utils/tests', '3.1.0'],
   ['@codemod-utils/threads', '1.1.0'],
   ['@ijlee2-frontend-configs/changesets', '2.1.1'],
-  ['@ijlee2-frontend-configs/eslint-config-node', '4.0.0'],
+  ['@ijlee2-frontend-configs/eslint-config-node', '4.1.0'],
   ['@ijlee2-frontend-configs/prettier', '3.3.0'],
   ['@sondr3/minitest', '0.1.2'],
   ['@tsconfig/node22', '22.0.5'],
