@@ -30,8 +30,8 @@ importers:
   configs/eslint/node:
     dependencies:
       '@ijlee2-frontend-configs/eslint-config-node':
-        specifier: ^4.0.0
-        version: 4.0.0(@typescript-eslint/utils@8.63.0(eslint@10.6.0)(typescript@6.0.3))(eslint@10.6.0)(typescript@6.0.3)
+        specifier: ^4.1.0
+        version: 4.1.0(@typescript-eslint/utils@8.63.0(eslint@10.6.0)(typescript@6.0.3))(eslint@10.6.0)(typescript@6.0.3)
     devDependencies:
       '@shared-configs/prettier':
         specifier: workspace:*
@@ -847,8 +847,8 @@ packages:
     peerDependencies:
       '@changesets/cli': ^2.31.0
 
-  '@ijlee2-frontend-configs/eslint-config-node@4.0.0':
-    resolution: {integrity: sha512-X/2eeZ8fvUf2jOqu/W4ctsEtdc+egBx8q8Cefo4in9cFoWm7uKb1y8HGag3lISU9t3rujlkmC6VYJz5kudFqAQ==}
+  '@ijlee2-frontend-configs/eslint-config-node@4.1.0':
+    resolution: {integrity: sha512-wuNPL6xAyCjYUmY6xHU4paSaigyIbGD8kWBBBnu5pM+3EGKtYNS7LH4RPlbakma7O8aKkhiBmPMnsdLKu6tazQ==}
     engines: {node: 22.* || >= 24}
     peerDependencies:
       eslint: ^10.6.0
@@ -1768,8 +1768,8 @@ packages:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
     engines: {node: '>=8'}
 
-  electron-to-chromium@1.5.388:
-    resolution: {integrity: sha512-Pl/aJaqOOxYxda3vcx1IKSJimwYXHDkEnGn0F+kG2EE68dDtx2uCinaS+Vih8Z91B9t8CSAbiF/HKyWcnXjhzw==}
+  electron-to-chromium@1.5.389:
+    resolution: {integrity: sha512-cEto7aeOqBfU1D+c5py5pE+ooscKE75JifxLBdFUZsqAxRS6y7kebtxAZvICszSl05gPjYHDTjY+lXpyGvpJbg==}
 
   emoji-regex@10.4.0:
     resolution: {integrity: sha512-EC+0oUMY1Rqm4O6LLrgjtYDvcVYTy7chDnM4Q7030tP4Kwj3u/pR6gP9ygnp2CJMK5Gq+9Q2oqmrFJAz01DXjw==}
@@ -1887,12 +1887,6 @@ packages:
     resolution: {integrity: sha512-McAc+/Nlvcg4byY/CABGH8kqnefWBj8s3JA2okEtz8ixbECQgU46p0HkTUKa4YS7wvgGceimlc34p1nXqbWqtA==}
     peerDependencies:
       eslint: '>=5.0.0'
-
-  eslint-plugin-sort-class-members@1.22.1:
-    resolution: {integrity: sha512-TC76+m06fjpiAYPrEcyyvvWzp1aMHNBVGROLu9ijQuPDZPWJjhNTheha4f6f7eUTWabloczLZagoZ+mb6Cv0ZQ==}
-    engines: {node: '>=4.0.0'}
-    peerDependencies:
-      eslint: '>=0.8.0'
 
   eslint-scope@9.1.2:
     resolution: {integrity: sha512-xS90H51cKw0jltxmvmHy2Iai1LIqrfbw57b79w/J7MfvDfkIkFZ+kj6zC3BjtUwh150HsSSdxXZcsuv72miDFQ==}
@@ -2349,8 +2343,8 @@ packages:
   lodash@4.18.1:
     resolution: {integrity: sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==}
 
-  lru-cache@11.5.1:
-    resolution: {integrity: sha512-RPimw/7aMdv2oqRrxKwvZXcPfwBrn/JZ2xYcY9Hus/6LaS3VOAKVWKWgNLCFSiOm1ESXinjsDlidVU7JlnCN2A==}
+  lru-cache@11.5.2:
+    resolution: {integrity: sha512-4pfM1Ff0x50o0tQwb5ucw/RzNyD0/YJME6IVcStalZuMWxdt3sR3huStTtxz4PUmvZfRguvDejasvQ2kifR11g==}
     engines: {node: 20 || >=22}
 
   magic-string@0.30.21:
@@ -3101,7 +3095,7 @@ snapshots:
       '@babel/compat-data': 8.0.0
       '@babel/helper-validator-option': 8.0.0
       browserslist: 4.28.5
-      lru-cache: 11.5.1
+      lru-cache: 11.5.2
       semver: 7.8.5
 
   '@babel/helper-globals@7.29.7': {}
@@ -3499,7 +3493,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@ijlee2-frontend-configs/eslint-config-node@4.0.0(@typescript-eslint/utils@8.63.0(eslint@10.6.0)(typescript@6.0.3))(eslint@10.6.0)(typescript@6.0.3)':
+  '@ijlee2-frontend-configs/eslint-config-node@4.1.0(@typescript-eslint/utils@8.63.0(eslint@10.6.0)(typescript@6.0.3))(eslint@10.6.0)(typescript@6.0.3)':
     dependencies:
       '@babel/core': 8.0.1
       '@babel/eslint-parser': 8.0.1(@babel/core@8.0.1)(eslint@10.6.0)
@@ -3511,7 +3505,6 @@ snapshots:
       eslint-plugin-n: 18.2.1(eslint@10.6.0)(typescript@6.0.3)
       eslint-plugin-perfectionist: 5.10.0(eslint@10.6.0)(typescript@6.0.3)
       eslint-plugin-simple-import-sort: 13.0.0(eslint@10.6.0)
-      eslint-plugin-sort-class-members: 1.22.1(eslint@10.6.0)
       globals: 17.7.0
       typescript-eslint: 8.63.0(eslint@10.6.0)(typescript@6.0.3)
     optionalDependencies:
@@ -4172,7 +4165,7 @@ snapshots:
     dependencies:
       baseline-browser-mapping: 2.10.42
       caniuse-lite: 1.0.30001803
-      electron-to-chromium: 1.5.388
+      electron-to-chromium: 1.5.389
       node-releases: 2.0.50
       update-browserslist-db: 1.2.3(browserslist@4.28.5)
 
@@ -4283,7 +4276,7 @@ snapshots:
     dependencies:
       path-type: 4.0.0
 
-  electron-to-chromium@1.5.388: {}
+  electron-to-chromium@1.5.389: {}
 
   emoji-regex@10.4.0: {}
 
@@ -4394,10 +4387,6 @@ snapshots:
       - typescript
 
   eslint-plugin-simple-import-sort@13.0.0(eslint@10.6.0):
-    dependencies:
-      eslint: 10.6.0
-
-  eslint-plugin-sort-class-members@1.22.1(eslint@10.6.0):
     dependencies:
       eslint: 10.6.0
 
@@ -4830,7 +4819,7 @@ snapshots:
 
   lodash@4.18.1: {}
 
-  lru-cache@11.5.1: {}
+  lru-cache@11.5.2: {}
 
   magic-string@0.30.21:
     dependencies:
@@ -5006,7 +4995,7 @@ snapshots:
 
   path-scurry@2.0.2:
     dependencies:
-      lru-cache: 11.5.1
+      lru-cache: 11.5.2
       minipass: 7.1.3
 
   path-type@4.0.0: {}
