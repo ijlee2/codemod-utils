@@ -21,7 +21,7 @@ const latestVersions = new Map([
   ['@types/yargs', '17.0.35'],
   ['concurrently', '10.0.3'],
   ['eslint', '10.7.0'],
-  ['pnpm', '10.34.4'],
+  ['pnpm', '11.13.0'],
   ['prettier', '3.9.5'],
   ['typescript', '6.0.3'],
   ['yargs', '18.0.0'],
