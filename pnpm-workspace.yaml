@@ -33,3 +33,5 @@ publicHoistPattern:
   - "*stylelint*"
 
 resolvePeersFromWorkspaceRoot: false
+
+verifyDepsBeforeRun: "warn"

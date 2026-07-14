@@ -35,6 +35,6 @@
   "packageManager": "pnpm@11.13.0",
   "engines": {
     "node": "22.* || >= 24",
-    "pnpm": ">= 10"
+    "pnpm": ">= 11"
   }
 }
