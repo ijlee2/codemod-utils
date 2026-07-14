@@ -1,5 +1,15 @@
 # @codemod-utils/cli
 
+## 4.9.0
+
+### Minor Changes
+
+- [#340](https://github.com/ijlee2/codemod-utils/pull/340) Updated pnpm to v11 ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#340](https://github.com/ijlee2/codemod-utils/pull/340) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.8.2
 
 ### Patch Changes
