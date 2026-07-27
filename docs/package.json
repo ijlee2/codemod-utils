@@ -30,14 +30,14 @@
     "@shared-configs/prettier": "workspace:*",
     "@shared-configs/stylelint": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
-    "concurrently": "^10.0.3",
-    "eslint": "^10.7.0",
-    "oxc-minify": "^0.140.0",
-    "prettier": "^3.9.5",
-    "stylelint": "^17.14.0",
+    "concurrently": "^10.0.4",
+    "eslint": "^10.8.0",
+    "oxc-minify": "^0.141.0",
+    "prettier": "^3.9.6",
+    "stylelint": "^17.14.1",
     "typescript": "^6.0.3",
-    "vite": "^8.1.4",
-    "vitepress": "^2.0.0-alpha.17"
+    "vite": "^8.1.5",
+    "vitepress": "2.0.0-alpha.18"
   },
   "engines": {
     "node": "22.* || >= 24"
