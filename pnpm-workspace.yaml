@@ -7,11 +7,9 @@ minimumReleaseAge: 720
 
 minimumReleaseAgeExclude:
   - "@ijlee2-frontend-configs/*"
-  - "@oxc-minify/*"
-  - "oxc-minify"
 
 overrides:
-  vite: ^8.1.5
+  vite: ^8.2.0
 
 packages:
   - "configs/**"
