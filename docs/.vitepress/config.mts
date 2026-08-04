@@ -21,7 +21,7 @@ export default defineConfig({
       };
     },
     image: {
-      lazyLoading: true,
+      lazyLoad: true,
     },
     lineNumbers: true,
     theme: {
