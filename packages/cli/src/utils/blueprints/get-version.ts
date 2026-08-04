@@ -2,7 +2,7 @@ import { decideVersion } from '@codemod-utils/blueprints';
 
 const latestVersions = new Map([
   ['@changesets/cli', '2.31.1'],
-  ['@codemod-utils/ast-javascript', '4.2.1'],
+  ['@codemod-utils/ast-javascript', '4.3.0'],
   ['@codemod-utils/ast-template', '4.1.0'],
   ['@codemod-utils/ast-template-tag', '2.7.0'],
   ['@codemod-utils/blueprints', '3.2.0'],
@@ -21,7 +21,7 @@ const latestVersions = new Map([
   ['@types/yargs', '17.0.35'],
   ['concurrently', '10.0.4'],
   ['eslint', '10.8.0'],
-  ['pnpm', '11.17.0'],
+  ['pnpm', '11.20.0'],
   ['prettier', '3.9.6'],
   ['typescript', '6.0.3'],
   ['yargs', '18.0.0'],
