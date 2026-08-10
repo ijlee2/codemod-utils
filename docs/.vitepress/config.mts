@@ -6,6 +6,7 @@ export default defineConfig({
   base: '/',
   cleanUrls: true,
   description: 'Framework for writing codemods',
+  lastUpdated: true,
   markdown: {
     anchor: {
       level: [2, 3],
@@ -28,6 +29,9 @@ export default defineConfig({
       light: 'github-light-default',
       dark: 'github-dark-default',
     },
+  },
+  sitemap: {
+    hostname: 'https://codemod-utils.netlify.app',
   },
   srcDir: 'src',
   themeConfig: {
