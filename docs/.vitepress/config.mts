@@ -6,6 +6,23 @@ export default defineConfig({
   base: '/',
   cleanUrls: true,
   description: 'Framework for writing codemods',
+  head: [
+    [
+      'script',
+      {
+        async: '',
+        src: 'https://www.googletagmanager.com/gtag/js?id=G-Z21PQ9B294',
+      },
+    ],
+    [
+      'script',
+      {},
+      `window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z21PQ9B294');`,
+    ],
+  ],
   lastUpdated: true,
   markdown: {
     anchor: {
