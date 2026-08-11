@@ -1,5 +1,16 @@
 # docs-app-for-codemod-utils
 
+## 1.10.0
+
+### Minor Changes
+
+- [#346](https://github.com/ijlee2/codemod-utils/pull/346) Enabled Google Analytics ([@ijlee2](https://github.com/ijlee2))
+- [#345](https://github.com/ijlee2/codemod-utils/pull/345) Allowed Vitepress to generate sitemap ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#347](https://github.com/ijlee2/codemod-utils/pull/347) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.9.2
 
 ### Patch Changes
