@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress';
 
+import { miniSearch } from './minisearch.mts';
 import { sidebar } from './sidebar.mts';
 
 export default defineConfig({
@@ -112,6 +113,10 @@ export default defineConfig({
       level: [2, 3],
     },
     search: {
+      options: {
+        detailedView: true,
+        miniSearch,
+      },
       provider: 'local',
     },
     sidebar,
