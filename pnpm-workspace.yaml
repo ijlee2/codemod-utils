@@ -9,7 +9,7 @@ minimumReleaseAgeExclude:
   - "@ijlee2-frontend-configs/*"
 
 overrides:
-  vite: ^8.2.0
+  vite: ^8.2.1
 
 packages:
   - "configs/**"

@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@babel/parser": "^7.29.7",
-    "recast": "^0.23.19"
+    "recast": "^0.24.0"
   },
   "devDependencies": {
     "@codemod-utils/tests": "workspace:*",
@@ -57,7 +57,7 @@
     "@sondr3/minitest": "^0.1.2",
     "@types/node": "^22.20.1",
     "concurrently": "^10.0.4",
-    "eslint": "^10.8.0",
+    "eslint": "^10.8.1",
     "prettier": "^3.9.6",
     "typescript": "^6.0.3"
   },
