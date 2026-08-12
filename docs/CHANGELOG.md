@@ -1,5 +1,11 @@
 # docs-app-for-codemod-utils
 
+## 1.11.0
+
+### Minor Changes
+
+- [#349](https://github.com/ijlee2/codemod-utils/pull/349) Improved documentation search ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.10.0
 
 ### Minor Changes

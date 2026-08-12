@@ -1,5 +1,11 @@
 # @codemod-utils/cli
 
+## 4.10.0
+
+### Minor Changes
+
+- [#351](https://github.com/ijlee2/codemod-utils/pull/351) Supported `@changesets/cli@v3` ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.9.3
 
 ### Patch Changes

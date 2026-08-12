@@ -1,5 +1,11 @@
 # @codemod-utils/ast-javascript
 
+## 4.3.2
+
+### Patch Changes
+
+- [#350](https://github.com/ijlee2/codemod-utils/pull/350) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.3.1
 
 ### Patch Changes
