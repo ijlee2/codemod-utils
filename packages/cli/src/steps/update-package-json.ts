@@ -47,7 +47,6 @@ function updateDevDependencies(
     '@ijlee2-frontend-configs/changesets',
     '@ijlee2-frontend-configs/eslint-config-node',
     '@ijlee2-frontend-configs/prettier',
-    '@sondr3/minitest',
     'concurrently',
     'eslint',
     'prettier',
