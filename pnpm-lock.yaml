@@ -145,9 +145,6 @@ importers:
       '@shared-configs/typescript':
         specifier: workspace:*
         version: link:../../../configs/typescript
-      '@sondr3/minitest':
-        specifier: ^0.1.2
-        version: 0.1.2
       '@types/node':
         specifier: ^22.20.1
         version: 22.20.1
@@ -182,9 +179,6 @@ importers:
       '@shared-configs/typescript':
         specifier: workspace:*
         version: link:../../../configs/typescript
-      '@sondr3/minitest':
-        specifier: ^0.1.2
-        version: 0.1.2
       '@types/node':
         specifier: ^22.20.1
         version: 22.20.1
@@ -225,9 +219,6 @@ importers:
       '@shared-configs/typescript':
         specifier: workspace:*
         version: link:../../../configs/typescript
-      '@sondr3/minitest':
-        specifier: ^0.1.2
-        version: 0.1.2
       '@types/node':
         specifier: ^22.20.1
         version: 22.20.1
@@ -262,9 +253,6 @@ importers:
       '@shared-configs/typescript':
         specifier: workspace:*
         version: link:../../configs/typescript
-      '@sondr3/minitest':
-        specifier: ^0.1.2
-        version: 0.1.2
       '@types/lodash':
         specifier: ^4.17.25
         version: 4.17.25
@@ -311,9 +299,6 @@ importers:
       '@shared-configs/typescript':
         specifier: workspace:*
         version: link:../../configs/typescript
-      '@sondr3/minitest':
-        specifier: ^0.1.2
-        version: 0.1.2
       '@types/node':
         specifier: ^22.20.1
         version: 22.20.1
@@ -347,9 +332,6 @@ importers:
       '@shared-configs/typescript':
         specifier: workspace:*
         version: link:../../configs/typescript
-      '@sondr3/minitest':
-        specifier: ^0.1.2
-        version: 0.1.2
       '@types/node':
         specifier: ^22.20.1
         version: 22.20.1
@@ -384,9 +366,6 @@ importers:
       '@shared-configs/typescript':
         specifier: workspace:*
         version: link:../../configs/typescript
-      '@sondr3/minitest':
-        specifier: ^0.1.2
-        version: 0.1.2
       '@types/node':
         specifier: ^22.20.1
         version: 22.20.1
@@ -421,9 +400,6 @@ importers:
       '@shared-configs/typescript':
         specifier: workspace:*
         version: link:../../configs/typescript
-      '@sondr3/minitest':
-        specifier: ^0.1.2
-        version: 0.1.2
       '@types/node':
         specifier: ^22.20.1
         version: 22.20.1
@@ -442,6 +418,9 @@ importers:
 
   packages/tests:
     dependencies:
+      '@sondr3/minitest':
+        specifier: ^0.1.2
+        version: 0.1.2
       fixturify:
         specifier: ^3.0.0
         version: 3.0.0
@@ -458,9 +437,6 @@ importers:
       '@shared-configs/typescript':
         specifier: workspace:*
         version: link:../../configs/typescript
-      '@sondr3/minitest':
-        specifier: ^0.1.2
-        version: 0.1.2
       '@types/node':
         specifier: ^22.20.1
         version: 22.20.1
@@ -491,9 +467,6 @@ importers:
       '@shared-configs/typescript':
         specifier: workspace:*
         version: link:../../configs/typescript
-      '@sondr3/minitest':
-        specifier: ^0.1.2
-        version: 0.1.2
       '@types/node':
         specifier: ^22.20.1
         version: 22.20.1

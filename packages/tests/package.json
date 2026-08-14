@@ -16,13 +16,16 @@
   "author": "Isaac J. Lee",
   "type": "module",
   "exports": {
-    ".": "./dist/index.js",
+    ".": "./dist/src/index.js",
     "./*": {
-      "types": "./dist/*.d.ts",
-      "default": "./dist/*.js"
+      "types": "./dist/src/*.d.ts",
+      "default": "./dist/src/*.js"
     }
   },
   "main": "dist/index.js",
+  "bin": {
+    "mt": "dist/bin/mt.js"
+  },
   "types": "dist/index.d.ts",
   "typesVersions": {
     "*": {
@@ -43,9 +46,11 @@
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
+    "prepack": "pnpm build",
     "test": "sh build.sh --test && echo \"@codemod-utils/tests does not have tests.\""
   },
   "dependencies": {
+    "@sondr3/minitest": "^0.1.2",
     "fixturify": "^3.0.0",
     "glob": "^13.0.6"
   },
@@ -53,20 +58,11 @@
     "@shared-configs/eslint-config-node": "workspace:*",
     "@shared-configs/prettier": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
-    "@sondr3/minitest": "^0.1.2",
     "@types/node": "^22.20.1",
     "concurrently": "^10.0.4",
     "eslint": "^10.8.1",
     "prettier": "^3.9.6",
     "typescript": "^6.0.3"
-  },
-  "peerDependencies": {
-    "@sondr3/minitest": "^0.1.2"
-  },
-  "peerDependenciesMeta": {
-    "@sondr3/minitest": {
-      "optional": false
-    }
   },
   "engines": {
     "node": "22.* || >= 24"

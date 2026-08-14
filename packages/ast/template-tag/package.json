@@ -55,7 +55,6 @@
     "@shared-configs/eslint-config-node": "workspace:*",
     "@shared-configs/prettier": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
-    "@sondr3/minitest": "^0.1.2",
     "@types/node": "^22.20.1",
     "concurrently": "^10.0.4",
     "eslint": "^10.8.1",
