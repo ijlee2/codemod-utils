@@ -1,5 +1,11 @@
 # @codemod-utils/tests
 
+## 3.2.0
+
+### Minor Changes
+
+- [#352](https://github.com/ijlee2/codemod-utils/pull/352) Added @sondr3/minitest to dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.1.0
 
 ### Minor Changes
