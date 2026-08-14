@@ -1,5 +1,11 @@
 # @codemod-utils/cli
 
+## 4.11.0
+
+### Minor Changes
+
+- [#353](https://github.com/ijlee2/codemod-utils/pull/353) Updated @codemod-utils/tests to 3.2.0 ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.10.0
 
 ### Minor Changes
