@@ -1,8 +1,59 @@
 import { strict as assert } from 'node:assert';
-
-import fixturify from 'fixturify';
+import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { join, sep } from 'node:path';
 
 import type { DirJSON, Options } from './types.js';
+
+function addFile(project: DirJSON, path: string, fileContent: string): void {
+  const segments = path.split(sep);
+  const fileName = segments.pop()!;
+
+  addFolder(project, segments)[fileName] = fileContent;
+}
+
+function addFolder(project: DirJSON, path: string | string[]): DirJSON {
+  const segments = Array.isArray(path) ? path : path.split(sep);
+
+  segments.forEach((segment) => {
+    const value = project[segment];
+
+    if (value === undefined) {
+      project[segment] = {};
+      project = project[segment];
+    } else if (typeof value === 'object') {
+      project = value;
+    }
+  });
+
+  return project;
+}
+
+function getProject(projectRoot: string): DirJSON {
+  const project: DirJSON = {};
+
+  const fileOrFolderPaths = readdirSync(projectRoot, {
+    recursive: true,
+  }).sort();
+
+  fileOrFolderPaths.forEach((fileOrFolderPath) => {
+    if (typeof fileOrFolderPath !== 'string') {
+      return;
+    }
+
+    const destination = join(projectRoot, fileOrFolderPath);
+    const stat = statSync(destination);
+
+    if (stat.isFile()) {
+      const fileContent = readFileSync(destination, 'utf8');
+
+      addFile(project, fileOrFolderPath, fileContent);
+    } else {
+      addFolder(project, fileOrFolderPath);
+    }
+  });
+
+  return project;
+}
 
 /**
  * Asserts that the codemod updated the input project correctly.
@@ -44,5 +95,5 @@ import type { DirJSON, Options } from './types.js';
 export function assertFixture(outputProject: DirJSON, options: Options): void {
   const { projectRoot } = options;
 
-  assert.deepStrictEqual(fixturify.readSync(projectRoot), outputProject);
+  assert.deepStrictEqual(getProject(projectRoot), outputProject);
 }
