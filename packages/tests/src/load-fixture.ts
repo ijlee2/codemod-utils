@@ -1,8 +1,17 @@
-import { existsSync, rmSync } from 'node:fs';
-
-import fixturify from 'fixturify';
+import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { dirname, join, normalize } from 'node:path';
 
 import type { DirJSON, Options } from './types.js';
+
+function createDirectory(filePath: string): void {
+  const directory = dirname(normalize(filePath));
+
+  if (existsSync(directory)) {
+    return;
+  }
+
+  mkdirSync(directory, { recursive: true });
+}
 
 /**
  * Creates a fixture (folders and files) at the specified path.
@@ -45,5 +54,17 @@ export function loadFixture(inputProject: DirJSON, options: Options): void {
     rmSync(projectRoot, { recursive: true });
   }
 
-  fixturify.writeSync(projectRoot, inputProject);
+  mkdirSync(projectRoot, { recursive: true });
+
+  for (const [fileOrFolderName, value] of Object.entries(inputProject)) {
+    const destination = join(projectRoot, fileOrFolderName);
+
+    createDirectory(destination);
+
+    if (typeof value === 'string') {
+      writeFileSync(destination, value, 'utf8');
+    } else {
+      loadFixture(value, { projectRoot: destination });
+    }
+  }
 }
