@@ -1,5 +1,11 @@
 # docs-app-for-codemod-utils
 
+## 1.11.2
+
+### Patch Changes
+
+- [#357](https://github.com/ijlee2/codemod-utils/pull/357) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.11.1
 
 ### Patch Changes
