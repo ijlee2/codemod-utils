@@ -32,13 +32,13 @@
     "@shared-configs/typescript": "workspace:*",
     "@types/node": "^22.20.1",
     "concurrently": "^10.0.5",
-    "eslint": "^10.9.0",
-    "oxc-minify": "^0.146.0",
+    "eslint": "^10.10.0",
+    "oxc-minify": "^0.149.0",
     "prettier": "^3.9.6",
-    "stylelint": "^17.14.1",
+    "stylelint": "^17.15.0",
     "typescript": "^6.0.3",
     "vite": "^8.2.2",
-    "vitepress": "^2.0.0-alpha.19"
+    "vitepress": "^2.0.0-alpha.20"
   },
   "engines": {
     "node": "22.* || >= 24"
