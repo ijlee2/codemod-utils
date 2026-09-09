@@ -46,7 +46,7 @@
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
-    "prepack": "pnpm build",
+    "prepare": "pnpm build",
     "test": "sh build.sh --test && echo \"@codemod-utils/tests does not have tests.\""
   },
   "dependencies": {
@@ -59,7 +59,7 @@
     "@shared-configs/typescript": "workspace:*",
     "@types/node": "^22.20.1",
     "concurrently": "^10.0.5",
-    "eslint": "^10.9.0",
+    "eslint": "^10.10.0",
     "prettier": "^3.9.6",
     "typescript": "^6.0.3"
   },
