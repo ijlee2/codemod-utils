@@ -54,6 +54,19 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Get installed Playwright version
+        id: playwright
+        run: echo "version=$(node -p "require('./docs/node_modules/@playwright/test/package.json').version")" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v6
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ steps.playwright.outputs.version }}-${{ runner.os }}
+
+      - name: Install Chromium
+        run: pnpm --filter docs-app-for-codemod-utils exec playwright install --with-deps chromium
+
       - name: Test
         run: pnpm test:docs
 
