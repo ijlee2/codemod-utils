@@ -2,6 +2,11 @@
 /.vitepress/cache/
 /.vitepress/dist/
 
+# playwright
+/blob-report/
+/playwright-report/
+/test-results/
+
 # misc
 !.*
 README.md
