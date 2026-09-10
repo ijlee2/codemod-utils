@@ -34,8 +34,8 @@ jobs:
         run: pnpm lint
 
 
-  test:
-    name: Test
+  test-docs:
+    name: Test docs
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -55,11 +55,35 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Test
-        run: pnpm test
+        run: pnpm test:docs
 
 
-  test-on-windows:
-    name: Test on Windows
+  test-packages:
+    name: Test packages
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out a copy of the repo
+        uses: actions/checkout@v7
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v7
+        with:
+          cache: 'pnpm'
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Test
+        run: pnpm test:packages
+
+
+  test-packages-on-windows:
+    name: Test packages on Windows
     runs-on: windows-latest
     timeout-minutes: 5
     steps:
@@ -79,4 +103,4 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Test
-        run: pnpm test
+        run: pnpm test:packages
