@@ -23,7 +23,9 @@
     "release:prepare": "changeset version; update-workspace-root-version",
     "release:publish": "pnpm build:packages && changeset publish",
     "start": "pnpm --filter docs-app-for-codemod-utils start",
-    "test": "pnpm --filter \"*\" test"
+    "test": "concurrently \"pnpm:test:*\"",
+    "test:docs": "pnpm --filter docs-app-for-codemod-utils test",
+    "test:packages": "pnpm --filter \"./packages/**\" test"
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.2",

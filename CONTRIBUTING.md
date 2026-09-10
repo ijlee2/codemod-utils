@@ -64,6 +64,13 @@ Here are some guidelines to help you and everyone else.
     pnpm test
     ```
 
+    The docs app is tested with [Playwright](https://playwright.dev). You may need to install `chromium` (one-time) if the `test` command fails.
+
+    ```sh
+    # From the workspace root
+    pnpm --filter docs-app-for-codemod-utils exec playwright install chromium
+    ```
+
 </details>
 
 
