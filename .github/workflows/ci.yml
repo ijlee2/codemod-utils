@@ -34,8 +34,8 @@ jobs:
         run: pnpm lint
 
 
-  test:
-    name: Test
+  test-packages:
+    name: Test packages
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -58,8 +58,8 @@ jobs:
         run: pnpm test
 
 
-  test-on-windows:
-    name: Test on Windows
+  test-packages-on-windows:
+    name: Test packages on Windows
     runs-on: windows-latest
     timeout-minutes: 5
     steps:
