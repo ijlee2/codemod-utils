@@ -5,11 +5,6 @@
 # dependencies
 /node_modules/
 
-# playwright
-/blob-report/
-/playwright-report/
-/test-results/
-
 # misc
 /.env*
 /.pnp*

@@ -5,10 +5,5 @@
     "declaration": false,
     "rootDir": "."
   },
-  "include": [
-    ".vitepress/**/*",
-    "tests/**/*",
-    "types/**/*",
-    "playwright.config.ts"
-  ]
+  "include": [".vitepress/**/*", "types/**/*"]
 }
