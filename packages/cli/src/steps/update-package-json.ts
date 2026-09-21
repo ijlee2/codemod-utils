@@ -53,8 +53,7 @@ function updateDevDependencies(
   ]);
 
   if (codemod.hasTypeScript) {
-    packagesToInstall.add('@tsconfig/node22');
-    packagesToInstall.add('@tsconfig/strictest');
+    packagesToInstall.add('@ijlee2-frontend-configs/typescript');
     packagesToInstall.add('@types/node');
     packagesToInstall.add('@types/yargs');
     packagesToInstall.add('typescript');
