@@ -1,5 +1,15 @@
 # @codemod-utils/cli
 
+## 4.13.0
+
+### Minor Changes
+
+- [#362](https://github.com/ijlee2/codemod-utils/pull/362) Installed @ijlee2-frontend-configs/typescript ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#362](https://github.com/ijlee2/codemod-utils/pull/362) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.12.1
 
 ### Patch Changes

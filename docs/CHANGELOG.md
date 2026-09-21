@@ -1,5 +1,15 @@
 # docs-app-for-codemod-utils
 
+## 1.12.0
+
+### Minor Changes
+
+- [#359](https://github.com/ijlee2/codemod-utils/pull/359) Reverted installation of playwright ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#360](https://github.com/ijlee2/codemod-utils/pull/360) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.11.2
 
 ### Patch Changes

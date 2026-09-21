@@ -1,5 +1,11 @@
 # @codemod-utils/package-json
 
+## 4.1.2
+
+### Patch Changes
+
+- [#360](https://github.com/ijlee2/codemod-utils/pull/360) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.1.1
 
 ### Patch Changes
