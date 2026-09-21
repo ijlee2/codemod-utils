@@ -17,8 +17,7 @@
     "lint:fix": "prettier \"**/*.{json,mjs}\" --cache --write"
   },
   "dependencies": {
-    "@tsconfig/node22": "^22.0.6",
-    "@tsconfig/strictest": "^2.0.8"
+    "@ijlee2-frontend-configs/typescript": "^4.1.0"
   },
   "devDependencies": {
     "@shared-configs/prettier": "workspace:*",
