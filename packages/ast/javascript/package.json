@@ -46,7 +46,7 @@
     "test": "sh build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {
-    "@babel/parser": "^7.29.8",
+    "@babel/parser": "^7.29.9",
     "recast": "^0.24.0"
   },
   "devDependencies": {
@@ -54,10 +54,10 @@
     "@shared-configs/eslint-config-node": "workspace:*",
     "@shared-configs/prettier": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
-    "@types/node": "^22.20.1",
+    "@types/node": "^22.20.4",
     "concurrently": "^10.0.5",
-    "eslint": "^10.10.0",
-    "prettier": "^3.9.6",
+    "eslint": "^10.11.0",
+    "prettier": "^3.9.8",
     "typescript": "^6.0.3"
   },
   "engines": {
