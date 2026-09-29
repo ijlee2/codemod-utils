@@ -12,17 +12,17 @@ const latestVersions = new Map([
   ['@codemod-utils/tests', '3.3.0'],
   ['@codemod-utils/threads', '1.1.0'],
   ['@ijlee2-frontend-configs/changesets', '3.0.2'],
-  ['@ijlee2-frontend-configs/eslint-config-node', '4.3.0'],
-  ['@ijlee2-frontend-configs/prettier', '3.4.0'],
+  ['@ijlee2-frontend-configs/eslint-config-node', '4.4.0'],
+  ['@ijlee2-frontend-configs/prettier', '3.4.1'],
   ['@ijlee2-frontend-configs/typescript', '4.1.0'],
   ['@types/node', '22.20.4'],
   ['@types/yargs', '17.0.35'],
   ['concurrently', '10.0.5'],
   ['eslint', '10.11.0'],
-  ['pnpm', '11.27.1'],
-  ['prettier', '3.9.8'],
+  ['pnpm', '12.6.0'],
+  ['prettier', '3.9.9'],
   ['typescript', '6.0.3'],
-  ['yargs', '18.1.0'],
+  ['yargs', '18.2.0'],
 ]);
 
 export function getVersion(packageName: string): string {
