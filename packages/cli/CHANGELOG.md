@@ -1,5 +1,15 @@
 # @codemod-utils/cli
 
+## 4.14.0
+
+### Minor Changes
+
+- [#364](https://github.com/ijlee2/codemod-utils/pull/364) Supported pnpm@v12 ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#363](https://github.com/ijlee2/codemod-utils/pull/363) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.13.0
 
 ### Minor Changes
