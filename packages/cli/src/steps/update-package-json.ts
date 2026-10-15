@@ -29,7 +29,7 @@ function updateDependencies(packageJson: PackageJson, options: Options): void {
     dependencies.set(packageName, version);
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  // oxlint-disable-next-line typescript/no-unsafe-assignment
   packageJson['dependencies'] = convertToObject(dependencies);
 }
 
@@ -65,7 +65,7 @@ function updateDevDependencies(
     devDependencies.set(packageName, version);
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  // oxlint-disable-next-line typescript/no-unsafe-assignment
   packageJson['devDependencies'] = convertToObject(devDependencies);
 }
 

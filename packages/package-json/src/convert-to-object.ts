@@ -32,10 +32,10 @@
  * packageJson['dependencies'] = convertToObject(dependencies);
  * ```
  */
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+// oxlint-disable-next-line typescript/explicit-function-return-type
 export function convertToObject(map = new Map()) {
   const sortedMap = new Map([...map.entries()].sort());
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  // oxlint-disable-next-line typescript/no-unsafe-return
   return Object.fromEntries(sortedMap);
 }

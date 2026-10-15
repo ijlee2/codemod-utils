@@ -1,7 +1,7 @@
 import type { CodemodOptions, Options } from '../types/index.js';
 
 function unscope(packageName: string): string {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // oxlint-disable-next-line typescript/no-unused-vars
   const [_scope, unscopedPackageName] = packageName.split('/');
 
   return unscopedPackageName ?? packageName;

@@ -1,8 +1,8 @@
 {
-  "name": "@shared-configs/eslint-config-node",
-  "version": "0.0.1",
+  "name": "@shared-configs/oxlint-node",
+  "version": "0.0.0",
   "private": true,
-  "description": "Configuration for eslint (Node)",
+  "description": "Configuration for oxlint (Node)",
   "repository": {
     "type": "git",
     "url": "git@github.com:ijlee2/codemod-utils.git"
@@ -10,35 +10,35 @@
   "author": "Isaac J. Lee",
   "type": "module",
   "exports": {
-    "./javascript": "./javascript/index.mjs",
-    "./typescript": "./typescript/index.mjs"
+    "./javascript": "./src/javascript.mts",
+    "./typescript": "./src/typescript.mts"
   },
   "scripts": {
     "format": "prettier . --cache --write",
     "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" && pnpm format",
     "lint:format": "prettier . --cache --check",
-    "lint:js": "eslint . --cache",
-    "lint:js:fix": "eslint . --fix"
+    "lint:js": "oxlint",
+    "lint:js:fix": "oxlint --fix"
   },
   "dependencies": {
-    "@ijlee2-frontend-configs/eslint-config-node": "^4.8.0"
+    "@ijlee2-frontend-configs/oxlint-node": "^0.3.0"
   },
   "devDependencies": {
     "@shared-configs/prettier": "workspace:*",
     "concurrently": "^10.0.6",
-    "eslint": "^10.12.0",
+    "oxlint": "^1.88.0",
     "prettier": "^3.9.10"
   },
   "peerDependencies": {
-    "eslint": "^10.12.0",
-    "typescript": "^6.0.3"
+    "oxlint": "^1.88.0",
+    "oxlint-tsgolint": "^7.0.2004"
   },
   "peerDependenciesMeta": {
-    "eslint": {
+    "oxlint": {
       "optional": false
     },
-    "typescript": {
+    "oxlint-tsgolint": {
       "optional": true
     }
   },

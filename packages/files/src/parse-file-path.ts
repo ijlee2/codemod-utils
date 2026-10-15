@@ -28,7 +28,7 @@ import type { FilePath, ParsedPath } from './types.js';
  * ```
  */
 export function parseFilePath(filePath: FilePath): ParsedPath {
-  // eslint-disable-next-line prefer-const
+  // oxlint-disable-next-line prefer-const
   let { base, dir, ext, name } = parse(normalize(filePath));
 
   while (true) {

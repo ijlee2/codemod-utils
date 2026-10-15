@@ -83,13 +83,13 @@ const voidTagNames = new Set([
   * https://github.com/glimmerjs/glimmer-vm/pull/953
   * https://github.com/glimmerjs/glimmer-vm/pull/954
 */
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/no-explicit-any
+// oxlint-disable-next-line typescript/explicit-function-return-type, typescript/no-explicit-any
 function fixASTIssues(sourceLines: any, ast: any) {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  // oxlint-disable-next-line typescript/no-unsafe-argument
   traverse(ast, {
     AttrNode(attr: AST.AttrNode) {
       const node = attr as AnnotatedAttrNode;
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      // oxlint-disable-next-line typescript/no-unsafe-argument
       const source = sourceForLoc(sourceLines, node.loc);
       const attrNodePartsResults = source.match(attrNodeParts);
       if (attrNodePartsResults === null) {
@@ -119,7 +119,7 @@ function fixASTIssues(sourceLines: any, ast: any) {
     StringLiteral(lit) {
       const quotes = /^['"]/;
       const node = lit as AnnotatedStringLiteral;
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      // oxlint-disable-next-line typescript/no-unsafe-argument
       const source = sourceForLoc(sourceLines, node.loc);
       if (!source.match(quotes)) {
         throw new Error('Invalid string literal found');
@@ -136,7 +136,7 @@ function fixASTIssues(sourceLines: any, ast: any) {
 
       switch (path.parentNode.type) {
         case 'AttrNode': {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+          // oxlint-disable-next-line typescript/no-unsafe-argument
           const source = sourceForLoc(sourceLines, node.loc);
           if (
             node.chars.length > 0 &&
@@ -182,7 +182,7 @@ function fixASTIssues(sourceLines: any, ast: any) {
     },
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  // oxlint-disable-next-line typescript/no-unsafe-return
   return ast;
 }
 
@@ -202,7 +202,7 @@ export interface NodeInfo {
 
 export class Parser {
   private _originalAst: AST.Template;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // oxlint-disable-next-line typescript/no-explicit-any
   private ancestor = new Map<any, any>();
   public ast: AST.Template;
   private dirtyFields = new Map<AST.Node, Set<string>>();
@@ -219,228 +219,228 @@ export class Parser {
 
     const source = getLines(template);
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    // oxlint-disable-next-line typescript/no-unsafe-assignment
     ast = fixASTIssues(source, ast);
     this.source = source;
     this._originalAst = ast;
 
     this.nodeInfo = nodeInfo;
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    // oxlint-disable-next-line typescript/no-unsafe-assignment
     this.ast = this.wrapNode(null, ast);
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  // oxlint-disable-next-line typescript/explicit-function-return-type
   private _rebuildParamsHash(
     ast:
       | AST.BlockStatement
       | AST.ElementModifierStatement
       | AST.MustacheStatement
       | AST.SubExpression,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // oxlint-disable-next-line typescript/no-explicit-any
     nodeInfo: any,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // oxlint-disable-next-line typescript/no-explicit-any
     dirtyFields: any,
   ) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    // oxlint-disable-next-line typescript/no-unsafe-assignment
     const { original } = nodeInfo;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+    // oxlint-disable-next-line typescript/no-unsafe-call, typescript/no-unsafe-member-access
     if (dirtyFields.has('hash')) {
       if (ast.hash.pairs.length === 0) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        // oxlint-disable-next-line typescript/no-unsafe-member-access
         nodeInfo.hashSource = '';
 
         if (ast.params.length === 0) {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+          // oxlint-disable-next-line typescript/no-unsafe-member-access
           nodeInfo.postPathWhitespace = '';
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+          // oxlint-disable-next-line typescript/no-unsafe-member-access
           nodeInfo.postParamsWhitespace = '';
         }
       } else {
         let joinWith;
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        // oxlint-disable-next-line typescript/no-unsafe-member-access
         if (original.hash.pairs.length > 1) {
           joinWith = this.sourceForLoc({
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+            // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
             start: original.hash.pairs[0].loc.end,
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+            // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
             end: original.hash.pairs[1].loc.start,
           });
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+          // oxlint-disable-next-line typescript/no-unsafe-member-access
         } else if (nodeInfo.hadParams) {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+          // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
           joinWith = nodeInfo.postPathWhitespace;
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+          // oxlint-disable-next-line typescript/no-unsafe-member-access
         } else if (nodeInfo.hadHash) {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+          // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
           joinWith = nodeInfo.postParamsWhitespace;
         } else {
           joinWith = ' ';
         }
 
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+        // oxlint-disable-next-line typescript/no-unsafe-call, typescript/no-unsafe-member-access
         if (joinWith.trim() !== '') {
           // if the autodetection above resulted in some non whitespace
           // values, reset to `' '`
           joinWith = ' ';
         }
 
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        // oxlint-disable-next-line typescript/no-unsafe-member-access
         nodeInfo.hashSource = ast.hash.pairs
           .map((pair: AST.HashPair) => {
             return this.print(pair);
           })
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+          // oxlint-disable-next-line typescript/no-unsafe-argument
           .join(joinWith);
 
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        // oxlint-disable-next-line typescript/no-unsafe-member-access
         if (!nodeInfo.hadHash) {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+          // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
           nodeInfo.postParamsWhitespace = joinWith;
         }
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+      // oxlint-disable-next-line typescript/no-unsafe-call, typescript/no-unsafe-member-access
       dirtyFields.delete('hash');
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+    // oxlint-disable-next-line typescript/no-unsafe-call, typescript/no-unsafe-member-access
     if (dirtyFields.has('params')) {
       let joinWith;
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      // oxlint-disable-next-line typescript/no-unsafe-member-access
       if (original.params.length > 1) {
         joinWith = this.sourceForLoc({
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+          // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
           start: original.params[0].loc.end,
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+          // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
           end: original.params[1].loc.start,
         });
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        // oxlint-disable-next-line typescript/no-unsafe-member-access
       } else if (nodeInfo.hadParams) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+        // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
         joinWith = nodeInfo.postPathWhitespace;
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        // oxlint-disable-next-line typescript/no-unsafe-member-access
       } else if (nodeInfo.hadHash) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+        // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
         joinWith = nodeInfo.postParamsWhitespace;
       } else {
         joinWith = ' ';
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+      // oxlint-disable-next-line typescript/no-unsafe-call, typescript/no-unsafe-member-access
       if (joinWith.trim() !== '') {
         // if the autodetection above resulted in some non whitespace
         // values, reset to `' '`
         joinWith = ' ';
       }
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      // oxlint-disable-next-line typescript/no-unsafe-member-access
       nodeInfo.paramsSource = ast.params
         .map((param) => this.print(param))
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        // oxlint-disable-next-line typescript/no-unsafe-argument
         .join(joinWith);
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      // oxlint-disable-next-line typescript/no-unsafe-member-access
       if (nodeInfo.hadParams && ast.params.length === 0) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        // oxlint-disable-next-line typescript/no-unsafe-member-access
         nodeInfo.postPathWhitespace = '';
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        // oxlint-disable-next-line typescript/no-unsafe-member-access
       } else if (!nodeInfo.hadParams && ast.params.length > 0) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+        // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
         nodeInfo.postPathWhitespace = joinWith;
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+      // oxlint-disable-next-line typescript/no-unsafe-call, typescript/no-unsafe-member-access
       dirtyFields.delete('params');
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/no-explicit-any
+  // oxlint-disable-next-line typescript/explicit-function-return-type, typescript/no-explicit-any
   private _updateNodeInfoForParamsHash(_ast: any, nodeInfo: any) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    // oxlint-disable-next-line typescript/no-unsafe-assignment
     const { original } = nodeInfo;
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    // oxlint-disable-next-line typescript/no-unsafe-member-access
     const hadParams = (nodeInfo.hadParams = original.params.length > 0);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    // oxlint-disable-next-line typescript/no-unsafe-member-access
     const hadHash = (nodeInfo.hadHash = original.hash.pairs.length > 0);
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    // oxlint-disable-next-line typescript/no-unsafe-member-access
     nodeInfo.postPathWhitespace = hadParams
       ? this.sourceForLoc({
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+          // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
           start: original.path.loc.end,
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+          // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
           end: original.params[0].loc.start,
         })
       : '';
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    // oxlint-disable-next-line typescript/no-unsafe-member-access
     nodeInfo.paramsSource = hadParams
       ? this.sourceForLoc({
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+          // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
           start: original.params[0].loc.start,
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+          // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
           end: original.params[original.params.length - 1].loc.end,
         })
       : '';
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    // oxlint-disable-next-line typescript/no-unsafe-member-access
     nodeInfo.postParamsWhitespace = hadHash
       ? this.sourceForLoc({
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+          // oxlint-disable-next-line typescript/no-unsafe-assignment
           start: hadParams
-            ? // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+            ? // oxlint-disable-next-line typescript/no-unsafe-member-access
               original.params[original.params.length - 1].loc.end
-            : // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+            : // oxlint-disable-next-line typescript/no-unsafe-member-access
               original.path.loc.end,
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+          // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
           end: original.hash.loc.start,
         })
       : '';
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    // oxlint-disable-next-line typescript/no-unsafe-member-access
     nodeInfo.hashSource = hadHash ? this.sourceForLoc(original.hash.loc) : '';
 
     const postHashSource = this.sourceForLoc({
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      // oxlint-disable-next-line typescript/no-unsafe-assignment
       start: hadHash
-        ? // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        ? // oxlint-disable-next-line typescript/no-unsafe-member-access
           original.hash.loc.end
         : hadParams
-          ? // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+          ? // oxlint-disable-next-line typescript/no-unsafe-member-access
             original.params[original.params.length - 1].loc.end
-          : // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+          : // oxlint-disable-next-line typescript/no-unsafe-member-access
             original.path.loc.end,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+      // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
       end: original.loc.end,
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    // oxlint-disable-next-line typescript/no-unsafe-member-access
     nodeInfo.postHashWhitespace = '';
     const postHashWhitespaceMatch = postHashSource.match(leadingWhitespace);
     if (postHashWhitespaceMatch) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      // oxlint-disable-next-line typescript/no-unsafe-member-access
       nodeInfo.postHashWhitespace = postHashWhitespaceMatch[0];
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/no-explicit-any
+  // oxlint-disable-next-line typescript/explicit-function-return-type, typescript/no-explicit-any
   private markAsDirty(node: any, property: any) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    // oxlint-disable-next-line typescript/no-unsafe-argument
     let dirtyFields = this.dirtyFields.get(node);
     if (dirtyFields === undefined) {
       dirtyFields = new Set();
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      // oxlint-disable-next-line typescript/no-unsafe-argument
       this.dirtyFields.set(node, dirtyFields);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    // oxlint-disable-next-line typescript/no-unsafe-argument
     dirtyFields.add(property);
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    // oxlint-disable-next-line typescript/no-unsafe-assignment
     const ancestor = this.ancestor.get(node);
     if (ancestor !== null) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      // oxlint-disable-next-line typescript/no-unsafe-member-access
       this.markAsDirty(ancestor.node, ancestor.key);
     }
   }
@@ -745,20 +745,20 @@ export class Parser {
 
           let openSource = this.sourceForLoc({
             start: original.loc.start,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+            // oxlint-disable-next-line typescript/no-explicit-any, typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
             end: (original as any).path.loc.end,
           });
 
           let endSource = this.sourceForLoc({
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            // oxlint-disable-next-line typescript/no-unsafe-assignment
             start: nodeInfo.hadHash
-              ? // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
+              ? // oxlint-disable-next-line typescript/no-explicit-any, typescript/no-unsafe-member-access
                 (original as any).hash.loc.end
               : nodeInfo.hadParams
-                ? // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
+                ? // oxlint-disable-next-line typescript/no-explicit-any, typescript/no-unsafe-member-access
                   (original as any).params[(original as any).params.length - 1]
                     .loc.end
-                : // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
+                : // oxlint-disable-next-line typescript/no-explicit-any, typescript/no-unsafe-member-access
                   (original as any).path.loc.end,
             end: original.loc.end,
           }).trimLeft();
@@ -767,7 +767,7 @@ export class Parser {
             openSource =
               this.sourceForLoc({
                 start: original.loc.start,
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+                // oxlint-disable-next-line typescript/no-explicit-any, typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
                 end: (original as any).path.loc.start,
               }) + this.print(ast.path);
 
@@ -971,7 +971,7 @@ export class Parser {
           }
 
           let endSource = '';
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
+          // oxlint-disable-next-line typescript/no-explicit-any, typescript/no-unsafe-member-access
           if (!(ast as any).wasChained) {
             const firstOpenCurlyFromEndIndex = nodeInfo.source.lastIndexOf('{');
             const secondOpenCurlyFromEndIndex = nodeInfo.source.lastIndexOf(
@@ -1032,7 +1032,7 @@ export class Parser {
 
             if (programDirtyFields.size > 0) {
               throw new Error(
-                // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+                // oxlint-disable-next-line typescript/restrict-template-expressions
                 `Unhandled mutations for ${ast.program.type}: ${Array.from(programDirtyFields)}`,
               );
             }
@@ -1048,7 +1048,7 @@ export class Parser {
               if (ast.inverse.chained) {
                 inversePreamble = '';
                 const inverseBody = ast.inverse.body[0];
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
+                // oxlint-disable-next-line typescript/no-explicit-any, typescript/no-unsafe-member-access
                 (inverseBody as any).wasChained = true;
                 inverseSource = this.print(inverseBody);
               } else {
@@ -1091,7 +1091,7 @@ export class Parser {
           if (hashPairPartsResult === null) {
             throw new Error('Could not match hash pair parts');
           }
-          // eslint-disable-next-line prefer-const
+          // oxlint-disable-next-line prefer-const
           let [, keySource, postKeyWhitespace, postEqualsWhitespace] =
             hashPairPartsResult;
           let valueSource = this.sourceForLoc(hashPair.value.loc);
@@ -1129,10 +1129,10 @@ export class Parser {
           let [
             ,
             nameSource,
-            // eslint-disable-next-line prefer-const
+            // oxlint-disable-next-line prefer-const
             postNameWhitespace,
             equals,
-            // eslint-disable-next-line prefer-const
+            // oxlint-disable-next-line prefer-const
             postEqualsWhitespace,
             quote,
           ] = attrNodePartsResults;
@@ -1307,7 +1307,7 @@ export class Parser {
     for (const field of dirtyFields.values()) {
       if (field in Object.keys(original)) {
         throw new Error(
-          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+          // oxlint-disable-next-line typescript/restrict-template-expressions
           `ember-template-recast could not handle the mutations of \`${Array.from(
             dirtyFields,
           )}\` on ${original.type}`,
@@ -1326,13 +1326,10 @@ export class Parser {
   // syntax tree type and printer.
   printUserSuppliedNode(_ast: AST.Node): string {
     switch (_ast.type) {
-      case 'StringLiteral':
-        {
-          const quote = (_ast as AnnotatedStringLiteral).quoteType || '"';
-          return quote + _ast.value + quote;
-        }
-        // @ts-expect-error: Incorrect type
-        break;
+      case 'StringLiteral': {
+        const quote = (_ast as AnnotatedStringLiteral).quoteType || '"';
+        return quote + _ast.value + quote;
+      }
       case 'AttrNode':
         {
           const node = _ast as AnnotatedAttrNode;
@@ -1354,38 +1351,30 @@ export class Parser {
           switch (node.value.type) {
             case 'MustacheStatement':
               return node.name + '=' + this.print(node.value);
-              // @ts-expect-error: Incorrect type
-              break;
-            case 'ConcatStatement':
-              {
-                const value = node.value.parts
-                  .map((part) => this.print(part))
-                  .join('');
-                const quote = node.quoteType || '"';
-                return node.name + '=' + quote + value + quote;
+            case 'ConcatStatement': {
+              const value = node.value.parts
+                .map((part) => this.print(part))
+                .join('');
+              const quote = node.quoteType || '"';
+              return node.name + '=' + quote + value + quote;
+            }
+            case 'TextNode': {
+              if (
+                node.quoteType === null &&
+                node.value.chars.match(invalidUnquotedAttrValue)
+              ) {
+                throw new Error(
+                  `You specified a quoteless attribute \`${node.value.chars}\`, which is invalid without quotes`,
+                );
               }
-              // @ts-expect-error: Incorrect type
-              break;
-            case 'TextNode':
-              {
-                if (
-                  node.quoteType === null &&
-                  node.value.chars.match(invalidUnquotedAttrValue)
-                ) {
-                  throw new Error(
-                    `You specified a quoteless attribute \`${node.value.chars}\`, which is invalid without quotes`,
-                  );
-                }
-                let quote: string;
-                if (node.quoteType === null) {
-                  quote = '';
-                } else {
-                  quote = node.quoteType || '"';
-                }
-                return node.name + '=' + quote + node.value.chars + quote;
+              let quote: string;
+              if (node.quoteType === null) {
+                quote = '';
+              } else {
+                quote = node.quoteType || '"';
               }
-              // @ts-expect-error: Incorrect type
-              break;
+              return node.name + '=' + quote + node.value.chars + quote;
+            }
           }
         }
         // @ts-expect-error: Incorrect type
@@ -1407,47 +1396,47 @@ export class Parser {
     Used to associate the original source with a given node (while wrapping AST nodes
     in a proxy).
   */
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/no-explicit-any
+  // oxlint-disable-next-line typescript/explicit-function-return-type, typescript/no-explicit-any
   private sourceForLoc(loc: any) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    // oxlint-disable-next-line typescript/no-unsafe-argument
     return sourceForLoc(this.source, loc);
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/no-explicit-any
+  // oxlint-disable-next-line typescript/explicit-function-return-type, typescript/no-explicit-any
   private wrapNode(ancestor: any, node: any) {
     this.ancestor.set(node, ancestor);
 
     const nodeInfo = {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      // oxlint-disable-next-line typescript/no-unsafe-assignment
       node,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      // oxlint-disable-next-line typescript/no-unsafe-assignment
       original: JSON.parse(JSON.stringify(node)),
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      // oxlint-disable-next-line typescript/no-unsafe-member-access
       source: this.sourceForLoc(node.loc),
       parse_result: this,
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    // oxlint-disable-next-line typescript/no-unsafe-argument
     this.nodeInfo.set(node, nodeInfo);
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    // oxlint-disable-next-line typescript/no-unsafe-member-access
     const hasLocInfo = !!node.loc;
     const propertyProxyMap = new Map();
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    // oxlint-disable-next-line typescript/no-unsafe-assignment
     const proxy = new Proxy(node, {
-      // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+      // oxlint-disable-next-line typescript/explicit-function-return-type
       get: (target, property) => {
         if (propertyProxyMap.has(property)) {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+          // oxlint-disable-next-line typescript/no-unsafe-return
           return propertyProxyMap.get(property);
         }
 
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+        // oxlint-disable-next-line typescript/no-unsafe-return
         return Reflect.get(target, property);
       },
 
-      // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+      // oxlint-disable-next-line typescript/explicit-function-return-type
       set: (target, property, value) => {
         if (propertyProxyMap.has(property)) {
           propertyProxyMap.set(property, value);
@@ -1458,26 +1447,26 @@ export class Parser {
         if (hasLocInfo) {
           this.markAsDirty(node, property);
         } else {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+          // oxlint-disable-next-line typescript/no-unsafe-member-access
           this.markAsDirty(ancestor.node, ancestor.key);
         }
 
         return true;
       },
 
-      // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+      // oxlint-disable-next-line typescript/explicit-function-return-type
       deleteProperty: (target, property) => {
         if (propertyProxyMap.has(property)) {
           propertyProxyMap.delete(property);
         }
 
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        // oxlint-disable-next-line typescript/no-unsafe-argument
         const result = Reflect.deleteProperty(target, property);
 
         if (hasLocInfo) {
           this.markAsDirty(node, property);
         } else {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+          // oxlint-disable-next-line typescript/no-unsafe-member-access
           this.markAsDirty(ancestor.node, ancestor.key);
         }
 
@@ -1487,22 +1476,22 @@ export class Parser {
 
     // this is needed in order to handle splicing of Template.body (which
     // happens when during replacement)
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    // oxlint-disable-next-line typescript/no-unsafe-argument
     this.nodeInfo.set(proxy, nodeInfo);
 
     for (const key in node) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+      // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
       const value = node[key];
 
       if (key !== 'loc' && typeof value === 'object' && value !== null) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        // oxlint-disable-next-line typescript/no-unsafe-assignment
         const propertyProxy = this.wrapNode({ node, key }, value);
 
         propertyProxyMap.set(key, propertyProxy);
       }
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    // oxlint-disable-next-line typescript/no-unsafe-return
     return proxy;
   }
 }

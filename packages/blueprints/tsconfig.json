@@ -6,5 +6,5 @@
     "rootDir": ".",
     "types": ["@types/lodash", "@types/node"]
   },
-  "include": ["src", "tests"]
+  "include": ["src", "tests", "*.mts"]
 }
