@@ -66,7 +66,7 @@ export function getDatasets(numTasks: number): Parameters<typeof task>[] {
   return datasets;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// oxlint-disable-next-line typescript/no-unused-vars
 export function task(vector: Vector, _options: Options): Vector {
   const newVector = vecInit(vector.length);
   const norm = vecNorm(vector);

@@ -13,7 +13,7 @@ export function getTemplate(expression: CallExpression): string | undefined {
   }
 
   // @ts-expect-error: Incorrect type
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+  // oxlint-disable-next-line typescript/no-unsafe-member-access
   const template = expression.arguments[0]!.quasis[0].value.raw as string;
 
   return template;

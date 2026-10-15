@@ -31,7 +31,7 @@
  * packageJson['dependencies'] = convertToObject(dependencies);
  * ```
  */
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+// oxlint-disable-next-line typescript/explicit-function-return-type
 export function convertToMap(object = {}) {
   const entries = Object.entries(object);
 
