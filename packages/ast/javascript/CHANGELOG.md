@@ -1,5 +1,11 @@
 # @codemod-utils/ast-javascript
 
+## 4.3.4
+
+### Patch Changes
+
+- [#367](https://github.com/ijlee2/codemod-utils/pull/367) Replaced eslint with oxlint ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.3.3
 
 ### Patch Changes

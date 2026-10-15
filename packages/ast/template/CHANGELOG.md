@@ -1,5 +1,11 @@
 # @codemod-utils/ast-template
 
+## 4.1.1
+
+### Patch Changes
+
+- [#367](https://github.com/ijlee2/codemod-utils/pull/367) Replaced eslint with oxlint ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.1.0
 
 ### Minor Changes
