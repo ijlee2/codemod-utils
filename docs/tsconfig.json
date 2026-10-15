@@ -3,6 +3,7 @@
   "compilerOptions": {
     "allowImportingTsExtensions": true,
     "declaration": false,
+    "noEmit": true,
     "rootDir": "."
   },
   "include": [".vitepress/**/*", "types/**/*"]

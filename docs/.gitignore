@@ -8,5 +8,4 @@
 # misc
 /.env*
 /.pnp*
-/.eslintcache
 /.stylelintcache

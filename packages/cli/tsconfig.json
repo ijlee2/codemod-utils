@@ -6,6 +6,6 @@
     "rootDir": ".",
     "types": ["@types/node", "@types/yargs"]
   },
-  "include": ["bin", "src", "tests"],
+  "include": ["bin", "src", "tests", "*.mts"],
   "exclude": ["src/blueprints", "tests/fixtures"]
 }

@@ -7,13 +7,12 @@
 # misc
 /.DS_Store
 /.env*
-/.eslintrc.cjs
 /.git/
 /.github/
 /.gitignore
 /.pnpm-debug.log
 /.prettierignore
 /build.sh
-/eslint.config.mjs
+/oxlint.config.mts
 /prettier.config.mjs
 /tests/

@@ -6,5 +6,5 @@
     "rootDir": ".",
     "types": ["@types/node"]
   },
-  "include": ["bin", "src"]
+  "include": ["bin", "src", "*.mts"]
 }
