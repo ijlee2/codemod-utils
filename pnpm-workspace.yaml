@@ -10,9 +10,6 @@ minimumReleaseAge: 720
 minimumReleaseAgeExclude:
   - "@ijlee2-frontend-configs/*"
 
-overrides:
-  vite: ^8.3.4
-
 packages:
   - "configs/**"
   - "docs"

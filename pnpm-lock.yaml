@@ -187,9 +187,6 @@ settings:
   autoInstallPeers: false
   excludeLinksFromLockfile: false
 
-overrides:
-  vite: ^8.3.4
-
 importers:
 
   .:
@@ -1613,7 +1610,7 @@ packages:
     resolution: {integrity: sha512-rD/MORlhaZMlXWW0rEn4FB4wMinWC0z/D7Ye160S5+Rs1mC8ZDAdcDp4SjKfUhG5t8q1ktcPVw4xuTkPRlzrSA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
-      vite: ^8.3.4
+      vite: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
       vue: ^3.2.25
 
   '@vue/compiler-core@3.5.43':
