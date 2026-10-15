@@ -1326,13 +1326,10 @@ export class Parser {
   // syntax tree type and printer.
   printUserSuppliedNode(_ast: AST.Node): string {
     switch (_ast.type) {
-      case 'StringLiteral':
-        {
-          const quote = (_ast as AnnotatedStringLiteral).quoteType || '"';
-          return quote + _ast.value + quote;
-        }
-        // @ts-expect-error: Incorrect type
-        break;
+      case 'StringLiteral': {
+        const quote = (_ast as AnnotatedStringLiteral).quoteType || '"';
+        return quote + _ast.value + quote;
+      }
       case 'AttrNode':
         {
           const node = _ast as AnnotatedAttrNode;
@@ -1354,38 +1351,30 @@ export class Parser {
           switch (node.value.type) {
             case 'MustacheStatement':
               return node.name + '=' + this.print(node.value);
-              // @ts-expect-error: Incorrect type
-              break;
-            case 'ConcatStatement':
-              {
-                const value = node.value.parts
-                  .map((part) => this.print(part))
-                  .join('');
-                const quote = node.quoteType || '"';
-                return node.name + '=' + quote + value + quote;
+            case 'ConcatStatement': {
+              const value = node.value.parts
+                .map((part) => this.print(part))
+                .join('');
+              const quote = node.quoteType || '"';
+              return node.name + '=' + quote + value + quote;
+            }
+            case 'TextNode': {
+              if (
+                node.quoteType === null &&
+                node.value.chars.match(invalidUnquotedAttrValue)
+              ) {
+                throw new Error(
+                  `You specified a quoteless attribute \`${node.value.chars}\`, which is invalid without quotes`,
+                );
               }
-              // @ts-expect-error: Incorrect type
-              break;
-            case 'TextNode':
-              {
-                if (
-                  node.quoteType === null &&
-                  node.value.chars.match(invalidUnquotedAttrValue)
-                ) {
-                  throw new Error(
-                    `You specified a quoteless attribute \`${node.value.chars}\`, which is invalid without quotes`,
-                  );
-                }
-                let quote: string;
-                if (node.quoteType === null) {
-                  quote = '';
-                } else {
-                  quote = node.quoteType || '"';
-                }
-                return node.name + '=' + quote + node.value.chars + quote;
+              let quote: string;
+              if (node.quoteType === null) {
+                quote = '';
+              } else {
+                quote = node.quoteType || '"';
               }
-              // @ts-expect-error: Incorrect type
-              break;
+              return node.name + '=' + quote + node.value.chars + quote;
+            }
           }
         }
         // @ts-expect-error: Incorrect type

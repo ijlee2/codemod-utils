@@ -1,5 +1,6 @@
 import { builders, print, traverse } from './-private/recast.js';
 
+// oxlint-disable-next-line eslint/no-redeclare
 type AST = {
   builders: typeof builders;
   print: typeof print;
