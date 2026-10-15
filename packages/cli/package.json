@@ -26,8 +26,8 @@
     "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" && pnpm format",
     "lint:format": "prettier . --cache --check",
-    "lint:js": "oxlint",
-    "lint:js:fix": "oxlint --fix",
+    "lint:js": "oxlint --config oxlint.config.mts",
+    "lint:js:fix": "oxlint --config oxlint.config.mts --fix",
     "lint:types": "tsc --noEmit",
     "test": "sh build.sh --test && mt dist-for-testing --quiet"
   },
