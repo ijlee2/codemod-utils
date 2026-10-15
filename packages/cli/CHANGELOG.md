@@ -1,5 +1,15 @@
 # @codemod-utils/cli
 
+## 4.15.0
+
+### Minor Changes
+
+- [#368](https://github.com/ijlee2/codemod-utils/pull/368) Replaced eslint with oxlint ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#368](https://github.com/ijlee2/codemod-utils/pull/368) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.14.1
 
 ### Patch Changes
