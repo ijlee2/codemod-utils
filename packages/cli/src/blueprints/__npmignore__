@@ -8,7 +8,6 @@
 # misc
 /.DS_Store
 /.env*
-/.eslintcache
 /.git/
 /.github/
 /.gitignore
@@ -16,7 +15,7 @@
 /.prettierignore
 /build.sh
 /CONTRIBUTING.md
-/eslint.config.mjs
+<% if (options.codemod.hasTypeScript) { %>/oxlint.config.mts<% } else { %>/oxlint.config.mjs<% } %>
 /prettier.config.mjs
 /tests/
 /update-test-fixtures.sh
