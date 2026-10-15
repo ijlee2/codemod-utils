@@ -1,7 +1,7 @@
 import baseConfiguration from '@ijlee2-frontend-configs/oxlint-node/typescript';
-import type { OxlintConfig } from 'oxlint';
+import { defineConfig } from 'oxlint';
 
-export default {
+export default defineConfig({
   ...baseConfiguration,
   ignorePatterns: [
     'dist/',
@@ -12,4 +12,4 @@ export default {
     'tmp/',
     '.*/',
   ],
-} satisfies OxlintConfig;
+});

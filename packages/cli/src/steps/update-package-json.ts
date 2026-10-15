@@ -45,10 +45,10 @@ function updateDevDependencies(
     '@changesets/cli',
     '@codemod-utils/tests',
     '@ijlee2-frontend-configs/changesets',
-    '@ijlee2-frontend-configs/eslint-config-node',
+    '@ijlee2-frontend-configs/oxlint-node',
     '@ijlee2-frontend-configs/prettier',
     'concurrently',
-    'eslint',
+    'oxlint',
     'prettier',
   ]);
 
@@ -56,6 +56,7 @@ function updateDevDependencies(
     packagesToInstall.add('@ijlee2-frontend-configs/typescript');
     packagesToInstall.add('@types/node');
     packagesToInstall.add('@types/yargs');
+    packagesToInstall.add('oxlint-tsgolint');
     packagesToInstall.add('typescript');
   }
 

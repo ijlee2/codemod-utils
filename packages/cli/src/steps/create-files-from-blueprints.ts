@@ -39,7 +39,8 @@ function resolveBlueprintFilePath(
     .replace('__codemod-unscoped-name__', codemod.unscopedName)
     .replace('__gitignore__', '.gitignore')
     .replace('__npmignore__', '.npmignore')
-    .replace('.__js__', codemod.hasTypeScript ? '.ts' : '.js');
+    .replace('.__js__', codemod.hasTypeScript ? '.ts' : '.js')
+    .replace('.__mjs__', codemod.hasTypeScript ? '.mts' : '.mjs');
 }
 
 function setExecutePermissions(options: Options): void {

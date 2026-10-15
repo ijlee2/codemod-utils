@@ -23,27 +23,27 @@
     "format": "prettier . --cache --write",
     "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" && pnpm format",
     "lint:format": "prettier . --cache --check",
-    "lint:js": "eslint . --cache",
-    "lint:js:fix": "eslint . --fix",
+    "lint:js": "oxlint --config oxlint.config.mjs",
+    "lint:js:fix": "oxlint --config oxlint.config.mjs --fix",
     "release:prepare": "changeset version",
     "release:publish": "changeset publish",
     "test": "mt tests --quiet"
   },
   "dependencies": {
-    "@codemod-utils/files": "^4.1.0",
+    "@codemod-utils/files": "^4.1.1",
     "yargs": "^18.2.0"
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.3",
     "@codemod-utils/tests": "^3.3.0",
-    "@ijlee2-frontend-configs/changesets": "^3.0.2",
-    "@ijlee2-frontend-configs/eslint-config-node": "^4.4.0",
-    "@ijlee2-frontend-configs/prettier": "^3.4.1",
-    "concurrently": "^10.0.5",
-    "eslint": "^10.11.0",
-    "prettier": "^3.9.9"
+    "@ijlee2-frontend-configs/changesets": "^3.0.3",
+    "@ijlee2-frontend-configs/oxlint-node": "^0.3.0",
+    "@ijlee2-frontend-configs/prettier": "^3.4.2",
+    "concurrently": "^10.0.6",
+    "oxlint": "^1.88.0",
+    "prettier": "^3.9.10"
   },
-  "packageManager": "pnpm@12.6.0",
+  "packageManager": "pnpm@12.11.2",
   "engines": {
     "node": "22.* || >= 24"
   }
