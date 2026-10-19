@@ -22,7 +22,7 @@
     "lint:js:fix": "oxlint --fix"
   },
   "dependencies": {
-    "@ijlee2-frontend-configs/oxlint-node": "^0.3.0"
+    "@ijlee2-frontend-configs/oxlint-node": "^0.3.2"
   },
   "devDependencies": {
     "@shared-configs/prettier": "workspace:*",
