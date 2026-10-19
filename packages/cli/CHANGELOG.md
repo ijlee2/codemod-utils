@@ -1,5 +1,12 @@
 # @codemod-utils/cli
 
+## 4.15.1
+
+### Patch Changes
+
+- [#371](https://github.com/ijlee2/codemod-utils/pull/371) Updated latestVersions ([@ijlee2](https://github.com/ijlee2))
+- [#369](https://github.com/ijlee2/codemod-utils/pull/369) Introduced trusted publishing ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.15.0
 
 ### Minor Changes

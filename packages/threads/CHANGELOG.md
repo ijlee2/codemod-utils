@@ -1,5 +1,11 @@
 # @codemod-utils/threads
 
+## 1.1.2
+
+### Patch Changes
+
+- [#369](https://github.com/ijlee2/codemod-utils/pull/369) Introduced trusted publishing ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.1.1
 
 ### Patch Changes

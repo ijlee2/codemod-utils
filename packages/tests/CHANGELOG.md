@@ -1,5 +1,11 @@
 # @codemod-utils/tests
 
+## 3.3.1
+
+### Patch Changes
+
+- [#369](https://github.com/ijlee2/codemod-utils/pull/369) Introduced trusted publishing ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.3.0
 
 ### Minor Changes

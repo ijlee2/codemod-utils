@@ -1,5 +1,11 @@
 # @codemod-utils/ast-javascript
 
+## 4.3.5
+
+### Patch Changes
+
+- [#369](https://github.com/ijlee2/codemod-utils/pull/369) Introduced trusted publishing ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.3.4
 
 ### Patch Changes

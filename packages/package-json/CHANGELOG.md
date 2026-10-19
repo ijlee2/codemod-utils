@@ -1,5 +1,11 @@
 # @codemod-utils/package-json
 
+## 4.1.4
+
+### Patch Changes
+
+- [#369](https://github.com/ijlee2/codemod-utils/pull/369) Introduced trusted publishing ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.1.3
 
 ### Patch Changes

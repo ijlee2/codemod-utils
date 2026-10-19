@@ -1,5 +1,11 @@
 # @codemod-utils/ast-template-tag
 
+## 2.7.2
+
+### Patch Changes
+
+- [#369](https://github.com/ijlee2/codemod-utils/pull/369) Introduced trusted publishing ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.7.1
 
 ### Patch Changes
