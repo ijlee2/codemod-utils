@@ -1,5 +1,11 @@
 # @codemod-utils/ast-template
 
+## 4.1.3
+
+### Patch Changes
+
+- [#372](https://github.com/ijlee2/codemod-utils/pull/372) Updated @glimmer/syntax to v0.97 ([@johanrd](https://github.com/johanrd))
+
 ## 4.1.2
 
 ### Patch Changes
