@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "@sondr3/minitest": "^0.1.2",
-    "glob": "^13.0.6"
+    "glob": "^14.0.3"
   },
   "devDependencies": {
     "@shared-configs/oxlint-node": "workspace:*",
@@ -59,8 +59,8 @@
     "@shared-configs/typescript": "workspace:*",
     "@types/node": "^22.20.5",
     "concurrently": "^10.0.6",
-    "oxlint": "^1.88.0",
-    "oxlint-tsgolint": "^7.0.2004",
+    "oxlint": "^1.90.0",
+    "oxlint-tsgolint": "^7.0.2005",
     "prettier": "^3.9.10",
     "typescript": "^6.0.3"
   },
