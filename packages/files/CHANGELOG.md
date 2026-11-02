@@ -1,5 +1,11 @@
 # @codemod-utils/files
 
+## 4.2.0
+
+### Minor Changes
+
+- [#375](https://github.com/ijlee2/codemod-utils/pull/375) Updated dependencies (glob to v14) ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.1.2
 
 ### Patch Changes

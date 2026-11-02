@@ -1,5 +1,12 @@
 # docs-app-for-codemod-utils
 
+## 1.12.3
+
+### Patch Changes
+
+- [#375](https://github.com/ijlee2/codemod-utils/pull/375) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+- [#374](https://github.com/ijlee2/codemod-utils/pull/374) Listed install-ember-testem ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.12.2
 
 ### Patch Changes
