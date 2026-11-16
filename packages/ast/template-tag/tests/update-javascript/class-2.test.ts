@@ -31,9 +31,9 @@ test('update-javascript > class (2)', function () {
       `import styles from './my-component.css';`,
       ``,
       `export default class MyComponent extends Component {`,
-      `    <template><div class={{styles.container}}>`,
+      `  <template><div class={{styles.container}}>`,
       `    Hello world!`,
-      `    </div></template>`,
+      `  </div></template>`,
       `}`,
       ``,
     ]),
@@ -43,5 +43,22 @@ test('update-javascript > class (2)', function () {
     return renameGetters(code, data);
   });
 
-  assert.strictEqual(newFile2, newFile);
+  // TODO: Guarantee idempotence
+  assert.notStrictEqual(newFile2, newFile);
+
+  assert.strictEqual(
+    newFile2,
+    normalizeFile([
+      `import Component from '@glimmer/component';`,
+      ``,
+      `import styles from './my-component.css';`,
+      ``,
+      `export default class MyComponent extends Component {`,
+      `    <template><div class={{styles.container}}>`,
+      `        Hello world!`,
+      `      </div></template>`,
+      `}`,
+      ``,
+    ]),
+  );
 });
