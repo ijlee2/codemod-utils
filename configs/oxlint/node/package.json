@@ -22,17 +22,17 @@
     "lint:js:fix": "oxlint --fix"
   },
   "dependencies": {
-    "@ijlee2-frontend-configs/oxlint-node": "^0.4.0"
+    "@ijlee2-frontend-configs/oxlint-node": "^0.5.0"
   },
   "devDependencies": {
     "@shared-configs/prettier": "workspace:*",
-    "concurrently": "^10.0.6",
-    "oxlint": "^1.90.0",
-    "prettier": "^3.9.10"
+    "concurrently": "^10.0.7",
+    "oxlint": "^1.93.0",
+    "prettier": "^3.10.1"
   },
   "peerDependencies": {
-    "oxlint": "^1.90.0",
-    "oxlint-tsgolint": "^7.0.2005"
+    "oxlint": "^1.93.0",
+    "oxlint-tsgolint": "^7.0.2007"
   },
   "peerDependenciesMeta": {
     "oxlint": {

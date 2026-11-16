@@ -46,8 +46,8 @@
     "test": "sh build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {
-    "@babel/parser": "^7.29.12",
-    "recast": "^0.24.0"
+    "@babel/parser": "^7.29.13",
+    "recast": "^0.24.3"
   },
   "devDependencies": {
     "@codemod-utils/tests": "workspace:*",
@@ -55,10 +55,10 @@
     "@shared-configs/prettier": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
     "@types/node": "^22.20.5",
-    "concurrently": "^10.0.6",
-    "oxlint": "^1.90.0",
-    "oxlint-tsgolint": "^7.0.2005",
-    "prettier": "^3.9.10",
+    "concurrently": "^10.0.7",
+    "oxlint": "^1.93.0",
+    "oxlint-tsgolint": "^7.0.2007",
+    "prettier": "^3.10.1",
     "typescript": "^6.0.3"
   },
   "engines": {
