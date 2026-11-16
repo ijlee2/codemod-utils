@@ -324,7 +324,7 @@ importers:
   packages/ast/javascript:
     dependencies:
       '@babel/parser':
-        specifier: ^7.29.13
+        specifier: ^7.29.14
         version: 7.29.14
       recast:
         specifier: ^0.24.3
