@@ -46,7 +46,7 @@
     "test": "sh build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {
-    "@babel/parser": "^7.29.13",
+    "@babel/parser": "^7.29.14",
     "recast": "^0.24.3"
   },
   "devDependencies": {
