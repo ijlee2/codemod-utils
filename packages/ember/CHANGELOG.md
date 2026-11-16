@@ -1,5 +1,11 @@
 # @codemod-utils/ember
 
+## 4.2.2
+
+### Patch Changes
+
+- [#377](https://github.com/ijlee2/codemod-utils/pull/377) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 4.2.1
 
 ### Patch Changes

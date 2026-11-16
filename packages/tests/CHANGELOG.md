@@ -1,5 +1,11 @@
 # @codemod-utils/tests
 
+## 3.5.0
+
+### Minor Changes
+
+- [#377](https://github.com/ijlee2/codemod-utils/pull/377) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.4.0
 
 ### Minor Changes
