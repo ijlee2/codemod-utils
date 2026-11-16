@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { run } from '@sondr3/minitest/dist/runner.js';
+import { run } from '@sondr3/minitest';
 
 process.env['NODE_ENV'] = 'test';
 

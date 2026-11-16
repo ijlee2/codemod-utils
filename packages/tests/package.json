@@ -50,18 +50,18 @@
     "test": "sh build.sh --test && echo \"@codemod-utils/tests does not have tests.\""
   },
   "dependencies": {
-    "@sondr3/minitest": "^0.1.2",
-    "glob": "^14.0.3"
+    "@sondr3/minitest": "^1.0.0-rc.1",
+    "glob": "^14.0.6"
   },
   "devDependencies": {
     "@shared-configs/oxlint-node": "workspace:*",
     "@shared-configs/prettier": "workspace:*",
     "@shared-configs/typescript": "workspace:*",
     "@types/node": "^22.20.5",
-    "concurrently": "^10.0.6",
-    "oxlint": "^1.90.0",
-    "oxlint-tsgolint": "^7.0.2005",
-    "prettier": "^3.9.10",
+    "concurrently": "^10.0.7",
+    "oxlint": "^1.93.0",
+    "oxlint-tsgolint": "^7.0.2007",
+    "prettier": "^3.10.1",
     "typescript": "^6.0.3"
   },
   "engines": {
