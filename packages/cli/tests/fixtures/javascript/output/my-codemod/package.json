@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.3",
-    "@codemod-utils/tests": "^3.5.0",
+    "@codemod-utils/tests": "^3.5.1",
     "@ijlee2-frontend-configs/changesets": "^3.0.4",
     "@ijlee2-frontend-configs/oxlint-node": "^0.5.0",
     "@ijlee2-frontend-configs/prettier": "^3.5.0",
