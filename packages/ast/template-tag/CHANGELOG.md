@@ -1,5 +1,11 @@
 # @codemod-utils/ast-template-tag
 
+## 2.9.0
+
+### Minor Changes
+
+- [#380](https://github.com/ijlee2/codemod-utils/pull/380) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.8.0
 
 ### Minor Changes
