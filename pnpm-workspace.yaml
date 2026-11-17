@@ -12,6 +12,7 @@ minimumReleaseAge: 720
 
 minimumReleaseAgeExclude:
   - "@ijlee2-frontend-configs/*"
+  - type-fest@6.0.1
 
 packages:
   - "configs/**"
