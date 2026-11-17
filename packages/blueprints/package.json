@@ -56,7 +56,7 @@
     "@types/lodash": "^4.17.27",
     "@types/node": "^22.20.5",
     "concurrently": "^10.0.7",
-    "oxlint": "^1.93.0",
+    "oxlint": "^1.94.0",
     "oxlint-tsgolint": "^7.0.2007",
     "prettier": "^3.10.1",
     "typescript": "^6.0.3"
